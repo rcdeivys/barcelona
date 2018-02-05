@@ -1,0 +1,146 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimary_shadow"
+    android:orientation="vertical"
+    tools:context="com.millonarios.MillonariosFC.ui.chat.groupdetail.GroupDetailActivity">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background ="@drawable/escudo_fondo_cortado">
+
+    <LinearLayout
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="3dp"
+                android:id="@+id/back_button">
+
+                <ImageView
+                    android:id="@+id/iv_back"
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:background="@drawable/arrow_left_dorado"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/group_profile"
+                android:textStyle="bold"
+                android:textSize="@dimen/font_actionbar_size"
+                android:layout_margin="5dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_friends_finder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="parent"
+        android:padding="8dp">
+
+        <!-- Nombre del Grupo -->
+        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            android:id="@+id/activity_name_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:textColor="@color/white"
+            android:text="@string/group_no_name"
+            android:textStyle="bold"
+            android:textSize="@dimen/font_title_xsize"/>
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/item_group_profile"
+            />
+
+        <!-- Cantidad de miembros -->
+        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            android:id="@+id/activity_cant_members_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="@string/group_no_members"
+            android:textSize="@dimen/font_caption_size" />
+
+    </LinearLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Recycler of friends's -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_group_members"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_exit_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:gravity="center_horizontal"
+            android:text="@string/group_exit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_title_size"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/tv_delete_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="3dp"
+            android:gravity="center_horizontal"
+            android:text="@string/group_delete"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_title_size"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+</RelativeLayout>
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="font_caption_size">8sp</dimen><!--REGULAR-->
+    <dimen name="font_body_r_size">10sp</dimen><!--REGULAR-->
+    <dimen name="font_body_m_size">11sp</dimen><!--MEDIUM-->
+    <dimen name="font_button_size">10sp</dimen><!--MEDIUM--><!--ALL CAPS-->
+    <dimen name="font_subheading_size">12sp</dimen><!--REGULAR-->
+    <dimen name="font_title_size">16sp</dimen><!--MEDIUM-->
+    <dimen name="font_title_xsize">20sp</dimen><!--MEDIUM-->
+    <dimen name="font_actionbar_size">24sp</dimen><!--MEDIUM-->
+    <dimen name="font_description">14sp</dimen><!--MEDIUM-->
+    <dimen name="font_heading_size">44sp</dimen><!--REGULAR-->
+    <dimen name="font_display_01_size">34sp</dimen><!--REGULAR-->
+    <dimen name="font_display_02_size">45sp</dimen><!--REGULAR-->
+    <dimen name="font_display_03_size">56sp</dimen><!--REGULAR-->
+    <dimen name="font_display_04_size">112sp</dimen><!--REGULAR-->
+
+    <dimen name="sizeTextTab">15sp</dimen>
+    <dimen name="sub_menu_padding">5dp</dimen>
+
+    <!-- Tamaño de los textos de la pestaña "Calendario" -->
+    <dimen name="sizeTextNombreEquipoCalendario">11sp</dimen>
+    <dimen name="sizeTextEnfrentamientoCalendario">17sp</dimen>
+    <dimen name="sizeTextFechaFifaCalendario">9sp</dimen>
+    <dimen name="sizeTextTipoPartidoCalendario">11sp</dimen>
+    <dimen name="sizeTextFechaPartidoCalendario">7sp</dimen>
+    <dimen name="sizeTextProximoCalendario">7sp</dimen>
+    <dimen name="sizeDescripcionCalendario">9sp</dimen>
+
+    <dimen name="menu_img_profile_size">70dp</dimen>
+    <dimen name="icon_small">20dp</dimen>
+    <dimen name="icon_xsmall">15dp</dimen>
+    <dimen name="icon_xxsmall">15dp</dimen>
+    <dimen name="icon_xxxsmall">10dp</dimen>
+    <dimen name="icon_xmedium">50dp</dimen>
+    <dimen name="icon_medium">70dp</dimen>
+    <dimen name="icon_large">90dp</dimen>
+    <dimen name="icon_xlarge">100dp</dimen>
+
+    <dimen name="menu_item">6sp</dimen>
+
+    <dimen name="corner_chat_bubble">10dp</dimen>
+</resources>

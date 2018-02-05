@@ -1,0 +1,303 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Base.Theme.AppCompat">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="TransparentCompat" parent="@style/Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+
+    <style name="PopUpWall" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:itemBackground">@android:color/white</item>
+    </style>
+
+
+    <style name="confirm_changes_box" parent="">
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+    </style>
+
+    <!-- Tab Style -->
+    <style name="Custom.Design.TabLayout" parent="android:Widget">
+        <!-- <item name="tabMaxWidth">@dimen/tab_max_width</item> -->
+        <item name="tabIndicatorColor">?attr/colorAccent</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabBackground">@color/selector_text_slidingtab</item>
+        <item name="tabTextAppearance">@style/AppTheme.TextAppearance.Design.Tab</item>
+        <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="AppTheme.TextAppearance.Design.Tab" parent="TextAppearance.AppCompat.Button">
+        <!--<item name="android:textSize">12sp</item>-->
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="TabTextSize" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/font_caption_size</item>
+    </style>
+
+    <!-- Helvetica Condensed -->
+    <style name="StyleRobotoBold">
+        <item name="textStyle">@integer/font_style_roboto_bold</item>
+    </style>
+
+    <!-- Helvetica Condensed Title -->
+    <style name="StyleRobotoBold.Title">
+        <item name="android:textSize">@dimen/font_title_size</item>
+    </style>
+
+    <style name="StyleRobotoBold.Title.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoBold.Title.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoBold.Title.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Helvetica Condensed Sub Heading -->
+
+    <style name="StyleRobotoBold.Subheading">
+        <item name="android:textSize">@dimen/font_subheading_size</item>
+    </style>
+
+    <style name="StyleRobotoBold.Subheading.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoBold.Subheading.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoBold.Subheading.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Helvetica Condensed Sub Regular -->
+
+    <style name="StyleRobotoBold.BodyR">
+        <item name="android:textSize">@dimen/font_body_r_size</item>
+    </style>
+
+    <style name="StyleRobotoBold.BodyR.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoBold.BodyR.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoBold.BodyR.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Helvetica Condensed Sub Caption -->
+
+    <style name="StyleRobotoBold.Caption">
+        <item name="android:textSize">@dimen/font_caption_size</item>
+    </style>
+
+    <style name="StyleRobotoBold.Caption.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoBold.Caption.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoBold.Caption.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Helvetica Condensed -->
+    <style name="StyleRobotoRegular">
+        <item name="textStyle">@integer/font_style_roboto_regular</item>
+    </style>
+
+    <!-- Helvetica Condensed Title -->
+    <style name="StyleRobotoRegular.Title">
+        <item name="android:textSize">@dimen/font_title_size</item>
+    </style>
+
+    <style name="StyleRobotoRegular.Title.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoRegular.Title.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoRegular.Title.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Helvetica Condensed Sub Heading -->
+
+    <style name="StyleRobotoRegular.Subheading">
+        <item name="android:textSize">@dimen/font_subheading_size</item>
+    </style>
+
+    <style name="StyleRobotoRegular.Subheading.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoRegular.Subheading.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoRegular.Subheading.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Helvetica Condensed Sub Regular -->
+
+    <style name="StyleRobotoRegular.BodyR">
+        <item name="android:textSize">@dimen/font_body_r_size</item>
+    </style>
+
+    <style name="StyleRobotoRegular.BodyR.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoRegular.BodyR.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoRegular.BodyR.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Helvetica Condensed Sub Caption -->
+
+    <style name="StyleRobotoRegular.Caption">
+        <item name="android:textSize">@dimen/font_caption_size</item>
+    </style>
+
+    <style name="StyleRobotoRegular.Caption.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoRegular.Caption.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoRegular.Caption.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+
+    <!-- Open Sans Regular-->
+
+    <style name="StyleRobotoLigth">
+        <item name="textStyle">@integer/font_style_roboto_light</item>
+    </style>
+
+    <!-- Open Sans Regular BodyR -->
+
+    <style name="StyleRobotoLigth.BodyR">
+        <item name="android:textSize">@dimen/font_body_r_size</item>
+    </style>
+
+    <style name="StyleRobotoLigth.BodyR.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoLigth.BodyR.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoLigth.BodyR.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Open Sans Caption -->
+
+    <style name="StyleRobotoLigth.Caption">
+        <item name="android:textSize">@dimen/font_caption_size</item>
+    </style>
+
+    <style name="StyleRobotoLigth.Caption.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="StyleRobotoLigth.Caption.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="StyleRobotoLigth.Caption.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Open Sans Semi Bold -->
+
+    <style name="FCMillonariosStyleOSSemiBold">
+        <item name="textStyle">@integer/font_style_openSans_semibold</item>
+    </style>
+
+    <!-- Open Sans SemiBold BodyR -->
+
+    <style name="FCMillonariosStyleOSSemiBold.BodyR">
+        <item name="android:textSize">@dimen/font_body_r_size</item>
+    </style>
+
+    <style name="FCMillonariosStyleOSSemiBold.BodyR.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="FCMillonariosStyleOSSemiBold.BodyR.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="FCMillonariosStyleOSSemiBold.BodyR.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <!-- Open Sans Semi bold Caption -->
+
+    <style name="FCMillonariosStyleOSSemiBold.Caption">
+        <item name="android:textSize">@dimen/font_caption_size</item>
+    </style>
+
+    <style name="FCMillonariosStyleOSSemiBold.Caption.White">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="FCMillonariosStyleOSSemiBold.Caption.Primary">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="FCMillonariosStyleOSSemiBold.Caption.Accent">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2B4E98</color>
+    <color name="colorPrimaryDark">#161F3D</color>
+    <color name="colorAccent">#8A7B52</color>
+
+    <color name="color_button_friends">#FF2B4E97</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="grey_white">#F5F5F5</color>
+    <color name="black">#000000</color>
+    <color name="gray">#615c5c</color>
+    <color name="black_trans_50">#59000000</color>
+    <color name="colorPrimary_trans_50">#592B4E98</color>
+    <color name="colorPrimary_shadow">#0f2960</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorActiveTextTab">#F2DC5A</color>
+    <color name="colorUnactiveTextTab">#BABBBF</color>
+
+    <color name="gray_transparent">#8baeaeae</color>
+    <color name="background_yellow">#F0CD3F</color>
+    <color name="textColorPrimary">#878787</color>
+    <color name="textColorSecondary">#3e3e3e</color>
+    <color name="textColorDisable">#c6c6c6</color>
+    <color name="background_content">#161f3d</color>
+
+    <color name="holo_green_dark">#ff669900</color>
+
+    <color name="green_online">#00ae17</color>
+    <color name="rojo_offline">#ae0101</color>
+
+    <color name="chat_time_color">#747373</color>
+    <color name="chat_color_bubble">#747373</color>
+    <color name="chat_color_bubble_no_self">#ECEEF1</color>
+    <color name="chat_color_bubble_self">#2B4E98</color>
+
+</resources>

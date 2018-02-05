@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dl_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/banner"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/tb_menu"
+                layout="@layout/toolbar_generic" />
+
+            <include
+                android:id="@+id/tb_sub_menu"
+                layout="@layout/toolbar_sub_generic" />
+
+            <FrameLayout
+                android:id="@+id/fl_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+
+        </LinearLayout>
+        <include
+            android:id="@+id/banner"
+            layout="@layout/footer"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/drawerPane"
+        layout="@layout/side_menu" />
+
+</android.support.v4.widget.DrawerLayout>

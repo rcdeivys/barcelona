@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "314965515508",
+    "firebase_url": "https://millos-fc-app.firebaseio.com",
+    "project_id": "millos-fc-app",
+    "storage_bucket": "millos-fc-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314965515508:android:61a3130da854834c",
+        "android_client_info": {
+          "package_name": "com.millonarios.MillonariosFC"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "314965515508-bmvf3vijslb43fgim2ittv6u85lt2f2c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.millonarios.MillonariosFC",
+            "certificate_hash": "ff4515fb0178eb9818be534ef2fd455eebaa4406"
+          }
+        },
+        {
+          "client_id": "314965515508-vp4qpmvn6n0sgsbc306tpc3d6lqghplg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaPBny0-aNYgGQvhtAvN5qyXWZiPA-Ikk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "314965515508-vp4qpmvn6n0sgsbc306tpc3d6lqghplg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "314965515508-b055uim3avi4lhqh9d4eooq72bno2lr0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.millonarios.MillonariosFC"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

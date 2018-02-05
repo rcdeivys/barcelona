@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:text=""
+        android:textSize="8sp"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/reloj" />
+
+    <com.github.lzyzsd.circleprogress.DonutProgress
+        android:id="@+id/donut_progress"
+        android:layout_margin="2dp"
+        custom:donut_finished_stroke_width="5dp"
+        custom:donut_unfinished_stroke_width="5dp"
+        custom:donut_unfinished_color="#526DA8"
+        custom:donut_finished_color="#5EA3FC"
+        android:rotation="-90"
+        custom:donut_text_color="@color/transparent"
+        android:layout_width="match_parent"
+        custom:donut_max="100"
+        android:layout_height="match_parent"
+        custom:donut_progress="0"/>
+</RelativeLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="font_roboto_regular" translatable="false">Roboto/Roboto-Regular.ttf</string>
+    <string name="font_helvetica_condensed_bold_0" translatable="false">fonts/Helvetica-Condensed/Helvetica-Condensed-Bold_0.otf</string>
+    <string name="font_helvetica_condensed_2" translatable="false">fonts/Helvetica-Condensed/Helvetica-Condensed_2.otf</string>
+
+    <string name="font_thin" translatable="false">fonts/OpenSans/openSans-Bbold</string>
+    <string name="font_light" translatable="false">fonts/OpenSans/openSans-light</string>
+    <string name="font_italic" translatable="false">fonts/OpenSans/openSans-italic</string>
+    <string name="font_lightitalic" translatable="false">fonts/OpenSans/openSans-lightItalic</string>
+    <string name="font_medium" translatable="false">fonts/OpenSans/openSans-regular</string>
+    <string name="font_semibold" translatable="false">fonts/OpenSans/openSans-semibold</string>
+    <string name="font_semibolditalic" translatable="false">fonts/OpenSans/openSans-semiBoldItalic</string>
+    <string name="font_bolditalic" translatable="false">fonts/OpenSans/openSans-boldItalic</string>
+    <string name="font_extrabold" translatable="false">fonts/OpenSans/openSans-ExtraBold</string>
+    <string name="font_extrabolditalic" translatable="false">fonts/OpenSans/openSans-extraBoldItalic</string>
+
+    <string name="font_opensans_regular" translatable="false">fonts/OpenSans/OpenSans-Regular.ttf</string>
+    <string name="font_opensans_bold" translatable="false">fonts/OpenSans/OpenSans-Bold.ttf</string>
+
+    <string name="font_agencyb" translatable="false">fonts/Agencyb/AGENCYB</string>
+    <string name="font_agencyr" translatable="false">fonts/Agencyb/AGENCYR</string>
+
+
+    <string name="font_helvetica_condensed_bold" translatable="false">heveltica-condensed-Bold_0</string>
+    <string name="font_helvetica_condensed" translatable="false">heveltica-condensed_2</string>
+
+
+    <!--Path Font-->
+    <string name="font_path_thin" translatable="false">fonts/OpenSans/OpenSans-Bold.ttf</string>
+    <string name="font_path_light" translatable="false">fonts/OpenSans/OpenSans-Light.ttf</string>
+    <string name="font_path_italic" translatable="false">fonts/OpenSans/OpenSans-Italic.ttf</string>
+    <string name="font_path_lightitalic" translatable="false">fonts/OpenSans/OpenSans-LightItalic.ttf</string>
+    <string name="font_path_medium" translatable="false">fonts/OpenSans/OpenSans-Regular.ttf</string>
+    <string name="font_path_semibold" translatable="false">fonts/OpenSans/OpenSans-Semibold.ttf</string>
+    <string name="font_path_semibolditalic" translatable="false">fonts/OpenSans/OpenSans-SemiBoldItalic.ttf</string>
+    <string name="font_path_bolditalic" translatable="false">fonts/OpenSans/OpenSans-BoldItalic.ttf</string>
+    <string name="font_path_extrabold" translatable="false">fonts/OpenSans/OpenSans-ExtraBold.ttf</string>
+    <string name="font_path_extrabolditalic" translatable="false">fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf</string>
+
+
+    <string name="font_path_agencyb" translatable="false">fonts/Agencyb/AGENCYB.ttf</string>
+    <string name="font_path_agencyr" translatable="false">fonts/Agencyb/AGENCYR.TTF</string>
+
+
+    <string name="font_path_helvetica_condensed_bold" translatable="false">fonts/Helvetica-Condensed/Helvetica-Condensed-Bold_0.otf</string>
+    <string name="font_path_helvetica_condensed" translatable="false">fonts/Helvetica-Condensed/Helvetica-Condensed_2.otf</string>
+
+
+    <string name="font_path_roboto_thin" translatable="false">fonts/Roboto/Roboto-Thin.ttf</string>
+    <string name="font_path_roboto_light" translatable="false">fonts/Roboto/Roboto-Light.ttf</string>
+    <string name="font_path_roboto_regular" translatable="false">fonts/Roboto/Roboto-Regular.ttf</string>
+    <string name="font_path_roboto_medium" translatable="false">fonts/Roboto/Roboto-Medium.ttf</string>
+    <string name="font_path_roboto_bold" translatable="false">fonts/Roboto/Roboto-Bold.ttf</string>
+    <string name="font_path_roboto_black" translatable="false">fonts/Roboto/Roboto-Black.ttf</string>
+    <string name="font_path_roboto_thin_italic" translatable="false">fonts/Roboto/Roboto-ThinItalic.ttf</string>
+    <string name="font_path_roboto_light_italic" translatable="false">fonts/Roboto/Roboto-LightItalic.ttf</string>
+    <string name="font_path_roboto_regular_italic" translatable="false">fonts/Roboto/Roboto-RegularItalic.ttf</string>
+    <string name="font_path_roboto_medium_italic" translatable="false">fonts/Roboto/Roboto-MediumItalic.ttf</string>
+    <string name="font_path_roboto_bold_italic" translatable="false">fonts/Roboto/Roboto-BoldItalic.ttf</string>
+    <string name="font_path_roboto_black_italic" translatable="false">fonts/Roboto/Roboto-BlackItalic.ttf</string>
+    <!--Text Styles-->
+    <integer name="font_style_helvetica_condensed_bold" translatable="false">0</integer>
+    <integer name="font_style_openSans_regular" translatable="false">1</integer>
+    <integer name="font_style_opensans_bold" translatable="false">2</integer>
+    <integer name="font_style_openSans_semibold" translatable="false">3</integer>
+    <integer name="font_style_agencyb" translatable="false">4</integer>
+    <integer name="font_style_agencyr" translatable="false">5</integer>
+    <integer name="font_style_helvetica_condensed" translatable="false">6</integer>
+
+    <integer name="font_style_roboto_bold" translatable="false">7</integer>
+    <integer name="font_style_roboto_regular" translatable="false">8</integer>
+    <integer name="font_style_roboto_light" translatable="false">9</integer>
+
+</resources>

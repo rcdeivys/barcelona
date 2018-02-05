@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/RL_Ppal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+
+    android:weightSum="100">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Banner"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/tb_sub_menu"
+            layout="@layout/toolbar_sub_generic" />
+
+        <include
+            android:id="@+id/tb_sub_menu"
+            layout="@layout/custom_view_pager" />
+
+    </LinearLayout>
+
+
+    <!-- Banner-->
+
+    <include
+        android:id="@+id/Banner"
+        layout="@layout/footer"
+        android:visibility="visible" />
+
+    <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/publisherAdView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="545dp"
+        android:visibility="gone"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="/6499/example/banner"></com.google.android.gms.ads.doubleclick.PublisherAdView>
+
+</RelativeLayout>

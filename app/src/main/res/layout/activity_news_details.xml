@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Header de la actividad -->
+    <RelativeLayout
+        android:id="@+id/content_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark">
+
+        <!-- Botón para regresar a la actividad anterior -->
+        <android.support.v7.widget.AppCompatImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrow_back"
+            android:tint="@color/colorAccent" />
+
+        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            android:id="@+id/text_header"
+            style="@style/StyleRobotoBold.Title.White"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="5dp"
+            android:text="@string/news"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_title_size" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/banner"
+        android:layout_below="@+id/content_header"
+        android:layout_marginBottom="0dp"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true" />
+
+            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                android:id="@+id/text_title"
+                style="@style/StyleRobotoBold.Title.White"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/font_title_size" />
+
+            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                android:id="@+id/text_description"
+                style="@style/StyleRobotoLigth"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/font_body_r_size" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/banner"
+        layout="@layout/footer"
+        android:visibility="visible" />
+
+</RelativeLayout>
+

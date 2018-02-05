@@ -1,0 +1,207 @@
+<resources>
+    <string name="app_name" translatable="false">Millonarios FC</string>
+
+    <string name="clientSecret" translatable="false">HDFH1TI35B62eSepn6QcUCaL</string>
+    <string name="client_id" translatable="false">532872190545-9q4bqcoqva9ilkfjpnsl514afdhj5496.apps.googleusercontent.com</string>
+    <string name="client" translatable="false">532872190545-h87jgs562eijh6pfqkrahk53snqbla0s.apps.googleusercontent.com</string>
+    <string name="facebook_app_id" translatable="false">1859980400683639</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb1859980400683639</string>
+
+    <string name="menu">menu</string>
+    <string name="roster">Nómina</string>
+    <string name="game_summoned">Convocados partido</string>
+    <string name="most_applauded_player">Jugador más aplaudido</string>
+    <string name="last_game">Último partido</string>
+    <string name="accumulated">Acumulado</string>
+    <string name="aplausos">Aplausos</string>
+    <string name="applause_last_game">Aplausos último partido</string>
+
+    <string name="password_confirmit">Confirmar \n contraseña \n</string>
+
+    <string name="profile">Perfil</string>
+    <string name="news">Noticias</string>
+    <string name="calendar">Calendario</string>
+    <string name="table">Tabla</string>
+    <string name="statistics">Estadísticas</string>
+    <string name="team">Equipo</string>
+    <string name="alignment">Alineación</string>
+    <string name="virtual_reality">Realidad Virtual</string>
+    <string name="in_live">En Vivo</string>
+    <string name="your_choose">Tú Eliges</string>
+    <string name="game">Juegos</string>
+    <string name="millionare_academy">Academia Millonarios</string>
+    <string name="online_shop">Tienda Virtual</string>
+    <string name="setting">Configuración</string>
+    <string name="professional">Profesional</string>
+    <string name="footboll_base">Fútbol Base</string>
+    <string name="gallery">Galeria</string>
+    <string name="applause_already_added">Lo sentimos. Este aplauso ya había sido añadido.</string>
+    <string name="applause_successful">Se añadió exitosamente tu aplauso.</string>
+    <string name="place_of_birth">Lugar de Nacimiento</string>
+    <string name="clap_later">El tiempo para aplaudir por este jugador ha finalizado, regresa en el próximo encuentro y aplaude a tu jugador favorito</string>
+    <string name="nacionalidad">NACIONALIDAD</string>
+    <string name="de_camiseta_nen_copa_internacional"># DE CAMISETA\nEN COPA INTERNACIONAL</string>
+    <string name="fecha_de_nacimiento">Fecha de Nacimiento</string>
+    <string name="applause_player_performance">Aplaude el desempeño de este jugador en su último partido jugado</string>
+    <string name="applause_history">Historial de aplausos</string>
+    <string name="player_profile">Perfil del jugador</string>
+    <string name="social_media">Redes sociales</string>
+    <string name="detail_player">Detalle Jugador</string>
+    <string name="stadium">Estadio: %1$s</string>
+    <string name="game_date_time">%1$s | %2$s</string>
+    <string name="weight">Peso</string>
+    <string name="height">Estatura</string>
+    <string name="applause">aplausos</string>
+    <string name="calendar_detail">Detalle del Partido</string>
+
+    <string name="toast_connection_error">Error al conectarse a los servidores.</string>
+    <string name="toast_login_error">Error de acceso, correo electrónico o la contraseña incorrecta</string>
+    <string name="toast_login_register_exist">Error de acceso, se registro con correo electrónico y contraseña</string>
+    <string name="toast_login_social_error">Error inicio con red social</string>
+    <string name="toast_error">Error</string>
+    <string name="see_more">ver más ></string>
+    <string name="headline">Titulares</string>
+    <string name="technical_director">DIRECTOR TÉCNICO</string>
+    <string name="next_date">Próxima Fecha</string>
+    <string name="accept">Aceptar</string>
+    <string name="enjoy_whole_vr_experience">Asegúrate que tu dispositivo tiene giroscopio para poder disfrutar de toda la experiencia VR</string>
+    <string name="skip">Saltar</string>
+    <string name="choose_ideal_alignment">Escoge la Alineación ideal para ti</string>
+    <string name="match_alignment">Alineación del partido</string>
+    <string name="armar_alineacion">ARMAR ALINEACIÓN</string>
+    <string name="success_ideal_selection">Tu Once Ideal se cargo con éxito ¡Compártelo con tus amigos!</string>
+    <string name="network_error">Connection Error</string>
+    <string name="not">NO</string>
+    <string name="yes">SI</string>
+    <string name="select_11_player">Tienes que seleccionar 11 jugadores</string>
+    <string name="data_was_updated">Tus datos fueron actualizados.</string>
+    <string name="ideal_eleven">Arma tu Alineación ideal para poder compartir</string>
+    <string name="vs">VS</string>
+    <string name="friend">Amigo</string>
+    <string name="init_chat">INICIAR CHAT</string>
+    <string name="invited_grupo">INVITAR A UN GRUPO</string>
+    <string name="block">BLOQUEAR</string>
+    <string name="Unlock">DESBLOQUEAR</string>
+    <string name="invited">Invitar</string>
+    <string name="request_friends">Solicitudes de amistad</string>
+    <string name="suggest_friends">Sugerencias</string>
+    <string name="solicitud_enviada">Solicitud Enviada</string>
+
+    <!-- Analytics -->
+    <string name="drawer_opened" translatable="false">MENU</string>
+    <string name="share_url" translatable="false">http://millos-prod.2waysports.com/compartir/?seccion=%1$s</string>
+    <string name="share_app" translatable="false">%1$s</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank friendSelectionActivity</string>
+
+    <!-- group chat-->
+    <string name="group_no_name">NO NAME</string>
+    <string name="group_members">members</string>
+    <string name="group_name">Group\'s Name</string>
+    <string name="group_create">Create Group</string>
+    <string name="group_search">No Results</string>
+    <string name="group_missing_params">Debes colocar una imagen</string>
+    <string name="group_profile">Group\'s Profile</string>
+    <string name="group_exit">LEAVE GROUP</string>
+    <string name="group_delete">DELETE GROUP</string>
+    <string name="group_no_members">no members</string>
+    <string name="group_list">Group\'s List</string>
+    <string name="group_created">Grupo creado</string>
+    <string name="add_friends_firts_create_group">Add some friends before create a Group</string>
+    <string name="add_friends_firts_send_msg">Add some friends before to send Messages</string>
+
+    <!-- amigos -->
+    <string name="friend_list">Friend\'s List</string>
+    <string name="unexpected_error">Sorry, there was an unexpected error</string>
+
+    <!-- solicitudes -->
+    <string name="toast_error_invited">Error al invitar el usuario</string>
+    <string name="toast_error_accept_user">Error al aceptar el usuario</string>
+    <string name="toast_error_reject_user">Error al rechazar el usuario</string>
+
+    <!-- chat -->
+    <string name="write_msg">Write a message</string>
+    <string name="name_example">Watatubi Watanabe</string>
+    <string name="chat_text_example">Lorem ipsum dolor sit amet, consectetur adipiscing elit, set dolore magna aliqua algo vaa qui por defecto texto sin sentido hay mucho como estos textos. . </string>
+    <string name="chat_hour_example">12:00</string>
+    <string name="missing_text_params">Missing Text or Photo</string>
+
+
+    <string name="what_is_he_thinking_about">¿Qué estás pensando?</string>
+
+    <string name="no_more_data">No hay mas datos</string>
+    <string name="no_more_data_to_display">No hay mas datos para mostrar</string>
+
+    <string name="create_post">Crear publicación</string>
+    <string name="send_post">Enviar</string>
+    <string name="clap_your_hands">Aplaude</string>
+    <string name="block_friend">Bloquear</string>
+    <string name="add_friend">Agregar a mis amigos</string>
+    <string name="write_comment">Escribe un comenario</string>
+
+    <string name="lipsun" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+
+    <!-- Date Util -->
+    <string name="date_term_less">menos que</string>
+    <string name="date_term_a">un</string>
+    <string name="date_term_an">un</string>
+    <string name="date_just_now">justo ahora</string>
+
+    <string name="date_second">segundo</string>
+    <string name="date_seconds">segundos</string>
+    <string name="date_minute">minuto</string>
+    <string name="date_minutes">minutos</string>
+    <string name="date_hour">hora</string>
+    <string name="date_hours">horas</string>
+    <string name="date_day">día</string>
+    <string name="date_days">días</string>
+    <string name="date_week">semana</string>
+    <string name="date_weeks">semanas</string>
+    <string name="date_month">mes</string>
+    <string name="date_months">meses</string>
+    <string name="date_year">año</string>
+    <string name="date_years">años</string>
+
+    <string name="date_monday">Lunes</string>
+    <string name="date_tuesday">Martes</string>
+    <string name="date_wednesday">Miercoles</string>
+    <string name="date_thursday">Jueves</string>
+    <string name="date_friday">Viernes</string>
+    <string name="date_saturday">Sabado</string>
+    <string name="date_sunday">Domingo</string>
+
+    <string name="date_january">Enero</string>
+    <string name="date_february">Febrero</string>
+    <string name="date_march">Marzo</string>
+    <string name="date_april">Abril</string>
+    <string name="date_may">Mayo</string>
+    <string name="date_june">Junio</string>
+    <string name="date_july">Julio</string>
+    <string name="date_august">Agosto</string>
+    <string name="date_september">Septiembre</string>
+    <string name="date_october">Octubre</string>
+    <string name="date_november">Noviembre</string>
+    <string name="date_december">Diciembre</string>
+
+    <string name="date_prefix_lt">menos de una</string>
+    <string name="date_prefix_about">acerca de</string>
+    <string name="date_prefix_over">encima</string>
+    <string name="date_prefix_almost">casi</string>
+
+    <string name="date_suffix_ago">hace</string>
+    <string name="date_second_ago">%d hace un segundo</string>
+    <string name="date_minute_ago">%d hace un minuto</string>
+    <string name="date_hour_ago">%d hace una hora</string>
+    <string name="date_day_ago">%d hace un día</string>
+
+    <string name="undefined" translatable="false">Undefined</string>
+    <!-- item_ranking_votes -->
+
+    <string name="item_ranking_votes.votes">Votos</string>
+    <string name="ok">OK</string>
+    <string name="ranking_no_show">\"Para ver el ranking debes votar o esperar a que finalice la encuesta\"</string>
+
+    <string name="request_friends_send">Solicitud enviada</string>
+
+</resources>

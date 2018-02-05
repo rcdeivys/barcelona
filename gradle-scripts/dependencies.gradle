@@ -1,0 +1,121 @@
+ext {
+
+    //Version
+    supportVersion = '27.0.1'
+    suppportContraintVersion = '1.0.2'
+    retrofitVersion = '2.2.0'
+    rxAndroidVersion = '2.0.1'
+    daggerVersion = '2.9'
+    playServicesVersion = '11.4.0'
+    firebaseVersion = '11.4.0'
+    rxJavaVersion = '2.0.2'
+    glideVersion = '4.1.1'
+    junitVersion = '4.12'
+    mockitoVersion = '1.10.19'
+    robolectricVersion = '3.0'
+    exoPlayerVersion = 'r2.4.2'
+    easyPermissionsVersion = '0.3.0'
+    okHttpVersion = '3.6.0'
+    calligraphyVersion = '2.3.0'
+    multidexVersion = '1.0.1'
+    butterknifeVersion = '8.8.1'
+    circleImageViewVersion = '2.1.0'
+
+    //Packages
+    supportPackage = 'com.android.support'
+    playServicesPackage = 'com.google.android.gms'
+    exoplayerPackage = 'com.google.android.exoplayer'
+    supportContraintPackage = 'com.android.support.constraint'
+    firebasePackage = 'com.google.firebase'
+    retrofitPackage = 'com.squareup.retrofit2'
+    reactivePackage = 'io.reactivex.rxjava2'
+    glidePackage = 'com.github.bumptech.glide'
+    hdodenhofPackage = 'de.hdodenhof'
+    junitPackage = 'junit'
+    mockitoPackage = 'org.mockito'
+    robolectricPackage = 'org.robolectric'
+    easyPermissionPackage = 'pub.devrel'
+    daggerPackage = 'com.google.dagger'
+    calligraphyPackage = 'uk.co.chrisjenx'
+    okHttpPackage = 'com.squareup.okhttp3'
+    butterknifePackage = 'com.jakewharton'
+    circleImageViewPackage = 'de.hdodenhof'
+
+
+    supportDependencies = [
+
+            design      : buildDependency(supportPackage, 'design', supportVersion),
+            recyclerView: buildDependency(supportPackage, 'recyclerview-v7', supportVersion),
+            cardView    : buildDependency(supportPackage, 'cardview-v7', supportVersion),
+            appCompat   : buildDependency(supportPackage, 'appcompat-v7', supportVersion),
+            multidex    : buildDependency(supportPackage, 'multidex', multidexVersion),
+            contraint   : buildDependency(supportContraintPackage, 'constraint-layout', suppportContraintVersion),
+            percent     : buildDependency(supportPackage, 'percent', supportVersion)
+
+    ]
+
+    playServicesDependencies = [
+
+            analytics: buildDependency(playServicesPackage, 'play-services-analytics', playServicesVersion),
+            auth     : buildDependency(playServicesPackage, 'play-services-auth', playServicesVersion),
+            plus     : buildDependency(playServicesPackage, 'play-services-plus', playServicesVersion),
+            ads      : buildDependency(playServicesPackage, 'play-services-ads', playServicesVersion)
+    ]
+
+    firebaseDependencies = [
+
+            core     : buildDependency(firebasePackage, 'firebase-core', firebaseVersion),
+            messaging: buildDependency(firebasePackage, 'firebase-messaging', firebaseVersion)
+    ]
+
+    retrofitDependencies = [
+
+            retrofit     : buildDependency(retrofitPackage, 'retrofit', retrofitVersion),
+            gson         : buildDependency(retrofitPackage, 'converter-gson', retrofitVersion),
+            rxAdapterJava: buildDependency(retrofitPackage, 'adapter-rxjava2', retrofitVersion)
+    ]
+
+    rxDependencies = [
+
+            rxAndroid: buildDependency(reactivePackage, 'rxandroid', rxAndroidVersion),
+            rxJava   : buildDependency(reactivePackage, 'rxjava', rxJavaVersion)
+    ]
+
+    glideDependencies = [
+
+            glide        : buildDependency(glidePackage, 'glide', glideVersion),
+            glideCompiler: buildDependency(glidePackage, 'compiler', glideVersion)
+    ]
+
+    butterKnifeDependencies = [
+
+            butterknife        : buildDependency(butterknifePackage, 'butterknife', butterknifeVersion),
+            butterknifeCompiler: buildDependency(butterknifePackage, 'butterknife-compiler', butterknifeVersion),
+    ]
+
+    easyPermission = buildDependency(easyPermissionPackage, 'easypermissions', easyPermissionsVersion)
+    exoPlayer = buildDependency(exoplayerPackage, 'exoplayer', exoPlayerVersion)
+    calligraphy = buildDependency(calligraphyPackage, 'calligraphy', calligraphyVersion)
+    okHttp = buildDependency(okHttpPackage, 'logging-interceptor', okHttpVersion)
+    circleImageView = buildDependency(circleImageViewPackage, 'circleimageview', circleImageViewVersion)
+
+
+    daggerDependencies = [
+
+            dagger        : buildDependency(daggerPackage, 'dagger', daggerVersion),
+            daggerCompiler: buildDependency(daggerPackage, 'dagger-compiler', daggerVersion)
+
+    ]
+
+    testingDependencies = [
+
+            junit      : buildDependency(junitPackage, 'junit', junitVersion),
+            mockito    : buildDependency(mockitoPackage, 'mockito-core', mockitoVersion),
+            robolectric: buildDependency(robolectricPackage, 'robolectric', robolectricVersion),
+
+    ]
+}
+
+static String buildDependency(String pack, String dependency, String version) {
+    return "${pack}:${dependency}:${version}"
+}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/banner" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_perfil"
+        android:layout_width="@dimen/menu_img_profile_size"
+        android:layout_height="@dimen/menu_img_profile_size"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/silueta"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="70dp"
+        android:layout_toEndOf="@id/img_perfil"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            android:id="@+id/first_name"
+            style="@style/StyleRobotoBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/font_body_r_size" />
+
+        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            android:id="@+id/last_name"
+            style="@style/StyleRobotoBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/font_body_r_size" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/btn_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <ImageView
+                style="@style/StyleRobotoBold"
+                android:layout_width="@dimen/icon_small"
+                android:layout_height="@dimen/icon_small"
+                android:src="@drawable/icon_perfil"
+                android:textSize="16sp" />
+
+            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                android:id="@+id/text_profile"
+                style="@style/StyleRobotoBold.BodyR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Perfil"
+                android:textSize="@dimen/font_caption_size" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btn_setting"
+            style="@style/StyleRobotoBold"
+            android:layout_width="@dimen/icon_xsmall"
+            android:layout_height="@dimen/icon_xsmall"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/icon_config"
+            android:textSize="16sp"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

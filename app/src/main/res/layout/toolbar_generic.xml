@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/tv_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/menu"
+            android:text="@string/menu"
+            android:textAllCaps="true" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_margin="7dp"
+            android:layout_toEndOf="@id/tv_menu"
+            android:background="@color/cardview_dark_background" />
+
+        <LinearLayout
+            android:id="@+id/content_powered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <!--<com.a2waysports.millonariosfc.utils.FCMillonariosTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Powered by"
+                android:textSize="12sp" />-->
+
+            <ImageView
+                android:id="@+id/iv_powered"
+                android:layout_width="150dp"
+                android:layout_height="35dp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_shield"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_millos" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>
