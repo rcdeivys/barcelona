@@ -1,2 +1,2 @@
-# millonarios_android
-Millonarios FC Android App
+# barcelona_android
+Refactoring Barcelona SC Android App
