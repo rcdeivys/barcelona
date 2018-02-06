@@ -6,7 +6,7 @@
     android:background="@color/colorPrimaryDark"
     android:visibility="visible">
 
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/tv_sub_header_title"
         style="@style/StyleRobotoBold.Title.White"
         android:layout_width="wrap_content"

@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2B4E98</color>
-    <color name="colorPrimaryDark">#161F3D</color>
-    <color name="colorAccent">#8A7B52</color>
+    <color name="colorPrimary">#4A4D4A</color>
+    <color name="colorPrimaryDark">#131313</color>
+    <color name="colorAccent">#FED508</color>
+
+    <!-- Fondo pantalla-->
+    <color name="colorFondoPrimario">#282828</color>
+    <!-- Titulo header inicio, noticias-->
+    <color name="colorTituloHeader">#2C2C2C</color>
+    <!-- Texto noticias, fecha-->
+    <color name="colorFechaNoticicas">#CDCDCD</color>
+    <!-- Titulo Noticias-->
+    <color name="colorTituloNoticicas">#FFFFFF</color>
+    <!-- Amarillo-->
+    <color name="colorAmarillo">#FED508</color>
+    <!-- Side menu text active -->
+    <color name="side_menu_text_active">#FFCA0E</color>
+    <!-- Side menu text inactive -->
+    <color name="side_menu_text_inactive">#4D3D04</color>
+    <!-- Fondo ícono pequeño notificación -->
+    <color name="colorSmallIconNotif">#212121</color>
+
+    <color name="colorMenu">#4A4D4A</color>
+    <color name="colorBackground">#4A4D4A</color>
+    <color name="colorHeader">#212021</color>
+    <!-- Color del texto de la pestaña activa -->
+    <color name="colorActiveTextTab">#F2DC5A</color>
+    <!-- Color del texto de la pestaña inactiva -->
+    <color name="colorUnactiveTextTab">#BABBBF</color>
+    <!-- Color de textos del calendario -->
+    <color name="colorTextCal">#FFFFFF</color>
+    <!-- Color "próximo" en el calendario -->
+    <color name="colorProximoCal">#292929</color>
+    <!-- RegistrationActivity's background color -->
+    <color name="registration_background">#DDAB26</color>
+    <!-- RegistrationActivity's item background color -->
+    <color name="registration_item_background">#E1C758</color>
+    <!-- Registratio's EditText hint color -->
+    <color name="registration_hint">#CCA740</color>
+    <!-- Registratio's "Send" button color -->
+    <color name="registration_send_button">#C6C6C6</color>
+    <!-- Registratio's "Already have an account" button color -->
+    <color name="registration_existing_account_button">#222222</color>
+    <!-- Registratio's "Facebook" button color -->
+    <color name="registration_facebook_button">#0472A5</color>
+    <!-- Registratio's privacy polices -->
+    <color name="registration_privacy_policies">#D0622C</color>
+    <!-- Next game backgroud color -->
+    <color name="next_game_background">#E5BC0D</color>
 
     <color name="color_button_friends">#FF2B4E97</color>
 
@@ -14,8 +59,6 @@
     <color name="colorPrimary_trans_50">#592B4E98</color>
     <color name="colorPrimary_shadow">#0f2960</color>
     <color name="transparent">#00000000</color>
-    <color name="colorActiveTextTab">#F2DC5A</color>
-    <color name="colorUnactiveTextTab">#BABBBF</color>
 
     <color name="gray_transparent">#8baeaeae</color>
     <color name="background_yellow">#F0CD3F</color>

@@ -83,7 +83,7 @@
 
         </LinearLayout>
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/text_version"
             style="@style/StyleRobotoRegular.Caption"
             android:layout_width="match_parent"

@@ -33,7 +33,7 @@
                 android:src="@drawable/silueta" />
 
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/id_hincha"
                 style="@style/StyleRobotoBold"
                 android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
             android:orientation="vertical"
             android:rotation="90">
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/carnet_name"
                 style="@style/StyleRobotoLigth"
                 android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/cintillo" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/type_hincha"
                     style="@style/StyleRobotoBold"
                     android:layout_width="wrap_content"
@@ -87,7 +87,7 @@
                     android:textColor="@color/white" />
 
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/text_registrado"
                     style="@style/StyleRobotoLigth"
                     android:layout_width="wrap_content"
@@ -134,7 +134,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 style="@style/StyleRobotoBold.Title.White"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -179,7 +179,7 @@
         android:gravity="center"
         android:rotation="90">
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/text_date_venc"
             style="@style/StyleRobotoRegular.Caption"
             android:layout_width="wrap_content"

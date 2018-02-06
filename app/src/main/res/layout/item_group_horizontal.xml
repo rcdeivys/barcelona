@@ -19,7 +19,7 @@
         android:src="@drawable/no_group_perfil" />
 
     <!-- Nombre del Grupo -->
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/name_group_h"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
         android:maxLines="1"/>
 
     <!-- Cantidad de miembros -->
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/cant_members_group_h"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

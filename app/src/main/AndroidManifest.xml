@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.millonarios.MillonariosFC">
+    package="com.BarcelonaSC.BarcelonaApp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_TASKS" />
@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name=".app.App"
+        android:name="com.BarcelonaSC.BarcelonaApp.app.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.videointro.IntroActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.videointro.IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -32,47 +32,47 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".commons.BaseActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.commons.BaseActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.virtualreality.VirtualActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VirtualActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".ui.home.menu.login.LoginActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.home.menu.login.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.news.NewsInfografyActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".commons.WebViewActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.commons.WebViewActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.news.NewsDetailsActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.youchooce.ChooseProfiledetails.ChooseProfileActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfileActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.news.NewsVideoActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity"
             android:configChanges="orientation|screenSize" />
         <activity
-            android:name=".ui.gallery.GalleryListActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.gallery.GalleryActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.splash.SplashActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.playerdetails.PlayerActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.home.menu.live.LiveActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.home.menu.live.LiveActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
@@ -80,19 +80,19 @@
             android:value="d60aa40ca7ad4de0869e76c5d5e5fdd357574aa6" />
 
         <activity
-            android:name=".ui.home.menu.login.AuthActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.home.menu.login.AuthActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
-            android:name=".ui.profile.carnet.CarnetDigitalActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.profile.carnet.CarnetDigitalActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.recovery.password.RecoveryPasswordActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.recovery.password.RecoveryPasswordActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.referredto.ReferredToActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.referredto.ReferredToActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
@@ -100,24 +100,24 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".ui.wall.comment.WallCommentActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.wall.post.WallCreatePostActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.wall.post.WallCreatePostActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
 
-        <service android:name=".commons.Services.FirebaseService">
+        <service android:name="com.BarcelonaSC.BarcelonaApp.commons.Services.FirebaseService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <!-- [END firebase_service] -->
         <!-- [START firebase_iid_service] -->
-        <service android:name=".commons.Services.FirebaseInstanceIDService">
+        <service android:name="com.BarcelonaSC.BarcelonaApp.commons.Services.FirebaseInstanceIDService">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
@@ -168,20 +168,20 @@
         -->
 
         <activity
-            android:name=".ui.chat.friendselection.FriendSelectionActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.friendselection.FriendSelectionActivity"
             android:label="@string/group_create"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.chat.creationgroup.CreationGroupActivity"
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.creationgroup.CreationGroupActivity"
             android:label="@string/group_create"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.chat.friends.FriendsActivity"
+        <activity android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.friends.FriendsActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.chat.chatview.ChatActivity"
+        <activity android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.ChatActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.chat.groupdetail.GroupDetailActivity"
+        <activity android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.groupdetail.GroupDetailActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".ui.chat.groups.GroupsActivity"
+        <activity android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

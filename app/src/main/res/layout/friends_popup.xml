@@ -40,7 +40,7 @@
             android:orientation="vertical"
             android:padding="5dp">
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/tv_apodo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 android:background="@drawable/perfil_btn_2"
                 android:padding="10dp">
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/tv_iniciar_chat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                 android:background="@drawable/perfil_btn_3"
                 android:padding="10dp">
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/tv_invitar_grupo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
 
             </RelativeLayout>
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/tv_bloquear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -31,7 +31,7 @@
                     android:layout_centerInParent="true"
                     android:background="@drawable/logo_millos" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/tv_header"
                     style="@style/StyleRobotoBold.Title.White"
                     android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -167,7 +167,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -213,7 +213,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -256,7 +256,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -319,7 +319,7 @@
                     android:orientation="horizontal"
                     android:visibility="gone">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -344,7 +344,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -369,7 +369,7 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -396,7 +396,7 @@
                     android:orientation="horizontal"
                     android:visibility="gone">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -438,7 +438,7 @@
 
                 </LinearLayout>
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     style="@style/StyleRobotoRegular.Caption.White"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -467,7 +467,7 @@
                         android:textColor="@color/white"
                         android:textSize="12sp" />
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         android:id="@+id/politicas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

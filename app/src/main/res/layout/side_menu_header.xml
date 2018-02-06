@@ -30,7 +30,7 @@
         android:orientation="vertical"
         android:visibility="visible">
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/first_name"
             style="@style/StyleRobotoBold"
             android:layout_width="wrap_content"
@@ -39,7 +39,7 @@
             android:maxLines="1"
             android:textSize="@dimen/font_body_r_size" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/last_name"
             style="@style/StyleRobotoBold"
             android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
                 android:src="@drawable/icon_perfil"
                 android:textSize="16sp" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/text_profile"
                 style="@style/StyleRobotoBold.BodyR"
                 android:layout_width="wrap_content"

@@ -17,7 +17,7 @@
             layout="@layout/toolbar_sub_generic" />
     </RelativeLayout>
 
-    <com.millonarios.MillonariosFC.utils.CustomWebView
+    <com.BarcelonaSC.BarcelonaApp.utils.CustomWebView
         android:id="@+id/wv_general"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -15,7 +15,7 @@
         android:layout_margin="30dp"
         android:background="@drawable/rounder_background">
 
-        <com.millonarios.MillonariosFC.utils.CustomWebView
+        <com.BarcelonaSC.BarcelonaApp.utils.CustomWebView
             android:id="@+id/wv_juramento"
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"

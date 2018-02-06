@@ -6,7 +6,7 @@
     android:layout_alignParentBottom="true"
     android:orientation="vertical">
 
-    <com.millonarios.MillonariosFC.utils.BannerView
+    <com.BarcelonaSC.BarcelonaApp.utils.BannerView
         android:id="@+id/bv_banner_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

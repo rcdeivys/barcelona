@@ -33,7 +33,7 @@
                 android:layout_margin="20dp"
                 android:src="@drawable/logo_millos" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -86,7 +86,7 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     style="@style/StyleRobotoRegular.BodyR"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                     android:text="¿Olvidaste tu contraseña?"
                     />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     style="@style/StyleRobotoBold"
                     android:id="@+id/recovery_password"
                     android:layout_width="wrap_content"
@@ -118,7 +118,7 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"/>
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 style="@style/StyleRobotoRegular.BodyR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
 
             </LinearLayout>
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 style="@style/StyleRobotoRegular.BodyR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

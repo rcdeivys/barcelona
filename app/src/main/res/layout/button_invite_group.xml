@@ -23,7 +23,7 @@
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/input_add_group"/>
 
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/input_add_group"
         style="@style/StyleRobotoBold"
         android:layout_width="80dp"

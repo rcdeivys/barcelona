@@ -46,7 +46,7 @@
     </RelativeLayout>
 
     <!-- Fecha de la noticia -->
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/text_date"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         android:textSize="@dimen/font_caption_size" />
 
     <!-- Título de la noticia -->
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/text_title"
         style="@style/StyleRobotoBold.Title.White"
         android:layout_width="fill_parent"

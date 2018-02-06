@@ -21,7 +21,7 @@
             android:padding="10dp"
             android:src="@drawable/trash" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/tv_closet"
             style="@style/StyleRobotoBold.BodyR"
             android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
             android:text="GUARDAR ALINEACIÓN"
             android:textColor="@color/colorPrimaryDark" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             style="@style/StyleRobotoRegular.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

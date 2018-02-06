@@ -12,7 +12,7 @@
         android:id="@+id/include"
         layout="@layout/toolbar_chat" />
 
-    <com.millonarios.MillonariosFC.utils.CustomViewPager
+    <com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager
         android:id="@+id/content_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

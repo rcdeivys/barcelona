@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="com.millonarios.MillonariosFC.ui.chat.groups.GroupsActivity">
+    tools:context="com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsActivity">
 
 <LinearLayout
     android:layout_width="match_parent"

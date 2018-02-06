@@ -50,7 +50,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_caption_size" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/ctv_player_nationality"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_caption_size" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/ctv_player_birthdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_caption_size" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/ctv_weight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_caption_size" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/ctv_player_height"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                         android:orientation="vertical">
 
                         <!-- Team 1 name -->
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                             android:id="@+id/team_one_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
 
 
                         <!-- Game's result -->
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                             android:id="@+id/result"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -198,7 +198,7 @@
                             android:textSize="10dp" />
 
                         <!-- Type of game -->
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                             android:id="@+id/ctv_game_league"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
                             android:textSize="8dp" />
 
                         <!-- Type of game -->
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                             android:id="@+id/game_fecha_fifa"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -217,7 +217,7 @@
                             android:visibility="visible" />
 
                         <!-- Game's date -->
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                             android:id="@+id/game_date"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -237,7 +237,7 @@
                         android:visibility="visible">
 
                         <!-- Team 2 name -->
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                             android:id="@+id/team_two_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -293,7 +293,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

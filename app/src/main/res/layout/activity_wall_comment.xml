@@ -57,7 +57,7 @@
                 android:src="@drawable/icon_aplauso"
                 android:visibility="visible" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/count_like_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

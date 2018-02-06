@@ -31,7 +31,7 @@
             android:tint="@color/colorAccent"
             app:srcCompat="@drawable/arrow_back" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/text_create_post"
             style="@style/StyleRobotoBold"
             android:layout_width="wrap_content"
@@ -71,7 +71,7 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/silueta" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/text_name_user"
                 style="@style/StyleRobotoRegular.Title"
                 android:layout_width="wrap_content"

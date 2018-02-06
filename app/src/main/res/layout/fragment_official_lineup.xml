@@ -58,7 +58,7 @@
                 </RelativeLayout>
 
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -81,7 +81,7 @@
                     android:layout_marginStart="20dp"
                     android:background="@color/colorPrimary" />
 
-                <com.millonarios.MillonariosFC.utils.SoccesFieldView
+                <com.BarcelonaSC.BarcelonaApp.utils.SoccesFieldView
                     android:id="@+id/socces_field_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

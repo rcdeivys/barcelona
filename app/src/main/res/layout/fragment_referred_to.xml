@@ -27,7 +27,7 @@
             android:src="@drawable/arrow_back"
             android:tint="@color/colorAccent" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/text_header"
             style="@style/StyleRobotoBold.Title.White"
             android:layout_width="wrap_content"

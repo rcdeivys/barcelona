@@ -38,7 +38,7 @@
             android:layout_weight="0.5"
             android:orientation="vertical">
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 style="@style/StyleRobotoBold.Subheading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                     app:civ_border_color="@color/white"
                     app:civ_border_width="1dp" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/fctv_name_director"
                     style="@style/StyleRobotoRegular"
                     android:layout_width="wrap_content"

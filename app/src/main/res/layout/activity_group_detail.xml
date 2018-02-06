@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimary_shadow"
     android:orientation="vertical"
-    tools:context="com.millonarios.MillonariosFC.ui.chat.groupdetail.GroupDetailActivity">
+    tools:context="com.BarcelonaSC.BarcelonaApp.ui.chat.groupdetail.GroupDetailActivity">
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -63,7 +63,7 @@
         android:padding="8dp">
 
         <!-- Nombre del Grupo -->
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/activity_name_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             />
 
         <!-- Cantidad de miembros -->
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/activity_cant_members_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

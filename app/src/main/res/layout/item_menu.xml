@@ -28,7 +28,7 @@
             android:background="@color/cardview_dark_background"
             android:visibility="visible" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/menu_title"
             style="@style/StyleRobotoBold.Caption"
             android:layout_width="match_parent"

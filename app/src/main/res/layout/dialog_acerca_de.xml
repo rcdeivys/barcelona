@@ -25,7 +25,7 @@
                 android:tint="@color/white"
                 android:visibility="visible" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/TV_Header"
                 style="@style/StyleRobotoBold.Title"
                 android:layout_width="wrap_content"

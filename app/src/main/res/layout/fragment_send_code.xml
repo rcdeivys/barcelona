@@ -32,7 +32,7 @@
                     android:layout_height="60dp"
                     android:src="@drawable/logo_millos" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/text_header"
                     style="@style/StyleRobotoLigth"
                     android:layout_width="wrap_content"
