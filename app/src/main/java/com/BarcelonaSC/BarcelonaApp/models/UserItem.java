@@ -17,6 +17,9 @@ public class UserItem implements Serializable {
     @SerializedName("apellido")
     @Expose
     private String apellido;
+    @SerializedName("ci")
+    @Expose
+    private String cedula;
     @SerializedName("email")
     @Expose
     private String email;
@@ -72,6 +75,14 @@ public class UserItem implements Serializable {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getEmail() {

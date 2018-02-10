@@ -72,12 +72,9 @@ public class PeoplesAsync extends AsyncTask<String, Void, List<Person>> {
         return connections;
     }
 
-
     @Override
     protected void onPostExecute(List<Person> persons) {
         super.onPostExecute(persons);
         loginActivity.apiAuthCall(Factory.getUserFromGoogleData(loginActivity.acct, profile, loginActivity.phoneNumber));
     }
 }
-
-

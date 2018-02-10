@@ -64,7 +64,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HinchaFragment extends Fragment {
 
-
     @BindView(R.id.text_name)
     public FCMillonariosTextView textName;
     @BindView(R.id.input_nickname)
@@ -96,7 +95,6 @@ public class HinchaFragment extends Fragment {
     public Uri mCropImageUri;
 
     User user;
-
 
     @Nullable
     @Override

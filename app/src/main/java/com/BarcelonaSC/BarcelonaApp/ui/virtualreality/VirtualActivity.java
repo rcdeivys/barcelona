@@ -49,7 +49,6 @@ public class VirtualActivity extends BaseActivity {
 
     private boolean isPaused = false;
 
-
     @BindView(R.id.ib_return)
     ImageButton ibReturn;
     @BindView(R.id.ib_sub_header_share)
@@ -58,7 +57,6 @@ public class VirtualActivity extends BaseActivity {
     RelativeLayout contentFooter;
     @BindView(R.id.tv_sub_header_title)
     FCMillonariosTextView subHeaderTitle;
-
 
     private VideoReality virtualRealityItem;
 

@@ -73,7 +73,6 @@
     <string name="vs">VS</string>
 
     <!-- item_ranking_votes -->
-
     <string name="item_ranking_votes.votes">Votos</string>
     <string name="search">Buscar</string>
     <string name="friend">Amigo</string>
@@ -186,10 +185,8 @@
 
     <string name="undefined" translatable="false">Undefined</string>
 
-
     <!-- item_ranking_votes -->
     <string name="ok">OK</string>
     <string name="ranking_no_show">\"Para ver el ranking debes votar o esperar a que finalice la encuesta\"</string>
-
 
 </resources>

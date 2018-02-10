@@ -68,6 +68,8 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
     EditText regName;
     @BindView(R.id.register_last)
     EditText regLastName;
+    @BindView(R.id.register_ci)
+    EditText regCI;
     @BindView(R.id.register_nick)
     EditText regNick;
     @BindView(R.id.register_email)
@@ -182,30 +184,34 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
     private void validateForm() {
         if (!regName.getText().toString().isEmpty()) {
             if (!regLastName.getText().toString().isEmpty()) {
-                if (!regEmail.getText().toString().isEmpty()) {
-                    if (regEmail.getText().toString().contains("@")) {
-                        if (!regPass.getText().toString().isEmpty()) {
-                            if (!regCpass.getText().toString().isEmpty()) {
-                                if (regCpass.getText().toString().equals(regPass.getText().toString())) {
-                                    if (regCbTerms.isChecked()) {
-                                        registerUser();
+                if (!regCI.getText().toString().isEmpty()) {
+                    if (!regEmail.getText().toString().isEmpty()) {
+                        if (regEmail.getText().toString().contains("@")) {
+                            if (!regPass.getText().toString().isEmpty()) {
+                                if (!regCpass.getText().toString().isEmpty()) {
+                                    if (regCpass.getText().toString().equals(regPass.getText().toString())) {
+                                        if (regCbTerms.isChecked()) {
+                                            registerUser();
+                                        } else {
+                                            Toast.makeText(getActivity(), "Debe aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
+                                        }
                                     } else {
-                                        Toast.makeText(getActivity(), "Debe aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Debe confirmar la contraseña", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                Toast.makeText(getActivity(), "Debe confirmar la contraseña", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "La contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            Toast.makeText(getActivity(), "La contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "El correo no es válido", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), "El correo no es válido", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "El correo no puede estar vacío", Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    Toast.makeText(getActivity(), "El correo no puede estar vacío", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "La cédula no puede estar vacía", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Toast.makeText(getActivity(), "El apellido no puede estar vacío", Toast.LENGTH_SHORT).show();
@@ -219,6 +225,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         user = new User();
         user.setNombre(regName.getText().toString());
         user.setApellido(regLastName.getText().toString());
+        user.setCedula(regCI.getText().toString());
         user.setEmail(regEmail.getText().toString());
         user.setClave(regPass.getText().toString());
         user.setCelular(regPhoneCode.getText().toString() + " " + regPhoneNum.getText().toString());
@@ -320,7 +327,6 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                 .start(getActivity());
     }
 
-
     @OnClick({R.id.btn_day, R.id.btn_month, R.id.btn_year})
     public void setBirthday() {
 
@@ -361,6 +367,5 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
             }
         });
     }
-
 
 }

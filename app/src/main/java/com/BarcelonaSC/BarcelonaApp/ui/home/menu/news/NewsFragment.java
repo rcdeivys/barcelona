@@ -48,7 +48,6 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
     public static final String NEWS_PROFESSIONAL = "news_professional";
     public static final String NEWS_FOOTBALL_BASE = "news_football_base";
 
-
     @BindView(R.id.btn_top)
     ImageButton btnTop;
     @BindView(R.id.news_swipe)

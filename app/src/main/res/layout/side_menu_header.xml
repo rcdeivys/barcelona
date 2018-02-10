@@ -94,6 +94,7 @@
             android:layout_height="@dimen/icon_xsmall"
             android:layout_centerHorizontal="true"
             android:src="@drawable/icon_config"
+            android:tint="@color/colorAccent"
             android:textSize="16sp"
             android:visibility="visible" />
 

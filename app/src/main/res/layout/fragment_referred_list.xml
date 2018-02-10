@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:layout_above="@id/Banner"
         android:layout_marginBottom="50dp"
-        android:background="@drawable/background002" />
+        android:background="@drawable/background" />
 
     <!-- Header de la actividad -->
     <RelativeLayout
@@ -60,7 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:src="@drawable/logo_millos" />
+                android:src="@drawable/logo_bsc" />
 
             <LinearLayout
                 android:id="@+id/lin_referred_by"
@@ -202,7 +202,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_margin="4dp"
-                    android:background="@drawable/ic_share" />
+                    android:background="@drawable/share" />
 
                 <Button
                     android:id="@+id/btn_share"
@@ -211,7 +211,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/colorAccent"
                     android:text="Compartir"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="12sp" />
 
             </LinearLayout>
@@ -221,7 +221,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:background="@color/white" />
+                android:background="@color/colorPrimaryDark" />
 
             <Button
                 android:id="@+id/btn_instrucciones"
@@ -232,7 +232,7 @@
                 android:layout_margin="5dp"
                 android:background="@color/colorAccent"
                 android:text="INSTRUCCIONES"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
             <View
@@ -240,7 +240,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:background="@color/white" />
+                android:background="@color/colorPrimaryDark" />
 
             <Button
                 android:id="@+id/btn_terminos"
@@ -251,7 +251,7 @@
                 android:layout_margin="5dp"
                 android:background="@color/colorAccent"
                 android:text="TÉRMINOS Y CONDICIONES"
-                android:textColor="@color/white"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="12sp" />
 
         </LinearLayout>

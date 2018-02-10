@@ -39,7 +39,6 @@ public class NewsVideoActivity extends BaseActivity {
 
     private float xCor;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +88,6 @@ public class NewsVideoActivity extends BaseActivity {
         webView.setHorizontalScrollBarEnabled(false);
         webView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
-
                 if (event.getPointerCount() > 1) {
                     //Multi touch detected
                     return true;
@@ -110,7 +108,6 @@ public class NewsVideoActivity extends BaseActivity {
                 return false;
             }
         });
-
 
         webView.loadUrl(url);
 

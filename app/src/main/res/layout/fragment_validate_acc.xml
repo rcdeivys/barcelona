@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/logo_millos" />
+                android:src="@drawable/logo_bsc" />
 
 
             <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
@@ -54,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
+                    android:backgroundTint="@color/colorAccent"
                     android:cursorVisible="false"
                     android:digits="1234567890"
                     android:inputType="number"

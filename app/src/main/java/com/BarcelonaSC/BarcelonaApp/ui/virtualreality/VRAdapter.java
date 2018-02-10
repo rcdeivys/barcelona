@@ -35,8 +35,6 @@ public class VRAdapter extends RecyclerView.Adapter<VRAdapter.VRHolder> {
 
     public interface OnItemClickListener {
         void onClickItem(int position);
-
-
     }
 
     public VRAdapter(VRFragment vrFragment) {
@@ -53,15 +51,11 @@ public class VRAdapter extends RecyclerView.Adapter<VRAdapter.VRHolder> {
 
     @Override
     public VRHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         return new VRHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rv_videos, parent, false));
-
-
     }
 
     @Override
     public void onBindViewHolder(VRHolder holder, final int position) {
-
         // Get item
         VideoReality item = data.get(position);
         // Set news' image
@@ -88,13 +82,10 @@ public class VRAdapter extends RecyclerView.Adapter<VRAdapter.VRHolder> {
     @Override
     public int getItemCount() {
         return data.size();
-
-
     }
 
 
     class VRHolder extends RecyclerView.ViewHolder {
-
         @BindView(R.id.iv_video)
         ImageView ivVideo;
         @BindView(R.id.tv_title)
@@ -110,29 +101,7 @@ public class VRAdapter extends RecyclerView.Adapter<VRAdapter.VRHolder> {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
-
-
-
     // Activity context
     private Context context;
     // Json CalendarData list
@@ -205,4 +174,3 @@ public class VRAdapter extends RecyclerView.Adapter<VRAdapter.VRHolder> {
         private ImageView IV_Video;
         private TextView TV_Title;
     }*/
-

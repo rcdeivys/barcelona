@@ -7,10 +7,11 @@ import java.io.Serializable;
  * Created by root on 7/18/17.
  */
 
-public class User implements Serializable{
+public class User implements Serializable {
 
     private String nombre;
     private String apellido;
+    private String cedula;
     private String email;
     private String clave;
     private String apodo;
@@ -44,9 +45,10 @@ public class User implements Serializable{
         this.foto = foto;
     }
 
-    public User(String name, String apellido, String email, String clave, String apodo, String descripcion, String cedular, String pais, String fecha_nacimiento, String genero, String foto) {
+    public User(String name, String apellido, String cedula, String email, String clave, String apodo, String descripcion, String cedular, String pais, String fecha_nacimiento, String genero, String foto) {
         this.nombre = name;
         this.apellido = apellido;
+        this.cedula = cedula;
         this.email = email;
         this.clave = clave;
         this.apodo = apodo;
@@ -72,6 +74,14 @@ public class User implements Serializable{
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getEmail() {

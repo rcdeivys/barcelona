@@ -31,12 +31,12 @@ public class IntroActivity extends BaseActivity {
 
     private String TAG = IntroActivity.class.getSimpleName();
 
-    @BindView(R.id.intro_video_view)
+    /*@BindView(R.id.intro_video_view)
     VideoView introVideoView;
     @BindView(R.id.splash_video_view)
     VideoView splash;
     @BindView(R.id.btn_skip)
-    Button btnSkip;
+    Button btnSkip;*/
 
     private String introUrlPath;
     private String splashUrlPath;
@@ -73,19 +73,19 @@ public class IntroActivity extends BaseActivity {
 
             }
         });
+
         NewRelic.withApplicationToken("AAa4eacc3d019a3dddb06ff07587dccb04bf122807").start(this.getApplication());
 
+        //introUrlPath = "android.resource://" + getPackageName() + "/" + R.raw.video_intro;
+        //splashUrlPath = "android.resource://" + getPackageName() + "/" + R.raw.splash_2;
 
-        introUrlPath = "android.resource://" + getPackageName() + "/" + R.raw.video_intro;
-        splashUrlPath = "android.resource://" + getPackageName() + "/" + R.raw.splash_2;
-
-        btnSkip.setOnClickListener(new View.OnClickListener() {
+        /*btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 introVideoView.stopPlayback();
                 navigateNext();
             }
-        });
+        });*/
 
         initSplash();
     }
@@ -95,8 +95,7 @@ public class IntroActivity extends BaseActivity {
     }
 
     public void initSplash() {
-
-        btnSkip.setVisibility(View.GONE);
+        /*btnSkip.setVisibility(View.GONE);
         introVideoView.setVisibility(View.GONE);
         splash.setVideoURI(Uri.parse(splashUrlPath));
         splash.start();
@@ -120,7 +119,16 @@ public class IntroActivity extends BaseActivity {
 
         };
         handler = new Handler();
-        handler.postDelayed(runnable, 2000);
+        handler.postDelayed(runnable, 2000);*/
+
+        handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                navigateNext();
+            }
+        }, 3000);
+
     }
 
     public void navigateNext() {
@@ -138,8 +146,7 @@ public class IntroActivity extends BaseActivity {
         }
     }
 
-
-    public void initVideoIntro() {
+    /*public void initVideoIntro() {
         btnSkip.setVisibility(View.VISIBLE);
         introVideoView.setVideoURI(Uri.parse(introUrlPath));
         introVideoView.start();
@@ -150,11 +157,12 @@ public class IntroActivity extends BaseActivity {
                 initSplash();
             }
         });
-    }
+    }*/
 
     @Override
     protected void onResume() {
         super.onResume();
 
     }
+
 }

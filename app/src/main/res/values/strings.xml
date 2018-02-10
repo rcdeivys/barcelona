@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name" translatable="false">Millonarios FC</string>
+    <string name="app_name" translatable="false">Barcelona SC Oficial</string>
 
-    <string name="clientSecret" translatable="false">HDFH1TI35B62eSepn6QcUCaL</string>
-    <string name="client_id" translatable="false">532872190545-9q4bqcoqva9ilkfjpnsl514afdhj5496.apps.googleusercontent.com</string>
-    <string name="client" translatable="false">532872190545-h87jgs562eijh6pfqkrahk53snqbla0s.apps.googleusercontent.com</string>
+    <string name="clientSecret" translatable="false">M8PrcrZz3Lx9t41sJmdTE30v</string>
+    <string name="client_id" translatable="false">498718885624-ed9trhh1b9jh3b4d9kkrk64akopcsmrk.apps.googleusercontent.com</string>
+    <string name="client" translatable="false">498718885624-ed9trhh1b9jh3b4d9kkrk64akopcsmrk.apps.googleusercontent.com</string>
     <string name="facebook_app_id" translatable="false">1859980400683639</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb1859980400683639</string>
 

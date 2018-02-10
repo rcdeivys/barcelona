@@ -21,6 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name="com.BarcelonaSC.BarcelonaApp.ui.videointro.IntroActivity"
             android:screenOrientation="portrait"
@@ -31,6 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.BarcelonaSC.BarcelonaApp.commons.BaseActivity"
             android:screenOrientation="portrait" />
@@ -175,13 +177,17 @@
             android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.creationgroup.CreationGroupActivity"
             android:label="@string/group_create"
             android:screenOrientation="portrait" />
-        <activity android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.friends.FriendsActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.ChatActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.groupdetail.GroupDetailActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsActivity"
+        <activity
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.friends.FriendsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.ChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.groupdetail.GroupDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

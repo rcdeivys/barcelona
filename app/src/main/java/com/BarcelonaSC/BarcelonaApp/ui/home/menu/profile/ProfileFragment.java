@@ -39,7 +39,6 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
 
     public static final String TAG = ProfileFragment.class.getSimpleName();
 
-
     @BindView(R.id.tabs)
     CustomTabLayout tabs;
     @BindView(R.id.pager)

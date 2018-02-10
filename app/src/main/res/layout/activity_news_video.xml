@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,7 +10,7 @@
         android:id="@+id/content_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorAccent">
 
         <!-- Botón para regresar a la actividad anterior -->
         <android.support.v7.widget.AppCompatImageButton
@@ -22,8 +21,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/arrow_back"
-            android:tint="@color/colorAccent" />
+            android:src="@drawable/arrow_back" />
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/text_header"
@@ -33,7 +31,7 @@
             android:layout_centerInParent="true"
             android:padding="5dp"
             android:text="@string/news"
-            android:textColor="@color/white"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/font_title_size" />
     </RelativeLayout>
 

@@ -25,7 +25,7 @@ public class PeopleHelper {
 
     private static final String TAG = PeopleHelper.class.getSimpleName();
 
-    private static final String APPLICATION_NAME = "milloariosfc";
+    private static final String APPLICATION_NAME = "barcelonasc";
 
     private static final List<String> SCOPES =
             Arrays.asList(PeopleServiceScopes.CONTACTS_READONLY);
@@ -38,7 +38,6 @@ public class PeopleHelper {
         // Can be empty too.
         String redirectUrl = "urn:ietf:wg:oauth:2.0:oob";
         String scope = "https://www.googleapis.com/auth/contacts.readonly";
-
 
         String authorizationUrl = new GoogleBrowserClientRequestUrl(context.getString(R.string.client),
                 redirectUrl,

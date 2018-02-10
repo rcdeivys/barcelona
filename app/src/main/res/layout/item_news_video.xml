@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_play_circle_60dp"
+            android:src="@drawable/play"
             android:visibility="visible" />
 
     </RelativeLayout>
@@ -70,4 +70,5 @@
         android:layout_marginStart="16dp"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/font_body_m_size" />
+
 </LinearLayout>

@@ -8,7 +8,7 @@
         android:id="@+id/rl_splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background001"
+        android:background="@drawable/background"
         android:visibility="gone">
 
         <ImageView
@@ -26,7 +26,6 @@
             android:layout_marginTop="30dp"
             android:gravity="center"
             android:orientation="vertical">
-
 
             <TextView
                 android:id="@+id/tv_title1"

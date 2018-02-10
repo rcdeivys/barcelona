@@ -104,10 +104,8 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public interface OnClickMenuListener {
-
         void onClickMenuItem(String fragment);
     }
-
 
     public static class MenuHeaderViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.first_name)

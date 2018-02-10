@@ -37,8 +37,6 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true" />
 
-
-
     <!-- Fecha de la noticia -->
     <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/tv_date"
@@ -72,4 +70,5 @@
         android:visibility="gone"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/font_caption_size" />
+
 </LinearLayout>

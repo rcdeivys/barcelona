@@ -37,9 +37,7 @@ import butterknife.Unbinder;
 
 public class VRFragment extends BaseFragment implements VRContract.View, VRAdapter.OnItemClickListener {
 
-
     public static final String TAG = VRFragment.class.getSimpleName();
-
 
     @BindView(R.id.rv_virtual_reality)
     RecyclerView rvVirtualReality;
@@ -50,7 +48,6 @@ public class VRFragment extends BaseFragment implements VRContract.View, VRAdapt
     @BindView(R.id.btn_top)
     ImageButton btnTop;
     Unbinder unbinder;
-
 
     private LinearLayoutManager linearLayoutManager;
     private VRAdapter vrAdapter;
@@ -67,8 +64,6 @@ public class VRFragment extends BaseFragment implements VRContract.View, VRAdapt
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         linearLayoutManager = new LinearLayoutManager(getContext());
         initComponent();
     }

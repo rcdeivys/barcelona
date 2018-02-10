@@ -28,7 +28,6 @@ public class NewsInfografyActivity extends BaseActivity {
     @BindView(R.id.text_header)
     FCMillonariosTextView textHeader;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

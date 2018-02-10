@@ -28,23 +28,21 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:maxLength="15"
-                        android:text="Nombre" />
+                        android:padding="8dp"
+                        android:src="@drawable/ic_user" />
 
                     <EditText
                         android:id="@+id/register_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
                         android:hint="Nombre"
-                        android:maxLength="15"
                         android:inputType="text"
+                        android:maxLength="15"
                         android:maxLines="1" />
 
                 </LinearLayout>
@@ -55,19 +53,18 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Apellido" />
+                        android:padding="8dp"
+                        android:src="@drawable/ic_user" />
 
                     <EditText
                         android:id="@+id/register_last"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
                         android:hint="Apellido"
                         android:inputType="text"
                         android:maxLines="1" />
@@ -80,19 +77,18 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Email" />
+                        android:padding="8dp"
+                        android:src="@drawable/ic_email" />
 
                     <EditText
                         android:id="@+id/register_email"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
                         android:hint="Email"
                         android:inputType="textEmailAddress"
                         android:maxLines="1" />
@@ -105,13 +101,11 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Celular" />
+                        android:padding="8dp"
+                        android:src="@drawable/ic_phone" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -125,6 +119,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="5dp"
                             android:layout_weight="1"
+                            android:backgroundTint="@color/colorAccent"
                             android:hint="+57"
                             android:inputType="phone"
                             android:maxLength="4"
@@ -136,6 +131,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
+                            android:backgroundTint="@color/colorAccent"
                             android:hint="(999)999-9999"
                             android:inputType="phone"
                             android:maxLength="10"
@@ -151,14 +147,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Género" />
-
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -169,6 +157,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:buttonTint="@color/colorAccent"
                             android:shadowColor="@color/colorPrimaryDark"
                             android:text="Masculino"
                             android:textAlignment="textStart"
@@ -180,6 +169,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:buttonTint="@color/colorAccent"
                             android:shadowColor="@color/colorPrimaryDark"
                             android:text="Femenino"
                             android:textColor="@color/white"
@@ -191,16 +181,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Fecha de nacimiento" />
+                        android:padding="8dp"
+                        android:src="@drawable/calendario_icn" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -213,7 +201,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:drawableRight="@drawable/calendario_icn"
+                            android:backgroundTint="@color/colorAccent"
                             android:focusable="false"
                             android:hint="Dia"
                             android:inputType="number"
@@ -226,7 +214,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:drawableRight="@drawable/calendario_icn"
+                            android:backgroundTint="@color/colorAccent"
                             android:focusable="false"
                             android:hint="Mes"
                             android:inputType="number"
@@ -239,6 +227,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:backgroundTint="@color/colorAccent"
                             android:focusable="false"
                             android:hint="año"
                             android:inputType="number"
@@ -283,19 +272,14 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Contraseña" />
-
                     <EditText
                         android:id="@+id/register_pass"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_pass"
                         android:hint="Contraseña"
                         android:inputType="textPassword"
                         android:maxLines="1" />
@@ -308,20 +292,14 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:maxLines="2"
-                        android:text="Confirmar Contraseña" />
-
                     <EditText
                         android:id="@+id/register_cpass"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_pass"
                         android:hint="Confirmar contraseña"
                         android:inputType="textPassword"
                         android:maxLines="1" />
@@ -390,11 +368,11 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/background_button_corners_accent"
+                        android:background="@drawable/yellow_border_background"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="DESCARTAR"
-                        android:textColor="@color/white"
+                        android:textColor="@color/colorAccent"
                         android:textSize="@dimen/font_body_r_size"
                         android:visibility="visible" />
 
@@ -404,12 +382,12 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/backgroun_button_corners_white"
+                        android:background="@drawable/yellow_border_background"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="Enviar"
                         android:textAllCaps="true"
-                        android:textColor="@color/colorPrimaryDark"
+                        android:textColor="@color/colorAccent"
                         android:textSize="@dimen/font_body_r_size" />
 
                 </LinearLayout>
