@@ -145,7 +145,6 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
                 .build().inject(HomeActivity.this);
     }
 
-
     @Override
     public void showFragment(final Fragment fragment, final String tag) {
         Log.d("TAG", "Mensaje : " + tag);
@@ -166,8 +165,6 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
     }
 
     public void getSeccion(String tag) {
-
-
         if (tag.equals(ProfileFragment.TAG)) {
             initBanner(BannerView.Seccion.PROFILE);
         } else if (tag.equals(NotificationFragment.TAG)) {
@@ -176,7 +173,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             initBanner(BannerView.Seccion.CALENDAR);
         } else if (tag.equals(NewsFragment.TAG + Constant.Menu.NEWS)) {
             initBanner(BannerView.Seccion.NEWS);
-        } else if (tag.equals(FutbolBaseFragment.TAG + Constant.Menu.FOOTBALL_BASE)) {
+        } else if (tag.equals(FutbolBaseFragment.TAG /*+ Constant.Menu.FOOTBALL_BASE*/)) {
             initBanner(BannerView.Seccion.FOOTBALL_BASE);
         } else if (tag.equals(AcademyFragment.TAG)) {
             initBanner(BannerView.Seccion.ACADEMY);
@@ -199,7 +196,6 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         } else {
             initBanner(BannerView.Seccion.SETINGS);
         }
-
     }
 
     @Override

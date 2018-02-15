@@ -11,7 +11,7 @@ public class User implements Serializable {
 
     private String nombre;
     private String apellido;
-    private String cedula;
+    private String ci;
     private String email;
     private String clave;
     private String apodo;
@@ -45,10 +45,10 @@ public class User implements Serializable {
         this.foto = foto;
     }
 
-    public User(String name, String apellido, String cedula, String email, String clave, String apodo, String descripcion, String cedular, String pais, String fecha_nacimiento, String genero, String foto) {
+    public User(String name, String apellido, String ci, String email, String clave, String apodo, String descripcion, String cedular, String pais, String fecha_nacimiento, String genero, String foto) {
         this.nombre = name;
         this.apellido = apellido;
-        this.cedula = cedula;
+        this.ci = ci;
         this.email = email;
         this.clave = clave;
         this.apodo = apodo;
@@ -76,12 +76,12 @@ public class User implements Serializable {
         this.apellido = apellido;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getCi() {
+        return ci;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setCi(String ci) {
+        this.ci = ci;
     }
 
     public String getEmail() {

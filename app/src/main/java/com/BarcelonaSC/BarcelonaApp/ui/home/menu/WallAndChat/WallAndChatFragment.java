@@ -33,7 +33,6 @@ public class WallAndChatFragment extends Fragment {
     private WallAndChatViewPagerAdapter viewPagerAdapter;
 
     public static WallAndChatFragment newInstance() {
-
         Bundle args = new Bundle();
 
         WallAndChatFragment fragment = new WallAndChatFragment();
@@ -55,15 +54,12 @@ public class WallAndChatFragment extends Fragment {
         return view;
     }
 
-
     private void initializeViewPager() {
-
         viewPagerAdapter = new WallAndChatViewPagerAdapter(getFragmentManager());
-
         pager.setPagingEnabled(true);
         pager.setAdapter(viewPagerAdapter);
-        tabs.setupWithViewPager(pager);
-
+        //tabs.setupWithViewPager(pager);
+        tabs.setVisibility(View.GONE);
     }
 
     @Override

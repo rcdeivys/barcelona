@@ -1,34 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:padding="16dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logo_bsc" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Activa las notificaciones que deseas"
-            android:gravity="center"
+            android:layout_margin="10dp"
+            android:text="Notificaciones"
+            android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@color/colorAccent"/>
+            android:textSize="20sp" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Activa las notificaciones que deseas"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            android:weightSum="10"
-            android:layout_marginTop="16dp">
+            android:weightSum="10">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -39,37 +49,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Notificaciones"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Notificaciones" />
 
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
 
                 <Switch
                     android:id="@+id/switchnotifications"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                     />
+                    android:buttonTint="@color/colorAccent" />
 
             </RelativeLayout>
 
-
         </LinearLayout>
-
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            android:weightSum="10"
-            android:layout_marginTop="16dp">
+            android:weightSum="10">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -80,35 +84,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Alineacion"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Alineacion" />
 
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
 
                 <Switch
                     android:id="@+id/switchlineup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:buttonTint="@color/colorAccent" />
 
             </RelativeLayout>
 
-
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            android:weightSum="10"
-            android:layout_marginTop="16dp">
+            android:weightSum="10">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -119,34 +119,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Inicio de partidos"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Inicio de partidos" />
 
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
 
                 <Switch
                     android:id="@+id/switchmatch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:buttonTint="@color/colorAccent" />
 
             </RelativeLayout>
-
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            android:weightSum="10"
-            android:layout_marginTop="16dp">
+            android:weightSum="10">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -157,34 +154,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Goles"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Goles" />
 
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
 
                 <Switch
                     android:id="@+id/switchgoals"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:buttonTint="@color/colorAccent" />
 
             </RelativeLayout>
-
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal"
-            android:weightSum="10"
-            android:layout_marginTop="16dp">
+            android:weightSum="10">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -195,31 +189,26 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Noticias y videos destacados"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:text="Noticias y videos destacados" />
 
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-
                 <Switch
                     android:id="@+id/switchnews"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:buttonTint="@color/colorAccent" />
 
             </RelativeLayout>
 
-
         </LinearLayout>
 
-
     </LinearLayout>
-
 
     <Button
         android:id="@+id/saveSettingsButton"
@@ -227,9 +216,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Guardar"
         android:layout_marginBottom="20dp"
-        android:textColor="@color/colorPrimary"
-        android:background="@color/white"/>
+        android:background="@drawable/oath_button"
+        android:text="Guardar"
+        android:textColor="@color/colorPrimaryDark" />
 
 </RelativeLayout>

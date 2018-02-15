@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -51,6 +50,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:buttonTint="@color/colorAccent"
                         android:shadowColor="@color/colorPrimaryDark" />
 
                 </LinearLayout>
@@ -75,7 +75,6 @@
                         android:layout_weight="1"
                         android:shadowColor="@color/colorPrimaryDark" />
 
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -97,7 +96,6 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:shadowColor="@color/colorPrimaryDark" />
-
 
                 </LinearLayout>
 
@@ -121,7 +119,6 @@
                         android:layout_weight="1"
                         android:shadowColor="@color/colorPrimaryDark" />
 
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -144,9 +141,7 @@
                         android:layout_weight="1"
                         android:shadowColor="@color/colorPrimaryDark" />
 
-
                 </LinearLayout>
-
 
             </LinearLayout>
         </ScrollView>
@@ -158,26 +153,23 @@
             android:layout_above="@+id/btn_enable_notification"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/backgroun_button_corners_white"
+            android:background="@drawable/oath_button"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:text="Guardar"
-            android:textColor="@color/colorPrimary" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/btn_enable_notification"
             style="@style/StyleRobotoRegular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-           android:layout_alignParentBottom="true"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
             android:text="No recibir notificaciones"
             android:textAlignment="center" />
 
-
-
     </RelativeLayout>
-
 
 </android.support.constraint.ConstraintLayout>

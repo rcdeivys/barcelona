@@ -15,9 +15,8 @@ import com.BarcelonaSC.BarcelonaApp.ui.wall.list.WallFragment;
 
 public class WallAndChatViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    String[] titles = {ConfigurationManager.getInstance().getConfiguration().getTit162(),
-            ConfigurationManager.getInstance().getConfiguration().getTit163()};
-
+    String[] titles = {ConfigurationManager.getInstance().getConfiguration().getTit162()/*,
+            ConfigurationManager.getInstance().getConfiguration().getTit163()*/};
 
     public WallAndChatViewPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -25,13 +24,10 @@ public class WallAndChatViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
         if (position == 0) {
             return WallFragment.newInstance();
-
         } else {
             return ChatFragment.newInstance();
-
         }
     }
 

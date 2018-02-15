@@ -79,13 +79,13 @@ public class MatchAdapter extends ExpandableRecyclerViewAdapter<MatchParentViewH
             matchChildViewHolder.view.setVisibility(View.VISIBLE);
 
         Glide.with(mContext).load(match.getBandera1())
-                .apply(new RequestOptions().placeholder(R.drawable.logo_millos).error(R.drawable.logo_millos))
+                .apply(new RequestOptions().placeholder(R.drawable.logo_bsc).error(R.drawable.logo_bsc))
                 .into(matchChildViewHolder.ivTeamFlag1);
 
         matchChildViewHolder.tvTeamName1.setText(match.getEquipo1());
 
         Glide.with(mContext).load(match.getBandera2())
-                .apply(new RequestOptions().placeholder(R.drawable.logo_millos).error(R.drawable.logo_millos))
+                .apply(new RequestOptions().placeholder(R.drawable.logo_bsc).error(R.drawable.logo_bsc))
                 .into(matchChildViewHolder.ivTeamFlag2);
 
         matchChildViewHolder.tvTeamName2.setText(match.getEquipo2());

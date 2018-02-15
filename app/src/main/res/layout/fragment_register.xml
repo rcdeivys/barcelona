@@ -465,11 +465,11 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/yellow_border_background"
+                        android:background="@drawable/oath_button"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="SALIR"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/font_body_r_size" />
 
                     <Button
@@ -478,12 +478,12 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/yellow_border_background"
+                        android:background="@drawable/oath_button"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="REGISTRAR"
                         android:textAllCaps="true"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/font_body_r_size" />
 
                 </LinearLayout>

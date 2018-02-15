@@ -90,7 +90,6 @@ public interface Constant {
     }
 
     interface Menu {
-
         String PROFILE = "Profile";
         String Setting = "Setting";
         String NEWS = "News";
@@ -103,12 +102,12 @@ public interface Constant {
         String IN_LIVE = "In live";
         String YOUR_CHOOSE = "Your Choose";
         String GAME = "Game";
-        String MILLIONARE_ACADEMY = "Millionaire Academy";
-        String FOOTBALL_BASE = "Footbool_base";
+        String MAP = "Map";
+        //String MILLIONARE_ACADEMY = "Millionaire Academy";
+        //String FOOTBALL_BASE = "Footbool_base";
         String ONLINE_SHOP = "On-line shop";
         String WALL_AND_CHAT = "Wall And Chat";
-
-
+        String MONUMENTAL = "Monumental";
     }
 
     interface Boolean {

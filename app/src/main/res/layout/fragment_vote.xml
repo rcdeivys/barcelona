@@ -46,9 +46,9 @@
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:padding="5dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.3">
+                    android:layout_weight="0.3"
+                    android:padding="5dp">
 
                     <com.BarcelonaSC.BarcelonaApp.utils.ProgressClock
                         android:id="@+id/progress_clock"
@@ -56,7 +56,6 @@
                         android:layout_height="match_parent" />
 
                 </RelativeLayout>
-
 
             </LinearLayout>
             <!-- ListView with applause -->
@@ -78,4 +77,5 @@
         android:layout_centerInParent="true"
         android:indeterminateDrawable="@drawable/progress"
         android:visibility="gone" />
+
 </RelativeLayout>

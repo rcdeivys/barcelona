@@ -51,7 +51,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         onItemClickListener = playerOffSummonedFragment;
     }
 
-
     public void setData(List<NominaItem> data) {
         haveHeader = false;
         this.data = data;

@@ -6,7 +6,6 @@
     android:background="@drawable/line_divider_bottom"
     android:orientation="horizontal">
 
-
     <RelativeLayout
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -43,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="APODO HINCHA"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
@@ -53,7 +52,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:text="25min"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
 

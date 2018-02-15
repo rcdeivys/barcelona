@@ -28,7 +28,6 @@ import butterknife.Unbinder;
 
 public class MossApplaudedFragment extends BaseFragment {
 
-
     @BindView(R.id.tabs)
     CustomTabLayout tabs;
     @BindView(R.id.pager)

@@ -23,8 +23,6 @@ public class MessagesModel {
     }
 
     public void loadRecieveMessages(int page, final MessagesContract.ModelResultListener result) {
-
-
         ArrayList<MessageModelView> aux = new ArrayList<MessageModelView>();
         for (UsuarioConversation usuarioConversation : firebaseManager.getUsuario().getUsuarioConversations()) {
             if (usuarioConversation.getId() != null)

@@ -1,91 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/view_line"
     android:layout_width="160dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/perfil_btn_1"
-    android:paddingBottom="0dp"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp"
-    android:paddingTop="5dp"
-    tools:layout_editor_absoluteY="25dp">
+    android:background="@drawable/yellow_border_background"
+    android:padding="5dp">
 
-
-   <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/FCMillonariosTextView2"
-        style="@style/StyleRobotoBold"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Hincha Embajador Oficial"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="@dimen/font_subheading_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
 
-   <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/id_hincha"
-        style="@style/StyleRobotoBold"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/text_registrado"
-        app:layout_constraintTop_toBottomOf="@+id/FCMillonariosTextView2" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-   <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/text_registrado"
-        style="@style/StyleRobotoLigth"
-        android:layout_width="100dp"
-        android:layout_height="38dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:inputType="textMultiLine"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="@dimen/font_caption_size"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/icon"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="HINCHA"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="REGISTRADO"
+                    android:textColor="@color/white" />
 
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/logo_millos"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="80dp"
-        android:adjustViewBounds="true"
-        android:layout_height="5dp"
-        android:layout_marginStart="0dp"
-        app:layout_constraintEnd_toEndOf="@+id/text_registrado"
-        app:layout_constraintStart_toStartOf="@+id/text_registrado"
-        app:layout_constraintTop_toBottomOf="@+id/id_hincha"
-        app:srcCompat="@drawable/barra_bandera" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/id_hincha"
+                    style="@style/StyleRobotoBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorAccent" />
+
+                    <View
+                        android:layout_width="wrap_content"
+                        android:layout_height="5dp"
+                        android:layout_weight="1"
+                        android:background="@color/colorPrimary" />
+
+                </LinearLayout>
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/text_registrado"
+                    style="@style/StyleRobotoLigth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="5dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_body_r_size"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/logo_bsc" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="DESDE JULIO 2017"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

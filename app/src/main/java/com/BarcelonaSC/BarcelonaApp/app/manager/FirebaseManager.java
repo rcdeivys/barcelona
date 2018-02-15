@@ -70,7 +70,7 @@ public class FirebaseManager {
     private static FirebaseManager ourInstance;
 
     private FirebaseManager() {
-        initFirebase();
+        //initFirebase();
     }
 
     public static FirebaseManager getInstance() {

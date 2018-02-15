@@ -47,7 +47,6 @@ import butterknife.OnClick;
 
 public class WallFragment extends Fragment implements WallContract.View, WallAdapter.WallClickListener {
 
-
     @BindView(R.id.rv_wall)
     RecyclerView recyclerView;
     @BindView(R.id.swipe_refresh)
@@ -64,7 +63,6 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
     public WallPresenter presenter;
 
     public static WallFragment newInstance() {
-
         Bundle args = new Bundle();
 
         WallFragment fragment = new WallFragment();

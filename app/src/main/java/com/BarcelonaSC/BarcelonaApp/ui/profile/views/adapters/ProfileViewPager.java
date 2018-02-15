@@ -33,8 +33,6 @@ public class ProfileViewPager   extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
-
         switch (position) {
             case 0:
                 return hinchaFragment;

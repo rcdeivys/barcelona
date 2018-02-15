@@ -154,14 +154,12 @@
                                     style="@style/StyleRobotoLigth"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignParentBottom="true"
                                     android:layout_marginBottom="12dp"
                                     android:layout_marginTop="5dp"
                                     android:textAlignment="center"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/font_body_r_size"
                                     android:visibility="visible" />
-
 
                             </LinearLayout>
 
@@ -443,18 +441,7 @@
 
             </LinearLayout>
 
-            <!-- Banner-->
-            <com.BarcelonaSC.BarcelonaApp.utils.BannerView
-                android:id="@+id/bv_banner"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/perfil_mid_panel"
-                android:adjustViewBounds="true"
-                android:src="@drawable/footer" />
-
         </RelativeLayout>
-
-        <!--</RelativeLayout>-->
 
     </ScrollView>
 </RelativeLayout>

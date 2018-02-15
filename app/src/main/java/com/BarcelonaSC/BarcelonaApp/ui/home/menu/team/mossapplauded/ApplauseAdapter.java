@@ -1,6 +1,8 @@
 package com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.mossapplauded;
 
 import android.content.Context;
+import android.support.percent.PercentLayoutHelper;
+import android.support.percent.PercentRelativeLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +29,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ApplauseAdapter extends RecyclerView.Adapter<ApplauseAdapter.ViewHolder> {
 
-
     private static final String TAG = ApplauseAdapter.class.getSimpleName();
     private Context context;
     private List<PlayersApplause> playersApplauses;
@@ -36,7 +37,6 @@ public class ApplauseAdapter extends RecyclerView.Adapter<ApplauseAdapter.ViewHo
 
     public ApplauseAdapter(ApplaudedFragment applaudedFragment) {
         this.context = applaudedFragment.getContext();
-
 
         onItemClickListener = applaudedFragment;
     }
@@ -57,7 +57,7 @@ public class ApplauseAdapter extends RecyclerView.Adapter<ApplauseAdapter.ViewHo
 
         PlayersApplause item = playersApplauses.get(position);
 
-        holder.tvPosition.setText(String.valueOf(position + 1 )+ ".");
+        holder.tvPosition.setText(String.valueOf(position + 1 ));
 
         Glide.with(context)
                 .load(item.getFoto())
@@ -69,12 +69,11 @@ public class ApplauseAdapter extends RecyclerView.Adapter<ApplauseAdapter.ViewHo
 
         holder.tvVotes.setText(item.getVotos() + " "+ App.get().getString(R.string.applause));
 
-     /*   // Set statistics bar
-        PercentRelativeLayout.LayoutParams params = (PercentRelativeLayout.LayoutParams) holder.bar.getLayoutParams();
+        // Set statistics bar
+        /*PercentRelativeLayout.LayoutParams params = (PercentRelativeLayout.LayoutParams) holder.bar.getLayoutParams();
         PercentLayoutHelper.PercentLayoutInfo info = params.getPercentLayoutInfo();
         info.widthPercent = item.getPorcentaje() / 35;
-        holder.bar.requestLayout();
-*/
+        holder.bar.requestLayout();*/
         holder.llApplause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

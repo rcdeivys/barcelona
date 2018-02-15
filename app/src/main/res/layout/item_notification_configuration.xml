@@ -24,7 +24,6 @@
             android:shadowColor="@color/colorPrimaryDark"
             android:layout_weight="1" />
 
-
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

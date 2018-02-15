@@ -94,7 +94,8 @@ public class BannerView extends AppCompatImageView {
         TABLE("table"), STATISTICS("statistics"),
         TEAM("team"), LINE_UP("line_up"), VIRTUAL_REALITY("virtual_reality"),
         FOOTBALL_BASE("football_base"), STORE("store"), ACADEMY("academy"),
-        LIVE("live"),WALL_AND_CHAT("wall_and_chat"), GAMES("games"), YOU_CHOOSE("you_choose");
+        LIVE("live"), WALL_AND_CHAT("wall_and_chat"), GAMES("games"), YOU_CHOOSE("you_choose"),
+        MONUMENTAL("monumental"), MAP("map");
 
         private final String id;
 

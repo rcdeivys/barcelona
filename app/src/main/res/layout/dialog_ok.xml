@@ -38,6 +38,7 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/rounder_button"
                 android:text="@string/ok"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
 
         </FrameLayout>

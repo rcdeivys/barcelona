@@ -80,7 +80,6 @@ public class ApplaudedFragment extends BaseFragment implements ApplaudedContract
         View view = inflater.inflate(R.layout.fragment_applauded, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-
         presenter.onAttach(this);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

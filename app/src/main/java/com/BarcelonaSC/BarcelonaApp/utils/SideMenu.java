@@ -164,5 +164,4 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     }
 
-
 }

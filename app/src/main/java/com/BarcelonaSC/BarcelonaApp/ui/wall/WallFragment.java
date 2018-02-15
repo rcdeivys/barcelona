@@ -30,5 +30,4 @@ public class WallFragment  extends BaseFragment{
 
     }
 
-
 }

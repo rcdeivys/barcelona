@@ -225,7 +225,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         user = new User();
         user.setNombre(regName.getText().toString());
         user.setApellido(regLastName.getText().toString());
-        user.setCedula(regCI.getText().toString());
+        user.setCi(regCI.getText().toString());
         user.setEmail(regEmail.getText().toString());
         user.setClave(regPass.getText().toString());
         user.setCelular(regPhoneCode.getText().toString() + " " + regPhoneNum.getText().toString());

@@ -6,7 +6,6 @@
     android:background="@drawable/line_divider_bottom"
     android:orientation="horizontal">
 
-
     <RelativeLayout
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -33,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="APODO HINCHA"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <Button
@@ -42,10 +41,10 @@
             android:layout_height="@dimen/button_height"
             android:layout_below="@+id/tv_apodo"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/background_button_corners_blue"
+            android:background="@drawable/oath_button"
             android:text="@string/invited"
             android:layout_margin="5dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/colorPrimaryDark" />
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/tv_solicitud_enviar"
@@ -56,7 +55,7 @@
             android:ems="8"
             android:text="@string/solicitud_enviada"
             android:visibility="invisible"
-            android:textColor="@color/cardview_dark_background"
+            android:textColor="@color/white"
             android:layout_marginBottom="10dp"
             android:textStyle="bold" />
 
@@ -64,12 +63,12 @@
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height"
-            android:background="@drawable/background_button_corners_accent"
+            android:background="@drawable/rounder_button_primary"
             android:text="@string/cancel_button"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
-            android:textColor="@color/white" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </RelativeLayout>
 
@@ -77,6 +76,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/gray" />
-
 
 </LinearLayout>

@@ -15,13 +15,13 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="6dp"
-        android:background="@color/white" />
+        android:background="@color/colorAccent" />
 
-    <View
+    <!--<View
         android:layout_width="20dp"
         android:layout_height="10dp"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/triangle" />
+        android:background="@drawable/triangle" />-->
 
     <LinearLayout
         android:id="@+id/lin_1"
@@ -47,6 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/place_of_birth"
+                    android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_caption_size" />
 
@@ -56,13 +57,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:text=""
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorAccent"
                     android:textSize="@dimen/font_caption_size" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fecha_de_nacimiento"
+                    android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_caption_size" />
 
@@ -76,10 +78,10 @@
                     android:textSize="@dimen/font_caption_size" />
 
                 <TextView
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/weight"
+                    android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_caption_size" />
 
@@ -96,6 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/height"
+                    android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_caption_size" />
 

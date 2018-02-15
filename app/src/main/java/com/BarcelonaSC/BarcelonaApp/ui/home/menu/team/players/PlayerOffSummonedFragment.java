@@ -165,7 +165,6 @@ public class PlayerOffSummonedFragment extends BaseFragment implements PlayerCon
             rvPlayers.setAdapter(playerAdapter);
             rvPlayers.setLayoutManager(linearLayoutManager);
         }
-
     }
 
     private void notifyDataSetChanged() {
