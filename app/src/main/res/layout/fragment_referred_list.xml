@@ -7,8 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/Banner"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/background" />
+        android:background="@drawable/background002" />
 
     <!-- Header de la actividad -->
     <RelativeLayout

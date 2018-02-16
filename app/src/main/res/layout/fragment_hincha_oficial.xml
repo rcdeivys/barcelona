@@ -150,18 +150,6 @@
 
                                 </LinearLayout>
 
-                                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                                    android:id="@+id/text_registrado"
-                                    style="@style/StyleRobotoLigth"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="12dp"
-                                    android:layout_marginTop="5dp"
-                                    android:textAlignment="center"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/font_body_r_size"
-                                    android:visibility="visible" />
-
                             </LinearLayout>
 
                             <ImageView
@@ -172,13 +160,14 @@
 
                         </LinearLayout>
 
-                        <TextView
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                            android:id="@+id/text_registrado"
+                            style="@style/StyleRobotoLigth"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:text="DESDE JULIO 2017"
+                            android:textAlignment="center"
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 

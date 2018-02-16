@@ -52,7 +52,6 @@ public class TableFragment extends Fragment {
         initViewPager();
     }
 
-
     private void initViewPager() {
         tableChildFragment = new TableChildFragment();
         tableSimulatorFragment = new TableSimulatorFragment();

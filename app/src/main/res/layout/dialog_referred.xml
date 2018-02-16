@@ -17,6 +17,6 @@
         android:layout_margin="10dp"
         android:background="@color/transparent"
         android:src="@drawable/quantum_ic_close_white_24"
-        android:tint="@color/black" />
+        android:tint="@color/colorAccent" />
 
 </RelativeLayout>
