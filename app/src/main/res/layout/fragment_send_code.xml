@@ -20,7 +20,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
@@ -30,9 +30,9 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="60dp"
-                    android:src="@drawable/logo_millos" />
+                    android:src="@drawable/logo_bsc" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/text_header"
                     style="@style/StyleRobotoLigth"
                     android:layout_width="wrap_content"
@@ -48,6 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/colorAccent"
                     android:cursorVisible="false"
                     android:digits="1234567890"
                     android:inputType="number"
@@ -70,7 +71,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:indeterminateDrawable="@drawable/progress"
-                android:visibility="visible"></ProgressBar>
+                android:visibility="visible" />
         </RelativeLayout>
     </RelativeLayout>
 

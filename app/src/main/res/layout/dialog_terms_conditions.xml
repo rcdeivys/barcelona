@@ -6,7 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:background="@color/colorPrimary">
 
         <RelativeLayout
             android:id="@+id/header"
@@ -26,7 +26,7 @@
                 android:tint="@color/white"
                 android:visibility="gone" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/TV_Header"
                 style="@style/StyleRobotoBold.Title"
                 android:layout_width="wrap_content"
@@ -46,17 +46,15 @@
                 android:layout_marginEnd="16dp"
                 android:background="@color/transparent"
                 android:visibility="gone" />
+
         </RelativeLayout>
 
         <WebView
             android:id="@+id/webView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/header"
-            android:layout_above="@+id/accept">
-
-
-        </WebView>
+            android:layout_above="@+id/accept"
+            android:layout_below="@+id/header" />
 
         <Button
             android:id="@+id/accept"
@@ -67,7 +65,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/background_button_corners_accent"
             android:text="Aceptar"
-            android:textColor="@color/white" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </RelativeLayout>
 

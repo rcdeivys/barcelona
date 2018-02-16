@@ -40,13 +40,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_play_circle_60dp"
+            android:src="@drawable/play"
             android:visibility="visible" />
 
     </RelativeLayout>
 
     <!-- Fecha de la noticia -->
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/text_date"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
         android:textSize="@dimen/font_caption_size" />
 
     <!-- Título de la noticia -->
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/text_title"
         style="@style/StyleRobotoBold.Title.White"
         android:layout_width="fill_parent"
@@ -70,4 +70,5 @@
         android:layout_marginStart="16dp"
         android:textColor="#FFFFFF"
         android:textSize="@dimen/font_body_m_size" />
+
 </LinearLayout>

@@ -3,9 +3,8 @@
     android:id="@+id/LL_Game"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/gray"
     android:orientation="vertical">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/team_one_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -43,10 +42,9 @@
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
+
             </RelativeLayout>
-
         </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -58,8 +56,7 @@
             android:gravity="center"
             android:orientation="vertical">
 
-
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/clash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +64,6 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/sizeTextTipoPartidoCalendario"
                 android:visibility="visible" />
-
 
         </LinearLayout>
 
@@ -82,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/team_two_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,6 +87,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
+
             </RelativeLayout>
 
             <ImageView
@@ -99,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:adjustViewBounds="true" />
+
         </LinearLayout>
     </RelativeLayout>
 
@@ -112,27 +110,26 @@
         android:orientation="vertical"
         android:visibility="visible">
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/date_fifa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="@dimen/sizeTextFechaFifaCalendario" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/ctv_stadium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="@dimen/sizeTextFechaPartidoCalendario" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/ctv_game_league"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="@dimen/sizeTextFechaPartidoCalendario" />
-
 
     </LinearLayout>
 
@@ -141,4 +138,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/colorPrimaryDark" />
+
 </LinearLayout>

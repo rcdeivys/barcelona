@@ -39,7 +39,7 @@
                 android:layout_height="40dp"
                 android:layout_marginEnd="10dp"
                 android:src="@drawable/silueta"
-                app:civ_border_color="@color/white"
+                app:civ_border_color="@color/colorAccent"
                 app:civ_border_width="1dp" />
 
             <TextView
@@ -58,7 +58,6 @@
 
         </LinearLayout>
 
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -72,10 +71,9 @@
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="4dp"
                 android:text="@string/item_ranking_votes.votes"
-                android:textColor="@color/white"
+                android:textColor="@color/colorAccent"
                 android:textSize="12sp"
                 android:textStyle="bold" />
-
 
         </RelativeLayout>
     </LinearLayout>
@@ -85,6 +83,6 @@
         android:layout_height="1dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:background="@color/white" />
+        android:background="@color/colorAccent" />
 
 </LinearLayout>

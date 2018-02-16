@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="4dp">
 
-    <com.millonarios.MillonariosFC.utils.SquareImageView
+    <com.BarcelonaSC.BarcelonaApp.utils.SquareImageView
         android:id="@+id/sivChoose"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

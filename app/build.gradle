@@ -21,12 +21,12 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.millonarios.MillonariosFC"
+        applicationId "com.BarcelonaSC.BarcelonaApp"
         minSdkVersion 19
         targetSdkVersion 27
         multiDexEnabled true
-        versionCode 5
-        versionName "1.2.11"
+        versionCode 139
+        versionName "5.10.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexKeepProguard file("proguard.multidex.config")
         javaCompileOptions {
@@ -43,25 +43,24 @@ android {
         }
 
         staging {
-            keyAlias '2waymillonarios'
-            keyPassword 'millonarios2017'
-            storeFile file("2waysmillonarios.jks")
-            storePassword 'millonarios2017'
+            keyAlias 'barcelona'
+            keyPassword 'supernicewise'
+            storeFile file("Barcelona.keystore")
+            storePassword 'supernicewise'
         }
 
         release {
-            keyAlias '2waymillonarios'
-            keyPassword 'millonarios2017'
-            storeFile file("2waysmillonarios.jks")
-            storePassword 'millonarios2017'
+            keyAlias 'barcelona'
+            keyPassword 'supernicewise'
+            storeFile file("Barcelona.keystore")
+            storePassword 'supernicewise'
         }
-
 
     }
 
     android.applicationVariants.all { variant ->
         variant.outputs.all {
-            outputFileName = "millos-${variant.name}-${variant.versionName}.apk"
+            outputFileName = "bsc-${variant.name}-${variant.versionName}.apk"
         }
     }
 

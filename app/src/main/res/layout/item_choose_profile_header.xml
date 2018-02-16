@@ -11,7 +11,6 @@
         android:adjustViewBounds="true"
         android:src="@drawable/millos_news_wm" />
 
-
     <LinearLayout
         android:id="@+id/ll_votes"
         android:layout_width="match_parent"
@@ -27,7 +26,8 @@
             android:layout_height="30dp"
             android:layout_marginEnd="5dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/icon_choose_perfil" />
+            android:src="@drawable/icon_choose_perfil"
+            android:tint="@color/colorAccent"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -44,5 +44,7 @@
             android:text="0"
             android:textSize="20sp"
             android:textStyle="bold" />
+
     </LinearLayout>
+
 </LinearLayout>
