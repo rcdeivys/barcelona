@@ -4,172 +4,179 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-            android:id="@+id/text_header"
-            style="@style/StyleRobotoRegular.Subheading.Accent"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Activa las notificaciones que deseas"
-            android:textAlignment="center"
-            android:textAllCaps="true" />
+            android:orientation="vertical">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/btn_save"
-            android:layout_below="@id/text_header">
+            <ImageView
+                android:id="@+id/head_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo_bsc" />
+
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/head_img"
+                android:text="notificaciones"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/text_header"
+                style="@style/StyleRobotoRegular.Subheading.Accent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_title"
+                android:layout_margin="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Activa las notificaciones que deseas"
+                android:textAlignment="center"
+                android:textAllCaps="true" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/remaining"
+                    style="@style/StyleRobotoBold.Subheading.White"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
+                    android:layout_weight="1"
+                    android:text="Recordatorio Partido" />
 
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        android:id="@+id/remaining"
-                        style="@style/StyleRobotoBold.Subheading.White"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Recordatorio Partido" />
-
-                    <Switch
-                        android:id="@+id/switch_reminder"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:buttonTint="@color/colorAccent"
-                        android:shadowColor="@color/colorPrimaryDark" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <Switch
+                    android:id="@+id/switch_reminder"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoBold.Subheading.White"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Alineación" />
-
-                    <Switch
-                        android:id="@+id/switch_aligment"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:shadowColor="@color/colorPrimaryDark" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoBold.Subheading.White"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Inicio de Partido" />
-
-                    <Switch
-                        android:id="@+id/switch_start_game"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:shadowColor="@color/colorPrimaryDark" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoBold.Subheading.White"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Goles" />
-
-                    <Switch
-                        android:id="@+id/switch_goals"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:shadowColor="@color/colorPrimaryDark" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoBold.Subheading.White"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Noticias y Videos Destacados" />
-
-                    <Switch
-                        android:id="@+id/switch_outstanding"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:shadowColor="@color/colorPrimaryDark" />
-
-                </LinearLayout>
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorAccent"
+                    android:shadowColor="@color/colorPrimaryDark" />
 
             </LinearLayout>
-        </ScrollView>
 
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_enable_notification"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/oath_button"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Guardar"
-            android:textColor="@color/colorPrimaryDark" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-            android:id="@+id/btn_enable_notification"
-            style="@style/StyleRobotoRegular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
-            android:text="No recibir notificaciones"
-            android:textAlignment="center" />
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoBold.Subheading.White"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Alineación" />
 
-    </RelativeLayout>
+                <Switch
+                    android:id="@+id/switch_aligment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:shadowColor="@color/colorPrimaryDark" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoBold.Subheading.White"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Inicio de Partido" />
+
+                <Switch
+                    android:id="@+id/switch_start_game"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:shadowColor="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoBold.Subheading.White"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Goles" />
+
+                <Switch
+                    android:id="@+id/switch_goals"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:shadowColor="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoBold.Subheading.White"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Noticias y Videos Destacados" />
+
+                <Switch
+                    android:id="@+id/switch_outstanding"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:shadowColor="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:background="@drawable/oath_button"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Guardar"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/btn_enable_notification"
+                style="@style/StyleRobotoRegular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="No recibir notificaciones"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

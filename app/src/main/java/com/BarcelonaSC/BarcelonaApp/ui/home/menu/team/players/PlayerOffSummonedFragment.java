@@ -73,7 +73,6 @@ public class PlayerOffSummonedFragment extends BaseFragment implements PlayerCon
         return fragment;
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,7 +117,6 @@ public class PlayerOffSummonedFragment extends BaseFragment implements PlayerCon
         return view;
     }
 
-
     public void getData() {
         if (type.equals(Constant.Key.GAME_SUPPONNED)) {
             presenter.getGameSummoned();
@@ -158,7 +156,6 @@ public class PlayerOffSummonedFragment extends BaseFragment implements PlayerCon
         notifyDataSetChanged();
     }
 
-
     private void initRvAndAdapter() {
         if (playerAdapter == null) {
             playerAdapter = new PlayerAdapter(this);
@@ -172,7 +169,6 @@ public class PlayerOffSummonedFragment extends BaseFragment implements PlayerCon
         setRefreshing(false);
         hideProgress();
     }
-
 
     @Override
     public void showProgress() {

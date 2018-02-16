@@ -80,6 +80,7 @@
                         android:layout_width="220dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginBottom="10dp"
                         android:background="@drawable/yellow_border_background"
                         android:gravity="center"
                         android:orientation="vertical"
@@ -187,7 +188,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_margin="8dp"
-                        android:background="@drawable/yellow_border_background"
+                        android:background="@drawable/oath_button"
                         android:gravity="center"
                         android:orientation="vertical">
 
@@ -197,8 +198,7 @@
                             android:gravity="center"
                             android:padding="10dp"
                             android:text="Credencial Digital"
-                            android:textAllCaps="true"
-                            android:textColor="@color/colorAmarillo"
+                            android:textColor="@color/colorPrimaryDark"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
@@ -206,28 +206,30 @@
 
                     <LinearLayout
                         android:id="@+id/btn_share"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/perfil_btn_3"
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/oath_button"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                             style="@style/StyleRobotoBold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="compartir app"
-                            android:textAllCaps="true"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/font_body_r_size" />
+                            android:padding="10dp"
+                            android:text="Compartir"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
                         <ImageView
                             style="@style/StyleRobotoBold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:src="@drawable/share_white" />
+                            android:src="@drawable/share_white"
+                            android:visibility="gone" />
 
                     </LinearLayout>
 
@@ -299,13 +301,12 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/yellow_border_background"
+                        android:background="@drawable/oath_button"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="DESCARTAR"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/font_body_r_size"
-                        android:visibility="visible" />
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/font_body_r_size" />
 
                     <Button
                         android:id="@+id/btn_save_change"
@@ -313,12 +314,12 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/yellow_border_background"
+                        android:background="@drawable/oath_button"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="ENVIAR"
                         android:textAllCaps="true"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/font_body_r_size" />
 
                 </LinearLayout>

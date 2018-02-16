@@ -286,9 +286,9 @@ public class HomePresenter {
                 break;
 
             case Constant.Menu.MAP:
-                view.setTitle(configurationManager.getConfiguration().getTit12());
+                view.setTitle(configurationManager.getConfiguration().getTit14());
                 mountMap();
-                view.trackFragment(configurationManager.getConfiguration().getTit12());
+                view.trackFragment(configurationManager.getConfiguration().getTit14());
                 break;
 
             case Constant.Menu.ONLINE_SHOP:

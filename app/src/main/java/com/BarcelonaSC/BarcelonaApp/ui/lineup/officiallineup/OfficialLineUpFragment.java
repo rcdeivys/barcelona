@@ -47,7 +47,6 @@ import butterknife.Unbinder;
 
 public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUpContract.View, OfficialLineUpAdapter.OnItemClickListener, SoccesFieldView.PlayerClickListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnSeekCompleteListener {
 
-
     private static final String TAG = OfficialLineUpFragment.class.getSimpleName();
     @Inject
     OLineUpPresenter presenter;
@@ -103,7 +102,6 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
         return fragment;
     }
 
-
     public void initComponent() {
         DaggerOLineUpComponent.builder()
                 .appComponent(App.get().component())
@@ -153,9 +151,7 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
         vvGameLineup.setOnPreparedListener(this);
         imgPlay.setVisibility(View.GONE);
 
-
         return view;
-
     }
 
     private void initRvAndAdapter() {

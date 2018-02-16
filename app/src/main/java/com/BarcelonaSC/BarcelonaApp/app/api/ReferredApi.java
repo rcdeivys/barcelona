@@ -15,6 +15,6 @@ public interface ReferredApi {
 
     @GET("consultar_referidos/{token}")
     Call<ReferredToResponse> getReferidos(@Path("token") String token,
-                                          @Query("p") String page);
+                                          @Query("page") String page);
 
 }

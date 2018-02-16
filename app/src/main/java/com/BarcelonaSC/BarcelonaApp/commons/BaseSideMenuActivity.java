@@ -49,12 +49,6 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
     private PreferenceManager preferenceManager;
     public SessionManager sessionManager;
 
-    private ImageView imageView;
-
-    CircleImageView img_profile;
-    FCMillonariosTextView first_name;
-    FCMillonariosTextView last_name;
-
     SideMenu sideMenu;
 
     public FragmentActivity getActivity() {
@@ -69,13 +63,11 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
 
         preferenceManager = new PreferenceManager(App.getAppContext());
         sessionManager = new SessionManager(this);
-        //    subscribeToPushService();
         mTracker = App.get().getDefaultTracker();
         configurationManager = ConfigurationManager.getInstance();
     }
 
     protected void initMenu() {
-
         ImageView TV_Menu = findViewById(R.id.tv_menu);
 
         RecyclerView menuList = findViewById(R.id.menu_list);
@@ -83,25 +75,17 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
         sideMenu.setOnClickMenuListener(this);
         TextView version = findViewById(R.id.text_version);
         version.setText("Build Version " + BuildConfig.VERSION_NAME);
-        ImageView btnInstagram = findViewById(R.id.btn_instagram);
-        ImageView btnFacebook = findViewById(R.id.btn_facebook);
-        ImageView btnYoutube = findViewById(R.id.btn_youtube);
-        ImageView btnTwitter = findViewById(R.id.btn_twitter);
         super.initBannerMenu(R.id.bv_banner_menu, BannerView.Seccion.BOTTOM);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(android.view.ViewGroup.LayoutParams.MATCH_PARENT, Commons.getWidthDisplay() / 8);
         ImageView img = findViewById(R.id.bv_banner);
         img.setLayoutParams(params);
-        clickSocialButton(btnInstagram, "https://www.instagram.com/millosfcoficial/");
-        clickSocialButton(btnFacebook, "https://www.facebook.com/millosfcoficial");
-        clickSocialButton(btnTwitter, "https://twitter.com/millosfcoficial");
-        clickSocialButton(btnYoutube, "https://www.youtube.com/channel/UCJ3KWv64AxrdfKRFKr2uBSw");
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                if (position == 0) {
+                if (position == 0 || position == 1) {
                     return 3;
                 } else {
                     return 1;
@@ -150,21 +134,22 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
     private List<Object> assignMenuIds() {
         List<Object> ivSideMenuList = new ArrayList<>();
         ivSideMenuList.add(Constant.Key.HEADER);
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.PROFILE, R.drawable.perfil_icon, configurationManager.getConfiguration().getTit1()));
+        ivSideMenuList.add(Constant.Key.SOCIAL);
+        //ivSideMenuList.add(new DrawerItem(Constant.Menu.PROFILE, R.drawable.perfil_icon, configurationManager.getConfiguration().getTit1()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.TABLE, R.drawable.tabla_icon, configurationManager.getConfiguration().getTit4()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.NEWS, R.drawable.noticias_icon, configurationManager.getConfiguration().getTit2()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.CALENDAR, R.drawable.calendario_icon, configurationManager.getConfiguration().getTit3()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.TABLE, R.drawable.tabla_icon, configurationManager.getConfiguration().getTit4()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.IN_LIVE, R.drawable.bsc_en_vivo_icon, configurationManager.getConfiguration().getTit9()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.TEAM, R.drawable.plantilla_icon, configurationManager.getConfiguration().getTit6()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.MONUMENTAL, R.drawable.monumentales_icon, configurationManager.getConfiguration().getTit12()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.IN_LIVE, R.drawable.bsc_en_vivo_icon, configurationManager.getConfiguration().getTit9()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.WALL_AND_CHAT, R.drawable.muro_chat_icn, configurationManager.getConfiguration().getTit16()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.ALIGMENT, R.drawable.alineacion_icon, configurationManager.getConfiguration().getTit7()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.WALL_AND_CHAT, R.drawable.muro_chat_icon, configurationManager.getConfiguration().getTit16()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.GAME, R.drawable.juegos_icon, configurationManager.getConfiguration().getTit11()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.ALIGMENT, R.drawable.alineacion_icn, configurationManager.getConfiguration().getTit7()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.VIRTUAL_REALITY, R.drawable.realidad_virtual_icn, configurationManager.getConfiguration().getTit8()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.MAP, R.drawable.academia_icn, configurationManager.getConfiguration().getTit12()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.ONLINE_SHOP, R.drawable.tienda_virtual_icn, configurationManager.getConfiguration().getTit13()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.STATISTICS, R.drawable.estadisticas_icn, configurationManager.getConfiguration().getTit5()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.YOUR_CHOOSE, R.drawable.tu_eliges_icn, configurationManager.getConfiguration().getTit10()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.ONLINE_SHOP, R.drawable.tienda_icon, configurationManager.getConfiguration().getTit13()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.VIRTUAL_REALITY, R.drawable.realidad_virtual_icon, configurationManager.getConfiguration().getTit8()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.MAP, R.drawable.mapa_icon, configurationManager.getConfiguration().getTit14()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.STATISTICS, R.drawable.estadisticas_icon, configurationManager.getConfiguration().getTit5()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.YOUR_CHOOSE, R.drawable.tu_escoges_icon, configurationManager.getConfiguration().getTit10()));
 
         return ivSideMenuList;
     }
@@ -174,29 +159,6 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
         Log.d("BaseActivity", "nombre:  " + sessionManager.getUser().getNombre());
         sideMenu.notifyDataSetChanged();
     }
-
-    public void clickSocialButton(ImageView imageView, final String url) {
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getBaseContext(), NewsInfografyActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra(Constant.Key.URL, url);
-                intent.putExtra("view", true);
-                startActivity(intent);
-            }
-
-        });
-    }
-
-/*
-    public void registerTrackScreen(String trackScreen){
-        mTracker = App.get().getDefaultTracker();
-        mTracker.setScreenName(trackScreen);
-        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
-    }
-
-    */
 
     public void registerTrackScreen(String screenName) {
         App.get().registerTrackScreen(screenName);

@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="320dp"
     android:layout_height="550dp">
@@ -25,13 +23,11 @@
             android:orientation="vertical"
             android:rotation="90">
 
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_profile"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:src="@drawable/silueta" />
-
 
             <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/id_hincha"
@@ -40,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="N°0001"
                 android:textAlignment="center"
-                android:textColor="@color/white" />
+                android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
 
@@ -60,11 +56,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="7dp"
-                android:text="My name"
                 android:ellipsize="end"
                 android:maxLength="25"
+                android:text="My name"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/font_body_r_size"
-                android:textColor="@color/white" />
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -82,10 +79,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="2dp"
-                    android:text="Hincha Embajador"
-                    android:textSize="@dimen/font_body_m_size"
-                    android:textColor="@color/white" />
-
+                    android:text="HINCHA NIVEL CLUB"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_body_m_size" />
 
                 <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/text_registrado"
@@ -95,11 +91,12 @@
                     android:layout_below="@id/type_hincha"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="14dp"
+                    android:text="Desde enero 2017"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/font_caption_size"
-                    android:text="Desde enero 2017" />
+                    android:textStyle="bold" />
 
             </RelativeLayout>
-
 
         </LinearLayout>
 
@@ -109,8 +106,8 @@
             android:layout_weight="1"
             android:padding="15dp"
             android:rotation="90"
-            android:src="@drawable/logo_millos" />
-
+            android:src="@drawable/logo_millos"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
@@ -119,8 +116,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -139,13 +136,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:rotation="90"
-                android:textSize="@dimen/font_body_m_size"
-                android:text="SIEMPRE ALBIAZUL" />
+                android:text="¡MÁS AMARILLO QUE NUNCA!"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/font_body_m_size" />
 
         </LinearLayout>
 
         <LinearLayout
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -156,7 +153,6 @@
             android:orientation="vertical"
             android:rotation="90">
 
-
             <ImageView
                 android:id="@+id/code_img"
                 android:layout_width="wrap_content"
@@ -165,9 +161,7 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -175,8 +169,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="50dp"
         android:layout_marginLeft="80dp"
-        android:orientation="vertical"
         android:gravity="center"
+        android:orientation="vertical"
         android:rotation="90">
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
@@ -184,14 +178,13 @@
             style="@style/StyleRobotoRegular.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="fecha" />
 
         <LinearLayout
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            >
+            android:visibility="invisible">
 
             <View
                 android:layout_width="wrap_content"
@@ -207,8 +200,5 @@
 
         </LinearLayout>
     </LinearLayout>
-
-
-
 
 </RelativeLayout>

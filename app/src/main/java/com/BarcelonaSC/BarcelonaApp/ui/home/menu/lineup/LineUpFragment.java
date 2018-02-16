@@ -30,39 +30,29 @@ public class LineUpFragment extends ShareBaseFragment {
     CustomTabLayout tabs;
     Unbinder unbinder;
 
-
     private LineupViewPagerAdapter viewPagerAdapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_lineup, container, false);
-
-
         unbinder = ButterKnife.bind(this, view);
         initializeViewPager();
         return view;
-
     }
 
-
     private void initializeViewPager() {
-
         int Numboftabs = 2;
-
 
         String[] titles = {ConfigurationManager.getInstance().getConfiguration().getTit71()
                 , ConfigurationManager.getInstance().getConfiguration().getTit72()};
 
         viewPagerAdapter = new LineupViewPagerAdapter(getChildFragmentManager(), titles, Numboftabs);
-
         pager.setPagingEnabled(true);
         pager.setAdapter(viewPagerAdapter);
         tabs.setupWithViewPager(pager);
@@ -74,8 +64,6 @@ public class LineUpFragment extends ShareBaseFragment {
                 return ContextCompat.getColor(getApplicationContext(), R.color.colorActiveTextTab);
             }
         });*/
-
-
     }
 
     @Override

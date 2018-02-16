@@ -55,8 +55,7 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/logo_bsc" />
-
+            android:src="@drawable/escudo_menu" />
 
     </RelativeLayout>
 

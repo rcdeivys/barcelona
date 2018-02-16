@@ -58,13 +58,13 @@
                         android:src="@drawable/ic_user" />
 
                     <EditText
-                        android:id="@+id/register_last"
+                        android:id="@+id/cedula"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorAccent"
-                        android:hint="Apellido"
-                        android:inputType="text"
+                        android:hint="Cédula"
+                        android:inputType="textEmailAddress"
                         android:maxLines="1" />
 
                 </LinearLayout>
@@ -82,13 +82,13 @@
                         android:src="@drawable/ic_user" />
 
                     <EditText
-                        android:id="@+id/cedula"
+                        android:id="@+id/register_last"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorAccent"
-                        android:hint="identificación"
-                        android:inputType="textEmailAddress"
+                        android:hint="Apellido"
+                        android:inputType="text"
                         android:maxLines="1" />
 
                 </LinearLayout>
@@ -113,6 +113,46 @@
                         android:backgroundTint="@color/colorAccent"
                         android:hint="Email"
                         android:inputType="textEmailAddress"
+                        android:maxLines="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/register_pass"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_pass"
+                        android:hint="Contraseña"
+                        android:inputType="textPassword"
+                        android:maxLines="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/register_cpass"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_pass"
+                        android:hint="Confirmar contraseña"
+                        android:inputType="textPassword"
                         android:maxLines="1" />
 
                 </LinearLayout>
@@ -161,42 +201,6 @@
                             android:textAlignment="center" />
 
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/register_rb_male"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/colorAccent"
-                            android:shadowColor="@color/colorPrimaryDark"
-                            android:text="Masculino"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <RadioButton
-                            android:id="@+id/register_rb_female"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:buttonTint="@color/colorAccent"
-                            android:shadowColor="@color/colorPrimaryDark"
-                            android:text="Femenino"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -287,44 +291,39 @@
 
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/register_pass"
-                        android:layout_width="0dp"
+                    <RadioGroup
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/colorAccent"
-                        android:drawablePadding="8dp"
-                        android:drawableStart="@drawable/ic_pass"
-                        android:hint="Contraseña"
-                        android:inputType="textPassword"
-                        android:maxLines="1" />
+                        android:orientation="horizontal">
 
-                </LinearLayout>
+                        <RadioButton
+                            android:id="@+id/register_rb_male"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorAccent"
+                            android:shadowColor="@color/colorPrimaryDark"
+                            android:text="Masculino"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/register_cpass"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:backgroundTint="@color/colorAccent"
-                        android:drawablePadding="8dp"
-                        android:drawableStart="@drawable/ic_pass"
-                        android:hint="Confirmar contraseña"
-                        android:inputType="textPassword"
-                        android:maxLines="1" />
+                        <RadioButton
+                            android:id="@+id/register_rb_female"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorAccent"
+                            android:shadowColor="@color/colorPrimaryDark"
+                            android:text="Femenino"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -390,13 +389,12 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/yellow_border_background"
+                        android:background="@drawable/rounder_button_primary"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:text="DESCARTAR"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="@dimen/font_body_r_size"
-                        android:visibility="visible" />
+                        android:text="Salir"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/font_body_r_size" />
 
                     <Button
                         android:id="@+id/register_btn_register"
@@ -404,12 +402,12 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/yellow_border_background"
+                        android:background="@drawable/oath_button"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="Enviar"
                         android:textAllCaps="true"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/font_body_r_size" />
 
                 </LinearLayout>

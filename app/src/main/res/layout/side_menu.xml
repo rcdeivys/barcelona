@@ -19,48 +19,12 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/side_menu_header"
         android:scaleType="centerCrop"
-        android:src="@drawable/side_menu_bg" />
+        android:src="@drawable/background002" />
 
-        <LinearLayout
-            android:id="@+id/layout_sn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/side_menu_header"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:gravity="end"
-            android:orientation="horizontal"
-            android:visibility="visible">
-
-            <ImageView
-                android:id="@+id/btn_facebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/icon_face" />
-
-            <ImageView
-                android:id="@+id/btn_twitter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/icon_twitter" />
-
-            <ImageView
-                android:id="@+id/btn_instagram"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/icon_instagram" />
-
-            <ImageView
-                android:id="@+id/btn_youtube"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:src="@drawable/icon_youtube" />
-
-        </LinearLayout>
+    <include
+        android:id="@+id/layout_sn"
+        layout="@layout/side_menu_social"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"

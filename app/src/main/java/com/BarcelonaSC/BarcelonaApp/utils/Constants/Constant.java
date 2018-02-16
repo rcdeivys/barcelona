@@ -59,6 +59,7 @@ public interface Constant {
         String MONUMETAL_ID = "monumental_id";
         String SURVEY_ID = "survey_id";
         String HEADER = "HEADER";
+        String SOCIAL = "SOCIAL";
         String FIRST_TIME_INTRO = "first_time_video";
         String FIRST_TIME_OATH = "first_time_oath";
         String SESSION = "session";

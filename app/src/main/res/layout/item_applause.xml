@@ -4,6 +4,7 @@
     android:id="@+id/ll_applause"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
     android:baselineAligned="false"
     android:orientation="vertical">
 
@@ -13,8 +14,8 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:paddingEnd="8dp"
-        android:paddingStart="8dp">
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -32,14 +33,31 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/TV_Name"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAlignment="textStart"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/TV_LastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/TV_Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/civ_player_photo"
@@ -52,25 +70,38 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:layout_weight="0.5">
+            android:layout_weight="1">
 
             <!-- Option's votes -->
             <TextView
                 android:id="@+id/TV_Votes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="4dp"
                 android:layout_marginEnd="4dp"
-                android:text="0 aplausos"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp" />
 
-        </RelativeLayout>
+            <!-- Statistics bar -->
+            <View
+                android:id="@+id/progressbar"
+                android:layout_below="@+id/TV_Votes"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@color/colorAccent"
+                app:layout_heightPercent="56%"
+                app:layout_widthPercent="0%" />
+
+        </android.support.percent.PercentRelativeLayout>
+
     </LinearLayout>
 
     <View
@@ -78,6 +109,6 @@
         android:layout_height="1dp"
         android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:background="@color/colorAccent" />
+        android:background="@color/white" />
 
 </LinearLayout>

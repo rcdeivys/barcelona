@@ -32,15 +32,12 @@ public class LineupViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
         if (position == 0) {
             officialLineUpFragment = OfficialLineUpFragment.newInstance();
             return officialLineUpFragment;
-
         } else {
             idealElevenFragment = IdealElevenFragment.newInstance();
             return idealElevenFragment;
-
         }
     }
 

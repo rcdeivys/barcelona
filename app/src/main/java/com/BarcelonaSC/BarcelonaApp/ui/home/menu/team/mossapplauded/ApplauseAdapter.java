@@ -54,10 +54,9 @@ public class ApplauseAdapter extends RecyclerView.Adapter<ApplauseAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         // Custom typefaces
-
         PlayersApplause item = playersApplauses.get(position);
 
-        holder.tvPosition.setText(String.valueOf(position + 1 ));
+        holder.tvPosition.setText(String.valueOf(position + 1));
 
         Glide.with(context)
                 .load(item.getFoto())
@@ -65,15 +64,29 @@ public class ApplauseAdapter extends RecyclerView.Adapter<ApplauseAdapter.ViewHo
                 .into(holder.civPlayerPhoto);
 
         String[] splitName = item.getNombre().split(" ");
-        holder.tvName.setText(item.getNombre());
+        String nombre = "";
+        String apellido = "";
+        if (splitName.length == 2) {
+            nombre = splitName[0];
+            apellido = splitName[1];
+        } else if (splitName.length == 3) {
+            nombre = splitName[0];
+            apellido = splitName[1] + " " + splitName[2];
+        } else if (splitName.length == 4) {
+            nombre = splitName[0];
+            apellido = splitName[1] + " " + splitName[2] + " " + splitName[3];
+        }
+        holder.tvName.setText(nombre);
+        holder.tvLast.setText(apellido);
 
-        holder.tvVotes.setText(item.getVotos() + " "+ App.get().getString(R.string.applause));
+        holder.tvVotes.setText(item.getVotos() + " " + App.get().getString(R.string.applause));
 
         // Set statistics bar
-        /*PercentRelativeLayout.LayoutParams params = (PercentRelativeLayout.LayoutParams) holder.bar.getLayoutParams();
+        PercentRelativeLayout.LayoutParams params = (PercentRelativeLayout.LayoutParams) holder.bar.getLayoutParams();
         PercentLayoutHelper.PercentLayoutInfo info = params.getPercentLayoutInfo();
         info.widthPercent = item.getPorcentaje() / 35;
-        holder.bar.requestLayout();*/
+        holder.bar.requestLayout();
+
         holder.llApplause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,19 +101,21 @@ public class ApplauseAdapter extends RecyclerView.Adapter<ApplauseAdapter.ViewHo
         return playersApplauses.size();
     }
 
-
     class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.TV_Position)
         TextView tvPosition;
         @BindView(R.id.TV_Name)
         TextView tvName;
+        @BindView(R.id.TV_LastName)
+        TextView tvLast;
         @BindView(R.id.civ_player_photo)
         CircleImageView civPlayerPhoto;
         @BindView(R.id.TV_Votes)
         TextView tvVotes;
         @BindView(R.id.ll_applause)
         LinearLayout llApplause;
-
+        @BindView(R.id.progressbar)
+        View bar;
 
         ViewHolder(View view) {
             super(view);
