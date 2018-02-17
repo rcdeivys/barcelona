@@ -36,7 +36,6 @@ public class CarnetDigitalActivity extends BaseActivity {
 
     @BindView(R.id.btn_back)
     AppCompatImageButton btnBack;
-
     @BindView(R.id.img_profile)
     CircleImageView imgProfile;
     @BindView(R.id.id_hincha)

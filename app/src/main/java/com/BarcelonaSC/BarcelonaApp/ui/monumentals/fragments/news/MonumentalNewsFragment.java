@@ -1,9 +1,8 @@
-package com.BarcelonaSC.BarcelonaApp.ui.home.menu.news;
+package com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,18 +14,19 @@ import android.widget.ProgressBar;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryListActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news.di.DaggerMonumentalNewsComponent;
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news.di.MonumentalNewsModule;
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news.mvp.MonumentalNewsContract;
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news.mvp.MonumentalNewsPresenter;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.di.NewsModule;
-import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsContract;
-import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsPresenter;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.views.adapters.NewsAdapter;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.EndlessScrollListener;
-import com.BarcelonaSC.BarcelonaApp.models.News;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.di.DaggerNewsComponent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +37,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Leonardojpr on 10/31/17.
+ * Created by RYA-Laptop on 16/02/2018.
  */
 
-public class NewsFragment extends Fragment implements NewsContract.View, NewsAdapter.OnItemClickListener {
+public class MonumentalNewsFragment extends BaseFragment implements MonumentalNewsContract.View, NewsAdapter.OnItemClickListener {
 
-    public final static String TAG = NewsFragment.class.getSimpleName();
-
-    private static final String CATEGORY = "category";
-    public static final String NEWS_PROFESSIONAL = "news_professional";
-    public static final String NEWS_FOOTBALL_BASE = "news_football_base";
+    public static final String TAG = MonumentalNewsFragment.class.getSimpleName();
 
     @BindView(R.id.btn_top)
     ImageButton btnTop;
@@ -62,14 +58,10 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
     LinearLayoutManager mLayoutManager;
 
     @Inject
-    public NewsPresenter presenter;
+    public MonumentalNewsPresenter presenter;
 
-    public static NewsFragment getInstance(String category) {
-        NewsFragment fragment = new NewsFragment();
-        Bundle bundle = new Bundle();
-        bundle.putString(CATEGORY, category);
-        fragment.setArguments(bundle);
-        return fragment;
+    public static MonumentalNewsFragment getInstance() {
+        return new MonumentalNewsFragment();
     }
 
     @Override
@@ -96,10 +88,10 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
     }
 
     public void initComponent() {
-        DaggerNewsComponent.builder()
+        /* DaggerMonumentalNewsComponent.builder()
                 .appComponent(App.get().component())
-                .newsModule(new NewsModule(this))
-                .build().inject(NewsFragment.this);
+                .MonumentalNewsModule(new MonumentalNewsModule(this))
+                .build().inject(MonumentalNewsFragment.this); */
     }
 
     public void initRecyclerView() {
@@ -136,23 +128,15 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
 
     @Override
     public void onClickItem(News news) {
-        presenter.onclickNewsItem(news);
+        presenter.onClickNewsItem(news);
     }
 
     private void refresh() {
-        if (getArguments().getString(CATEGORY).equals(NEWS_PROFESSIONAL)) {
-            presenter.loadNews(NEWS_PROFESSIONAL);
-        } else {
-            presenter.loadNews(NewsFragment.NEWS_FOOTBALL_BASE);
-        }
+        presenter.loadNews();
     }
 
     private void refresh(int page) {
-        if (getArguments().getString(CATEGORY).equals(NEWS_PROFESSIONAL)) {
-            presenter.loadNewsPage(page, NEWS_PROFESSIONAL);
-        } else {
-            presenter.loadNewsPage(page, NewsFragment.NEWS_FOOTBALL_BASE);
-        }
+        presenter.loadNewsPage(page);
     }
 
     public void updateNews(List<News> newsList) {
@@ -164,12 +148,7 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
     }
 
     @Override
-    public void setNewsProfessional(List<News> news) {
-        updateNews(news);
-    }
-
-    @Override
-    public void setNewsFootballBase(List<News> news) {
+    public void setMonumentalNews(List<News> news) {
         updateNews(news);
     }
 
@@ -226,6 +205,5 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
     @Override
     public void onDestroy() {
         super.onDestroy();
-
     }
 }

@@ -107,7 +107,13 @@ public class ReferredToFragment extends BaseFragment {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().finish();
+                if (getArguments().getBoolean("instrucciones", false)) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.ref_container, new ReferredListFragment())
+                            .commit();
+                } else {
+                    getActivity().finish();
+                }
             }
         });
 

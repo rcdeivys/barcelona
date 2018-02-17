@@ -145,4 +145,10 @@ public class ApiModule {
         return retrofit.create(WallCommentApi.class);
     }
 
+    @Provides
+    @AppScope
+    public static MonumentalApi provideMonumentalApi(Retrofit retrofit) {
+        return retrofit.create(MonumentalApi.class);
+    }
+
 }
