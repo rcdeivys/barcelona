@@ -1,9 +1,63 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.mvp;
 
+import com.BarcelonaSC.BarcelonaApp.models.MonumentalPoll;
+
 /**
  * Created by RYA-Laptop on 16/02/2018.
  */
 
-public class MonumentalPresenter {
+public class MonumentalPresenter implements MonumentalContract.Presenter, MonumentalContract.ModelResultListener {
 
+    private static final String TAG = MonumentalPresenter.class.getSimpleName();
+    private MonumentalContract.View view;
+    private MonumentalModel model;
+
+    MonumentalPoll poll;
+
+    public MonumentalPresenter(MonumentalContract.View view, MonumentalModel model) {
+        this.view = view;
+        this.model = model;
+    }
+
+    @Override
+    public void onAttach(MonumentalContract.View view) {
+        this.view = view;
+    }
+
+    @Override
+    public void onDetach() {
+        view = null;
+    }
+
+    @Override
+    public void onGetMonumentalSuccess(MonumentalPoll poll) {
+        if (isViewNull()) return;
+        view.setMonumentals(poll);
+        view.hideProgress();
+    }
+
+    @Override
+    public void onGetMonumentalFailed() {
+        if (isViewNull()) return;
+        view.showToastError();
+        view.hideProgress();
+    }
+
+    @Override
+    public void getMonumentals() {
+        if (view == null) return;
+        model.loadMonumental(this);
+        view.showProgress();
+    }
+
+    @Override
+    public boolean isViewNull() {
+        return view == null;
+    }
+
+    @Override
+    public void onClickItem(int position) {
+        if (isViewNull()) return;
+        view.navigateToMonumentalProfile(String.valueOf(poll.getMonumentales().get(position).getIdmonumental()), String.valueOf(poll.getIdencuesta()));
+    }
 }

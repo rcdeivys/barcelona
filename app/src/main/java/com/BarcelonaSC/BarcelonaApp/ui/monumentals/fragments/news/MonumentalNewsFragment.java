@@ -35,6 +35,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by RYA-Laptop on 16/02/2018.
@@ -52,6 +53,7 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     RecyclerView recyclerView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+    Unbinder unbinder;
 
     NewsAdapter newsAdapter;
 
@@ -74,7 +76,7 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news_list, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
         presenter.onAttach(this);
         initRecyclerView();
         refresh();
@@ -88,10 +90,10 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     }
 
     public void initComponent() {
-        /* DaggerMonumentalNewsComponent.builder()
+        DaggerMonumentalNewsComponent.builder()
                 .appComponent(App.get().component())
-                .MonumentalNewsModule(new MonumentalNewsModule(this))
-                .build().inject(MonumentalNewsFragment.this); */
+                .monumentalNewsModule(new MonumentalNewsModule(this))
+                .build().inject(MonumentalNewsFragment.this);
     }
 
     public void initRecyclerView() {
@@ -203,7 +205,9 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onDestroyView() {
+        super.onDestroyView();
+        presenter.onDetach();
+        unbinder.unbind();
     }
 }

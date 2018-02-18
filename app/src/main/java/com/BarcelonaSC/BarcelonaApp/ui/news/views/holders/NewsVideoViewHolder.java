@@ -67,7 +67,7 @@ public class NewsVideoViewHolder extends RecyclerView.ViewHolder implements Surf
         if (item.getFoto() != null) {
             Glide.with(context)
                     .load(item.getFoto())
-                    .apply(new RequestOptions().placeholder(R.drawable.millos_news_wm).error(R.drawable.millos_news_wm))
+                    .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                     .into(imgHeader);
         }
 

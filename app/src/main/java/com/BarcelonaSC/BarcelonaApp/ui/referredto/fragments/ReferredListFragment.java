@@ -194,10 +194,9 @@ public class ReferredListFragment extends BaseFragment implements ReferredContra
         Intent share = new Intent();
         share.setAction(Intent.ACTION_SEND);
         // para que salga la url con texto previo: "Ola ke ase \n" + resto del text.
-        share.putExtra(Intent.EXTRA_TEXT, "¡YA SOY HINCHA EMBAJADOR OFICIAL!\n" +
-                "Conviértete tú también y apoyemos juntos al Campeón de Colombia\n" +
-                "\n" +
-                "La APP MILLONARIOS FC OFICIAL te trae el contenido más exclusivo del Embajador al alcance de tu mano! Regístrate y descárgala en el siguiente link:\n"
+        share.putExtra(Intent.EXTRA_TEXT, "¡YA SOY HINCHA OFICIAL!\n"
+                + "¡Demuestra tu compromiso por el TORERO y sigamos demostrando porque somos el ÍDOLO DEL ECUADOR!\n"
+                + "Regístrate y descárgala en el siguiente link:\n"
                 + Commons.getString(R.string.url_api).replace("api/", "") + "compartir/referidos/" + sessionManager.getUser().getCodigo());
         share.setType("text/plain");
         startActivity(Intent.createChooser(share, "Compartir en: "));

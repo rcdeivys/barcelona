@@ -40,6 +40,8 @@ public class CarnetDigitalActivity extends BaseActivity {
     CircleImageView imgProfile;
     @BindView(R.id.id_hincha)
     FCMillonariosTextView idHincha;
+    @BindView(R.id.ci_hincha)
+    FCMillonariosTextView ciHincha;
     @BindView(R.id.carnet_name)
     FCMillonariosTextView carnetName;
     @BindView(R.id.type_hincha)
@@ -67,6 +69,7 @@ public class CarnetDigitalActivity extends BaseActivity {
         carnetName.setText(sessionManager.getUser().getNombre() + " " + sessionManager.getUser().getApellido());
         Glide.with(getBaseContext()).load(sessionManager.getUser().getFoto()).apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta)).into(imgProfile);
         idHincha.setText("Hincha # " + sessionManager.getSession().getIdUser());
+        ciHincha.setText("Cédula " + sessionManager.getUser().getCedula());
         registrado.setText("Desde el " + Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(0, 2) + "/" +
                 getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(3, 5))) + "/" +
                 sessionManager.getUser().getFechaRegistro().substring(0, 4));
@@ -115,7 +118,7 @@ public class CarnetDigitalActivity extends BaseActivity {
             for (int i = 0; i < Commons.dpToPx(150); i++) {
                 for (int j = 0; j < Commons.dpToPx(40); j++) {
 
-                    mBitmap.setPixel(i, j, bm.get(i, j) ? Color.BLACK : Color.WHITE);
+                    mBitmap.setPixel(i, j, bm.get(i, j) ? Color.YELLOW : Color.BLACK);
                 }
             }
         } catch (WriterException e) {

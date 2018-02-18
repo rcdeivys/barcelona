@@ -53,7 +53,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
 
             Glide.with(context)
                     .load(item.getFoto())
-                    .apply(new RequestOptions().placeholder(R.drawable.millos_news_wm).error(R.drawable.millos_news_wm))
+                    .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                     .into(imgHeader);
         }
 
@@ -63,6 +63,5 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         if (item.getTitulo() != null)
             textTitle.setText(item.getTitulo());
     }
-
 
 }
