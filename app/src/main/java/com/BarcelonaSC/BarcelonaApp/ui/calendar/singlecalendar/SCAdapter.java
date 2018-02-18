@@ -51,7 +51,7 @@ public class SCAdapter extends ArrayAdapter<SCalendarNoticia> {
 
         assert sCalendarNoticia != null;
         Glide.with(getContext()).load(sCalendarNoticia.getFoto())
-                .apply(new RequestOptions().placeholder(R.drawable.millos_news_wm).error(R.drawable.millos_news_wm))
+                .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                 .into(ivNews);
         date.setText(Commons.getStringDate(sCalendarNoticia.getFecha()));
         title.setText(sCalendarNoticia.getTitulo());

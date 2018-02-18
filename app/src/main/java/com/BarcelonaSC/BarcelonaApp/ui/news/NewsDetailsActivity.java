@@ -46,7 +46,7 @@ public class NewsDetailsActivity extends BaseActivity {
 
         Glide.with(this)
                 .load(extras.getString(Constant.Key.IMG))
-                .apply(new RequestOptions().placeholder(R.drawable.millos_news_wm).error(R.drawable.millos_news_wm))
+                .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                 .into(imgNews);
 
         imgNews.setAlpha((float) 1.0);

@@ -93,7 +93,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
     private void initHeader(VHHeader vhHeader) {
         Glide.with(context)
                 .load(playerData.getBanner())
-                .apply(new RequestOptions().placeholder(R.drawable.millos_news_wm).error(R.drawable.millos_news_wm))
+                .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                 .into(vhHeader.playerImg);
 
         if (!type.equals(Constant.Key.GAME_FB)) {
@@ -152,7 +152,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         News recentItem = getItem(position);
         Glide.with(context)
                 .load(recentItem.getFoto())
-                .apply(new RequestOptions().placeholder(R.drawable.millos_news_wm).error(R.drawable.millos_news_wm))
+                .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                 .into(vhItem.ivNews);
     /*    // Set play image
         if (recentItem.getTipo().matches(Constant.NewsType.VIDEO)) {

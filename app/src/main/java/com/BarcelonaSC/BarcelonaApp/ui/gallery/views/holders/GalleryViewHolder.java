@@ -42,7 +42,7 @@ public class GalleryViewHolder extends RecyclerView.ViewHolder {
         imgGallery.setVisibility(View.VISIBLE);
         if (position == 0)
             Glide.with(context).load(img)
-                    .apply(new RequestOptions().placeholder(R.drawable.millos_news_wm).error(R.drawable.millos_news_wm))
+                    .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                     .into(imgGallery);
         else {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(Commons.getWidthDisplay() / 2, Commons.getWidthDisplay() / 2);
@@ -51,7 +51,7 @@ public class GalleryViewHolder extends RecyclerView.ViewHolder {
             imgGallery.setScaleType(ImageView.ScaleType.FIT_XY);
             imgGallery.setAdjustViewBounds(true);
             Glide.with(context).load(img)
-                    .apply(new RequestOptions().centerCrop().override(Commons.getWidthDisplay() / 2, Commons.getWidthDisplay() / 2).placeholder(R.drawable.millos_news_wm).error(R.drawable.millos_news_wm))
+                    .apply(new RequestOptions().centerCrop().override(Commons.getWidthDisplay() / 2, Commons.getWidthDisplay() / 2).placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                     .into(imgGallery);
         }
     }
