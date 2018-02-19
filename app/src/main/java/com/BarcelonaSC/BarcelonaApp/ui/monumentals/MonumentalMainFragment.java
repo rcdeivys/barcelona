@@ -54,7 +54,6 @@ public class MonumentalMainFragment extends BaseFragment {
         monumentalRankingFragment = new MonumentalRankingFragment();
 
         pager.setAdapter(new MonumentalPagerAdapter(getChildFragmentManager(), getActivity(), monumentalNewsFragment, monumentalFragment, monumentalRankingFragment));
-        pager.setOffscreenPageLimit(0);
         tabs.setupWithViewPager(pager);
     }
 
