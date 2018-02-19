@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalPoll;
+import com.BarcelonaSC.BarcelonaApp.ui.news.views.adapters.NewsAdapter;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -30,7 +31,7 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     private static final String TAG = MonumentalAdapter.class.getSimpleName();
     private Context context;
-    private MonumentalAdapter.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
     private MonumentalPoll Poll;
@@ -73,10 +74,16 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                     .into(item.girl);
 
-            item.girl.setOnClickListener(new View.OnClickListener() {
+            /*item.girl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     onItemClickListener.onClickItem(pos);
+                }
+            });*/
+            item.girl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    setOnItemClickListener(onItemClickListener);
                 }
             });
             item.monumental_name.setText(Poll.getMonumentales().get(pos).getNombre());
@@ -113,6 +120,10 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             super(view);
             ButterKnife.bind(this, view);
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
     }
 
     public interface OnItemClickListener {

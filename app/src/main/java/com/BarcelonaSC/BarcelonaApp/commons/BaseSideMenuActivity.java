@@ -143,13 +143,13 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
         ivSideMenuList.add(new DrawerItem(Constant.Menu.TEAM, R.drawable.plantilla_icon, configurationManager.getConfiguration().getTit6()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.MONUMENTAL, R.drawable.monumentales_icon, configurationManager.getConfiguration().getTit12()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.ALIGMENT, R.drawable.alineacion_icon, configurationManager.getConfiguration().getTit7()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.WALL_AND_CHAT, R.drawable.muro_chat_icon, configurationManager.getConfiguration().getTit16()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.GAME, R.drawable.juegos_icon, configurationManager.getConfiguration().getTit11()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.ONLINE_SHOP, R.drawable.tienda_icon, configurationManager.getConfiguration().getTit13()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.VIRTUAL_REALITY, R.drawable.realidad_virtual_icon, configurationManager.getConfiguration().getTit8()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.MAP, R.drawable.mapa_icon, configurationManager.getConfiguration().getTit14()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.STATISTICS, R.drawable.estadisticas_icon, configurationManager.getConfiguration().getTit5()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.YOUR_CHOOSE, R.drawable.tu_escoges_icon, configurationManager.getConfiguration().getTit10()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.WALL_AND_CHAT, R.drawable.muro_chat_icon, configurationManager.getConfiguration().getTit16()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.GAME, R.drawable.juegos_icon, configurationManager.getConfiguration().getTit11()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.ONLINE_SHOP, R.drawable.tienda_icon, configurationManager.getConfiguration().getTit13()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.VIRTUAL_REALITY, R.drawable.realidad_virtual_icon, configurationManager.getConfiguration().getTit8()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.MAP, R.drawable.mapa_icon, configurationManager.getConfiguration().getTit14()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.STATISTICS, R.drawable.estadisticas_icon, configurationManager.getConfiguration().getTit5()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.YOUR_CHOOSE, R.drawable.tu_escoges_icon, configurationManager.getConfiguration().getTit10()));
 
         return ivSideMenuList;
     }
