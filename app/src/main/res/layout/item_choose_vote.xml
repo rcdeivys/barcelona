@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
-        android:src="@drawable/logo_transparencia"
+        android:src="@drawable/bsc_grey_logo"
         app:rounded_radius="20" />
 
     <RelativeLayout

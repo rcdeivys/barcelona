@@ -142,7 +142,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             vhItem.playerImg.setLayoutParams(params);
             Glide.with(context)
                     .load(playoffData.getBanner())
-                    .apply(new RequestOptions().placeholder(R.drawable.millos_news_wm).error(R.drawable.millos_news_wm))
+                    .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                     .into(vhItem.playerImg);
             vhItem.playerImg.setAlpha((float) 1.0);
 

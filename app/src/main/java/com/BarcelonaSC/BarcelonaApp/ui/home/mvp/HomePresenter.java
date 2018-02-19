@@ -22,6 +22,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.statistics.StatisticsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.TeamFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.map.MapFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.WallFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
@@ -53,6 +54,7 @@ public class HomePresenter {
     private AcademyFragment academyFragment;
     private WallAndChatFragment wallAndChatFragment;
     private MapFragment mapFragment;
+    private MonumentalMainFragment monumentalFragment;
 
     public HomePresenter(HomeContract.View view, HomeModel homeModel) {
         this.view = view;
@@ -185,7 +187,12 @@ public class HomePresenter {
     }
 
     private void mountMonumental() {
-
+        monumentalFragment = (MonumentalMainFragment) view.getFragmentByTag(MonumentalMainFragment.TAG);
+        if (monumentalFragment == null) {
+            monumentalFragment = new MonumentalMainFragment();
+            view.addFragment(monumentalFragment, MonumentalMainFragment.TAG);
+        }
+        view.showFragment(monumentalFragment, MonumentalMainFragment.TAG);
     }
 
     private void mountMap() {

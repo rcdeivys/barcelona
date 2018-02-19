@@ -41,5 +41,4 @@ public class NewsModule {
         return new NewsPresenter(fragment, model);
     }
 
-
 }

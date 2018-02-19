@@ -21,7 +21,4 @@ public interface NewsApi {
     @GET("noticias_futbolbase")
     Call<NewsResponse> getNewsFootballBase(@Query("page") int page);
 
-    @GET("noticias_monumentales")
-    Call<NewsResponse> getMonumentalNews(@Query("page") int page);
-
 }

@@ -157,7 +157,7 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
     public void updateHeader() {
         sessionManager = new SessionManager(App.get().getBaseContext());
         Log.d("BaseActivity", "nombre:  " + sessionManager.getUser().getNombre());
-        sideMenu.notifyDataSetChanged();
+        sideMenu.notifyItemChanged(0);
     }
 
     public void registerTrackScreen(String screenName) {

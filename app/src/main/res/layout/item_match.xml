@@ -68,7 +68,7 @@
             android:layout_marginEnd="5dp"
             android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/escudo_menu" />
+            android:src="@drawable/bsc_grey_logo" />
 
         <TextView
             android:id="@+id/iv_team_1_name"
@@ -90,7 +90,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginStart="5dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/escudo_menu" />
+            android:src="@drawable/bsc_grey_logo" />
 
         <TextView
             android:id="@+id/iv_team_2_name"

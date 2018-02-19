@@ -8,6 +8,7 @@ import com.BarcelonaSC.BarcelonaApp.app.api.FriendsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.GalleryApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.GroupsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.LineUpApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.MonumentalApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.NewsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.ProfileApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.RecoveryPasswordApi;
@@ -77,5 +78,7 @@ public interface AppComponent {
     WallApi wallApi();
 
     WallCommentApi wallCommentApi();
+
+    MonumentalApi monumentalApi();
 
 }

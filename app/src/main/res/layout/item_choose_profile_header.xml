@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/millos_news_wm" />
+        android:src="@drawable/bsc_news_wm" />
 
     <LinearLayout
         android:id="@+id/ll_votes"

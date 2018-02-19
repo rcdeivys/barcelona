@@ -105,6 +105,5 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public interface OnItemClickListener {
         void onClickItem(News news);
-
     }
 }

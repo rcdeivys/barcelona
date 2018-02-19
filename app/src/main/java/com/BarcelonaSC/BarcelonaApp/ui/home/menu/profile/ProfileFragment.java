@@ -98,7 +98,6 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
             presenter.loadUser(((HomeActivity) getActivity()).sessionManager.getSession().getToken());
             Toast.makeText(getActivity(), R.string.data_was_updated, Toast.LENGTH_LONG).show();
         }
-
     }
 
     @Override

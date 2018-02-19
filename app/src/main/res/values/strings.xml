@@ -4,9 +4,8 @@
     <string name="clientSecret" translatable="false">M8PrcrZz3Lx9t41sJmdTE30v</string>
     <string name="client_id" translatable="false">498718885624-ed9trhh1b9jh3b4d9kkrk64akopcsmrk.apps.googleusercontent.com</string>
     <string name="client" translatable="false">498718885624-ed9trhh1b9jh3b4d9kkrk64akopcsmrk.apps.googleusercontent.com</string>
-    <string name="facebook_app_id" translatable="false">1859980400683639</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb1859980400683639</string>
-
+    <string name="facebook_app_id" translatable="false">195864014495627</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb195864014495627</string>
     <string name="menu">menu</string>
     <string name="roster">Nómina</string>
     <string name="game_summoned">Convocados partido</string>
