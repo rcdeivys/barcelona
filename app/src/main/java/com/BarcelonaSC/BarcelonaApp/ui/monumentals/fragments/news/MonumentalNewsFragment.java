@@ -196,7 +196,9 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
 
     @Override
     public void setRefreshing(boolean state) {
-
+        if (state) {
+            presenter.loadNews();
+        }
     }
 
     @Override

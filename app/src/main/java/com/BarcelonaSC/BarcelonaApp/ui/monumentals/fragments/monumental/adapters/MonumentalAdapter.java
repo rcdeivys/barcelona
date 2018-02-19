@@ -49,7 +49,7 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == TYPE_HEADER) {
             return new MonumentalAdapter.ViewHeader(LayoutInflater.from(parent.getContext()).inflate(R.layout.header_survey_monumentals, parent, false));
-        }  else {
+        } else {
             return new MonumentalAdapter.ViewItem(LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_monumental_item, parent, false));
         }
     }

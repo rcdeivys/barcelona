@@ -34,6 +34,7 @@ public class MonumentalPresenter implements MonumentalContract.Presenter, Monume
         if (isViewNull()) return;
         view.setMonumentals(poll);
         view.hideProgress();
+        view.setRefreshing(false);
     }
 
     @Override
@@ -48,6 +49,7 @@ public class MonumentalPresenter implements MonumentalContract.Presenter, Monume
         if (view == null) return;
         model.loadMonumental(this);
         view.showProgress();
+        view.setRefreshing(false);
     }
 
     @Override
