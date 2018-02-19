@@ -1,5 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
@@ -20,6 +22,8 @@ import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.di.Dagge
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.di.MonumentalModule;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.mvp.MonumentalContract;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.mvp.MonumentalPresenter;
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.MonumentalProfileActivity;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import javax.inject.Inject;
 
@@ -132,7 +136,11 @@ public class MonumentalFragment extends BaseFragment implements MonumentalContra
 
     @Override
     public void navigateToMonumentalProfile(String monumentalId, String PollId) {
-
+        Intent intent = new Intent(getActivity(), MonumentalProfileActivity.class);
+        intent.putExtra(Constant.Key.MONUMETAL_ID, monumentalId);
+        intent.putExtra(Constant.Key.SURVEY_ID, PollId);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
     }
 
     private void refresh() {

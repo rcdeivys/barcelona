@@ -1,5 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.mvp;
 
+import android.util.Log;
+
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalPoll;
 
 /**
@@ -60,6 +62,7 @@ public class MonumentalPresenter implements MonumentalContract.Presenter, Monume
     @Override
     public void onClickItem(int position) {
         if (isViewNull()) return;
+        Log.d(TAG, String.valueOf(poll.getMonumentales().get(position).getIdmonumental())+ " " + String.valueOf(poll.getIdencuesta()));
         view.navigateToMonumentalProfile(String.valueOf(poll.getMonumentales().get(position).getIdmonumental()), String.valueOf(poll.getIdencuesta()));
     }
 }

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Principal container -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/RL_Ppal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100">
+
+    <!-- Custom Toolbar -->
+    <include
+        android:id="@+id/Toolbar"
+        layout="@layout/toolbar_generic" />
+
+    <!-- Header de la actividad -->
+    <RelativeLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Toolbar"
+        android:background="@color/colorAccent">
+
+        <!-- Botón para regresar a la actividad anterior -->
+        <ImageButton
+            android:id="@+id/IB_Return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/arrow_back" />
+
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+            android:id="@+id/TV_Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/sub_menu_padding"
+            android:text="Detalle Monumental"
+            android:textColor="@color/colorTituloHeader"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/IB_Share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:background="@color/transparent"
+            android:src="@drawable/share"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Header"
+        android:background="@color/colorHeader"
+        app:tabIndicatorColor="@color/background_yellow"
+        app:tabIndicatorHeight="6dp"
+        app:tabSelectedTextColor="@color/background_yellow"
+        app:tabTextColor="@color/colorPrimary" />
+
+    <com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/Banner"
+        android:layout_below="@id/tabs"
+        android:layout_weight="1" />
+
+    <!-- Banner-->
+    <include
+        android:id="@+id/Banner"
+        layout="@layout/footer"
+        android:visibility="visible" />
+
+    <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/publisherAdView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="545dp"
+        android:visibility="gone"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="/6499/example/banner" />
+
+</RelativeLayout>

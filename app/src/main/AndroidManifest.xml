@@ -136,7 +136,6 @@
         </receiver>
         -->
 
-
         <!--
           <receiver
               android:name="com.millonarios.MillonariosFC.commons.Services.FirebaseDataReceiver"
@@ -146,7 +145,6 @@
               </intent-filter>
           </receiver>
         -->
-
 
         <!--
      Set custom default icon. This is used when no icon is set for incoming notification messages.
@@ -161,7 +159,6 @@
              Set color used with incoming notification messages. This is used when no color is set for the incoming
              notification message. See README(https://goo.gl/6BKBk7) for more.
         -->
-
 
         <!--
         <meta-data
@@ -188,7 +185,11 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.monumentals.fragments.monumental.profile.MonumentalProfileActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

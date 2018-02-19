@@ -6,7 +6,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background002" />
+        android:background="@drawable/side_menu_bg" />
 
     <!-- Header de la actividad -->
     <RelativeLayout
