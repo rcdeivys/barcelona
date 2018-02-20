@@ -60,7 +60,6 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
         return new WallPostViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_post, parent, false));
     }
 
-
     public WallPostViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
@@ -80,7 +79,8 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
         }
 
         if (item.getYaaplaudio() == 1) {
-            likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso));
+            likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
+            likeIcon.setBackgroundTintList(context.getResources().getColorStateList(R.color.yellow_tint));
         } else {
             likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
         }
@@ -118,14 +118,16 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
         textPost.setVisibility(View.VISIBLE);
         imgPost.setVisibility(View.GONE);
         videoPost.setVisibility(View.GONE);
-
         textPost.setText(StringEscapeUtils.unescapeJava(message));
-
     }
 
     private void setPhoto(String photo) {
         imgPost.setVisibility(View.VISIBLE);
-        Glide.with(context).load(photo).apply(new RequestOptions().error(Commons.getDrawable(R.drawable.logo_transparencia)).placeholder(Commons.getDrawable(R.drawable.logo_transparencia))).into(imgPost);
+        Glide.with(context)
+                .load(photo)
+                .apply(new RequestOptions().error(Commons.getDrawable(R.drawable.bsc_news_wm))
+                        .placeholder(Commons.getDrawable(R.drawable.bsc_news_wm)))
+                .into(imgPost);
 
     }
 
@@ -144,6 +146,5 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
             likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
         }
     }
-
 
 }

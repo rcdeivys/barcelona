@@ -26,7 +26,6 @@ import butterknife.ButterKnife;
 
 public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
 
-
     private static final String TAG = VoteAdapter.class.getSimpleName();
     private Context context;
     private List<RespuestaData> mRespuestasData;
@@ -35,7 +34,6 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
 
     public VoteAdapter(VoteFragment voteFragment) {
         this.context = voteFragment.getContext();
-
 
         onItemClickListener = voteFragment;
     }
@@ -57,10 +55,9 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
         final RespuestaData item = mRespuestasData.get(position);
 
         //   holder.tvPosition.setText(String.valueOf(position + 1) + ".");
-
         Glide.with(context)
                 .load(item.getFoto())
-                .apply(new RequestOptions().placeholder(R.drawable.logo_millos).error(R.drawable.logo_millos))
+                .apply(new RequestOptions().placeholder(R.drawable.logo_bsc).error(R.drawable.logo_bsc))
                 .into(holder.sivChoose);
 
         if (item.getYaVoto() != null && "1".equals(item.getYaVoto())) {
@@ -110,7 +107,6 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
         return mRespuestasData.size();
     }
 
-
     class ViewHolder extends RecyclerView.ViewHolder {
         /*   @BindView(R.id.tvPosition)
            TextView tvPosition;
@@ -140,7 +136,6 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
         void onClickItem(int id);
 
         void onClickPlayerVote(int position);
-
     }
 
 }

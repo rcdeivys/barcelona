@@ -1,5 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.home.menu.profile;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -138,4 +139,11 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
             fragment.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+    public void moveBack(Fragment f) {
+        if (f instanceof InfoAccountFragment) {
+            pager.setCurrentItem(0, true);
+        }
+    }
+
 }

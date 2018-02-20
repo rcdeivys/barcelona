@@ -1,5 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.recovery.send.code.mpv;
 
+import com.BarcelonaSC.BarcelonaApp.models.AuthItem;
 import com.BarcelonaSC.BarcelonaApp.models.response.SendCodeResponse;
 import com.BarcelonaSC.BarcelonaApp.ui.profile.mvp.ProfilePresenter;
 
@@ -35,7 +36,7 @@ public class SendCodePresenter implements SendCodeContract.Presenter, SendCodeCo
     }
 
     @Override
-    public void onSuccess(SendCodeResponse data) {
+    public void onSuccess(AuthItem data) {
         if (contract != null) {
             contract.success(data);
             contract.hideProgress();
