@@ -74,16 +74,10 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                     .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                     .into(item.girl);
 
-            /*item.girl.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    onItemClickListener.onClickItem(pos);
-                }
-            });*/
             item.girl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    setOnItemClickListener(onItemClickListener);
+                    onItemClickListener.onClickItem(pos);
                 }
             });
             item.monumental_name.setText(Poll.getMonumentales().get(pos).getNombre());

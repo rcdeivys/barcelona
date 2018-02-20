@@ -43,7 +43,6 @@ public class ReferredRecyclerAdapter extends RecyclerView.Adapter<ReferredRecycl
     @Override
     public ReferredRecyclerAdapter.ReferredViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ReferredViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.lv_referred_item, parent, false));
-
     }
 
     @Override

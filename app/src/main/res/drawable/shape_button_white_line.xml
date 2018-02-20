@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle"   >
-    <solid
-        android:color="@color/colorFondoPrimario" >
-    </solid>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/colorFondoPrimario" />
 
     <stroke
         android:width="2dp"
-        android:color="@color/white" >
-    </stroke>
+        android:color="@color/white" />
     <padding
+        android:bottom="8dp"
         android:left="8dp"
-        android:top="8dp"
         android:right="8dp"
-        android:bottom="8dp"    >
-    </padding>
+        android:top="8dp" />
     <corners
         android:bottomLeftRadius="5dp"
-        android:bottomRightRadius="5dp">
-    </corners>
+        android:bottomRightRadius="5dp" />
 
 </shape>

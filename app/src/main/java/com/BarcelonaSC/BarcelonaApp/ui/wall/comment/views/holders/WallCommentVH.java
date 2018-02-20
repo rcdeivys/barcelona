@@ -66,6 +66,8 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
         remaining.setText(CustomDate.timeAgo(Commons.getDateString(commentItem.getFecha()).getTime()));
         if (commentItem.getComentario().equals("")) {
             inputComment.setVisibility(View.GONE);
+        } else {
+            inputComment.setVisibility(View.VISIBLE);
         }
         if (commentItem.getFoto() != null) {
             if (!commentItem.getFoto().equals("")) {

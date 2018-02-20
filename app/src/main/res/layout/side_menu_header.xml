@@ -16,21 +16,38 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorAccent" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_perfil"
-        android:layout_width="@dimen/menu_img_profile_size"
-        android:layout_height="@dimen/menu_img_profile_size"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/silueta"
-        android:visibility="visible" />
+    <RelativeLayout
+        android:id="@+id/img_container"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_perfil"
+            android:layout_width="@dimen/menu_img_profile_size"
+            android:layout_height="@dimen/menu_img_profile_size"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/silueta"
+            android:visibility="visible" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/img_perfil"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_edit" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
         android:layout_marginStart="5dp"
-        android:layout_toEndOf="@id/img_perfil"
+        android:layout_toEndOf="@id/img_container"
         android:orientation="horizontal"
         android:visibility="visible">
 
@@ -38,7 +55,7 @@
             android:id="@+id/first_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -47,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="3dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -95,7 +112,7 @@
             android:layout_width="@dimen/icon_xsmall"
             android:layout_height="@dimen/icon_xsmall"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/icon_config"
+            android:src="@drawable/ic_settings"
             android:visibility="visible" />
 
     </RelativeLayout>

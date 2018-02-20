@@ -14,7 +14,6 @@ import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.
  */
 
 public class MonumentalProfilePagerAdapter extends FragmentStatePagerAdapter {
-
     // Tabs' titles
     private CharSequence Titles[];
     // Number ob tabs

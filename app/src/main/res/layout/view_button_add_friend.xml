@@ -3,7 +3,7 @@
     android:id="@+id/content_button_add_friend"
     android:layout_width="160dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/yellow_border_background"
+    android:background="@drawable/btn_2_perfil"
     android:padding="5dp"
     android:layout_margin="5dp">
 
@@ -14,6 +14,7 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/input_add_friend"
         android:src="@drawable/add"
+        android:tint="@color/colorPrimaryDark"
         android:visibility="visible" />
 
     <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:text="@string/add_friend"
+        android:textColor="@color/colorPrimaryDark"
         android:textAllCaps="true"
         android:visibility="visible" />
 

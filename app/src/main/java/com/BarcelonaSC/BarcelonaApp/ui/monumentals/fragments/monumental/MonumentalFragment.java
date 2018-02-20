@@ -94,8 +94,8 @@ public class MonumentalFragment extends BaseFragment implements MonumentalContra
         if (monumentalAdapter == null) {
             mLayoutManager = new LinearLayoutManager(getActivity(),
                     LinearLayoutManager.VERTICAL, false);
-
             monumentalAdapter = new MonumentalAdapter(getActivity(), monumentals);
+            monumentalAdapter.setOnItemClickListener(this);
             recyclerView.setLayoutManager(mLayoutManager);
             recyclerView.setAdapter(monumentalAdapter);
             swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -140,7 +140,7 @@ public class MonumentalFragment extends BaseFragment implements MonumentalContra
         intent.putExtra(Constant.Key.MONUMETAL_ID, monumentalId);
         intent.putExtra(Constant.Key.SURVEY_ID, PollId);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(intent);
+        getActivity().startActivity(intent);
     }
 
     private void refresh() {
@@ -150,7 +150,6 @@ public class MonumentalFragment extends BaseFragment implements MonumentalContra
 
     @Override
     public void onClickItem(int position) {
-        //Aquí mover a monumentalProfile, pendiente.
         presenter.onClickItem(position);
     }
 

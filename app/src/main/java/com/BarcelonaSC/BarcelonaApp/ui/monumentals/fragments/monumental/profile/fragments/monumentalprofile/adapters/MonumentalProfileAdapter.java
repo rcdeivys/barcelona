@@ -45,7 +45,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
 
     public MonumentalProfileAdapter(MProfileFragment monumentalProfileFragment) {
         this.context = monumentalProfileFragment.getContext();
-        monumental = new MonumentalItem();
+        //monumental = new MonumentalItem();
         //monumental.setNoticias(new ArrayList<News>());
         //onItemClickListener = monumentalProfileFragment;
         formatOut = new SimpleDateFormat("yyyy-MM-dd");
@@ -130,14 +130,14 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
             Date date1 = formatIn.parse(recentItem.getFecha());
             String formatOutStr = formatOut.format(date1);
             vhItem.tvData.setText(String.valueOf(formatOutStr));
-            System.out.println(formatOutStr);
+            //System.out.println(formatOutStr);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        vhItem.tvData.setTypeface(FontsUtil.getOpenSansReularFonts(context));
+        //vhItem.tvData.setTypeface(FontsUtil.getOpenSansReularFonts(context));
         vhItem.tvTitle.setText(recentItem.getTitulo());
-        vhItem.tvTitle.setTypeface(FontsUtil.getHelveticaCondesed2Fonts(context));
+        //vhItem.tvTitle.setTypeface(FontsUtil.getHelveticaCondesed2Fonts(context));
 
         vhItem.llNewsItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,13 +171,16 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
             return monumental.getNewsList().get(position);
     }
 
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
     public interface OnItemClickListener {
         void onClickItem(News news);
 
         void onClickHeader();
 
         void onClickVote(MonumentalItem monumentalItem);
-
     }
 
     class VHItem extends RecyclerView.ViewHolder {

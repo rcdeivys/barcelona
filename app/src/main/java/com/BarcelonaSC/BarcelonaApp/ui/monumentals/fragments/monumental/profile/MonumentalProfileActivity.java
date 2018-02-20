@@ -28,9 +28,9 @@ public class MonumentalProfileActivity extends BaseActivity {
     CustomTabLayout tabs;
     @BindView(R.id.pager)
     CustomViewPager pager;
-    @BindView(R.id.IB_Return)
+    @BindView(R.id.ib_return)
     ImageButton ibReturn;
-    @BindView(R.id.IB_Share)
+    @BindView(R.id.ib_sub_header_share)
     ImageButton ibShare;
     @BindView(R.id.tv_sub_header_title)
     FCMillonariosTextView tvSubHeaderTitle;
@@ -55,6 +55,11 @@ public class MonumentalProfileActivity extends BaseActivity {
         initializeViewPager();
     }
 
+    public void initSubToolBar(String name) {
+        tvSubHeaderTitle.setText(name);
+        ibShare.setVisibility(View.INVISIBLE);
+    }
+
     private void initializeViewPager() {
         int Numboftabs = 2;
         String monumental = getIntent().getExtras().getString(Constant.Key.MONUMETAL_ID);
@@ -62,25 +67,21 @@ public class MonumentalProfileActivity extends BaseActivity {
         String[] titles = {"Perfil Monumental", "Redes Sociales"};
 
         viewPagerAdapter = new MonumentalProfilePagerAdapter(getSupportFragmentManager(), titles, Numboftabs, monumental, survey);
+        pager.setPagingEnabled(true);
         pager.setAdapter(viewPagerAdapter);
         tabs.setVisibility(View.VISIBLE);
         tabs.setupWithViewPager(pager);
     }
 
-    public void initSubToolBar(String name) {
-        tvSubHeaderTitle.setText(name);
-        ibShare.setVisibility(View.INVISIBLE);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
     }
 
 }

@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/side_menu_header"
         android:scaleType="centerCrop"
-        android:src="@drawable/background002" />
+        android:src="@drawable/bg_menu" />
 
     <include
         android:id="@+id/layout_sn"
