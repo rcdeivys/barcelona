@@ -4,6 +4,8 @@ import com.BarcelonaSC.BarcelonaApp.models.MonumentalItem;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by root on 10/20/17.
  */
@@ -16,6 +18,10 @@ public class MonumentalResponse {
     @SerializedName("data")
     @Expose
     private MonumentalItem data;
+    @SerializedName("error")
+    @Expose
+    private List<String> error = null;
+
 
     public String getStatus() {
         return status;
@@ -33,4 +39,11 @@ public class MonumentalResponse {
         this.data = data;
     }
 
+    public List<String> getError() {
+        return error;
+    }
+
+    public void setError(List<String> error) {
+        this.error = error;
+    }
 }

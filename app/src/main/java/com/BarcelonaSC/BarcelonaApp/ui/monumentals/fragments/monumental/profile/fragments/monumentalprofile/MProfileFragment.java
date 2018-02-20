@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,6 @@ import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
-import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import javax.inject.Inject;
@@ -56,6 +54,8 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
 
     private MonumentalProfileAdapter adapter;
     private LinearLayoutManager linearLayoutManager;
+
+    MonumentalItem monumentalItem;
 
     String idMonumental;
     String idEncuesta;
@@ -125,6 +125,7 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     @Override
     public void showMonumental(MonumentalItem itemList) {
         initRvAndAdapter();
+        swipeContainer.setRefreshing(false);
         adapter.setData(itemList);
         notifyDataSetChanged();
     }
@@ -138,7 +139,7 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     @Override
     public void onFailed(String msg) {
         swipeContainer.setRefreshing(false);
-        showToast("¡Ya has votado en esta encuesta!", 2000);
+        showToast(msg, 1000);
     }
 
     @Override
@@ -182,7 +183,7 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     }
 
     @Override
-    public void onClickVote(MonumentalItem monumentalItem) {
+    public void onClickVote() {
         presenter.voteMonumental(idMonumental, idEncuesta, Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID));
     }
 
