@@ -23,7 +23,9 @@
             android:id="@+id/iv_play"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            android:src="@drawable/play"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

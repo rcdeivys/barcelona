@@ -39,7 +39,10 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("debug.keystore")
+            keyAlias 'barcelona'
+            keyPassword 'supernicewise'
+            storeFile file("Barcelona.keystore")
+            storePassword 'supernicewise'
         }
 
         staging {

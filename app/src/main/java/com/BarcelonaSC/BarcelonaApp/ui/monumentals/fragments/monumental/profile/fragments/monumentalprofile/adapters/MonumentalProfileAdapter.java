@@ -45,9 +45,6 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
 
     public MonumentalProfileAdapter(MProfileFragment monumentalProfileFragment) {
         this.context = monumentalProfileFragment.getContext();
-        //monumental = new MonumentalItem();
-        //monumental.setNoticias(new ArrayList<News>());
-        //onItemClickListener = monumentalProfileFragment;
         formatOut = new SimpleDateFormat("yyyy-MM-dd");
         formatIn = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
@@ -120,11 +117,12 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
                 .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                 .into(vhItem.ivNews);
         // Set play image
-        if (recentItem.getTipo().matches(Constant.NewsType.VIDEO)) {
-            vhItem.ivPlay.setImageResource(R.drawable.ic_play_circle_60dp);
+        /*if (recentItem.getTipo().matches(Constant.NewsType.VIDEO)) {
+            //vhItem.ivPlay.setImageResource(R.drawable.ic_play_circle_60dp);
+            vhItem.ivPlay.setVisibility(View.VISIBLE);
         } else {
-            vhItem.ivPlay.setImageDrawable(null);
-        }
+            //vhItem.ivPlay.setImageDrawable(null);
+        }*/
 
         try {
             Date date1 = formatIn.parse(recentItem.getFecha());

@@ -80,7 +80,6 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
 
         if (item.getYaaplaudio() == 1) {
             likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
-            likeIcon.setBackgroundTintList(context.getResources().getColorStateList(R.color.yellow_tint));
         } else {
             likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
         }

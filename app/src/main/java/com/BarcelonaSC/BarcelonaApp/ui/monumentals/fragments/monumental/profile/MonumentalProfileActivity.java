@@ -44,7 +44,7 @@ public class MonumentalProfileActivity extends BaseActivity {
         setContentView(R.layout.activity_profile_monumental);
         unbinder = ButterKnife.bind(this);
 
-        tvSubHeaderTitle.setText("");
+        tvSubHeaderTitle.setText("Detalle Monumental");
         ibReturn.setVisibility(View.VISIBLE);
         ibReturn.setOnClickListener(new View.OnClickListener() {
             @Override

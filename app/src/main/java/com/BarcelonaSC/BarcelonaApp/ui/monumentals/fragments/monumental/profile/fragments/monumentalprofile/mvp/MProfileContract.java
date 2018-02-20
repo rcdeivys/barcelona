@@ -41,7 +41,7 @@ public class MProfileContract {
 
         void navigateToNewsDetailsActivity(News news);
 
-        void navigateToGalleryActivity(int id);
+        void navigateToGalleryActivity(News news);
     }
 
 }

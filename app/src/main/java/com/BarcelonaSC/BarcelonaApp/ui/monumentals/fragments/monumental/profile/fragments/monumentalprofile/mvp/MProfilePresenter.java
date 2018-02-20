@@ -55,7 +55,7 @@ public class MProfilePresenter implements MProfileContract.Presenter, MProfileCo
     @Override
     public void clickItem(News news) {
         if (news.getTipo().matches(Constant.NewsType.GALERY)) {
-            view.navigateToGalleryActivity(news.getId());
+            view.navigateToGalleryActivity(news);
         } else if (news.getTipo().matches(Constant.NewsType.VIDEO)) {
             view.navigateToVideoNewsActivity(news);
         } else if (news.getTipo().matches(Constant.NewsType.INFOGRAFY) || news.getTipo().matches(Constant.NewsType.STAT)) {

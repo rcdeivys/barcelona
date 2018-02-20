@@ -1,5 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
@@ -17,11 +18,15 @@ import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalItem;
 import com.BarcelonaSC.BarcelonaApp.models.News;
+import com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryListActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile.adapters.MonumentalProfileAdapter;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile.di.DaggerMProfileComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile.di.MProfileModule;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile.mvp.MProfileContract;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile.mvp.MProfilePresenter;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
@@ -93,6 +98,7 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
         if (adapter == null) {
             presenter.loadMonumental(idMonumental);
         } else {
+            adapter.setOnItemClickListener(this);
             rvPlayerNews.setAdapter(adapter);
             rvPlayerNews.setLayoutManager(linearLayoutManager);
         }
@@ -110,6 +116,7 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     private void initRvAndAdapter() {
         if (adapter == null) {
             adapter = new MonumentalProfileAdapter(this);
+            adapter.setOnItemClickListener(this);
             rvPlayerNews.setAdapter(adapter);
             rvPlayerNews.setLayoutManager(linearLayoutManager);
         }
@@ -136,22 +143,32 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
 
     @Override
     public void navigateToVideoNewsActivity(News news) {
-
+        Intent intent = new Intent(getActivity(), NewsVideoActivity.class);
+        intent.putExtra(Constant.Key.URL, news.getLink());
+        getActivity().startActivity(intent);
     }
 
     @Override
     public void navigateToInfografiaActivity(News news) {
-
+        Intent intent = new Intent(getActivity(), NewsInfografyActivity.class);
+        intent.putExtra(Constant.Key.URL, news.getLink());
+        getActivity().startActivity(intent);
     }
 
     @Override
     public void navigateToNewsDetailsActivity(News news) {
-
+        Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
+        intent.putExtra(Constant.Key.TITLE, news.getTitulo());
+        intent.putExtra(Constant.Key.DESC_NEW, news.getDescripcion());
+        intent.putExtra(Constant.Key.IMG, news.getFoto());
+        getActivity().startActivity(intent);
     }
 
     @Override
-    public void navigateToGalleryActivity(int id) {
-
+    public void navigateToGalleryActivity(News news) {
+        Intent intent = new Intent(getActivity(), GalleryListActivity.class);
+        intent.putExtra(Constant.Key.ID, news.getId());
+        startActivity(intent);
     }
 
     @Override

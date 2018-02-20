@@ -7,14 +7,14 @@
     <!-- Player's image -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/monumental_img"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/bsc_news_wm" />
+            android:adjustViewBounds="true" />
 
         <LinearLayout
             android:id="@+id/monumental_name_container"
