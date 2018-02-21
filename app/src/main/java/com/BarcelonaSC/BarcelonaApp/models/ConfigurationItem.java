@@ -35,6 +35,9 @@ public class ConfigurationItem {
     @SerializedName("video_referidos")
     @Expose
     private String videoReferidos;
+    @SerializedName("total_hinchas")
+    @Expose
+    private int totalHinchas;
     @SerializedName("tit_1")
     @Expose
     private String tit1;
@@ -251,6 +254,14 @@ public class ConfigurationItem {
 
     public void setUrlAcademia(String urlAcademia) {
         this.urlAcademia = urlAcademia;
+    }
+
+    public int getTotalHinchas() {
+        return totalHinchas;
+    }
+
+    public void setTotalHinchas(int totalHinchas) {
+        this.totalHinchas = totalHinchas;
     }
 
     public String getTit1() {
@@ -643,6 +654,5 @@ public class ConfigurationItem {
 
     public void setTit1634(String tit1634) {
         this.tit1634 = tit1634;
-
     }
 }

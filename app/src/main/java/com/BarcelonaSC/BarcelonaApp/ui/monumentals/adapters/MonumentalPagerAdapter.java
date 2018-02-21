@@ -50,13 +50,13 @@ public class MonumentalPagerAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Noticias";
+                return "Galería";
             case 1:
-                return "Monumental";
+                return "Votación";
             case 2:
                 return "Ranking";
             default:
-                return "Monumental";
+                return "Galería";
         }
     }
 

@@ -1,5 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.mvp;
 
+import android.util.Log;
+
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalPoll;
 
 /**
@@ -11,8 +13,7 @@ public class MonumentalPresenter implements MonumentalContract.Presenter, Monume
     private static final String TAG = MonumentalPresenter.class.getSimpleName();
     private MonumentalContract.View view;
     private MonumentalModel model;
-
-    MonumentalPoll poll;
+    private MonumentalPoll poll;
 
     public MonumentalPresenter(MonumentalContract.View view, MonumentalModel model) {
         this.view = view;
@@ -32,6 +33,7 @@ public class MonumentalPresenter implements MonumentalContract.Presenter, Monume
     @Override
     public void onGetMonumentalSuccess(MonumentalPoll poll) {
         if (isViewNull()) return;
+        this.poll = poll;
         view.setMonumentals(poll);
         view.hideProgress();
         view.setRefreshing(false);
@@ -46,7 +48,7 @@ public class MonumentalPresenter implements MonumentalContract.Presenter, Monume
 
     @Override
     public void getMonumentals() {
-        if (view == null) return;
+        if (isViewNull()) return;
         model.loadMonumental(this);
         view.showProgress();
         view.setRefreshing(false);

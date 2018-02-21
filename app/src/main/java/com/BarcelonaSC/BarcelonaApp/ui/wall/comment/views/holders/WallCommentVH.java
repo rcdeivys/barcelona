@@ -66,12 +66,14 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
         remaining.setText(CustomDate.timeAgo(Commons.getDateString(commentItem.getFecha()).getTime()));
         if (commentItem.getComentario().equals("")) {
             inputComment.setVisibility(View.GONE);
+        } else {
+            inputComment.setVisibility(View.VISIBLE);
         }
         if (commentItem.getFoto() != null) {
             if (!commentItem.getFoto().equals("")) {
 
                 imgComment.setVisibility(View.VISIBLE);
-                Glide.with(context).load(commentItem.getFoto()).apply(new RequestOptions().placeholder(R.drawable.logo_transparencia).error(R.drawable.logo_transparencia)).into(imgComment);
+                Glide.with(context).load(commentItem.getFoto()).apply(new RequestOptions().placeholder(R.drawable.bsc_grey_logo).error(R.drawable.bsc_grey_logo)).into(imgComment);
             } else {
                 imgComment.setVisibility(View.GONE);
             }

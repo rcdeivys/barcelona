@@ -103,7 +103,7 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 });
             } else if (position == 1) {
                 ((MenuSocialViewHolder) holder).setData();
-                ((MenuSocialViewHolder) holder).hinchaCounter(String.valueOf("12345"/*ConfigurationManager.getInstance().getConfiguration().getTotalHinchas()*/));
+                ((MenuSocialViewHolder) holder).hinchaCounter(String.valueOf(ConfigurationManager.getInstance().getConfiguration().getTotalHinchas()));
             }
         } else {
             ((MenuItemViewHolder) holder).setData((DrawerItem) ivSideMenuList.get(position));

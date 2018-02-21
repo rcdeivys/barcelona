@@ -63,7 +63,7 @@
                     android:text="@string/name_example"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/black"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <com.BarcelonaSC.BarcelonaApp.utils.SquareImageView
@@ -110,7 +110,7 @@
                 android:paddingLeft="15dp"
                 android:text="@string/chat_hour_example"
                 android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/chat_time_color"
+                android:textColor="@color/colorAccent"
                 android:textSize="10sp"
                 android:visibility="gone" />
 

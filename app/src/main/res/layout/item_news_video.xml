@@ -2,10 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
     android:layout_marginBottom="10dp"
-    android:padding="5dp"
     android:background="@drawable/rounder_item_new"
     android:orientation="vertical">
 
@@ -15,7 +12,6 @@
         android:layout_height="wrap_content">
 
         <!-- Imagen de la noticia -->
-
         <FrameLayout
             android:id="@+id/videoSurfaceContainer"
             android:layout_width="match_parent"

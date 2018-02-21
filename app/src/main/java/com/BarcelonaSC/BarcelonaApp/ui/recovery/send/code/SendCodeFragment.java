@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.models.AuthItem;
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.code.di.SendCodeModule;
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.code.mpv.SendCodePresenter;
 import com.BarcelonaSC.BarcelonaApp.models.response.SendCodeResponse;
@@ -31,7 +32,6 @@ import butterknife.ButterKnife;
  */
 
 public class SendCodeFragment extends Fragment implements SendCodeContract.View {
-
 
     @BindView(R.id.pinEntry)
     PinEntryEditText pinEntry;
@@ -61,9 +61,8 @@ public class SendCodeFragment extends Fragment implements SendCodeContract.View 
     }
 
     @Override
-    public void success(SendCodeResponse data) {
+    public void success(AuthItem data) {
         getActivity().startActivity(new Intent(getActivity(), HomeActivity.class));
-        ((RecoveryPasswordActivity) getActivity()).sessionManager.setSession(data.getData());
         getActivity().finish();
     }
 
@@ -82,11 +81,11 @@ public class SendCodeFragment extends Fragment implements SendCodeContract.View 
         Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
     }
 
-
     public void initComponent() {
         DaggerSendCodeComponent.builder()
                 .appComponent(App.get().component())
                 .sendCodeModule(new SendCodeModule(this))
                 .build().inject(SendCodeFragment.this);
     }
+
 }

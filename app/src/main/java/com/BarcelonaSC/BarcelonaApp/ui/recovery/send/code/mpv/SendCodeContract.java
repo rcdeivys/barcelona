@@ -1,6 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.recovery.send.code.mpv;
 
 import com.BarcelonaSC.BarcelonaApp.commons.mvp.MVPContract;
+import com.BarcelonaSC.BarcelonaApp.models.AuthItem;
 import com.BarcelonaSC.BarcelonaApp.models.response.SendCodeResponse;
 
 /**
@@ -10,11 +11,9 @@ import com.BarcelonaSC.BarcelonaApp.models.response.SendCodeResponse;
 public class SendCodeContract {
 
     public interface ModelResultListener {
-
-        void onSuccess(SendCodeResponse sendCodeResponse);
+        void onSuccess(AuthItem sendCodeResponse);
 
         void onFailed(String error);
-
     }
 
     public interface Presenter extends MVPContract.Presenter {
@@ -22,7 +21,7 @@ public class SendCodeContract {
     }
 
     public interface View {
-        void success(SendCodeResponse data);
+        void success(AuthItem data);
 
         void showProgress();
 

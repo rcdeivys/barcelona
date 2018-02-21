@@ -3,7 +3,7 @@
     android:id="@+id/content_button_invite_group"
     android:layout_width="160dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/yellow_border_background"
+    android:background="@drawable/btn_3_perfil"
     android:padding="5dp"
     android:visibility="visible">
 
@@ -15,6 +15,7 @@
         android:layout_marginStart="8dp"
         android:layout_toEndOf="@id/input_add_group"
         android:src="@drawable/invitar_grupo"
+        android:tint="@color/colorPrimaryDark"
         android:visibility="visible" />
 
     <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
@@ -27,6 +28,7 @@
         android:layout_marginStart="16dp"
         android:text="@string/invited_grupo"
         android:textAllCaps="true"
+        android:textColor="@color/colorPrimaryDark"
         android:visibility="visible" />
 
 </RelativeLayout>

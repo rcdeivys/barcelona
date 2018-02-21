@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/transparent">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile"
@@ -12,6 +12,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/silueta"
+        app:civ_border_color="@color/colorAccent"
+        app:civ_border_width="2dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +92,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:layout_toStartOf="@id/count_like"
-        android:background="@drawable/icon_aplauso"
+        android:background="@drawable/icon_aplauso_2"
+        android:backgroundTint="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@+id/count_like" />
 
     <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView

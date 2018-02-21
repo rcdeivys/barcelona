@@ -114,14 +114,14 @@ public class WallProfileDialog extends DialogFragment {
     @OnClick(R.id.content_button_add_friend)
     public void addFriend() {
 
-        if (!isRequestPending) {
-            sendInvitedToUser(SessionManager.getInstance().getUser().getId_usuario(), userItem.getId_usuario());
-        }
+        //if (!isRequestPending) {
+        //    sendInvitedToUser(SessionManager.getInstance().getUser().getId_usuario(), userItem.getId_usuario());
+        //}
 
-        if (isFriend() && !block) {
-            startActivity(ChatActivity.intent(amigos, getContext()));
-            this.dismissDialog();
-        }
+        //if (isFriend() && !block) {
+        //    startActivity(ChatActivity.intent(amigos, getContext()));
+        //    this.dismissDialog();
+        //}
 
     }
 
@@ -157,26 +157,27 @@ public class WallProfileDialog extends DialogFragment {
             Glide.with(getActivity()).load(userItem.getFoto()).apply(new RequestOptions().placeholder(Commons.getDrawable(R.drawable.silueta)).error(Commons.getDrawable(R.drawable.silueta))).into(imgProfile);
             registrado.setText("DESDE EL \n" + Commons.simpleDateFormat(userItem.getFechaRegistro()).substring(0, 2) + "/" + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(userItem.getFechaRegistro()).substring(3, 5))) + "/" + userItem.getFechaRegistro().substring(0, 4));
             id_hincha.setText("N°" + userItem.getId_usuario());
+            addFriend.setVisibility(View.GONE);
 
-            if (isFriend()) {
-                iconAdd.setImageDrawable(Commons.getDrawable(R.drawable.pelota));
-                txtAddFriend.setText(Commons.getString(R.string.init_chat));
-                contentInviteGroup.setVisibility(View.VISIBLE);
-                btnBlockUser.setVisibility(View.VISIBLE);
-                if (block) {
-                    btnBlockUser.setText("Desbloquear");
-                    addFriend.setEnabled(false);
-                    addFriend.setAlpha(0.5f);
-                    contentInviteGroup.setAlpha(0.5f);
-                    block = false;
-                } else {
-                    btnBlockUser.setText("Bloquear");
-                    block = true;
-                }
-            } else {
-                verifiedPendingRequest();
+//            if (isFriend()) {
+//                iconAdd.setImageDrawable(Commons.getDrawable(R.drawable.pelota));
+//                txtAddFriend.setText(Commons.getString(R.string.init_chat));
+//                contentInviteGroup.setVisibility(View.VISIBLE);
+//                btnBlockUser.setVisibility(View.VISIBLE);
+//                if (block) {
+//                    btnBlockUser.setText("Desbloquear");
+//                    addFriend.setEnabled(false);
+//                    addFriend.setAlpha(0.5f);
+//                    contentInviteGroup.setAlpha(0.5f);
+//                    block = false;
+//                } else {
+//                    btnBlockUser.setText("Bloquear");
+//                    block = true;
+//                }
+//            } else {
+                //verifiedPendingRequest();
                 contentInviteGroup.setVisibility(View.GONE);
-            }
+            //}
         }
     }
 
@@ -229,8 +230,6 @@ public class WallProfileDialog extends DialogFragment {
 
             }
         });
-
-
     }
 
     public void verifiedPendingRequest() {
@@ -253,10 +252,9 @@ public class WallProfileDialog extends DialogFragment {
         });
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
-        isFriend();
+        //isFriend();
     }
 }

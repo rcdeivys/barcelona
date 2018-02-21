@@ -130,7 +130,7 @@
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorAccent"
                         android:drawablePadding="8dp"
-                        android:drawableStart="@drawable/ic_user"
+                        android:drawableStart="@drawable/ic_cedula"
                         android:hint="Cédula"
                         android:inputType="text"
                         android:maxLength="12"

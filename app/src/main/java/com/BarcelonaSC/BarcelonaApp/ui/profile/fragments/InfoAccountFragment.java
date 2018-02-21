@@ -50,6 +50,8 @@ public class InfoAccountFragment extends Fragment {
 
     @BindView(R.id.register_name)
     EditText regName;
+    @BindView(R.id.cedula)
+    EditText regCi;
     @BindView(R.id.register_last)
     EditText regLastName;
     @BindView(R.id.register_nick)
@@ -109,6 +111,7 @@ public class InfoAccountFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 setDataView(sessionManager.getUser());
+                ((ProfileFragment) getParentFragment()).moveBack(InfoAccountFragment.this);
             }
         });
 
@@ -302,6 +305,7 @@ public class InfoAccountFragment extends Fragment {
 
     public void setDataView(UserItem user) {
         regName.setText(getString(user.getNombre()));
+        regCi.setText(getString(user.getCedula()));
         regLastName.setText(getString(user.getApellido()));
         regEmail.setText(getString(user.getEmail()));
         regNick.setText(getString(user.getApodo()));

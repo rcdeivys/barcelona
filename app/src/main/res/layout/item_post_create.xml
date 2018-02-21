@@ -4,7 +4,7 @@
     android:id="@+id/editext_create_post"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary">
+    android:background="@color/transparent">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/img_profile"
@@ -28,7 +28,7 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/box_white_borders_shadows"
         android:ems="10"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
         android:text="@string/what_is_he_thinking_about"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
