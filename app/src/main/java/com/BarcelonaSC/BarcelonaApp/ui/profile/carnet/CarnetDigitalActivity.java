@@ -67,7 +67,10 @@ public class CarnetDigitalActivity extends BaseActivity {
         setContentView(R.layout.activity_carnet_digital);
         ButterKnife.bind(this);
         carnetName.setText(sessionManager.getUser().getNombre() + " " + sessionManager.getUser().getApellido());
-        Glide.with(getBaseContext()).load(sessionManager.getUser().getFoto()).apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta)).into(imgProfile);
+        Glide.with(getBaseContext())
+                .load(sessionManager.getUser().getFoto())
+                .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta).override(Commons.dpToPx(90)))
+                .into(imgProfile);
         idHincha.setText("Hincha # " + sessionManager.getSession().getIdUser());
         ciHincha.setText("Cédula " + sessionManager.getUser().getCedula());
         registrado.setText("Desde el " + Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(0, 2) + "/" +

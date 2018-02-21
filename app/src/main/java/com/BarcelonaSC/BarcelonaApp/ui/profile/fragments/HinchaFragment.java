@@ -26,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -346,8 +347,9 @@ public class HinchaFragment extends Fragment {
     }
 
     private void moveToReferredFragment() {
-        Intent intent = new Intent(getActivity(), ReferredToActivity.class);
-        getActivity().startActivity(intent);
+        //Intent intent = new Intent(getActivity(), ReferredToActivity.class);
+        //getActivity().startActivity(intent);
+        Toast.makeText(getActivity(), "Esta opción estará activa para la próxima actualización", Toast.LENGTH_SHORT).show();
     }
 
 }
