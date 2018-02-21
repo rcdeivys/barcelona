@@ -123,12 +123,13 @@
                         android:id="@+id/icon_close_img"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_margin="20dp"
                         android:background="@drawable/circle_color_primary_dark"
                         android:padding="5dp"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/close" />
+                        app:srcCompat="@drawable/close"
+                        android:tint="@color/colorAccent"/>
 
                 </RelativeLayout>
             </LinearLayout>
@@ -154,8 +155,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_toStartOf="@id/btn_emoji"
-        android:background="@drawable/foto"
-        android:backgroundTint="@color/colorAccent"/>
+        android:background="@drawable/foto" />
 
     <ImageView
         android:id="@+id/btn_gallery"
@@ -165,8 +165,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_toStartOf="@id/btn_cam"
-        android:background="@drawable/img2"
-        android:backgroundTint="@color/colorAccent"/>
+        android:background="@drawable/img2" />
 
     <ImageView
         android:id="@+id/btn_emoji"
@@ -176,8 +175,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_toStartOf="@id/btn_send"
-        android:src="@drawable/face"
-        android:tint="@color/colorAccent"/>
+        android:src="@drawable/face" />
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/btn_send"
@@ -189,8 +187,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/enviar"
-        android:tint="@color/colorAccent"/>
+        android:src="@drawable/enviar" />
 
     <RelativeLayout
         android:id="@+id/progressbar"
