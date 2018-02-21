@@ -25,7 +25,10 @@ public class MProfileModel implements MProfileContract.Presenter {
         api.getMonumentals(id).enqueue(new NetworkCallBack<MonumentalResponse>() {
             @Override
             public void onRequestSuccess(MonumentalResponse response) {
-                result.onGetMonumentalSuccess(response.getData());
+                if (response.getStatus().equals("exito"))
+                    result.onGetMonumentalSuccess(response.getData());
+                else
+                    result.onGetMonumentalFailed(response.getError().get(0));
             }
 
             @Override
@@ -42,7 +45,10 @@ public class MProfileModel implements MProfileContract.Presenter {
             @Override
             public void onRequestSuccess(MonumentalResponse response) {
                 if (!isCanceled) {
-                    result.onGetMonumentalSuccess(response.getData());
+                    if (response.getStatus().equals("exito"))
+                        result.onGetMonumentalVoteSuccess();
+                    else
+                        result.onGetMonumentalFailed(response.getError().get(0));
                 }
             }
 

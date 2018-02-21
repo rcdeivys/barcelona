@@ -13,6 +13,8 @@ public class MProfileContract {
     public interface ModelResultListener {
         void onGetMonumentalSuccess(MonumentalItem itemList);
 
+        void onGetMonumentalVoteSuccess();
+
         void onGetMonumentalFailed(String error);
     }
 

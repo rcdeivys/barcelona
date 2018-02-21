@@ -36,6 +36,11 @@ public class MProfilePresenter implements MProfileContract.Presenter, MProfileCo
     }
 
     @Override
+    public void onGetMonumentalVoteSuccess() {
+        view.updateVotes();
+    }
+
+    @Override
     public void onGetMonumentalFailed(String error) {
         if (isViewNull()) return;
         view.onFailed(error);

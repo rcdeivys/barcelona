@@ -14,8 +14,6 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalItem;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile.MProfileFragment;
-import com.BarcelonaSC.BarcelonaApp.utils.FontsUtil;
-import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -47,24 +45,24 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         this.context = monumentalProfileFragment.getContext();
         formatOut = new SimpleDateFormat("yyyy-MM-dd");
         formatIn = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        monumental = new MonumentalItem();
     }
 
     public void setData(MonumentalItem monumental) {
         haveHeader = true;
         this.monumental = monumental;
-        //notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     public void setVote() {
-        int votes = monumental.getTotalVotos() + 1;
-        monumental.setTotalVotos(votes);
-        //notifyDataSetChanged();
+        this.monumental = monumental;
+        int votes = this.monumental.getTotalVotos() + 1;
+        this.monumental.setTotalVotos(votes);
+        notifyItemChanged(0);
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (isPositionHeader(position) && haveHeader) {
+        if (isPositionHeader(position)) {
             return TYPE_HEADER;
         }
         return TYPE_ITEM;
@@ -87,8 +85,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof VHHeader) {
             VHHeader vhHeader = (VHHeader) holder;
-            if (monumental != null)
-                initHeader(vhHeader, monumental);
+            initHeader(vhHeader, monumental);
         } else {
             VHItem vhItem = (VHItem) holder;
             initItem(vhItem, position);
@@ -100,11 +97,10 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         Glide.with(context).load(monumental.getFoto())
                 .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                 .into(vhHeader.imgMonumental);
-
         vhHeader.contentVote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickListener.onClickVote(monumental);
+                onItemClickListener.onClickVote();
             }
         });
 
@@ -140,10 +136,8 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         vhItem.llNewsItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (haveHeader) {
+                if (position != 0) {
                     onItemClickListener.onClickItem(monumental.getNewsList().get(position - 1));
-                } else {
-                    onItemClickListener.onClickItem(monumental.getNewsList().get(position));
                 }
             }
         });
@@ -151,23 +145,16 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
 
     public void update(MonumentalItem monumental) {
         this.monumental = monumental;
-        //notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        if (haveHeader) {
-            return monumental.getNewsList().size() + 1;
-        } else {
-            return monumental.getNewsList().size();
-        }
+        return monumental.getNewsList().size() + 1;
     }
 
     private News getItem(int position) {
-        if (haveHeader)
-            return monumental.getNewsList().get(position - 1);
-        else
-            return monumental.getNewsList().get(position);
+        return monumental.getNewsList().get(position - 1);
     }
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
@@ -179,7 +166,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
 
         void onClickHeader();
 
-        void onClickVote(MonumentalItem monumentalItem);
+        void onClickVote();
     }
 
     class VHItem extends RecyclerView.ViewHolder {
