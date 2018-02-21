@@ -13,7 +13,7 @@ public class MProfileContract {
     public interface ModelResultListener {
         void onGetMonumentalSuccess(MonumentalItem itemList);
 
-        void onGetMonumentalFailed();
+        void onGetMonumentalFailed(String error);
     }
 
     public interface Presenter extends MVPContract.Presenter<View> {

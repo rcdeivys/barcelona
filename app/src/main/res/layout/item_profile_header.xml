@@ -71,7 +71,7 @@
             <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:layout_width="150dp"
                 android:layout_height="0dp"
-                android:layout_weight="0.6"
+                android:layout_weight="0.7"
                 android:background="@drawable/shape_button_white"
                 android:text="Historial de votos"
                 android:textAlignment="center"
@@ -83,7 +83,7 @@
                 android:layout_width="150dp"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_weight="0.9"
+                android:layout_weight="0.8"
                 android:background="@drawable/shape_button_white_line"
                 android:text="Votos"
                 android:textAlignment="center"

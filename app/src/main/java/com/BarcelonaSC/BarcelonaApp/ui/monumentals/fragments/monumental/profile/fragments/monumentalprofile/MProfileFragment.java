@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
@@ -132,13 +133,16 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     @Override
     public void updateVotes() {
         adapter.setVote();
-        showToast("¡Votos agregados con éxito!", 2000);
+        //showToast("¡Votos agregados con éxito!", 2000);
+        Toast.makeText(getActivity(), "¡Votos agregados con éxito!", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onFailed(String msg) {
-        swipeContainer.setRefreshing(false);
-        showToast("¡Ya has votado en esta encuesta!", 2000);
+        //swipeContainer.setRefreshing(false);
+        //showToast("¡Ya has votado en esta encuesta!", 2000);
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

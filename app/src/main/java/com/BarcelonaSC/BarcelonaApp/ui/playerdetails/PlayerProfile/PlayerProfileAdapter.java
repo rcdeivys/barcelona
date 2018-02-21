@@ -137,7 +137,6 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
                         onItemClickListener.onClickHeader();
                     } else {
                         Toast.makeText(context, context.getString(R.string.clap_later), Toast.LENGTH_LONG).show();
-
                     }
                 }
             });

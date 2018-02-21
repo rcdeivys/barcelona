@@ -55,16 +55,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:src="@drawable/ic_cedula" />
+                        android:src="@drawable/ic_user" />
 
                     <EditText
-                        android:id="@+id/cedula"
+                        android:id="@+id/register_last"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorAccent"
-                        android:hint="Cédula"
-                        android:inputType="textEmailAddress"
+                        android:hint="Apellido"
+                        android:inputType="text"
                         android:maxLines="1" />
 
                 </LinearLayout>
@@ -79,16 +79,16 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:src="@drawable/ic_user" />
+                        android:src="@drawable/ic_cedula" />
 
                     <EditText
-                        android:id="@+id/register_last"
+                        android:id="@+id/cedula"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorAccent"
-                        android:hint="Apellido"
-                        android:inputType="text"
+                        android:hint="Cédula"
+                        android:inputType="textEmailAddress"
                         android:maxLines="1" />
 
                 </LinearLayout>

@@ -47,18 +47,19 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         this.context = monumentalProfileFragment.getContext();
         formatOut = new SimpleDateFormat("yyyy-MM-dd");
         formatIn = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        monumental = new MonumentalItem();
     }
 
     public void setData(MonumentalItem monumental) {
         haveHeader = true;
         this.monumental = monumental;
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
 
     public void setVote() {
         int votes = monumental.getTotalVotos() + 1;
         monumental.setTotalVotos(votes);
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
 
     @Override
@@ -99,6 +100,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         Glide.with(context).load(monumental.getFoto())
                 .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                 .into(vhHeader.imgMonumental);
+
         vhHeader.contentVote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,9 +135,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
             e.printStackTrace();
         }
 
-        //vhItem.tvData.setTypeface(FontsUtil.getOpenSansReularFonts(context));
         vhItem.tvTitle.setText(recentItem.getTitulo());
-        //vhItem.tvTitle.setTypeface(FontsUtil.getHelveticaCondesed2Fonts(context));
 
         vhItem.llNewsItem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,15 +151,16 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
 
     public void update(MonumentalItem monumental) {
         this.monumental = monumental;
-        notifyDataSetChanged();
+        //notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        if (haveHeader)
+        if (haveHeader) {
             return monumental.getNewsList().size() + 1;
-        else
+        } else {
             return monumental.getNewsList().size();
+        }
     }
 
     private News getItem(int position) {

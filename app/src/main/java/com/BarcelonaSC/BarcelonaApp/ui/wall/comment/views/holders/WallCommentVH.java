@@ -73,7 +73,7 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
             if (!commentItem.getFoto().equals("")) {
 
                 imgComment.setVisibility(View.VISIBLE);
-                Glide.with(context).load(commentItem.getFoto()).apply(new RequestOptions().placeholder(R.drawable.logo_transparencia).error(R.drawable.logo_transparencia)).into(imgComment);
+                Glide.with(context).load(commentItem.getFoto()).apply(new RequestOptions().placeholder(R.drawable.bsc_grey_logo).error(R.drawable.bsc_grey_logo)).into(imgComment);
             } else {
                 imgComment.setVisibility(View.GONE);
             }

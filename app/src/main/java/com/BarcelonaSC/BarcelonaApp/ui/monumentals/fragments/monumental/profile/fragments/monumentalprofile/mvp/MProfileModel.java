@@ -30,7 +30,7 @@ public class MProfileModel implements MProfileContract.Presenter {
 
             @Override
             public void onRequestFail(String errorMessage, int errorCode) {
-                result.onGetMonumentalFailed();
+                result.onGetMonumentalFailed(errorMessage);
             }
         });
     }
@@ -48,7 +48,7 @@ public class MProfileModel implements MProfileContract.Presenter {
 
             @Override
             public void onRequestFail(String errorMessage, int errorCode) {
-                result.onGetMonumentalFailed();
+                result.onGetMonumentalFailed(errorMessage);
             }
         });
     }
