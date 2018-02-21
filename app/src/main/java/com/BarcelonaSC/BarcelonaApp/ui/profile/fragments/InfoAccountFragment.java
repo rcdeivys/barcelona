@@ -136,6 +136,7 @@ public class InfoAccountFragment extends Fragment {
 
             }
         });
+        regEmail.setEnabled(false);
         if (sessionManager.getUser().getFechaRegistro() != null) {
             setDataView(sessionManager.getUser());
         }

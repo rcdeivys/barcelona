@@ -168,7 +168,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:text="Comparte la APP y empieza a SUMAR para GANAR"
+                            android:text="Comparte la APP y sigamos demostrando porque somos el ÍDOLO DEL ECUADOR"
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textSize="18sp"
