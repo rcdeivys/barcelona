@@ -326,7 +326,7 @@ public class ReferredListFragment extends BaseFragment implements ReferredContra
         builder.setView(dialoglayout);
         final AlertDialog alertDialog = builder.show();
         TextView fcMillonariosTextView = dialoglayout.findViewById(R.id.text_description);
-        fcMillonariosTextView.setText("Este amigo no está activo en la APP.\n" +
+        fcMillonariosTextView.setText("Este amigo aún no está activo en la APP.\n" +
                 "Para que tus amigos cuenten como referidos deben:\n\n" +
                 "1. Registrarse\n" +
                 "2. Descargar la App\n" +

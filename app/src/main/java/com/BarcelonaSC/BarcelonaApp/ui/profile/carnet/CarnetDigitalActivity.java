@@ -72,9 +72,9 @@ public class CarnetDigitalActivity extends BaseActivity {
                 .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta).override(Commons.dpToPx(90)))
                 .into(imgProfile);
         idHincha.setText("Hincha # " + sessionManager.getSession().getIdUser());
-        ciHincha.setText("Cédula " + sessionManager.getUser().getCedula());
+        ciHincha.setText("N° de identificación: \n" + sessionManager.getUser().getCedula());
         registrado.setText("Desde el " + Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(0, 2) + "/" +
-                getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(3, 5))) + "/" +
+                getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(3, 5))).substring(0, 3).toUpperCase() + "/" +
                 sessionManager.getUser().getFechaRegistro().substring(0, 4));
 
         textDateVenc.setText("F.V:" + Commons.simpleDateFormat(sessionManager.getUser().getFechaVencimiento()));

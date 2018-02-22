@@ -90,8 +90,8 @@ public class ReferredRecyclerAdapter extends RecyclerView.Adapter<ReferredRecycl
             }
 
             if (!referredParser.getStatus().toLowerCase().equals("activo")) {
-                tvName.setTextColor(Commons.getColor(R.color.textColorPrimary));
-                tvPosition.setTextColor(Commons.getColor(R.color.textColorPrimary));
+                tvName.setTextColor(Commons.getColor(R.color.gray));
+                tvPosition.setTextColor(Commons.getColor(R.color.gray));
             } else {
                 tvName.setTextColor(Commons.getColor(R.color.white));
                 tvPosition.setTextColor(Commons.getColor(R.color.white));
