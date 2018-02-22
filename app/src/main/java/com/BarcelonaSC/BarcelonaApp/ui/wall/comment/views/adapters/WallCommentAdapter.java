@@ -108,5 +108,4 @@ public class WallCommentAdapter extends CustomRecyclerView<RecyclerView.ViewHold
         notifyDataSetChanged();
     }
 
-
 }

@@ -138,7 +138,6 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
 
     @Override
     public void setLoad(List<Object> list, boolean pagination) {
-
         if (pagination) {
             wallAdapter.addWall(list);
         } else {
@@ -147,7 +146,6 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
         recyclerView.addOnScrollListener(initRecyclerViewScroll());
         wallAdapter.showNoMoreDataToDisplay();
         swipeRefreshLayout.setRefreshing(false);
-
     }
 
     @Override

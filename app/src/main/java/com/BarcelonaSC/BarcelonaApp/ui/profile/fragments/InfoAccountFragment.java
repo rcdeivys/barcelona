@@ -111,7 +111,7 @@ public class InfoAccountFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 setDataView(sessionManager.getUser());
-                ((ProfileFragment) getParentFragment()).moveBack(InfoAccountFragment.this);
+                //((ProfileFragment) getParentFragment()).moveBack(InfoAccountFragment.this);
             }
         });
 

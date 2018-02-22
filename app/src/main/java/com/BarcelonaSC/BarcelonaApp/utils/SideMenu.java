@@ -188,10 +188,10 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void setData() {
-            clickSocialButton(btnInstagram, "https://www.instagram.com/millosfcoficial/");
-            clickSocialButton(btnFacebook, "https://www.facebook.com/millosfcoficial");
-            clickSocialButton(btnTwitter, "https://twitter.com/millosfcoficial");
-            clickSocialButton(btnYoutube, "https://www.youtube.com/channel/UCJ3KWv64AxrdfKRFKr2uBSw");
+            clickSocialButton(btnInstagram, "https://www.instagram.com/barcelonasc/");
+            clickSocialButton(btnFacebook, "https://www.facebook.com/BarcelonaSCweb");
+            clickSocialButton(btnTwitter, "https://twitter.com/BarcelonaSCweb");
+            clickSocialButton(btnYoutube, "https://www.youtube.com/channel/UCgs5c9UJtczqmG7yOuvu5QA");
         }
 
         public void clickSocialButton(ImageView imageView, final String url) {

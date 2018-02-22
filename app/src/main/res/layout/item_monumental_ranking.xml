@@ -22,25 +22,34 @@
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/text_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/colorAccent" />
 
-                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                    android:id="@+id/text_position"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="5dp"
-                    android:textColor="@color/colorAccent" />
+            <!-- Option's image -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_monumental"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="@drawable/silueta"
+                app:civ_border_width="1dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/text_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/text_position"
                     android:lines="1"
                     android:maxLines="1"
                     android:textAlignment="textStart"
@@ -52,8 +61,6 @@
                     android:id="@+id/tv_last_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/text_name"
-                    android:layout_below="@+id/text_name"
                     android:lines="1"
                     android:maxLines="1"
                     android:textAlignment="textStart"
@@ -61,15 +68,7 @@
                     android:textColor="@color/white"
                     android:textSize="12sp" />
 
-            </RelativeLayout>
-
-            <!-- Option's image -->
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/img_monumental"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                app:civ_border_width="1dp" />
+            </LinearLayout>
 
         </LinearLayout>
 

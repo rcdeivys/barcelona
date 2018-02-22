@@ -138,11 +138,11 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
         //ivSideMenuList.add(new DrawerItem(Constant.Menu.PROFILE, R.drawable.perfil_icon, configurationManager.getConfiguration().getTit1()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.NEWS, R.drawable.noticias_icon, configurationManager.getConfiguration().getTit2()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.ALIGMENT, R.drawable.alineacion_icon, configurationManager.getConfiguration().getTit7()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.WALL_AND_CHAT, R.drawable.muro_chat_icon, configurationManager.getConfiguration().getTit16()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.CALENDAR, R.drawable.calendario_icon, configurationManager.getConfiguration().getTit3()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.TABLE, R.drawable.tabla_icon, configurationManager.getConfiguration().getTit4()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.TEAM, R.drawable.plantilla_icon, configurationManager.getConfiguration().getTit6()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.IN_LIVE, R.drawable.bsc_en_vivo_icon, configurationManager.getConfiguration().getTit9()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.WALL_AND_CHAT, R.drawable.muro_chat_icon, configurationManager.getConfiguration().getTit16()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.VIRTUAL_REALITY, R.drawable.realidad_virtual_icon, configurationManager.getConfiguration().getTit8()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.YOUR_CHOOSE, R.drawable.tu_escoges_icon, configurationManager.getConfiguration().getTit10()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.MONUMENTAL, R.drawable.monumentales_icon, configurationManager.getConfiguration().getTit12()));

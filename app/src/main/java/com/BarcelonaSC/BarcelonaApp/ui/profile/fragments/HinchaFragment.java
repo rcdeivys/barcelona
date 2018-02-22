@@ -329,14 +329,12 @@ public class HinchaFragment extends Fragment {
             ResolveInfo ri = resInfo.get(i);
             String packageName = ri.activityInfo.packageName;
 
-
             Intent intent = new Intent();
             intent.setComponent(new ComponentName(packageName, ri.activityInfo.name));
             intent.setAction(Intent.ACTION_SEND);
             intent.putExtra(Intent.EXTRA_TEXT, Commons.getString(R.string.url_api) + "compartir/usr/" + SessionManager.getInstance().getSession().getCodigo());
             intent.setType("text/plain");
             intentList.add(new LabeledIntent(intent, packageName, ri.loadLabel(pm), ri.icon));
-
         }
 
         // convert intentList to array
@@ -347,9 +345,9 @@ public class HinchaFragment extends Fragment {
     }
 
     private void moveToReferredFragment() {
-        //Intent intent = new Intent(getActivity(), ReferredToActivity.class);
-        //getActivity().startActivity(intent);
-        Toast.makeText(getActivity(), "Esta opción estará activa para la próxima actualización", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), ReferredToActivity.class);
+        getActivity().startActivity(intent);
+        //Toast.makeText(getActivity(), "Esta opción estará activa para la próxima actualización", Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/textColorSecondary" />
+            android:textColor="@color/colorAccent" />
 
         <hani.momanii.supernova_emoji_library.Helper.EmojiconTextView
             android:id="@+id/comment"
@@ -45,7 +45,7 @@
             android:layout_margin="5dp"
             android:inputType="textMultiLine"
             android:maxLength="2000"
-            android:textColor="@color/textColorSecondary"
+            android:textColor="@color/white"
             android:visibility="visible" />
 
         <ImageView
@@ -68,7 +68,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:textColor="@color/colorAccent" />
+        android:textColor="@color/colorPrimary" />
 
     <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/btn_clap"
@@ -80,7 +80,7 @@
         android:layout_toEndOf="@id/remaining"
         android:gravity="center"
         android:text="@string/clap_your_hands"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
         android:textSize="16sp" />
 
     <ImageView
@@ -92,8 +92,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:layout_toStartOf="@id/count_like"
-        android:background="@drawable/icon_aplauso_2"
-        android:backgroundTint="@color/colorAccent"
+        android:background="@drawable/icon_aplauso"
         app:layout_constraintEnd_toStartOf="@+id/count_like" />
 
     <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
@@ -106,7 +105,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="9dp"
         android:text="0"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/content_comment" />
 

@@ -40,6 +40,7 @@
                         android:gravity="center"
                         android:maxLines="2"
                         android:text="Erick Umanchuk"
+                        android:textAllCaps="true"
                         android:textSize="18sp" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
@@ -84,8 +85,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
-                            android:text="Hincha Embajador Oficial"
+                            android:text="Hincha Amarillo"
                             android:textAlignment="center"
+                            android:textAllCaps="true"
                             android:textColor="@color/colorPrimaryDark"
                             android:textSize="@dimen/font_subheading_size" />
 
@@ -172,7 +174,7 @@
                             style="@style/StyleRobotoBold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ver carné"
+                            android:text="Credencial Digital"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
                             android:textSize="@dimen/font_body_r_size" />
@@ -404,8 +406,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
-                            android:text="cerrar sesión"
-                            android:textAllCaps="true"
+                            android:text="Cerrar Sesión"
                             android:textColor="@color/white" />
 
                     </LinearLayout>

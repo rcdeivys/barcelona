@@ -40,7 +40,7 @@
         android:layout_above="@+id/banner"
         android:layout_below="@+id/content_header"
         android:layout_marginBottom="0dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimaryDark">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/font_title_size" />
 
             <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView

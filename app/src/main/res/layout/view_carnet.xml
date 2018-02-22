@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -43,7 +43,7 @@
                 style="@style/StyleRobotoBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cedula"
+                android:text="Cédula"
                 android:textAlignment="center"
                 android:textColor="@color/colorPrimaryDark" />
 
@@ -183,19 +183,12 @@
         android:visibility="visible">
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-            style="@style/StyleRobotoRegular.Caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="VITALICIA"
-            android:textColor="@color/black"/>
-
-        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/text_date_venc"
             style="@style/StyleRobotoRegular.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="fecha"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="80dp"

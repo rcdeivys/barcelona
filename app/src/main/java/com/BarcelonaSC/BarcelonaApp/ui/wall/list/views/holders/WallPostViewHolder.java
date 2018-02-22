@@ -67,7 +67,6 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void setDataPost(WallItem item) {
-
         textNickName.setText(item.getUsuario().getApodo() != null && !item.getUsuario().getApodo().equals("") ? item.getUsuario().getApodo() : item.getUsuario().getNombre() + " " + item.getUsuario().getApellido());
 
         if (item.getUsuario().getFoto() != null) {

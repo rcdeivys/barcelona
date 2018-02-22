@@ -26,18 +26,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_user" />
-
                     <EditText
                         android:id="@+id/register_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_user"
                         android:hint="Nombre"
                         android:inputType="text"
                         android:maxLength="15"
@@ -51,18 +47,14 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_user" />
-
                     <EditText
                         android:id="@+id/register_last"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_user"
                         android:hint="Apellido"
                         android:inputType="text"
                         android:maxLines="1" />
@@ -75,20 +67,16 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_cedula" />
-
                     <EditText
                         android:id="@+id/cedula"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_cedula"
                         android:hint="Cédula"
-                        android:inputType="textEmailAddress"
+                        android:inputType="text"
                         android:maxLines="1" />
 
                 </LinearLayout>
@@ -99,18 +87,14 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:src="@drawable/ic_email" />
-
                     <EditText
                         android:id="@+id/register_email"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_email"
                         android:hint="Email"
                         android:inputType="textEmailAddress"
                         android:maxLines="1" />
@@ -392,7 +376,7 @@
                         android:background="@drawable/rounder_button_primary"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:text="Salir"
+                        android:text="Descartar"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/font_body_r_size" />
 

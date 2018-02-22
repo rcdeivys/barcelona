@@ -64,7 +64,6 @@ public class ApplaudedFragment extends BaseFragment implements ApplaudedContract
                 .build().inject(ApplaudedFragment.this);
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

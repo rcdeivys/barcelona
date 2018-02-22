@@ -29,20 +29,17 @@
                     android:layout_marginTop="10dp"
                     android:text="@string/choose_ideal_alignment"
                     android:textColor="@color/white"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <include
-
                     layout="@layout/item_team_game_header"
                     android:visibility="visible" />
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
+                    android:layout_height="5dp"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="20dp"
-                    android:background="@color/colorPrimary" />
+                    android:background="@color/colorAccent" />
 
                 <FrameLayout
                     android:id="@+id/socces_field_view"
