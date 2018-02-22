@@ -46,8 +46,6 @@
                 android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/TV_Position"
-                android:layout_toEndOf="@+id/TV_Position"
                 android:lines="1"
                 android:maxLines="1"
                 android:text=""

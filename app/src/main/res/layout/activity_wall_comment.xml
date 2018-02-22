@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimaryDark">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="#e1e2e8">
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
@@ -30,7 +30,7 @@
             android:id="@+id/content_header"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
             android:visibility="visible">
 
             <android.support.v7.widget.AppCompatImageView
@@ -77,7 +77,7 @@
             android:id="@+id/content_write_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
             android:clickable="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent">

@@ -3,7 +3,10 @@
     android:id="@+id/content_news_item"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
     android:layout_marginBottom="10dp"
+    android:padding="5dp"
     android:background="@drawable/rounder_item_new"
     android:orientation="vertical">
 

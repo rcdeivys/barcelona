@@ -14,6 +14,7 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalItem;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile.MProfileFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -105,7 +106,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         });
 
         vhHeader.monumental_name.setText(monumental.getNombre());
-        vhHeader.monumental_name_container.setVisibility(View.GONE);
+        //vhHeader.monumental_name_container.setVisibility(View.GONE);
     }
 
     private void initItem(VHItem vhItem, final int position) {
@@ -115,10 +116,9 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
                 .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                 .into(vhItem.ivNews);
         // Set play image
-        /*if (recentItem.getTipo().matches(Constant.NewsType.VIDEO)) {
-            //vhItem.ivPlay.setImageResource(R.drawable.ic_play_circle_60dp);
+        if (recentItem.getTipo().matches(Constant.NewsType.VIDEO)) {
             vhItem.ivPlay.setVisibility(View.VISIBLE);
-        } else {
+        } /*else {
             //vhItem.ivPlay.setImageDrawable(null);
         }*/
 
@@ -172,7 +172,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
     class VHItem extends RecyclerView.ViewHolder {
         @BindView(R.id.content_news_item)
         LinearLayout llNewsItem;
-        @BindView(R.id.iv_news)
+        @BindView(R.id.img_header)
         ImageView ivNews;
         @BindView(R.id.iv_play)
         ImageView ivPlay;

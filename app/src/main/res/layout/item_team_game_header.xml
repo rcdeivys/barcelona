@@ -3,7 +3,7 @@
     android:id="@+id/LL_Game"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/gray"
+    android:background="@color/transparent"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -25,9 +25,10 @@
             <ImageView
                 android:id="@+id/team_one_flag"
                 android:layout_width="50dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginEnd="5dp"
-                android:adjustViewBounds="true" />
+                android:adjustViewBounds="true"
+                android:background="@drawable/bsc_grey_logo"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -93,9 +94,10 @@
             <ImageView
                 android:id="@+id/team_two_flag"
                 android:layout_width="50dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginStart="5dp"
-                android:adjustViewBounds="true" />
+                android:adjustViewBounds="true"
+                android:background="@drawable/bsc_grey_logo"/>
 
         </LinearLayout>
     </RelativeLayout>

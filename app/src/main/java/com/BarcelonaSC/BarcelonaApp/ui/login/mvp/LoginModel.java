@@ -20,12 +20,11 @@ public class LoginModel {
     private AuthApi authApi;
     private ProfileApi profileApi;
     private AuthResponse authResponse;
-    private SessionManager sessionManager;
+
 
     public LoginModel(AuthApi authApi, ProfileApi profileApi) {
         this.authApi = authApi;
         this.profileApi = profileApi;
-        sessionManager = new SessionManager(App.get().getBaseContext());
     }
 
     public void loadLogin(User user, final LoginContract.ModelResultListener result) {
@@ -72,7 +71,8 @@ public class LoginModel {
             public void onRequestSuccess(UserResponse response) {
                 if (!response.getStatus().equals("fallo")) {
                     result.onGetLoginSuccess(authResponse.getData());
-                    sessionManager.setUser(response.getData());
+                    SessionManager.getInstance().setUser(response.getData());
+                    SessionManager.getInstance().setSession(authResponse.getData());
                 }
 
             }
@@ -83,6 +83,5 @@ public class LoginModel {
             }
         });
     }
-
 
 }

@@ -1,6 +1,9 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -9,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
@@ -53,6 +58,7 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     RecyclerView recyclerView;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+    Dialog dialog;
     Unbinder unbinder;
 
     NewsAdapter newsAdapter;
@@ -78,8 +84,16 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
         View view = inflater.inflate(R.layout.fragment_news_list, container, false);
         unbinder = ButterKnife.bind(this, view);
         presenter.onAttach(this);
+
+        final SharedPreferences preferences = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE);
+        boolean accepted = preferences.getBoolean(Constant.Key.MONUMETAL_ID, false);
+        if (!accepted) {
+            initDialog();
+        }
+
         initRecyclerView();
         refresh();
+
         btnTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,6 +128,32 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
                 progressBar.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    private void initDialog() {
+        dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        final View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_monumental, null);
+        Button accept = v.findViewById(R.id.btn_accept);
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE).edit();
+                editor.putBoolean(Constant.Key.MONUMETAL_ID, true);
+                editor.apply();
+                dialog.dismiss();
+            }
+        });
+        Button cancel = v.findViewById(R.id.btn_cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+            }
+        });
+
+        dialog.setContentView(v);
+        dialog.show();
     }
 
     private EndlessScrollListener initRecyclerViewScroll() {
@@ -212,4 +252,5 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
         presenter.onDetach();
         unbinder.unbind();
     }
+
 }

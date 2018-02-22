@@ -94,7 +94,6 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
     private LinearLayoutManager linearLayoutManager;
 
     public static OfficialLineUpFragment newInstance() {
-
         Bundle args = new Bundle();
 
         OfficialLineUpFragment fragment = new OfficialLineUpFragment();
@@ -149,6 +148,16 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
         rlVideoContainer.setVisibility(View.GONE);
         vvGameLineup.setOnCompletionListener(this);
         vvGameLineup.setOnPreparedListener(this);
+        vvGameLineup.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
+                imgPlay.setVisibility(View.GONE);
+                hideProgress();
+                //isPaused = true;
+                Toast.makeText(getActivity(), "No se pudo reproducir el video", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
         imgPlay.setVisibility(View.GONE);
 
         return view;
@@ -169,7 +178,6 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
         setRefreshing(false);
         hideProgress();
     }
-
 
     @Override
     public void showProgress() {
@@ -192,7 +200,6 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
         setRefreshing(false);
         hideProgress();
     }
-
 
     @Override
     public void setPlayByPlayData(PlayByPlay playByPlayData) {

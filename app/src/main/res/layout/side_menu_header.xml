@@ -48,7 +48,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginStart="5dp"
         android:layout_toEndOf="@id/img_container"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:visibility="visible">
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView

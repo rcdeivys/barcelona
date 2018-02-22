@@ -47,8 +47,6 @@ public class TeamFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_team, container, false);
-
-
         unbinder = ButterKnife.bind(this, view);
         initializeViewPager();
         return view;
@@ -57,7 +55,6 @@ public class TeamFragment extends BaseFragment {
 
 
     private void initializeViewPager() {
-
         int Numboftabs = 3;
 
         String[] titles = {ConfigurationManager.getInstance().getConfiguration().getTit61()
