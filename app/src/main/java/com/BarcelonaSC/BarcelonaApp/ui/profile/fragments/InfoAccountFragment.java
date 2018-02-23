@@ -200,6 +200,7 @@ public class InfoAccountFragment extends Fragment {
         user.setApellido(regLastName.getText().toString());
         //user.setApodo(regNick.getText().toString());
         user.setEmail(regEmail.getText().toString());
+        user.setCi(regCi.getText().toString());
         if (!regPass.getText().toString().equals(PASSWORD))
             user.setClave(regPass.getText().toString());
 

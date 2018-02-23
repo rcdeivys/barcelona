@@ -89,7 +89,7 @@
                     android:layout_marginTop="5dp"
                     android:text="HINCHA NIVEL CLUB"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/font_body_m_size" />
+                    android:textSize="11sp" />
 
                 <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/text_registrado"
