@@ -103,7 +103,6 @@ public class MonumentalFragment extends BaseFragment implements MonumentalContra
                 public void onRefresh() {
                     refresh();
                     progressBar.setVisibility(View.VISIBLE);
-
                 }
             });
         }
@@ -126,6 +125,7 @@ public class MonumentalFragment extends BaseFragment implements MonumentalContra
     public void setRefreshing(boolean state) {
         if (state) {
             presenter.getMonumentals();
+            setRefreshing(false);
         }
     }
 

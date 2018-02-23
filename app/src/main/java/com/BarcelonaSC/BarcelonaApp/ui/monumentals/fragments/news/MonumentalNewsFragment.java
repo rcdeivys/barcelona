@@ -85,12 +85,6 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
         unbinder = ButterKnife.bind(this, view);
         presenter.onAttach(this);
 
-        final SharedPreferences preferences = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE);
-        boolean accepted = preferences.getBoolean(Constant.Key.MONUMETAL_ID, false);
-        if (!accepted) {
-            initDialog();
-        }
-
         initRecyclerView();
         refresh();
 
@@ -128,32 +122,6 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
                 progressBar.setVisibility(View.VISIBLE);
             }
         });
-    }
-
-    private void initDialog() {
-        dialog = new Dialog(getActivity());
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        final View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_monumental, null);
-        Button accept = v.findViewById(R.id.btn_accept);
-        accept.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences.Editor editor = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE).edit();
-                editor.putBoolean(Constant.Key.MONUMETAL_ID, true);
-                editor.apply();
-                dialog.dismiss();
-            }
-        });
-        Button cancel = v.findViewById(R.id.btn_cancel);
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().finish();
-            }
-        });
-
-        dialog.setContentView(v);
-        dialog.show();
     }
 
     private EndlessScrollListener initRecyclerViewScroll() {

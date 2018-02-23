@@ -1,17 +1,24 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.adapters.MonumentalPagerAdapter;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.MonumentalFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news.MonumentalNewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking.MonumentalRankingFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
 
@@ -30,6 +37,7 @@ public class MonumentalMainFragment extends BaseFragment {
     CustomTabLayout tabs;
     @BindView(R.id.pager)
     CustomViewPager pager;
+    Dialog dialog;
 
     MonumentalNewsFragment monumentalNewsFragment;
     MonumentalFragment monumentalFragment;
@@ -45,7 +53,14 @@ public class MonumentalMainFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ButterKnife.bind(this, getView());
-        initViewPager();
+
+        final SharedPreferences preferences = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE);
+        boolean accepted = preferences.getBoolean(Constant.Key.MONUMETAL_ID, false);
+        if (!accepted) {
+            initDialog();
+        } else {
+            initViewPager();
+        }
     }
 
     private void initViewPager() {
@@ -55,6 +70,35 @@ public class MonumentalMainFragment extends BaseFragment {
 
         pager.setAdapter(new MonumentalPagerAdapter(getChildFragmentManager(), getActivity(), monumentalNewsFragment, monumentalFragment, monumentalRankingFragment));
         tabs.setupWithViewPager(pager);
+    }
+
+    private void initDialog() {
+        dialog = new Dialog(getActivity());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        final View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_monumental, null);
+        Button accept = v.findViewById(R.id.btn_accept);
+        accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE).edit();
+                editor.putBoolean(Constant.Key.MONUMETAL_ID, true);
+                editor.apply();
+                initViewPager();
+                dialog.dismiss();
+            }
+        });
+        Button cancel = v.findViewById(R.id.btn_cancel);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((HomeActivity) getActivity()).presenter.newsProfessional();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setContentView(v);
+        dialog.show();
     }
 
 }

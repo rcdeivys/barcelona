@@ -45,7 +45,7 @@
     <string name="game_date_time">%1$s | %2$s</string>
     <string name="weight">Peso</string>
     <string name="height">Estatura</string>
-    <string name="applause">aplausos</string>
+    <string name="applause">Aplausos</string>
     <string name="calendar_detail">Detalle del Partido</string>
 
     <string name="toast_connection_error">Error al conectarse a los servidores.</string>

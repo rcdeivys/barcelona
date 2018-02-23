@@ -49,7 +49,7 @@
                     android:text="@string/place_of_birth"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/font_caption_size" />
+                    android:textSize="16sp" />
 
                 <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/ctv_player_nationality"
@@ -58,32 +58,15 @@
                     android:layout_marginStart="15dp"
                     android:text=""
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/font_caption_size" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/fecha_de_nacimiento"
+                    android:text="# DE CAMISETA EN COPA INTERNACIONAL"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/font_caption_size" />
-
-                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                    android:id="@+id/ctv_player_birthdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text=""
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/font_caption_size" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/weight"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/font_caption_size" />
+                    android:textSize="16sp" />
 
                 <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/ctv_weight"
@@ -100,10 +83,29 @@
                     android:text="@string/height"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/font_caption_size" />
+                    android:textSize="@dimen/font_caption_size"
+                    android:visibility="gone" />
 
                 <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/ctv_player_height"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_caption_size"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fecha_de_nacimiento"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/ctv_player_birthdate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -269,7 +271,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:background="@color/transparent"
-                    android:src="@drawable/applause_icn"
+                    android:src="@drawable/icon_aplauso"
                     android:visibility="visible" />
             </LinearLayout>
 
@@ -291,7 +293,8 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.45"
+            android:layout_weight="0.50"
+            android:background="@drawable/oath_button"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -302,7 +305,7 @@
                 android:padding="4dp"
                 android:text="@string/applause_last_game"
                 android:textAlignment="center"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/font_caption_size" />
 
             <TextView
@@ -315,45 +318,57 @@
                 android:layout_weight="1"
                 android:text="0"
                 android:textAlignment="center"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="24dp"
                 android:textStyle="bold" />
+
         </LinearLayout>
 
-        <View
+        <!--<View
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_weight="0.05" />
+            android:layout_weight="0.05" />-->
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.45"
-            android:gravity="center"
+            android:layout_weight="0.50"
+            android:background="@color/colorPrimaryDark"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/customTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:padding="4dp"
-                android:text="@string/applause_history"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_caption_size" />
-
-            <TextView
-                android:id="@+id/TV_TotalApplause"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:text="0"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/yellow_border_background"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/customTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:text="@string/applause_history"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/font_caption_size" />
+
+                <TextView
+                    android:id="@+id/TV_TotalApplause"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="24dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

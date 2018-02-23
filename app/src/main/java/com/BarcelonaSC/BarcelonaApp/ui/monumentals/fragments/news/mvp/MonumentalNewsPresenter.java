@@ -39,8 +39,8 @@ public class MonumentalNewsPresenter implements MonumentalNewsContract.Presenter
         if (isViewNull()) return;
         for (News newss : news) {
             newsList.add(newss);
-            view.setMonumentalNews(news);
         }
+        view.setMonumentalNews(news);
         view.hideProgress();
     }
 

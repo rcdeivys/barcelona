@@ -63,7 +63,7 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             try {
                 Date date1 = formatIn.parse(Poll.getFecha_fin());
                 String formatOutStr = formatOut.format(date1);
-                header.datevoting.setText(String.format("Hasta %1$s", String.valueOf(formatOutStr)));
+                header.datevoting.setText(String.format("Hasta el %1$s", String.valueOf(formatOutStr)));
             } catch (ParseException e) {
                 e.printStackTrace();
             }

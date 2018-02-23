@@ -71,6 +71,6 @@
         android:textAlignment="textEnd"
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/font_caption_size"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
 </LinearLayout>

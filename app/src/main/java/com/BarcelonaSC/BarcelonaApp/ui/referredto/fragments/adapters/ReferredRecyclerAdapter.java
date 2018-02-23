@@ -89,9 +89,9 @@ public class ReferredRecyclerAdapter extends RecyclerView.Adapter<ReferredRecycl
                 ivImage.setImageResource(R.drawable.silueta);
             }
 
-            if (!referredParser.getStatus().toLowerCase().equals("activo")) {
-                tvName.setTextColor(Commons.getColor(R.color.textColorPrimary));
-                tvPosition.setTextColor(Commons.getColor(R.color.textColorPrimary));
+            if (referredParser.getStatus() == 0) {
+                tvName.setTextColor(Commons.getColor(R.color.gray));
+                tvPosition.setTextColor(Commons.getColor(R.color.gray));
             } else {
                 tvName.setTextColor(Commons.getColor(R.color.white));
                 tvPosition.setTextColor(Commons.getColor(R.color.white));
@@ -100,7 +100,7 @@ public class ReferredRecyclerAdapter extends RecyclerView.Adapter<ReferredRecycl
             contentReffered.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (!referredParser.getStatus().toLowerCase().equals("activo")) {
+                    if (referredParser.getStatus() == 0) {
                         statusInactiveListener.onInactiveClickListener();
                     }
                 }

@@ -84,7 +84,7 @@ public class ApplauseAdapter extends RecyclerView.Adapter<ApplauseAdapter.ViewHo
         // Set statistics bar
         PercentRelativeLayout.LayoutParams params = (PercentRelativeLayout.LayoutParams) holder.bar.getLayoutParams();
         PercentLayoutHelper.PercentLayoutInfo info = params.getPercentLayoutInfo();
-        info.widthPercent = item.getPorcentaje() / 35;
+        info.widthPercent = item.getPorcentaje() / 100;
         holder.bar.requestLayout();
 
         holder.llApplause.setOnClickListener(new View.OnClickListener() {

@@ -76,11 +76,11 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/iv_team_1_flag"
             android:layout_alignTop="@+id/iv_team_1_flag"
+            android:layout_centerInParent="true"
             android:layout_toEndOf="@+id/iv_team_1_flag"
             android:layout_toStartOf="@+id/tv_match_score"
             android:gravity="center"
             android:textColor="@color/white" />
-
 
         <ImageView
             android:id="@+id/iv_team_2_flag"
@@ -98,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/iv_team_2_flag"
             android:layout_alignTop="@+id/iv_team_2_flag"
+            android:layout_centerInParent="true"
             android:layout_toEndOf="@+id/tv_match_score"
             android:layout_toStartOf="@+id/iv_team_2_flag"
             android:gravity="center"

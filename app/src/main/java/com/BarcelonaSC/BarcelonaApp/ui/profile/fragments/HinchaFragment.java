@@ -157,8 +157,12 @@ public class HinchaFragment extends Fragment {
         btnCarnet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), CarnetDigitalActivity.class);
-                getActivity().startActivity(intent);
+                if (sessionManager.getUser().getCedula() != null && !sessionManager.getUser().getCedula().equals("")) {
+                    Intent intent = new Intent(getActivity(), CarnetDigitalActivity.class);
+                    getActivity().startActivity(intent);
+                } else {
+                    Toast.makeText(getActivity(), "Completa todos los campos de registro para ver tu credencial", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
