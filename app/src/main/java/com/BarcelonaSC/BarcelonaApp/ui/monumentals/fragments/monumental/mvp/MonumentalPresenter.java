@@ -44,6 +44,7 @@ public class MonumentalPresenter implements MonumentalContract.Presenter, Monume
         if (isViewNull()) return;
         view.showToastError();
         view.hideProgress();
+        view.setRefreshing(false);
     }
 
     @Override
@@ -64,4 +65,5 @@ public class MonumentalPresenter implements MonumentalContract.Presenter, Monume
         if (isViewNull()) return;
         view.navigateToMonumentalProfile(String.valueOf(poll.getMonumentales().get(position).getIdmonumental()), String.valueOf(poll.getIdencuesta()));
     }
+
 }
