@@ -25,7 +25,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@id/img_profile"
-        android:background="@drawable/background_comment">
+        android:background="@drawable/background_comment"
+        android:padding="5dp">
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/user_name"
@@ -81,7 +82,8 @@
         android:gravity="center"
         android:text="@string/clap_your_hands"
         android:textColor="@color/colorPrimary"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/like_icon"

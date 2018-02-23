@@ -23,7 +23,9 @@
             android:layout_marginEnd="120dp"
             android:background="@drawable/name_background_gradient"
             android:orientation="vertical"
-            android:paddingLeft="16dp"
+            android:paddingBottom="15dp"
+            android:paddingStart="16dp"
+            android:paddingTop="15dp"
             android:visibility="visible">
 
             <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView

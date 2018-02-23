@@ -34,8 +34,8 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
     public CircleImageView imgProfile;
     @BindView(R.id.user_name)
     FCMillonariosTextView userName;
-    @BindView(R.id.btn_clap)
-    public FCMillonariosTextView clap;
+    @BindView(R.id.like_icon)
+    public ImageView clap;
     @BindView(R.id.count_like)
     public FCMillonariosTextView countLike;
     @BindView(R.id.remaining)
@@ -57,7 +57,6 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
         super(itemView);
         ButterKnife.bind(this, itemView);
         this.context = itemView.getContext();
-
     }
 
     public void setData(WallCommentItem commentItem) {
@@ -71,7 +70,6 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
         }
         if (commentItem.getFoto() != null) {
             if (!commentItem.getFoto().equals("")) {
-
                 imgComment.setVisibility(View.VISIBLE);
                 Glide.with(context).load(commentItem.getFoto()).apply(new RequestOptions().placeholder(R.drawable.bsc_grey_logo).error(R.drawable.bsc_grey_logo)).into(imgComment);
             } else {
@@ -80,9 +78,9 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
         }
 
         if (commentItem.getYaaplaudio() == 1) {
-            Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_bold);
+//            Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_bold);
         } else {
-            Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_regular);
+//            Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_regular);
         }
 
         countLike.setText(String.valueOf(commentItem.getNaplausos()));
@@ -99,9 +97,9 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
 
     public void setYaAplaudio(WallCommentItem commentItem) {
         if (commentItem.getYaaplaudio() == 1) {
-            Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_bold);
+            //Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_bold);
         } else {
-            Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_regular);
+            //Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_regular);
         }
     }
 

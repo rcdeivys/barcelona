@@ -14,9 +14,9 @@ public class ReferredParser {
     private String pais;
     private String genero;
     private String foto;
-    private String status;
+    private int status;
 
-    public ReferredParser(String nombre, String apellido, String email, String apodo, String celular, String pais, String genero, String foto, String status) {
+    public ReferredParser(String nombre, String apellido, String email, String apodo, String celular, String pais, String genero, String foto, int status) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -92,11 +92,11 @@ public class ReferredParser {
         this.foto = foto;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

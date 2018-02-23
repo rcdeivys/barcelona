@@ -188,6 +188,7 @@ public class Commons {
         }
         return getString(R.string.undefined);
     }
+
     @SuppressLint("SimpleDateFormat")
     public static Date getDateString(String strFecha) {
         String format = "yyyy-MM-dd HH:mm:ss";
@@ -331,9 +332,9 @@ public class Commons {
     }
 
     public static String encodeImage(Bitmap bm) {
-        Bitmap resize = Commons.scaleDown(bm, 748, true);
+        Bitmap resize = Commons.scaleDown(bm, 400, true);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        resize.compress(Bitmap.CompressFormat.PNG, 25, baos);
+        resize.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] b = baos.toByteArray();
         String encImage = Base64.encodeToString(b, Base64.DEFAULT);
 
@@ -367,10 +368,10 @@ public class Commons {
 
     public static void seTypeFaceTextView(FCMillonariosTextView view, int path) {
         if (Build.VERSION.SDK_INT < 23) {
-            view.setTypeface(FontCache.getTypeface(App.getAppContext(),Commons.getString(path)));
+            view.setTypeface(FontCache.getTypeface(App.getAppContext(), Commons.getString(path)));
 
         } else {
-            view.setTypeface(FontCache.getTypeface(App.getAppContext(),Commons.getString(path)));
+            view.setTypeface(FontCache.getTypeface(App.getAppContext(), Commons.getString(path)));
 
         }
     }

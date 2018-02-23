@@ -270,7 +270,7 @@ public class ReferredListFragment extends BaseFragment implements ReferredContra
                     , referidos.getReferidos().get(i).getPais()
                     , referidos.getReferidos().get(i).getGenero()
                     , referidos.getReferidos().get(i).getFoto()
-                    , referidos.getReferidos().get(i).getEstatus()));
+                    , referidos.getReferidos().get(i).getActivo()));
         }
 
         mLayoutManager = new LinearLayoutManager(getActivity(),
@@ -296,7 +296,7 @@ public class ReferredListFragment extends BaseFragment implements ReferredContra
                     , referidos.getReferidos().get(i).getPais()
                     , referidos.getReferidos().get(i).getGenero()
                     , referidos.getReferidos().get(i).getFoto()
-                    , referidos.getReferidos().get(i).getEstatus()));
+                    , referidos.getReferidos().get(i).getActivo()));
         }
         adapter.referred.addAll(this.dataObjects.size(), dataObjects);
         adapter.notifyDataSetChanged();

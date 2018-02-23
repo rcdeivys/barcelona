@@ -47,6 +47,7 @@
                 android:layout_marginTop="10dp"
                 android:inputType="textMultiLine"
                 android:maxLength="2000"
+                android:padding="5dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:visibility="gone" />
 
@@ -156,8 +157,7 @@
             android:layout_marginStart="8dp"
             android:background="@drawable/icon_aplauso"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/cant_comment" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/count_like"
@@ -166,9 +166,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="0"
-            android:textSize="16sp"
             android:textColor="@color/colorPrimary"
-            app:layout_constraintStart_toEndOf="@id/like_icon"/>
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/like_icon" />
 
     </android.support.constraint.ConstraintLayout>
 

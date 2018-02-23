@@ -100,8 +100,8 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
             if (playerData.getGoles1() != null)
                 vhHeader.ctvResultGame.setText(playerData.getGoles1() + "-" + playerData.getGoles2());
 
-            vhHeader.ctvWeight.setText(playerData.getPeso());
-            vhHeader.ctvWeight.setText(playerData.getPeso());
+            vhHeader.ctvWeight.setText(playerData.getnCamiseta());
+
             vhHeader.ctvPlayerNationality.setText(playerData.getNacionalidad());
 
             vhHeader.ctvPlayerHeight.setText(playerData.getEstatura());
