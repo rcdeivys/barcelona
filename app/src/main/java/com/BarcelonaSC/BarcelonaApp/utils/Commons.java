@@ -255,14 +255,16 @@ public class Commons {
         try {
             DateFormat format = new SimpleDateFormat("dd-MMM-yyyy", new Locale("es", "ES"));
             DateFormat format2 = new SimpleDateFormat("yyyy-MM-dd", new Locale("es", "ES"));
+
             Date date = format2.parse(string);
             System.out.println(date);
+            String dateString = format.format(date).replace(".", "");
 
-            return format.format(date);
+            return dateString.toUpperCase();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return "";
     }
 
 

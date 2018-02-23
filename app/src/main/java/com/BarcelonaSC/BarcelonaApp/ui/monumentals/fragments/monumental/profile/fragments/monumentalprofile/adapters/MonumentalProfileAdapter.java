@@ -14,6 +14,7 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalItem;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile.MProfileFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -125,7 +126,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         try {
             Date date1 = formatIn.parse(recentItem.getFecha());
             String formatOutStr = formatOut.format(date1);
-            vhItem.tvData.setText(String.valueOf(formatOutStr));
+            vhItem.tvData.setText(Commons.getStringDate2(recentItem.getFecha()));
             //System.out.println(formatOutStr);
         } catch (ParseException e) {
             e.printStackTrace();
