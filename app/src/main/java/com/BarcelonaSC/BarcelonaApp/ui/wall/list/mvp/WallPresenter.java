@@ -60,7 +60,7 @@ public class WallPresenter implements WallContract.Presenter, WallContract.Model
 
     @Override
     public void load() {
-        model.loadWall(0, this);
+        model.loadWall(1, this);
     }
 
     @Override
