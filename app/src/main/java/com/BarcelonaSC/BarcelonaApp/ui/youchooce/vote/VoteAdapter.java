@@ -61,9 +61,9 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
                 .into(holder.sivChoose);
 
         if (item.getYaVoto() != null && "1".equals(item.getYaVoto())) {
-            holder.ibVote.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.btn_off));
-        } else {
             holder.ibVote.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.btn_on));
+        } else {
+            holder.ibVote.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.btn_off));
         }
 
     /*     String[] splitName = item.getNombre().split(" ");

@@ -258,16 +258,8 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
 
     @Override
     public void showProgress() {
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                progressBar.setVisibility(View.VISIBLE);
-                disableView(false);
-            }
-        }, 1000);
-
-
+        progressBar.setVisibility(View.VISIBLE);
+        disableView(false);
     }
 
     @Override
@@ -280,9 +272,8 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
         if (error.equals("")) {
             error = Commons.getString(R.string.toast_connection_error);
         }
-        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
-        progressBar.setVisibility(View.GONE);
         disableView(true);
+        Toast.makeText(this, error, Toast.LENGTH_LONG).show();
     }
 
 

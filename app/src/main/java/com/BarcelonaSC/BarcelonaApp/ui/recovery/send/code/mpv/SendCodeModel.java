@@ -1,12 +1,12 @@
 package com.BarcelonaSC.BarcelonaApp.ui.recovery.send.code.mpv;
 
 import com.BarcelonaSC.BarcelonaApp.app.api.ProfileApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.RecoveryPasswordApi;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
+import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.models.AuthItem;
 import com.BarcelonaSC.BarcelonaApp.models.SendCode;
 import com.BarcelonaSC.BarcelonaApp.models.response.SendCodeResponse;
-import com.BarcelonaSC.BarcelonaApp.app.api.RecoveryPasswordApi;
-import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.models.response.UserResponse;
 
 /**
@@ -20,7 +20,7 @@ public class SendCodeModel {
     private ProfileApi profileApi;
     private AuthItem authItem;
 
-    public SendCodeModel(RecoveryPasswordApi recoveryPasswordApi) {
+    public SendCodeModel(RecoveryPasswordApi recoveryPasswordApi, ProfileApi profileApi) {
         this.recoveryPasswordApi = recoveryPasswordApi;
         this.profileApi = profileApi;
     }

@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
@@ -27,6 +28,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.wall.list.mvp.WallContract;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.list.mvp.WallPresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.list.views.adapters.WallAdapter;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.post.WallCreatePostActivity;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.EndlessScrollListener;
 
 import org.greenrobot.eventbus.EventBus;
@@ -95,6 +97,7 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
 
     public void initRecyclerView() {
         endlessScrollListener = null;
+
         mLayoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false);
 
@@ -138,6 +141,7 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
 
     @Override
     public void setLoad(List<Object> list, boolean pagination) {
+
         if (pagination) {
             wallAdapter.addWall(list);
         } else {
@@ -146,6 +150,7 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
         recyclerView.addOnScrollListener(initRecyclerViewScroll());
         wallAdapter.showNoMoreDataToDisplay();
         swipeRefreshLayout.setRefreshing(false);
+
     }
 
     @Override
@@ -173,7 +178,7 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
 
     @Override
     public void onProfileListener() {
-        ((HomeActivity) getActivity()).presenter.onItemMenuSelected(com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant.Menu.PROFILE);
+        ((HomeActivity) getActivity()).presenter.onItemMenuSelected(Constant.Menu.PROFILE);
     }
 
     @Override
@@ -187,7 +192,6 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
     }
 
     @Override
-
     public void onClickLikeListener(String id_post) {
         presenter.clap(id_post);
     }
@@ -227,3 +231,4 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
         presenter.onDetach();
     }
 }
+

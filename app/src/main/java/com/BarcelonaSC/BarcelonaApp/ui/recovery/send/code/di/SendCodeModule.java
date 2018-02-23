@@ -1,5 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.recovery.send.code.di;
 
+import com.BarcelonaSC.BarcelonaApp.app.api.ProfileApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.RecoveryPasswordApi;
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.code.SendCodeFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.code.mpv.SendCodeContract;
@@ -31,8 +32,8 @@ public class SendCodeModule {
 
     @Provides
     @SendCodeScope
-    public SendCodeModel providModel(RecoveryPasswordApi recoveryPasswordApi) {
-        return new SendCodeModel(recoveryPasswordApi);
+    public SendCodeModel providModel(RecoveryPasswordApi recoveryPasswordApi, ProfileApi profileApi) {
+        return new SendCodeModel(recoveryPasswordApi, profileApi);
     }
 
     @Provides
