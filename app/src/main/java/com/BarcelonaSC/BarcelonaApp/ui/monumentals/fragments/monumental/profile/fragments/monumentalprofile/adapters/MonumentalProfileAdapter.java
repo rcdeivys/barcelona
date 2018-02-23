@@ -95,7 +95,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
     }
 
     private void initHeader(VHHeader vhHeader, final MonumentalItem monumental) {
-        vhHeader.votes.setText(String.valueOf(monumental.getTotalVotos()) + "Votos");
+        vhHeader.votes.setText(String.valueOf(monumental.getTotalVotos()) + " Votos");
         Glide.with(context).load(monumental.getFoto())
                 .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
                 .into(vhHeader.imgMonumental);
