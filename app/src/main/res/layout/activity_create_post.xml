@@ -67,6 +67,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/silueta"
                 app:civ_border_color="@color/colorAccent"
                 app:civ_border_width="2dp"/>
@@ -101,8 +102,8 @@
                     android:imeOptions="actionSend|flagNoEnterAction"
                     android:inputType="textAutoCorrect|textCapSentences|textMultiLine"
                     android:maxLength="2000"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white" />
+                    android:textColor="@color/colorHeader"
+                    android:textColorHint="@color/colorBackground" />
 
                 <RelativeLayout
                     android:id="@+id/content_img"
@@ -145,6 +146,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="8dp"
         android:text="Escribe un mensaje"
+        android:visibility="invisible"
         android:textColor="@color/colorAccent" />
 
     <ImageView
