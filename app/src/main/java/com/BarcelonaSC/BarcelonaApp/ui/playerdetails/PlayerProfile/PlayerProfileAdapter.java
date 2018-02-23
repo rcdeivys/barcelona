@@ -106,7 +106,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
 
             vhHeader.ctvPlayerHeight.setText(playerData.getEstatura());
 
-            vhHeader.ctvPlayerBirthdate.setText(Commons.getStringDate(playerData.getFechaNacimiento()));
+            vhHeader.ctvPlayerBirthdate.setText(Commons.getStringDate2(playerData.getFechaNacimiento()));
 
             vhHeader.ctvTeamOneName.setText(playerData.getEquipo1());
 
@@ -161,7 +161,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 */
 
-        vhItem.tvData.setText(Commons.getStringDate(recentItem.getFecha()));
+        vhItem.tvData.setText(Commons.getStringDate2(recentItem.getFecha()));
         //     vhItem.tvData.setTypeface(FontsUtil.getOpenSansReularFonts(context));
         vhItem.tvTitle.setText(recentItem.getTitulo());
         //  vhItem.tvTitle.setTypeface(FontsUtil.getHelveticaCondesed2Fonts(context));

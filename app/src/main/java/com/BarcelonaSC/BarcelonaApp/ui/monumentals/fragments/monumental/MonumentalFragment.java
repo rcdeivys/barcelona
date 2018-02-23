@@ -120,6 +120,7 @@ public class MonumentalFragment extends BaseFragment implements MonumentalContra
     @Override
     public void hideProgress() {
         progressBar.setVisibility(View.GONE);
+        swipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
