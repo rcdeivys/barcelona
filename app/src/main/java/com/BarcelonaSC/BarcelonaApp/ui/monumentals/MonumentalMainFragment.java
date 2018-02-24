@@ -54,13 +54,13 @@ public class MonumentalMainFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         ButterKnife.bind(this, getView());
 
-        final SharedPreferences preferences = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE);
-        boolean accepted = preferences.getBoolean(Constant.Key.MONUMETAL_ID, false);
-        if (!accepted) {
-            initDialog();
-        } else {
-            initViewPager();
-        }
+        //final SharedPreferences preferences = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE);
+        //boolean accepted = preferences.getBoolean(Constant.Key.MONUMETAL_ID, false);
+        //if (!accepted) {
+        initDialog();
+        //} else {
+        //    initViewPager();
+        //}
     }
 
     private void initViewPager() {
@@ -81,9 +81,9 @@ public class MonumentalMainFragment extends BaseFragment {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE).edit();
-                editor.putBoolean(Constant.Key.MONUMETAL_ID, true);
-                editor.apply();
+                //SharedPreferences.Editor editor = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE).edit();
+                //editor.putBoolean(Constant.Key.MONUMETAL_ID, true);
+                //editor.apply();
                 initViewPager();
                 dialog.dismiss();
             }

@@ -134,13 +134,17 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     @Override
     public void updateVotes() {
         adapter.setVote();
-        showToast("¡Votos agregados con éxito!", 2000);
+        showToast("¡Voto registrado con éxito!", 2000);
     }
 
     @Override
     public void onFailed(String msg) {
         swipeContainer.setRefreshing(false);
-        showToast(msg, 1000);
+        if (msg.toLowerCase().equals("usted ya ha votado por esta monumental")) {
+            showToast("Ya se registró tu participación en la votación", 2000);
+        } else {
+            showToast(msg, 1000);
+        }
     }
 
     @Override

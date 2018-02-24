@@ -72,15 +72,12 @@ public class IdealElevenPresenter implements IdealElevenContract.Presenter, Idea
         view.setPlayByPlayData(gameSummonedData);
     }
 
-
     public void setIdealEleven(List<IdealElevenData> idealElevenData, String imageEncode) {
         Log.i(TAG, "--->TOKEN:" + new SessionManager(App.getAppContext()).getSession().getToken());
         model.setIdealEleven(UtilDragAnDrop.llenardata(idealElevenData, imageEncode), this);
     }
 
-
     public List<NominaItem> getPlayerSummonedData() {
-
         return gameSummonedData.getJugadores();
     }
 
@@ -111,6 +108,5 @@ public class IdealElevenPresenter implements IdealElevenContract.Presenter, Idea
         if (isViewNull()) return;
 
     }
-
 
 }

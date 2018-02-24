@@ -17,6 +17,9 @@ public class GenericResponse {
     @SerializedName("data")
     @Expose
     private List<Object> data = null;
+    @SerializedName("error")
+    @Expose
+    private List<String> error = null;
 
     public String getStatus() {
         return status;
@@ -34,5 +37,11 @@ public class GenericResponse {
         this.data = data;
     }
 
+    public List<String> getError() {
+        return error;
+    }
 
+    public void setError(List<String> error) {
+        this.error = error;
+    }
 }

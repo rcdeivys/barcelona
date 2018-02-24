@@ -43,7 +43,6 @@ import butterknife.Unbinder;
 
 public class VoteFragment extends BaseFragment implements VoteContract.View, VoteAdapter.OnItemClickListener, ProgressClock.ProgressClockListener {
 
-
     private static final String TAG = ApplaudedFragment.class.getSimpleName();
     @BindView(R.id.rvChoose)
     RecyclerView rvChoose;
@@ -65,7 +64,6 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
     private RecyclerView.LayoutManager mLayoutManager;
     private boolean finisher = false;
 
-
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
@@ -76,14 +74,11 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
     }
 
     public static VoteFragment newInstance() {
-
         Bundle args = new Bundle();
-
         VoteFragment fragment = new VoteFragment();
         fragment.setArguments(args);
         return fragment;
     }
-
 
     public void initComponent() {
         DaggerVoteComponent.builder()
@@ -91,7 +86,6 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
                 .voteModule(new VoteModule(this))
                 .build().inject(VoteFragment.this);
     }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -105,7 +99,6 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_vote, container, false);
         unbinder = ButterKnife.bind(this, view);
-
 
         presenter.onAttach(this);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -153,12 +146,17 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
         swipeContainer.setRefreshing(state);
     }
 
-
     @Override
     public void showToastError(String error) {
         setRefreshing(false);
         hideProgress();
-        showToast(error, Toast.LENGTH_LONG);
+        if (error.toLowerCase().equals("no puedes votar en esta encuesta")) {
+            showToast("Ya se registró tu participación en la votación", Toast.LENGTH_LONG);
+        } else if (error.toLowerCase().equals("Votos agregados con exito")) {
+            showToast("¡Voto registrado con éxito!", Toast.LENGTH_LONG);
+        } else {
+            showToast(error, Toast.LENGTH_LONG);
+        }
     }
 
     @Override
@@ -182,7 +180,7 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
     @Override
     public void showNoEncuentas() {
         llVoteContainer.setVisibility(View.INVISIBLE);
-        showToast("En estos momentos no hay encuesta activa", Toast.LENGTH_SHORT);
+        showToast("En estos momentos no hay votación activa", Toast.LENGTH_SHORT);
         setRefreshing(false);
         hideProgress();
     }
@@ -219,22 +217,20 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
 
     @Override
     public void onFinish() {
-        showDialog("Encuesta finalizada");
+        showDialog("Votación finalizada");
         setRefreshing(false);
         hideProgress();
         finisher = true;
-
     }
 
 
     public void showDialog(String message) {
-
         LayoutInflater inflater = getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_ok, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(dialoglayout);
         final AlertDialog alertDialog = builder.show();
-        FCMillonariosTextView fcMillonariosTextView = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_tittle);
+        FCMillonariosTextView fcMillonariosTextView = dialoglayout.findViewById(R.id.fcm_tv_tittle);
         fcMillonariosTextView.setText(message);
         Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_ok);
         btnNot.setOnClickListener(new View.OnClickListener() {
@@ -244,7 +240,5 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
                 alertDialog.dismiss();
             }
         });
-
-
     }
 }

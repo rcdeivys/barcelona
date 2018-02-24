@@ -193,13 +193,13 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                                         if (regCbTerms.isChecked()) {
                                             registerUser();
                                         } else {
-                                            Toast.makeText(getActivity(), "Debe aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(), "Debes aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
                                         Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
                                     }
                                 } else {
-                                    Toast.makeText(getActivity(), "Debe confirmar la contraseña", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Debes confirmar la contraseña", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
                                 Toast.makeText(getActivity(), "La contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
