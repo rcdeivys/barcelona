@@ -49,6 +49,9 @@ public class WallCommentModel extends NetworkCallBack<WallCommentResponse> {
             public void onRequestSuccess(GenericResponse response) {
                 if (response.getStatus().equals("exito")) {
                     result.onWallCommentCreate();
+                } else {
+                    if (response.getError() != null)
+                        result.onWallCommentFailed(response.getError().get(0));
                 }
             }
 

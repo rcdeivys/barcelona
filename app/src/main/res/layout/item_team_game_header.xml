@@ -27,8 +27,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="5dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/bsc_grey_logo"/>
+                android:adjustViewBounds="true" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -96,8 +95,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/bsc_grey_logo"/>
+                android:adjustViewBounds="true" />
 
         </LinearLayout>
     </RelativeLayout>

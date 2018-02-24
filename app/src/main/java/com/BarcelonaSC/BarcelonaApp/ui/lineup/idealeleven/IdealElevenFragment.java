@@ -93,7 +93,6 @@ public class IdealElevenFragment extends ShareBaseFragment implements IdealEleve
     private String messageToast = "";
     private boolean visible = false;
 
-
     public static IdealElevenFragment newInstance() {
 
         Bundle args = new Bundle();
@@ -109,7 +108,6 @@ public class IdealElevenFragment extends ShareBaseFragment implements IdealEleve
                 .idealElevenModule(new IdealElevenModule(this))
                 .build().inject(IdealElevenFragment.this);
     }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -130,22 +128,21 @@ public class IdealElevenFragment extends ShareBaseFragment implements IdealEleve
 
     @Override
     public void showShareDialog(String message) {
-
         LayoutInflater inflater = getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_ideal_eleven_share, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(dialoglayout);
         final AlertDialog alertDialog = builder.show();
-        FCMillonariosTextView fcMillonariosTextView = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_tittle);
+        FCMillonariosTextView fcMillonariosTextView = dialoglayout.findViewById(R.id.fcm_tv_tittle);
         fcMillonariosTextView.setText(message);
-        Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_not);
+        Button btnNot = dialoglayout.findViewById(R.id.btn_not);
         btnNot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
             }
         });
-        Button btnYes = (Button) dialoglayout.findViewById(R.id.btn_yes);
+        Button btnYes = dialoglayout.findViewById(R.id.btn_yes);
         btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -190,16 +187,13 @@ public class IdealElevenFragment extends ShareBaseFragment implements IdealEleve
         hideProgress();
     }
 
-
     @Override
     public void setPlayByPlayData(GameSummonedData playByPlayData) {
-
         presenter.getIdealEleven();
 
         setGameData(playByPlayData);
         setRefreshing(false);
         hideProgress();
-
     }
 
     @Override
@@ -207,12 +201,10 @@ public class IdealElevenFragment extends ShareBaseFragment implements IdealEleve
 
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ideal_evelen, container, false);
-
 
         unbinder = ButterKnife.bind(this, view);
         presenter.onAttach(this);
@@ -302,7 +294,6 @@ public class IdealElevenFragment extends ShareBaseFragment implements IdealEleve
 
     }
 
-
     @Override
     public void onPlayerDropSave(List<IdealElevenData> idealElevenData, String imageEncode, Boolean saveForLate) {
         this.idealElevenData.clear();
@@ -312,7 +303,6 @@ public class IdealElevenFragment extends ShareBaseFragment implements IdealEleve
             showProgress();
         }
     }
-
 
     @Override
     public void share() {

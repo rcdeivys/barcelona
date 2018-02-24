@@ -312,5 +312,4 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
         Log.d(TAG, "showPermissionDenied " + permission + " boolean " + isPermanentlyDenied);
     }
 
-
 }

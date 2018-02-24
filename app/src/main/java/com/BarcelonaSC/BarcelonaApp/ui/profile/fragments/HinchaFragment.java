@@ -129,7 +129,11 @@ public class HinchaFragment extends Fragment {
         btnSaveChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateUser();
+                if (!inputNickname.getText().toString().trim().isEmpty()) {
+                    updateUser();
+                } else {
+                    Toast.makeText(getActivity(), "¡Tu Apodo no puede estar vacío!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

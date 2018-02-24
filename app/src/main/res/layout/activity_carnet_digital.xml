@@ -53,7 +53,10 @@
 
             <include
                 android:id="@+id/content_carnet"
-                layout="@layout/view_carnet" />
+                layout="@layout/view_carnet"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
         </RelativeLayout>
 
     </android.support.percent.PercentRelativeLayout>
