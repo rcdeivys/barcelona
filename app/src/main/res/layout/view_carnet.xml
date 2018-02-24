@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center|start"
             android:orientation="vertical"
             android:rotation="90">
 
@@ -36,16 +36,18 @@
                 android:layout_height="wrap_content"
                 android:text="N°0001"
                 android:textAlignment="textStart"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/font_body_m_size" />
 
             <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/ci_hincha"
                 style="@style/StyleRobotoBold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cédula"
+                android:text="N° de identificación"
                 android:textAlignment="textStart"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="@dimen/font_body_m_size" />
 
         </LinearLayout>
 
@@ -77,6 +79,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/cintillo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/cintillo" />
@@ -96,9 +99,9 @@
                     style="@style/StyleRobotoBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/type_hincha"
+                    android:layout_below="@id/cintillo"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="-10dp"
                     android:text="Desde enero 2017"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="@dimen/font_caption_size"
@@ -205,6 +208,7 @@
                 android:background="@color/colorPrimary" />
 
         </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -42,7 +42,7 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         this.context = context;
         this.Poll = poll;
         //onItemClickListener = context;
-        formatOut = new SimpleDateFormat("d MM yyyy");
+        formatOut = new SimpleDateFormat("d/MM/yyyy");
         formatIn = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     }
 

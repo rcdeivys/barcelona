@@ -92,7 +92,6 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
             }
         });
 
-
         holder.ibVote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

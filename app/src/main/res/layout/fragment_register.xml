@@ -75,7 +75,8 @@
                     android:text="Ingresa tus datos a continuación o regístrate usando tus redes sociales"
                     android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

@@ -29,6 +29,9 @@ public class WallPostModel {
             public void onRequestSuccess(GenericResponse response) {
                 if (response.getStatus().equals("exito")) {
                     result.onWallPostCreate();
+                } else {
+                    if (response.getError() != null)
+                        result.onWallPostFailed(response.getError().get(0));
                 }
             }
 

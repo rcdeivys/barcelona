@@ -53,14 +53,13 @@
                         android:layout_gravity="center_horizontal"
                         android:scaleType="fitXY"
                         android:src="@drawable/soccer_field_vertical" />
+
                 </FrameLayout>
 
                 <Button
                     android:id="@+id/btn_ok"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_alignBottom="@+id/wv_juramento"
-                    android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginBottom="15dp"
                     android:layout_marginTop="20dp"
