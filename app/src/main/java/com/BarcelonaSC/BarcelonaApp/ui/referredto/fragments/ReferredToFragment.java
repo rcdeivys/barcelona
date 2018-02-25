@@ -126,7 +126,7 @@ public class ReferredToFragment extends BaseFragment {
                             .commit();
                     preferenceManager.setBoolean(ACCEPT, true);
                 } else {
-                    Toast.makeText(getActivity(), "Debe haber leído y aceptado los Términos y condiciones.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Debes haber leído y aceptado los Términos y condiciones.", Toast.LENGTH_LONG).show();
                 }
             }
         });

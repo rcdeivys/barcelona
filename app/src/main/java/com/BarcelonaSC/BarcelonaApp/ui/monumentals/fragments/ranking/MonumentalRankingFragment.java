@@ -1,6 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,12 +13,16 @@ import android.view.ViewGroup;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.eventbus.MonumentalRankingEvent;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalRankingItem;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking.adapters.MonumentalRankingAdapter;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking.di.DaggerMonumentalRankComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking.di.MonumentalRankModule;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking.mvp.MonumentalRankContract;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking.mvp.MonumentalRankPresenter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +51,14 @@ public class MonumentalRankingFragment extends BaseFragment implements Monumenta
 
     @Inject
     public MonumentalRankPresenter presenter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
 
     @Nullable
     @Override
@@ -101,4 +114,14 @@ public class MonumentalRankingFragment extends BaseFragment implements Monumenta
 
     }
 
+    @Subscribe
+    public void onMessageEvent(MonumentalRankingEvent event) {
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                presenter.loadMonumentalRank();
+            }
+        }, 1000);
+    }
 }

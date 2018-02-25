@@ -38,7 +38,6 @@ import java.util.List;
 
 public class DragDropPlayerDialogFragment extends DialogFragment {
 
-
     RecyclerView rvPlayers;
     FrameLayout soccesFieldView;
     ImageView ivTrash;
@@ -81,8 +80,6 @@ public class DragDropPlayerDialogFragment extends DialogFragment {
                     }
                 }
             }
-
-
         }
 
         soccesFieldView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
