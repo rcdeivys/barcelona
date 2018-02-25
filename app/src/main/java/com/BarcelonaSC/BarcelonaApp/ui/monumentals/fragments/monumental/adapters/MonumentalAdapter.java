@@ -12,13 +12,16 @@ import android.widget.TextView;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalPoll;
 import com.BarcelonaSC.BarcelonaApp.ui.news.views.adapters.NewsAdapter;
+import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,7 +66,8 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             try {
                 Date date1 = formatIn.parse(Poll.getFecha_fin());
                 String formatOutStr = formatOut.format(date1);
-                header.datevoting.setText(String.format("Hasta el %1$s", String.valueOf(formatOutStr)));
+                //header.datevoting.setText(String.format("Hasta el %1$s", String.valueOf(formatOutStr)));
+                header.datevoting.setText("Desde el " + Commons.simpleDateFormat(Poll.getFecha_fin()).substring(0, 2) + " de " + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(Poll.getFecha_fin()).substring(3, 5))) + " " + Poll.getFecha_fin().substring(0, 4));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
@@ -83,6 +87,16 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             item.monumental_name.setText(Poll.getMonumentales().get(pos).getNombre());
             item.monumental_name_container.setVisibility(View.GONE);
         }
+    }
+
+    String getMonthForInt(int num) {
+        String month = "wrong";
+        DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es", "ES"));
+        String[] months = dfs.getMonths();
+        if (num >= 0 && num <= 12) {
+            month = months[num - 1];
+        }
+        return month;
     }
 
     @Override

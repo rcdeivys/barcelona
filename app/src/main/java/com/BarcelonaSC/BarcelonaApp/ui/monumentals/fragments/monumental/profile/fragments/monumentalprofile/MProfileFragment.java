@@ -11,11 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.eventbus.MonumentalRankingEvent;
+import com.BarcelonaSC.BarcelonaApp.eventbus.WallCreatePostEvent;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalItem;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryListActivity;
@@ -28,6 +29,8 @@ import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+
+import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
@@ -134,6 +137,7 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     @Override
     public void updateVotes() {
         adapter.setVote();
+        EventBus.getDefault().post(new MonumentalRankingEvent());
         showToast("¡Voto registrado con éxito!", 2000);
     }
 

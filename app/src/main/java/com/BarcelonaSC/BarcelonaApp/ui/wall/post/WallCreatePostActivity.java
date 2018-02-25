@@ -252,7 +252,7 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
             public void run() {
                 finish();
             }
-        }, 1000);
+        }, 2000);
 
     }
 
@@ -264,7 +264,7 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
 
     @Override
     public void hideProgress() {
-        progressBar.setVisibility(View.GONE);
+      //progressBar.setVisibility(View.GONE);
     }
 
     @Override
