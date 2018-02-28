@@ -34,7 +34,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_user"
-                        android:hint="Nombre"
+                        android:hint="Nombre *"
                         android:inputType="text"
                         android:maxLength="15"
                         android:maxLines="1" />
@@ -55,7 +55,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_user"
-                        android:hint="Apellido"
+                        android:hint="Apellido *"
                         android:inputType="text"
                         android:maxLines="1" />
 
@@ -75,7 +75,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_cedula"
-                        android:hint="Cédula"
+                        android:hint="Cédula *"
                         android:inputType="text"
                         android:maxLines="1" />
 
@@ -95,7 +95,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_email"
-                        android:hint="Email"
+                        android:hint="Email *"
                         android:inputType="textEmailAddress"
                         android:maxLines="1" />
 
@@ -115,7 +115,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_pass"
-                        android:hint="Contraseña"
+                        android:hint="Contraseña nueva"
                         android:inputType="textPassword"
                         android:maxLines="1" />
 
@@ -135,7 +135,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_pass"
-                        android:hint="Confirmar contraseña"
+                        android:hint="Confirmar contraseña nueva"
                         android:inputType="textPassword"
                         android:maxLines="1" />
 
@@ -389,7 +389,7 @@
                         android:background="@drawable/oath_button"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:text="Enviar"
+                        android:text="Guardar"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/font_body_r_size" />

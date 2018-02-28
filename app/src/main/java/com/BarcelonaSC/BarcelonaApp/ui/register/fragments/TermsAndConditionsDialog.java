@@ -10,6 +10,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +57,7 @@ public class TermsAndConditionsDialog extends DialogFragment {
         settings.setUseWideViewPort(true);
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
-        myWebView.loadUrl("http://millos-dev.2waysports.com/webviews/tyc/");
+        myWebView.loadUrl(Commons.getString(R.string.url_api).replace("api/", "") + "webviews/tyc/");
 
         return dialogo;
     }

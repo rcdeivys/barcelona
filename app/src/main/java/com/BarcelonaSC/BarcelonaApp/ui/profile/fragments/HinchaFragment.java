@@ -201,9 +201,9 @@ public class HinchaFragment extends Fragment {
         if (user.getApodo() != null) {
             inputNickname.setText(user.getApodo());
         }
-        registrado.setText("Desde el \n"
+        registrado.setText("DESDE "
                 + Commons.simpleDateFormat(user.getFechaRegistro()).substring(0, 2)
-                + "/" + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(user.getFechaRegistro()).substring(3, 5)))
+                + "/" + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(user.getFechaRegistro()).substring(3, 5))).substring(0, 3)
                 + "/" + user.getFechaRegistro().substring(0, 4));
         id_hincha.setText("N°" + sessionManager.getSession().getIdUser());
         Glide.with(getActivity()).load(user.getFoto()).apply(new RequestOptions().error(R.drawable.silueta)).into(imgProfile);

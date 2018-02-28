@@ -65,6 +65,7 @@
         style="@style/StyleRobotoRegular.BodyR"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
+        android:layout_toEndOf="@+id/img_profile"
         android:layout_below="@id/content_comment"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"

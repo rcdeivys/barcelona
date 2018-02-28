@@ -1,18 +1,24 @@
 package com.BarcelonaSC.BarcelonaApp.ui.home.menu.live;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageButton;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
+import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +35,8 @@ public class LiveActivity extends BaseActivity {
     WebView webView;
     @BindView(R.id.btn_back)
     AppCompatImageButton btnBack;
+    @BindView(R.id.btn_share)
+    ImageButton btnShare;
     @BindView(R.id.text_header)
     FCMillonariosTextView textHeader;
 
@@ -58,6 +66,13 @@ public class LiveActivity extends BaseActivity {
 
         textHeader.setText(ConfigurationManager.getInstance().getConfiguration().getTit9());
 
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                share();
+            }
+        });
+
         super.initBanner(BannerView.Seccion.LIVE);
     }
 
@@ -70,6 +85,10 @@ public class LiveActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    public void share() {
+        new ShareSection(App.getAppContext()).share(App.getAppContext(), "envivo");
     }
 
 }

@@ -67,7 +67,7 @@ public class MonumentalAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 Date date1 = formatIn.parse(Poll.getFecha_fin());
                 String formatOutStr = formatOut.format(date1);
                 //header.datevoting.setText(String.format("Hasta el %1$s", String.valueOf(formatOutStr)));
-                header.datevoting.setText("Desde el " + Commons.simpleDateFormat(Poll.getFecha_fin()).substring(0, 2) + " de " + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(Poll.getFecha_fin()).substring(3, 5))) + " " + Poll.getFecha_fin().substring(0, 4));
+                header.datevoting.setText("Hasta el " + Commons.simpleDateFormat(Poll.getFecha_fin()).substring(0, 2) + " de " + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(Poll.getFecha_fin()).substring(3, 5))) + " " + Poll.getFecha_fin().substring(0, 4));
             } catch (ParseException e) {
                 e.printStackTrace();
             }

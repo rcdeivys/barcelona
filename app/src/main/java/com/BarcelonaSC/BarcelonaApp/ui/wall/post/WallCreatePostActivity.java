@@ -253,7 +253,6 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
                 finish();
             }
         }, 2000);
-
     }
 
     @Override
@@ -264,7 +263,7 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
 
     @Override
     public void hideProgress() {
-      //progressBar.setVisibility(View.GONE);
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -274,8 +273,8 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
         }
         disableView(true);
         Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+        hideProgress();
     }
-
 
     private void setPermissions() {
         MultiplePermissionsListener feedbackViewMultiplePermissionListener =
@@ -290,7 +289,6 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
                         Manifest.permission.CAMERA,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ).withListener(allPermissionsListener).check();
-
     }
 
     @TargetApi(Build.VERSION_CODES.M)

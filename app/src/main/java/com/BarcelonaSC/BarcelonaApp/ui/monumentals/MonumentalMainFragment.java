@@ -12,6 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.adapters.MonumentalPagerAdapter;
@@ -21,6 +22,11 @@ import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking.MonumentalR
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +49,8 @@ public class MonumentalMainFragment extends BaseFragment {
     MonumentalFragment monumentalFragment;
     MonumentalRankingFragment monumentalRankingFragment;
 
+    SessionManager sessionManager;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,14 +61,15 @@ public class MonumentalMainFragment extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ButterKnife.bind(this, getView());
+        sessionManager = new SessionManager(getActivity());
 
-        //final SharedPreferences preferences = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE);
-        //boolean accepted = preferences.getBoolean(Constant.Key.MONUMETAL_ID, false);
-        //if (!accepted) {
-        initDialog();
-        //} else {
-        //    initViewPager();
-        //}
+        final SharedPreferences preferences = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE);
+        boolean accepted = preferences.getBoolean(Constant.Key.MONUMETAL_ID, false);
+        if (!accepted) {
+            initDialog();
+        } else {
+            initViewPager();
+        }
     }
 
     private void initViewPager() {
@@ -81,9 +90,13 @@ public class MonumentalMainFragment extends BaseFragment {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //SharedPreferences.Editor editor = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE).edit();
-                //editor.putBoolean(Constant.Key.MONUMETAL_ID, true);
-                //editor.apply();
+                if (sessionManager.getUser().getFechaNacimiento() != null && !sessionManager.getUser().getFechaNacimiento().isEmpty()) {
+                    if (dobdateValidate(sessionManager.getUser().getFechaNacimiento())) {
+                        SharedPreferences.Editor editor = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE).edit();
+                        editor.putBoolean(Constant.Key.MONUMETAL_ID, true);
+                        editor.apply();
+                    }
+                }
                 initViewPager();
                 dialog.dismiss();
             }
@@ -99,6 +112,22 @@ public class MonumentalMainFragment extends BaseFragment {
 
         dialog.setContentView(v);
         dialog.show();
+    }
+
+    public static boolean dobdateValidate(String date) {
+        boolean result = false;
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        try {
+            Date parseddate = sdf.parse(date);
+            Calendar c2 = Calendar.getInstance();
+            c2.add(Calendar.YEAR, -18);
+            if (parseddate.before(c2.getTime())) {
+                result = true;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }
