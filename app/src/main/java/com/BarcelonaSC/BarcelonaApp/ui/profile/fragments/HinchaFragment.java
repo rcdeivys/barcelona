@@ -28,9 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
-import com.facebook.login.LoginManager;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.manager.NotificationManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
@@ -42,7 +39,12 @@ import com.BarcelonaSC.BarcelonaApp.ui.profile.carnet.CarnetDigitalActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.referredto.ReferredToActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.register.fragments.RegisterFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.facebook.login.LoginManager;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -183,6 +185,7 @@ public class HinchaFragment extends Fragment {
                 sessionManager.setSession(null);
                 sessionManager.setUrlLineUpShare("");
                 sessionManager.setUser(null);
+                PreferenceManager.getInstance().setBoolean(Constant.Key.MONUMETAL_ID, false);
                 NotificationManager.getInstance().setConfiguration(null);
                 LoginManager.getInstance().logOut();
                 startActivity(new Intent(getActivity(), AuthActivity.class));

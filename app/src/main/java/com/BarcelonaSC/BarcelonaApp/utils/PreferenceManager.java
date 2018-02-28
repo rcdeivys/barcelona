@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -19,6 +21,15 @@ public class PreferenceManager {
     private String TAG = PreferenceManager.class.getSimpleName();
     private SharedPreferences mPref = null;
     private Context context;
+
+    private static PreferenceManager ourInstance;
+
+    public static PreferenceManager getInstance() {
+        if (ourInstance == null)
+            return ourInstance = new PreferenceManager(App.getAppContext());
+        else
+            return ourInstance;
+    }
 
     /**
      * @param context
