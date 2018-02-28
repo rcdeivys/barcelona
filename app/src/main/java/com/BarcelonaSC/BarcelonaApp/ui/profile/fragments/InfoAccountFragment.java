@@ -145,37 +145,42 @@ public class InfoAccountFragment extends Fragment {
     private void validateForm() {
         if (!regName.getText().toString().isEmpty()) {
             if (!regLastName.getText().toString().isEmpty()) {
-                // if (!regNick.getText().toString().isEmpty()) {
                 if (!regEmail.getText().toString().isEmpty()) {
                     if (regEmail.getText().toString().contains("@")) {
-                        if (!regPass.getText().toString().isEmpty()) {
-                            if (!regCpass.getText().toString().isEmpty()) {
-                                if (regPass.getText().toString().equals(regCpass.getText().toString())) {
-                               /* if (!regPhoneCode.getText().toString().isEmpty()
-                                        && !regPhoneNum.getText().toString().isEmpty()) {
-                                    if (!regDay.getText().toString().isEmpty()) {
-                                        if (regRbMale.isChecked() || regRbFemale.isChecked()) {
-*/
-                                    updateUser();
+                        if (!regCi.getText().toString().isEmpty()) {
+                            //if (!regPass.getText().toString().isEmpty()) {
+                            //if (!regCpass.getText().toString().isEmpty()) {
+                            //if (regPass.getText().toString().equals(regCpass.getText().toString())) {
+//                            if (!regPhoneNum.getText().toString().isEmpty()) {
+//                                if (!regPhoneCode.getText().toString().isEmpty()
+//                                        && regPhoneCode.getText().toString().contains("+")) {
+                                    /*if (!regDay.getText().toString().isEmpty()) {
+                                        if (regRbMale.isChecked() || regRbFemale.isChecked()) {*/
+                            updateUser();
 
                                         /*} else {
                                             Toast.makeText(getActivity(), "Debe indicar su género", Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
                                         Toast.makeText(getActivity(), "Debe seleccionar su fecha de cumpleaños", Toast.LENGTH_SHORT).show();
-                                    }
-                                } else {
-                                    Toast.makeText(getActivity(), "El número telefónico no puede estar vacío", Toast.LENGTH_SHORT).show();
-                                }
-                            */
-                                } else {
-                                    Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                Toast.makeText(getActivity(), "Debe confirmar la contraseña", Toast.LENGTH_SHORT).show();
-                            }
+                                    }*/
+//                                } else {
+//                                    Toast.makeText(getActivity(), "El código del teléfono debe contener el símbolo + al comienzo", Toast.LENGTH_SHORT).show();
+//                                }
+//                            } else {
+//                                Toast.makeText(getActivity(), "El número telefónico no puede estar vacío", Toast.LENGTH_SHORT).show();
+//                            }
+                            //} else {
+                            //    Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                            //}
+                            //} else {
+                            //    Toast.makeText(getActivity(), "Debe confirmar la contraseña", Toast.LENGTH_SHORT).show();
+                            //}
+                            //} else {
+                            //    Toast.makeText(getActivity(), "La contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
+                            //}
                         } else {
-                            Toast.makeText(getActivity(), "La contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "La cédula no puede estar vacía", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(getActivity(), "El correo no es válido", Toast.LENGTH_SHORT).show();
@@ -183,9 +188,6 @@ public class InfoAccountFragment extends Fragment {
                 } else {
                     Toast.makeText(getActivity(), "El correo no puede estar vacío", Toast.LENGTH_SHORT).show();
                 }
-               /* } else {
-                    Toast.makeText(getActivity(), "El apodo no puede estar vacío", Toast.LENGTH_SHORT).show();
-                }*/
             } else {
                 Toast.makeText(getActivity(), "El apellido no puede estar vacío", Toast.LENGTH_SHORT).show();
             }
@@ -198,7 +200,6 @@ public class InfoAccountFragment extends Fragment {
         user = new User();
         user.setNombre(regName.getText().toString());
         user.setApellido(regLastName.getText().toString());
-        //user.setApodo(regNick.getText().toString());
         user.setEmail(regEmail.getText().toString());
         user.setCi(regCi.getText().toString());
         if (!regPass.getText().toString().equals(PASSWORD))

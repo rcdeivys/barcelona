@@ -113,7 +113,6 @@ public class IdealElevenFragment extends ShareBaseFragment implements IdealEleve
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initComponent();
-
     }
 
     @Override

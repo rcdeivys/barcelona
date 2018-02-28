@@ -155,7 +155,10 @@ public class WallProfileDialog extends DialogFragment {
             userItem = (UserItem) getArguments().getSerializable("user");
             textName.setText(userItem.getApodo() != null && !userItem.getApodo().equals("") ? userItem.getApodo() : userItem.getNombre() + " " + userItem.getApellido());
             Glide.with(getActivity()).load(userItem.getFoto()).apply(new RequestOptions().placeholder(Commons.getDrawable(R.drawable.silueta)).error(Commons.getDrawable(R.drawable.silueta))).into(imgProfile);
-            registrado.setText("DESDE EL \n" + Commons.simpleDateFormat(userItem.getFechaRegistro()).substring(0, 2) + "/" + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(userItem.getFechaRegistro()).substring(3, 5))) + "/" + userItem.getFechaRegistro().substring(0, 4));
+            registrado.setText("Desde"
+                    + Commons.simpleDateFormat(userItem.getFechaRegistro()).substring(0, 2)
+                    + "/" + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(userItem.getFechaRegistro()).substring(3, 5))).substring(0, 3)
+                    + "/" + userItem.getFechaRegistro().substring(0, 4));
             id_hincha.setText("N°" + userItem.getId_usuario());
             addFriend.setVisibility(View.GONE);
 
@@ -175,8 +178,8 @@ public class WallProfileDialog extends DialogFragment {
 //                    block = true;
 //                }
 //            } else {
-                //verifiedPendingRequest();
-                contentInviteGroup.setVisibility(View.GONE);
+            //verifiedPendingRequest();
+            contentInviteGroup.setVisibility(View.GONE);
             //}
         }
     }

@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Debes ser mayor a 18 años para ver este contenido, al aceptar estás de acuerdo."
+            android:text="Debes ser mayor de 18 años para ver este contenido, al aceptar estás de acuerdo."
             android:textAlignment="center"
             android:textSize="18sp" />
 
