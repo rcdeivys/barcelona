@@ -1,8 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals;
 
 import android.app.Dialog;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -19,13 +17,15 @@ import com.BarcelonaSC.BarcelonaApp.ui.monumentals.adapters.MonumentalPagerAdapt
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.MonumentalFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news.MonumentalNewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking.MonumentalRankingFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.CustomDate;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
+import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import org.joda.time.Period;
+
 import java.util.Date;
 
 import butterknife.BindView;
@@ -51,6 +51,8 @@ public class MonumentalMainFragment extends BaseFragment {
 
     SessionManager sessionManager;
 
+    boolean accepted;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -63,9 +65,9 @@ public class MonumentalMainFragment extends BaseFragment {
         ButterKnife.bind(this, getView());
         sessionManager = new SessionManager(getActivity());
 
-        final SharedPreferences preferences = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE);
-        boolean accepted = preferences.getBoolean(Constant.Key.MONUMETAL_ID, false);
-        if (!accepted) {
+        accepted = PreferenceManager.getInstance().getBoolean(Constant.Key.MONUMETAL_ID, false);
+
+        if (!accepted || !dobdateValidate()) {
             initDialog();
         } else {
             initViewPager();
@@ -90,12 +92,9 @@ public class MonumentalMainFragment extends BaseFragment {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sessionManager.getUser().getFechaNacimiento() != null && !sessionManager.getUser().getFechaNacimiento().isEmpty()) {
-                    if (dobdateValidate(sessionManager.getUser().getFechaNacimiento())) {
-                        SharedPreferences.Editor editor = getActivity().getSharedPreferences(Constant.Key.MONUMETAL_ID, Context.MODE_PRIVATE).edit();
-                        editor.putBoolean(Constant.Key.MONUMETAL_ID, true);
-                        editor.apply();
-                    }
+
+                if (dobdateValidate()) {
+                    PreferenceManager.getInstance().setBoolean(Constant.Key.MONUMETAL_ID, true);
                 }
                 initViewPager();
                 dialog.dismiss();
@@ -114,20 +113,15 @@ public class MonumentalMainFragment extends BaseFragment {
         dialog.show();
     }
 
-    public static boolean dobdateValidate(String date) {
-        boolean result = false;
-        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
-        try {
-            Date parseddate = sdf.parse(date);
-            Calendar c2 = Calendar.getInstance();
-            c2.add(Calendar.YEAR, -18);
-            if (parseddate.before(c2.getTime())) {
-                result = true;
+    public static boolean dobdateValidate() {
+        if (SessionManager.getInstance().getUser().getFechaNacimiento() != null && !SessionManager.getInstance().getUser().getFechaNacimiento().isEmpty()) {
+            Period edad = CustomDate.diferenceBetewnDate(Commons.getDateString(SessionManager.getInstance().getUser().getFechaNacimiento()).getTime(), new Date().getTime());
+            if (edad.getYears() > 18) {
+                return true;
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
-        return result;
+
+        return false;
     }
 
 }
