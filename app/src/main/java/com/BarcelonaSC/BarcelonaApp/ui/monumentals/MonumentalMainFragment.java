@@ -67,7 +67,6 @@ public class MonumentalMainFragment extends BaseFragment {
 
         accepted = PreferenceManager.getInstance().getBoolean(Constant.Key.MONUMETAL_ID, false);
 
-
         if (!accepted || !dobdateValidate()) {
             initDialog();
         } else {
@@ -115,7 +114,6 @@ public class MonumentalMainFragment extends BaseFragment {
     }
 
     public static boolean dobdateValidate() {
-
         if (SessionManager.getInstance().getUser().getFechaNacimiento() != null && !SessionManager.getInstance().getUser().getFechaNacimiento().isEmpty()) {
             Period edad = CustomDate.diferenceBetewnDate(Commons.getDateString(SessionManager.getInstance().getUser().getFechaNacimiento()).getTime(), new Date().getTime());
             if (edad.getYears() > 18) {
