@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background002"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical">
 
     <ScrollView
@@ -31,9 +30,9 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_margin="20dp"
-                android:src="@drawable/logo_millos" />
+                android:src="@drawable/logo_bsc" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -56,10 +55,11 @@
                         android:id="@+id/et_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Email"
+                        android:backgroundTint="@color/colorAccent"
+                        android:hint="email@example.com"
                         android:inputType="textEmailAddress"
-                        android:textAlignment="center"
-                        android:maxLines="1" />
+                        android:maxLines="1"
+                        android:textAlignment="center" />
 
                 </LinearLayout>
 
@@ -72,10 +72,11 @@
                         android:id="@+id/et_pass"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorAccent"
                         android:hint="Contraseña"
-                        android:textAlignment="center"
                         android:inputType="textPassword"
-                        android:maxLines="1" />
+                        android:maxLines="1"
+                        android:textAlignment="center" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -86,22 +87,21 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     style="@style/StyleRobotoRegular.BodyR"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:text="¿Olvidaste tu contraseña?"
-                    />
+                    android:text="¿Olvidaste tu contraseña?" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                    style="@style/StyleRobotoBold"
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/recovery_password"
+                    style="@style/StyleRobotoBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Ingresa Aquí"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 
@@ -111,14 +111,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
-                android:background="@drawable/backgroun_button_corners_white"
+                android:background="@drawable/oath_button"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 android:text="INGRESAR"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 style="@style/StyleRobotoRegular.BodyR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,27 +129,43 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
                 android:gravity="center"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btn_facebook"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginRight="30dp"
-                    android:background="@drawable/icon_face_login" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_weight="1">
 
-                <Button
-                    android:id="@+id/btn_google"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="50dp"
-                    android:background="@drawable/icon_google_login" />
+                    <Button
+                        android:id="@+id/btn_facebook"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="40dp"
+                        android:background="@drawable/icon_face_login" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/btn_google"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="40dp"
+                        android:background="@drawable/icon_google_login" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 style="@style/StyleRobotoRegular.BodyR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -166,18 +182,17 @@
                 android:layout_marginEnd="5dp"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:background="@drawable/backgroun_button_corners_white"
+                android:background="@drawable/oath_button"
                 android:paddingLeft="30dp"
                 android:paddingRight="30dp"
                 android:text="REGÍSTRATE"
-                android:textColor="@color/black"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
-
-
     </ScrollView>
+
     <RelativeLayout
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
@@ -187,8 +202,8 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:indeterminateDrawable="@drawable/progress"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:indeterminateDrawable="@drawable/progress" />
 
     </RelativeLayout>
 

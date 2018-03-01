@@ -3,27 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
-    android:background="@drawable/background001"
+    android:background="@drawable/background"
     android:clickable="true"
     android:gravity="center">
-
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_margin="30dp"
-        android:background="@drawable/rounder_background">
+        android:background="@drawable/shape_button">
 
-        <com.millonarios.MillonariosFC.utils.CustomWebView
+        <com.BarcelonaSC.BarcelonaApp.utils.CustomWebView
             android:id="@+id/wv_juramento"
             android:layout_width="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="25dp"
             android:layout_height="300dp"
-            android:layout_centerInParent="true" />
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp" />
 
         <Button
             android:id="@+id/btn_ok"
@@ -32,12 +31,11 @@
             android:layout_alignBottom="@+id/wv_juramento"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/rounder_button_primary"
-
-            android:text="@string/accept" />
+            android:background="@drawable/oath_button"
+            android:text="@string/accept"
+            android:textColor="@color/colorPrimaryDark" />
 
     </RelativeLayout>
-
 
 </RelativeLayout>
 

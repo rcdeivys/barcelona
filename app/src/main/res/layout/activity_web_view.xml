@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -17,7 +16,7 @@
             layout="@layout/toolbar_sub_generic" />
     </RelativeLayout>
 
-    <com.millonarios.MillonariosFC.utils.CustomWebView
+    <com.BarcelonaSC.BarcelonaApp.utils.CustomWebView
         android:id="@+id/wv_general"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,4 +24,3 @@
         android:layout_centerInParent="true" />
 
 </RelativeLayout>
-

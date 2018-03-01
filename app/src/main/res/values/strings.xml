@@ -1,12 +1,11 @@
 <resources>
-    <string name="app_name" translatable="false">Millonarios FC</string>
+    <string name="app_name" translatable="false">Barcelona SC Oficial</string>
 
-    <string name="clientSecret" translatable="false">HDFH1TI35B62eSepn6QcUCaL</string>
-    <string name="client_id" translatable="false">532872190545-9q4bqcoqva9ilkfjpnsl514afdhj5496.apps.googleusercontent.com</string>
-    <string name="client" translatable="false">532872190545-h87jgs562eijh6pfqkrahk53snqbla0s.apps.googleusercontent.com</string>
-    <string name="facebook_app_id" translatable="false">1859980400683639</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb1859980400683639</string>
-
+    <string name="clientSecret" translatable="false">M8PrcrZz3Lx9t41sJmdTE30v</string>
+    <string name="client_id" translatable="false">498718885624-ed9trhh1b9jh3b4d9kkrk64akopcsmrk.apps.googleusercontent.com</string>
+    <string name="client" translatable="false">498718885624-ed9trhh1b9jh3b4d9kkrk64akopcsmrk.apps.googleusercontent.com</string>
+    <string name="facebook_app_id" translatable="false">195864014495627</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb195864014495627</string>
     <string name="menu">menu</string>
     <string name="roster">Nómina</string>
     <string name="game_summoned">Convocados partido</string>
@@ -37,7 +36,7 @@
     <string name="gallery">Galeria</string>
     <string name="applause_already_added">Lo sentimos. Este aplauso ya había sido añadido.</string>
     <string name="applause_successful">Se añadió exitosamente tu aplauso.</string>
-    <string name="place_of_birth">Lugar de Nacimiento</string>
+    <string name="place_of_birth">Nacionalidad</string>
     <string name="clap_later">El tiempo para aplaudir por este jugador ha finalizado, regresa en el próximo encuentro y aplaude a tu jugador favorito</string>
     <string name="nacionalidad">NACIONALIDAD</string>
     <string name="de_camiseta_nen_copa_internacional"># DE CAMISETA\nEN COPA INTERNACIONAL</string>
@@ -51,7 +50,7 @@
     <string name="game_date_time">%1$s | %2$s</string>
     <string name="weight">Peso</string>
     <string name="height">Estatura</string>
-    <string name="applause">aplausos</string>
+    <string name="applause">Aplausos</string>
     <string name="calendar_detail">Detalle del Partido</string>
 
     <string name="toast_connection_error">Error al conectarse a los servidores.</string>
@@ -69,7 +68,7 @@
     <string name="choose_ideal_alignment">Escoge la Alineación ideal para ti</string>
     <string name="match_alignment">Alineación del partido</string>
     <string name="armar_alineacion">ARMAR ALINEACIÓN</string>
-    <string name="success_ideal_selection">Tu Once Ideal se cargo con éxito ¡Compártelo con tus amigos!</string>
+    <string name="success_ideal_selection">¿Deseas compartir tu alineación?</string>
     <string name="network_error">Connection Error</string>
     <string name="not">NO</string>
     <string name="yes">SI</string>
@@ -137,7 +136,7 @@
     <string name="send_post">Enviar</string>
     <string name="clap_your_hands">Aplaude</string>
     <string name="block_friend">Bloquear</string>
-    <string name="add_friend">Agregar a mis amigos</string>
+    <string name="add_friend">Agregar Amigos</string>
     <string name="write_comment">Escribe un comenario</string>
 
     <string name="lipsun" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>

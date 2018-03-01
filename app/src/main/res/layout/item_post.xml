@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:background="@color/white">
+    android:background="#e1e2e8">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/content_header"
@@ -23,21 +22,17 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/text_nickname">
 
-            <com.millonarios.MillonariosFC.utils.CustomVideoView
+            <com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView
                 android:id="@+id/video_post"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignTop="@+id/text_post"
-                app:emojiconSize="28sp"
-                android:visibility="gone" />
-
+                android:visibility="gone"
+                app:emojiconSize="28sp" />
 
             <ImageView
                 android:id="@+id/img_post"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/text_post"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 android:visibility="visible" />
@@ -52,12 +47,11 @@
                 android:layout_marginTop="10dp"
                 android:inputType="textMultiLine"
                 android:maxLength="2000"
-                android:textColor="@color/textColorSecondary"
+                android:padding="5dp"
+                android:textColor="@color/colorPrimaryDark"
                 android:visibility="gone" />
 
-
         </LinearLayout>
-
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_profile"
@@ -67,11 +61,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/silueta"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="2dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/text_nickname"
             style="@style/StyleRobotoBold.Title"
             android:layout_width="wrap_content"
@@ -80,25 +76,23 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:ellipsize="end"
-            android:textColor="@color/textColorSecondary"
+            android:textColor="@color/colorPrimaryDark"
             app:layout_constraintEnd_toStartOf="@+id/menu_icon"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/img_profile"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/menu_icon"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginEnd="16dp"
-            android:tint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_more_vert" />
-    </android.support.constraint.ConstraintLayout>
 
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -127,18 +121,18 @@
             android:background="@drawable/coment"
             app:layout_constraintStart_toEndOf="@+id/like_icon" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/date_post"
             style="@style/StyleRobotoRegular.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/textColorPrimary"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/like_icon" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/cant_comment"
             style="@style/StyleRobotoBold.BodyR"
             android:layout_width="wrap_content"
@@ -147,7 +141,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
-            android:textColor="@color/textColorSecondary"
+            android:textColor="@color/black"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -156,30 +150,26 @@
 
         <ImageView
             android:id="@+id/count_like_icon"
-            android:layout_width="19dp"
+            android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/icon_aplauso"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/count_like"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/cant_comment" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/count_like"
             style="@style/StyleRobotoRegular.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="16dp"
+            android:layout_margin="5dp"
             android:text="0"
-            android:textColor="@color/textColorSecondary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/like_icon" />
 
     </android.support.constraint.ConstraintLayout>
-
 
 </RelativeLayout>

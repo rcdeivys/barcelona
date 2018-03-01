@@ -6,7 +6,7 @@
     android:weightSum="100"
     android:background="@color/gray_transparent"
     style="@android:style/Theme.Translucent.NoTitleBar"
-    tools:context="com.millonarios.MillonariosFC.ui.home.menu.login.AuthActivity">
+    tools:context="com.BarcelonaSC.BarcelonaApp.ui.home.menu.login.AuthActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -15,6 +15,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:indeterminateDrawable="@drawable/progress"
-        android:visibility="visible"></ProgressBar>
+        android:visibility="visible" />
 
 </RelativeLayout>

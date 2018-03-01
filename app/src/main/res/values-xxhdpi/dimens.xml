@@ -37,7 +37,7 @@
     <dimen name="icon_large">90dp</dimen>
     <dimen name="icon_xlarge">100dp</dimen>
 
-    <dimen name="menu_item">12sp</dimen>
+    <dimen name="menu_item">9sp</dimen>
 
     <dimen name="corner_chat_bubble">10dp</dimen>
 </resources>

@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -18,15 +17,13 @@
             android:gravity="center"
             android:orientation="vertical">
 
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="100dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/logo_millos" />
+                android:src="@drawable/logo_bsc" />
 
-
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 style="@style/StyleRobotoRegular.BodyR.White"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,7 +32,7 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@string/font_helvetica_condensed_bold"
-                android:text="Para verificar tu cuenta se te va a enviar un PIN a tu correo electrónico y a tu número de celular."
+                android:text="Para verificar tu cuenta se te va a enviar un PIN a tu correo electrónico"
                 android:textAlignment="center"
                 android:textSize="14sp" />
 
@@ -47,13 +44,13 @@
                 android:layout_marginTop="30dp"
                 android:orientation="horizontal">
 
-
                 <com.alimuzaffar.lib.pin.PinEntryEditText
                     android:id="@+id/PinEntry"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
+                    android:backgroundTint="@color/colorAccent"
                     android:cursorVisible="false"
                     android:digits="1234567890"
                     android:inputType="number"
@@ -71,11 +68,19 @@
                     android:src="@drawable/ic_check_circle"
                     android:tint="@color/gray_transparent" />
 
-
             </LinearLayout>
 
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                style="@style/StyleRobotoRegular.BodyR.White"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:fontFamily="@string/font_helvetica_condensed_bold"
+                android:gravity="center"
+                android:text="Si no has recibido tu PIN en tu correo electrónico, recuerda revisar siempre tu bandeja de correo no deseado"
+                android:textColor="@color/white" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 style="@style/StyleRobotoRegular.BodyR.White"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,7 +92,6 @@
                 android:text="¿Aún no has recibido tu PIN?"
                 android:textAlignment="center"
                 android:textSize="14sp" />
-
 
             <LinearLayout
                 android:id="@+id/view_btn_confirmit"
@@ -109,6 +113,7 @@
                     android:paddingRight="20dp"
                     android:text="REENVIAR"
                     android:textColor="@color/black" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -127,7 +132,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:indeterminateDrawable="@drawable/progress"
-                android:visibility="visible"></ProgressBar>
+                android:visibility="visible" />
         </RelativeLayout>
 
         <android.support.v7.widget.AppCompatImageView
@@ -140,6 +145,5 @@
             android:tint="@color/colorAccent" />
 
     </RelativeLayout>
-
 
 </android.support.constraint.ConstraintLayout>

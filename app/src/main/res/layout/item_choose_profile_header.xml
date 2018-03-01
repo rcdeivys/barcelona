@@ -9,32 +9,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/millos_news_wm" />
-
+        android:src="@drawable/bsc_news_wm" />
 
     <LinearLayout
         android:id="@+id/ll_votes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="end"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="end"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="5dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/icon_choose_perfil" />
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/icon_choose_perfil"
+            android:tint="@color/colorAccent" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="5dp"
-            android:text="Total votos" />
+            android:text="Total votos"
+            android:textColor="@color/colorAccent" />
 
         <TextView
             android:id="@+id/tv_votes"
@@ -42,7 +43,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:text="0"
+            android:textColor="@color/colorAccent"
             android:textSize="20sp"
             android:textStyle="bold" />
+
     </LinearLayout>
+
 </LinearLayout>

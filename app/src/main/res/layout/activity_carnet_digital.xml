@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
     <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <!-- Header de la actividad -->
     <RelativeLayout
         android:id="@+id/content_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorAccent">
 
         <!-- Botón para regresar a la actividad anterior -->
         <android.support.v7.widget.AppCompatImageButton
@@ -26,18 +24,17 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/arrow_back"
-            android:tint="@color/colorAccent" />
+            android:src="@drawable/arrow_back" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/text_header"
             style="@style/StyleRobotoBold.Title.White"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:padding="5dp"
-            android:text="Carné Millos"
-            android:textColor="@color/white"
+            android:text="Credencial Digital"
+            android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/font_title_size" />
     </RelativeLayout>
 
@@ -45,25 +42,24 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_above="@id/banner"
-        android:layout_centerInParent="true"
+        android:layout_below="@id/content_header"
+        android:layout_centerInParent="true">
 
-        android:layout_below="@id/content_header">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"
+            android:gravity="center">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:gravity="center">
+            <include
+                android:id="@+id/content_carnet"
+                layout="@layout/view_carnet"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
 
-                <include
-                    android:id="@+id/content_carnet"
-                    layout="@layout/view_carnet" />
-            </RelativeLayout>
-
-
+        </RelativeLayout>
 
     </android.support.percent.PercentRelativeLayout>
-
 
     <include
         android:id="@+id/banner"
@@ -71,4 +67,3 @@
         android:visibility="visible" />
 
 </RelativeLayout>
-

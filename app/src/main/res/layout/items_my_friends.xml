@@ -2,16 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    android:background="@color/white"
     android:orientation="horizontal">
 
     <RelativeLayout
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:padding="5dp"
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp">
+        android:layout_marginStart="10dp"
+        android:padding="5dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civ_photo"
@@ -21,9 +20,9 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="15dp"
-            android:layout_alignParentEnd="true"
             android:layout_height="15dp"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginBottom="3dp"
             android:layout_marginEnd="3dp"
             android:src="@color/holo_green_dark" />
@@ -34,25 +33,24 @@
         android:layout_height="match_parent"
         android:paddingEnd="10dp">
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/tv_apodo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="APODO HINCHA"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:text="25min"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold" />
-
 
         <TextView
             android:id="@+id/tv_message_content"
@@ -61,7 +59,7 @@
             android:layout_below="@id/tv_apodo"
             android:maxLines="1"
             android:text="lorem dolor enando comundo d"
-            android:textColor="@color/textColorPrimary"
+            android:textColor="@color/white"
             android:textSize="12sp" />
 
         <ImageView
@@ -72,7 +70,7 @@
             android:layout_centerVertical="true"
             android:src="@drawable/trash"
             android:visibility="invisible" />
-    </RelativeLayout>
 
+    </RelativeLayout>
 
 </LinearLayout>

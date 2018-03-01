@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Player's image -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/monumental_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true" />
+
+        <LinearLayout
+            android:id="@+id/monumental_name_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/name_background_gradient"
+            android:orientation="vertical"
+            android:paddingBottom="15dp"
+            android:paddingStart="16dp"
+            android:paddingTop="15dp"
+            android:visibility="visible">
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/monumental_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monumental"
+                android:textColor="@color/colorTituloHeader"
+                android:textSize="22sp"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="80dp"
+                android:background="@color/colorAmarillo"
+                android:visibility="visible" />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Por la monumental del Mes"
+                android:textColor="@color/colorTituloHeader"
+                android:textSize="12sp"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.7"
+                android:background="@drawable/shape_button_white"
+                android:text="Historial de votos"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp" />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/votes"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.8"
+                android:background="@drawable/shape_button_white_line"
+                android:text="Votos"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/content_vote"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/shape_button" />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/btn_vote"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
+                android:drawableLeft="@drawable/thumb_icn"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:text="Votar"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="20dp"
+        android:background="@color/white" />
+
+</LinearLayout>

@@ -15,36 +15,28 @@
             android:orientation="vertical">
 
             <!-- Header estático -->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="15dp">
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:maxLength="15"
-                        android:text="Nombre" />
 
                     <EditText
                         android:id="@+id/register_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="Nombre"
-                        android:maxLength="15"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_user"
+                        android:hint="Nombre *"
                         android:inputType="text"
+                        android:maxLength="15"
                         android:maxLines="1" />
 
                 </LinearLayout>
@@ -54,21 +46,16 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
-
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Apellido" />
 
                     <EditText
                         android:id="@+id/register_last"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="Apellido"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_user"
+                        android:hint="Apellido *"
                         android:inputType="text"
                         android:maxLines="1" />
 
@@ -80,20 +67,35 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
+                    <EditText
+                        android:id="@+id/cedula"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Email" />
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_cedula"
+                        android:hint="Cédula *"
+                        android:inputType="text"
+                        android:maxLines="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/register_email"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="Email"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_email"
+                        android:hint="Email *"
                         android:inputType="textEmailAddress"
                         android:maxLines="1" />
 
@@ -105,13 +107,51 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
+                    <EditText
+                        android:id="@+id/register_pass"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Celular" />
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_pass"
+                        android:hint="Contraseña nueva"
+                        android:inputType="textPassword"
+                        android:maxLines="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/register_cpass"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:drawableStart="@drawable/ic_pass"
+                        android:hint="Confirmar contraseña nueva"
+                        android:inputType="textPassword"
+                        android:maxLines="1" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_phone" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -125,6 +165,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="5dp"
                             android:layout_weight="1"
+                            android:backgroundTint="@color/colorAccent"
                             android:hint="+57"
                             android:inputType="phone"
                             android:maxLength="4"
@@ -136,6 +177,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="3"
+                            android:backgroundTint="@color/colorAccent"
                             android:hint="(999)999-9999"
                             android:inputType="phone"
                             android:maxLength="10"
@@ -151,56 +193,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
+                    <ImageView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Género" />
-
-                    <RadioGroup
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/register_rb_male"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:shadowColor="@color/colorPrimaryDark"
-                            android:text="Masculino"
-                            android:textAlignment="textStart"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-
-                        <RadioButton
-                            android:id="@+id/register_rb_female"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:shadowColor="@color/colorPrimaryDark"
-                            android:text="Femenino"
-                            android:textColor="@color/white"
-                            android:textSize="12sp" />
-                    </RadioGroup>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Fecha de nacimiento" />
+                        android:padding="8dp"
+                        android:src="@drawable/calendario_icn" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -213,7 +211,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:drawableRight="@drawable/calendario_icn"
+                            android:backgroundTint="@color/colorAccent"
                             android:focusable="false"
                             android:hint="Dia"
                             android:inputType="number"
@@ -226,7 +224,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:drawableRight="@drawable/calendario_icn"
+                            android:backgroundTint="@color/colorAccent"
                             android:focusable="false"
                             android:hint="Mes"
                             android:inputType="number"
@@ -239,6 +237,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:backgroundTint="@color/colorAccent"
                             android:focusable="false"
                             android:hint="año"
                             android:inputType="number"
@@ -257,7 +256,7 @@
                     android:orientation="horizontal"
                     android:visibility="gone">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -276,55 +275,39 @@
 
                 </LinearLayout>
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
+                    <RadioGroup
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:text="Contraseña" />
+                        android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/register_pass"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="Contraseña"
-                        android:inputType="textPassword"
-                        android:maxLines="1" />
+                        <RadioButton
+                            android:id="@+id/register_rb_male"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorAccent"
+                            android:shadowColor="@color/colorPrimaryDark"
+                            android:text="Masculino"
+                            android:textAlignment="textStart"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoLigth.Caption.White"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:maxLines="2"
-                        android:text="Confirmar Contraseña" />
-
-                    <EditText
-                        android:id="@+id/register_cpass"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="Confirmar contraseña"
-                        android:inputType="textPassword"
-                        android:maxLines="1" />
+                        <RadioButton
+                            android:id="@+id/register_rb_female"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorAccent"
+                            android:shadowColor="@color/colorPrimaryDark"
+                            android:text="Femenino"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -335,7 +318,7 @@
                     android:orientation="horizontal"
                     android:visibility="gone">
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                         style="@style/StyleRobotoLigth.Caption.White"
                         android:layout_width="80dp"
                         android:layout_height="wrap_content"
@@ -390,13 +373,12 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/background_button_corners_accent"
+                        android:background="@drawable/rounder_button_primary"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:text="DESCARTAR"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/font_body_r_size"
-                        android:visibility="visible" />
+                        android:text="Descartar"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/font_body_r_size" />
 
                     <Button
                         android:id="@+id/register_btn_register"
@@ -404,10 +386,10 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/backgroun_button_corners_white"
+                        android:background="@drawable/oath_button"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:text="Enviar"
+                        android:text="Guardar"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/font_body_r_size" />
