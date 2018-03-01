@@ -27,6 +27,7 @@
             android:layout_width="@dimen/menu_img_profile_size"
             android:layout_height="@dimen/menu_img_profile_size"
             android:layout_centerVertical="true"
+            android:layout_marginBottom="-15dp"
             android:src="@drawable/silueta"
             android:visibility="visible" />
 
@@ -36,15 +37,15 @@
             android:layout_alignEnd="@+id/img_perfil"
             android:layout_below="@+id/img_perfil"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_edit"
-            android:visibility="gone" />
+            android:src="@drawable/ic_edit" />
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="35dp"
         android:layout_marginStart="25dp"
         android:layout_toEndOf="@id/img_container"
         android:orientation="vertical"
@@ -54,16 +55,18 @@
             android:id="@+id/first_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Erick"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/last_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Umanchuk"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </LinearLayout>

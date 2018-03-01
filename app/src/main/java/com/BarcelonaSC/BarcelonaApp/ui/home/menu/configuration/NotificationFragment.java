@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,15 +48,15 @@ public class NotificationFragment extends Fragment {
     @BindView(R.id.btn_enable_notification)
     FCMillonariosTextView btnEnableNotification;
     @BindView(R.id.switch_reminder)
-    public Switch aSwitchReminder;
+    public SwitchCompat aSwitchReminder;
     @BindView(R.id.switch_aligment)
-    public Switch aSwitchAligment;
+    public SwitchCompat aSwitchAligment;
     @BindView(R.id.switch_start_game)
-    public Switch aSwitchStartGame;
+    public SwitchCompat aSwitchStartGame;
     @BindView(R.id.switch_goals)
-    public Switch aSwitchGoals;
+    public SwitchCompat aSwitchGoals;
     @BindView(R.id.switch_outstanding)
-    public Switch aSwitchDestacados;
+    public SwitchCompat aSwitchDestacados;
 
     List<NotificationSetting> itemList;
 
@@ -125,6 +126,5 @@ public class NotificationFragment extends Fragment {
         intent.putExtra("android.provider.extra.APP_PACKAGE", getActivity().getPackageName());
 
         getActivity().startActivity(intent);
-
     }
 }
