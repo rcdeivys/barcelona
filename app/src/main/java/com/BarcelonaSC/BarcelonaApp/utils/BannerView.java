@@ -65,8 +65,6 @@ public class BannerView extends AppCompatImageView {
                                     break;
                                 default:
                                     break;
-
-
                             }
                         }
                     }
@@ -76,7 +74,6 @@ public class BannerView extends AppCompatImageView {
             }
         }
 
-
     }
 
     public interface BannerListener {
@@ -85,11 +82,10 @@ public class BannerView extends AppCompatImageView {
         void onClickBannerExternoListener(String url);
 
         void onClickBannerSeccionListener(String seccionDestino);
-
     }
 
     public enum Seccion {
-        TOP("top"), BOTTOM("bottom"), SETINGS("setting"), PROFILE("profile"),
+        TOP("top"), BOTTOM("bottom"), SETINGS("setting"), PROFILE("profile"), REFERRED("referred"),
         NEWS("news"), CALENDAR("calendar"),
         TABLE("table"), STATISTICS("statistics"),
         TEAM("team"), LINE_UP("line_up"), VIRTUAL_REALITY("virtual_reality"),

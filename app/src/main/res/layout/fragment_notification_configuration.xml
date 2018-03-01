@@ -58,12 +58,13 @@
                     android:layout_weight="1"
                     android:text="Recordatorio Partido" />
 
-                <Switch
+                <android.support.v7.widget.SwitchCompat
                     android:id="@+id/switch_reminder"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorAccent"
+                    android:theme="@style/SwitchCompatTheme"
                     android:shadowColor="@color/colorPrimaryDark" />
 
             </LinearLayout>
@@ -81,11 +82,12 @@
                     android:layout_weight="1"
                     android:text="Alineación" />
 
-                <Switch
+                <android.support.v7.widget.SwitchCompat
                     android:id="@+id/switch_aligment"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/SwitchCompatTheme"
                     android:shadowColor="@color/colorPrimaryDark" />
 
             </LinearLayout>
@@ -103,11 +105,12 @@
                     android:layout_weight="1"
                     android:text="Inicio de Partido" />
 
-                <Switch
+                <android.support.v7.widget.SwitchCompat
                     android:id="@+id/switch_start_game"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/SwitchCompatTheme"
                     android:shadowColor="@color/colorPrimaryDark" />
 
             </LinearLayout>
@@ -125,11 +128,12 @@
                     android:layout_weight="1"
                     android:text="Goles" />
 
-                <Switch
+                <android.support.v7.widget.SwitchCompat
                     android:id="@+id/switch_goals"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:theme="@style/SwitchCompatTheme"
                     android:shadowColor="@color/colorPrimaryDark" />
 
             </LinearLayout>
@@ -147,10 +151,11 @@
                     android:layout_weight="1"
                     android:text="Noticias y Videos Destacados" />
 
-                <Switch
+                <android.support.v7.widget.SwitchCompat
                     android:id="@+id/switch_outstanding"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:theme="@style/SwitchCompatTheme"
                     android:layout_weight="1"
                     android:shadowColor="@color/colorPrimaryDark" />
 
@@ -175,7 +180,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="No recibir notificaciones"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:visibility="gone" />
 
         </LinearLayout>
     </ScrollView>

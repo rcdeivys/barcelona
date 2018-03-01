@@ -126,11 +126,9 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
         startActivity(intent);
     }
 
-
     @Override
     public void navigateToPlayerActivity(int playerId, String type) {
         Intent intent = new Intent(this, PlayerActivity.class);
-
         intent.putExtra(Constant.Key.PLAYER_ID, playerId);
         intent.putExtra(Constant.Key.TYPE, type);
         startActivity(intent);
@@ -153,7 +151,6 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
 
     @Override
     public void navigateToActivity(Intent intent) {
-
         startActivity(intent);
     }
 
