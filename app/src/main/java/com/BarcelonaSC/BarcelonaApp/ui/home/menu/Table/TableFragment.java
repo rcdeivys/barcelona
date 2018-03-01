@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.commons.Services.ShareBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsPresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.table.fragments.TableChildFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.table.fragments.TableSimulatorFragment;
@@ -24,7 +25,7 @@ import butterknife.ButterKnife;
  * Created by Leonardojpr on 11/5/17.
  */
 
-public class TableFragment extends Fragment {
+public class TableFragment extends ShareBaseFragment {
 
     public static final String TAG = TableFragment.class.getSimpleName();
 
@@ -38,6 +39,7 @@ public class TableFragment extends Fragment {
 
     private TableChildFragment tableChildFragment;
     private TableSimulatorFragment tableSimulatorFragment;
+    private TableViewPagerAdapter tableViewPagerAdapter;
 
     @Nullable
     @Override
@@ -56,8 +58,15 @@ public class TableFragment extends Fragment {
         tableChildFragment = new TableChildFragment();
         tableSimulatorFragment = new TableSimulatorFragment();
 
-        pager.setAdapter(new TableViewPagerAdapter(getChildFragmentManager(), getActivity(), tableChildFragment, tableSimulatorFragment));
+        tableViewPagerAdapter = new TableViewPagerAdapter(getChildFragmentManager(), getActivity(), tableChildFragment, tableSimulatorFragment);
+
+        pager.setAdapter(tableViewPagerAdapter);
         tabs.setupWithViewPager(pager);
+    }
+
+    @Override
+    public void share() {
+        ((ShareBaseFragment) tableViewPagerAdapter.getItem(tabs.getSelectedTabPosition())).share();
     }
 
 }

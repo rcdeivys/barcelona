@@ -102,7 +102,9 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mActiveFragmentTag.equals(LineUpFragment.TAG)) {
+                if (mActiveFragmentTag.equals(TableFragment.TAG)) {
+                    ((TableFragment) getFragmentByTag(TableFragment.TAG)).share();
+                } else if (mActiveFragmentTag.equals(LineUpFragment.TAG)) {
                     ((LineUpFragment) getFragmentByTag(LineUpFragment.TAG)).share();
                 } else {
                     section.share(getBaseContext(), nameSection);

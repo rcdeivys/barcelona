@@ -23,6 +23,7 @@ import android.widget.VideoView;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
 
 import butterknife.BindView;
@@ -134,6 +135,8 @@ public class ReferredToFragment extends BaseFragment {
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
+                videoView.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
+                        , Commons.getWidthDisplay()));
                 progressBar.setVisibility(View.GONE);
                 imgPlay.setVisibility(View.VISIBLE);
                 if (!getArguments().getBoolean("instrucciones", false)) {

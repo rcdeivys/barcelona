@@ -10,8 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
+import com.BarcelonaSC.BarcelonaApp.commons.Services.ShareBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomWebView;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +23,7 @@ import butterknife.ButterKnife;
  * Created by Leonardojpr on 11/5/17.
  */
 
-public class TableChildFragment extends Fragment {
+public class TableChildFragment extends ShareBaseFragment {
 
     @BindView(R.id.webView)
     CustomWebView customWebView;
@@ -59,4 +62,8 @@ public class TableChildFragment extends Fragment {
         swipeContainer.setRefreshing(state);
     }
 
+    @Override
+    public void share() {
+        new ShareSection(App.getAppContext()).share(App.getAppContext(), ConfigurationManager.getInstance().getConfiguration().getTit41());
+    }
 }
