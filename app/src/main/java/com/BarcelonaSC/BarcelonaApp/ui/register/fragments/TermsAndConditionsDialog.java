@@ -57,7 +57,7 @@ public class TermsAndConditionsDialog extends DialogFragment {
         settings.setUseWideViewPort(true);
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
-        myWebView.loadUrl(Commons.getString(R.string.url_api).replace("api/", "") + "webviews/tyc/");
+        myWebView.loadUrl(Commons.getString(R.string.url_api).replace("api/", "") + "webviews/tyc/index.php");
 
         return dialogo;
     }

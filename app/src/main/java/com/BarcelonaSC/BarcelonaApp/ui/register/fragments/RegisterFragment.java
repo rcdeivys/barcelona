@@ -187,9 +187,9 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                 if (!regCI.getText().toString().isEmpty()) {
                     if (!regEmail.getText().toString().isEmpty()) {
                         if (regEmail.getText().toString().contains("@")) {
-//                            if (!regPhoneNum.getText().toString().isEmpty()) {
-//                                if (!regPhoneCode.getText().toString().isEmpty()
-//                                        && regPhoneCode.getText().toString().contains("+")) {
+                            if (!regPhoneNum.getText().toString().isEmpty()) {
+                                if (!regPhoneCode.getText().toString().isEmpty()
+                                        && regPhoneCode.getText().toString().contains("+")) {
                             if (!regPass.getText().toString().isEmpty()) {
                                 if (!regCpass.getText().toString().isEmpty()) {
                                     if (regCpass.getText().toString().equals(regPass.getText().toString())) {
@@ -207,12 +207,12 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                             } else {
                                 Toast.makeText(getActivity(), "La contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
                             }
-//                                } else {
-//                                    Toast.makeText(getActivity(), "El código del teléfono debe contener el símbolo + al comienzo", Toast.LENGTH_SHORT).show();
-//                                }
-//                            } else {
-//                                Toast.makeText(getActivity(), "El número telefónico no puede estar vacío", Toast.LENGTH_SHORT).show();
-//                            }
+                                } else {
+                                    Toast.makeText(getActivity(), "El código del teléfono debe contener el símbolo + al comienzo", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(getActivity(), "El número telefónico no puede estar vacío", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             Toast.makeText(getActivity(), "El correo no es válido", Toast.LENGTH_SHORT).show();
                         }
