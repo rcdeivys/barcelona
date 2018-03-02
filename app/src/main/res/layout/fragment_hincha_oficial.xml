@@ -293,7 +293,7 @@
                         android:background="@drawable/oath_button"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
-                        android:text="ENVIAR"
+                        android:text="GUARDAR"
                         android:textAllCaps="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="@dimen/font_body_r_size" />
