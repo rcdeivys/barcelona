@@ -160,7 +160,7 @@ public class VirtualActivity extends BaseActivity {
             @Override
             public void onLoadError(String errorMessage) {
                 Toast.makeText(
-                        getApplicationContext(), "Error loading video: " + errorMessage, Toast.LENGTH_LONG)
+                        getApplicationContext(), "Tu dispositivo no es compatible para reproducir este vídeo", Toast.LENGTH_LONG)
                         .show();
                 // Log.e(TAG, "Error loading video: " + errorMessage);
             }
