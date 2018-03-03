@@ -320,8 +320,8 @@ public class InfoAccountFragment extends Fragment {
                 e.printStackTrace();
             }
         }
-        regPass.setText(PASSWORD);
-        regCpass.setText(PASSWORD);
+        //regPass.setText(PASSWORD);
+        //regCpass.setText(PASSWORD);
         selectGender(getString(user.getGenero()));
         getBirthday(getString(user.getFechaNacimiento()));
         regRef.setText(getString(user.getReferido()));

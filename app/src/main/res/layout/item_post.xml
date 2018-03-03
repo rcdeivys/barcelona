@@ -157,7 +157,7 @@
             android:layout_marginStart="8dp"
             android:background="@drawable/icon_aplauso"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/count_like" />
 
         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/count_like"
@@ -168,7 +168,8 @@
             android:text="0"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@id/like_icon" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
