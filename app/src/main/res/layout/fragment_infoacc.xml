@@ -75,7 +75,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_cedula"
-                        android:hint="Cédula *"
+                        android:hint="Cédula o Pasaporte*"
                         android:inputType="text"
                         android:maxLines="1" />
 
@@ -166,7 +166,7 @@
                             android:layout_marginRight="5dp"
                             android:layout_weight="1"
                             android:backgroundTint="@color/colorAccent"
-                            android:hint="+57"
+                            android:hint="+593"
                             android:inputType="phone"
                             android:maxLength="4"
                             android:maxLines="1"

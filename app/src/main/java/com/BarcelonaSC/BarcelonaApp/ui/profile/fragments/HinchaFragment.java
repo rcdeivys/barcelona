@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -175,7 +176,9 @@ public class HinchaFragment extends Fragment {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                moveToReferredFragment();
+                //moveToReferredFragment();
+                showDialog("Próximamente podrás invitar a más Toreros");
+
             }
         });
 
@@ -362,6 +365,23 @@ public class HinchaFragment extends Fragment {
         Intent intent = new Intent(getActivity(), ReferredToActivity.class);
         getActivity().startActivity(intent);
         //Toast.makeText(getActivity(), "Esta opción estará activa para la próxima actualización", Toast.LENGTH_SHORT).show();
+    }
+
+    public void showDialog(String message) {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialoglayout = inflater.inflate(R.layout.dialog_ok, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialoglayout);
+        final AlertDialog alertDialog = builder.show();
+        FCMillonariosTextView fcMillonariosTextView = dialoglayout.findViewById(R.id.fcm_tv_tittle);
+        fcMillonariosTextView.setText(message);
+        Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_ok);
+        btnNot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
     }
 
 }

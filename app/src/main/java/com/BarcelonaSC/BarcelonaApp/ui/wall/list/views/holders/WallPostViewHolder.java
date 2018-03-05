@@ -78,7 +78,7 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
         }
 
         if (item.getYaaplaudio() == 1) {
-            likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
+            likeIcon.setBackground(Commons.getDrawable(R.drawable.aplausos__cambio));
         } else {
             likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
         }
@@ -139,7 +139,7 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
 
     public void setLike(boolean like) {
         if (like) {
-            likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso));
+            likeIcon.setBackground(Commons.getDrawable(R.drawable.aplausos__cambio));
         } else {
             likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
         }

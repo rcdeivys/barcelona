@@ -35,7 +35,7 @@ public class SendCodeModel {
                     authItem = response.getData();
                     loadUser(result);
                 } else {
-                    result.onFailed("Codigo incorrecto");
+                    result.onFailed(response.getError().get(0));
                 }
             }
 

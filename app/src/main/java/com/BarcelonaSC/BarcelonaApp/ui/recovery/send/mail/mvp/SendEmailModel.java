@@ -27,7 +27,7 @@ public class SendEmailModel {
                 if (!response.getStatus().equals("fallo")) {
                     result.onSuccess(response);
                 } else {
-                    result.onFailed("Email incorrecto");
+                    result.onFailed(response.getError().get(0));
                 }
             }
 

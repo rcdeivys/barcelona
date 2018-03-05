@@ -40,9 +40,6 @@ public class WallPresenter implements WallContract.Presenter, WallContract.Model
     public void onWallPost(List<WallItem> list, boolean pagination) {
         if (isViewNull()) return;
         listItems.clear();
-        if (!pagination) {
-            listItems.add(SessionManager.getInstance().getUser());
-        }
         listItems.addAll(list);
         view.setLoad(listItems, pagination);
     }

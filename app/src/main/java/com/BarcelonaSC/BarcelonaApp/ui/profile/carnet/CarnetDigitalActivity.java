@@ -40,7 +40,7 @@ public class CarnetDigitalActivity extends BaseActivity {
     CircleImageView imgProfile;
     @BindView(R.id.id_hincha)
     FCMillonariosTextView idHincha;
-    @BindView(R.id.ci_hincha)
+    @BindView(R.id.cedula)
     FCMillonariosTextView ciHincha;
     @BindView(R.id.carnet_name)
     FCMillonariosTextView carnetName;
@@ -52,8 +52,6 @@ public class CarnetDigitalActivity extends BaseActivity {
     ImageView codeImg;
     @BindView(R.id.text_date_venc)
     FCMillonariosTextView textDateVenc;
-    @BindView(R.id.content_carnet)
-    RelativeLayout contentCarnet;
 
     public final static int CodeWith = 1000;
     public final static int CodeHeight = 175;
@@ -69,10 +67,10 @@ public class CarnetDigitalActivity extends BaseActivity {
         carnetName.setText(sessionManager.getUser().getNombre() + " " + sessionManager.getUser().getApellido());
         Glide.with(getBaseContext())
                 .load(sessionManager.getUser().getFoto())
-                .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta).override(Commons.dpToPx(90)))
+                .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta).override(Commons.dpToPx(120)))
                 .into(imgProfile);
         idHincha.setText("Hincha # " + sessionManager.getSession().getIdUser());
-        ciHincha.setText("N° de identificación: \n" + sessionManager.getUser().getCedula());
+        ciHincha.setText(sessionManager.getUser().getCedula());
         registrado.setText("Desde el " + Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(0, 2) + "/" +
                 getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(3, 5))).substring(0, 3).toUpperCase() + "/" +
                 sessionManager.getUser().getFechaRegistro().substring(0, 4));

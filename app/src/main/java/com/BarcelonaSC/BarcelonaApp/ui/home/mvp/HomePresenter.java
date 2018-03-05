@@ -1,20 +1,16 @@
 package com.BarcelonaSC.BarcelonaApp.ui.home.mvp;
 
-import android.content.Intent;
 import android.util.Log;
 
-import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.MainCalendarFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.SingleCalendarListFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.futbolbase.FutbolBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.WallAndChat.WallAndChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.configuration.NotificationFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.lineup.LineUpFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.home.menu.live.LiveActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.home.menu.live.LiveFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.news.NewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.profile.ProfileFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.shop.VirtualShopFragment;
@@ -24,7 +20,6 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.map.MapFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.wall.WallFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
@@ -55,6 +50,7 @@ public class HomePresenter {
     private WallAndChatFragment wallAndChatFragment;
     private MapFragment mapFragment;
     private MonumentalMainFragment monumentalFragment;
+    private LiveFragment liveFragment;
 
     public HomePresenter(HomeContract.View view, HomeModel homeModel) {
         this.view = view;
@@ -205,9 +201,12 @@ public class HomePresenter {
     }
 
     private void live() {
-        Intent intent = new Intent(App.get().getBaseContext(), LiveActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        App.get().getBaseContext().startActivity(intent);
+        liveFragment = (LiveFragment) view.getFragmentByTag(LiveFragment.TAG);
+        if (liveFragment == null) {
+            liveFragment = new LiveFragment();
+            view.addFragment(liveFragment, LiveFragment.TAG);
+        }
+        view.showFragment(liveFragment, LiveFragment.TAG);
     }
 
     private void wallAndChat() {
@@ -265,6 +264,8 @@ public class HomePresenter {
                 break;
 
             case Constant.Menu.IN_LIVE:
+                view.setTitle(configurationManager.getConfiguration().getTit9());
+                view.trackFragment(configurationManager.getConfiguration().getTit9());
                 live();
                 break;
 

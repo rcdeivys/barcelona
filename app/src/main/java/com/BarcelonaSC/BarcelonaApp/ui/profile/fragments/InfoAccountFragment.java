@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -115,8 +116,16 @@ public class InfoAccountFragment extends Fragment {
             }
         });
 
-        regPhoneCode.setText("+");
-        regPhoneCode.setSelection(1);
+        regPhoneCode.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (regPhoneCode.getText().toString().isEmpty()) {
+                    regPhoneCode.setText("+");
+                    regPhoneCode.setSelection(1);
+                }
+                return false;
+            }
+        });
         regPhoneCode.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -221,43 +230,6 @@ public class InfoAccountFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressLint("NewApi")
-    public void onSelectImageClick() {
-        if (CropImage.isExplicitCameraPermissionRequired(getActivity())) {
-            requestPermissions(new String[]{Manifest.permission.CAMERA}, CropImage.CAMERA_CAPTURE_PERMISSIONS_REQUEST_CODE);
-        } else {
-            CropImage.startPickImageActivity(getActivity());
-        }
-    }
-
-    private void startCropImageActivity(Uri imageUri) {
-        CropImage.activity(imageUri)
-                .setCropShape(CropImageView.CropShape.OVAL)
-                .setGuidelines(CropImageView.Guidelines.ON_TOUCH)
-                .setFixAspectRatio(true)
-                .start(getActivity());
-    }
-
-    private String encodeImage(Bitmap bm) {
-        Bitmap resize = scaleDown(bm, 748, true);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        resize.compress(Bitmap.CompressFormat.PNG, 25, baos);
-        byte[] b = baos.toByteArray();
-        String encImage = Base64.encodeToString(b, Base64.DEFAULT);
-
-        return encImage;
-    }
-
-    public static Bitmap scaleDown(Bitmap realImage, float maxImageSize, boolean filter) {
-        float ratio = Math.min((float) maxImageSize / realImage.getWidth()
-                , (float) maxImageSize / realImage.getHeight());
-        int width = Math.round((float) ratio * realImage.getWidth());
-        int height = Math.round((float) ratio * realImage.getHeight());
-
-        Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width, height, filter);
-        return newBitmap;
     }
 
     @OnClick({R.id.btn_day, R.id.btn_month, R.id.btn_year})

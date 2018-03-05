@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -151,8 +152,18 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
             }
         });
 
-        regPhoneCode.setText("+");
-        regPhoneCode.setSelection(1);
+
+        regPhoneCode.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                if (regPhoneCode.getText().toString().isEmpty()) {
+                    regPhoneCode.setText("+");
+                    regPhoneCode.setSelection(1);
+                }
+                return false;
+            }
+        });
+
         regPhoneCode.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -190,23 +201,23 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                             if (!regPhoneNum.getText().toString().isEmpty()) {
                                 if (!regPhoneCode.getText().toString().isEmpty()
                                         && regPhoneCode.getText().toString().contains("+")) {
-                            if (!regPass.getText().toString().isEmpty()) {
-                                if (!regCpass.getText().toString().isEmpty()) {
-                                    if (regCpass.getText().toString().equals(regPass.getText().toString())) {
-                                        if (regCbTerms.isChecked()) {
-                                            registerUser();
+                                    if (!regPass.getText().toString().isEmpty()) {
+                                        if (!regCpass.getText().toString().isEmpty()) {
+                                            if (regCpass.getText().toString().equals(regPass.getText().toString())) {
+                                                if (regCbTerms.isChecked()) {
+                                                    registerUser();
+                                                } else {
+                                                    Toast.makeText(getActivity(), "Debes aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } else {
+                                                Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                                            }
                                         } else {
-                                            Toast.makeText(getActivity(), "Debes aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(), "Debes confirmar la contraseña", Toast.LENGTH_SHORT).show();
                                         }
                                     } else {
-                                        Toast.makeText(getActivity(), "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getActivity(), "La contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
-                                    Toast.makeText(getActivity(), "Debes confirmar la contraseña", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                                Toast.makeText(getActivity(), "La contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
-                            }
                                 } else {
                                     Toast.makeText(getActivity(), "El código del teléfono debe contener el símbolo + al comienzo", Toast.LENGTH_SHORT).show();
                                 }

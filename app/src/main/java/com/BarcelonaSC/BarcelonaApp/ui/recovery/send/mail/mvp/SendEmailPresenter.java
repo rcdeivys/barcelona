@@ -31,8 +31,7 @@ public class SendEmailPresenter implements SendEmailContract.Presenter, SendEmai
             onFailed("El correo y la contraseña no pueden estar vacíos");
         }
         if (email.isEmpty())
-        model.sendEmail(email, this);
-        contract.showProgress();
+            model.sendEmail(email, this);
     }
 
     @Override

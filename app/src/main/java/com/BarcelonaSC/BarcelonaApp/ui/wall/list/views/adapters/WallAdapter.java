@@ -95,8 +95,7 @@ public class WallAdapter extends CustomRecyclerView<RecyclerView.ViewHolder> {
     }
 
     public void initList(List<Object> list) {
-        wallList.clear();
-        wallList.addAll(list);
+        wallList.addAll(1, list);
         notifyDataSetChanged();
     }
 
