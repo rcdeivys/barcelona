@@ -6,8 +6,8 @@
     app:angle="-90">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="460dp"
-        android:layout_height="300dp">
+        android:layout_width="480dp"
+        android:layout_height="320dp">
 
         <View
             android:layout_width="match_parent"

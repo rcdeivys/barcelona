@@ -110,6 +110,7 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
         wallAdapter.setWallClickListener(this);
         recyclerView.setAdapter(wallAdapter);
         presenter.load();
+        recyclerView.smoothScrollToPosition(0);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -140,7 +141,6 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
 
     @Override
     public void setLoad(List<Object> list, boolean pagination) {
-
         if (pagination) {
             wallAdapter.addWall(list);
         } else {
@@ -152,7 +152,6 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
                     recyclerView.smoothScrollToPosition(0);
                 }
             }, 1000);
-
         }
         recyclerView.addOnScrollListener(initRecyclerViewScroll());
         wallAdapter.hideLoading();
@@ -238,4 +237,3 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
         presenter.onDetach();
     }
 }
-
