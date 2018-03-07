@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -121,12 +122,13 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
 
     private void setPhoto(String photo) {
         imgPost.setVisibility(View.VISIBLE);
+        imgPost.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
+                , Commons.getWidthDisplay()));
         Glide.with(context)
                 .load(photo)
                 .apply(new RequestOptions().error(Commons.getDrawable(R.drawable.bsc_news_wm))
                         .placeholder(Commons.getDrawable(R.drawable.bsc_news_wm)))
                 .into(imgPost);
-
     }
 
     private void setVideo(WallItem item) {

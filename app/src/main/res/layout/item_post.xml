@@ -31,13 +31,14 @@
                 android:visibility="gone"
                 app:emojiconSize="28sp" />
 
-
             <ImageView
                 android:id="@+id/img_post"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_post"
                 android:adjustViewBounds="true"
+                android:background="@color/gray_transparent"
+                android:src="@drawable/bsc_news_wm"
                 android:scaleType="fitCenter"
                 android:visibility="visible" />
 

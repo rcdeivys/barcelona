@@ -6,7 +6,7 @@
     <dimen name="font_button_size">14sp</dimen><!--MEDIUM--><!--ALL CAPS-->
     <dimen name="font_subheading_size">16sp</dimen><!--REGULAR-->
     <dimen name="font_title_xsize">20sp</dimen><!--MEDIUM-->
-    <dimen name="font_title_size">20sp</dimen><!--MEDIUM-->
+    <dimen name="font_title_size">16sp</dimen><!--MEDIUM-->
     <dimen name="font_actionbar_size">24sp</dimen><!--MEDIUM-->
     <dimen name="font_description">18sp</dimen><!--MEDIUM-->
     <dimen name="font_heading_size">44sp</dimen><!--REGULAR-->

@@ -39,7 +39,7 @@
                     style="@style/StyleRobotoBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="20dp"
                     android:text="N°0001"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -47,7 +47,7 @@
                     style="@style/StyleRobotoRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="20dp"
                     android:text="N° de identificación:"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark" />
@@ -57,7 +57,7 @@
                     style="@style/StyleRobotoRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:text="N°0001"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark" />
@@ -168,7 +168,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_weight="1"
-                android:gravity="center"
+                android:gravity="start"
                 android:orientation="vertical"
                 android:visibility="visible">
 
