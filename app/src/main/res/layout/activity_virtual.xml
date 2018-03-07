@@ -48,13 +48,13 @@
                 android:background="@color/colorPrimaryDark">
 
                 <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                    style="@style/StyleRobotoRegular.BodyR"
+                    style="@style/StyleRobotoRegular"
                     android:id="@+id/texto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_margin="15dp"
-                    android:text="@string/enjoy_whole_vr_experience"
+                    android:text="Asegúrate que tu dispositivo sea compatible para poder disfrutar de la experiencia VR"
                     android:textAlignment="center" />
 
                 <include

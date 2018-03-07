@@ -325,7 +325,7 @@ public class WallCommentActivity extends BaseActivity implements WallCommentCont
     @Override
     public void hideProgress() {
         progressBar.setVisibility(View.GONE);
-        wallCommentAdapter.showNoMoreDataToDisplay();
+        wallCommentAdapter.hideLoading();
         disableView(true);
     }
 

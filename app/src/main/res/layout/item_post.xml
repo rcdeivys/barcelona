@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:background="#e1e2e8">
+    android:background="@color/white">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/content_header"
@@ -26,6 +26,8 @@
                 android:id="@+id/video_post"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@+id/text_post"
                 android:visibility="gone"
                 app:emojiconSize="28sp" />
 
@@ -33,7 +35,10 @@
                 android:id="@+id/img_post"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/text_post"
                 android:adjustViewBounds="true"
+                android:background="@color/gray_transparent"
+                android:src="@drawable/bsc_news_wm"
                 android:scaleType="fitCenter"
                 android:visibility="visible" />
 
@@ -47,11 +52,12 @@
                 android:layout_marginTop="10dp"
                 android:inputType="textMultiLine"
                 android:maxLength="2000"
-                android:padding="5dp"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="@color/textColorSecondary"
                 android:visibility="gone" />
 
+
         </LinearLayout>
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_profile"
@@ -61,8 +67,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/silueta"
-            app:civ_border_color="@color/colorAccent"
-            app:civ_border_width="2dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -76,27 +80,29 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:ellipsize="end"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/textColorSecondary"
             app:layout_constraintEnd_toStartOf="@+id/menu_icon"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/img_profile"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
+
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/menu_icon"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginEnd="16dp"
+            android:tint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_more_vert" />
-
     </android.support.constraint.ConstraintLayout>
 
-    <android.support.constraint.ConstraintLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/content_header"
         android:layout_marginTop="15dp">
 
@@ -107,10 +113,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:adjustViewBounds="false"
-            android:background="@drawable/icon_aplauso_2"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:background="@drawable/icon_aplauso_2" />
 
         <ImageView
             android:id="@+id/comment_icon"
@@ -118,6 +121,7 @@
             android:layout_height="25dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/like_icon"
             android:background="@drawable/coment"
             app:layout_constraintStart_toEndOf="@+id/like_icon" />
 
@@ -126,51 +130,59 @@
             style="@style/StyleRobotoRegular.Caption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/like_icon"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textColor="@color/colorPrimary"
+            android:text="asdasdasd"
+            android:textColor="@color/textColorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/like_icon" />
 
-        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-            android:id="@+id/cant_comment"
-            style="@style/StyleRobotoBold.BodyR"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/black"
-            android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date_post" />
+            android:layout_below="@id/date_post"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical">
 
-        <ImageView
-            android:id="@+id/count_like_icon"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/icon_aplauso"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/count_like" />
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/cant_comment"
+                style="@style/StyleRobotoBold.BodyR"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
+                android:gravity="center_vertical"
+                android:text="asdasdasdas"
+                android:textColor="@color/textColorSecondary"
+                android:visibility="visible" />
 
-        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-            android:id="@+id/count_like"
-            style="@style/StyleRobotoRegular.Caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="0"
-            android:textColor="@color/colorPrimary"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            <ImageView
+                android:id="@+id/count_like_icon"
+                android:layout_width="19dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toStartOf="@id/count_like"
+                android:background="@drawable/icon_aplauso" />
 
-    </android.support.constraint.ConstraintLayout>
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/count_like"
+                style="@style/StyleRobotoRegular.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="16dp"
+                android:text="0"
+                android:textColor="@color/textColorSecondary" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

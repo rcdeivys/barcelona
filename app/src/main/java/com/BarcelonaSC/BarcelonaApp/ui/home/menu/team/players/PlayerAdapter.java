@@ -112,7 +112,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             else
                 vhHeader.clash.setText("VS");
 
-
             String[] arrayString = gameSummonedData.getFechaEtapa().split(",");
             // vhHeader.gameType.setText(arrayString[1]);
 
@@ -122,7 +121,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     App.get().getString(R.string.game_date_time
                             , Commons.getStringDate2(gameSummonedData.getFecha())
                             , Commons.getStringHour(gameSummonedData.getFecha()))
-                            + " (" + gameSummonedData.getEstado() + ")");
+                            /*+ " (" + gameSummonedData.getEstado() + ")"*/);
 
             vhHeader.dateFifa.setText(arrayString[0]);
 

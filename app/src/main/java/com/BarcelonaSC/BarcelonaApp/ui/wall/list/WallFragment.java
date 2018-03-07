@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
@@ -111,6 +110,7 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
         wallAdapter.setWallClickListener(this);
         recyclerView.setAdapter(wallAdapter);
         presenter.load();
+        recyclerView.smoothScrollToPosition(0);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -141,14 +141,20 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
 
     @Override
     public void setLoad(List<Object> list, boolean pagination) {
-
         if (pagination) {
             wallAdapter.addWall(list);
         } else {
             wallAdapter.initList(list);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    recyclerView.smoothScrollToPosition(0);
+                }
+            }, 1000);
         }
         recyclerView.addOnScrollListener(initRecyclerViewScroll());
-        wallAdapter.showNoMoreDataToDisplay();
+        wallAdapter.hideLoading();
         swipeRefreshLayout.setRefreshing(false);
 
     }
@@ -231,4 +237,3 @@ public class WallFragment extends Fragment implements WallContract.View, WallAda
         presenter.onDetach();
     }
 }
-

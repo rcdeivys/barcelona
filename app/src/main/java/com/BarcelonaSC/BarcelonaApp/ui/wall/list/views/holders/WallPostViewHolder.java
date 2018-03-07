@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -78,7 +79,7 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
         }
 
         if (item.getYaaplaudio() == 1) {
-            likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
+            likeIcon.setBackground(Commons.getDrawable(R.drawable.aplausos__cambio));
         } else {
             likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
         }
@@ -121,12 +122,13 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
 
     private void setPhoto(String photo) {
         imgPost.setVisibility(View.VISIBLE);
+        imgPost.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT
+                , Commons.getWidthDisplay()));
         Glide.with(context)
                 .load(photo)
                 .apply(new RequestOptions().error(Commons.getDrawable(R.drawable.bsc_news_wm))
                         .placeholder(Commons.getDrawable(R.drawable.bsc_news_wm)))
                 .into(imgPost);
-
     }
 
     private void setVideo(WallItem item) {
@@ -139,7 +141,7 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder {
 
     public void setLike(boolean like) {
         if (like) {
-            likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso));
+            likeIcon.setBackground(Commons.getDrawable(R.drawable.aplausos__cambio));
         } else {
             likeIcon.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
         }

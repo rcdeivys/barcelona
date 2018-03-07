@@ -38,28 +38,33 @@
             android:textSize="@dimen/font_title_size" />
     </RelativeLayout>
 
-    <android.support.percent.PercentRelativeLayout
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/banner"
-        android:layout_below="@id/content_header"
-        android:layout_centerInParent="true">
+        android:layout_below="@id/content_header">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center">
 
-            <include
-                android:id="@+id/content_carnet"
-                layout="@layout/view_carnet"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:gravity="center">
 
-        </RelativeLayout>
+                <include
+                    android:id="@+id/content_carnet"
+                    layout="@layout/carnet" />
 
-    </android.support.percent.PercentRelativeLayout>
+            </RelativeLayout>
+
+        </android.support.percent.PercentRelativeLayout>
+
+    </ScrollView>
 
     <include
         android:id="@+id/banner"

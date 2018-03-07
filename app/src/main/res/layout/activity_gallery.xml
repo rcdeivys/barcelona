@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:padding="5dp"
-                android:text="@string/gallery"
+                android:text="Galería"
                 android:textColor="@color/white" />
 
         </RelativeLayout>
