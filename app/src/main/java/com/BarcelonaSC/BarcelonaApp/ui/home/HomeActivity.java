@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.MonumentalFragment;
 import com.bumptech.glide.Glide;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -194,6 +196,8 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             initBanner(BannerView.Seccion.STATISTICS);
         } else if (tag.equals(YouChooseFragment.TAG)) {
             initBanner(BannerView.Seccion.YOU_CHOOSE);
+        } else if (tag.equals(MonumentalMainFragment.TAG)) {
+            initBanner(BannerView.Seccion.MONUMENTAL);
         } else {
             initBanner(BannerView.Seccion.SETINGS);
         }
