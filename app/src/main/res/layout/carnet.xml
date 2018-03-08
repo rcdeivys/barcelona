@@ -103,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
-                        android:text="Hincha Oficial"
+                        android:text="Hincha Nivel Club"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textSize="@dimen/font_title_size"
