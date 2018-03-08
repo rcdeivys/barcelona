@@ -83,7 +83,6 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         App.get().component().fireBaseManager();

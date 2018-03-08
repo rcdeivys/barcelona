@@ -350,8 +350,6 @@ public class HomePresenter {
             onItemMenuSelected(Constant.Menu.GAME);
         } else if (BannerView.Seccion.STORE.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.ONLINE_SHOP);
-        } else if (BannerView.Seccion.WALL_AND_CHAT.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.WALL_AND_CHAT);
         } else if (BannerView.Seccion.MONUMENTAL.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.MONUMENTAL);
         } else if (BannerView.Seccion.MAP.getValue().equals(seccion)) {

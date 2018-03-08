@@ -228,7 +228,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                             Toast.makeText(getActivity(), "El e-mail no es válido", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        Toast.makeText(getActivity(), "El correo no puede estar vacío", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "El e-mail no puede estar vacío", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getActivity(), "La cédula no puede estar vacía", Toast.LENGTH_SHORT).show();
