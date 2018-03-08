@@ -83,8 +83,9 @@
                     android:ellipsize="end"
                     android:maxLength="25"
                     android:text="My name"
+                    android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
