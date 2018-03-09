@@ -38,16 +38,12 @@
             android:textSize="@dimen/font_title_size" />
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/banner"
-        android:layout_below="@id/content_header">
-
         <android.support.percent.PercentRelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_above="@id/banner"
+            android:layout_below="@id/content_header"
             android:gravity="center">
 
             <RelativeLayout
@@ -63,8 +59,6 @@
             </RelativeLayout>
 
         </android.support.percent.PercentRelativeLayout>
-
-    </ScrollView>
 
     <include
         android:id="@+id/banner"

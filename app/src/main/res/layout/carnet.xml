@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.github.rongi.rotate_layout.layout.RotateLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="280dp"
+    android:layout_height="440dp"
     app:angle="-90">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="480dp"
-        android:layout_height="320dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <View
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/img_profile"
                     android:layout_width="wrap_content"
-                    android:layout_height="120dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
                     android:src="@drawable/silueta" />
@@ -41,7 +41,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:text="N°0001"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp" />
 
                 <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     style="@style/StyleRobotoRegular"
@@ -50,17 +51,19 @@
                     android:layout_marginStart="20dp"
                     android:text="N° de identificación:"
                     android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp" />
 
                 <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/cedula"
                     style="@style/StyleRobotoRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:text="N°0001"
                     android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark" />
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="12sp" />
 
             </LinearLayout>
 
@@ -119,7 +122,7 @@
                         android:layout_marginTop="7dp"
                         android:text="Desde enero 2017"
                         android:textColor="@color/colorPrimaryDark"
-                        android:textSize="@dimen/font_caption_size" />
+                        android:textSize="8sp" />
 
                 </RelativeLayout>
 
