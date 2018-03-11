@@ -25,10 +25,10 @@ public class SendEmailPresenter implements SendEmailContract.Presenter, SendEmai
                 model.sendEmail(email, this);
                 contract.showProgress();
             } else {
-                onFailed("La dirección de correo no es válida");
+                onFailed("El e-mail no es válido");
             }
         } else {
-            onFailed("El correo y la contraseña no pueden estar vacíos");
+            onFailed("El e-mail y la contraseña no pueden estar vacíos");
         }
         if (email.isEmpty())
             model.sendEmail(email, this);
@@ -60,5 +60,3 @@ public class SendEmailPresenter implements SendEmailContract.Presenter, SendEmai
         }
     }
 }
-
-

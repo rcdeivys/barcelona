@@ -189,7 +189,7 @@ public class InfoAccountFragment extends Fragment {
                             //    Toast.makeText(getActivity(), "La contraseña no puede estar vacía", Toast.LENGTH_SHORT).show();
                             //}
                         } else {
-                            Toast.makeText(getActivity(), "La cédula no puede estar vacía", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "La cédula o pasaporte no puede estar vacía", Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         Toast.makeText(getActivity(), "El correo no es válido", Toast.LENGTH_SHORT).show();

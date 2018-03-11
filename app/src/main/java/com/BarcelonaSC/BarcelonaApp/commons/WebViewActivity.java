@@ -40,6 +40,7 @@ public class WebViewActivity extends BaseActivity {
             wvGeneral.loadUrl(getIntent().getExtras().getString(Constant.Key.URL, ""));
             tvSubHeaderTitle.setText((getIntent().getExtras().getString(Constant.Key.TITLE, "")));
         }
+
         ibReturn.setVisibility(View.VISIBLE);
 
     }

@@ -40,7 +40,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@string/font_helvetica_condensed_bold"
-                    android:text="Para recuperar tu contraseña por favor ingresa tu correo registrado"
+                    android:text="Para recuperar tu contraseña por favor ingresa tu e-mail registrado"
                     android:textAlignment="center"
                     android:textSize="16dp" />
 
@@ -49,7 +49,7 @@
                     style="@style/StyleRobotoLigth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email"
+                    android:text="E-mail"
                     android:textColor="@color/white"
                     android:textSize="14dp" />
 
@@ -76,7 +76,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@string/font_helvetica_condensed_bold"
-                    android:text="En la próxima pantalla se te pedirá un PIN enviado a este correo, revisa tu bandeja de entrada o correo no deseado"
+                    android:text="En la próxima pantalla se te pedirá un PIN enviado a este e-mail, revisa tu bandeja de entrada o correo no deseado"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="14dp" />
@@ -126,14 +126,12 @@
             android:visibility="gone">
 
             <ProgressBar
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:indeterminateDrawable="@drawable/progress"
                 android:visibility="visible" />
-
 
         </RelativeLayout>
     </RelativeLayout>

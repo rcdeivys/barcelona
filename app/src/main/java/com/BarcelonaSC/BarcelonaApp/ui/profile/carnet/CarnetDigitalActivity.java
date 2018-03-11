@@ -113,11 +113,11 @@ public class CarnetDigitalActivity extends BaseActivity {
     public void generateBarCode(String data) {
         com.google.zxing.Writer c9 = new Code128Writer();
         try {
-            BitMatrix bm = c9.encode(data, BarcodeFormat.CODE_128, Commons.dpToPx(150), Commons.dpToPx(40));
-            mBitmap = Bitmap.createBitmap(Commons.dpToPx(150), Commons.dpToPx(40), Bitmap.Config.ARGB_8888);
+            BitMatrix bm = c9.encode(data, BarcodeFormat.CODE_128, Commons.dpToPx(120), Commons.dpToPx(30));
+            mBitmap = Bitmap.createBitmap(Commons.dpToPx(120), Commons.dpToPx(30), Bitmap.Config.ARGB_8888);
 
-            for (int i = 0; i < Commons.dpToPx(150); i++) {
-                for (int j = 0; j < Commons.dpToPx(40); j++) {
+            for (int i = 0; i < Commons.dpToPx(120); i++) {
+                for (int j = 0; j < Commons.dpToPx(30); j++) {
 
                     mBitmap.setPixel(i, j, bm.get(i, j) ? Color.YELLOW : Color.BLACK);
                 }

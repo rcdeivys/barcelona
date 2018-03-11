@@ -107,7 +107,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         });
 
         vhHeader.monumental_name.setText(monumental.getNombre());
-        //vhHeader.monumental_name_container.setVisibility(View.GONE);
+        vhHeader.monumental_name_container.setVisibility(View.GONE);
     }
 
     private void initItem(VHItem vhItem, final int position) {

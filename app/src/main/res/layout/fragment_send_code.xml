@@ -39,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="20dp"
-                    android:text="Ingresa a continuación el PIN enviado a tu correo"
+                    android:text="Ingresa a continuación el PIN enviado a tu e-mail"
                     android:textAlignment="center"
                     android:textSize="16dp" />
 

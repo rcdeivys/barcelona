@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
+import com.BarcelonaSC.BarcelonaApp.commons.WebViewActivity;
 import com.BarcelonaSC.BarcelonaApp.models.DrawerItem;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
@@ -198,7 +199,7 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, NewsInfografyActivity.class);
+                    Intent intent = new Intent(context, WebViewActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra(Constant.Key.URL, url);
                     intent.putExtra("view", true);

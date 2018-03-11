@@ -58,7 +58,6 @@ public class NewsInfografyActivity extends BaseActivity {
             }
         });
 
-
         super.initBanner(BannerView.Seccion.NEWS);
     }
 
