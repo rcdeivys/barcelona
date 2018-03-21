@@ -12,7 +12,7 @@
         android:adjustViewBounds="true"
         android:visibility="gone" />
 
-    <com.millonarios.MillonariosFC.utils.TouchImageView
+    <com.BarcelonaSC.BarcelonaApp.utils.TouchImageView
         android:id="@+id/img_touch_gallery"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

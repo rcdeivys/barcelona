@@ -3,16 +3,17 @@
     android:id="@+id/rl_sub_header"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/colorAccent"
     android:visibility="visible">
 
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/tv_sub_header_title"
         style="@style/StyleRobotoBold.Title.White"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/news" />
+        android:text="@string/news"
+        android:textColor="@color/colorPrimaryDark" />
 
     <!-- Botón para regresar a la actividad anterior -->
     <ImageButton
@@ -22,7 +23,7 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:background="@android:color/transparent"
-        android:src="@drawable/arrow_left_dorado"
+        android:src="@drawable/arrow_back"
         android:visibility="gone" />
 
     <ImageButton
@@ -32,7 +33,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:background="@color/transparent"
-        android:src="@drawable/ic_share"
+        android:src="@drawable/share"
         android:visibility="invisible" />
 
 </RelativeLayout>

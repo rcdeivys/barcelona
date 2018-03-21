@@ -38,19 +38,19 @@
             android:layout_weight="0.5"
             android:orientation="vertical">
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 style="@style/StyleRobotoBold.Subheading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/technical_director"
                 android:layout_weight="1"
+                android:text="@string/technical_director"
                 android:textColor="@color/black" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
                 android:layout_weight="1"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -62,14 +62,14 @@
                     app:civ_border_color="@color/white"
                     app:civ_border_width="1dp" />
 
-                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                     android:id="@+id/fctv_name_director"
                     style="@style/StyleRobotoRegular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    android:textSize="@dimen/font_body_m_size"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_body_m_size" />
 
             </LinearLayout>
         </LinearLayout>
@@ -89,130 +89,162 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:orientation="horizontal">
+                android:layout_weight="0.3"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/entra" />
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/entra_icn" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:text="Entra"
                         android:textColor="@color/black"
                         android:textSize="10sp"
-                        android:visibility="gone" />
-
+                        android:visibility="visible" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/sale" />
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/sale_icn" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:text="Sale"
                         android:textColor="@color/black"
                         android:textSize="10sp"
-                        android:visibility="gone" />
-
+                        android:visibility="visible" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/gol" />
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/pelota" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:text="Gol"
                         android:textColor="@color/black"
                         android:textSize="10sp"
-                        android:visibility="gone" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/tarjeta_amarilla" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="tarjeta amarilla"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        android:visibility="gone" />
-
+                        android:visibility="visible" />
 
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/tarjeta_roja" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="tarjeta roja"
-                        android:textColor="@color/black"
-                        android:textSize="10sp"
-                        android:visibility="gone" />
-
-
-                </LinearLayout>
-
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/amr_icn" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Tarjeta Amarilla"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/roja_icn" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Tarjeta roja"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/lesionado_icn" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:text="Lesionado"
+                        android:textColor="@color/black"
+                        android:textSize="10sp"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
-
 
     </LinearLayout>
 

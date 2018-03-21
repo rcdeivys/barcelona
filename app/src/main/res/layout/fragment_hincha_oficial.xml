@@ -1,434 +1,420 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark">
+        android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/RL_Ppal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <RelativeLayout
-                android:id="@+id/RL_Ppal"
+            <LinearLayout
+                android:id="@+id/perfil_top_panel"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center">
+                android:layout_height="265dp"
+                android:layout_below="@id/TV_Header"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <!-- Nombre, imagen y medalla hincha-->
-                <LinearLayout
-                    android:id="@+id/perfil_top_panel"
-                    android:layout_width="match_parent"
-                    android:layout_height="265dp"
-                    android:layout_below="@id/TV_Header"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                        android:id="@+id/text_name"
+                        style="@style/StyleRobotoBold.Title.White"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:ellipsize="end"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:maxLines="2"
+                        android:text="Erick Umanchuk"
+                        android:textAllCaps="true"
+                        android:textSize="18sp" />
 
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                            android:id="@+id/text_name"
-                            style="@style/StyleRobotoBold.Title.White"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:gravity="center"
-                            android:ellipsize="end"
-                            android:maxLines="2" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_profile"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
+                        android:layout_below="@id/text_name"
+                        android:layout_centerHorizontal="true"
+                        android:padding="5dp"
+                        android:src="@drawable/silueta"
+                        app:civ_border_color="@color/colorAccent"
+                        app:civ_border_width="2dp" />
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/img_profile"
-                            android:layout_width="160dp"
-                            android:layout_height="160dp"
-                            android:layout_below="@id/text_name"
-                            android:layout_centerHorizontal="true"
-                            android:src="@drawable/silueta" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/icon_edit_img_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@id/img_profile"
+                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
+                        android:src="@drawable/ic_edit" />
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/icon_edit_img_profile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignEnd="@id/img_profile"
-                            android:layout_centerVertical="true"
-                            android:background="@android:color/transparent"
-                            android:src="@drawable/edit" />
+                </RelativeLayout>
 
-                    </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="2dp">
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_1_perfil"
                         android:orientation="vertical"
-                        android:padding="2dp">
+                        android:padding="5dp">
 
-                        <LinearLayout
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                            style="@style/StyleRobotoBold"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/perfil_btn_1"
-                            android:orientation="vertical"
-                            android:padding="5dp">
+                            android:text="Hincha BSC"
+                            android:textAlignment="center"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="@dimen/font_subheading_size" />
 
-
-                            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                                style="@style/StyleRobotoBold"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:text="Hincha Embajador Oficial"
-                                android:textAlignment="center"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/font_subheading_size" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginBottom="5dp"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
+                                android:layout_marginRight="5dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                                    android:id="@+id/id_hincha"
+                                    style="@style/StyleRobotoBold"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:textAlignment="center"
+                                    android:textColor="@color/colorPrimaryDark" />
 
                                 <LinearLayout
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="5dp"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical">
+                                    android:orientation="horizontal">
 
-                                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                                        android:id="@+id/id_hincha"
-                                        style="@style/StyleRobotoBold"
+                                    <View
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:textColor="@color/white" />
+                                        android:layout_height="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@color/colorPrimaryDark" />
 
-                                    <LinearLayout
+                                    <View
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
-
-                                        <View
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="5dp"
-                                            android:layout_weight="1"
-                                            android:background="@color/colorAccent" />
-
-                                        <View
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="5dp"
-                                            android:layout_weight="1"
-                                            android:background="@color/colorPrimary" />
-
-                                    </LinearLayout>
-
-                                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                                        android:id="@+id/text_registrado"
-                                        style="@style/StyleRobotoLigth"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentBottom="true"
-                                        android:layout_marginBottom="12dp"
-                                        android:layout_marginTop="5dp"
-                                        android:textAlignment="center"
-                                        android:textColor="@color/white"
-                                        android:textSize="@dimen/font_body_r_size"
-                                        android:visibility="visible" />
-
+                                        android:layout_height="5dp"
+                                        android:layout_weight="1"
+                                        android:background="@color/colorPrimaryDark" />
 
                                 </LinearLayout>
 
-
-                                <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
-
-                                    android:background="@drawable/logo_millos" />
-
+                                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                                    android:id="@+id/text_registrado"
+                                    style="@style/StyleRobotoLigth"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="12dp"
+                                    android:layout_marginTop="5dp"
+                                    android:textAlignment="center"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:textSize="@dimen/font_body_r_size"
+                                    android:visibility="visible" />
 
                             </LinearLayout>
 
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/btn_carnet"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:background="@drawable/perfil_btn_2"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <android.support.v7.widget.AppCompatImageView
-                                style="@style/StyleRobotoBold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_search"
-                                android:tint="@color/white" />
-
-                            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-
-                                style="@style/StyleRobotoBold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="ver carné"
-                                android:textAllCaps="true"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/font_body_r_size" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/btn_share"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:background="@drawable/perfil_btn_3"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                                style="@style/StyleRobotoBold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="compartir app"
-                                android:textAllCaps="true"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/font_body_r_size" />
-
                             <ImageView
-                                style="@style/StyleRobotoBold"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:src="@drawable/share_white" />
+                                android:layout_width="60dp"
+                                android:layout_height="60dp"
+                                android:background="@drawable/logo_bsc" />
 
                         </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
-
-                <!-- Apodo, descripcion, confirmar cambios, cerrar sesion y banner -->
-                <LinearLayout
-                    android:id="@+id/perfil_mid_panel"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@id/perfil_top_panel"
-                    android:orientation="vertical"
-                    android:weightSum="1">
-
-                    <!-- Apodo -->
-                    <FrameLayout
-                        android:id="@+id/frame_apodo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <!-- EditText para ingresar apodo -->
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <EditText
-                                android:id="@+id/input_nickname"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="4"
-                                android:hint="Apodo Hincha"
-                                android:inputType="text"
-                                android:maxLines="2"
-                                android:paddingEnd="4dp"
-                                android:paddingLeft="4dp"
-                                android:paddingRight="4dp"
-                                android:paddingStart="4dp"
-                                android:textAlignment="center"
-                                android:textColor="@color/white" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Este apodo será empleado para identificarte en todas las secciones"
-                                android:textAlignment="center"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                    </FrameLayout>
-
-                    <!-- Botones confirmar cambios -->
                     <LinearLayout
-                        android:id="@+id/view_btn_confirmit"
+                        android:id="@+id/btn_carnet"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_2_perfil"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
+                        android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/btn_discard_change"
-                            android:layout_width="0dp"
+                        <android.support.v7.widget.AppCompatImageView
+                            style="@style/StyleRobotoBold"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/background_button_corners_accent"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp"
-                            android:text="DESCARTAR"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/font_body_r_size"
-                            android:visibility="visible" />
+                            android:src="@drawable/ic_search" />
 
-                        <Button
-                            android:id="@+id/btn_save_change"
-                            android:layout_width="0dp"
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                            style="@style/StyleRobotoBold"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/backgroun_button_corners_white"
-                            android:paddingLeft="20dp"
-                            android:paddingRight="20dp"
-                            android:text="ENVIAR"
+                            android:text="Credencial Digital"
                             android:textAllCaps="true"
-                            android:textColor="@color/colorPrimaryDark"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/font_body_r_size" />
 
                     </LinearLayout>
 
-                    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                        style="@style/StyleRobotoBold.Title.White"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="próximamente"
-                        android:textAlignment="center"
-                        android:textAllCaps="true" />
-
-                    <!-- Botones confirmar cambios -->
                     <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal"
-                        android:visibility="visible">
+                        android:id="@+id/btn_share"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/btn_3_perfil"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
-                        <RelativeLayout
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                            style="@style/StyleRobotoBold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="compartir app"
+                            android:textAllCaps="true"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="@dimen/font_body_r_size" />
+
+                        <ImageView
+                            style="@style/StyleRobotoBold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_bg">
-
-                            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                                android:id="@+id/hincha_gold"
-                                style="@style/confirm_changes_box"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:padding="10dp"
-                                android:text="HINCHA EMBAJADOR DORADO"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/font_body_r_size" />
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="60dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/btn_bg_2"
-                            android:visibility="gone">
-
-                            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                                android:id="@+id/hincha_platino"
-                                style="@style/confirm_changes_box"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:text="Hincha Embajador platino"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/font_body_r_size" />
-
-                        </RelativeLayout>
+                            android:src="@drawable/share" />
 
                     </LinearLayout>
 
-                    <!-- Cerrar sesion -->
-                    <RelativeLayout
-                        android:id="@+id/layout_btns_cerrar_sesion"
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Apodo, confirmar cambios, cerrar sesion y banner -->
+            <LinearLayout
+                android:id="@+id/perfil_mid_panel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/perfil_top_panel"
+                android:orientation="vertical"
+                android:weightSum="1">
+
+                <!-- Apodo -->
+                <FrameLayout
+                    android:id="@+id/frame_apodo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- EditText para ingresar apodo -->
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="20dp"
-                        android:orientation="horizontal"
-                        android:visibility="visible">
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginStart="15dp"
+                        android:orientation="vertical">
 
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                            android:id="@+id/acerca_de"
-                            style="@style/StyleRobotoRegular.BodyR"
-                            android:layout_width="wrap_content"
+                        <EditText
+                            android:id="@+id/input_nickname"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="20dp"
-                            android:text="Acerca de"
-                            android:textColor="@color/white"
-                            android:visibility="visible" />
+                            android:layout_weight="4"
+                            android:backgroundTint="@color/colorAccent"
+                            android:hint="Apodo Hincha"
+                            android:inputType="text"
+                            android:maxLines="2"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
 
-                        <LinearLayout
-                            android:id="@+id/btn_logout"
-                            android:layout_width="wrap_content"
+                        <TextView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
+                            android:text="Este apodo será empleado para identificarte en todas las secciones"
+                            android:textAlignment="center"
+                            android:textSize="12sp" />
 
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                    </LinearLayout>
 
-                            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-                                style="@style/StyleRobotoRegular.Caption"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:text="cerrar sesión"
-                                android:textAllCaps="true"
-                                android:textColor="@color/white" />
+                </FrameLayout>
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                <!-- Botones confirmar cambios -->
+                <LinearLayout
+                    android:id="@+id/view_btn_confirmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
-                                android:background="@drawable/cerrar_sesion" />
+                    <Button
+                        android:id="@+id/btn_discard_change"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounder_button_primary"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="DESCARTAR"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/font_body_r_size" />
 
-                        </LinearLayout>
-
-
-                    </RelativeLayout>
-
-                    <!-- Banner-->
+                    <Button
+                        android:id="@+id/btn_save_change"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/oath_button"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:text="GUARDAR"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="@dimen/font_body_r_size" />
 
                 </LinearLayout>
 
-            </RelativeLayout>
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoBold.Title.White"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="próximamente"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:visibility="gone" />
+
+                <!-- Botones confirmar cambios -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg">
+
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                            android:id="@+id/hincha_gold"
+                            style="@style/confirm_changes_box"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:padding="10dp"
+                            android:text="HINCHA EMBAJADOR DORADO"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_body_r_size" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_bg_2"
+                        android:visibility="gone">
+
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                            android:id="@+id/hincha_platino"
+                            style="@style/confirm_changes_box"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="Hincha Embajador platino"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/font_body_r_size" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!-- Cerrar sesion -->
+                <RelativeLayout
+                    android:id="@+id/layout_btns_cerrar_sesion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                        android:id="@+id/acerca_de"
+                        style="@style/StyleRobotoRegular.BodyR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:text="Acerca de"
+                        android:textColor="@color/white"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:id="@+id/btn_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/logout" />
+
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                            style="@style/StyleRobotoRegular.Caption"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="Cerrar Sesión"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 

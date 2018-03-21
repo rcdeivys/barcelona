@@ -3,12 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <WebView
         android:id="@+id/tutorial_wb"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 
     <ImageButton
         android:id="@+id/btn_close"
@@ -19,6 +17,6 @@
         android:layout_margin="10dp"
         android:background="@color/transparent"
         android:src="@drawable/quantum_ic_close_white_24"
-        android:tint="@color/black" />
+        android:tint="@color/colorAccent" />
 
 </RelativeLayout>

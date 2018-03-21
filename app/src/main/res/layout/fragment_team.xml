@@ -24,8 +24,6 @@
         </LinearLayout>
 
         <!-- Banner-->
-
-
         <com.google.android.gms.ads.doubleclick.PublisherAdView xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/publisherAdView"
             android:layout_width="wrap_content"
@@ -35,7 +33,8 @@
             android:layout_marginTop="545dp"
             android:visibility="gone"
             ads:adSize="SMART_BANNER"
-            ads:adUnitId="/6499/example/banner"></com.google.android.gms.ads.doubleclick.PublisherAdView>
+            ads:adUnitId="/6499/example/banner" />
+
     </RelativeLayout>
 
 </RelativeLayout>

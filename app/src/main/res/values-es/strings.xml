@@ -28,10 +28,10 @@
     <string name="setting">Configuración</string>
     <string name="professional">Profesional</string>
     <string name="footboll_base">Fútbol Base</string>
-    <string name="gallery">Galeria</string>
+    <string name="gallery">Galería</string>
     <string name="applause_already_added">Lo sentimos. Este aplauso ya había sido añadido.</string>
     <string name="applause_successful">Se añadió exitosamente tu aplauso.</string>
-    <string name="place_of_birth">Lugar de Nacimiento</string>
+    <string name="place_of_birth">Nacionalidad</string>
     <string name="clap_later">El tiempo para aplaudir por este jugador ha finalizado, regresa en el próximo encuentro y aplaude a tu jugador favorito</string>
     <string name="nacionalidad">NACIONALIDAD</string>
     <string name="de_camiseta_nen_copa_internacional"># DE CAMISETA\nEN COPA INTERNACIONAL</string>
@@ -45,7 +45,7 @@
     <string name="game_date_time">%1$s | %2$s</string>
     <string name="weight">Peso</string>
     <string name="height">Estatura</string>
-    <string name="applause">aplausos</string>
+    <string name="applause">Aplausos</string>
     <string name="calendar_detail">Detalle del Partido</string>
 
     <string name="toast_connection_error">Error al conectarse a los servidores.</string>
@@ -63,7 +63,7 @@
     <string name="choose_ideal_alignment">Escoge la Alineación ideal para ti</string>
     <string name="match_alignment">Alineación del partido</string>
     <string name="armar_alineacion">ARMAR ALINEACIÓN</string>
-    <string name="success_ideal_selection">Tu Once Ideal se cargo con éxito ¡Compártelo con tus amigos!</string>
+    <string name="success_ideal_selection">¿Deseas compartir tu alineación?</string>
     <string name="network_error">Connection Error</string>
     <string name="not">NO</string>
     <string name="yes">SI</string>
@@ -73,7 +73,6 @@
     <string name="vs">VS</string>
 
     <!-- item_ranking_votes -->
-
     <string name="item_ranking_votes.votes">Votos</string>
     <string name="search">Buscar</string>
     <string name="friend">Amigo</string>
@@ -126,7 +125,7 @@
     <string name="send_post">Enviar</string>
     <string name="clap_your_hands">Aplaude</string>
     <string name="block_friend">Bloquear</string>
-    <string name="add_friend">Agregar a mis amigos</string>
+    <string name="add_friend">Agregar Amigos</string>
     <string name="write_comment">Escribe un comenario</string>
 
     <string name="lipsun" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
@@ -186,10 +185,8 @@
 
     <string name="undefined" translatable="false">Undefined</string>
 
-
     <!-- item_ranking_votes -->
     <string name="ok">OK</string>
     <string name="ranking_no_show">\"Para ver el ranking debes votar o esperar a que finalice la encuesta\"</string>
-
 
 </resources>

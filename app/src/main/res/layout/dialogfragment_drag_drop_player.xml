@@ -1,103 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/black_trans_50"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:layout_height="match_parent">
 
-    <android.support.percent.PercentRelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.1"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:background="@color/black_trans_50"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-        <ImageView
-
-            android:id="@+id/iv_trash"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
-            android:padding="10dp"
-            android:src="@drawable/trash" />
-
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-            android:id="@+id/tv_closet"
-            style="@style/StyleRobotoBold.BodyR"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="20dp"
-
-            android:text="CERRAR"
-            android:textColor="@color/white" />
-    </android.support.percent.PercentRelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5">
-
-        <FrameLayout
-            android:id="@+id/socces_field_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true">
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/iv_trash"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:src="@drawable/trash" />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/tv_closet"
+                style="@style/StyleRobotoBold.BodyR"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="20dp"
+                android:text="CERRAR"
+                android:textColor="@color/white" />
+        </android.support.percent.PercentRelativeLayout>
 
-                android:scaleType="fitXY"
-                android:src="@drawable/soccer_field_vertical" />
-        </FrameLayout>
-
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2">
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_players"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:background="@drawable/rounder_lineup_recycler" />
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+
+            <FrameLayout
+                android:id="@+id/socces_field_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/soccer_field_vertical" />
+            </FrameLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_players"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/rounder_lineup_recycler" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="0.2"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounder_lineup_button"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="GUARDAR ALINEACIÓN"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                style="@style/StyleRobotoRegular.Caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Arma tu alineación arrastrando a tus jugadores favoritos en cada posición de la cancha para cada partido. Si deseas borrar alguno arrástralos hasta la papelera." />
+        </LinearLayout>
+
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="0.2"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btn_ok"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignBottom="@+id/wv_juramento"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/rounder_lineup_button"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="GUARDAR ALINEACIÓN"
-            android:textColor="@color/colorPrimaryDark" />
-
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
-            style="@style/StyleRobotoRegular.Caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            android:text="Arma tu alineación arrastrando a tus jugadores favoritos en cada posición de la cancha para cada partido. Si deseas borrar alguno arrástralos hasta la papelera." />
-    </LinearLayout>
-
-
-</LinearLayout>
+</ScrollView>

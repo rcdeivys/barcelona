@@ -8,55 +8,75 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/banner" />
+        android:src="@drawable/menu_banner_img" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_perfil"
-        android:layout_width="@dimen/menu_img_profile_size"
-        android:layout_height="@dimen/menu_img_profile_size"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="20dp"
-        android:src="@drawable/silueta"
-        android:visibility="visible" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent" />
+
+    <RelativeLayout
+        android:id="@+id/img_container"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_perfil"
+            android:layout_width="@dimen/menu_img_profile_size"
+            android:layout_height="@dimen/menu_img_profile_size"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="-15dp"
+            android:src="@drawable/silueta"
+            android:visibility="visible" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/img_perfil"
+            android:layout_below="@+id/img_perfil"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_edit" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="25dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="70dp"
-        android:layout_toEndOf="@id/img_perfil"
+        android:layout_marginBottom="35dp"
+        android:layout_marginStart="25dp"
+        android:layout_toEndOf="@id/img_container"
         android:orientation="vertical"
         android:visibility="visible">
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/first_name"
-            style="@style/StyleRobotoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textSize="@dimen/font_body_r_size" />
+            android:text="Erick"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/last_name"
-            style="@style/StyleRobotoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textSize="@dimen/font_body_r_size" />
+            android:text="Umanchuk"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
         android:visibility="visible">
 
         <LinearLayout
@@ -66,8 +86,8 @@
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="25dp"
             android:gravity="center"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <ImageView
                 style="@style/StyleRobotoBold"
@@ -76,7 +96,7 @@
                 android:src="@drawable/icon_perfil"
                 android:textSize="16sp" />
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/text_profile"
                 style="@style/StyleRobotoBold.BodyR"
                 android:layout_width="wrap_content"
@@ -93,8 +113,7 @@
             android:layout_width="@dimen/icon_xsmall"
             android:layout_height="@dimen/icon_xsmall"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/icon_config"
-            android:textSize="16sp"
+            android:src="@drawable/ic_settings"
             android:visibility="visible" />
 
     </RelativeLayout>

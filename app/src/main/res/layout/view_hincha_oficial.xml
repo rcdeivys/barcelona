@@ -5,15 +5,14 @@
     android:id="@+id/view_line"
     android:layout_width="160dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/perfil_btn_1"
+    android:background="@drawable/btn_1_perfil"
     android:paddingBottom="0dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingTop="5dp"
     tools:layout_editor_absoluteY="25dp">
 
-
-   <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/FCMillonariosTextView2"
         style="@style/StyleRobotoBold"
         android:layout_width="wrap_content"
@@ -22,15 +21,16 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Hincha Embajador Oficial"
+        android:text="Hincha BSC"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/font_subheading_size"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-   <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/id_hincha"
         style="@style/StyleRobotoBold"
         android:layout_width="80dp"
@@ -38,13 +38,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/text_registrado"
         app:layout_constraintTop_toBottomOf="@+id/FCMillonariosTextView2" />
 
-
-   <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/text_registrado"
         style="@style/StyleRobotoLigth"
         android:layout_width="100dp"
@@ -57,7 +56,8 @@
         android:layout_marginTop="8dp"
         android:inputType="textMultiLine"
         android:textAlignment="center"
-        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/font_caption_size"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,9 +70,8 @@
         android:id="@+id/icon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-
         android:layout_marginEnd="8dp"
-        android:background="@drawable/logo_millos"
+        android:background="@drawable/logo_bsc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -80,9 +79,9 @@
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="80dp"
-        android:adjustViewBounds="true"
         android:layout_height="5dp"
         android:layout_marginStart="0dp"
+        android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="@+id/text_registrado"
         app:layout_constraintStart_toStartOf="@+id/text_registrado"
         app:layout_constraintTop_toBottomOf="@+id/id_hincha"

@@ -4,21 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.millonarios.MillonariosFC.utils.CustomTabLayout
+    <com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
+        android:background="@color/colorPrimary"
+        app:tabBackground="@drawable/selector_tabs"
         app:tabGravity="fill"
         app:tabIndicatorColor="@color/colorAccent"
         app:tabIndicatorHeight="6dp"
         app:tabMode="fixed"
         app:tabSelectedTextColor="@color/colorAccent"
         app:tabTextAppearance="@style/TabTextSize"
-        app:tabBackground="@drawable/selector_tabs"
-        app:tabTextColor="@color/textColorPrimary" />
+        app:tabTextColor="@color/white" />
 
-    <com.millonarios.MillonariosFC.utils.CustomViewPager
+    <com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

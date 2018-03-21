@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/content_header"
@@ -17,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
@@ -31,7 +30,7 @@
             android:tint="@color/colorAccent"
             app:srcCompat="@drawable/arrow_back" />
 
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/text_create_post"
             style="@style/StyleRobotoBold"
             android:layout_width="wrap_content"
@@ -58,20 +57,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/content_header"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+
             android:layout_marginTop="8dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_profile"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="10dp"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/silueta" />
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/silueta"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="2dp"/>
 
-            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                 android:id="@+id/text_name_user"
                 style="@style/StyleRobotoRegular.Title"
                 android:layout_width="wrap_content"
@@ -79,29 +80,30 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_toRightOf="@id/img_profile"
-                android:textColor="@color/black" />
+                android:textColor="@color/white" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/img_profile"
+                android:background="#E1E2E8"
                 android:orientation="vertical">
 
                 <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
                     android:id="@+id/input_post"
+                    emojiconSize="28sp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:gravity="top"
-                    emojiconSize="28sp"
-                    android:maxLength="2000"
                     android:hint="@string/what_is_he_thinking_about"
                     android:imeOptions="actionSend|flagNoEnterAction"
                     android:inputType="textAutoCorrect|textCapSentences|textMultiLine"
-                    android:textColor="@color/textColorSecondary"
-                    android:textColorHint="@color/textColorPrimary" />
+                    android:maxLength="2000"
+                    android:textColor="@color/colorHeader"
+                    android:textColorHint="@color/colorBackground" />
 
                 <RelativeLayout
                     android:id="@+id/content_img"
@@ -122,12 +124,13 @@
                         android:id="@+id/icon_close_img"
                         android:layout_width="30dp"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
                         android:layout_margin="20dp"
                         android:background="@drawable/circle_color_primary_dark"
                         android:padding="5dp"
                         android:visibility="gone"
-                        app:srcCompat="@drawable/close" />
+                        app:srcCompat="@drawable/close"
+                        android:tint="@color/colorAccent"/>
 
                 </RelativeLayout>
             </LinearLayout>
@@ -136,6 +139,16 @@
 
     </ScrollView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="8dp"
+        android:text="Escribe un mensaje"
+        android:visibility="invisible"
+        android:textColor="@color/colorAccent" />
+
     <ImageView
         android:id="@+id/btn_cam"
         android:layout_width="wrap_content"
@@ -143,7 +156,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_toLeftOf="@id/btn_emoji"
+        android:layout_toStartOf="@id/btn_emoji"
         android:background="@drawable/foto" />
 
     <ImageView
@@ -153,7 +166,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_toLeftOf="@id/btn_cam"
+        android:layout_toStartOf="@id/btn_cam"
         android:background="@drawable/img2" />
 
     <ImageView
@@ -162,7 +175,7 @@
         android:layout_height="20dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_toStartOf="@id/btn_send"
         android:src="@drawable/face" />
 
@@ -171,7 +184,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="16dp"
@@ -189,6 +202,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true" />
+
     </RelativeLayout>
 
 </RelativeLayout>

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_container"
@@ -13,10 +12,9 @@
         <!-- ListView with applause -->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvApplause"
-            android:background="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-           />
+            android:background="@color/colorPrimaryDark" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <!-- Custom ProgressBar -->
@@ -26,5 +24,5 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:indeterminateDrawable="@drawable/progress"
-        android:visibility="gone"></ProgressBar>
+        android:visibility="gone" />
 </RelativeLayout>
