@@ -18,7 +18,7 @@ public class PlayerProfileContract {
 
         void onGetPlayerApplauseSuccess(ApplauseData applauseData);
 
-        void onSetPlayerApplauseSuccess();
+        void onSetPlayerApplauseSuccess(String id, int aplaudio);
 
         void onError(String error);
     }
@@ -56,6 +56,8 @@ public class PlayerProfileContract {
         void navigateToInfografiaActivity(News news);
         void navigateToNewsDetailsActivity(News news);
         void navigateToGalleryActivity(int id);
+
+        void showShareApplause(final String id);
 
     }
 
