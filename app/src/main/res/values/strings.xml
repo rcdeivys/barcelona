@@ -202,5 +202,7 @@
     <string name="ranking_no_show">\"Para ver el ranking debes votar o esperar a que finalice la encuesta\"</string>
 
     <string name="request_friends_send">Solicitud enviada</string>
+    <string name="action_volver">VOLVER</string>
+    <string name="action_envian">ENVIAR</string>
 
 </resources>

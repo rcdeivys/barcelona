@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backgroun_button_corners_yellow"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/logo_bsc" />
+
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="Confirma la información ingresada"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+
+        <!--CONTENT LABELS-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <!-- NOMBRE-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="0.4"
+                    android:gravity="center_vertical"
+                    android:text="Nombre:"
+                    android:textColor="@color/white" />
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/fcm_tv_dialog_name"
+                    style="@style/StyleRobotoBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="0.7"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <!-- APELLIDO-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="0.4"
+                    android:gravity="left"
+                    android:text="Apellido:"
+                    android:textColor="@color/white" />
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/fcm_tv_dialog_apellido"
+                    style="@style/StyleRobotoBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="0.7"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <!-- CEDULA-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="0.4"
+                    android:gravity="left"
+                    android:text="Cédula o Pasaporte:"
+                    android:textColor="@color/white" />
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/fcm_tv_dialog_cedula"
+                    style="@style/StyleRobotoBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="0.7"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <!-- EMAIL-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="0.4"
+                    android:gravity="left"
+                    android:text="E-mail:"
+                    android:textColor="@color/white" />
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/fcm_tv_dialog_email"
+                    style="@style/StyleRobotoBold"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="0.7"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <!-- Celular-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="0.4"
+                    android:gravity="left"
+                    android:text="Celular:"
+                    android:textColor="@color/white" />
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/fcm_tv_dialog_celular"
+                    style="@style/StyleRobotoBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="0.7"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <!-- Fecha de nacimiento-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="0.4"
+                    android:gravity="left"
+                    android:text="Fecha de Nacimiento:"
+                    android:textColor="@color/white" />
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/fcm_tv_dialog_nacimiento"
+                    style="@style/StyleRobotoBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="0.7"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <!-- Genero-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoRegular"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="0.4"
+                    android:gravity="left"
+                    android:text="Género:"
+                    android:textColor="@color/white" />
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/fcm_tv_dialog_genero"
+                    style="@style/StyleRobotoBold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_weight="0.7"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--CONTENT LABELS-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <!--CONTENT_ACTION-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_return"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounder_button_primary"
+                android:text="@string/action_volver"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/rounder_button"
+                android:text="@string/action_envian"
+                android:textColor="@color/colorPrimaryDark"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
