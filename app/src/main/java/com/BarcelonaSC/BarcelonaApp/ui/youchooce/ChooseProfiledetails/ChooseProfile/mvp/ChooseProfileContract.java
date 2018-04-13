@@ -15,7 +15,6 @@ public class ChooseProfileContract {
     public interface ModelResultListener {
         void onGetChooseProfileSuccess(ChooseProfileData chooseProfileData);
 
-
         void onError(String error);
     }
 
@@ -23,7 +22,6 @@ public class ChooseProfileContract {
         void getChooseProfileData(String playerId);
 
         void clickItem(int position);
-
 
         boolean isViewNull();
     }
@@ -34,7 +32,6 @@ public class ChooseProfileContract {
 
         void hideProgress();
 
-
         void setRefreshing(boolean state);
 
         void showToast(String error);
@@ -42,8 +39,11 @@ public class ChooseProfileContract {
         void setChooseProfileData(ChooseProfileData chooseProfileData);
 
         void navigateToVideoNewsActivity(News news);
+
         void navigateToInfografiaActivity(News news);
+
         void navigateToNewsDetailsActivity(News news);
+
         void navigateToGalleryActivity(int id);
 
     }

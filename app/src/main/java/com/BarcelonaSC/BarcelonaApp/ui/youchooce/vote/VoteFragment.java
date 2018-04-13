@@ -30,6 +30,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.youchooce.vote.mvp.VotePresenter;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.BarcelonaSC.BarcelonaApp.utils.ProgressClock;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import javax.inject.Inject;
 
@@ -126,10 +127,11 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
     }
 
     @Override
-    public void onClickPlayerVote(int posicion) {
+    public void onClickPlayerVote(int position, int msj) {
         Log.i(TAG, "/--->onClickPlayerVote");
-        presenter.onClickPlayerVote(posicion);
+        presenter.onClickPlayerVote(position, msj);
     }
+
 
     @Override
     public void showProgress() {
@@ -183,6 +185,32 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
         showToast("En estos momentos no hay votación activa", Toast.LENGTH_SHORT);
         setRefreshing(false);
         hideProgress();
+    }
+
+    @Override
+    public void showShareVote(final int id) {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialoglayout = inflater.inflate(R.layout.dialog_share_vote, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialoglayout);
+        final AlertDialog alertDialog = builder.show();
+
+        Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_return);
+        btnNot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        Button btnYes = (Button) dialoglayout.findViewById(R.id.btn_submit);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareSection.shareIndividual("tueliges", String.valueOf(id));
+                alertDialog.dismiss();
+            }
+        });
     }
 
     private void initRvAndAdapter() {
