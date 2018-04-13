@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +48,10 @@ public class FirebaseManager {
 
     private static final String TAG = FirebaseManager.class.getSimpleName();
     FirebaseDatabase secondaryDatabase;
+
+    public List<ValueEventListener> valueEventListeners = new ArrayList<>();
+    public List<ChildEventListener> valueChildremEventListeners = new ArrayList<>();
+
 
     public enum MsgTypes {
 
@@ -201,6 +206,29 @@ public class FirebaseManager {
 
 
     ////////////////////////////////REQUEST /////////////////////////////
+
+
+    /*public void getNumberHinchas(final FireValuesListener fireValuesListener) {
+
+        DatabaseReference databaseReference = secondaryDatabase.getReference();
+
+        databaseReference.child("estadisticas/total_usuarios").
+                        addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot != null && dataSnapshot.exists())
+                    fireValuesListener.onComplete(dataSnapshot.getValue().toString());
+                else
+                    fireValuesListener.onCanceled();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                fireValuesListener.onCanceled();
+            }
+        });
+
+    }*/
 
 
     // FUNCIONA BIEN
@@ -501,6 +529,7 @@ public class FirebaseManager {
 
 
     ///////////////////////////////SOLICITUDES////////////////////////////////////////
+
 
     public void getSugeridos(final FireListener<List<Usuario>> fireListener) {
 
