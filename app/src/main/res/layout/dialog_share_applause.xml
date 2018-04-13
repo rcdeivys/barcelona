@@ -34,7 +34,8 @@
                 android:layout_width="130dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/rounder_button"
+                android:textColor="@color/colorPrimaryDark"
+                android:background="@drawable/rounder_button_primary"
                 android:text="@string/not"
                 android:textStyle="bold" />
 
@@ -50,8 +51,8 @@
                 android:layout_width="130dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/white"
-                android:background="@drawable/rounder_button_blue"
+                android:background="@drawable/rounder_button"
+                android:textColor="@color/colorPrimaryDark"
                 android:text="@string/yes"
                 android:textStyle="bold" />
 

@@ -137,6 +137,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public interface OnItemClickListener {
+
         void onClickItem(int position);
 
         void onClickHeader();
@@ -248,8 +249,6 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
                     tvTotalApplause.setText(String.valueOf(playerData.getAplausosAcumulado()));
 
                 setImgAplauso(playerData.getUltimoAplauso());
-
-                /** AQUI APLAUSOS**/
                 btnApplaused.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

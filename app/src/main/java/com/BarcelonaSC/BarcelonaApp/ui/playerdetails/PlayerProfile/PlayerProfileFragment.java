@@ -27,6 +27,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.di.PlayerProf
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp.PlayerProfileContract;
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp.PlayerProfilePresenter;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import javax.inject.Inject;
 
@@ -185,7 +186,6 @@ public class PlayerProfileFragment extends BaseFragment
             rvPlayerNews.setAdapter(playerProfileAdapter);
             rvPlayerNews.setLayoutManager(linearLayoutManager);
         }
-
     }
 
     private void notifyDataSetChanged() {
@@ -225,7 +225,7 @@ public class PlayerProfileFragment extends BaseFragment
     }
 
     @Override
-    public void showShareApplause(String id) {
+    public void showShareApplause(final String id) {
         LayoutInflater inflater = getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_share_applause, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

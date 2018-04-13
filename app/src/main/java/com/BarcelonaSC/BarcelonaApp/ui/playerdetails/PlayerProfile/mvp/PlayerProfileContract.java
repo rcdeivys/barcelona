@@ -12,8 +12,8 @@ import com.BarcelonaSC.BarcelonaApp.models.PlayerData;
 
 public class PlayerProfileContract {
 
-
     public interface ModelResultListener {
+
         void onGetPlayerSuccess(PlayerData player);
 
         void onGetPlayerApplauseSuccess(ApplauseData applauseData);
@@ -21,9 +21,11 @@ public class PlayerProfileContract {
         void onSetPlayerApplauseSuccess(String id, int aplaudio);
 
         void onError(String error);
+
     }
 
     public interface Presenter extends MVPContract.Presenter<View> {
+
         void getPlayer(String playerId);
 
         void getPlayer();
@@ -35,6 +37,7 @@ public class PlayerProfileContract {
         void setPlayerApplause();
 
         boolean isViewNull();
+
     }
 
     public interface View {
@@ -52,13 +55,16 @@ public class PlayerProfileContract {
         void setPlayerData(PlayerData player);
 
         void setPlayerApplause(ApplauseData applauseData);
+
         void navigateToVideoNewsActivity(News news);
+
         void navigateToInfografiaActivity(News news);
+
         void navigateToNewsDetailsActivity(News news);
+
         void navigateToGalleryActivity(int id);
 
         void showShareApplause(final String id);
 
     }
-
 }
