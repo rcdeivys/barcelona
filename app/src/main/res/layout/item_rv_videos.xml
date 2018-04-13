@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_vr_container"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginStart="10dp"
-    android:background="@drawable/rounder_item_new"
-    android:orientation="vertical"
-    android:padding="5dp">
+    android:id="@+id/ll_vr_container"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,8 +15,7 @@
             android:id="@+id/iv_video"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:background="@drawable/bsc_news_wm" />
+            android:adjustViewBounds="true"/>
 
         <!-- Play image -->
         <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
@@ -28,11 +23,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/play" />
+            android:src="@drawable/ic_play_circle_60dp" />
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/ic_share"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
+
     </RelativeLayout>
 
+
+
     <!-- Fecha de la noticia -->
-    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
         android:id="@+id/tv_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,10 +50,11 @@
         android:textColor="@color/white"
         android:textSize="@dimen/font_caption_size" />
 
+
     <!-- Video's title -->
-    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/tv_title"
+    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
         style="@style/StyleRobotoBold.Title"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -52,6 +62,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:text=""
         android:textColor="@color/white" />
 
 </LinearLayout>

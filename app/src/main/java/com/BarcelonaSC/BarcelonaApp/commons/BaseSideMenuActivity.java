@@ -143,7 +143,7 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
         ivSideMenuList.add(new DrawerItem(Constant.Menu.TABLE, R.drawable.tabla_icon, configurationManager.getConfiguration().getTit4()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.YOUR_CHOOSE, R.drawable.tu_escoges_icon, configurationManager.getConfiguration().getTit10()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.TEAM, R.drawable.plantilla_icon, configurationManager.getConfiguration().getTit6()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.VIRTUAL_REALITY, R.drawable.realidad_virtual_icon, configurationManager.getConfiguration().getTit8()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.VIRTUAL_REALITY, R.drawable.realidad_virtual_icon, configurationManager.getConfiguration().getTit8()));
         //ivSideMenuList.add(new DrawerItem(Constant.Menu.IN_LIVE, R.drawable.bsc_en_vivo_icon, configurationManager.getConfiguration().getTit9()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.MONUMENTAL, R.drawable.monumentales_icon, configurationManager.getConfiguration().getTit12()));
         //ivSideMenuList.add(new DrawerItem(Constant.Menu.GAME, R.drawable.juegos_icon, configurationManager.getConfiguration().getTit11()));

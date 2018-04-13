@@ -5,19 +5,24 @@ import android.content.Intent;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
+import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.commons.WebViewActivity;
 import com.BarcelonaSC.BarcelonaApp.models.DrawerItem;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
+import com.BarcelonaSC.BarcelonaApp.models.response.ConfigurationResponse;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.bumptech.glide.Glide;
@@ -80,7 +85,7 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         if (ivSideMenuList.get(position) instanceof String) {
             if (position == 0) {
                 ((MenuHeaderViewHolder) holder).setData(sessionManager.getUser());
@@ -104,7 +109,7 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 });
             } else if (position == 1) {
                 ((MenuSocialViewHolder) holder).setData();
-                ((MenuSocialViewHolder) holder).hinchaCounter(String.valueOf(ConfigurationManager.getInstance().getConfiguration().getTotalHinchas()));
+                //((MenuSocialViewHolder) holder).hinchaCounter(String.valueOf(ConfigurationManager.getInstance().getConfiguration().getTotalHinchas()));
             }
         } else {
             ((MenuItemViewHolder) holder).setData((DrawerItem) ivSideMenuList.get(position));
@@ -193,6 +198,35 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             clickSocialButton(btnFacebook, "https://www.facebook.com/BarcelonaSCweb");
             clickSocialButton(btnTwitter, "https://twitter.com/BarcelonaSCweb");
             clickSocialButton(btnYoutube, "https://www.youtube.com/channel/UCgs5c9UJtczqmG7yOuvu5QA");
+            hinchaCounter(String.valueOf(ConfigurationManager.getInstance().getConfiguration().getTotalHinchas()));
+            new android.os.Handler().postDelayed(
+                    new Runnable() {
+                        public void run() {
+                            /*FirebaseManager.getInstance().getNumberHinchas(new FirebaseManager.FireValuesListener() {
+                                @Override
+                                public void onComplete(String value) {
+                                    hinchaCounter(value);
+                                }
+
+                                @Override
+                                public void onCanceled() {
+                                    hinchaCounter("1");
+                                }
+                            });*/
+                            App.get().component().configurationApi().getConfiguration().enqueue(new NetworkCallBack<ConfigurationResponse>() {
+                                @Override
+                                public void onRequestSuccess(ConfigurationResponse response) {
+                                    hinchaCounter(String.valueOf(response.getData().getTotalHinchas()));
+                                }
+
+                                @Override
+                                public void onRequestFail(String errorMessage, int errorCode) {
+                                }
+                            });
+                            Log.i("HINCHACOUNTER"," ---> ACTUALIZANDO DATA COUNTER");
+                        }
+                    },
+                    300000);
         }
 
         public void clickSocialButton(ImageView imageView, final String url) {
@@ -209,6 +243,8 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void hinchaCounter(String number) {
+            if(((LinearLayout) layoutTagView).getChildCount() > 0)
+                ((LinearLayout) layoutTagView).removeAllViews();
             for (int i = 0; i <= number.toCharArray().length; i++) {
                 View tagView = LayoutInflater.from(context).inflate(R.layout.item_hincha_counter, null, false);
                 FCMillonariosTextView tagTextView = tagView.findViewById(R.id.tagTextView);
