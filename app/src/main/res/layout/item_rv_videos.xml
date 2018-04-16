@@ -3,8 +3,12 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:id="@+id/ll_vr_container"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical">
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_play_circle_60dp" />
+            android:src="@drawable/play360" />
 
         <ImageView
             android:id="@+id/iv_share"
