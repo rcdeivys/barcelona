@@ -41,7 +41,7 @@
 
 
     <!-- Fecha de la noticia -->
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         android:id="@+id/tv_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
 
 
     <!-- Video's title -->
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         style="@style/StyleRobotoBold.Title"
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
