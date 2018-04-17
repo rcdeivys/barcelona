@@ -92,7 +92,7 @@
                             android:layout_weight="1"
                             android:src="@drawable/puntos_icn_off" />
 
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -114,7 +114,7 @@
                             android:layout_weight="1"
                             android:src="@drawable/amigos_icn_off" />
 
-                        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

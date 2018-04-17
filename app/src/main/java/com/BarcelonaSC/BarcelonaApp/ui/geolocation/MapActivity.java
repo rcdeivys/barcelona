@@ -134,14 +134,14 @@ public class MapActivity extends BaseSideMenuActivity implements OnMapReadyCallb
         mapFragment.getMapAsync(this);
 
         //btnBack.setVisibility(View.VISIBLE);
-//        btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                finish();
-//            }
-//        });
-//
-//        textHeader.setText(ConfigurationManager.getInstance().getConfiguration().getTit14());
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        textHeader.setText(ConfigurationManager.getInstance().getConfiguration().getTit14());
 
         btnPoints.setOnClickListener(new View.OnClickListener() {
             @Override
