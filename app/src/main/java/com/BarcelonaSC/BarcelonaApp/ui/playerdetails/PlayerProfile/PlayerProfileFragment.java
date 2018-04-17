@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.di.PlayerProf
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp.PlayerProfileContract;
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp.PlayerProfilePresenter;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import javax.inject.Inject;
 
@@ -183,7 +186,6 @@ public class PlayerProfileFragment extends BaseFragment
             rvPlayerNews.setAdapter(playerProfileAdapter);
             rvPlayerNews.setLayoutManager(linearLayoutManager);
         }
-
     }
 
     private void notifyDataSetChanged() {
@@ -220,5 +222,31 @@ public class PlayerProfileFragment extends BaseFragment
     @Override
     public void navigateToGalleryActivity(int id) {
         navigator.navigateToGalleryActivity(id);
+    }
+
+    @Override
+    public void showShareApplause(final String id) {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialoglayout = inflater.inflate(R.layout.dialog_share_applause, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialoglayout);
+        final AlertDialog alertDialog = builder.show();
+
+        Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_return);
+        btnNot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        Button btnYes = (Button) dialoglayout.findViewById(R.id.btn_submit);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareSection.shareIndividual("jugador", id);
+                alertDialog.dismiss();
+            }
+        });
     }
 }

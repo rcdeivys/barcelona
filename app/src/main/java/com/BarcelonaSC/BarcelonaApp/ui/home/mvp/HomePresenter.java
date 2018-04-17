@@ -10,6 +10,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.MainCalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.MultimediaFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.WallAndChat.WallAndChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.configuration.NotificationFragment;
@@ -53,6 +54,7 @@ public class HomePresenter {
     private WallAndChatFragment wallAndChatFragment;
     private MonumentalMainFragment monumentalFragment;
     private LiveFragment liveFragment;
+    private MultimediaFragment multimediaFragment;
     private Activity activity;
 
     public HomePresenter(HomeContract.View view, HomeModel homeModel) {
@@ -224,6 +226,17 @@ public class HomePresenter {
         view.showFragment(wallAndChatFragment, WallAndChatFragment.TAG);
     }
 
+    private void multimedia(String selected) {
+        multimediaFragment = (MultimediaFragment)
+                view.getFragmentByTag(MultimediaFragment.TAG);
+        if (multimediaFragment == null) {
+            multimediaFragment = new MultimediaFragment();
+            view.addFragment(multimediaFragment, MultimediaFragment.TAG);
+        }
+        multimediaFragment.setSelection(selected);
+        view.showFragment(multimediaFragment, MultimediaFragment.TAG);
+    }
+
     public void onItemMenuSelected(String fragment) {
         Log.d(TAG, "Clicked : " + fragment);
         switch (fragment) {
@@ -250,6 +263,18 @@ public class HomePresenter {
                 mountCalendar();
                 view.trackFragment(configurationManager.getConfiguration().getTit3());
                 break;
+
+//            case Constant.Menu.IN_LIVE:
+//                view.setTitle(configurationManager.getConfiguration().getTit9());
+//                multimedia(Constant.Menu.IN_LIVE);
+//                view.trackFragment(configurationManager.getConfiguration().getTit9());
+//                break;
+//
+//            case Constant.Menu.VIDEOS:
+//                view.setTitle(configurationManager.getConfiguration().getTit9());
+//                multimedia(Constant.Menu.VIDEOS);
+//                view.trackFragment(configurationManager.getConfiguration().getTit9());
+//                break;
 
             case Constant.Menu.TABLE:
                 view.setTitle(configurationManager.getConfiguration().getTit4());

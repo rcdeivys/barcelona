@@ -3,6 +3,7 @@ package com.BarcelonaSC.BarcelonaApp.commons;
 import android.content.Intent;
 
 import com.BarcelonaSC.BarcelonaApp.models.News;
+import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
 import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 
 /**
@@ -21,6 +22,8 @@ public interface Navigator {
     void navigateToHomeActivity();
 
     void navigateToGalleryActivity(int id);
+
+    void navigateToVideoMultimediaActivity(MultimediaDataResponse multimediaDataResponse, int currentPosition);
 
     void navigateToPlayerActivity(int playerId, String type);
 

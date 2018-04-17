@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.LinearLayout;
 
+import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
 import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VirtualActivity;
 import com.google.android.gms.analytics.Tracker;
@@ -113,6 +114,20 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
         Intent intent = new Intent(getActivity(), NewsInfografyActivity.class);
         intent.putExtra(Constant.Key.URL, news.getLink());
         getActivity().startActivity(intent);
+    }
+
+    @Override
+    public void navigateToVideoMultimediaActivity(MultimediaDataResponse multimediaDataResponse, int currentPosition) {
+//        if (!SessionManager.getInstance().getUser().isDorado() && news.isDorado()) {
+//            showBuyDoradoDialog();
+//            return;
+//        }
+        Intent intent = new Intent(getActivity(), VideoActivity.class);
+        intent.putExtra(Constant.Video.CURRENT_POSITION, currentPosition);
+        intent.putExtra(Constant.Video.PLAY, true);
+        intent.putExtra(Constant.Video.URL, multimediaDataResponse.getLink());
+        intent.putExtra(Constant.Key.ID, "" + multimediaDataResponse.getId());
+        startActivity(intent);
     }
 
     @Override

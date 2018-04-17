@@ -25,6 +25,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.di.DaggerWallCommentComponent;
 import com.bumptech.glide.Glide;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -40,7 +41,6 @@ import com.BarcelonaSC.BarcelonaApp.models.WallCommentItem;
 import com.BarcelonaSC.BarcelonaApp.permissions.CreateCommentPermissionListener;
 import com.BarcelonaSC.BarcelonaApp.ui.register.fragments.RegisterFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.WallProfileDialog;
-import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.di.DaggerWallCommentComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.di.WallCommentModule;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.mvp.WallCommentContract;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.mvp.WallCommentPresenter;

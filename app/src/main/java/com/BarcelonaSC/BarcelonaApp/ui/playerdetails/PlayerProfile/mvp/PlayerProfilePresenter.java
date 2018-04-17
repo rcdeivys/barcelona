@@ -26,13 +26,10 @@ public class PlayerProfilePresenter implements PlayerProfileContract.Presenter, 
 
     private String playerId = "";
 
-
     public PlayerProfilePresenter(PlayerProfileContract.View view, PlayerProfileModel playerProfileModel) {
         this.view = view;
         this.playerProfileModel = playerProfileModel;
         playerData = new PlayerData();
-
-
     }
 
     @Override
@@ -104,15 +101,25 @@ public class PlayerProfilePresenter implements PlayerProfileContract.Presenter, 
     }
 
     @Override
-    public void onSetPlayerApplauseSuccess() {
+    public void onSetPlayerApplauseSuccess(String id, int aplaudio) {
         if (playerData != null) {
-            playerData.setApalusosUltimoPartido(playerData.getApalusosUltimoPartido() + 1);
-            playerData.setAplausosAcumulado(playerData.getAplausosAcumulado() + 1);
-            view.setPlayerData(playerData);
-            EventBus.getDefault().post(new PlayerEvent(true));
-            view.showToast(App.getAppContext().getString(R.string.applause_successful));
+            if (aplaudio == 1) {
+                playerData.setApalusosUltimoPartido(playerData.getApalusosUltimoPartido() + 1);
+                playerData.setAplausosAcumulado(playerData.getAplausosAcumulado() + 1);
+                playerData.setUltimoAplauso(1);
+                view.setPlayerData(playerData);
+                EventBus.getDefault().post(new PlayerEvent(true));
+                view.showToast(App.getAppContext().getString(R.string.applause_successful));
+                view.showShareApplause(id);
+            } else {
+                view.showToast(App.getAppContext().getString(R.string.applause_remove));
+                playerData.setApalusosUltimoPartido(playerData.getApalusosUltimoPartido() - 1);
+                playerData.setAplausosAcumulado(playerData.getAplausosAcumulado() - 1);
+                playerData.setUltimoAplauso(0);
+                view.setPlayerData(playerData);
+                EventBus.getDefault().post(new PlayerEvent(true));
+            }
         }
-
     }
 
     @Override

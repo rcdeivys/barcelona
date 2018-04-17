@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.BarcelonaSC.BarcelonaApp.ui.wall.post.di.DaggerWallPostComponent;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.karumi.dexter.Dexter;
@@ -35,7 +36,6 @@ import com.BarcelonaSC.BarcelonaApp.eventbus.WallCreatePostEvent;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
 import com.BarcelonaSC.BarcelonaApp.permissions.CreatePostPermissionListener;
 import com.BarcelonaSC.BarcelonaApp.ui.register.fragments.RegisterFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.wall.post.di.DaggerWallPostComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.post.di.WallPostModule;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.post.mvp.WallPostContract;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.post.mvp.WallPostPresenter;

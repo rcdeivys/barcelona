@@ -10,6 +10,7 @@ import com.BarcelonaSC.BarcelonaApp.app.api.GroupsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.LineUpApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.MapApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.MonumentalApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.MultimediaApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.NewsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.ProfileApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.RecoveryPasswordApi;
@@ -39,6 +40,8 @@ public interface AppComponent {
     ConfigurationApi configurationApi();
 
     TeamApi teamApi();
+
+    MultimediaApi multimediaApi();
 
     NewsApi newsApi();
 
