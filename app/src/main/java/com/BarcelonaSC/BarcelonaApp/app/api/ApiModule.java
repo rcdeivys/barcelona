@@ -151,4 +151,10 @@ public class ApiModule {
         return retrofit.create(MonumentalApi.class);
     }
 
+    @Provides
+    @AppScope
+    public static MapApi provideMapApi(Retrofit retrofit) {
+        return retrofit.create(MapApi.class);
+    }
+
 }

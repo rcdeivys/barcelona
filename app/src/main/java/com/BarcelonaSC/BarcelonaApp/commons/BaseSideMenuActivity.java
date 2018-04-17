@@ -148,7 +148,7 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
         ivSideMenuList.add(new DrawerItem(Constant.Menu.MONUMENTAL, R.drawable.monumentales_icon, configurationManager.getConfiguration().getTit12()));
         //ivSideMenuList.add(new DrawerItem(Constant.Menu.GAME, R.drawable.juegos_icon, configurationManager.getConfiguration().getTit11()));
         //ivSideMenuList.add(new DrawerItem(Constant.Menu.ONLINE_SHOP, R.drawable.tienda_icon, configurationManager.getConfiguration().getTit13()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.MAP, R.drawable.mapa_icon, configurationManager.getConfiguration().getTit14()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.MAP, R.drawable.mapa_icon, configurationManager.getConfiguration().getTit14()));
         //ivSideMenuList.add(new DrawerItem(Constant.Menu.STATISTICS, R.drawable.estadisticas_icon, configurationManager.getConfiguration().getTit5()));
 
         return ivSideMenuList;
