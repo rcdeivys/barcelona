@@ -13,7 +13,7 @@ public class NewsContract {
 
     public interface ModelResultListener {
 
-        void onGetNewsSuccess(List<News> news, String category);
+        void onGetNewsSuccess(List<Object> news, String category);
 
         void onGetNewsFailed();
     }
@@ -28,11 +28,11 @@ public class NewsContract {
     }
 
     public interface View {
-        void setNewsProfessional(List<News> news);
+        void setNewsProfessional(List<Object> news);
 
-        void setNewsFootballBase(List<News> news);
+        void setNewsFootballBase(List<Object> news);
 
-        void navigateToVideoNewsActivity(News news);
+        void navigateToVideoNewsActivity(News news, int currentPosition);
 
         void navigateToInfografiaActivity(News news);
 

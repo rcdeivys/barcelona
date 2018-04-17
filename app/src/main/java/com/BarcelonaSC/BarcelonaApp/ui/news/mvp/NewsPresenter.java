@@ -1,8 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.news.mvp;
 
-
 import com.BarcelonaSC.BarcelonaApp.models.News;
-import com.BarcelonaSC.BarcelonaApp.ui.home.menu.news.NewsFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import java.util.ArrayList;
@@ -26,20 +25,16 @@ public class NewsPresenter implements NewsContract.Presenter, NewsContract.Model
         newsList = new ArrayList<>();
     }
 
-
     @Override
-    public void onGetNewsSuccess(List<News> news, String category) {
+    public void onGetNewsSuccess(List<Object> news, String category) {
         if (isViewNull()) return;
 
-        for (News newss : news)
-            newsList.add(newss);
         if (category.equals(NewsFragment.NEWS_PROFESSIONAL))
             view.setNewsProfessional(news);
         else
             view.setNewsFootballBase(news);
 
         view.hideProgress();
-
     }
 
     @Override
@@ -71,7 +66,6 @@ public class NewsPresenter implements NewsContract.Presenter, NewsContract.Model
         }
 
         view.showProgress();
-
     }
 
     @Override
@@ -89,8 +83,6 @@ public class NewsPresenter implements NewsContract.Presenter, NewsContract.Model
 
         if (news.getTipo().matches(Constant.NewsType.GALERY)) {
             view.navigateToGalleryActivity(news);
-        } else if (news.getTipo().matches(Constant.NewsType.VIDEO)) {
-            view.navigateToVideoNewsActivity(news);
         } else if (news.getTipo().matches(Constant.NewsType.INFOGRAFY) || news.getTipo().matches(Constant.NewsType.STAT)) {
             view.navigateToInfografiaActivity(news);
         } else {

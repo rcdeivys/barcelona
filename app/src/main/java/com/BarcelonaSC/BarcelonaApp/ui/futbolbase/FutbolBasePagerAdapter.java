@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.players.PlayerOffSummonedFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.MainCalendarFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.home.menu.news.NewsFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 /**

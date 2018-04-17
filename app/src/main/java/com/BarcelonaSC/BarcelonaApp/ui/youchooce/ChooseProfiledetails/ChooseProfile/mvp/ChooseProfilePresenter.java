@@ -2,6 +2,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChoosePro
 
 import com.BarcelonaSC.BarcelonaApp.models.ChooseProfileData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
+import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.mvp.ChooseProfileContract;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 
@@ -47,15 +48,13 @@ public class ChooseProfilePresenter implements ChooseProfileContract.Presenter, 
     }
 
     @Override
-    public void clickItem(int position) {
+    public void clickItem(News news) {
 
-        News news = chooseProfileData.getNoticias().get(position);
+        //news = chooseProfileData.getNoticias().get(position);
         if (isViewNull()) return;
 
         if (news.getTipo().matches(Constant.NewsType.GALERY)) {
-            view.navigateToGalleryActivity(news.getId());
-        } else if (news.getTipo().matches(Constant.NewsType.VIDEO)) {
-            view.navigateToVideoNewsActivity(news);
+            view.navigateToGalleryActivity(news);
         } else if (news.getTipo().matches(Constant.NewsType.INFOGRAFY) || news.getTipo().matches(Constant.NewsType.STAT)) {
             view.navigateToInfografiaActivity(news);
         } else {

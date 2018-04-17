@@ -1,81 +1,105 @@
 package com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.AppCompatImageButton;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.commons.VideoActivity;
+import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.SCalendarData;
-import com.BarcelonaSC.BarcelonaApp.models.SCalendarNoticia;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.di.DaggerSCalendarComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.di.SCalendarModule;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.mvp.SCalendarContract;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.mvp.SCalendarPresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.news.views.adapters.NewsAdapter;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
  * Created by Erick on 2/11/2017.
  */
 
-public class SingleCalendarListFragment extends BaseFragment implements SCalendarContract.View {
+public class SingleCalendarListFragment extends BaseFragment implements SCalendarContract.View, NewsAdapter.OnItemClickListener {
 
     public static final String TAG = SingleCalendarListFragment.class.getSimpleName();
-    SCAdapter scAdapter;
+    NewsAdapter newsAdapter;
 
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
+
     @BindView(R.id.rv_noticias)
-    ListView rvNoticias;
+    RecyclerView rvNoticias;
+
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+
     @BindView(R.id.btn_top)
     ImageButton btnTop;
+
     @BindView(R.id.iv_team_1_flag)
     ImageView flagOne;
+
     @BindView(R.id.iv_team_1_name)
     TextView nameOne;
+
     @BindView(R.id.iv_team_2_flag)
     ImageView flagTwo;
+
     @BindView(R.id.iv_team_2_name)
     TextView nameTwo;
+
     @BindView(R.id.tv_match_score)
     TextView matchScore;
+
     @BindView(R.id.tv_match_date)
     TextView matchDate;
+
     @BindView(R.id.tv_match_state)
     TextView matchState;
+
     @BindView(R.id.tv_match_state_2)
     TextView matchState2;
+
     @BindView(R.id.btn_back)
     AppCompatImageButton btnBack;
 
+    @BindView(R.id.iv_share)
+    ImageView ivShare;
+
     int id_partido;
     String type;
+    String news;
 
     @Inject
     SCalendarPresenter presenter;
@@ -126,12 +150,10 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
         if (bundle != null && bundle.containsKey("idPartido") && bundle.containsKey("type")) {
             id_partido = bundle.getInt("idPartido");
             type = bundle.getString("type");
-            if (scAdapter == null) {
-                showProgress();
-                getData();
-            } else {
-                rvNoticias.setAdapter(scAdapter);
-            }
+            news = bundle.getString(Constant.Menu.NEWS);
+            initRecyclerView();
+            showProgress();
+            getData();
         }
 
         btnTop.setOnClickListener(new View.OnClickListener() {
@@ -144,15 +166,41 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CalendarFragment calendarFragment = CalendarFragment.newInstance(type);
-                getFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.top_in, R.anim.top_out)
-                        .replace(R.id.cal_container, calendarFragment)
-                        .commitAllowingStateLoss();
+                if (news != null) {
+                    onBackFragment(NewsFragment.TAG);
+                } else {
+                    onBackFragment(CalendarFragment.TAG);
+                }
+
+
             }
         });
 
         return view;
+    }
+
+    public void onBackFragment(String tag) {
+        getFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.top_in, R.anim.top_out)
+                .remove(getFragmentManager().findFragmentByTag(SingleCalendarListFragment.TAG))
+                .show(getFragmentManager().findFragmentByTag(tag))
+                .commitAllowingStateLoss();
+    }
+
+    @OnClick(R.id.iv_share)
+    void shareThisGame() {
+        ShareSection.shareIndividual(Constant.Key.SHARE_GAME, String.valueOf(id_partido));
+    }
+
+    public void initRecyclerView() {
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.VERTICAL, false);
+
+        rvNoticias.setLayoutManager(mLayoutManager);
+        List<Object> itemList = new ArrayList<>();
+        newsAdapter = new NewsAdapter(getActivity(), itemList);
+        newsAdapter.setOnItemClickListener(this);
+        rvNoticias.setAdapter(newsAdapter);
     }
 
     public void getData() {
@@ -178,7 +226,7 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
 
     @Override
     public void hideProgress() {
-        progressBar.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -196,12 +244,26 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
     @Override
     public void setNoticias(SCalendarData data) {
         setHeaderData(data);
-        ArrayList<SCalendarNoticia> dataObjects = new ArrayList<>();
-        dataObjects.addAll(data.getNoticias());
-        scAdapter = new SCAdapter(getContext(), dataObjects);
-        rvNoticias.setAdapter(scAdapter);
-        rvNoticias.setDividerHeight(0);
-        notifyDataSetChanged();
+        List<Object> objects = new ArrayList<>();
+        objects.addAll(data.getNoticias());
+        newsAdapter.updateAll(objects);
+        setRefreshing(false);
+        hideProgress();
+    }
+
+    @Override
+    public void navigateToInfografiaActivity(News news) {
+        navigator.navigateToInfografiaActivity(news);
+    }
+
+    @Override
+    public void navigateToNewsDetailsActivity(News news) {
+        navigator.navigateToNewsDetailsActivity(news);
+    }
+
+    @Override
+    public void navigateToGalleryActivity(News news) {
+
     }
 
     private void setHeaderData(SCalendarData data) {
@@ -226,21 +288,39 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
         } else {
             matchScore.setText(App.getAppContext().getString(R.string.vs));
         }
-        String state = App.get()
-                .getString(R.string.stadium
-                        , data.getEstadio().replace("Estadio:", " "));
-        matchState.setText(state);
-
-        String state2 = Commons.getStringDate2(data.getFecha())
+        if (data.getEstadio() != null) {
+            String state = App.get()
+                    .getString(R.string.stadium
+                            , data.getEstadio().replace("Estadio:", " "));
+            matchState.setText(state);
+        }
+        String date = Commons.getStringDate2(data.getFecha()).replace(".", "");
+        String state2 = date.toUpperCase()
                 + "  |  " + Commons.getStringHour(data.getFecha());
         /*+ " (" + data.getEstado().toUpperCase() + ")"*/
         matchState2.setText(state2);
     }
 
-    private void notifyDataSetChanged() {
-        scAdapter.notifyDataSetChanged();
-        setRefreshing(false);
-        hideProgress();
+    @Override
+    public void onClickItem(News news) {
+        presenter.onclickNewsItem(news);
     }
 
+    @Override
+    public void onVideoClick(News news, int currentVideo) {
+        Intent intent = new Intent(getActivity(), VideoActivity.class);
+        intent.putExtra(Constant.Video.CURRENT_POSITION, currentVideo);
+        intent.putExtra(Constant.Video.URL, news.getLink());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onCalendarClick(String id) {
+
+    }
+
+    @Override
+    public void onVideoIsDorado() {
+//        showDialogDorado();
+    }
 }

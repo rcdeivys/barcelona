@@ -13,17 +13,16 @@ import android.webkit.WebView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.models.ApplauseData;
-import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.playersocial.di.PlayerSocialMediaModule;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.PlayerData;
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp.PlayerProfileContract;
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp.PlayerProfilePresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.playersocial.di.DaggerPlayerSocialMediaComponent;
+import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.playersocial.di.PlayerSocialMediaModule;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import javax.inject.Inject;
@@ -166,6 +165,11 @@ public class PlayerSocialMediaFragment extends BaseFragment implements PlayerPro
     }
 
     @Override
+    public void showShareApplause(String id) {
+
+    }
+
+    @Override
     public void setPlayerData(PlayerData player) {
         hideProgress();
         setWebview(player.getInstagram());
@@ -177,7 +181,7 @@ public class PlayerSocialMediaFragment extends BaseFragment implements PlayerPro
     }
 
     @Override
-    public void navigateToVideoNewsActivity(News news) {
+    public void navigateToVideoNewsActivity(News news, int currentPosition) {
 
     }
 
@@ -192,9 +196,13 @@ public class PlayerSocialMediaFragment extends BaseFragment implements PlayerPro
     }
 
     @Override
-    public void navigateToGalleryActivity(int id) {
+    public void navigateToGalleryActivity(News news) {
 
     }
 
 
+    @Override
+    public void showDialogDorado() {
+
+    }
 }

@@ -11,7 +11,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.WallAndChat.WallAndChatFragment
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.configuration.NotificationFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.lineup.LineUpFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.live.LiveFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.home.menu.news.NewsFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.home.menu.news.MainNewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.profile.ProfileFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.shop.VirtualShopFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.statistics.StatisticsFragment;
@@ -19,6 +19,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.TeamFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.map.MapFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
@@ -33,8 +34,8 @@ public class HomePresenter {
     private HomeContract.View view;
     private HomeModel homeModel;
 
-    private NewsFragment newsFragment;
-    private NewsFragment newsProfessionalFragment;
+    private MainNewsFragment newsFragment;
+    private MainNewsFragment newsProfessionalFragment;
     private YouChooseFragment mYouChooseFragment;
     private ProfileFragment profileFragment;
     private NotificationFragment settingFragment;
@@ -94,14 +95,14 @@ public class HomePresenter {
     }
 
     public void newsProfessional() {
-        newsProfessionalFragment = (NewsFragment)
-                view.getFragmentByTag(NewsFragment.TAG + Constant.Menu.NEWS);
+        newsProfessionalFragment = (MainNewsFragment)
+                view.getFragmentByTag(MainNewsFragment.TAG + Constant.Menu.NEWS);
         if (newsProfessionalFragment == null) {
-            newsProfessionalFragment = NewsFragment.getInstance(NewsFragment.NEWS_PROFESSIONAL);
-            view.addFragment(newsProfessionalFragment, NewsFragment.TAG + Constant.Menu.NEWS);
+            newsProfessionalFragment = new MainNewsFragment();
+            view.addFragment(newsProfessionalFragment, MainNewsFragment.TAG + Constant.Menu.NEWS);
         }
         view.setTitle(configurationManager.getConfiguration().getTit2());
-        view.showFragment(newsProfessionalFragment, NewsFragment.TAG + Constant.Menu.NEWS);
+        view.showFragment(newsProfessionalFragment, MainNewsFragment.TAG + Constant.Menu.NEWS);
     }
 
     private void mountYouChoose() {

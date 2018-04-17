@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.MonumentalFragment;
 import com.bumptech.glide.Glide;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -38,7 +37,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.WallAndChat.WallAndChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.configuration.NotificationFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.lineup.LineUpFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.home.menu.news.NewsFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.profile.ProfileFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.shop.VirtualShopFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.statistics.StatisticsFragment;
