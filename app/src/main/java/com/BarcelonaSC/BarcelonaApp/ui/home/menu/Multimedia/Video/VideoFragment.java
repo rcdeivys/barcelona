@@ -1,9 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Video;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,9 +31,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class VideoFragment extends BaseFragment implements VideoContract.View, VideoAdapter.OnItemClickListener {
 
     public static final String TAG = VideoFragment.class.getSimpleName();
@@ -188,6 +183,5 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
     public void onVideoShare(String id) {
         ShareSection.shareIndividual("video", id);
     }
-
 
 }

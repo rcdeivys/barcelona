@@ -21,7 +21,7 @@
             android:adjustViewBounds="true"
             android:visibility="gone" />
 
-        <com.millonarios.MillonariosFC.utils.CustomVideoView
+        <com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView
             android:id="@+id/texture_video_view"
             android:layout_width="match_parent"
             android:layout_height="200dp"
@@ -42,7 +42,7 @@
         android:paddingTop="8dp">
 
         <!-- Video's title -->
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/tv_title"
             style="@style/StyleRobotoBold"
             android:layout_width="0dp"
@@ -51,7 +51,7 @@
             android:textColor="@color/white" />
 
         <!-- Video's title -->
-        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
             android:id="@+id/tv_tag"
             style="@style/StyleRobotoRegular.Title"
             android:layout_width="0dp"

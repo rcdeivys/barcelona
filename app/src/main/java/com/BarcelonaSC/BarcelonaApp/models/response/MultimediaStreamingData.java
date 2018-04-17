@@ -9,9 +9,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class MultimediaStreamingData {
 
+
     @SerializedName("url_envivo")
     @Expose
     private String urlEnvivo;
+    @SerializedName("foto")
+    @Expose
+    private String foto;
 
     public String getUrlEnvivo() {
         return urlEnvivo;
@@ -21,5 +25,20 @@ public class MultimediaStreamingData {
         this.urlEnvivo = urlEnvivo;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    @Override
+    public String toString() {
+        return "MultimediaStreamingData{" +
+                "urlEnvivo='" + urlEnvivo + '\'' +
+                ", foto='" + foto + '\'' +
+                '}';
+    }
 
 }

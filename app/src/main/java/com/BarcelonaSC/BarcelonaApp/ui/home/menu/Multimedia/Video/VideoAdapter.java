@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Deivys on 3/29/2018.
+ * Created by Deivys
  */
 
 public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements CustomVideoView.CustomVideoViewOnListener {
@@ -144,8 +144,6 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         private void scaleVideo(int h) {
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, h);
             videoView.setLayoutParams(layoutParams);
-
-
         }
 
         public int getVideoCurrentPosition() {
