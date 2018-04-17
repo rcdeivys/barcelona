@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -31,6 +32,8 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
     private List<RespuestaData> mRespuestasData;
 
     private OnItemClickListener onItemClickListener;
+
+    private boolean canVote = true;
 
     public VoteAdapter(VoteFragment voteFragment) {
         this.context = voteFragment.getContext();
@@ -95,7 +98,18 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
         holder.ibVote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListener.onClickPlayerVote(position);
+                if(canVote) {
+                    if(item.getYaVoto() != null && !"1".equals(item.getYaVoto())){
+                        onItemClickListener.onClickPlayerVote(position,1);
+                    }else{
+                        onItemClickListener.onClickPlayerVote(position,0);
+                    }
+                }
+                else if(!canVote && (item.getYaVoto() != null && "1".equals(item.getYaVoto()))) {
+                    onItemClickListener.onClickPlayerVote(position, 0);
+                }else{
+                    Toast.makeText(context, "Solo puedes votar una vez", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -133,7 +147,7 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
     public interface OnItemClickListener {
         void onClickItem(int id);
 
-        void onClickPlayerVote(int position);
+        void onClickPlayerVote(int position, int msj);
     }
 
 }

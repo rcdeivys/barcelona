@@ -10,18 +10,30 @@ import java.io.Serializable;
  */
 
 public class VideoReality implements Serializable {
+
     @SerializedName("titulo")
     @Expose
     private String titulo;
+
     @SerializedName("descripcion")
     @Expose
     private String descripcion;
+
     @SerializedName("foto")
     @Expose
     private String foto;
+
     @SerializedName("video")
     @Expose
     private String url;
+
+    @SerializedName("dorado")
+    @Expose
+    private int dorado;
+
+    @SerializedName("id")
+    @Expose
+    private String id = null;
 
     public String getTitulo() {
         return titulo;
@@ -54,4 +66,17 @@ public class VideoReality implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public boolean isDorado() {
+        return dorado == 1;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 }
+
