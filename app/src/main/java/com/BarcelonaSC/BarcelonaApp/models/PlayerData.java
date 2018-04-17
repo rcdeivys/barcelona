@@ -1,6 +1,5 @@
 package com.BarcelonaSC.BarcelonaApp.models;
 
-import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -80,25 +79,12 @@ public class PlayerData {
     @SerializedName("ultimo_aplauso")
     @Expose
     private int ultimoAplauso;
-
-    public int getUltimoAplauso() {
-        return ultimoAplauso;
-    }
-
-    public void setUltimoAplauso(int ultimoAplauso) {
-        this.ultimoAplauso = ultimoAplauso;
-    }
-
     @SerializedName("peso")
-
     @Expose
     private String peso;
     @SerializedName("estatura")
     @Expose
     private String estatura;
-    @SerializedName("ultimo_aplauso")
-    @Expose
-    private int ultimoAplauso;
     @SerializedName("estado")
     @Expose
     private String estado;

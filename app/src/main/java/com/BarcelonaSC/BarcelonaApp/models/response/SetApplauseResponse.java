@@ -44,11 +44,4 @@ public class SetApplauseResponse {
         this.error = error;
     }
 
-    public int getAplauso() {
-        return aplauso;
-    }
-
-    public void setAplauso(int aplauso) {
-        this.aplauso = aplauso;
-    }
 }

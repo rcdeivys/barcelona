@@ -30,8 +30,6 @@ public interface Navigator {
 
     void navigateVirtualActivity(VideoReality videoReality);
 
-    void navigateToVideoMultimediaActivity(MultimediaDataResponse multimediaDataResponse, int currentPosition);
-
     void navigateToPlayerActivity(int playerId, String type);
 
     void navigateToMonumentalProfile(String monumentalId, String pollId);

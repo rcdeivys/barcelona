@@ -7,13 +7,13 @@ import com.BarcelonaSC.BarcelonaApp.commons.mvp.MVPContract;
 import com.BarcelonaSC.BarcelonaApp.models.ApplauseData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.PlayerData;
+
 /**
  * Created by Carlos on 13/10/2017.
  */
 
 public class PlayerProfileContract {
 
-    public interface ModelResultListener {
 
     public interface ModelResultListener extends BaseModelResultListener {
         void onGetPlayerSuccess(PlayerData player);

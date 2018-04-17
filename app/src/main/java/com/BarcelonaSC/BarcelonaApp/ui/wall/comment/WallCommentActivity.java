@@ -29,6 +29,7 @@ import com.BarcelonaSC.BarcelonaApp.models.BeneficioData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.di.DaggerWallCommentComponent;
 import com.bumptech.glide.Glide;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
