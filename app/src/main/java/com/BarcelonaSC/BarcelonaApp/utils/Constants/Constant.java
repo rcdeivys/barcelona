@@ -27,6 +27,12 @@ public interface Constant {
         int SIZE_IMAGEN = 30;
     }
 
+    interface Video {
+        String CURRENT_POSITION = "currentPosition";
+        String PLAY = "PLAY";
+        String URL = "url";
+    }
+
     interface NewsType {
         String VIDEO = "Video";
         String NORMAL = "Normal";
@@ -82,6 +88,8 @@ public interface Constant {
         String BANNERS = "Banners";
         String IS_SOCIAL = "isSocial";
 
+        String MULTIMEDIA_VIDEO = "multimediaVideo";
+        String MULTIMEDIA_ONLINE = "multimediaOnLine";
         String SECCION = "seccion";
         String ID_RESPUESTA = "id_respuesta";
         String SHOW_VOTES = "show_votes";

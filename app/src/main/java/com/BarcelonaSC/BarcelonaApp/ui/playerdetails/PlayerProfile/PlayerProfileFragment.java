@@ -257,4 +257,30 @@ public class PlayerProfileFragment extends BaseFragment
     public void showDialogDorado() {
 
     }
+
+    @Override
+    public void showShareApplause(final String id) {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialoglayout = inflater.inflate(R.layout.dialog_share_applause, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialoglayout);
+        final AlertDialog alertDialog = builder.show();
+
+        Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_return);
+        btnNot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        Button btnYes = (Button) dialoglayout.findViewById(R.id.btn_submit);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareSection.shareIndividual("jugador", id);
+                alertDialog.dismiss();
+            }
+        });
+    }
 }

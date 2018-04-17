@@ -1,9 +1,9 @@
 package com.BarcelonaSC.BarcelonaApp.commons;
 
 import android.content.res.Configuration;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -16,10 +16,6 @@ import com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-/**
- * Created by Leonardojpr on 12/11/17.
- */
 
 public class VideoActivity extends AppCompatActivity implements CustomVideoView.CustomVideoViewOnListener{
 

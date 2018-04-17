@@ -41,7 +41,6 @@ public class PlayerProfileModel {
                 listener.onError(errorMessage);
             }
         });
-
     }
 
     public void getPlayerDataFB(String playerId, final PlayerProfileContract.ModelResultListener listener) {
@@ -84,7 +83,6 @@ public class PlayerProfileModel {
             }
         });
     }
-
 
     public void getPlayerApplause(String playerId) {
         teamApi.getApplause(playerId).enqueue(new NetworkCallBack<ApplauseResponse>() {

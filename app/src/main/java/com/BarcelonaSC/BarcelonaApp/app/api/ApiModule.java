@@ -26,6 +26,12 @@ public class ApiModule {
 
     @Provides
     @AppScope
+    public static MultimediaApi provideMultimediaApi(Retrofit retrofit) {
+        return retrofit.create(MultimediaApi.class);
+    }
+
+    @Provides
+    @AppScope
     public static TeamApi provideTeamApi(Retrofit retrofit) {
         return retrofit.create(TeamApi.class);
     }

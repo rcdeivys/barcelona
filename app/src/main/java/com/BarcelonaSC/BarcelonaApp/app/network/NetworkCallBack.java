@@ -21,13 +21,11 @@ public abstract class NetworkCallBack<T> implements Callback<T> {
     public void onResponse(Call<T> call, Response<T> response) {
         if (response.isSuccessful()) {
             onRequestSuccess(response.body());
-
         } else if (response.errorBody() != null) {
             onRequestFail(App.getAppContext().getString(R.string.network_error) + " " + response.errorBody(), response.code());
         } else {
             onRequestFail(App.getAppContext().getString(R.string.network_error) + response.code(), response.code());
         }
-
     }
 
     public void processError() {
@@ -36,7 +34,6 @@ public abstract class NetworkCallBack<T> implements Callback<T> {
 
     @Override
     public void onFailure(Call<T> call, Throwable t) {
-
         if (t instanceof NoConnectivityException) {
             onRequestFail("Debes tener conexión a internet", 0);
         } else {
@@ -47,6 +44,5 @@ public abstract class NetworkCallBack<T> implements Callback<T> {
     public abstract void onRequestSuccess(T response);
 
     public abstract void onRequestFail(String errorMessage, int errorCode);
-
 
 }

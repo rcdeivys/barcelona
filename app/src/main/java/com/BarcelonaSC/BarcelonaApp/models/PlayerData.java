@@ -77,7 +77,20 @@ public class PlayerData {
     @SerializedName("noticias")
     @Expose
     private List<News> newsList;
+    @SerializedName("ultimo_aplauso")
+    @Expose
+    private int ultimoAplauso;
+
+    public int getUltimoAplauso() {
+        return ultimoAplauso;
+    }
+
+    public void setUltimoAplauso(int ultimoAplauso) {
+        this.ultimoAplauso = ultimoAplauso;
+    }
+
     @SerializedName("peso")
+
     @Expose
     private String peso;
     @SerializedName("estatura")

@@ -4,6 +4,7 @@ import android.content.Intent;
 
 import com.BarcelonaSC.BarcelonaApp.models.BeneficioData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
+import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
 import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
 
@@ -28,6 +29,8 @@ public interface Navigator {
     void navigateToGalleryActivity(News news);
 
     void navigateVirtualActivity(VideoReality videoReality);
+
+    void navigateToVideoMultimediaActivity(MultimediaDataResponse multimediaDataResponse, int currentPosition);
 
     void navigateToPlayerActivity(int playerId, String type);
 

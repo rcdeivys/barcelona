@@ -32,6 +32,7 @@ import com.BarcelonaSC.BarcelonaApp.permissions.MillosMultiplePermissionListener
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.futbolbase.FutbolBaseFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.di.DaggerHomeComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.home.di.HomeModule;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
@@ -46,10 +47,17 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.TeamFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomeContract;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomePresenter;
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
+import com.bumptech.glide.Glide;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.multi.CompositeMultiplePermissionsListener;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.karumi.dexter.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener;
 
 import javax.inject.Inject;
 
@@ -169,6 +177,14 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         }
     }
 
+    public void shareSection() {
+        share.setVisibility(View.VISIBLE);
+    }
+
+    public void notShareSection() {
+        share.setVisibility(View.GONE);
+    }
+
     public void getSeccion(String tag) {
         if (tag.equals(ProfileFragment.TAG)) {
             initBanner(BannerView.Seccion.PROFILE);
@@ -200,7 +216,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             initBanner(BannerView.Seccion.YOU_CHOOSE);
         } else if (tag.equals(MonumentalMainFragment.TAG)) {
             initBanner(BannerView.Seccion.MONUMENTAL);
-        }  else if (tag.equals(MapActivity.TAG)) {
+        } else if (tag.equals(MapActivity.TAG)) {
             initBanner(BannerView.Seccion.MAP);
         } else {
             initBanner(BannerView.Seccion.SETINGS);

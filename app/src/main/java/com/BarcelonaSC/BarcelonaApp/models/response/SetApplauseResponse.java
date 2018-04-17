@@ -20,6 +20,14 @@ public class SetApplauseResponse {
     @Expose
     private List<String> error = null;
 
+    public int getAplauso() {
+        return aplauso;
+    }
+
+    public void setAplauso(int aplauso) {
+        this.aplauso = aplauso;
+    }
+
     public String getStatus() {
         return status;
     }

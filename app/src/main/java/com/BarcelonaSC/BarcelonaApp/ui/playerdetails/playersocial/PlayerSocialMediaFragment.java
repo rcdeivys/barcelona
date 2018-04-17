@@ -200,6 +200,11 @@ public class PlayerSocialMediaFragment extends BaseFragment implements PlayerPro
 
     }
 
+    @Override
+    public void showShareApplause(String id) {
+
+    }
+
 
     @Override
     public void showDialogDorado() {

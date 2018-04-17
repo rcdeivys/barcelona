@@ -13,6 +13,7 @@ import com.BarcelonaSC.BarcelonaApp.models.PlayerData;
 
 public class PlayerProfileContract {
 
+    public interface ModelResultListener {
 
     public interface ModelResultListener extends BaseModelResultListener {
         void onGetPlayerSuccess(PlayerData player);
@@ -22,9 +23,11 @@ public class PlayerProfileContract {
         void onSetPlayerApplauseSuccess(String id, int aplaudio);
 
         void onError(String error);
+
     }
 
     public interface Presenter extends MVPContract.Presenter<View> {
+
         void getPlayer(String playerId);
 
         void getPlayer();
@@ -36,6 +39,7 @@ public class PlayerProfileContract {
         void setPlayerApplause();
 
         boolean isViewNull();
+
     }
 
     public interface View extends BaseView {
@@ -65,5 +69,4 @@ public class PlayerProfileContract {
         void navigateToGalleryActivity(News news);
 
     }
-
 }

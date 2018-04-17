@@ -48,10 +48,8 @@ public class ShareSection {
             share.putExtra(Intent.EXTRA_TEXT, url);
         }
         share.setType("text/plain");
-
         Intent openInChooser = Intent.createChooser(share, "Compartir");
         openInChooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
         App.getAppContext().startActivity(openInChooser);
     }
 
