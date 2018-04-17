@@ -8,8 +8,6 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class MultimediaStreamingData {
-
-
     @SerializedName("url_envivo")
     @Expose
     private String urlEnvivo;
@@ -40,5 +38,4 @@ public class MultimediaStreamingData {
                 ", foto='" + foto + '\'' +
                 '}';
     }
-
 }

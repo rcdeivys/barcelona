@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounder_button_white"
+    android:background="@drawable/backgroun_button_corners_yellow"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -56,7 +56,6 @@
                 android:textStyle="bold" />
 
         </FrameLayout>
-
 
     </LinearLayout>
 

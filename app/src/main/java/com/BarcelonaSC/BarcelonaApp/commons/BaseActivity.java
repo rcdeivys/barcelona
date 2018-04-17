@@ -11,12 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.LinearLayout;
 
-<<<<<<< HEAD
 import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
-=======
 import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VirtualActivity;
->>>>>>> develop
 import com.google.android.gms.analytics.Tracker;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;

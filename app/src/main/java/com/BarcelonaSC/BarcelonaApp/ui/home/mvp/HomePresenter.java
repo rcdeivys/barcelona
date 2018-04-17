@@ -9,11 +9,8 @@ import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.MainCalendarFragment;
-<<<<<<< HEAD
-import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.MultimediaFragment;
-=======
 import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
->>>>>>> develop
+import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.MultimediaFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.WallAndChat.WallAndChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.configuration.NotificationFragment;
@@ -57,11 +54,8 @@ public class HomePresenter {
     private WallAndChatFragment wallAndChatFragment;
     private MonumentalMainFragment monumentalFragment;
     private LiveFragment liveFragment;
-<<<<<<< HEAD
     private MultimediaFragment multimediaFragment;
-=======
     private Activity activity;
->>>>>>> develop
 
     public HomePresenter(HomeContract.View view, HomeModel homeModel) {
         this.view = view;
@@ -266,8 +260,7 @@ public class HomePresenter {
 
             case Constant.Menu.CALENDAR:
                 view.setTitle(configurationManager.getConfiguration().getTit3());
-//                mountCalendar();
-                multimedia(Constant.Menu.IN_LIVE);
+                mountCalendar();
                 view.trackFragment(configurationManager.getConfiguration().getTit3());
                 break;
 

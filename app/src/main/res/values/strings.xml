@@ -205,14 +205,11 @@
     <string name="ranking_no_show">\"Para ver el ranking debes votar o esperar a que finalice la encuesta\"</string>
 
     <string name="request_friends_send">Solicitud enviada</string>
-<<<<<<< HEAD
     <string name="txt_buscar">Buscar…</string>
     <string name="txt_go">IR</string>
     <string name="txt_friends">Amigos</string>
     <string name="txt_points">Puntos</string>
-=======
     <string name="action_volver">VOLVER</string>
     <string name="action_envian">ENVIAR</string>
->>>>>>> feature/deivys/BSC-309-BSC-314
 
 </resources>

@@ -15,18 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-<<<<<<< HEAD
-=======
-import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.MonumentalFragment;
-import com.bumptech.glide.Glide;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.multi.CompositeMultiplePermissionsListener;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.karumi.dexter.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener;
->>>>>>> develop
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
@@ -36,6 +24,7 @@ import com.BarcelonaSC.BarcelonaApp.permissions.MillosMultiplePermissionListener
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.futbolbase.FutbolBaseFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.di.DaggerHomeComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.home.di.HomeModule;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
@@ -219,7 +208,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             initBanner(BannerView.Seccion.YOU_CHOOSE);
         } else if (tag.equals(MonumentalMainFragment.TAG)) {
             initBanner(BannerView.Seccion.MONUMENTAL);
-        }  else if (tag.equals(MapActivity.TAG)) {
+        } else if (tag.equals(MapActivity.TAG)) {
             initBanner(BannerView.Seccion.MAP);
         } else {
             initBanner(BannerView.Seccion.SETINGS);

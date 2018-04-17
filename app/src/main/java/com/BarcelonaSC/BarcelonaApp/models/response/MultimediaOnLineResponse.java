@@ -14,7 +14,7 @@ public class MultimediaOnLineResponse {
     private String status;
     @SerializedName("data")
     @Expose
-    private MultimediaStreamingData multimediaStreamingData;
+    private MultimediaStreamingData data;
 
     public String getStatus() {
         return status;
@@ -25,11 +25,18 @@ public class MultimediaOnLineResponse {
     }
 
     public MultimediaStreamingData getData() {
-        return multimediaStreamingData;
+        return data;
     }
 
     public void setData(MultimediaStreamingData data) {
-        this.multimediaStreamingData = data;
+        this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "MultimediaOnLineResponse{" +
+                "status='" + status + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

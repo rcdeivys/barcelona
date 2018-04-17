@@ -21,34 +21,16 @@ public class ShareSection {
 
     public ShareSection(Context context) {
         this.context = context;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> feature/deivys/BSC-309-BSC-314
     }
 
     public static void shareIndividual(String share, String id) {
         share(share, "", true, id);
-<<<<<<< HEAD
->>>>>>> develop
     }
 
     public static void share(Context context, String section) {
         share(section, "", false, "");
     }
 
-<<<<<<< HEAD
-    public static void shareIndividual(String share, String id) {
-        share(share, "", true, id);
-    }
-
-=======
->>>>>>> develop
-    public static void share(String section, String url, boolean isIndividual, String id) {
-=======
-    }
-
     public static void share(String section, String url, boolean isIndividual, String id) {
         String shareSection = section.replace(" ", "");
         String time = new Timestamp(System.currentTimeMillis()).toString();
@@ -62,38 +44,6 @@ public class ShareSection {
             else
                 share.putExtra(Intent.EXTRA_TEXT, Commons.getString(R.string.url_api) + "compartir/" + Commons.normalizedString(shareSection).toLowerCase() + "/" + System.currentTimeMillis());
         } else {
-            share.putExtra(Intent.EXTRA_TEXT, url);
-        }
-        share.setType("text/plain");
-        Intent openInChooser = Intent.createChooser(share, "Compartir");
-        openInChooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        App.getAppContext().startActivity(openInChooser);
-    }
-
-    public static void share(Context context, String section) {
-        share(section, "");
-    }
-
-    public static void share(String section, String url) {
->>>>>>> feature/deivys/BSC-309-BSC-314
-        String shareSection = section.replace(" ", "");
-        String time = new Timestamp(System.currentTimeMillis()).toString();
-        String normalized = Normalizer.normalize(shareSection, Normalizer.Form.NFD);
-        String accentRemoved = normalized.replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
-        Intent share = new Intent();
-        share.setAction(Intent.ACTION_SEND);
-<<<<<<< HEAD
-        if (url.trim().isEmpty()) {
-            if (isIndividual)
-                share.putExtra(Intent.EXTRA_TEXT, Commons.getString(R.string.url_api) + "compartir/" + section + "/" + id);
-            else
-                share.putExtra(Intent.EXTRA_TEXT, Commons.getString(R.string.url_api) + "compartir/" + Commons.normalizedString(shareSection).toLowerCase() + "/" + System.currentTimeMillis());
-        } else {
-=======
-        if (url.trim().isEmpty())
-            share.putExtra(Intent.EXTRA_TEXT, Commons.getString(R.string.url_api) + "compartir/" + Commons.normalizedString(shareSection).toLowerCase() + "/" + System.currentTimeMillis());
-        else
->>>>>>> feature/deivys/BSC-309-BSC-314
             share.putExtra(Intent.EXTRA_TEXT, url);
         }
         share.setType("text/plain");
@@ -103,11 +53,7 @@ public class ShareSection {
     }
 
     public static void shareIdealEleven(String url) {
-<<<<<<< HEAD
         share("", url, false, "");
-=======
-        share("", url);
->>>>>>> feature/deivys/BSC-309-BSC-314
     }
 
 }
