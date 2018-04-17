@@ -239,5 +239,7 @@ dependencies {
     compile 'com.github.hani-momanii:SuperNova-Emoji:1.1'
     compile 'org.apache.commons:commons-lang3:3.7'
     compile 'joda-time:joda-time:2.9.4'
+    compile 'com.sprylab.android.texturevideoview:texturevideoview:1.2.1'
+
 }
 apply plugin: 'com.google.gms.google-services'

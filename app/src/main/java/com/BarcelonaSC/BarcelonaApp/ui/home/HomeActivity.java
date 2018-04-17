@@ -15,14 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.MonumentalFragment;
-import com.bumptech.glide.Glide;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.multi.CompositeMultiplePermissionsListener;
-import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.karumi.dexter.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
@@ -46,10 +38,17 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.TeamFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomeContract;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomePresenter;
+import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
+import com.bumptech.glide.Glide;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.multi.CompositeMultiplePermissionsListener;
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.karumi.dexter.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener;
 
 import javax.inject.Inject;
 
@@ -165,6 +164,14 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             getSeccion(tag);
 
         }
+    }
+
+    public void shareSection() {
+        share.setVisibility(View.VISIBLE);
+    }
+
+    public void notShareSection() {
+        share.setVisibility(View.GONE);
     }
 
     public void getSeccion(String tag) {

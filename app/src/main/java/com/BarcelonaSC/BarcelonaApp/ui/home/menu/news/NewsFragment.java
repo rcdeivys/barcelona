@@ -15,18 +15,18 @@ import android.widget.ProgressBar;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryListActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.news.di.DaggerNewsComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.news.di.NewsModule;
 import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsContract;
 import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsPresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.news.views.adapters.NewsAdapter;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.EndlessScrollListener;
-import com.BarcelonaSC.BarcelonaApp.models.News;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.di.DaggerNewsComponent;
 
 import java.util.ArrayList;
 import java.util.List;
