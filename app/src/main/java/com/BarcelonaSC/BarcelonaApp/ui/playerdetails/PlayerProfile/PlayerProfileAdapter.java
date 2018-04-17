@@ -248,7 +248,6 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         ImageView imTeamOneFlag;
         @BindView(R.id.team_two_flag)
         ImageView ivTeamTwoFlag;
-
         @BindView(R.id.ctv_weight)
         FCMillonariosTextView ctvWeight;
         @BindView(R.id.ctv_player_nationality)

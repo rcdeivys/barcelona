@@ -254,7 +254,8 @@ public class HomePresenter {
 
             case Constant.Menu.CALENDAR:
                 view.setTitle(configurationManager.getConfiguration().getTit3());
-                mountCalendar();
+//                mountCalendar();
+                multimedia(Constant.Menu.IN_LIVE);
                 view.trackFragment(configurationManager.getConfiguration().getTit3());
                 break;
 
