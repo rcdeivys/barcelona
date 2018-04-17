@@ -193,4 +193,9 @@
     <string name="txt_friends">Amigos</string>
     <string name="txt_points">Puntos</string>
 
+    <string name="label_dialog_share_aplause">Aplauso registrado \n¿Deseas compartir tu aplauso?</string>
+    <string name="label_dialog_share_vote">Voto registrado \n¿Deseas compartir tu voto?</string>
+
+    <string name="applause_remove">Se ha borrado tu aplauso</string>
+
 </resources>

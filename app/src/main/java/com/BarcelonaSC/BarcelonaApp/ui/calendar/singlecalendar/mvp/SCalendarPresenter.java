@@ -1,6 +1,9 @@
 package com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.mvp;
 
+import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.SCalendarData;
+import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.mvp.SCalendarModel;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 /**
  * Created by Erick on 01/11/2017.
@@ -63,5 +66,18 @@ public class SCalendarPresenter implements SCalendarContract.Presenter, SCalenda
     @Override
     public boolean isViewNull() {
         return view == null;
+    }
+
+    @Override
+    public void onclickNewsItem(News news) {
+        if (isViewNull()) return;
+
+        if (news.getTipo().matches(Constant.NewsType.GALERY)) {
+            view.navigateToGalleryActivity(news);
+        } else if (news.getTipo().matches(Constant.NewsType.INFOGRAFY) || news.getTipo().matches(Constant.NewsType.STAT)) {
+            view.navigateToInfografiaActivity(news);
+        } else {
+            view.navigateToNewsDetailsActivity(news);
+        }
     }
 }

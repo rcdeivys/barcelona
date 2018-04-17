@@ -25,6 +25,10 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.BarcelonaSC.BarcelonaApp.models.BeneficioData;
+import com.BarcelonaSC.BarcelonaApp.models.News;
+import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
+import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.di.DaggerWallCommentComponent;
 import com.bumptech.glide.Glide;
 import com.karumi.dexter.Dexter;
@@ -381,4 +385,28 @@ public class WallCommentActivity extends BaseActivity implements WallCommentCont
         Log.d(TAG, "showPermissionDenied " + permission + " boolean " + isPermanentlyDenied);
     }
 
+    @Override
+    public void navigateToVideoNewsActivity(News news, int currentPosition) {
+
+    }
+
+    @Override
+    public void navigateToVideoMultimediaActivity(MultimediaDataResponse multimediaDataResponse, int currentPosition) {
+
+    }
+
+    @Override
+    public void navigateToVideoBeneficiosActivity(BeneficioData beneficioData, int currentVideo) {
+
+    }
+
+    @Override
+    public void navigateToGalleryActivity(News news) {
+
+    }
+
+    @Override
+    public void navigateVirtualActivity(VideoReality videoReality) {
+
+    }
 }

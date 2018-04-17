@@ -14,8 +14,11 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalItem;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.profile.fragments.monumentalprofile.MProfileFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.news.views.holders.NewsViewHolder;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
@@ -26,7 +29,7 @@ import java.util.Date;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements CustomVideoView.CustomVideoViewOnListener {
 
     private static final String TAG = MonumentalProfileAdapter.class.getSimpleName();
     private static final String IN_PROGRESS = "En curso";
@@ -79,7 +82,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         if (viewType == TYPE_HEADER) {
             return new VHHeader(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_profile_header, parent, false));
         } else {
-            return new VHItem(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false));
+            return new NewsViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false));
         }
     }
 
@@ -89,7 +92,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
             VHHeader vhHeader = (VHHeader) holder;
             initHeader(vhHeader, monumental);
         } else {
-            VHItem vhItem = (VHItem) holder;
+            NewsViewHolder vhItem = (NewsViewHolder) holder;
             initItem(vhItem, position);
         }
     }
@@ -110,36 +113,40 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         vhHeader.monumental_name_container.setVisibility(View.GONE);
     }
 
-    private void initItem(VHItem vhItem, final int position) {
-        News recentItem = getItem(position);
-        Glide.with(context)
-                .load(recentItem.getFoto())
-                .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
-                .into(vhItem.ivNews);
-        // Set play image
-        if (recentItem.getTipo().matches(Constant.NewsType.VIDEO)) {
-            vhItem.ivPlay.setVisibility(View.VISIBLE);
-        } /*else {
-            //vhItem.ivPlay.setImageDrawable(null);
-        }*/
-
-        try {
-            Date date1 = formatIn.parse(recentItem.getFecha());
-            String formatOutStr = formatOut.format(date1);
-            vhItem.tvData.setText(Commons.getStringDate2(recentItem.getFecha()));
-            //System.out.println(formatOutStr);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        vhItem.tvTitle.setText(recentItem.getTitulo());
-
-        vhItem.llNewsItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (position != 0) {
-                    onItemClickListener.onClickItem(monumental.getNewsList().get(position - 1));
+    private void initItem(NewsViewHolder holder, final int position) {
+        final News recentItem = getItem(position);
+        holder.setNews(recentItem);
+        holder.ivShare.setVisibility(View.GONE);
+        if (recentItem.getTipo().equals(Constant.NewsType.VIDEO)) {
+        /*    if (getNewsList(position).isDorado() && !SessionManager.getInstance().getUser().isDorado()) {
+                holder.ivShare.setVisibility(View.GONE);
+            } else {
+                holder.ivShare.setVisibility(View.VISIBLE);
+            }*/
+            holder.videoView.setCustomVideoViewOnListener(this);
+            holder.setNewsVideo(recentItem, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                  /*  if (!SessionManager.getInstance().getUser().isDorado() && getNewsList(position).isDorado()) {
+                        holder.videoView.customVideoViewOnListener.videoIsDorado();
+                    } else {
+                        holder.videoView.pause();
+                        onItemClickListener.onClickVideoItem(getNewsList(position), holder.getVideoCurrentPosition());
+                    }*/
                 }
+            });
+        } else {
+            holder.onClickContentNewsItem(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onItemClickListener.onClickItem(recentItem);
+                }
+            });
+        }
+        holder.ivShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareSection.shareIndividual(Constant.Key.SHARE_NEWS, String.valueOf(recentItem.getId()));
             }
         });
     }
@@ -160,6 +167,16 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
+    }
+
+    @Override
+    public void onPrepared() {
+
+    }
+
+    @Override
+    public void videoIsDorado() {
+
     }
 
     public interface OnItemClickListener {

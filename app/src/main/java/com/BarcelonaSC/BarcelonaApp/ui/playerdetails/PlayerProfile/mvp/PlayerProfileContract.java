@@ -1,6 +1,8 @@
 package com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp;
 
 
+import com.BarcelonaSC.BarcelonaApp.commons.BaseModelResultListener;
+import com.BarcelonaSC.BarcelonaApp.commons.BaseView;
 import com.BarcelonaSC.BarcelonaApp.commons.mvp.MVPContract;
 import com.BarcelonaSC.BarcelonaApp.models.ApplauseData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
@@ -12,8 +14,8 @@ import com.BarcelonaSC.BarcelonaApp.models.PlayerData;
 
 public class PlayerProfileContract {
 
-    public interface ModelResultListener {
 
+    public interface ModelResultListener extends BaseModelResultListener {
         void onGetPlayerSuccess(PlayerData player);
 
         void onGetPlayerApplauseSuccess(ApplauseData applauseData);
@@ -30,7 +32,7 @@ public class PlayerProfileContract {
 
         void getPlayer();
 
-        void clickItem(int position);
+        void clickItem(News news);
 
         void getPlayerApplause();
 
@@ -40,7 +42,7 @@ public class PlayerProfileContract {
 
     }
 
-    public interface View {
+    public interface View extends BaseView {
 
         void showProgress();
 
@@ -52,19 +54,19 @@ public class PlayerProfileContract {
 
         void showToast(String error);
 
+        void showShareApplause(final String id);
+
         void setPlayerData(PlayerData player);
 
         void setPlayerApplause(ApplauseData applauseData);
 
-        void navigateToVideoNewsActivity(News news);
+        void navigateToVideoNewsActivity(News news, int currentPosition);
 
         void navigateToInfografiaActivity(News news);
 
         void navigateToNewsDetailsActivity(News news);
 
-        void navigateToGalleryActivity(int id);
-
-        void showShareApplause(final String id);
+        void navigateToGalleryActivity(News news);
 
     }
 }

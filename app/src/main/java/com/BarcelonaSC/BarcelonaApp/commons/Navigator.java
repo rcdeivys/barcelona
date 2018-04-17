@@ -2,9 +2,11 @@ package com.BarcelonaSC.BarcelonaApp.commons;
 
 import android.content.Intent;
 
+import com.BarcelonaSC.BarcelonaApp.models.BeneficioData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
 import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
+import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
 
 /**
  * Created by Carlos on 01/10/2017.
@@ -12,18 +14,21 @@ import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 
 public interface Navigator {
 
-
     void navigateToNewsDetailsActivity(News news);
 
-    void navigateToVideoNewsActivity(News news);
+    void navigateToVideoNewsActivity(News news, int currentPosition);
+
+    void navigateToVideoMultimediaActivity(MultimediaDataResponse multimediaDataResponse, int currentPosition);
+
+    void navigateToVideoBeneficiosActivity(BeneficioData beneficioData, int currentVideo);
 
     void navigateToInfografiaActivity(News news);
 
     void navigateToHomeActivity();
 
-    void navigateToGalleryActivity(int id);
+    void navigateToGalleryActivity(News news);
 
-    void navigateToVideoMultimediaActivity(MultimediaDataResponse multimediaDataResponse, int currentPosition);
+    void navigateVirtualActivity(VideoReality videoReality);
 
     void navigateToPlayerActivity(int playerId, String type);
 
@@ -32,8 +37,6 @@ public interface Navigator {
     void navigateToLiveActivity();
 
     void navigateToGameActivity();
-
-    void navigateVirtualActivity(VideoReality videoReality);
 
     void navigateToActivity(Intent intent);
 

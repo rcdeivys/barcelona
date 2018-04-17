@@ -17,6 +17,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.sprylab.android.widget.TextureVideoView;
@@ -140,10 +141,10 @@ public class CustomVideoView extends RelativeLayout implements MediaPlayer.OnCom
             public void onClick(View view) {
                 if (error)
                     Toast.makeText(getContext(), "No se pudo reproducir el video", Toast.LENGTH_LONG).show();
-//                if (!SessionManager.getInstance().getUser().isDorado() && isDorado) {
-//                    customVideoViewOnListener.videoIsDorado();
-//                    return;
-//                }
+              /*  if (!SessionManager.getInstance().getUser().isDorado() && isDorado) {
+                    customVideoViewOnListener.videoIsDorado();
+                    return;
+                }*/
                 if (!videoView.isPlaying()) {
                     seekBar.postDelayed(onEverySecond, 1000);
                     videoView.start();

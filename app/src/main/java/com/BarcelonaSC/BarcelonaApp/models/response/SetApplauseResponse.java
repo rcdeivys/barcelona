@@ -43,4 +43,5 @@ public class SetApplauseResponse {
     public void setError(List<String> error) {
         this.error = error;
     }
+
 }

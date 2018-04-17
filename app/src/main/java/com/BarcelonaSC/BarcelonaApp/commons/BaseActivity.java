@@ -3,8 +3,10 @@ package com.BarcelonaSC.BarcelonaApp.commons;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -18,23 +20,29 @@ import com.google.android.gms.analytics.Tracker;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
+import com.BarcelonaSC.BarcelonaApp.commons.Navigator;
+import com.BarcelonaSC.BarcelonaApp.models.BeneficioData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
+import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
+import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
 import com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryListActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VirtualActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
+import com.google.android.gms.analytics.Tracker;
+import com.google.vr.sdk.widgets.common.FullScreenDialog;
 
 /**
  * Created by root on 10/31/17.
  */
 
-public class BaseActivity extends AppCompatActivity implements Navigator, BannerView.BannerListener {
+public class BaseActivity extends AppCompatActivity implements Navigator, BannerView.BannerListener, BaseView {
 
     public static final String TAG = BaseActivity.class.getSimpleName();
 
@@ -46,6 +54,7 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
     public SessionManager sessionManager;
     public static BannerView.Seccion lastSeccionBanner;
     public BannerView bv_banner;
+    protected int doradoCode = 989;
 
     public FragmentActivity getActivity() {
         return this;
@@ -56,7 +65,7 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
         super.onCreate(savedInstanceState);
 
         preferenceManager = new PreferenceManager(App.getAppContext());
-        sessionManager = new SessionManager(this);
+        sessionManager = new SessionManager(App.getAppContext());
         // Activar Firebase
         //    subscribeToPushService();
         mTracker = App.get().getDefaultTracker();
@@ -83,36 +92,56 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
         super.onDestroy();
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
 
+
     @Override
     public void navigateToNewsDetailsActivity(News news) {
+      /*  if (!SessionManager.getInstance().getUser().isDorado() && news.isDorado()) {
+            showBuyDoradoDialog();
+            return;
+        }*/
         Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
         intent.putExtra(Constant.Key.TITLE, news.getTitulo());
         intent.putExtra(Constant.Key.DESC_NEW, news.getDescripcion());
         intent.putExtra(Constant.Key.IMG, news.getFoto());
+        intent.putExtra(Constant.Key.URL, news.getLink());
+        intent.putExtra(Constant.Key.ID, "" + news.getId());
         getActivity().startActivity(intent);
     }
 
     @Override
-    public void navigateToVideoNewsActivity(News news) {
-        Intent intent = new Intent(getActivity(), NewsVideoActivity.class);
-        intent.putExtra(Constant.Key.URL, news.getLink());
-        getActivity().startActivity(intent);
+    public void navigateToVideoNewsActivity(News news, int currentPosition) {
+       /* if (!SessionManager.getInstance().getUser().isDorado() && news.isDorado()) {
+            showBuyDoradoDialog();
+            return;
+        }*/
+       /* Intent intent = new Intent(getActivity(), VideoActivity.class);
+        intent.putExtra(Constant.Video.CURRENT_POSITION, currentPosition);
+        intent.putExtra(Constant.Video.PLAY, true);
+        intent.putExtra(Constant.Video.URL, news.getLink());
+        intent.putExtra(Constant.Key.ID, "" + news.getId());
+        startActivity(intent);*/
+    }
+
+    @Override
+    public void navigateToVideoBeneficiosActivity(BeneficioData beneficioData, int currentVideo) {
+
     }
 
     @Override
     public void navigateToInfografiaActivity(News news) {
+       /* if (!SessionManager.getInstance().getUser().isDorado() && news.isDorado()) {
+            showBuyDoradoDialog();
+            return;
+        }*/
         Intent intent = new Intent(getActivity(), NewsInfografyActivity.class);
         intent.putExtra(Constant.Key.URL, news.getLink());
+        intent.putExtra(Constant.Key.ID, "" + news.getId());
         getActivity().startActivity(intent);
     }
 
@@ -137,15 +166,21 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
     }
 
     @Override
-    public void navigateToGalleryActivity(int id) {
+    public void navigateToGalleryActivity(News news) {
+       /* if (!SessionManager.getInstance().getUser().isDorado() && news.isDorado()) {
+            showBuyDoradoDialog();
+            return;
+        }*/
         Intent intent = new Intent(getActivity(), GalleryListActivity.class);
-        intent.putExtra(Constant.Key.ID, id);
+        intent.putExtra(Constant.Key.ID, news.getId());
         startActivity(intent);
     }
+
 
     @Override
     public void navigateToPlayerActivity(int playerId, String type) {
         Intent intent = new Intent(this, PlayerActivity.class);
+
         intent.putExtra(Constant.Key.PLAYER_ID, playerId);
         intent.putExtra(Constant.Key.TYPE, type);
         startActivity(intent);
@@ -161,6 +196,29 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
 
     }
 
+
+    public void showBuyDoradoDialog() {
+
+     /*   final FullScreenDialog dialog = new FullScreenDialog();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        dialog.show(ft, FullScreenDialog.TAG);
+        dialog.setListener(new FullScreenDialog.SubscriptionListener() {
+            @Override
+            public void onSubscription() {
+                startActivityForResult(new Intent(BaseActivity.this, HinchaDoradoActivity.class), doradoCode);
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                }, 200);
+
+            }
+        });*/
+
+    }
+
     @Override
     public void navigateToGameActivity() {
 
@@ -168,22 +226,8 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
 
     @Override
     public void navigateToActivity(Intent intent) {
+
         startActivity(intent);
-    }
-
-    @Override
-    public void navigateVirtualActivity(VideoReality videoReality) {
-        /*if (!SessionManager.getInstance().getUser().isDorado() && videoReality.isDorado()) {
-            showBuyDoradoDialog();
-            return;
-        }*/
-
-        Intent intent = new Intent(getActivity(), VirtualActivity.class);
-        intent.putExtra(Constant.Key.VIRTUAL_REALITY_SECTION, videoReality);
-        intent.putExtra(Constant.Key.ID, videoReality);
-        String url = videoReality.getUrl().replace("\\", "");
-        intent.putExtra("url", url);
-        navigateToActivity(intent);
     }
 
     public void initBanner(BannerView.Seccion seccion) {
@@ -235,5 +279,25 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
                 finish();
             Log.i(TAG, "--->PRUEBA onClickBannerSeccionListener seccionDestino: " + seccionDestino);
         }
+    }
+
+    @Override
+    public void navigateVirtualActivity(VideoReality videoReality) {
+     /*   if (!SessionManager.getInstance().getUser().isDorado() && videoReality.isDorado()) {
+            showBuyDoradoDialog();
+            return;
+        }*/
+
+        Intent intent = new Intent(getActivity(), VirtualActivity.class);
+        intent.putExtra(Constant.Key.VIRTUAL_REALITY_SECTION, videoReality);
+        intent.putExtra(Constant.Key.ID, videoReality);
+        String url = videoReality.getUrl().replace("\\", "");
+        intent.putExtra("url", url);
+        navigateToActivity(intent);
+    }
+
+    @Override
+    public void showDialogDorado() {
+        showBuyDoradoDialog();
     }
 }

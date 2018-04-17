@@ -109,7 +109,7 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
                 LinearLayoutManager.VERTICAL, false);
 
         recyclerView.setLayoutManager(mLayoutManager);
-        List<News> itemList = new ArrayList<>();
+        List<Object> itemList = new ArrayList<>();
         newsAdapter = new NewsAdapter(getActivity(), itemList);
         newsAdapter.setOnItemClickListener(this);
         recyclerView.setAdapter(newsAdapter);
@@ -141,6 +141,21 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
         presenter.onClickNewsItem(news);
     }
 
+    @Override
+    public void onVideoClick(News news, int currentVideo) {
+
+    }
+
+    @Override
+    public void onCalendarClick(String id) {
+
+    }
+
+    @Override
+    public void onVideoIsDorado() {
+
+    }
+
     private void refresh() {
         presenter.loadNews();
     }
@@ -151,7 +166,9 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
 
     public void updateNews(List<News> newsList) {
         if (newsAdapter != null) {
-            newsAdapter.updateAll(newsList);
+            List<Object> list = new ArrayList<>();
+            list.addAll(newsList);
+            newsAdapter.updateAll(list);
             swipeRefreshLayout.setRefreshing(false);
             progressBar.setVisibility(View.GONE);
         }

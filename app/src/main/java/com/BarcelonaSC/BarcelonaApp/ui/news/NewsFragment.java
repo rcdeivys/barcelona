@@ -1,9 +1,7 @@
-package com.BarcelonaSC.BarcelonaApp.ui.home.menu.news;
+package com.BarcelonaSC.BarcelonaApp.ui.news;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,14 +11,17 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
+
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.models.News;
+import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.SingleCalendarListFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.news.di.DaggerNewsComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryListActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.di.DaggerNewsComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.news.di.NewsModule;
 import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsContract;
 import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsPresenter;
@@ -40,7 +41,7 @@ import butterknife.ButterKnife;
  * Created by Leonardojpr on 10/31/17.
  */
 
-public class NewsFragment extends Fragment implements NewsContract.View, NewsAdapter.OnItemClickListener {
+public class NewsFragment extends BaseFragment implements NewsContract.View, NewsAdapter.OnItemClickListener {
 
     public final static String TAG = NewsFragment.class.getSimpleName();
 
@@ -63,6 +64,8 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
 
     @Inject
     public NewsPresenter presenter;
+
+    //ItemsProvider itemProvider;
 
     public static NewsFragment getInstance(String category) {
         NewsFragment fragment = new NewsFragment();
@@ -107,7 +110,7 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
                 LinearLayoutManager.VERTICAL, false);
 
         recyclerView.setLayoutManager(mLayoutManager);
-        List<News> itemList = new ArrayList<>();
+        List<Object> itemList = new ArrayList<>();
         newsAdapter = new NewsAdapter(getActivity(), itemList);
         newsAdapter.setOnItemClickListener(this);
         recyclerView.setAdapter(newsAdapter);
@@ -120,6 +123,7 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
                 progressBar.setVisibility(View.VISIBLE);
             }
         });
+        recyclerView.smoothScrollToPosition(0);
     }
 
     private EndlessScrollListener initRecyclerViewScroll() {
@@ -139,6 +143,30 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
         presenter.onclickNewsItem(news);
     }
 
+    @Override
+    public void onVideoClick(News news, int currentVideo) {
+        navigateToVideoNewsActivity(news, currentVideo);
+    }
+
+    @Override
+    public void onCalendarClick(String id) {
+        SingleCalendarListFragment singleCalendarListFragment = new SingleCalendarListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("idPartido", Integer.valueOf(id));
+        bundle.putString("type", Constant.Key.CUP);
+        bundle.putString(Constant.Menu.NEWS, Constant.Menu.NEWS);
+        singleCalendarListFragment.setArguments(bundle);
+        getFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                .add(R.id.cal_container, singleCalendarListFragment, SingleCalendarListFragment.TAG)
+                .commitAllowingStateLoss();
+    }
+
+    @Override
+    public void onVideoIsDorado() {
+      //  showDialogDorado();
+    }
+
     private void refresh() {
         if (getArguments().getString(CATEGORY).equals(NEWS_PROFESSIONAL)) {
             presenter.loadNews(NEWS_PROFESSIONAL);
@@ -155,7 +183,7 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
         }
     }
 
-    public void updateNews(List<News> newsList) {
+    public void updateNews(List<Object> newsList) {
         if (newsAdapter != null) {
             newsAdapter.updateAll(newsList);
             swipeRefreshLayout.setRefreshing(false);
@@ -164,43 +192,34 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
     }
 
     @Override
-    public void setNewsProfessional(List<News> news) {
+    public void setNewsProfessional(List<Object> news) {
         updateNews(news);
     }
 
     @Override
-    public void setNewsFootballBase(List<News> news) {
+    public void setNewsFootballBase(List<Object> news) {
         updateNews(news);
     }
 
     @Override
-    public void navigateToVideoNewsActivity(News news) {
-        Intent intent = new Intent(getActivity(), NewsVideoActivity.class);
-        intent.putExtra(Constant.Key.URL, news.getLink());
-        getActivity().startActivity(intent);
+    public void navigateToVideoNewsActivity(News news, int currentPosition) {
+        navigator.navigateToVideoNewsActivity(news, currentPosition);
     }
 
     @Override
     public void navigateToInfografiaActivity(News news) {
-        Intent intent = new Intent(getActivity(), NewsInfografyActivity.class);
-        intent.putExtra(Constant.Key.URL, news.getLink());
-        getActivity().startActivity(intent);
+        navigator.navigateToInfografiaActivity(news);
     }
 
     @Override
     public void navigateToNewsDetailsActivity(News news) {
-        Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
-        intent.putExtra(Constant.Key.TITLE, news.getTitulo());
-        intent.putExtra(Constant.Key.DESC_NEW, news.getDescripcion());
-        intent.putExtra(Constant.Key.IMG, news.getFoto());
-        getActivity().startActivity(intent);
+        navigator.navigateToNewsDetailsActivity(news);
+
     }
 
     @Override
     public void navigateToGalleryActivity(News news) {
-        Intent intent = new Intent(getActivity(), GalleryListActivity.class);
-        intent.putExtra(Constant.Key.ID, news.getId());
-        startActivity(intent);
+        navigator.navigateToGalleryActivity(news);
     }
 
     @Override
@@ -226,6 +245,6 @@ public class NewsFragment extends Fragment implements NewsContract.View, NewsAda
     @Override
     public void onDestroy() {
         super.onDestroy();
-
     }
+
 }

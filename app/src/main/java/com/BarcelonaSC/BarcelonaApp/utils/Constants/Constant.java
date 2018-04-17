@@ -14,17 +14,17 @@ public interface Constant {
 
     public static String BASE64 = "data:image/png;base64,";
 
+    interface Video {
+        String CURRENT_POSITION = "currentPosition";
+        String PLAY = "PLAY";
+        String URL = "url";
+    }
+
     interface CanchaSize {
 
         int CANCHA_ALTO = 310;
         int CANCHA_LARGO = 210;
         int SIZE_IMAGEN = 30;
-    }
-
-    interface Video {
-        String CURRENT_POSITION = "currentPosition";
-        String PLAY = "PLAY";
-        String URL = "url";
     }
 
     interface NewsType {
@@ -61,27 +61,40 @@ public interface Constant {
         String TOURNAMENTS = "tournaments";
         String CONFIGURATION = "configuration";
         String NOTIFICATION = "notification";
+        String FIRST_TIME_DORADO = "first_time_dorado";
         String CUP = "CUP";
         String CUP_FB = "CUP_FB";
         String GAME_SUPPONNED = "gameSupponned";
+        String MULTIMEDIA_VIDEO = "multimediaVideo";
+        String MULTIMEDIA_ONLINE = "multimediaOnLine";
         String GAME_FB = "gameFB";
         String MATCHES = "matches";
         String MONUMETAL_ID = "monumental_id";
         String SURVEY_ID = "survey_id";
         String HEADER = "HEADER";
         String SOCIAL = "SOCIAL";
+        String HINCHA_COUNTER = "HINCHA_COUNTER";
         String FIRST_TIME_INTRO = "first_time_video";
         String FIRST_TIME_OATH = "first_time_oath";
         String SESSION = "session";
         String ID_CALENDARY_ELEVEN = "id_calendary_eleven";
         String LINEUP_URL = "lineup_url";
         String BANNERS = "Banners";
-        String MULTIMEDIA_VIDEO = "multimediaVideo";
-        String MULTIMEDIA_ONLINE = "multimediaOnLine";
+        String IS_SOCIAL = "isSocial";
+
         String SECCION = "seccion";
         String ID_RESPUESTA = "id_respuesta";
         String SHOW_VOTES = "show_votes";
 
+        String DORADO_CONFIGURATION = "dorado_configuration";
+        String DORADO_STATUS_VIEW = "dorado_status_view";
+        String DORADO_STATUS_SUSCRIPCION = "dorado_id_suscripcion";
+
+        String POPUP_INTERNO = "INTERNO";
+        String POPUP_EXTERNO = "EXTERNO";
+        String POPUP_SECCION = "SECCION";
+        String POPUP_UPDATE = "UPDATE";
+        String SECCION_SELECTED = "seccion_Selected";
     }
 
     interface Preferences {
@@ -101,35 +114,59 @@ public interface Constant {
     }
 
     interface Menu {
-        String PROFILE = "Profile";
+
+        String PROFILE = "profile";
         String Setting = "Setting";
-        String NEWS = "News";
-        String CALENDAR = "Calendar";
-        String TABLE = "Table";
-        String STATISTICS = "Statistics";
-        String TEAM = "Team";
-        String ALIGMENT = "Alignment";
-        String VIRTUAL_REALITY = "Virtual Reality";
+        String NEWS = "noticias";
+        String CALENDAR = "calendario";
+        String TABLE = "tabla";
+        String STATISTICS = "estadisticas";
+        String TEAM = "equipo";
+        String ALIGMENT = "alineacion";
+        String MONUMENTAL = "monumental";
+        String VIRTUAL_REALITY = "realidad_virtual";
         String IN_LIVE = "In live";
         String VIDEOS = "videos";
-        String YOUR_CHOOSE = "Your Choose";
+        String YOUR_CHOOSE = "tu_escoges";
         String GAME = "Game";
-        String MAP = "Map";
-        //String MILLIONARE_ACADEMY = "Millionaire Academy";
-        //String FOOTBALL_BASE = "Footbool_base";
-        String ONLINE_SHOP = "On-line shop";
-        String WALL_AND_CHAT = "Wall And Chat";
-        String MONUMENTAL = "Monumental";
+        String MILLIONARE_ACADEMY = "academia";
+        String FOOTBALL_BASE = "futbol_base";
+        String ONLINE_SHOP = "tienda_virtual";
+        String WALL_AND_CHAT = "muro";
+        String CHAT = "chat";
+
+
+        String TITLE = "titulo";
+        String ITEM = "item";
+        String VERSION = "version";
+
+        /*String PROFILE = "profile";
+        String Setting = "Setting";
+        String NEWS = "news";
+        String CALENDAR = "calendar";
+        String TABLE = "table";
+        String STATISTICS = "statistics";
+        String TEAM = "team";
+        String ALIGMENT = "line_up";
+        String VIRTUAL_REALITY = "virtual_reality";
+        String IN_LIVE = "live";
+        String YOUR_CHOOSE = "you_choose";
+        String GAME = "games";
+        String MILLIONARE_ACADEMY = "academy";
+        String FOOTBALL_BASE = "football_base";
+        String ONLINE_SHOP = "store";
+        String WALL_AND_CHAT = "muro";*/
+
+        String MAP = "geolocalizacion";
+
     }
 
     interface Boolean {
-
         String TRUE = "1";
         String FALSE = "0";
     }
 
     interface ScreenAnalytcis {
-
 
     }
 
@@ -137,5 +174,13 @@ public interface Constant {
         String ID = "cup_id";
         String NAME = "cup_name";
     }
+
+    interface Seccion {
+        String Id_Post = "id_post";
+        String MURO = "muro";
+        String NOTICIAS = "news";
+        String CHAT= "chat";
+    }
+
 
 }

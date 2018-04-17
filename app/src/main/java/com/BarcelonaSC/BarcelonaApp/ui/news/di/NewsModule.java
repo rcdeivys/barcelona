@@ -2,7 +2,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.news.di;
 
 
 import com.BarcelonaSC.BarcelonaApp.app.api.NewsApi;
-import com.BarcelonaSC.BarcelonaApp.ui.home.menu.news.NewsFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsModel;
 import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsPresenter;
 

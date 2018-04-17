@@ -3,12 +3,12 @@
     android:id="@+id/content_news_item"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="10dp"
-    android:layout_marginEnd="10dp"
     android:layout_marginBottom="10dp"
-    android:padding="5dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
     android:background="@drawable/rounder_item_new"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,56 +21,71 @@
             android:layout_centerInParent="true"
             android:adjustViewBounds="true" />
 
-        <!-- Imagen del play -->
-        <ImageView
-            android:id="@+id/iv_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@drawable/play"
+        <com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView
+            android:id="@+id/texture_video_view"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
             android:visibility="gone" />
 
     </RelativeLayout>
 
-    <!-- Imagen de la noticia -->
-    <ImageView
-        android:id="@+id/iv_news"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true" />
+        android:orientation="horizontal">
 
-    <!-- Fecha de la noticia -->
-    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/tv_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/white"
-        android:textSize="@dimen/font_caption_size" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <!-- Título de la noticia -->
-    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:textColor="@color/white"
-        android:textSize="@dimen/font_body_m_size" />
+            <!-- Fecha de la noticia -->
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/tv_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_caption_size" />
 
-    <!-- "Ver más" -->
-    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/tv_SeeMore"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/see_more"
-        android:textAlignment="textEnd"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/font_caption_size"
-        android:visibility="gone" />
+            <!-- Título de la noticia -->
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_body_m_size" />
 
+            <!-- "Ver más" -->
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/tv_SeeMore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/see_more"
+                android:textAlignment="textEnd"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/font_caption_size"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_share"
+            android:visibility="gone" />
+
+    </LinearLayout>
 </LinearLayout>
