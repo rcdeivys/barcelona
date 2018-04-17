@@ -229,6 +229,8 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             share.setVisibility(View.VISIBLE);
         }
         nameSection = title;
+        if (subMenu.getVisibility() == View.GONE)
+            showSubMenu();
     }
 
     @Override
