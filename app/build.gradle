@@ -152,6 +152,7 @@ dependencies {
     compile playServicesDependencies.auth
     compile playServicesDependencies.plus
     compile playServicesDependencies.ads
+    compile 'com.google.android.gms:play-services-maps:11.4.0'
 
     // --------- Exo player ------------
     compile exoPlayer
@@ -163,10 +164,12 @@ dependencies {
     compile retrofitDependencies.retrofit
     compile retrofitDependencies.gson
     compile retrofitDependencies.rxAdapterJava
+    compile 'io.reactivex.rxjava2:rxjava:2.1.8'
 
     // --------- okhttp3 -------------
     compile okHttp
-
+    implementation 'com.facebook.fresco:fresco:1.8.1'
+    implementation 'com.facebook.fresco:animated-gif:1.8.1'
     // ------- ButterKnife --------
     compile butterKnifeDependencies.butterknife
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
@@ -182,9 +185,6 @@ dependencies {
     //compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     compile glideDependencies.glide
     annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
-
-    // ---------- Picasso --------
-    compile 'com.squareup.picasso:picasso:2.5.2'
 
     // ---------- Iconics --------
     compile 'com.mikepenz:iconics-core:2.6.6@aar'
@@ -208,6 +208,10 @@ dependencies {
     compile 'com.jackandphantom.android:circularimageview:1.2.0'
     // --------- Circle -------
     compile circleImageView
+
+    // -------------- gi -----------------------
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'
+
     testCompile testingDependencies.junit
     testCompile testingDependencies.mockito
     testCompile testingDependencies.robolectric
@@ -234,10 +238,22 @@ dependencies {
     compile 'org.greenrobot:greendao:3.2.2'
     compile 'org.greenrobot:eventbus:3.1.1'
 
-    compile 'com.allattentionhere:autoplayvideos:0.2.0'
     compile 'com.karumi:dexter:4.2.0'
     compile 'com.github.hani-momanii:SuperNova-Emoji:1.1'
     compile 'org.apache.commons:commons-lang3:3.7'
     compile 'joda-time:joda-time:2.9.4'
+    implementation 'com.github.chrisbanes:PhotoView:2.1.3'
+
+    compile 'com.jaredrummler:material-spinner:1.2.4'
+    compile 'com.github.waynell:VideoListPlayer:1.4'
+    compile 'com.sprylab.android.texturevideoview:texturevideoview:1.2.1'
+
+    compile 'com.iceteck.silicompressorr:silicompressor:2.1'
+
+    compile ('com.amazonaws:aws-android-sdk-mobile-client:2.6.+@aar') { transitive = true; }
+    compile 'com.amazonaws:aws-android-sdk-s3:2.6.+'
+    compile 'com.amazonaws:aws-android-sdk-cognito:2.6.+'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 apply plugin: 'com.google.gms.google-services'

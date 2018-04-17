@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/map_details_background">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/escudo_mask" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="15dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Estadio Nemésio Camacho El Campín"
+                android:textAlignment="center"
+                android:textColor="@color/textColorSecondary"
+                android:textSize="20dp" />
+
+            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Bogotá, Colombia."
+                android:textColor="@color/textColorSecondary"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/picture"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/full_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLines="2"
+                    android:text="Carrera 30 y calle 57"
+                    android:textColor="@color/textColorSecondary" />
+
+                <ImageView
+                    android:id="@+id/btn_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_share"
+                    android:tint="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Horario: varía segun evento"
+                android:textColor="@color/textColorSecondary" />
+
+            <Button
+                android:id="@+id/btn_go"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rounder_background"
+                android:text="@string/txt_go"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/btn_close"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:src="@drawable/close"
+        android:tint="@color/colorPrimary" />
+
+</RelativeLayout>

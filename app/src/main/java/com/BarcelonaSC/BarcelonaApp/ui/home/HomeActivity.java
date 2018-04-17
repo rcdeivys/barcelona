@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.MonumentalFragment;
 import com.bumptech.glide.Glide;
@@ -116,6 +117,8 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             presenter.setFragmentFromSeccion(getIntent().getExtras().getString(Constant.Key.SECCION, ""));
         }
 
+        presenter.getActivity(HomeActivity.this);
+
     }
 
     @Override
@@ -198,6 +201,8 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             initBanner(BannerView.Seccion.YOU_CHOOSE);
         } else if (tag.equals(MonumentalMainFragment.TAG)) {
             initBanner(BannerView.Seccion.MONUMENTAL);
+        }  else if (tag.equals(MapActivity.TAG)) {
+            initBanner(BannerView.Seccion.MAP);
         } else {
             initBanner(BannerView.Seccion.SETINGS);
         }
@@ -254,6 +259,11 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MapActivity.MAP_REQUEST_CODE) {
+            if ((resultCode == RESULT_OK)) {
+                presenter.onItemMenuSelected(data.getExtras().getString(MapActivity.SECCION_SELECTED));
+            }
+        }
         for (Fragment fragment : getSupportFragmentManager().getFragments()) {
             fragment.onActivityResult(requestCode, resultCode, data);
         }
