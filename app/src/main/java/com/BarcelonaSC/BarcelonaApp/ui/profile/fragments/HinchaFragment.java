@@ -168,7 +168,7 @@ public class HinchaFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), CarnetDigitalActivity.class);
                     getActivity().startActivity(intent);
                 } else {
-                    Toast.makeText(getActivity(), "Completa todos los campos de registro en Info. Cuenta", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Completa todos los campos de registro para ver el carné en la pestaña \"Info Cuenta\"", Toast.LENGTH_LONG).show();
                 }
             }
         });

@@ -11,7 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.LinearLayout;
 
+<<<<<<< HEAD
 import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
+=======
+import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
+import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VirtualActivity;
+>>>>>>> develop
 import com.google.android.gms.analytics.Tracker;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
@@ -167,6 +172,21 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
     @Override
     public void navigateToActivity(Intent intent) {
         startActivity(intent);
+    }
+
+    @Override
+    public void navigateVirtualActivity(VideoReality videoReality) {
+        /*if (!SessionManager.getInstance().getUser().isDorado() && videoReality.isDorado()) {
+            showBuyDoradoDialog();
+            return;
+        }*/
+
+        Intent intent = new Intent(getActivity(), VirtualActivity.class);
+        intent.putExtra(Constant.Key.VIRTUAL_REALITY_SECTION, videoReality);
+        intent.putExtra(Constant.Key.ID, videoReality);
+        String url = videoReality.getUrl().replace("\\", "");
+        intent.putExtra("url", url);
+        navigateToActivity(intent);
     }
 
     public void initBanner(BannerView.Seccion seccion) {

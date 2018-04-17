@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.BarcelonaSC.BarcelonaApp">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.REAL_GET_TASKS" />
@@ -12,6 +14,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
 
     <application
         android:name=".app.App"
@@ -152,6 +158,14 @@
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher" />
 
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBmcLFun6WSfxM2MkjMIIV1HAZKfjUL8l4" />
+
         <!--
              Set color used with incoming notification messages. This is used when no color is set for the incoming
              notification message. See README(https://goo.gl/6BKBk7) for more.
@@ -187,7 +201,14 @@
         <activity
             android:name=".ui.monumentals.fragments.monumental.profile.MonumentalProfileActivity"
             android:screenOrientation="portrait" />
+<<<<<<< HEAD
         <activity android:name=".commons.VideoActivity"></activity>
+=======
+        <activity
+            android:name=".ui.geolocation.MapActivity"
+            android:screenOrientation="portrait" />
+
+>>>>>>> develop
     </application>
 
 </manifest>

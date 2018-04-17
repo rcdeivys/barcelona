@@ -21,16 +21,26 @@ public class ShareSection {
 
     public ShareSection(Context context) {
         this.context = context;
+<<<<<<< HEAD
+=======
+    }
+
+    public static void shareIndividual(String share, String id) {
+        share(share, "", true, id);
+>>>>>>> develop
     }
 
     public static void share(Context context, String section) {
         share(section, "", false, "");
     }
 
+<<<<<<< HEAD
     public static void shareIndividual(String share, String id) {
         share(share, "", true, id);
     }
 
+=======
+>>>>>>> develop
     public static void share(String section, String url, boolean isIndividual, String id) {
         String shareSection = section.replace(" ", "");
         String time = new Timestamp(System.currentTimeMillis()).toString();

@@ -39,6 +39,10 @@ public interface Constant {
         String LOGIN_STATUS = "login_status";
         String BANNER_TABLA = "tabla";
         String VIRTUAL_REALITY_SECTION = "Realidad virtual";
+        String SHARE_VR = "videovr";
+        String SHARE_NEWS = "noticia";
+        String SHARE_GAME = "partido";
+        String SHARE_PLAYER = "jugador_single";
         String IMG = "img";
         String WATERMARK = "watermark";
         String TITLE = "title";

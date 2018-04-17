@@ -1,12 +1,19 @@
 package com.BarcelonaSC.BarcelonaApp.ui.home.mvp;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.MainCalendarFragment;
+<<<<<<< HEAD
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.MultimediaFragment;
+=======
+import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
+>>>>>>> develop
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.WallAndChat.WallAndChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.configuration.NotificationFragment;
@@ -18,7 +25,6 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.shop.VirtualShopFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.statistics.StatisticsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.TeamFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.map.MapFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
@@ -49,10 +55,13 @@ public class HomePresenter {
     private MainCalendarFragment calendarFragment;
     private AcademyFragment academyFragment;
     private WallAndChatFragment wallAndChatFragment;
-    private MapFragment mapFragment;
     private MonumentalMainFragment monumentalFragment;
     private LiveFragment liveFragment;
+<<<<<<< HEAD
     private MultimediaFragment multimediaFragment;
+=======
+    private Activity activity;
+>>>>>>> develop
 
     public HomePresenter(HomeContract.View view, HomeModel homeModel) {
         this.view = view;
@@ -194,12 +203,15 @@ public class HomePresenter {
     }
 
     private void mountMap() {
-        mapFragment = (MapFragment) view.getFragmentByTag(MapFragment.TAG);
-        if (mapFragment == null) {
-            mapFragment = new MapFragment();
-            view.addFragment(mapFragment, MapFragment.TAG);
+        Intent intent = new Intent(App.get().getBaseContext(), MapActivity.class);
+        //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (activity != null) {
+            activity.startActivityForResult(intent, MapActivity.MAP_REQUEST_CODE);
         }
-        view.showFragment(mapFragment, MapFragment.TAG);
+    }
+
+    public void getActivity(Activity activity) {
+        this.activity = activity;
     }
 
     private void live() {
@@ -320,9 +332,7 @@ public class HomePresenter {
                 break;
 
             case Constant.Menu.MAP:
-                view.setTitle(configurationManager.getConfiguration().getTit14());
                 mountMap();
-                view.trackFragment(configurationManager.getConfiguration().getTit14());
                 break;
 
             case Constant.Menu.ONLINE_SHOP:
