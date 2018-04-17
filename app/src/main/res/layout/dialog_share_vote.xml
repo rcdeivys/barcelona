@@ -1,11 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounder_button_white"
+    android:background="@drawable/rounder_button_primary"
     android:orientation="vertical"
     android:padding="10dp">
 
-    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
         style="@style/StyleRobotoBold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +34,7 @@
                 android:layout_width="130dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
+                android:textColor="@color/black"
                 android:background="@drawable/rounder_button"
                 android:text="@string/not"
                 android:textStyle="bold" />
@@ -50,7 +51,7 @@
                 android:layout_width="130dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:background="@drawable/rounder_button_blue"
                 android:text="@string/yes"
                 android:textStyle="bold" />

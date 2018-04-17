@@ -10,6 +10,7 @@ import android.support.multidex.MultiDex;
 import android.util.Base64;
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.app.di.DaggerAppComponent;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.facebook.FacebookSdk;
@@ -21,7 +22,6 @@ import com.BarcelonaSC.BarcelonaApp.BuildConfig;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.di.AppComponent;
 import com.BarcelonaSC.BarcelonaApp.app.di.AppModule;
-import com.BarcelonaSC.BarcelonaApp.app.di.DaggerAppComponent;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

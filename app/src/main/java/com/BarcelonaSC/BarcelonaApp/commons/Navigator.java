@@ -37,8 +37,6 @@ public interface Navigator {
 
     void navigateToGameActivity();
 
-    void navigateVirtualActivity(VideoReality videoReality);
-
     void navigateToActivity(Intent intent);
 
 
