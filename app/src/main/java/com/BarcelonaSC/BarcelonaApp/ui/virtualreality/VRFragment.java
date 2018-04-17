@@ -1,6 +1,5 @@
 package com.BarcelonaSC.BarcelonaApp.ui.virtualreality;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -20,7 +19,6 @@ import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.di.VRModule;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.mvp.VRContract;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.mvp.VRPresenter;
-import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.di.DaggerVRComponent;
 
 import java.util.ArrayList;
