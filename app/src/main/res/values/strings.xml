@@ -36,6 +36,9 @@
     <string name="gallery">Galería</string>
     <string name="applause_already_added">Lo sentimos. Este aplauso ya había sido añadido.</string>
     <string name="applause_successful">Se añadió exitosamente tu aplauso.</string>
+    <string name="applause_remove">Se ha borrado tu aplauso.</string>
+    <string name="label_dialog_share_aplause">Aplauso registrado \n¿Deseas compartir tu aplauso?</string>
+    <string name="label_dialog_share_vote">Voto registrado \n¿Deseas compartir tu voto?</string>
     <string name="place_of_birth">Nacionalidad</string>
     <string name="clap_later">El tiempo para aplaudir por este jugador ha finalizado, regresa en el próximo encuentro y aplaude a tu jugador favorito</string>
     <string name="nacionalidad">NACIONALIDAD</string>
@@ -202,9 +205,14 @@
     <string name="ranking_no_show">\"Para ver el ranking debes votar o esperar a que finalice la encuesta\"</string>
 
     <string name="request_friends_send">Solicitud enviada</string>
+<<<<<<< HEAD
     <string name="txt_buscar">Buscar…</string>
     <string name="txt_go">IR</string>
     <string name="txt_friends">Amigos</string>
     <string name="txt_points">Puntos</string>
+=======
+    <string name="action_volver">VOLVER</string>
+    <string name="action_envian">ENVIAR</string>
+>>>>>>> feature/deivys/BSC-309-BSC-314
 
 </resources>
