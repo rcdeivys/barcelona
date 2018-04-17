@@ -1,11 +1,11 @@
 package com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp;
 
 import com.BarcelonaSC.BarcelonaApp.app.api.TeamApi;
+import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.models.PlayerApplause;
 import com.BarcelonaSC.BarcelonaApp.models.response.ApplauseResponse;
-import com.BarcelonaSC.BarcelonaApp.models.response.SetApplauseResponse;
-import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.models.response.PlayerResponse;
+import com.BarcelonaSC.BarcelonaApp.models.response.SetApplauseResponse;
 
 import java.util.List;
 
@@ -39,7 +39,6 @@ public class PlayerProfileModel {
                 listener.onError(errorMessage);
             }
         });
-
     }
 
     public void getPlayerDataFB(String playerId, final PlayerProfileContract.ModelResultListener listener) {
@@ -60,13 +59,13 @@ public class PlayerProfileModel {
         });
     }
 
-    public void setPlayerApplause(PlayerApplause playerApplause, final PlayerProfileContract.ModelResultListener listener) {
+    public void setPlayerApplause(final PlayerApplause playerApplause, final PlayerProfileContract.ModelResultListener listener) {
         teamApi.setApplause(playerApplause).enqueue(new NetworkCallBack<SetApplauseResponse>() {
             @Override
             public void onRequestSuccess(SetApplauseResponse response) {
                 List<String> error = response.getError();
                 if ("exito".equals(response.getStatus())) {
-                    listener.onSetPlayerApplauseSuccess();
+                    listener.onSetPlayerApplauseSuccess(playerApplause.getIdjugador(), response.getAplauso());
                 } else if (error != null) {
                     listener.onError(error.get(0));
                 }
@@ -79,9 +78,7 @@ public class PlayerProfileModel {
         });
     }
 
-
     public void getPlayerApplause(String playerId) {
-
         teamApi.getApplause(playerId).enqueue(new NetworkCallBack<ApplauseResponse>() {
             @Override
             public void onRequestSuccess(ApplauseResponse response) {

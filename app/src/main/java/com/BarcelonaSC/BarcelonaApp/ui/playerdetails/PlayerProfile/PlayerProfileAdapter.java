@@ -30,6 +30,8 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
     private static final String FINALIZED = "Finalizado";
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
+    private static final int APLAUDIO = 1;
+    private static final int NO_APLAUDIO = 0;
     @BindView(R.id.player_img)
     ImageView playerImg;
     private Context context;
@@ -76,75 +78,16 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         } else {
             return new VHItem(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false));
         }
-
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof VHHeader) {
-            VHHeader vhHeader = (VHHeader) holder;
-            initHeader(vhHeader);
+            ((VHHeader) holder).initHeader(playerData);
         } else {
             VHItem vhItem = (VHItem) holder;
             initItem(vhItem, position);
         }
-    }
-
-    private void initHeader(VHHeader vhHeader) {
-        Glide.with(context)
-                .load(playerData.getBanner())
-                .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
-                .into(vhHeader.playerImg);
-
-        if (!type.equals(Constant.Key.GAME_FB)) {
-            if (playerData.getGoles1() != null)
-                vhHeader.ctvResultGame.setText(playerData.getGoles1() + "-" + playerData.getGoles2());
-
-            vhHeader.ctvWeight.setText(playerData.getnCamiseta());
-
-            vhHeader.ctvPlayerNationality.setText(playerData.getNacionalidad());
-
-            vhHeader.ctvPlayerHeight.setText(playerData.getEstatura());
-
-            vhHeader.ctvPlayerBirthdate.setText(Commons.getStringDate2(playerData.getFechaNacimiento()));
-
-            vhHeader.ctvTeamOneName.setText(playerData.getEquipo1());
-
-            vhHeader.ctvTeamTwoName.setText(playerData.getEquipo2());
-
-            vhHeader.ctvGameData.setText(Commons.getStringDate2(playerData.getFecha()));
-
-            vhHeader.ctvGameFechaFifa.setText(playerData.getFechaEtapa());
-            vhHeader.ctvGameLeague.setText("");
-            Glide.with(context)
-                    .load(playerData.getBandera1())
-                    .into(vhHeader.imTeamOneFlag);
-
-            Glide.with(context)
-                    .load(playerData.getBandera2())
-                    .into(vhHeader.ivTeamTwoFlag);
-
-            if (playerData.getApalusosUltimoPartido() != null)
-                vhHeader.tvGameApplause.setText(String.valueOf(playerData.getApalusosUltimoPartido()));
-
-            if (playerData.getAplausosAcumulado() != null)
-                vhHeader.tvTotalApplause.setText(String.valueOf(playerData.getAplausosAcumulado()));
-
-            vhHeader.btnApplaused.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (playerData.getSepuedeaplaudir() == 1) {
-                        onItemClickListener.onClickHeader();
-                    } else {
-                        Toast.makeText(context, context.getString(R.string.clap_later), Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
-        } else {
-            vhHeader.hideElem1.setVisibility(View.GONE);
-            vhHeader.hideElem2.setVisibility(View.GONE);
-        }
-
     }
 
     private void initItem(VHItem vhItem, final int position) {
@@ -194,6 +137,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
     }
 
     public interface OnItemClickListener {
+
         void onClickItem(int position);
 
         void onClickHeader();
@@ -248,7 +192,6 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         ImageView imTeamOneFlag;
         @BindView(R.id.team_two_flag)
         ImageView ivTeamTwoFlag;
-
         @BindView(R.id.ctv_weight)
         FCMillonariosTextView ctvWeight;
         @BindView(R.id.ctv_player_nationality)
@@ -263,6 +206,71 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         VHHeader(View view) {
             super(view);
             ButterKnife.bind(this, view);
+        }
+
+        private void initHeader(final PlayerData playerData) {
+            Glide.with(context)
+                    .load(playerData.getBanner())
+                    .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
+                    .into(playerImg);
+
+            if (!type.equals(Constant.Key.GAME_FB)) {
+                if (playerData.getGoles1() != null)
+                    ctvResultGame.setText(playerData.getGoles1() + "-" + playerData.getGoles2());
+
+                ctvWeight.setText(playerData.getnCamiseta());
+
+                ctvPlayerNationality.setText(playerData.getNacionalidad());
+
+                ctvPlayerHeight.setText(playerData.getEstatura());
+
+                ctvPlayerBirthdate.setText(Commons.getStringDate2(playerData.getFechaNacimiento()));
+
+                ctvTeamOneName.setText(playerData.getEquipo1());
+
+                ctvTeamTwoName.setText(playerData.getEquipo2());
+
+                ctvGameData.setText(Commons.getStringDate2(playerData.getFecha()));
+
+                ctvGameFechaFifa.setText(playerData.getFechaEtapa());
+                ctvGameLeague.setText("");
+                Glide.with(context)
+                        .load(playerData.getBandera1())
+                        .into(imTeamOneFlag);
+
+                Glide.with(context)
+                        .load(playerData.getBandera2())
+                        .into(ivTeamTwoFlag);
+
+                if (playerData.getApalusosUltimoPartido() != null)
+                    tvGameApplause.setText(String.valueOf(playerData.getApalusosUltimoPartido()));
+
+                if (playerData.getAplausosAcumulado() != null)
+                    tvTotalApplause.setText(String.valueOf(playerData.getAplausosAcumulado()));
+
+                setImgAplauso(playerData.getUltimoAplauso());
+                btnApplaused.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (playerData.getSepuedeaplaudir() == 1) {
+                            onItemClickListener.onClickHeader();
+                        } else {
+                            Toast.makeText(context, context.getString(R.string.clap_later), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            } else {
+                hideElem1.setVisibility(View.GONE);
+                hideElem2.setVisibility(View.GONE);
+            }
+        }
+
+        private void setImgAplauso(int band) {
+//            if (band == APLAUDIO) {
+//                btnApplaused.setImageResource(R.drawable.applause_on);
+//            } else {
+//                btnApplaused.setImageResource(R.drawable.applause_off);
+//            }
         }
     }
 

@@ -43,23 +43,23 @@ public class VotePresenter implements VoteContract.Presenter, VoteContract.Model
     }
 
     @Override
-    public void setChooseVote(SendChooseVote sendChooseVote) {
-        model.setPlayersVotes(sendChooseVote, this);
+    public void setChooseVote(SendChooseVote sendChooseVote, int msj) {
+        model.setPlayersVotes(sendChooseVote, this, msj);
     }
 
-    public void onClickPlayerVote(int position) {
+    public void onClickPlayerVote(int position, int msj) {
         Log.i(TAG, "/--->onClickPlayerVote PRESENTER");
-        if (mEncuestaData.getPuedevotar() == 0) {
-            onError("No puedes votar en esta encuesta");
-            return;
-        } else if ("1".equals(mEncuestaData.getRespuestas().get(position).getYaVoto())) {
-            onError("Ya votaste por esa opcion");
-            return;
-        }
+//        if (mEncuestaData.getPuedevotar() == 0) {
+//            onError("No puedes votar en esta encuesta");
+//            return;
+//        } else if ("1".equals(mEncuestaData.getRespuestas().get(position).getYaVoto())) {
+//            onError("Ya votaste por esa opcion");
+//            return;
+//        }
         SendChooseVote sendChooseVote = new SendChooseVote();
         sendChooseVote.setIdEncuesta(mEncuestaData.getIdencuesta());
         sendChooseVote.setIdRespuesta(mEncuestaData.getRespuestas().get(position).getIdrespuesta());
-        setChooseVote(sendChooseVote);
+        setChooseVote(sendChooseVote, msj);
     }
 
     @Override
@@ -84,12 +84,18 @@ public class VotePresenter implements VoteContract.Presenter, VoteContract.Model
     }
 
     @Override
-    public void onsetVotesSuccess() {
+    public void onSetVotesSuccess(int id, int msj) {
         getChoose();
         EventBus.getDefault().post(new ChooseUpdateRanEvent(true));
-        EventBus.getDefault().post(new ChooseOpenEvent("2", true));
-        view.showToastError("Voto registrado");
+        if (msj == 1) {
+            view.showShareVote(id);
+            view.showToastError("Voto Registrado");
+            EventBus.getDefault().post(new ChooseOpenEvent("2", true));
+        } else {
+            view.showToastError("Se ha borrado tu voto");
+        }
     }
+
 
     @Override
     public void onError(String error) {
