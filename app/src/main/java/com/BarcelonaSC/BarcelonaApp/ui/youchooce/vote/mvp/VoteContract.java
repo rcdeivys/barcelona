@@ -17,7 +17,7 @@ public class VoteContract {
 
         void onGetChooseFailed();
 
-        void onsetVotesSuccess();
+        void onsetVotesSuccess(int id, int msj);
 
         void onError(String error);
     }
@@ -26,7 +26,7 @@ public class VoteContract {
 
         void getChoose();
 
-        void setChooseVote(SendChooseVote sendChooseVote);
+        void setChooseVote(SendChooseVote sendChooseVote,int msj);
 
         boolean isViewNull();
     }
@@ -44,6 +44,8 @@ public class VoteContract {
         void setChooseData(EncuestaData mEncuestaData);
 
         void showNoEncuentas();
+
+        void showShareVote(int id);
 
         void navigateToChooseProfileActivity(int id, boolean showVotes);
 
