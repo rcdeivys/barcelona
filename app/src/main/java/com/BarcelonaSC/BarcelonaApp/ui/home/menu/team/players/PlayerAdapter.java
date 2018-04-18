@@ -40,8 +40,8 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static final String IN_PROGRESS = "En curso";
     private static final String FINALIZED = "Finalizado";
     private Context context;
-    private List<NominaItem> data;
     private GameSummonedData gameSummonedData;
+    private List<NominaItem> data;
     private List<NominaItem> dataFiltered;
     private List<NominaItem> oldData;
     private OnItemClickListener onItemClickListener;
@@ -190,7 +190,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     dataFiltered.clear();
                     dataFiltered = oldData;
                     Log.d(TAG, "filters oldData size " + oldData.size());
-                    Log.d(TAG, "filters oldData size " + oldData.get(1).getNombre());
                 } else {
                     List<NominaItem> filteredList = new ArrayList<>();
                     for (NominaItem row : oldData) {

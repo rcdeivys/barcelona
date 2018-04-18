@@ -155,4 +155,23 @@ public class GameSummonedData {
     public void setJugadores(List<NominaItem> jugadores) {
         this.jugadores = jugadores;
     }
+
+    @Override
+    public String toString() {
+        return "GameSummonedData{" +
+                "idpartido=" + idpartido +
+                ", equipo1='" + equipo1 + '\'' +
+                ", bandera1='" + bandera1 + '\'' +
+                ", goles1=" + goles1 +
+                ", equipo2='" + equipo2 + '\'' +
+                ", bandera2='" + bandera2 + '\'' +
+                ", goles2=" + goles2 +
+                ", fecha='" + fecha + '\'' +
+                ", fechaEtapa='" + fechaEtapa + '\'' +
+                ", estado='" + estado + '\'' +
+                ", estadio='" + estadio + '\'' +
+                ", info='" + info + '\'' +
+                ", jugadores=" + jugadores +
+                '}';
+    }
 }
