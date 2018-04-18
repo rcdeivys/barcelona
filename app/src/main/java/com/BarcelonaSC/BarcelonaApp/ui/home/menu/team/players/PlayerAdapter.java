@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.BarcelonaSC.BarcelonaApp.R;
@@ -135,7 +136,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         } else {
             VHItem vhItem = (VHItem) holder;
 
-            NominaItem playoffData = getItem(position);
+            final NominaItem playoffData = getItem(position);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
             vhItem.playerImg.setLayoutParams(params);
@@ -152,6 +153,13 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         onItemClickListener.onClickItem(position - 1);
                     else
                         onItemClickListener.onClickItem(position);
+                }
+            });
+
+            vhItem.ivShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ShareSection.shareIndividual(Constant.Key.SHARE_PLAYER, String.valueOf(playoffData.getIdJugador()));
                 }
             });
         }
@@ -182,6 +190,9 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     class VHItem extends RecyclerView.ViewHolder {
         @BindView(R.id.player_img)
         ImageView playerImg;
+
+        @BindView(R.id.iv_share)
+        ImageView ivShare;
 
         VHItem(View view) {
             super(view);

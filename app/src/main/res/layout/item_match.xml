@@ -159,6 +159,17 @@
 
         </LinearLayout>
 
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_share"
+            android:visibility="visible" />
+
     </RelativeLayout>
 
     <View
