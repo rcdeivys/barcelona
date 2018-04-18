@@ -14,9 +14,11 @@ import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Carlos on 13/10/2017.
@@ -32,12 +34,16 @@ public class PlayerActivity extends BaseActivity {
 
     @BindView(R.id.ib_return)
     ImageButton ibReturn;
+
     @BindView(R.id.ib_sub_header_share)
     ImageButton ibShare;
+
     @BindView(R.id.tv_sub_header_title)
     FCMillonariosTextView tvSubHeaderTitle;
 
     private PlayerPagerAdapter viewPagerAdapter;
+
+    private int playerId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,6 +69,15 @@ public class PlayerActivity extends BaseActivity {
         super.initBanner(BannerView.Seccion.TEAM);
     }
 
+    @OnClick(R.id.ib_sub_header_share)
+    void sharePlayerProfile() {
+        if (getIntent().getExtras().getString(Constant.Key.TYPE, "").equals(Constant.Key.GAME_FB)) {
+            ShareSection.share(getActivity(), "futbolbase");
+        } else {
+            ShareSection.shareIndividual(Constant.Key.SHARE_PLAYER, String.valueOf(playerId));
+        }
+    }
+
 
     public void initSubToolBar(String name) {
         tvSubHeaderTitle.setText(name);
@@ -73,7 +88,7 @@ public class PlayerActivity extends BaseActivity {
 
         int Numboftabs = 2;
 
-        int playerId = getIntent().getExtras().getInt(Constant.Key.PLAYER_ID, 0);
+        playerId = getIntent().getExtras().getInt(Constant.Key.PLAYER_ID, 0);
         String type = getIntent().getExtras().getString(Constant.Key.TYPE, "");
         String[] titles = new String[2];
 
