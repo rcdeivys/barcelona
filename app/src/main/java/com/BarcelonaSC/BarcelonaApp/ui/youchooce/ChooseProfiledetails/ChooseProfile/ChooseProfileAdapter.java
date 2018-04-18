@@ -124,6 +124,8 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
                         holder.videoView.pause();
                         onItemClickListener.onClickVideoItem(getNewsList(position), holder.getVideoCurrentPosition());
                     }*/
+                    holder.videoView.pause();
+                    onItemClickListener.onClickVideoItem(getNewsList(position), holder.getVideoCurrentPosition());
                 }
             });
         } else {

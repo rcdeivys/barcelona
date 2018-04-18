@@ -237,13 +237,13 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
     @Override
     public void setTitle(String title) {
         super.setSubTitle(title);
-        if (ConfigurationManager.getInstance().getConfiguration().getTit1().equals(title) ||
-                ConfigurationManager.getInstance().getConfiguration().getTit15().equals(title) ||
-                ConfigurationManager.getInstance().getConfiguration().getTit10().equals(title) ||
-                ConfigurationManager.getInstance().getConfiguration().getTit161().equals(title)) {
-            share.setVisibility(View.GONE);
-        } else {
+        if (ConfigurationManager.getInstance().getConfiguration().getTit4().equals(title) ||
+                ConfigurationManager.getInstance().getConfiguration().getTit5().equals(title) ||
+                ConfigurationManager.getInstance().getConfiguration().getTit7().equals(title) ||
+                ConfigurationManager.getInstance().getConfiguration().getTit12().equals(title)) {
             share.setVisibility(View.VISIBLE);
+        } else {
+            share.setVisibility(View.GONE);
         }
         nameSection = title;
         if (subMenu.getVisibility() == View.GONE)

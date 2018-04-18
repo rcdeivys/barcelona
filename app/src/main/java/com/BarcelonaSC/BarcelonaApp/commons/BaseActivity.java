@@ -3,24 +3,17 @@ package com.BarcelonaSC.BarcelonaApp.commons;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.LinearLayout;
 
-import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
-import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
-import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VirtualActivity;
-import com.google.android.gms.analytics.Tracker;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
-import com.BarcelonaSC.BarcelonaApp.commons.Navigator;
 import com.BarcelonaSC.BarcelonaApp.models.BeneficioData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
@@ -36,7 +29,6 @@ import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
 import com.google.android.gms.analytics.Tracker;
-import com.google.vr.sdk.widgets.common.FullScreenDialog;
 
 /**
  * Created by root on 10/31/17.
@@ -120,12 +112,12 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
             showBuyDoradoDialog();
             return;
         }*/
-       /* Intent intent = new Intent(getActivity(), VideoActivity.class);
+        Intent intent = new Intent(getActivity(), VideoActivity.class);
         intent.putExtra(Constant.Video.CURRENT_POSITION, currentPosition);
         intent.putExtra(Constant.Video.PLAY, true);
         intent.putExtra(Constant.Video.URL, news.getLink());
         intent.putExtra(Constant.Key.ID, "" + news.getId());
-        startActivity(intent);*/
+        startActivity(intent);
     }
 
     @Override
