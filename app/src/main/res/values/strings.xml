@@ -63,8 +63,7 @@
     <string name="technical_director">DIRECTOR TÉCNICO</string>
     <string name="next_date">Próxima Fecha</string>
     <string name="accept">Aceptar</string>
-    <string name="enjoy_whole_vr_experience">Asegúrate que tu dispositivo tiene giroscopio para poder disfrutar de toda la experiencia VR</string>
-    <string name="skip">Saltar</string>
+    <string name="enjoy_whole_vr_experience">Asegúrate que tu dispositivo sea compatible para poder disfrutar de toda la experiencia en Realidad Virtual</string><string name="skip">Saltar</string>
     <string name="choose_ideal_alignment">Escoge la Alineación ideal para ti</string>
     <string name="match_alignment">Alineación del partido</string>
     <string name="armar_alineacion">ARMAR ALINEACIÓN</string>
@@ -203,7 +202,5 @@
 
     <string name="request_friends_send">Solicitud enviada</string>
 
-    <string name="enjoy_whole_vr_experience">Asegúrate que tu dispositivo sea compatible para poder disfrutar de toda la experiencia en Realidad Virtual</string>
-    
 
 </resources>
