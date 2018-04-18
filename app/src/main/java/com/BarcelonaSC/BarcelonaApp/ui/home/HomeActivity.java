@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -16,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.home.menu.news.MainNewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
 import com.bumptech.glide.Glide;
 import com.karumi.dexter.Dexter;
@@ -266,11 +268,20 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
     @Override
     public void onBackPressed() {
-        if (mActiveFragmentTag.equals(NewsFragment.TAG + Constant.Menu.NEWS)) {
-            super.onBackPressed();
+        if (!dl_menu.isDrawerOpen(Gravity.START)) {
+            if (mActiveFragmentTag.equals(MainNewsFragment.TAG + Constant.Menu.NEWS)) {
+                super.onBackPressed();
+            } else {
+                presenter.newsProfessional();
+            }
         } else {
-            presenter.newsProfessional();
+            dl_menu.closeDrawers();
         }
+//        if (mActiveFragmentTag.equals(NewsFragment.TAG + Constant.Menu.NEWS)) {
+//            super.onBackPressed();
+//        } else {
+//            presenter.newsProfessional();
+//        }
     }
 
     @Override
