@@ -98,17 +98,18 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                 holder.ivShare.setVisibility(View.VISIBLE);
             }*/
             holder.videoView.setCustomVideoViewOnListener(this);
-           /* holder.setNewsVideo(((News) newsList.get(position)), new View.OnClickListener() {
+            holder.setNewsVideo(((News) newsList.get(position)), new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (!SessionManager.getInstance().getUser().isDorado() && ((News) newsList.get(position)).isDorado()) {
+                  /*  if (!SessionManager.getInstance().getUser().isDorado() && ((News) newsList.get(position)).isDorado()) {
                         holder.videoView.customVideoViewOnListener.videoIsDorado();
                     } else {
-                        holder.videoView.pause();
-                        onItemClickListener.onVideoClick(((News) newsList.get(position)), holder.getVideoCurrentPosition());
-                    }
+
+                    }*/
+                    holder.videoView.pause();
+                    onItemClickListener.onVideoClick(((News) newsList.get(position)), holder.getVideoCurrentPosition());
                 }
-            });*/
+            });
         } else {
             holder.onClickContentNewsItem(new View.OnClickListener() {
                 @Override

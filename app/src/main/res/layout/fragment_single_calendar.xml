@@ -33,6 +33,18 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/font_title_size" />
 
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_share"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="2dp"
+            android:tint="@color/black"
+            android:visibility="visible" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -143,7 +155,7 @@
         android:layout_above="@+id/banner"
         android:layout_below="@+id/header">
 
-        <ListView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_noticias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

@@ -8,12 +8,10 @@
 
 
 
-    <com.millonarios.MillonariosFC.utils.CustomVideoView
+    <com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView
         android:id="@+id/custom_video_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </com.millonarios.MillonariosFC.utils.CustomVideoView>
+        android:layout_height="match_parent"/>
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/btn_back"

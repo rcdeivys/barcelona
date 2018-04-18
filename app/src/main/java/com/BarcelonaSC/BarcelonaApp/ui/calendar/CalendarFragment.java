@@ -18,12 +18,12 @@ import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.models.Tournament;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.di.CalendarModule;
-import com.BarcelonaSC.BarcelonaApp.ui.calendar.mvp.CalendarPresenter;
-import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.SingleCalendarListFragment;
-import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.di.DaggerCalendarComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.mvp.CalendarContract;
+import com.BarcelonaSC.BarcelonaApp.ui.calendar.mvp.CalendarPresenter;
+import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.SingleCalendarListFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.viewholder.LeagueGroup;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -190,8 +190,8 @@ public class CalendarFragment extends BaseFragment implements CalendarContract.V
         bundle.putString("type", type);
         singleCalendarListFragment.setArguments(bundle);
         getFragmentManager().beginTransaction()
-                .setCustomAnimations(R.anim.top_in, R.anim.top_out)
-                .replace(R.id.cal_container, singleCalendarListFragment)
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
+                .add(R.id.cal_container, singleCalendarListFragment, SingleCalendarListFragment.TAG)
                 .commitAllowingStateLoss();
     }
 
