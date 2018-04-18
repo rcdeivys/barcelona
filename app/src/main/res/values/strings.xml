@@ -211,6 +211,7 @@
     <string name="txt_points">Puntos</string>
     <string name="action_volver">VOLVER</string>
     <string name="action_envian">ENVIAR</string>
+    <string name="search_buscar">   Buscar…</string>
 
 
 </resources>
