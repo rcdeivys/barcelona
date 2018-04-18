@@ -28,14 +28,19 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.img_header)
     ImageView imgHeader;
+
     @BindView(R.id.tv_date)
     TextView textDate;
+
     @BindView(R.id.tv_title)
     TextView textTitle;
+
     @BindView(R.id.content_news_item)
     LinearLayout contentNewsItem;
+
     @BindView(R.id.texture_video_view)
     public CustomVideoView videoView;
+
     @BindView(R.id.iv_share)
     public ImageView ivShare;
 
@@ -57,7 +62,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         this.news = item;
         imgHeader.setVisibility(View.VISIBLE);
         videoView.setVisibility(View.GONE);
-        ivShare.setVisibility(View.GONE);
+        ivShare.setVisibility(View.VISIBLE);
         if (item.getFoto() != null) {
             imgHeader.setAlpha((float) 1.0);
             Glide.with(context)
@@ -83,14 +88,12 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         imgHeader.setVisibility(View.GONE);
         videoView.setVisibility(View.VISIBLE);
         videoView.setImage(context, news.getFoto());
-      //  videoView.setVideoUrl(news.getLink(), 0, news.isDorado());
+        videoView.setVideoUrl(news.getLink(), 0, news.isDorado());
         contentNewsItem.setOnClickListener(null);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-
         videoView.setImage(context, news.getFoto());
         videoView.imgNews.setAdjustViewBounds(true);
-        //ivShare.setVisibility(View.VISIBLE);
-
+        ivShare.setVisibility(View.VISIBLE);
         videoView.setButtonFullScreen(R.drawable.ic_media_fullscreen, Commons.getColor(R.color.white), onClickListener);
     }
 

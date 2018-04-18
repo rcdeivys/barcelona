@@ -90,7 +90,6 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
     private void configurNewsViewHolder(final NewsViewHolder holder, final int position) {
         holder.setNews((News) newsList.get(position));
-        holder.ivShare.setVisibility(View.GONE);
         if (((News) newsList.get(position)).getTipo().equals(Constant.NewsType.VIDEO)) {
            /* if (((News) newsList.get(position)).isDorado() && !SessionManager.getInstance().getUser().isDorado()) {
                 holder.ivShare.setVisibility(View.GONE);
@@ -161,26 +160,37 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         //    MATCH
         @BindView(R.id.iv_team_1_flag)
         ImageView ivTeamFlag1;
+
         @BindView(R.id.iv_team_2_flag)
         ImageView ivTeamFlag2;
+
         @BindView(R.id.iv_team_1_name)
         TextView tvTeamName1;
+
         @BindView(R.id.iv_team_2_name)
         TextView tvTeamName2;
+
         @BindView(R.id.tv_match_date)
         TextView tvMatchDate;
+
         @BindView(R.id.tv_match_score)
         TextView tvMatchScore;
+
         @BindView(R.id.tv_sub_title)
         TextView tvSubTitle;
+
         @BindView(R.id.tv_match_state)
         TextView tvMatchState1;
+
         @BindView(R.id.tv_match_state_2)
         TextView tvMatchState2;
+
         @BindView(R.id.tv_info)
         TextView tvInfo;
+
         @BindView(R.id.v_separador)
         View viewSaparador;
+
         @BindView(R.id.iv_share)
         ImageView ivShare;
 
@@ -190,7 +200,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             super(itemView);
             this.context = itemView.getContext();
             ButterKnife.bind(this, itemView);
-            ivShare.setVisibility(View.GONE);
+            ivShare.setVisibility(View.VISIBLE);
             viewSaparador.setVisibility(View.GONE);
         }
 
@@ -200,13 +210,13 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             tvMatchDate.setText(match.getFechaEtapa());
 
             Glide.with(context).load(match.getBandera1())
-                    .apply(new RequestOptions().placeholder(R.drawable.logo_millos).error(R.drawable.logo_millos))
+                    .apply(new RequestOptions().placeholder(R.drawable.logo_bsc).error(R.drawable.logo_bsc))
                     .into(ivTeamFlag1);
 
             tvTeamName1.setText(match.getEquipo1());
 
             Glide.with(context).load(match.getBandera2())
-                    .apply(new RequestOptions().placeholder(R.drawable.logo_millos).error(R.drawable.logo_millos))
+                    .apply(new RequestOptions().placeholder(R.drawable.logo_bsc).error(R.drawable.logo_bsc))
                     .into(ivTeamFlag2);
 
             tvTeamName2.setText(match.getEquipo2());
