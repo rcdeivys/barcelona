@@ -113,7 +113,6 @@ public class StreamingFragment extends ShareBaseFragment implements StreamingCon
 
     @Override
     public void setStreaming(MultimediaStreamingData streamingData) {
-        Log.e("DEIVYS: " , streamingData.getUrlEnvivo());
         webView.loadUrl(streamingData.getUrlEnvivo());
     }
 

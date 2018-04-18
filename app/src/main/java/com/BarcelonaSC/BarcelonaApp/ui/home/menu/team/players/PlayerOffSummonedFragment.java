@@ -5,11 +5,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Filter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -25,8 +29,10 @@ import com.BarcelonaSC.BarcelonaApp.models.NominaItem;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.players.di.DaggerPlayerComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.players.mvp.PlayerContract;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.players.mvp.PlayerPresenter;
+import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -42,6 +48,7 @@ import butterknife.Unbinder;
 public class PlayerOffSummonedFragment extends BaseFragment implements PlayerContract.View, PlayerAdapter.OnItemClickListener {
 
     public static final String TAG = PlayerOffSummonedFragment.class.getSimpleName();
+
     @BindView(R.id.rv_players)
     RecyclerView rvPlayers;
     @BindView(R.id.swipe_container)
@@ -55,6 +62,8 @@ public class PlayerOffSummonedFragment extends BaseFragment implements PlayerCon
     @BindView(R.id.btn_top)
     ImageButton btnTop;
     Unbinder unbinder;
+    @BindView(R.id.et_nomina)
+    EditText etNomina;
 
     @Inject
     PlayerPresenter presenter;
@@ -65,7 +74,6 @@ public class PlayerOffSummonedFragment extends BaseFragment implements PlayerCon
     private String type;
 
     public static PlayerOffSummonedFragment newInstance(String type) {
-
         Bundle args = new Bundle();
         args.putString(Constant.Key.TYPE, type);
         PlayerOffSummonedFragment fragment = new PlayerOffSummonedFragment();
@@ -111,6 +119,27 @@ public class PlayerOffSummonedFragment extends BaseFragment implements PlayerCon
             @Override
             public void onClick(View view) {
                 rvPlayers.smoothScrollToPosition(0);
+            }
+        });
+
+        if (type.equals(Constant.Key.GAME_FB)) {
+            etNomina.setVisibility(View.GONE);
+        }
+
+        etNomina.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (playerAdapter != null)
+                    playerAdapter.getFilter().filter(Commons.normalizedString(charSequence.toString()));
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
