@@ -97,21 +97,21 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         if (holder instanceof VHHeader) {
             VHHeader vhHeader = (VHHeader) holder;
+
             vhHeader.teamOneName.setText(gameSummonedData.getEquipo1());
-            if (gameSummonedData.getBandera2() != null) {
+            if (gameSummonedData.getBandera1() != null) {
                 Glide.with(context)
                         .load(gameSummonedData.getBandera1())
                         .into(vhHeader.teamOneFlag);
 
             }
-            vhHeader.teamTwoName.setText(gameSummonedData.getEquipo2());
 
+            vhHeader.teamTwoName.setText(gameSummonedData.getEquipo2());
             if (gameSummonedData.getBandera2() != null) {
                 Glide.with(context)
                         .load(gameSummonedData.getBandera2())
                         .into(vhHeader.teamTwoFlag);
             }
-
 
             String result = gameSummonedData.getGoles1() + "-" + gameSummonedData.getGoles2();
             if (gameSummonedData.getEstado().toUpperCase().equals(Constant.Key.PROGRESS) || gameSummonedData.getEstado().toUpperCase().equals(Constant.Key.FINALIZED))
@@ -179,7 +179,6 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             return data.size();
     }
 
-
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -191,10 +190,10 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     dataFiltered.clear();
                     dataFiltered = oldData;
                     Log.d(TAG, "filters oldData size " + oldData.size());
+                    Log.d(TAG, "filters oldData size " + oldData.get(1).getNombre());
                 } else {
                     List<NominaItem> filteredList = new ArrayList<>();
                     for (NominaItem row : oldData) {
-
                         if (row.getNombre().toUpperCase().contains(charString.toUpperCase())) {
                             filteredList.add(row);
                         }
