@@ -37,7 +37,8 @@ public class MultimediaViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         // Open "on line" fragment
         else {
-            streamingFragment = new StreamingFragment();
+            //streamingFragment = new StreamingFragment();
+            streamingFragment = StreamingFragment.newInstance(Constant.Key.MULTIMEDIA_ONLINE);
             return streamingFragment;
         }
     }
