@@ -1,7 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.wall.list.di;
 
 import com.BarcelonaSC.BarcelonaApp.app.di.AppComponent;
-import com.BarcelonaSC.BarcelonaApp.ui.wall.list.WallFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.list.WallFragmentList;
 
 import dagger.Component;
 
@@ -11,5 +11,5 @@ import dagger.Component;
 @WallScope
 @Component(dependencies = {AppComponent.class}, modules = {WallModule.class})
 public interface WallComponent {
-    void inject(WallFragment wallFragment);
+    void inject(WallFragmentList wallFragmentList);
 }

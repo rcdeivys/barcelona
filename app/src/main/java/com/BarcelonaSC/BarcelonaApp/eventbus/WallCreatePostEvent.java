@@ -1,22 +1,24 @@
 package com.BarcelonaSC.BarcelonaApp.eventbus;
 
+import com.BarcelonaSC.BarcelonaApp.models.WallItem;
+
 /**
  * Created by Leonardojpr on 1/24/18.
  */
 
 public class WallCreatePostEvent {
 
-    public boolean create;
+    public WallItem wallItem;
 
-    public WallCreatePostEvent(boolean create) {
-        this.create = create;
+    public WallCreatePostEvent(WallItem wallItem) {
+        this.wallItem = wallItem;
     }
 
-    public boolean isCreate() {
-        return create;
+    public WallItem getWallItem() {
+        return wallItem;
     }
 
-    public void setCreate(boolean create) {
-        this.create = create;
+    public void setWallItem(WallItem wallItem) {
+        this.wallItem = wallItem;
     }
 }

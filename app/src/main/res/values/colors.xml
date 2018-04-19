@@ -77,4 +77,6 @@
     <color name="chat_color_bubble_no_self">#ECEEF1</color>
     <color name="chat_color_bubble_self">#2B4E98</color>
 
+    <color name="gray_300">#E0E0E0</color>
+
 </resources>
