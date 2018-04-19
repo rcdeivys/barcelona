@@ -90,7 +90,7 @@ public class VotePresenter implements VoteContract.Presenter, VoteContract.Model
         if( msj == 1 ) {
             view.showShareVote(id);
             view.showToastError("Voto Registrado");
-            EventBus.getDefault().post(new ChooseOpenEvent("2", true));
+          //  EventBus.getDefault().post(new ChooseOpenEvent("2", true));
         } else {
             view.showToastError("Se ha borrado tu voto");
         }

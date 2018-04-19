@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.eventbus.ChooseOpenEvent;
 import com.BarcelonaSC.BarcelonaApp.models.EncuestaData;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.mossapplauded.ApplaudedFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfileActivity;
@@ -31,6 +32,8 @@ import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.BarcelonaSC.BarcelonaApp.utils.ProgressClock;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
+
+import org.greenrobot.eventbus.EventBus;
 
 import javax.inject.Inject;
 
@@ -256,6 +259,7 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
             @Override
             public void onClick(View v) {
                 alertDialog.dismiss();
+                EventBus.getDefault().post(new ChooseOpenEvent("2", true));
             }
         });
 
@@ -265,6 +269,7 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
             public void onClick(View v) {
                 ShareSection.shareIndividual("tueliges", String.valueOf(id));
                 alertDialog.dismiss();
+                EventBus.getDefault().post(new ChooseOpenEvent("2", true));
             }
         });
     }

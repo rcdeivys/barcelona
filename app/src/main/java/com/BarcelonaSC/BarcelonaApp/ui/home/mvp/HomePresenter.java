@@ -265,11 +265,11 @@ public class HomePresenter {
                 view.trackFragment(configurationManager.getConfiguration().getTit3());
                 break;
 
-//            case Constant.Menu.IN_LIVE:
-//                view.setTitle(configurationManager.getConfiguration().getTit9());
-//                multimedia(Constant.Menu.IN_LIVE);
-//                view.trackFragment(configurationManager.getConfiguration().getTit9());
-//                break;
+            case Constant.Menu.IN_LIVE:
+                view.setTitle(configurationManager.getConfiguration().getTit9());
+                multimedia(Constant.Menu.IN_LIVE);
+                view.trackFragment(configurationManager.getConfiguration().getTit9());
+                break;
 //
 //            case Constant.Menu.VIDEOS:
 //                view.setTitle(configurationManager.getConfiguration().getTit9());
@@ -295,11 +295,11 @@ public class HomePresenter {
                 view.trackFragment(configurationManager.getConfiguration().getTit12());
                 break;
 
-            case Constant.Menu.IN_LIVE:
-                view.setTitle(configurationManager.getConfiguration().getTit9());
-                view.trackFragment(configurationManager.getConfiguration().getTit9());
-                live();
-                break;
+//            case Constant.Menu.IN_LIVE:
+//                view.setTitle(configurationManager.getConfiguration().getTit9());
+//                view.trackFragment(configurationManager.getConfiguration().getTit9());
+//                live();
+//                break;
 
             case Constant.Menu.WALL_AND_CHAT:
                 view.setTitle(configurationManager.getConfiguration().getTit161());

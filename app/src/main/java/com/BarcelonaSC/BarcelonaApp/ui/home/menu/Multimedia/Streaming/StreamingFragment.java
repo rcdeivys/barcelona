@@ -21,6 +21,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Streaming.di.DaggerS
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Streaming.di.StreamingModule;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Streaming.mvp.StreamingContract;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Streaming.mvp.StreamingPresenter;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import java.util.List;
@@ -50,13 +51,13 @@ public class StreamingFragment extends ShareBaseFragment implements StreamingCon
 
     }
 
-//    public static StreamingFragment newInstance(String type) {
-//        Bundle args = new Bundle();
-//        args.putString(Constant.Key.TYPE, type);
-//        StreamingFragment fragment = new StreamingFragment();
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
+    public static StreamingFragment newInstance(String type) {
+        Bundle args = new Bundle();
+        args.putString(Constant.Key.TYPE, type);
+        StreamingFragment fragment = new StreamingFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

@@ -88,7 +88,9 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         imgHeader.setVisibility(View.GONE);
         videoView.setVisibility(View.VISIBLE);
         videoView.setImage(context, news.getFoto());
-        videoView.setVideoUrl(news.getLink(), 0, news.isDorado());
+
+        videoView.setVideoUrl(news.getLink(), 0, false);
+
         contentNewsItem.setOnClickListener(null);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         videoView.setImage(context, news.getFoto());

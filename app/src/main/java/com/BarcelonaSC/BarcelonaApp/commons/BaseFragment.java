@@ -15,7 +15,7 @@ import com.BarcelonaSC.BarcelonaApp.app.App;
  * Created by Carlos-pc on 26/09/2017.
  */
 
-public class BaseFragment extends Fragment {
+public class BaseFragment extends Fragment implements BaseView {
 
     public Navigator navigator;
 
@@ -44,6 +44,13 @@ public class BaseFragment extends Fragment {
     public void showToast(String text, int duration) {
         if (!text.isEmpty())
             Toast.makeText(App.getAppContext(), text, duration).show();
+    }
+
+    @Override
+    public void showDialogDorado() {
+        if ((getActivity()) != null) {
+            ((BaseActivity) getActivity()).showBuyDoradoDialog();
+        }
     }
 
 }
