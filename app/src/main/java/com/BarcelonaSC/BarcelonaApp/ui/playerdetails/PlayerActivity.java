@@ -50,22 +50,10 @@ public class PlayerActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
         ButterKnife.bind(this);
-
         tvSubHeaderTitle.setText("");
         initializeViewPager();
         ibReturn.setVisibility(View.VISIBLE);
-        ibReturn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-        ibShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        ibShare.setVisibility(View.VISIBLE);
         super.initBanner(BannerView.Seccion.TEAM);
     }
 
@@ -78,6 +66,10 @@ public class PlayerActivity extends BaseActivity {
         }
     }
 
+    @OnClick(R.id.ib_return)
+    void returnPreviousActivity() {
+        onBackPressed();
+    }
 
     public void initSubToolBar(String name) {
         tvSubHeaderTitle.setText(name);

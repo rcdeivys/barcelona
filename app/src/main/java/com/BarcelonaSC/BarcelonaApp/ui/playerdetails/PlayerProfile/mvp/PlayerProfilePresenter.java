@@ -132,7 +132,8 @@ public class PlayerProfilePresenter implements PlayerProfileContract.Presenter, 
     @Override
     public void onError(String error) {
         if (isViewNull()) return;
-        view.showToast(error);
+        if(view!=null)
+            view.showToast(error);
     }
 
     @Override

@@ -94,8 +94,8 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
     @BindView(R.id.btn_back)
     AppCompatImageButton btnBack;
 
-    @BindView(R.id.iv_share)
-    ImageView ivShare;
+    @BindView(R.id.ib_share)
+    ImageButton ivShare;
 
     int id_partido;
     String type;
@@ -187,7 +187,7 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
                 .commitAllowingStateLoss();
     }
 
-    @OnClick(R.id.iv_share)
+    @OnClick(R.id.ib_share)
     void shareThisGame() {
         ShareSection.shareIndividual(Constant.Key.SHARE_GAME, String.valueOf(id_partido));
     }

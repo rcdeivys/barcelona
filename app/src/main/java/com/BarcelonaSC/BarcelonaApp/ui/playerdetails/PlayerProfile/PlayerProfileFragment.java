@@ -183,9 +183,11 @@ public class PlayerProfileFragment extends BaseFragment
     }
 
     private void notifyDataSetChanged() {
-        playerProfileAdapter.notifyDataSetChanged();
-        setRefreshing(false);
-        hideProgress();
+        if(playerProfileAdapter!=null) {
+            playerProfileAdapter.notifyDataSetChanged();
+            setRefreshing(false);
+            hideProgress();
+        }
     }
 
     @Override
