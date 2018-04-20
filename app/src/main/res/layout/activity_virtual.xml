@@ -62,7 +62,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
-                        android:text="Asegúrate que tu dispositivo sea compatible para poder disfrutar de toda la experiencia en Realidad Virtual"
+                        android:text="@string/enjoy_whole_vr_experience"
                         android:textAlignment="center"
                         android:maxLines="3"/>
 
