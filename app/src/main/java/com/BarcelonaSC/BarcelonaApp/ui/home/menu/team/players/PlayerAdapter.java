@@ -188,6 +188,7 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     class VHItem extends RecyclerView.ViewHolder {
+
         @BindView(R.id.player_img)
         ImageView playerImg;
 
