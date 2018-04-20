@@ -67,11 +67,11 @@ public class MonumentalMainFragment extends BaseFragment {
 
         accepted = PreferenceManager.getInstance().getBoolean(Constant.Key.MONUMETAL_ID, false);
 
-        if (!accepted || !dobdateValidate()) {
-            initDialog();
-        } else {
-            initViewPager();
-        }
+        //if (!accepted || !dobdateValidate()) {
+        //    initDialog();
+        //} else {
+        initViewPager();
+        //}
     }
 
     private void initViewPager() {
@@ -92,7 +92,6 @@ public class MonumentalMainFragment extends BaseFragment {
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (dobdateValidate()) {
                     PreferenceManager.getInstance().setBoolean(Constant.Key.MONUMETAL_ID, true);
                 }
