@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by leonardojpr on 1/11/18.
@@ -20,6 +21,9 @@ public class WallItem implements Serializable {
     @SerializedName("foto")
     @Expose
     private String foto;
+    @SerializedName("thumbnail")
+    @Expose
+    private String thumbnail;
     @SerializedName("fecha")
     @Expose
     private String fecha;
@@ -35,6 +39,12 @@ public class WallItem implements Serializable {
     @SerializedName("yaaplaudio")
     @Expose
     private Integer yaaplaudio;
+    @SerializedName("tipo_post")
+    @Expose
+    private String tipoPost;
+    @SerializedName("usuarios_aplausos")
+    List<UsuariosAplauso> usuariosAplausos;
+
 
     public String getIdpost() {
         return idpost;
@@ -98,5 +108,25 @@ public class WallItem implements Serializable {
 
     public void setYaaplaudio(Integer yaaplaudio) {
         this.yaaplaudio = yaaplaudio;
+    }
+
+    public String getTipoPost() {
+        return tipoPost;
+    }
+
+    public List<UsuariosAplauso> getUsuariosAplausos() {
+        return usuariosAplausos;
+    }
+
+    public void setUsuariosAplausos(List<UsuariosAplauso> usuariosAplausos) {
+        this.usuariosAplausos = usuariosAplausos;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
     }
 }

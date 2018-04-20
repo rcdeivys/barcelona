@@ -163,4 +163,10 @@ public class ApiModule {
         return retrofit.create(MapApi.class);
     }
 
+    @Provides
+    @AppScope
+    public static WallSearchApi provideWallSearchApi(Retrofit retrofit) {
+        return retrofit.create(WallSearchApi.class);
+    }
+
 }

@@ -4,36 +4,81 @@
     android:id="@+id/editext_create_post"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/transparent">
+    android:background="@color/colorPrimaryDark"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/silueta"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/text_create_post"
-        style="@style/StyleRobotoRegular.BodyR"
+    <RelativeLayout
+        android:id="@+id/content_left"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/box_white_borders_shadows"
-        android:ems="10"
-        android:gravity="center_vertical|start"
-        android:padding="5dp"
-        android:text="@string/what_is_he_thinking_about"
-        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/box_corners_wall_left"
+        android:visibility="visible">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/icon_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/search_icn"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_profile"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="15dp"
+            android:layout_toEndOf="@id/icon_search"
+            android:background="@drawable/silueta" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/content_right"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/img_profile"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/content_left"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+            android:id="@+id/text_create_post"
+            style="@style/StyleRobotoRegular.BodyR"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/box_corners_wall_right"
+            android:ems="10"
+            android:gravity="center"
+            android:text="@string/what_is_he_thinking_about"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/attachment_icn" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/emoji_icn" />
+
+    </RelativeLayout>
+
 
 </android.support.constraint.ConstraintLayout>

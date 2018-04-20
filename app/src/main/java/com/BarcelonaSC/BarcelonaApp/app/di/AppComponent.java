@@ -23,6 +23,7 @@ import com.BarcelonaSC.BarcelonaApp.app.api.UserPhotoApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.VRApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.WallApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.WallCommentApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.WallSearchApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.YouChooseApi;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
@@ -86,5 +87,7 @@ public interface AppComponent {
     MonumentalApi monumentalApi();
 
     MapApi mapApi();
+
+    WallSearchApi wallSearchApi();
 
 }
