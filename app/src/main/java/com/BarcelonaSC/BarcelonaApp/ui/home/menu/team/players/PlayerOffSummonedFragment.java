@@ -42,18 +42,25 @@ import butterknife.Unbinder;
 public class PlayerOffSummonedFragment extends BaseFragment implements PlayerContract.View, PlayerAdapter.OnItemClickListener {
 
     public static final String TAG = PlayerOffSummonedFragment.class.getSimpleName();
+
     @BindView(R.id.rv_players)
     RecyclerView rvPlayers;
+
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
+
     @BindView(R.id.img_banner)
     ImageView imgBanner;
+
     @BindView(R.id.banner)
     RelativeLayout banner;
+
     @BindView(R.id.progressbar)
     ProgressBar progressbar;
+
     @BindView(R.id.btn_top)
     ImageButton btnTop;
+
     Unbinder unbinder;
 
     @Inject

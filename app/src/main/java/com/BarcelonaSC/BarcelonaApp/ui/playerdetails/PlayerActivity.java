@@ -53,7 +53,6 @@ public class PlayerActivity extends BaseActivity {
         tvSubHeaderTitle.setText("");
         initializeViewPager();
         ibReturn.setVisibility(View.VISIBLE);
-        ibShare.setVisibility(View.VISIBLE);
         super.initBanner(BannerView.Seccion.TEAM);
     }
 
@@ -73,7 +72,7 @@ public class PlayerActivity extends BaseActivity {
 
     public void initSubToolBar(String name) {
         tvSubHeaderTitle.setText(name);
-        ibShare.setVisibility(View.INVISIBLE);
+        ibShare.setVisibility(View.VISIBLE);
     }
 
     private void initializeViewPager() {

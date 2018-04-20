@@ -250,13 +250,13 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         builder.setView(dialoglayout);
         final AlertDialog alertDialog = builder.show();
 
-        FCMillonariosTextView first_name = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_dialog_name);
-        FCMillonariosTextView last_name = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_dialog_apellido);
-        FCMillonariosTextView identification = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_dialog_cedula);
-        FCMillonariosTextView email = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_dialog_email);
-        FCMillonariosTextView numbre_phone = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_dialog_celular);
-        FCMillonariosTextView gender = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_dialog_genero);
-        FCMillonariosTextView birthdate = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_dialog_nacimiento);
+        FCMillonariosTextView first_name = dialoglayout.findViewById(R.id.fcm_tv_dialog_name);
+        FCMillonariosTextView last_name = dialoglayout.findViewById(R.id.fcm_tv_dialog_apellido);
+        FCMillonariosTextView identification = dialoglayout.findViewById(R.id.fcm_tv_dialog_cedula);
+        FCMillonariosTextView email = dialoglayout.findViewById(R.id.fcm_tv_dialog_email);
+        FCMillonariosTextView numbre_phone = dialoglayout.findViewById(R.id.fcm_tv_dialog_celular);
+        FCMillonariosTextView gender = dialoglayout.findViewById(R.id.fcm_tv_dialog_genero);
+        FCMillonariosTextView birthdate = dialoglayout.findViewById(R.id.fcm_tv_dialog_nacimiento);
 
         first_name.setText(regName.getText().toString());
         last_name.setText(regLastName.getText().toString());
