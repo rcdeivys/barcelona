@@ -79,13 +79,6 @@ public class NewsDetailsActivity extends BaseActivity {
         textTitle.setText(extras.getString(Constant.Key.TITLE));
         textDescription.setText(extras.getString(Constant.Key.DESC_NEW));
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
         textHeader.setText(ConfigurationManager.getInstance().getConfiguration().getTit2());
 
         super.initBanner(BannerView.Seccion.NEWS);
@@ -96,6 +89,10 @@ public class NewsDetailsActivity extends BaseActivity {
         ShareSection.shareIndividual(Constant.Key.SHARE_NEWS, id);
     }
 
+    @OnClick(R.id.btn_back)
+    void onFinishActivity(){
+        finish();
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

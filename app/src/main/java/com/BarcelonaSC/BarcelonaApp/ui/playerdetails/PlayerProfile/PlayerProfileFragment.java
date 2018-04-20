@@ -43,13 +43,18 @@ public class PlayerProfileFragment extends BaseFragment
         implements PlayerProfileContract.View, PlayerProfileAdapter.OnItemClickListener {
 
     public static final String TAG = PlayerProfileFragment.class.getSimpleName();
+
     @BindView(R.id.rv_PlayerNews)
     RecyclerView rvPlayerNews;
+
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
+
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+
     Unbinder unbinder;
+
     @Inject
     PlayerProfilePresenter presenter;
 
