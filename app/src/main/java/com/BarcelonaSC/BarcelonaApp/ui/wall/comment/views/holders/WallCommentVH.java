@@ -2,20 +2,21 @@ package com.BarcelonaSC.BarcelonaApp.ui.wall.comment.views.holders;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
 import com.BarcelonaSC.BarcelonaApp.models.WallCommentItem;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
-import com.BarcelonaSC.BarcelonaApp.utils.CustomDate;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 
@@ -34,18 +35,26 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
     public CircleImageView imgProfile;
     @BindView(R.id.user_name)
     FCMillonariosTextView userName;
-    @BindView(R.id.like_icon)
-    public ImageView clap;
+    @BindView(R.id.btn_clap)
+    public FCMillonariosTextView clap;
     @BindView(R.id.count_like)
     public FCMillonariosTextView countLike;
     @BindView(R.id.remaining)
     FCMillonariosTextView remaining;
     @BindView(R.id.img_comment)
-    ImageView imgComment;
+    public ImageView imgComment;
     @BindView(R.id.comment)
     EmojiconTextView inputComment;
     @BindView(R.id.content_comment)
     RelativeLayout contentComment;
+    @BindView(R.id.like_icon)
+    public ImageView iconLike;
+    @BindView(R.id.edit_icon)
+    public ImageView editIcon;
+    @BindView(R.id.remove_icon)
+    public ImageView removeIcon;
+    @BindView(R.id.icon_menu)
+    public ImageView menuIcon;
 
     private Context context;
 
@@ -57,12 +66,27 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
         super(itemView);
         ButterKnife.bind(this, itemView);
         this.context = itemView.getContext();
+
     }
 
     public void setData(WallCommentItem commentItem) {
         userName.setText(commentItem.getUsuario().getApodo() != null && !commentItem.getUsuario().getApodo().equals("") ? commentItem.getUsuario().getApodo() : commentItem.getUsuario().getNombre() + " " + commentItem.getUsuario().getApellido());
         inputComment.setText(StringEscapeUtils.unescapeJava(commentItem.getComentario()));
-        remaining.setText(CustomDate.timeAgo(Commons.getDateString(commentItem.getFecha()).getTime()));
+
+        if (!commentItem.getUsuario().getId_usuario().equals(SessionManager.getInstance().getUser().getId_usuario())) {
+            removeIcon.setVisibility(View.GONE);
+            editIcon.setVisibility(View.GONE);
+            menuIcon.setVisibility(View.VISIBLE);
+        } else {
+            removeIcon.setVisibility(View.VISIBLE);
+            editIcon.setVisibility(View.VISIBLE);
+            menuIcon.setVisibility(View.GONE);
+        }
+
+        if (commentItem.getFecha() != null) {
+            remaining.setText(Commons.dateToWallDate(commentItem.getFecha()));
+        }
+
         if (commentItem.getComentario().equals("")) {
             inputComment.setVisibility(View.GONE);
         } else {
@@ -70,21 +94,15 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
         }
         if (commentItem.getFoto() != null) {
             if (!commentItem.getFoto().equals("")) {
+
                 imgComment.setVisibility(View.VISIBLE);
-                Glide.with(context).load(commentItem.getFoto()).apply(new RequestOptions().placeholder(R.drawable.bsc_grey_logo).error(R.drawable.bsc_grey_logo)).into(imgComment);
+                Glide.with(context).load(commentItem.getFoto()).apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm)).into(imgComment);
             } else {
                 imgComment.setVisibility(View.GONE);
             }
         }
 
-        if (commentItem.getYaaplaudio() == 1) {
-//            Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_bold);
-        } else {
-//            Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_regular);
-        }
-
-        countLike.setText(String.valueOf(commentItem.getNaplausos()));
-
+        setYaAplaudio(commentItem);
     }
 
     public void setDataUser(UserItem user) {
@@ -97,10 +115,17 @@ public class WallCommentVH extends RecyclerView.ViewHolder {
 
     public void setYaAplaudio(WallCommentItem commentItem) {
         if (commentItem.getYaaplaudio() == 1) {
-            //Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_bold);
+            iconLike.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_2));
         } else {
-            //Commons.seTypeFaceTextView(clap, R.string.font_path_roboto_regular);
+            iconLike.setBackground(Commons.getDrawable(R.drawable.icon_aplauso_1));
+        }
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            countLike.setText(Html.fromHtml("<b>" + String.valueOf(commentItem.getNaplausos()) + "</b>", Html.FROM_HTML_MODE_LEGACY) + (commentItem.getNaplausos() == 1 ? " Aplauso" : " Aplausos"));
+        } else {
+            countLike.setText(Html.fromHtml("<b>" + String.valueOf(commentItem.getNaplausos()) + "</b>") + (commentItem.getNaplausos() == 1 ? " Aplauso" : " Aplausos"));
+
         }
     }
+
 
 }

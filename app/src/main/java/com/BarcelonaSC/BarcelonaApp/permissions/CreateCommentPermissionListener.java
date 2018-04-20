@@ -1,12 +1,12 @@
 package com.BarcelonaSC.BarcelonaApp.permissions;
 
+import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentFragment;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentActivity;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import java.util.List;
 
 public class CreateCommentPermissionListener implements MultiplePermissionsListener {
 
-    WallCommentActivity activity;
+    WallCommentFragment activity;
 
-    public CreateCommentPermissionListener(WallCommentActivity activity) {
+    public CreateCommentPermissionListener(WallCommentFragment activity) {
         this.activity = activity;
     }
 

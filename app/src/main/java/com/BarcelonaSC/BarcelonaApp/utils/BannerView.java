@@ -6,13 +6,13 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.BannerData;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -89,7 +89,7 @@ public class BannerView extends AppCompatImageView {
         NEWS("news"), CALENDAR("calendar"),
         TABLE("table"), STATISTICS("statistics"),
         TEAM("team"), LINE_UP("line_up"), VIRTUAL_REALITY("virtual_reality"),
-        FOOTBALL_BASE("football_base"), STORE("store"), ACADEMY("academy"),
+        FOOTBALL_BASE("football_base"), STORE("store"), ACADEMY("academy"), WALL("muro"),
         LIVE("live"), WALL_AND_CHAT("wall_and_chat"), GAMES("games"), YOU_CHOOSE("you_choose"),
         MONUMENTAL("monumental"), MAP("map");
 

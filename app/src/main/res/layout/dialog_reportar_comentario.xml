@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backgroun_button_corners_yellow"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/escudo_mask" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+            style="@style/StyleRobotoRegular.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reportar comentario"
+            android:textColor="@color/white" />
+
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+            style="@style/StyleRobotoRegular.BodyR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Elige un motivo para reportar este comentario:"
+            android:textColor="@color/white" />
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+
+            <RadioButton
+                android:id="@+id/opcion_one"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorAccent"
+                android:shadowColor="@color/colorPrimaryDark"
+                android:text="Estoy en desacuerdo"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:theme="@style/StyleRobotoRegular.BodyR" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/gray" />
+
+            <RadioButton
+                android:id="@+id/opcion_dos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorAccent"
+                android:text="Lenguaje o imágenes inapropiadas"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/gray" />
+
+            <RadioButton
+                android:id="@+id/opcion_tres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorAccent"
+                android:text="Infracción de la propiedad intelectual"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:background="@color/gray" />
+
+            <RadioButton
+                android:id="@+id/opcion_cuatro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorAccent"
+                android:text="Spam"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+        </RadioGroup>
+
+
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+            style="@style/StyleRobotoRegular.BodyR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Si reportas el comentario de una persona, la App Oficial no le dira quién hizo el reporte"
+            android:textColor="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/content_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <Button
+                android:id="@+id/btn_not"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="DESCARTAR" />
+
+            <Button
+                android:id="@+id/btn_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimaryDark"
+                android:text="REPORTAR" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
