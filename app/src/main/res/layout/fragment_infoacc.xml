@@ -95,7 +95,7 @@
                         android:backgroundTint="@color/colorAccent"
                         android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_email"
-                        android:hint="Email *"
+                        android:hint="E-mail *"
                         android:inputType="textEmailAddress"
                         android:maxLines="1" />
 

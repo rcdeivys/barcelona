@@ -167,7 +167,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBmcLFun6WSfxM2MkjMIIV1HAZKfjUL8l4" />
+            android:value="AIzaSyDzUT_NGgortH2fzpD3jFxp1JyMRcomXVE" />
 
         <!--
              Set color used with incoming notification messages. This is used when no color is set for the incoming
