@@ -95,7 +95,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private void configurNewsViewHolder(final NewsViewHolder holder, final int position) {
         holder.setNews(getNewsList(position));
-        holder.ivShare.setVisibility(View.GONE);
+        holder.ivShare.setVisibility(View.VISIBLE);
         if (getNewsList(position).getTipo().equals(Constant.NewsType.VIDEO)) {
            /* if (getNewsList(position).isDorado() && !SessionManager.getInstance().getUser().isDorado()) {
                 holder.ivShare.setVisibility(View.GONE);
