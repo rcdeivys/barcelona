@@ -2,7 +2,9 @@ package com.BarcelonaSC.BarcelonaApp.ui.news;
 
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatImageButton;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.BarcelonaSC.BarcelonaApp.R;
@@ -11,11 +13,13 @@ import com.BarcelonaSC.BarcelonaApp.commons.BaseActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Actividad correspondiente al detalle de las noticias
@@ -26,14 +30,25 @@ public class NewsDetailsActivity extends BaseActivity {
 
     @BindView(R.id.img_news)
     ImageView imgNews;
+
     @BindView(R.id.text_title)
     FCMillonariosTextView textTitle;
+
     @BindView(R.id.text_description)
     FCMillonariosTextView textDescription;
+
     @BindView(R.id.btn_back)
     AppCompatImageButton btnBack;
+
     @BindView(R.id.text_header)
     FCMillonariosTextView textHeader;
+
+    @BindView(R.id.ib_sub_header_share)
+    ImageButton ibShare;
+
+    private String url = "";
+
+    private String id = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +66,16 @@ public class NewsDetailsActivity extends BaseActivity {
 
         imgNews.setAlpha((float) 1.0);
 
+        try{
+            id = extras.getString(Constant.Key.ID);
+            url = extras.getString(Constant.Key.URL);
+            Log.i("ERROR_URL"," ---> URL is not null: "+url);
+        }catch (Exception e){
+            Log.i("ERROR_URL"," ---> URL is null "+e.getMessage());
+        }
+
+        ibShare.setVisibility(View.VISIBLE);
+
         textTitle.setText(extras.getString(Constant.Key.TITLE));
         textDescription.setText(extras.getString(Constant.Key.DESC_NEW));
 
@@ -65,6 +90,12 @@ public class NewsDetailsActivity extends BaseActivity {
 
         super.initBanner(BannerView.Seccion.NEWS);
     }
+
+    @OnClick(R.id.ib_sub_header_share)
+    void onShareNews(){
+        ShareSection.shareIndividual(Constant.Key.SHARE_NEWS, id);
+    }
+
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {

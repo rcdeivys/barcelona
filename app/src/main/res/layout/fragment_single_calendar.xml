@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorAccent">
 
-        <!-- Botón para regresar a la actividad anterior -->
+         <!--Botón para regresar a la actividad anterior -->
         <android.support.v7.widget.AppCompatImageButton
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
@@ -33,16 +33,14 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="@dimen/font_title_size" />
 
-        <ImageView
-            android:id="@+id/iv_share"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+        <ImageButton
+            android:id="@+id/ib_share"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_share"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="2dp"
-            android:tint="@color/black"
+            android:background="@color/transparent"
+            android:src="@drawable/share_icn"
             android:visibility="visible" />
 
     </RelativeLayout>

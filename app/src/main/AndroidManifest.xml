@@ -75,6 +75,12 @@
             android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".ui.wall.comment.WallCommentEditActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.wall.singlepost.SinglePostActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".ui.playerdetails.PlayerActivity"
             android:screenOrientation="portrait" />
 
@@ -105,9 +111,6 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity
-            android:name=".ui.wall.comment.WallCommentActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.wall.post.WallCreatePostActivity"
             android:screenOrientation="portrait" />

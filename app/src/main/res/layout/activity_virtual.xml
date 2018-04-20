@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/white"
             android:orientation="vertical">
+
             <include
                 android:id="@+id/tb_sub_menu"
                 layout="@layout/toolbar_sub_generic" />

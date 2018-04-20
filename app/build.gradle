@@ -26,7 +26,7 @@ android {
         targetSdkVersion 27
         multiDexEnabled true
         versionCode 145
-        versionName "5.10.27"
+        versionName "5.11.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexKeepProguard file("proguard.multidex.config")
         javaCompileOptions {
@@ -208,6 +208,10 @@ dependencies {
     compile 'com.jackandphantom.android:circularimageview:1.2.0'
     // --------- Circle -------
     compile circleImageView
+
+    compile('com.giphy.sdk:core:1.0.2@aar') {
+        transitive = true
+    }
 
     // -------------- gi -----------------------
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.+'

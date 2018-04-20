@@ -12,6 +12,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.calendar.viewholder.MatchChildViewHolder;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.viewholder.MatchParentViewHolder;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter;
@@ -98,6 +99,13 @@ public class MatchAdapter extends ExpandableRecyclerViewAdapter<MatchParentViewH
         } else {
             matchChildViewHolder.tvMatchScore.setText(App.getAppContext().getString(R.string.vs));
         }
+
+        matchChildViewHolder.ivShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareSection.shareIndividual(Constant.Key.SHARE_GAME, String.valueOf(match.getIdpartido()));
+            }
+        });
 
         matchChildViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

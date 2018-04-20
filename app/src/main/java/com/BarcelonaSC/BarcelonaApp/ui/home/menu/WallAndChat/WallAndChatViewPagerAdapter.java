@@ -5,9 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
-
 import com.BarcelonaSC.BarcelonaApp.ui.chat.ChatFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.wall.list.WallFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.WallFragment;
 
 /**
  * Created by Leonardojpr on 1/10/18.

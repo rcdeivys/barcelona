@@ -38,7 +38,8 @@ public class PlayerProfileModel {
 
             @Override
             public void onRequestFail(String errorMessage, int errorCode) {
-                listener.onError(errorMessage);
+                if(listener!=null)
+                    listener.onError(errorMessage);
             }
         });
     }
