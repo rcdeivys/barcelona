@@ -180,8 +180,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             try {
                 callbackManagerFacebook = CallbackManager.Factory.create();
                 LoginManager.getInstance().logInWithReadPermissions(LoginActivity.this,
-                        Arrays.asList("public_profile", "user_friends", "email", "user_birthday",
-                                "user_about_me", "user_hometown"));
+                        Arrays.asList("public_profile", "user_friends", "email", "user_birthday", "user_hometown"));
                 LoginManager.getInstance().registerCallback(callbackManagerFacebook,
                         new FacebookCallback<LoginResult>() {
                             @Override
