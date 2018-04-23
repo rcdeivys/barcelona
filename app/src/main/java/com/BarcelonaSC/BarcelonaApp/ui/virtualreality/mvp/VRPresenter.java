@@ -1,6 +1,8 @@
 package com.BarcelonaSC.BarcelonaApp.ui.virtualreality.mvp;
 
 
+import android.util.Log;
+
 import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 
 import java.util.ArrayList;
@@ -61,7 +63,7 @@ public class VRPresenter implements VRContract.Presenter, VRContract.ModelResult
     @Override
     public void onclickVideoItem(int position) {
         if (isViewNull()) return;
-
+        //Log.i("ITEMVR"," ---> "+videoRealities.get(position).toString());
         view.navigateVirtualActivity(videoRealities.get(position));
     }
 
