@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -89,13 +90,17 @@ public class VirtualActivity extends BaseActivity {
                 onBackPressed();
             }
         });
-
-
-        if (getIntent().getSerializableExtra(Constant.Key.VIRTUAL_REALITY_SECTION) != null) {
-            virtualRealityItem = (VideoReality) getIntent().getSerializableExtra(Constant.Key.VIRTUAL_REALITY_SECTION);
-        }
-
         Uri uri = Uri.parse((getIntent().getStringExtra("url")));
+        try{
+            if (getIntent().getSerializableExtra(Constant.Key.VIRTUAL_REALITY_SECTION) != null) {
+                virtualRealityItem = (VideoReality) getIntent().getSerializableExtra(Constant.Key.VIRTUAL_REALITY_SECTION);
+                //Log.i("ITEMVR"," ---> "+virtualRealityItem.getId());
+            }
+            id = getIntent().getStringExtra(Constant.Key.ID);
+            //Log.i("URL"," ---> "+uri.toString());
+        }catch (Exception e){
+            //Log.i("URL"," ---> ERROR");
+        }
         seekBar = (SeekBar) findViewById(R.id.seek_bar);
         statusText = (TextView) findViewById(R.id.status_text);
         videoWidgetView = (VrVideoView) findViewById(R.id.video_view);

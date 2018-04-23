@@ -275,15 +275,17 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
 
     @Override
     public void navigateVirtualActivity(VideoReality videoReality) {
-     /*   if (!SessionManager.getInstance().getUser().isDorado() && videoReality.isDorado()) {
+        /*if (!SessionManager.getInstance().getUser().isDorado() && videoReality.isDorado()) {
             showBuyDoradoDialog();
             return;
         }*/
 
         Intent intent = new Intent(getActivity(), VirtualActivity.class);
+        //Log.i("ITEMVR"," ---> ID: "+videoReality.getId());
         intent.putExtra(Constant.Key.VIRTUAL_REALITY_SECTION, videoReality);
-        intent.putExtra(Constant.Key.ID, videoReality);
+        intent.putExtra(Constant.Key.ID, videoReality.getId());
         String url = videoReality.getUrl().replace("\\", "");
+        //Log.i("URL"," ---> "+url);
         intent.putExtra("url", url);
         navigateToActivity(intent);
     }

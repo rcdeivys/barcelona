@@ -41,8 +41,9 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
         onItemClickListener = voteFragment;
     }
 
-    public void setData(List<RespuestaData> mRespuestasData) {
+    public void setData(List<RespuestaData> mRespuestasData,boolean canVote) {
         this.mRespuestasData = mRespuestasData;
+        this.canVote = canVote;
     }
 
     @Override

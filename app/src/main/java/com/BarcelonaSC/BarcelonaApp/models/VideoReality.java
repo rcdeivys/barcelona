@@ -78,5 +78,17 @@ public class VideoReality implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "VideoReality{" +
+                "titulo='" + titulo + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", foto='" + foto + '\'' +
+                ", url='" + url + '\'' +
+                ", dorado=" + dorado +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }
 
