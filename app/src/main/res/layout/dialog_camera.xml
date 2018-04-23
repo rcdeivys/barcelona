@@ -47,7 +47,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:padding="5dp"
-                app:srcCompat="@drawable/camera_icn"
+                app:srcCompat="@drawable/ic_image"
                 android:tint="@color/colorPrimary" />
 
             <android.support.v7.widget.AppCompatImageView

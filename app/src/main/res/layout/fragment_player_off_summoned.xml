@@ -10,6 +10,31 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/et_nomina"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_search"
+            android:drawableStart="@drawable/ic_search_accent"
+            android:paddingEnd="5dp"
+            android:paddingStart="5dp"/>
+
+        <SearchView
+            android:id="@+id/sv_nomina"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_search"
+            android:searchIcon="@drawable/ic_search_accent"
+            android:visibility="gone" />
+
         <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/swipe_container"
             android:layout_width="match_parent"
@@ -33,8 +58,8 @@
         android:layout_above="@+id/banner"
         android:layout_alignParentEnd="true"
         android:layout_margin="32dp"
-        android:src="@drawable/back_to_top_arrow"
         android:background="@android:color/transparent"
+        android:src="@drawable/back_to_top_arrow"
         android:visibility="visible" />
 
     <include
