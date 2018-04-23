@@ -48,7 +48,7 @@ public class VotePresenter implements VoteContract.Presenter, VoteContract.Model
     }
 
     public void onClickPlayerVote(int position, int msj) {
-        Log.i(TAG, "/--->onClickPlayerVote PRESENTER");
+        //Log.i(TAG, "/--->onClickPlayerVote PRESENTER");
         /*if (mEncuestaData.getPuedevotar() == 0) {
             onError("No puedes votar en esta encuesta");
             return;

@@ -132,8 +132,8 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
 
     @Override
     public void onClickPlayerVote(int posicion, int msj) {
-        Log.i(TAG, "/--->onClickPlayerVote");
-        presenter.onClickPlayerVote(posicion, msj);
+        //Log.i(TAG, "/--->onClickPlayerVote");
+        presenter.onClickPlayerVote(posicion,msj);
     }
 
     @Override
@@ -170,7 +170,7 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
         finisher = true;
         initRvAndAdapter();
         tvTitle.setText(mEncuestaData.getTitulo());
-        mVoteAdapter.setData(mEncuestaData.getRespuestas());
+        mVoteAdapter.setData(mEncuestaData.getRespuestas(), mEncuestaData.getPuedevotar() == 1);
         notifyDataSetChanged();
         progressClock.initclock(mEncuestaData.getFechaInicio(),
                 mEncuestaData.getFechaFin(), this);

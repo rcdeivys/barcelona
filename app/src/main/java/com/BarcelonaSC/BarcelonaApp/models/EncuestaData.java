@@ -89,4 +89,16 @@ public class EncuestaData {
         this.respuestas = respuestas;
     }
 
+    @Override
+    public String toString() {
+        return "EncuestaData{" +
+                "idencuesta=" + idencuesta +
+                ", titulo='" + titulo + '\'' +
+                ", fechaInicio='" + fechaInicio + '\'' +
+                ", fechaFin='" + fechaFin + '\'' +
+                ", puedevotar=" + puedevotar +
+                ", puedevervotos=" + puedevervotos +
+                ", respuestas=" + respuestas +
+                '}';
+    }
 }
