@@ -59,7 +59,7 @@ public class MultimediaFragment extends ShareBaseFragment {
         int Numboftabs = 2;
 
         /** CAMBIAR POR EL CODIGO DEL TITULO**/
-        String[] titles = {"VIDEO"
+        String[] titles = {"VIDEOS"
                 , "EN VIVO"};
 
         viewPagerAdapter = new MultimediaViewPagerAdapter(getChildFragmentManager(), titles, Numboftabs);
