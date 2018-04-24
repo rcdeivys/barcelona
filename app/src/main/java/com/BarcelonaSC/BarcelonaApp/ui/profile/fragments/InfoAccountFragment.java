@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.User;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.profile.ProfileFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -46,8 +49,6 @@ import butterknife.OnClick;
  */
 
 public class InfoAccountFragment extends Fragment {
-
-    public static final String PASSWORD = "password#";
 
     @BindView(R.id.register_name)
     EditText regName;
@@ -85,10 +86,17 @@ public class InfoAccountFragment extends Fragment {
     Button btnExit;
     @BindView(R.id.register_refer)
     EditText regRef;
+    @BindView(R.id.linear_register_pass)
+    LinearLayout linear_register_pass;
+
+    @BindView(R.id.linear_register_cpass)
+    LinearLayout linear_register_cpass;
 
     SessionManager sessionManager;
-
+    private PreferenceManager preferenceManager;
     User user;
+    boolean phone = false;
+    boolean isSocial;
 
     @Nullable
     @Override
@@ -101,6 +109,8 @@ public class InfoAccountFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         ButterKnife.bind(this, getView());
         sessionManager = new SessionManager(getActivity());
+        preferenceManager = new PreferenceManager(getContext());
+        isSocial = preferenceManager.getBoolean(Constant.Key.IS_SOCIAL, false);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -149,6 +159,8 @@ public class InfoAccountFragment extends Fragment {
         if (sessionManager.getUser().getFechaRegistro() != null) {
             setDataView(sessionManager.getUser());
         }
+
+        isSocialConfig();
     }
 
     private void validateForm() {
@@ -211,8 +223,8 @@ public class InfoAccountFragment extends Fragment {
         user.setApellido(regLastName.getText().toString());
         user.setEmail(regEmail.getText().toString());
         user.setCi(regCi.getText().toString());
-        if (!regPass.getText().toString().equals(PASSWORD))
-            user.setClave(regPass.getText().toString());
+        //if (!regPass.getText().toString().equals(PASSWORD))
+        user.setClave(regPass.getText().toString());
 
         user.setCelular(regPhoneCode.getText().toString() + " " + regPhoneNum.getText().toString());
         //  user.setPais(regSpCountry.getSelectedItem().toString());
@@ -334,6 +346,18 @@ public class InfoAccountFragment extends Fragment {
             regDay.setText(date.substring(8, 10));
             regMonth.setText(date.substring(5, 7));
             regYear.setText(date.substring(0, 4));
+        }
+    }
+
+    public void isSocialConfig() {
+        if (isSocial) {
+            regEmail.setFocusable(false);
+            linear_register_pass.setVisibility(View.GONE);
+            linear_register_cpass.setVisibility(View.GONE);
+        } else {
+            regEmail.setFocusable(true);
+            linear_register_pass.setVisibility(View.VISIBLE);
+            linear_register_cpass.setVisibility(View.VISIBLE);
         }
     }
 

@@ -3,7 +3,6 @@ package com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Streaming;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,7 +70,7 @@ public class StreamingFragment extends ShareBaseFragment implements StreamingCon
         View view = inflater.inflate(R.layout.fragment_multimedia_streaming, container, false);
         unbinder = ButterKnife.bind(this, view);
         presenter.loadStreaming();
-        
+
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
@@ -113,7 +112,6 @@ public class StreamingFragment extends ShareBaseFragment implements StreamingCon
 
     @Override
     public void setStreaming(MultimediaStreamingData streamingData) {
-        Log.e("DEIVYS: " , streamingData.getUrlEnvivo());
         webView.loadUrl(streamingData.getUrlEnvivo());
     }
 

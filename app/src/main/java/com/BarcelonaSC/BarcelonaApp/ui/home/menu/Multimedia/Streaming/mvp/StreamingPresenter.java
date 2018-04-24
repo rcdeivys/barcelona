@@ -53,7 +53,7 @@ public class StreamingPresenter implements StreamingContract.Presenter, Streamin
     public void onGetStreamingSuccess(MultimediaStreamingData listStreaming) {
         if (isViewNull()) return;
         this.streamingData = listStreaming;
-        view.setStreaming(this.streamingData);
+        view.setStreaming(listStreaming);
         view.hideProgress();
     }
 

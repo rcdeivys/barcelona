@@ -221,7 +221,7 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder implements Custo
 
     private void setPhoto(String photo) {
         imgPost.setVisibility(View.VISIBLE);
-        Glide.with(context).load(photo).apply(new RequestOptions().error(Commons.getDrawable(R.drawable.logo_transparencia)).placeholder(Commons.getDrawable(R.drawable.logo_transparencia)).override(Commons.getWidthDisplay())).into(imgPost);
+        Glide.with(context).load(photo).apply(new RequestOptions().error(Commons.getDrawable(R.drawable.bsc_news_wm)).placeholder(Commons.getDrawable(R.drawable.bsc_news_wm)).override(Commons.getWidthDisplay())).into(imgPost);
 
     }
 
