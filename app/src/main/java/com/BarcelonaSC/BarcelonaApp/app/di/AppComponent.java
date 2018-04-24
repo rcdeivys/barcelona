@@ -3,6 +3,7 @@ package com.BarcelonaSC.BarcelonaApp.app.di;
 import com.BarcelonaSC.BarcelonaApp.app.api.ApiModule;
 import com.BarcelonaSC.BarcelonaApp.app.api.AuthApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.BannerApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.ChatApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.ConfigurationApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.FriendsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.GalleryApi;
@@ -59,6 +60,8 @@ public interface AppComponent {
     YouChooseApi youChooseApi();
 
     UserPhotoApi userPhotoApi();
+
+    ChatApi chatApi();
 
     VRApi virtualRealityApi();
 

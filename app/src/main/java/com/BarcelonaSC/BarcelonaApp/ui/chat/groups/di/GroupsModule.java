@@ -1,7 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.chat.groups.di;
 
-import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.Dialogs.Dialog_add_group;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.mvp.GroupsModel;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.mvp.GroupsPresenter;
@@ -16,29 +15,32 @@ import dagger.Provides;
 public class GroupsModule {
 
     private GroupsFragment fragment;
-
-    private GroupsActivity activity;
+    private Dialog_add_group dialog_add_group;
 
     public GroupsModule(GroupsFragment fragment) {
         this.fragment = fragment;
     }
 
-    public GroupsModule(GroupsActivity activity) {
-        this.activity = activity;
+
+    public GroupsModule(Dialog_add_group dialog_add_group) {
+        this.dialog_add_group = dialog_add_group;
+    }
+
+    public GroupsModule() {
     }
 
     @Provides
     @GroupsScope
-    public GroupsModel provideGroupsModel(FirebaseManager groupsApi) {
-        return new GroupsModel(groupsApi);
+    public GroupsModel provideGroupsModel() {
+        return new GroupsModel();
     }
 
     @Provides
     @GroupsScope
     public GroupsPresenter providePresenter(GroupsModel model) {
-        if(fragment!=null)
+        if (fragment != null)
             return new GroupsPresenter(fragment, model);
         else
-            return new GroupsPresenter(activity,model);
+            return new GroupsPresenter(dialog_add_group, model);
     }
 }

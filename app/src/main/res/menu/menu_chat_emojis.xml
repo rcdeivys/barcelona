@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/menu_emojis"
+            android:icon="@drawable/face"
+            android:title="Emojis">
+
+        </item>
+
+        <item
+            android:id="@+id/menu_gif"
+            android:icon="@drawable/attachment_icn"
+            android:title="Gif">
+
+        </item>
+
+    </group>
+
+</menu>

@@ -50,6 +50,13 @@ public class ApiModule {
 
     @Provides
     @AppScope
+    public static ChatApi provideChatApi(Retrofit retrofit) {
+        return retrofit.create(ChatApi.class);
+    }
+
+
+    @Provides
+    @AppScope
     public static TournamentApi provideTournamentApi(Retrofit retrofit) {
         return retrofit.create(TournamentApi.class);
     }

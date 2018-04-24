@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Miembro;
 
 import java.util.ArrayList;
@@ -26,11 +27,15 @@ public class MemberControllers {
         this.databaseReference = databaseReference;
     }
 
+    public MemberControllers() {
+        this.databaseReference = FirebaseManager.getInstance().secondaryDatabase;
+    }
+
     public void addValueMemberListener(final String idUser, final MemberListener memberListener) {
 
         final Query myRef = databaseReference.getReference(USER).child(idUser);
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getValue() == null) {
@@ -51,8 +56,6 @@ public class MemberControllers {
     }
 
 
-
-
     private void addMember(final DataSnapshot dataSnapshot, final MemberListener memberListener) {
         final Miembro miembro = (Miembro) parseObject(dataSnapshot.getValue(), Miembro.class);
         miembro.setId(Long.valueOf(dataSnapshot.getKey()));
@@ -71,8 +74,6 @@ public class MemberControllers {
     public interface MemberListener {
 
         void onMemberDataChange(Miembro member);
-
-        void onRemoveMember(String id);
 
         void onError();
 
