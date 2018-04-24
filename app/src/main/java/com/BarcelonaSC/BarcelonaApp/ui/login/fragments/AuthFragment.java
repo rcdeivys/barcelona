@@ -150,9 +150,10 @@ public class AuthFragment extends Fragment implements LoginContract.View {
 
     @Override
     public void setLogin(AuthItem data) {
-        ((AuthActivity) getActivity()).navigateToHomeActivity();
-        getActivity().finish();
-
+        if (getActivity() != null) {
+            ((AuthActivity) getActivity()).navigateToHomeActivity();
+            getActivity().finish();
+        }
     }
 
     @Override
