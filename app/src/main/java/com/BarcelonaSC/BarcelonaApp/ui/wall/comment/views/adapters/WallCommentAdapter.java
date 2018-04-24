@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +36,7 @@ public class WallCommentAdapter extends CustomRecyclerView<RecyclerView.ViewHold
     private Context context;
     public CommentLikeListener commentLikeListener;
     private String idPost;
+    public static boolean canDeleted=true;
 
     public WallCommentAdapter(Context context, List<Object> commentList, String idpost) {
         super(context);
@@ -160,15 +162,19 @@ public class WallCommentAdapter extends CustomRecyclerView<RecyclerView.ViewHold
         holder.removeIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CommentDeleteListener commentDeleteListener = new CommentDeleteListener() {
-                    @Override
-                    public void onSuccessDeleteListener() {
-                        commentList.remove(position);
-                        notifyDataSetChanged();
-                    }
-                };
+                if (canDeleted) {
+                    CommentDeleteListener commentDeleteListener = new CommentDeleteListener() {
+                        @Override
+                        public void onSuccessDeleteListener() {
+                            Log.i(TAG, "--->borrando posicion" + position);
+                            canDeleted = true;
+                            commentList.remove(position);
+                            notifyDataSetChanged();
+                        }
+                    };
 
-                wallCommentClickListener.onDeleteComment(idPost, (WallCommentItem) commentList.get(position), commentDeleteListener);
+                    wallCommentClickListener.onDeleteComment(idPost, (WallCommentItem) commentList.get(position), commentDeleteListener);
+                }
             }
         });
 
