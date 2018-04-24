@@ -258,8 +258,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         super.setSubTitle(title);
         if (ConfigurationManager.getInstance().getConfiguration().getTit4().equals(title) ||
                 ConfigurationManager.getInstance().getConfiguration().getTit5().equals(title) ||
-                ConfigurationManager.getInstance().getConfiguration().getTit7().equals(title) ||
-                ConfigurationManager.getInstance().getConfiguration().getTit12().equals(title)) {
+                ConfigurationManager.getInstance().getConfiguration().getTit7().equals(title)) {
             share.setVisibility(View.VISIBLE);
         } else {
             share.setVisibility(View.GONE);
