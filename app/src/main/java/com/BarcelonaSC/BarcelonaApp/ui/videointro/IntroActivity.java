@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
@@ -16,9 +17,13 @@ import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseActivity;
 import com.BarcelonaSC.BarcelonaApp.models.response.BannerResponse;
 import com.BarcelonaSC.BarcelonaApp.models.response.ConfigurationResponse;
+import com.BarcelonaSC.BarcelonaApp.models.response.UserResponse;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.ChatActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.login.AuthActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.news.news_single.NewsSingleActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.splash.SplashActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.singlepost.SinglePostActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
 import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
@@ -87,14 +92,69 @@ public class IntroActivity extends BaseActivity {
             }
         });*/
 
-        initSplash();
+        if (SessionManager.getInstance().getSession() != null && SessionManager.getInstance().getSession().getToken() != null) {
+            App.get().component().profileApi()
+                    .get(SessionManager.getInstance().getSession().getToken())
+                    .enqueue(new NetworkCallBack<UserResponse>() {
+                        @Override
+                        public void onRequestSuccess(UserResponse response) {
+                            sessionManager.setUser(response.getData());
+                            if (getIntent() != null) {
+                                if (getIntent().hasExtra(Constant.Key.SECCION) && getIntent().hasExtra(Constant.Seccion.Id_Post)) {
+                                    Log.d(TAG + "erick: ", getIntent().getStringExtra(Constant.Key.SECCION));
+                                    if (getIntent().hasExtra(Constant.Key.SECCION)
+                                            && getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.MURO)) {
+                                        if (getIntent().getStringExtra(Constant.Seccion.Id_Post) != null) {
+                                            initSplash(true);
+                                        } else {
+                                            initSplash(false);
+                                        }
+                                    } else if (getIntent().hasExtra(Constant.Key.SECCION)
+                                            && getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.NOTICIAS)
+                                            && getIntent().getStringExtra(Constant.Seccion.Id_Post) != null
+                                            && !getIntent().getStringExtra(Constant.Seccion.Id_Post).equals("noAplica")) {
+                                        Intent news = new Intent(IntroActivity.this, NewsSingleActivity.class);
+                                        news.putExtra(Constant.Seccion.Id_Post, getIntent().getStringExtra(Constant.Seccion.Id_Post));
+                                        startActivity(news);
+                                    } else {
+                                        initSplash(false);
+                                    }
+                                } else if (getIntent().hasExtra(Constant.Key.SECCION)) {
+                                    if (getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.CHAT)) {
+                                        initSplash(true);
+
+                                    } else {
+                                        initSplash(false);
+                                    }
+                                } else {
+                                    initSplash(false);
+                                }
+                            } else {
+                                Log.d(TAG + "erick: ", getIntent().getStringExtra(Constant.Key.SECCION));
+                                if (getIntent().hasExtra(Constant.Key.SECCION)) {
+
+                                    Intent home = new Intent(IntroActivity.this, HomeActivity.class);
+                                    home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                                    startActivity(home);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onRequestFail(String errorMessage, int errorCode) {
+                            initSplash(false);
+                        }
+                    });
+        } else {
+            initSplash(false);
+        }
     }
 
     public void initIntro() {
-        initSplash();
+        initSplash(false);
     }
 
-    public void initSplash() {
+    public void initSplash(final boolean notification) {
         /*btnSkip.setVisibility(View.GONE);
         introVideoView.setVisibility(View.GONE);
         splash.setVideoURI(Uri.parse(splashUrlPath));
@@ -125,13 +185,14 @@ public class IntroActivity extends BaseActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                navigateNext();
+                navigateNext(notification);
             }
         }, 3000);
 
     }
 
-    public void navigateNext() {
+    public void navigateNext(boolean notification) {
+        Log.i(TAG, "PRUEBAAA FUNCIONA: 1");
         if (preferenceManager.getBoolean(Constant.Key.FIRST_TIME_OATH, true)) {
             startActivity(new Intent(IntroActivity.this, SplashActivity.class));
             finish();
@@ -140,7 +201,59 @@ public class IntroActivity extends BaseActivity {
                 startActivity(new Intent(IntroActivity.this, AuthActivity.class));
                 finish();
             } else {
-                startActivity(new Intent(IntroActivity.this, HomeActivity.class));
+                Log.i(TAG, "PRUEBAAA FUNCIONA: 2");
+                if (notification) {
+                    Log.i(TAG, "PRUEBAAA FUNCIONA: 3");
+                    if (getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.MURO)) {
+                        Log.i(TAG, "PRUEBAAA FUNCIONA: 4");
+                        Intent intent = new Intent(IntroActivity.this, SinglePostActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra(Constant.Seccion.Id_Post, getIntent().getStringExtra(Constant.Seccion.Id_Post));
+                        startActivityForResult(intent, 2000);
+                    } else if (getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.CHAT)) {
+                        Log.i(TAG, "PRUEBAAA FUNCIONA: 5");
+                        if (getIntent().getStringExtra(ChatActivity.TAG_PRIVATE) != null) {
+                            Log.i(TAG, "PRUEBAAA FUNCIONA: 6");
+                            Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                            intent.putExtra(ChatActivity.TAG_PRIVATE, getIntent().getStringExtra(ChatActivity.TAG_PRIVATE));
+                            startActivityForResult(intent, 2000);
+                        } else if (getIntent().getStringExtra(ChatActivity.TAG_GROUP) != null) {
+                            Log.i(TAG, "PRUEBAAA FUNCIONA: 7");
+                            Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                            intent.putExtra(ChatActivity.TAG_GROUP, getIntent().getStringExtra(ChatActivity.TAG_GROUP));
+                            startActivityForResult(intent, 2000);
+                        } else {
+                            Log.i(TAG, "PRUEBAAA FUNCIONA: 8");
+                            if (getIntent().hasExtra(Constant.Key.SECCION)) {
+                                Intent home = new Intent(IntroActivity.this, HomeActivity.class);
+                                home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                                startActivity(home);
+                            } else {
+                                startActivity(new Intent(IntroActivity.this, HomeActivity.class));
+                            }
+                        }
+                    } else {
+                        if (getIntent().hasExtra(Constant.Key.SECCION)) {
+                            Intent home = new Intent(IntroActivity.this, HomeActivity.class);
+                            home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                            startActivity(home);
+                        } else {
+                            startActivity(new Intent(IntroActivity.this, HomeActivity.class));
+                        }
+                    }
+                } else {
+                    if (getIntent().hasExtra(Constant.Key.SECCION)) {
+                        Intent home = new Intent(IntroActivity.this, HomeActivity.class);
+                        home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                        startActivity(home);
+                    } else {
+                        startActivity(new Intent(IntroActivity.this, HomeActivity.class));
+                    }
+                }
                 finish();
             }
         }

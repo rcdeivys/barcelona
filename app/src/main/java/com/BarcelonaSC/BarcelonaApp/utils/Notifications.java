@@ -25,6 +25,7 @@ import java.util.Random;
 /**
  * Created by JulianOtalora on 17/11/2017.
  */
+
 public class Notifications {
 
     public static String NotificationsChatTypeGrupal = "grupal";
@@ -38,7 +39,6 @@ public class Notifications {
 
     public static void sendNormalNotification(Context context, String title, String message) {
         Intent intent = new Intent(context, HomeActivity.class);
-        Log.i("--->Notifications", "T: " + title + "\nmessage" + message);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent,
                 PendingIntent.FLAG_ONE_SHOT);
