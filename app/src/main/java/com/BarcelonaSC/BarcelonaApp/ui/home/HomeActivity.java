@@ -117,10 +117,6 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             }
         });
         if (getIntent().getExtras() != null) {
-            if (getIntent().getStringExtra("doradoGod") != null) {
-                presenter.setFragmentFromSeccion(Constant.Menu.PROFILE);
-            }
-
             if (getIntent().getStringExtra(ChatActivity.TAG_GROUP) != null) {
                 getActivity().startActivity(ChatActivity.intent(getIntent().getStringExtra(ChatActivity.TAG_GROUP), this));
             } else if (getIntent().getStringExtra(ChatActivity.TAG_PRIVATE) != null) {
@@ -241,6 +237,17 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         if (intent.getExtras() != null) {
+            if (intent.getStringExtra(Constant.Key.SECCION) != null) {
+                if (intent.getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.CHAT)) {
+                    if (intent.getStringExtra(ChatActivity.TAG_GROUP) != null) {
+                        getActivity().startActivity(ChatActivity.intent(intent.getStringExtra(ChatActivity.TAG_GROUP), this));
+                    } else if (intent.getStringExtra(ChatActivity.TAG_PRIVATE) != null) {
+                        getActivity().startActivity(ChatActivity.intent(Long.parseLong(intent.getStringExtra(ChatActivity.TAG_PRIVATE)), this));
+                    }
+                }
+            }
+            if (!intent.getExtras().getString(Constant.Key.SECCION_SELECTED, "").equals(""))
+                presenter.onItemMenuSelected(intent.getExtras().getString(Constant.Key.SECCION_SELECTED));
             presenter.setFragmentFromSeccion(intent.getExtras().getString(Constant.Key.SECCION, ""));
         }
         Log.i(TAG, "--->onNewIntent");
@@ -340,17 +347,6 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
     @Override
     protected void onDestroy() {
-        FirebaseManager.getInstance().changeUserState(-1, new FirebaseManager.FireResultListener() {
-            @Override
-            public void onComplete() {
-
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
         super.onDestroy();
 
     }

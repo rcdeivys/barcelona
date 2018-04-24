@@ -1,6 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.di;
 
-import com.BarcelonaSC.BarcelonaApp.app.api.GroupsApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.ChatApi;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.ChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.mvp.ChatModel;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.mvp.ChatPresenter;
@@ -28,8 +28,8 @@ public class ChatModule {
 
     @Provides
     @ChatScope
-    public ChatModel provideChatModel(GroupsApi groupsApi) {
-        return new ChatModel(groupsApi);
+    public ChatModel provideChatModel(ChatApi chatApi) {
+        return new ChatModel(chatApi);
     }
 
 

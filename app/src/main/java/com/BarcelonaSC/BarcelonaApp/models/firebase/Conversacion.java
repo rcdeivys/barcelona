@@ -28,6 +28,11 @@ public class Conversacion implements Parcelable {
         this.fecha = fecha;
     }
 
+    public Conversacion(String id, long fecha, List<Miembro> miembros) {
+        this.id = id;
+        this.fecha = fecha;
+        this.miembros = miembros;
+    }
 
     public static final Creator<Conversacion> CREATOR = new Creator<Conversacion>() {
         @Override
@@ -97,6 +102,8 @@ public class Conversacion implements Parcelable {
     }
 
     public List<Miembro> getMiembros() {
+        if (miembros == null)
+            miembros = new ArrayList<>();
         return miembros;
     }
 
@@ -120,6 +127,20 @@ public class Conversacion implements Parcelable {
 
     }
 
+    public void removeMiembro(Long id) {
+
+        if (this.miembros == null)
+            this.miembros = new ArrayList<>();
+
+        for (int i = 0; i < this.miembros.size(); i++)
+            if (this.miembros.get(i).getId().equals(id)) {
+                this.miembros.remove(i);
+                return;
+            }
+
+    }
+
+
     public Miembro getMiembro(Long idMiembro) {
         if (miembros == null)
             miembros = new ArrayList<>();
@@ -127,6 +148,7 @@ public class Conversacion implements Parcelable {
             if (miembro.getId().equals(idMiembro))
                 return miembro;
         }
+
         return null;
     }
 

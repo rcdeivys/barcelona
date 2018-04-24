@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupModelView;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.GroupModelView;
 
 import java.util.List;
 
@@ -35,15 +35,15 @@ public class GroupsActivityAdapter extends RecyclerView.Adapter<RecyclerView.Vie
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         Log.i("GROUP"," ---> tipo: "+viewType);
-        return GroupsViewHolder.getInstance(parent,mContext);
+        return GroupsActivityViewHolder.getInstance(parent,mContext);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        configureGroupsViewHolder((GroupsViewHolder)holder,position);
+        configureGroupsActivityViewHolder((GroupsActivityViewHolder)holder,position);
     }
 
-    private void configureGroupsViewHolder(final GroupsViewHolder holder, final int position) {
+    private void configureGroupsActivityViewHolder(final GroupsActivityViewHolder holder, final int position) {
         holder.setData(groupsList.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

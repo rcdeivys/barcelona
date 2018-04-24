@@ -1,59 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/item_content"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:background="@drawable/line_divider_bottom"
+    android:layout_height="65dp"
+    android:background="@color/white"
     android:orientation="horizontal">
+
 
     <RelativeLayout
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:padding="5dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp">
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:padding="5dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civ_photo"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/silueta" />
+            android:src="@drawable/silueta"
+            app:civ_border_color="@color/white"
+            app:civ_border_overlay="true"
+            app:civ_border_width="1dp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/civ_state"
             android:layout_width="15dp"
-            android:layout_alignParentEnd="true"
             android:layout_height="15dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="3dp"
-            android:layout_marginEnd="3dp"
-            android:src="@color/holo_green_dark" />
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="5dp"
+            android:src="@color/holo_green_dark"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingEnd="10dp">
+        android:layout_height="match_parent">
 
-        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.CustomTextView
             android:id="@+id/tv_apodo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
             android:text="APODO HINCHA"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+        <com.BarcelonaSC.BarcelonaApp.utils.CustomTextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_message_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:textSize="12sp"
             android:text="25min"
-            android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textColor="@color/black"/>
 
 
         <TextView
@@ -61,8 +69,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_apodo"
+            android:singleLine="true"
             android:maxLines="1"
-            android:text="lorem dolor enando comundo d"
+            android:layout_alignStart="@+id/tv_apodo"
+            android:layout_alignEnd="@+id/tv_time"
+            android:layout_marginEnd="20dp"
+            android:text="lorem dolor enan"
             android:textColor="@color/textColorPrimary"
             android:textSize="12sp" />
 
@@ -72,14 +84,17 @@
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:paddingEnd="10dp"
             android:src="@drawable/trash"
             android:visibility="invisible" />
-    </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignEnd="@+id/tv_time"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_transparent" />
+    </RelativeLayout>
 
 
 </LinearLayout>

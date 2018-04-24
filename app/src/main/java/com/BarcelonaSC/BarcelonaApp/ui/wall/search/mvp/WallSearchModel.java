@@ -3,7 +3,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.wall.search.mvp;
 import com.BarcelonaSC.BarcelonaApp.app.api.WallSearchApi;
 import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.models.response.WallSearchResponse;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.friends.FriendsModelView;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.FriendsModelView;
 
 import java.util.List;
 

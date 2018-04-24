@@ -1,5 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.chat.messages.mvp;
 
+import android.util.Log;
+
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Amigos;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Miembro;
@@ -16,17 +18,21 @@ public class MessagesModel {
 
     private static final String TAG = MessagesModel.class.getSimpleName();
 
-    private FirebaseManager firebaseManager;
 
-    public MessagesModel(FirebaseManager firebaseManager) {
-        this.firebaseManager = firebaseManager;
+    public MessagesModel() {
+
     }
 
     public void loadRecieveMessages(int page, final MessagesContract.ModelResultListener result) {
+
+        Log.i("tag", "/*/*/*--->1");
         ArrayList<MessageModelView> aux = new ArrayList<MessageModelView>();
-        for (UsuarioConversation usuarioConversation : firebaseManager.getUsuario().getUsuarioConversations()) {
-            if (usuarioConversation.getId() != null)
-                for (Amigos amigos : firebaseManager.getUsuario().getAmigos()) {
+        Log.i("tag", "/*/*/*--->1" + FirebaseManager.getInstance().getUsuario().getId());
+        for (UsuarioConversation usuarioConversation : FirebaseManager.getInstance().getUsuario().getUsuarioConversations()) {
+
+            Log.i("tag", "/*/*/*--->22");
+            if (usuarioConversation.getId() != null && usuarioConversation.isStatus())
+                for (Amigos amigos : FirebaseManager.getInstance().getUsuario().getAmigos()) {
                     if (amigos.getId_conversacion().equals(usuarioConversation.getId())) {
                         if (usuarioConversation.getId_participante() != null) {
 
@@ -42,7 +48,8 @@ public class MessagesModel {
                                         miembro.getStatusChatAsSTATUS(),
                                         FirebaseManager.MsgTypes.TEXTO,
                                         false,
-                                        amigos);
+                                        amigos,
+                                        miembro.getCreated_at());
                                 aux.add(messageModelView);
                             }
                         }
@@ -66,8 +73,8 @@ public class MessagesModel {
 
     }
 
-    public boolean haveSomeFriends(){
-        if(firebaseManager.getUsuario().getAmigos().size()>0){
+    public boolean haveSomeFriends() {
+        if (FirebaseManager.getInstance().getUsuario().getAmigos().size() > 0) {
             return true;
         }
         return false;

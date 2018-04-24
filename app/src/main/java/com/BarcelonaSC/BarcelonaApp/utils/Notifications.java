@@ -65,10 +65,12 @@ public class Notifications {
     }
 
     public static void sendNormalNotification(Context context, String title, String message, String seccion, String id_post) {
+        Log.i("--->Notifications", "T: " + title + "\n message: " + message + "\n seccion " + seccion + "\n id_post: " + id_post);
         Intent intent = null;
         if (id_post != null && !id_post.equals("noAplica")) {
             switch (seccion) {
                 case Constant.Seccion.MURO: {
+                    //TODO GO TO Single_Post_Activity
                     if (Commons.isAppIsInBackground(context)) {
                         intent = new Intent(context, IntroActivity.class);
                         intent.putExtra(Constant.Key.SECCION, seccion);
@@ -81,6 +83,7 @@ public class Notifications {
                     break;
                 }
                 case Constant.Seccion.NOTICIAS: {
+                    //TODO NOTICIAS
                     if (Commons.isAppIsInBackground(context)) {
                         intent = new Intent(context, IntroActivity.class);
                         intent.putExtra(Constant.Key.SECCION, seccion);
@@ -97,6 +100,7 @@ public class Notifications {
                     break;
             }
         } else {
+
             if (seccion != null) {
                 Log.i(Notifications.class.getSimpleName(), "T: " + title + "\n message: " + message + "\n seccion " + seccion + "\n id_post: " + id_post);
                 if (Commons.isAppIsInBackground(context)) {
@@ -130,6 +134,8 @@ public class Notifications {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(getRequestCode(), notificationBuilder.build());
+
+
     }
 
     public static void sendNormalNotificationChat(Context context, String title, String message, String seccion, String idConversacion, String tipoConversacion, String id, Map<String, String> data) {
@@ -189,5 +195,4 @@ public class Notifications {
         notificationManager.notify(getRequestCode(), notificationBuilder.build());
 
     }
-
 }

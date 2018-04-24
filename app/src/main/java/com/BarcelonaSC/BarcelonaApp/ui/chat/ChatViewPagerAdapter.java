@@ -4,11 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.BarcelonaSC.BarcelonaApp.ui.chat.friends.FriendsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.MessagesFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.requests.RequestsFragment;
-
 
 /**
  * Created by Gianni on 25/07/17.
@@ -23,10 +20,8 @@ public class ChatViewPagerAdapter extends FragmentStatePagerAdapter {
     // Number ob tabs
     private int NumbOfTabs;
 
-    public FriendsFragment friendsFragment;
-    private GroupsFragment groupsFragment;
-    private MessagesFragment messagesFragment;
-    private RequestsFragment requestsFragment;
+    public GroupsFragment groupsFragment;
+    public MessagesFragment messagesFragment;
 
     public ChatViewPagerAdapter(FragmentManager fm, CharSequence mTitles[], int mNumbOfTabsumb) {
         super(fm);
@@ -44,14 +39,8 @@ public class ChatViewPagerAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return groupsFragment = GroupsFragment.getInstance();
 
-            case 2:
-                return friendsFragment = FriendsFragment.newInstance();
-
-            case 3:
-                return requestsFragment = RequestsFragment.newInstance();
-
             default:
-                return friendsFragment = FriendsFragment.newInstance();
+                return messagesFragment = MessagesFragment.newInstance();
 
         }
 

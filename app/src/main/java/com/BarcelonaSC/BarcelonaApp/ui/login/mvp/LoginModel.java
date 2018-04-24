@@ -3,6 +3,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.login.mvp;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.api.AuthApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.ProfileApi;
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.AuthItem;
 import com.BarcelonaSC.BarcelonaApp.models.User;
@@ -77,9 +78,12 @@ public class LoginModel {
             @Override
             public void onRequestSuccess(UserResponse response) {
                 if (!response.getStatus().equals("fallo")) {
-                    result.onGetLoginSuccess(authResponse.getData());
+
                     SessionManager.getInstance().setUser(response.getData());
                     SessionManager.getInstance().setSession(authResponse.getData());
+                    if (SessionManager.getInstance().getSession() != null)
+                        FirebaseManager.getInstance().initFirebase();
+                    result.onGetLoginSuccess(authResponse.getData());
                 }
 
             }

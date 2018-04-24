@@ -15,10 +15,10 @@
             android:layout_height="wrap_content" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <!--  <com.Wise.SeleccionColombiaOficial.widget.ShareView
+    <!--  <com.BarcelonaSC.BarcelonaApp.widget.ShareView
           android:id="@+id/shareview"
           android:layout_width="match_parent"
-          android:layout_height="match_parent"></com.Wise.SeleccionColombiaOficial.widget.ShareView>-->
+          android:layout_height="match_parent"></com.BarcelonaSC.BarcelonaApp.widget.ShareView>-->
 
     <!-- Custom ProgressBar -->
     <ProgressBar

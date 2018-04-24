@@ -4,6 +4,7 @@ public interface Constant {
 
     interface Key {
         String TYPE = "type";
+        String SECCION_SELECTED = "seccion_Selected";
     }
 
     interface Preferences {
