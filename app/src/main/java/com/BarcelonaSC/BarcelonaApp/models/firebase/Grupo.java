@@ -12,16 +12,49 @@ public class Grupo implements Parcelable {
     String key;
     Long fecha_creacion;
     String foto;
+    Long admin;
     String id_conversacion;
     String nombre;
     Conversacion conversacion;
+    String ultimo_mensaje;
+    Long fecha_ultimo_mensaje;
+
+    public Long getAdmin() {
+        if (admin == null)
+            admin = 0L;
+        return admin;
+    }
+
+    public void setAdmin(Long admin) {
+        this.admin = admin;
+    }
 
     public Grupo() {
     }
 
-    public Grupo(Long fecha_creacion, String foto, String id_conversacion, String nombre) {
+
+    public void copy(Grupo grupo) {
+        fecha_creacion = grupo.fecha_creacion;
+        foto = grupo.foto;
+        nombre = grupo.nombre;
+        admin = grupo.admin;
+        ultimo_mensaje = grupo.ultimo_mensaje;
+        fecha_ultimo_mensaje = grupo.fecha_ultimo_mensaje;
+
+    }
+
+    public Grupo(String foto, String id_conversacion, String nombre, Long admin) {
         this.fecha_creacion = fecha_creacion;
         this.foto = foto;
+        this.admin = admin;
+        this.id_conversacion = id_conversacion;
+        this.nombre = nombre;
+    }
+
+    public Grupo(Long fecha_creacion, String foto, String id_conversacion, String nombre, Long admin) {
+        this.fecha_creacion = fecha_creacion;
+        this.foto = foto;
+        this.admin = admin;
         this.id_conversacion = id_conversacion;
         this.nombre = nombre;
     }
@@ -34,6 +67,9 @@ public class Grupo implements Parcelable {
         dest.writeValue(id_conversacion);
         dest.writeValue(nombre);
         dest.writeValue(conversacion);
+        dest.writeValue(admin);
+        dest.writeValue(ultimo_mensaje);
+        dest.writeValue(fecha_ultimo_mensaje);
     }
 
     @Override
@@ -51,6 +87,9 @@ public class Grupo implements Parcelable {
             grupo.id_conversacion = ((String) in.readValue((String.class.getClassLoader())));
             grupo.nombre = ((String) in.readValue((String.class.getClassLoader())));
             grupo.conversacion = ((Conversacion) in.readValue((Conversacion.class.getClassLoader())));
+            grupo.admin = ((Long) in.readValue((Long.class.getClassLoader())));
+            grupo.ultimo_mensaje = ((String) in.readValue((String.class.getClassLoader())));
+            grupo.fecha_ultimo_mensaje = ((Long) in.readValue((Long.class.getClassLoader())));
             return grupo;
         }
 
@@ -100,8 +139,17 @@ public class Grupo implements Parcelable {
         this.nombre = nombre;
     }
 
+    public String getUltimo_mensaje() {
+        return ultimo_mensaje;
+    }
+
+    public Long getFecha_ultimo_mensaje() {
+        return fecha_ultimo_mensaje;
+    }
 
     public Conversacion getConversacion() {
+        if (conversacion == null)
+            conversacion = new Conversacion();
         return conversacion;
     }
 

@@ -3,56 +3,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingBottom="2dp">
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_info_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:background="@drawable/border_seach_dialog_background"
+        android:padding="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_info_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textColor="@color/gray" />
+    </RelativeLayout>
 
     <LinearLayout
+        android:id="@+id/ll_content_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
         android:gravity="top|left"
         android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="top|left"
-            android:paddingTop="3dp">
+
+            android:paddingStart="10dp">
 
             <RelativeLayout
                 android:id="@+id/rl_circle_foto"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp">
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/circle_foto"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/silueta" />
-
-                <ImageView
-                    android:id="@+id/circle_state"
-                    android:layout_width="@dimen/icon_xxxsmall"
-                    android:layout_height="@dimen/icon_xxxsmall"
-                    android:layout_alignBottom="@id/circle_foto"
-                    android:layout_alignEnd="@id/circle_foto"
-                    android:layout_marginStart="40dp"
-                    android:src="@drawable/state_online" />
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:id="@+id/linearLayout8"
+            <TextView
+                android:id="@+id/chat_time_msg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="110dp"
+                android:layout_alignBottom="@+id/ll_container_background"
+                android:layout_marginBottom="5dp"
+                android:text="12:15pm"
+                android:textColor="@color/white"
+                android:textSize="10sp" />
+
+            <LinearLayout
+                android:id="@+id/ll_container_background"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_toEndOf="@+id/rl_circle_foto"
-                android:background="@drawable/chat_bubble_no_self"
+                android:background="@drawable/background_message"
                 android:orientation="vertical">
+
 
                 <TextView
                     android:id="@+id/chat_text_name"
@@ -60,62 +77,71 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:paddingRight="15dp"
-                    android:text="@string/name_example"
+                    android:singleLine="true"
+                    android:text=""
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
-                <com.BarcelonaSC.BarcelonaApp.utils.SquareImageView
-                    android:id="@+id/chat_img_msg"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:adjustViewBounds="true"
-                    android:visibility="gone"
-                    app:rounded_radius="5" />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.BarcelonaSC.BarcelonaApp.utils.SquareRoundedImage
+                        android:id="@+id/chat_img_msg"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:adjustViewBounds="true"
+                        android:background="@color/colorPrimaryDark"
+                        android:maxHeight="200dp"
+                        android:visibility="gone"
+                        app:rounded_radius="5" />
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/chat_gif_msg"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="200dp"
+                        android:visibility="gone"
+                        app:rounded_radius="5" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_play"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@drawable/play"
+                        android:visibility="gone" />
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/chat_text_msg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
-                    android:layout_margin="10dp"
                     android:gravity="top|left"
-                    android:text="@string/chat_text_example"
+                    android:padding="10dp"
+                    android:text=""
                     android:textColor="@color/black"
-                    android:textSize="13dp"
+                    android:textSize="14sp"
                     android:visibility="visible" />
 
             </LinearLayout>
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/chat_time_msg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:paddingLeft="15dp"
-                android:text="@string/chat_hour_example"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="@color/colorAccent"
-                android:textSize="10sp"
-                android:visibility="gone" />
-
-        </LinearLayout>
 
     </LinearLayout>
 
 </FrameLayout>
+

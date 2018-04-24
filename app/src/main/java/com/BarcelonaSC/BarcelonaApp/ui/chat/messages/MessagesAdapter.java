@@ -1,28 +1,30 @@
 package com.BarcelonaSC.BarcelonaApp.ui.chat.messages;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.friends.FriendsModelView;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.ChatConsts;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
-import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.BarcelonaSC.BarcelonaApp.utils.CustomTextView;
 import com.BarcelonaSC.BarcelonaApp.utils.PhotoUpload;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.joda.time.Period;
 import org.joda.time.format.PeriodFormatter;
 import org.joda.time.format.PeriodFormatterBuilder;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -58,56 +60,68 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         return new ViewHolder(v);
     }
 
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         final MessageModelView messageModelView = messageModelViews.get(position);
 
-        DateTime fireBaseDate = new DateTime(Long.valueOf(messageModelView.getTime()), DateTimeZone.UTC);
+        DateTime fireBaseDate = new DateTime(messageModelView.getTime());
         DateTime now = new DateTime();
         Period period = new Period(fireBaseDate, now);
         String elapsed = getTimeWithFormat(period);
 
-        Log.i(TAG, "--->conversion time"+ elapsed);
+        Log.i(TAG, "--->conversion time" + elapsed);
 
         holder.tvApodo.setText(messageModelView.getApodo());
         holder.tvTime.setText(elapsed);
         holder.tvMessageContent.setText(messageModelView.getContent());
-        PhotoUpload.uploadFoto(messageModelView.getIdSender(), new PhotoUpload.PhotoListener() {
-            @Override
-            public void onPhotoSucces(String foto) {
-                Glide.with(App.get()).load(foto)
-                        .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta))
-                        .into(holder.civPhoto);
-            }
 
-            @Override
-            public void onError() {
+        if (messageModelView.getFoto() == null || !URLUtil.isValidUrl(messageModelView.getFoto())) {
 
-            }
-        });
-        Glide.with(context)
-                .load(messageModelView.getFoto())
-                .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta))
-                .into(holder.civPhoto);
+            Glide.with(App.get()).load(ContextCompat.getDrawable(App.get(), R.drawable.silueta))
+                    .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta))
+                    .into(holder.civPhoto);
+            holder.civPhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            holder.civPhoto.setTag(R.string.accept, messageModelView.getIdSender());
+            PhotoUpload.uploadFoto(messageModelView.getIdSender(), messageModelView.getFoto(), new PhotoUpload.PhotoListener() {
+                @Override
+                public void onPhotoSucces(String foto) {
+                    messageModelView.setFoto(foto);
+                    if (holder.civPhoto.getTag(R.string.accept) == messageModelView.getIdSender())
+                        Glide.with(App.get()).load(foto)
+                                .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta))
+                                .into(holder.civPhoto);
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
+        } else
+            Glide.with(context)
+                    .load(messageModelView.getFoto())
+                    .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta))
+                    .into(holder.civPhoto);
 
         holder.civPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListener.onClickMessages(messageModelViews.get(position),MessagesConsts.TAG_ON_CLICK_VIEW_POPUP);
+                onItemClickListener.onClickMessages(messageModelViews.get(position), ChatConsts.TAG_ON_CLICK_ITEM_CONTENT);
             }
         });
 
         holder.ivTrash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListener.onClickMessages(messageModelViews.get(position),MessagesConsts.TAG_ON_CLICK_VIEW_TRASH);
+                onItemClickListener.onClickMessages(messageModelViews.get(position), ChatConsts.TAG_ON_CLICK_VIEW_TRASH);
             }
         });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickListener.onClickMessages(messageModelViews.get(position),MessagesConsts.TAG_ON_CLICK_ITEM_CONTENT);
+                onItemClickListener.onClickMessages(messageModelViews.get(position), ChatConsts.TAG_ON_CLICK_ITEM_CONTENT);
             }
         });
 
@@ -119,68 +133,60 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
             }
         });
 
-        if(messageModelView.isPressed()) {
+        if (messageModelView.isPressed()) {
             holder.itemView.setBackground(Commons.getDrawable(R.drawable.divider_bottom_blue));
-            holder.ivTrash.setVisibility(View.VISIBLE);
-            holder.tvTime.setVisibility(View.INVISIBLE);
-        }else{
+            holder.ivTrash.setVisibility(View.INVISIBLE);
+            holder.tvTime.setVisibility(View.VISIBLE);
+        } else {
             holder.tvTime.setVisibility(View.VISIBLE);
             holder.itemView.setBackground(Commons.getDrawable(R.drawable.divider_bottom_white));
             holder.ivTrash.setVisibility(View.INVISIBLE);
         }
 
-        if(messageModelView.getStatus() == FriendsModelView.STATUS.ONLINE) {
-            holder.civIsOnline.setImageResource(R.color.green_online);
-        }else if(messageModelView.getStatus() == FriendsModelView.STATUS.OFFLINE){
-            holder.civIsOnline.setImageResource(R.color.rojo_offline);
-        }else if(messageModelView.getStatus() == FriendsModelView.STATUS.BUSY){
-            holder.civIsOnline.setImageResource(R.color.background_yellow);
-        }
-
-        if(messageModelView.getAmigos().isBloqueado()){
-            holder.itemView.setAlpha(Float.parseFloat("0.5"));
-        }else{
-            holder.itemView.setAlpha(Float.parseFloat("1"));
+        if (messageModelView.getAmigos().isBloqueado()) {
+            holder.itemView.setVisibility(View.VISIBLE);
+        } else {
+            holder.itemView.setVisibility(View.VISIBLE);
         }
 
 
     }
 
-    public String getTimeWithFormat(Period period){
+    public String getTimeWithFormat(Period period) {
         PeriodFormatter formatter;
         String space = " ";
         if (period.getYears() != 0) {
             formatter = new PeriodFormatterBuilder()
-                    .appendYears().appendSuffix(space).appendSuffix("year").appendSeparator(separator)
+                    .appendYears().appendSuffix(space).appendSuffix("año").appendSeparator(separator)
                     .printZeroNever()
                     .toFormatter();
         } else {
-            if (period.getMonths() != 0){
+            if (period.getMonths() != 0) {
                 formatter = new PeriodFormatterBuilder()
-                        .appendMonths().appendSuffix(space).appendSuffix("month").appendSeparator(separator)
+                        .appendMonths().appendSuffix(space).appendSuffix("mes").appendSeparator(separator)
                         .printZeroNever()
                         .toFormatter();
             } else {
-                if (period.getDays() != 0){
+                if (period.getDays() != 0) {
                     formatter = new PeriodFormatterBuilder()
-                            .appendDays().appendSuffix(space).appendSuffix("days").appendSeparator(separator)
+                            .appendDays().appendSuffix(space).appendSuffix("días").appendSeparator(separator)
                             .printZeroNever()
                             .toFormatter();
                 } else {
-                    if (period.getHours() != 0){
+                    if (period.getHours() != 0) {
                         formatter = new PeriodFormatterBuilder()
-                                .appendHours().appendSuffix(space).appendSuffix("hour").appendSeparator(separator)
+                                .appendHours().appendSuffix(space).appendSuffix("horas").appendSeparator(separator)
                                 .printZeroNever()
                                 .toFormatter();
                     } else {
-                        if (period.getMinutes() != 0){
+                        if (period.getMinutes() != 0) {
                             formatter = new PeriodFormatterBuilder()
                                     .appendMinutes().appendSuffix(space).appendSuffix("min").appendSeparator(separator)
                                     .printZeroNever()
                                     .toFormatter();
                         } else {
                             formatter = new PeriodFormatterBuilder()
-                                    .appendSeconds().appendSuffix(space).appendSuffix("sec").appendSeparator(separator)
+                                    .appendSeconds().appendSuffix(space).appendSuffix("seg").appendSeparator(separator)
                                     .printZeroNever()
                                     .toFormatter();
                         }
@@ -199,7 +205,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     public void updateAll(List<MessageModelView> update) {
         messageModelViews.clear();
         messageModelViews.addAll(messageModelViews.size(), update);
-        notifyDataSetChanged();
+
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -207,9 +213,9 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         @BindView(R.id.civ_photo)
         CircleImageView civPhoto;
         @BindView(R.id.tv_apodo)
-        FCMillonariosTextView tvApodo;
+        CustomTextView tvApodo;
         @BindView(R.id.tv_time)
-        FCMillonariosTextView tvTime;
+        CustomTextView tvTime;
         @BindView(R.id.tv_message_content)
         TextView tvMessageContent;
         @BindView(R.id.iv_trash)
@@ -229,7 +235,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     }
 
     public interface OnItemClickListener {
-        void onClickMessages(MessageModelView messageModelViews,String TAG);
+        void onClickMessages(MessageModelView messageModelViews, String TAG);
+
         void onLongClickMessage(MessageModelView messageModelViews);
     }
 

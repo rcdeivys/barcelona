@@ -11,6 +11,8 @@ import android.util.Base64;
 import android.util.Log;
 
 import com.BarcelonaSC.BarcelonaApp.app.di.DaggerAppComponent;
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.facebook.FacebookSdk;
@@ -23,6 +25,7 @@ import com.BarcelonaSC.BarcelonaApp.BuildConfig;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.di.AppComponent;
 import com.BarcelonaSC.BarcelonaApp.app.di.AppModule;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -66,6 +69,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         INSTANCE = this;
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
         Fresco.initialize(this);
@@ -75,7 +79,8 @@ public class App extends Application {
         Fabric.with(this, new Crashlytics.Builder().core(crashlyticsCore).build(), new Crashlytics());
 
         FacebookSdk.sdkInitialize(getApplicationContext());
-        //FirebaseManager.getInstance().initFirebase();
+        if (SessionManager.getInstance().getSession() != null)
+            FirebaseManager.getInstance().initFirebase();
         AppEventsLogger.activateApp(this);
         status = StatusApp.FOREGROUND;
         try {

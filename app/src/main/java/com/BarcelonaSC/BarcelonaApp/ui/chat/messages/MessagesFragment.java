@@ -17,21 +17,21 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseEventBusFragment;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Amigos;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.FirebaseEvent;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.ChatConsts;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.ChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.ChatActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.friends.Dialogs.FriendsPopup;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.friends.FriendsActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.friends.FriendsModelView;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.di.DaggerMessagesComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.di.MessagesModule;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.mvp.MessagesContract;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.mvp.MessagesPresenter;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.di.DaggerMessagesComponent;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.newconversation.NewConversationActivity;
+import com.crashlytics.android.Crashlytics;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -43,14 +43,13 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnTextChanged;
 import butterknife.Unbinder;
 
 /**
  * Created by Carlos on 22/01/2018.
  */
 
-public class MessagesFragment extends BaseEventBusFragment implements MessagesContract.View, MessagesAdapter.OnItemClickListener, KeyboardView.OnAttachStateChangeListener, FriendsPopup.OnItemClickListener {
+public class MessagesFragment extends BaseEventBusFragment implements MessagesContract.View, MessagesAdapter.OnItemClickListener, KeyboardView.OnAttachStateChangeListener {
 
     public static final String TAG = MessagesFragment.class.getSimpleName();
     @BindView(R.id.rv_messages)
@@ -76,6 +75,8 @@ public class MessagesFragment extends BaseEventBusFragment implements MessagesCo
     @Inject
     MessagesPresenter presenter;
     List<MessageModelView> listMessagesData;
+    @BindView(R.id.iv_more_conv)
+    ImageView ivMoreConv;
 
 
     public static MessagesFragment newInstance() {
@@ -104,9 +105,11 @@ public class MessagesFragment extends BaseEventBusFragment implements MessagesCo
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_messages, container, false);
         unbinder = ButterKnife.bind(this, view);
+        ivMoreConv.setVisibility(View.VISIBLE);
         initRecyclerView();
         presenter.onAttach(this);
         refresh();
+
         return view;
     }
 
@@ -127,7 +130,7 @@ public class MessagesFragment extends BaseEventBusFragment implements MessagesCo
     }
 
     @OnClick(R.id.iv_msg_search)
-    void onSearchMsg() {
+    public void onSearchMsg() {
         Crashlytics.log(Log.DEBUG, "AMIGO", "---> buscando " + searchKey.getText().toString());
 
         presenter.findByName(searchKey.getText().toString());
@@ -138,19 +141,18 @@ public class MessagesFragment extends BaseEventBusFragment implements MessagesCo
         //TODO: lunch a new activity with friends list
         if (presenter.haveFriends()) {
             Crashlytics.log(Log.DEBUG, "AMIGO", "---> Nuevo Mensaje ");
-            startActivity(FriendsActivity.intent((ArrayList<Amigos>) FirebaseManager.getInstance().getUsuario().getAmigos(), getContext()));
+            startActivity(NewConversationActivity.intent((ArrayList<Amigos>) FirebaseManager.getInstance().getUsuario().getAmigos(), getContext()));
         } else {
             Toast.makeText(getContext(), getText(R.string.add_friends_firts_send_msg), Toast.LENGTH_SHORT).show();
         }
     }
 
-    @OnTextChanged(value = R.id.et_msg_search, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    void onTextChange() {
-        if (searchKey.getText().toString().length() > 0) {
+    public void onTextChange(String text) {
+        if (text.length() > 0) {
             msgNuevo.setVisibility(View.GONE);
-            presenter.findByName(searchKey.getText().toString());
+            presenter.findByName(text);
         } else {
-            msgNuevo.setVisibility(View.VISIBLE);
+            msgNuevo.setVisibility(View.GONE);
             refresh();
         }
     }
@@ -161,6 +163,7 @@ public class MessagesFragment extends BaseEventBusFragment implements MessagesCo
             messagesAdapter.updateAll(messagesData);
             listMessagesData = messagesData;
             swipeRefreshLayout.setRefreshing(false);
+            messagesAdapter.notifyDataSetChanged();
             //progressBar.setVisibility(View.GONE);
         }
     }
@@ -183,29 +186,24 @@ public class MessagesFragment extends BaseEventBusFragment implements MessagesCo
         Crashlytics.log(Log.DEBUG, "CHAT", " ---> INICIANDO");
 
         switch (TAG) {
-            case MessagesConsts.TAG_ON_CLICK_ITEM_CONTENT: {
+            case ChatConsts.TAG_ON_CLICK_ITEM_CONTENT: {
                 if (isLongItemSelected()) {
                     clearAllListFalse();
+                    ((ChatFragment) getParentFragment()).setSuicheDelete(false);
                     messagesAdapter.notifyDataSetChanged();
                 } else {
-                    startActivity(ChatActivity.intent(messageModelView.getAmigos(), getContext()));
+                    if (getActivity() != null)
+                        getActivity().startActivity(ChatActivity.intent(messageModelView.getAmigos().getId(), getContext()));
                 }
                 break;
             }
-            case MessagesConsts.TAG_ON_CLICK_VIEW_POPUP: {
-                FriendsPopup friendsPopup = new FriendsPopup();
-                friendsPopup.setParams(new FriendsModelView(messageModelView.getAmigos().getId(),
-                        messageModelView.getApodo(),
-                        messageModelView.getFoto(),
-                        messageModelView.getStatus(),
-                        messageModelView.getAmigos().isBloqueado(),
-                        messageModelView.getAmigos().getFecha_amistad(),
-                        messageModelView.getAmigos().getId_conversacion(),
-                        messageModelView.getApodo()), messageModelView.getAmigos(), this);
-                showDialogFragment(friendsPopup);
+            case ChatConsts.TAG_ON_CLICK_VIEW_POPUP: {
+              /*  FriendsPopup friendsPopup = new FriendsPopup();
+                friendsPopup.setParams(messageModelView, messageModelView.getAmigos(), this);
+                showDialogFragment(friendsPopup);*/
                 break;
             }
-            case MessagesConsts.TAG_ON_CLICK_VIEW_TRASH: {
+            case ChatConsts.TAG_ON_CLICK_VIEW_TRASH: {
                 presenter.removeConversation(messageModelView.getAmigos().getConversacion());
                 break;
             }
@@ -224,7 +222,11 @@ public class MessagesFragment extends BaseEventBusFragment implements MessagesCo
         Log.i(TAG, "--->onLongClickItem: " + messageModelView.getApodo());
         if (listMessagesData == null)
             return;
-        clearAllListFalse();
+        // clearAllListFalse();
+        ((ChatFragment) getParentFragment()).setSuicheDelete(true);
+
+        ((ChatFragment) getParentFragment()).onViewClickeddelete();
+
         for (int i = 0; i < listMessagesData.size(); i++) {
             if (listMessagesData.get(i).getIdSender().equals(messageModelView.getIdSender())) {
                 if (listMessagesData.get(i).isPressed()) {
@@ -236,6 +238,16 @@ public class MessagesFragment extends BaseEventBusFragment implements MessagesCo
             }
         }
         messagesAdapter.notifyDataSetChanged();
+    }
+
+    public void removeConversation() {
+
+        for (int i = 0; i < listMessagesData.size(); i++) {
+
+            if (listMessagesData.get(i).isPressed()) {
+                presenter.removeConversation(listMessagesData.get(i).getAmigos().getConversacion());
+            }
+        }
     }
 
     public boolean isLongItemSelected() {
@@ -271,12 +283,6 @@ public class MessagesFragment extends BaseEventBusFragment implements MessagesCo
         if (event.getEvent() == FirebaseEvent.EVENT.USER_CONVERSATION || event.getEvent() == FirebaseEvent.EVENT.REFRESCAR_AMIGOS) {
             presenter.loadMessages();
         }
-
-
     }
 
-    @Override
-    public void onClickItemPopup(String TAG) {
-
-    }
 }
