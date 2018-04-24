@@ -275,9 +275,9 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         private void setImgAplauso(int band) {
             if (band == APLAUDIO) {
-             //   btnApplaused.setImageResource(R.drawable.applause_on);
+                btnApplaused.setImageResource(R.drawable.ic_aplausos_on);
             } else {
-             //   btnApplaused.setImageResource(R.drawable.applause_off);
+                btnApplaused.setImageResource(R.drawable.ic_aplausos_off);
             }
         }
     }
