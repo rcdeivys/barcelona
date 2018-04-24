@@ -20,7 +20,6 @@ public class SendEmailModel {
 
     public void sendEmail(final String email, final SendEmailContract.ModelResultListener result) {
         SendEmail sendEmail = new SendEmail(email);
-
         recoveryPasswordApi.sendEmail(sendEmail).enqueue(new NetworkCallBack<SendEmailResponse>() {
             @Override
             public void onRequestSuccess(SendEmailResponse response) {
@@ -37,6 +36,4 @@ public class SendEmailModel {
             }
         });
     }
-
-
 }
