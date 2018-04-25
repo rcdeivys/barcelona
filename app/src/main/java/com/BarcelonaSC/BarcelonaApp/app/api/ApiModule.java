@@ -176,4 +176,10 @@ public class ApiModule {
         return retrofit.create(WallSearchApi.class);
     }
 
+    @Provides
+    @AppScope
+    public static HomeApi provideHomeApi(Retrofit retrofit) {
+        return retrofit.create(HomeApi.class);
+    }
+
 }

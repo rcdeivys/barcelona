@@ -32,7 +32,7 @@ import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
  * Created by Carlos on 01/11/2017.
  */
 
-public class HomePresenter {
+public class HomePresenter implements HomeContract.Presenter, HomeContract.ModelResultListener {
 
     private static final String TAG = HomePresenter.class.getSimpleName();
     private HomeContract.View view;
@@ -385,5 +385,30 @@ public class HomePresenter {
         } else if (BannerView.Seccion.MAP.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.MAP);
         }
+    }
+
+    @Override
+    public void sentFirebaseInstanceIdTokenToServer(String token) {
+        homeModel.sentFirebaseInstanceIdTokenToServer(token, this);
+    }
+
+    @Override
+    public void onAttach(HomeContract.View view) {
+        this.view = view;
+    }
+
+    @Override
+    public void onDetach() {
+        view = null;
+    }
+
+    @Override
+    public void onSuccessSetFirebaseToken() {
+
+    }
+
+    @Override
+    public void onFailedSetFirebaseToken() {
+
     }
 }

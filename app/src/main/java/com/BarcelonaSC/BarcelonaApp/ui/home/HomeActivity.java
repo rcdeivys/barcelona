@@ -49,6 +49,7 @@ import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.bumptech.glide.Glide;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.multi.CompositeMultiplePermissionsListener;
@@ -116,6 +117,10 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
                 }
             }
         });
+
+        if (FirebaseInstanceId.getInstance().getToken() != null)
+            presenter.sentFirebaseInstanceIdTokenToServer(FirebaseInstanceId.getInstance().getToken());
+
         if (getIntent().getExtras() != null) {
             if (getIntent().getStringExtra(ChatActivity.TAG_GROUP) != null) {
                 getActivity().startActivity(ChatActivity.intent(getIntent().getStringExtra(ChatActivity.TAG_GROUP), this));

@@ -122,7 +122,6 @@ public class IntroActivity extends BaseActivity {
                                 } else if (getIntent().hasExtra(Constant.Key.SECCION)) {
                                     if (getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.CHAT)) {
                                         initSplash(true);
-
                                     } else {
                                         initSplash(false);
                                     }
@@ -132,7 +131,6 @@ public class IntroActivity extends BaseActivity {
                             } else {
                                 Log.d(TAG + "erick: ", getIntent().getStringExtra(Constant.Key.SECCION));
                                 if (getIntent().hasExtra(Constant.Key.SECCION)) {
-
                                     Intent home = new Intent(IntroActivity.this, HomeActivity.class);
                                     home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
                                     startActivity(home);
