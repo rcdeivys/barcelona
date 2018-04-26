@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsFragment">
+    android:background="@color/white">
+
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/groups_swipe"
@@ -11,21 +12,23 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/grupos_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/grupos_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <ImageButton
-        android:id="@+id/btn_add_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="32dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/chat_add_group" />
 
 </RelativeLayout>

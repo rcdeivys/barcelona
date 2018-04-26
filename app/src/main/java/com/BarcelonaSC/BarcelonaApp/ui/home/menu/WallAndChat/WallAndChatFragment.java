@@ -58,8 +58,8 @@ public class WallAndChatFragment extends Fragment {
         viewPagerAdapter = new WallAndChatViewPagerAdapter(getFragmentManager());
         pager.setPagingEnabled(true);
         pager.setAdapter(viewPagerAdapter);
-        //tabs.setupWithViewPager(pager);
-        tabs.setVisibility(View.GONE);
+        tabs.setupWithViewPager(pager);
+        tabs.setVisibility(View.VISIBLE);
     }
 
     @Override

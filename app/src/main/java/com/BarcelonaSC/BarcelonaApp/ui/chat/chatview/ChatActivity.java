@@ -29,6 +29,8 @@ import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.chat.ChatController;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseSideMenuActivity;
@@ -111,10 +113,10 @@ public class ChatActivity extends BaseSideMenuActivity implements Dialog_add_gro
         ButterKnife.bind(this);
         onItemClickListenerDialog = this;
         super.initMenu();
-        super.setSubTitle("CHAT");
+        super.setSubTitle(ConfigurationManager.getInstance().getConfiguration().getTit163());
         if (getIntent().getLongExtra(TAG_PRIVATE, -1) != -1) {
             String idFriend = String.valueOf(getIntent().getLongExtra(TAG_PRIVATE, -1));
-            (new com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.chat.ChatController()).getFriendById(idFriend, new com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.chat.ChatController.ChatFriendListener() {
+            (new ChatController()).getFriendById(idFriend, new ChatController.ChatFriendListener() {
                 @Override
                 public void onGetFriendReady(Amigos amigo) {
                     amigos = amigo;
@@ -143,7 +145,7 @@ public class ChatActivity extends BaseSideMenuActivity implements Dialog_add_gro
         }
         if (getIntent().getStringExtra(TAG_GROUP) != null) {
             String idGroup = getIntent().getStringExtra(TAG_GROUP);
-            (new com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.chat.ChatController()).getGroupById(idGroup, new com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.chat.ChatController.ChatGroupListener() {
+            (new ChatController()).getGroupById(idGroup, new ChatController.ChatGroupListener() {
                 @Override
                 public void onGetGroupReady(Grupo grupoAux) {
                     grupo = grupoAux;

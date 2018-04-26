@@ -5,13 +5,13 @@
 
         <item
             android:id="@+id/menu_conv"
-            android:icon="@drawable/emoji_x"
+            android:icon="@drawable/contact_icn"
             android:title="Nueva Conversación">
 
         </item>
         <item
             android:id="@+id/menu_group"
-            android:icon="@drawable/emoji_x"
+            android:icon="@drawable/group_icn"
             android:title="Nuevo Grupo">
 
         </item>

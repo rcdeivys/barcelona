@@ -4,7 +4,7 @@
     android:id="@+id/toolbar_chat"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="#2b4e98"
+    android:background="@color/colorPrimary"
     android:gravity="center_vertical"
     android:minHeight="40dp"
     app:contentInsetLeft="0dp"
@@ -35,7 +35,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:scaleType="fitXY"
-                android:src="@drawable/smiley" />
+                android:src="@drawable/navbar_back_icn_1" />
 
         </LinearLayout>
 
@@ -69,6 +69,7 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:padding="10dp"
+                android:tint="@color/white"
                 android:src="@drawable/options_icn" />
         </RelativeLayout>
 

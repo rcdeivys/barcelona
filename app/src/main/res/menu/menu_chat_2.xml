@@ -5,7 +5,7 @@
 
         <item
             android:id="@+id/add_group"
-            android:icon="@drawable/emoji_x"
+            android:icon="@drawable/add_group_icn"
             android:title="Agregar a un grupo">
         
         </item>
@@ -19,14 +19,14 @@
       
         <item
             android:id="@+id/block_user"
-            android:icon="@drawable/emoji_x"
+            android:icon="@drawable/block_icn"
             android:title="Bloquear contacto">
 
         </item>
 
         <item
             android:id="@+id/report_user"
-            android:icon="@drawable/emoji_x"
+            android:icon="@drawable/caution_icn"
             android:title="Reportar contacto">
 
         </item>

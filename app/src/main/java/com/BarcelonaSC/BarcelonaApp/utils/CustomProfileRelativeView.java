@@ -11,7 +11,6 @@ import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**

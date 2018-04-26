@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseSideMenuActivity;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Grupo;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.FriendsModelView;
@@ -121,7 +122,7 @@ public class CreateGroupActivity extends BaseSideMenuActivity implements CreateG
         setContentView(R.layout.activity_friend_selection);
         unbinder = ButterKnife.bind(this);
         ivMoreConv.setVisibility(View.INVISIBLE);
-        super.setSubTitle("CHAT");
+        super.setSubTitle(ConfigurationManager.getInstance().getConfiguration().getTit163());
         super.initMenu();
         initComponent();
         mGLayoutManager = new GridLayoutManager(this, 4);

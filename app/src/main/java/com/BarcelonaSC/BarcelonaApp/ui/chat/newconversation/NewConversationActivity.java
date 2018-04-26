@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseSideMenuActivity;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Amigos;
@@ -97,7 +98,7 @@ public class NewConversationActivity extends BaseSideMenuActivity implements New
         unbinder = ButterKnife.bind(this);
         super.initMenu();
         ivMoreConv.setVisibility(View.INVISIBLE);
-        super.setSubTitle("CHAT");
+        super.setSubTitle(ConfigurationManager.getInstance().getConfiguration().getTit163());
         initComponent();
 
         presenter.onAttach(this);

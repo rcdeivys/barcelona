@@ -36,10 +36,11 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
-                        android:background="#2b4e98">
+                        android:background="@color/colorPrimary">
 
                         <LinearLayout
                             android:id="@+id/back_button"
@@ -54,7 +55,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center_vertical"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/back_to_top_arrow" />
+                                android:src="@drawable/navbar_back_icn_1" />
 
                         </LinearLayout>
 
@@ -69,7 +70,7 @@
                             android:singleLine="true"
                             android:text="NUEVA CONVERSACIÓN"
                             android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:textColor="@color/white"
+                            android:textColor="@color/colorAccent"
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -79,7 +80,7 @@
                         android:id="@+id/fl_seach"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/colorPrimaryDark">
+                        android:background="@color/colorPrimary">
 
                         <include layout="@layout/item_seach" />
                     </FrameLayout>

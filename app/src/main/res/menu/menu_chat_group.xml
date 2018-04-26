@@ -5,7 +5,7 @@
 
         <item
             android:id="@+id/add_group"
-            android:icon="@drawable/emoji_x"
+            android:icon="@drawable/add_group_icn"
             android:title="Añadir participante">
         </item>
         <item
@@ -16,7 +16,7 @@
         </item>
         <item
             android:id="@+id/leave_group"
-            android:icon="@drawable/emoji_x"
+            android:icon="@drawable/block_icn"
             android:title="Salir del grupo">
 
         </item>
