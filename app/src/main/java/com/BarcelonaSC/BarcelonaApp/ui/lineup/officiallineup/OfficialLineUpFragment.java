@@ -276,16 +276,16 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
         String gameTime;
         if (playByPlay.getInfo() != null) {
             gameTime = App.get().getString(R.string.game_date_time
-                    , Commons.getStringDate2(playByPlay.getFecha())
+                    , Commons.getStringDate2(playByPlay.getFecha()).replace(".", "")
                     , Commons.getStringHour(playByPlay.getFecha()))
                     + playByPlay.getInfo();
         } else {
             gameTime = App.get().getString(R.string.game_date_time
-                    , Commons.getStringDate2(playByPlay.getFecha())
+                    , Commons.getStringDate2(playByPlay.getFecha()).replace(".", "")
                     , Commons.getStringHour(playByPlay.getFecha()));
         }
 
-        ctvGameTime.setText(gameTime);/*+ " (" + playByPlay.getEstado().toUpperCase() + ")"*/
+        ctvGameTime.setText(gameTime.toUpperCase());/*+ " (" + playByPlay.getEstado().toUpperCase() + ")"*/
 
     }
 

@@ -1,5 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.home.di;
 
+import com.BarcelonaSC.BarcelonaApp.app.api.HomeApi;
 import com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomePresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomeModel;
@@ -29,10 +30,9 @@ public class HomeModule {
 
     @Provides
     @HomeScope
-    public HomeModel provideHomeModel() {
-        return new HomeModel();
+    public HomeModel provideHomeModel(HomeApi homeApi) {
+        return new HomeModel(homeApi);
     }
-
 
     @Provides
     @HomeScope

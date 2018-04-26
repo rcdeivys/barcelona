@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -560,6 +561,7 @@ public class WallCommentFragment extends BaseFragment implements WallCommentCont
     }
 
     private void showDialogDeletedComment(final String idpost, final WallCommentItem wallCommentItem, final WallCommentAdapter.CommentDeleteListener commentDeleteListener) {
+        WallCommentAdapter.canDeleted=false;
         LayoutInflater inflater = getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_ideal_eleven_share, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -580,6 +582,13 @@ public class WallCommentFragment extends BaseFragment implements WallCommentCont
             public void onClick(View v) {
                 presenter.deleteComment(idpost, wallCommentItem, commentDeleteListener);
                 alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                WallCommentAdapter.canDeleted=true;
             }
         });
     }

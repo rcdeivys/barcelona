@@ -4,27 +4,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseEventBusFragment;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.FirebaseEvent;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.GroupModelView;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.ChatActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.friendselection.FriendSelectionActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.creategroup.CreateGroupActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.adapter.GroupsAdapter;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.di.DaggerGroupsComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.di.GroupsModule;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.mvp.GroupsContract;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.mvp.GroupsPresenter;
 import com.BarcelonaSC.BarcelonaApp.utils.EndlessScrollListener;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.di.DaggerGroupsComponent;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -35,7 +34,6 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
@@ -54,12 +52,9 @@ public class GroupsFragment extends BaseEventBusFragment implements GroupsContra
     @BindView(R.id.groups_swipe)
     SwipeRefreshLayout swipeRefreshLayout;
 
-    @BindView(R.id.btn_add_group)
-    ImageButton btnAddGroup;
-
     private GroupsAdapter groupsAdapter;
 
-    private GridLayoutManager mLayoutManager;
+    private LinearLayoutManager mLayoutManager;
 
     private String mActiveFragmentTag;
 
@@ -105,6 +100,16 @@ public class GroupsFragment extends BaseEventBusFragment implements GroupsContra
         return view;
     }
 
+    public void onTextChange(String text) {
+        if (text.length() > 0) {
+            //   msgNuevo.setVisibility(View.GONE);
+            presenter.findByName(text);
+        } else {
+            //    msgNuevo.setVisibility(View.VISIBLE);
+            refresh();
+        }
+    }
+
     @Override
     public void setUserVisibleHint(boolean visible) {
         super.setUserVisibleHint(visible);
@@ -125,15 +130,12 @@ public class GroupsFragment extends BaseEventBusFragment implements GroupsContra
         }
     }
 
-    @OnClick(R.id.btn_add_group)
     void goToSelectionActivity() {
-        if(presenter.haveFriends()){
-            Intent intent = new Intent(getActivity(), FriendSelectionActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-            startActivity(intent);
-        }else{
-            Toast.makeText(getContext(),getText(R.string.add_friends_firts_create_group),Toast.LENGTH_SHORT).show();
-        }
+
+        Intent intent = new Intent(getActivity(), CreateGroupActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+        startActivity(intent);
+
     }
 
     @Override
@@ -150,8 +152,18 @@ public class GroupsFragment extends BaseEventBusFragment implements GroupsContra
         presenter.loadGroups();
     }
 
+    @Override
+    public void goToSelectedGroup(String id_group) {
+
+    }
+
+    @Override
+    public void showMessage(String message) {
+
+    }
+
     public void initRecyclerView() {
-        mLayoutManager = new GridLayoutManager(getActivity(), 2);
+        mLayoutManager = new LinearLayoutManager(getActivity());
         mosaicoGrupos.setLayoutManager(mLayoutManager);
         List<GroupModelView> itemList = new ArrayList<>();
         groupsAdapter = new GroupsAdapter(itemList, getActivity());
@@ -182,13 +194,14 @@ public class GroupsFragment extends BaseEventBusFragment implements GroupsContra
     @Override
     public void onClickItem(GroupModelView group) {
         //TODO: ESTA REGRESANDO EL GRUPO VACIO
-        startActivity(ChatActivity.intent(presenter.findGroup(group.getIdGroup()), getContext()));
+        getActivity().startActivity(ChatActivity.intent(group.getIdGroup(), getContext()));
     }
 
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        presenter.onDetach();
         unbinder.unbind();
     }
 

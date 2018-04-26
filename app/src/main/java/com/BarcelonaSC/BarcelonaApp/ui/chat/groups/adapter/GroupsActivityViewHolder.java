@@ -7,11 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.GroupModelView;
+import com.BarcelonaSC.BarcelonaApp.utils.CustomTextView;
 import com.bumptech.glide.Glide;
 import com.crashlytics.android.Crashlytics;
-import com.BarcelonaSC.BarcelonaApp.R;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupModelView;
-import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,10 +27,10 @@ public class GroupsActivityViewHolder extends RecyclerView.ViewHolder{
     CircleImageView imgGroup;
 
     @BindView(R.id.name_group_h)
-    FCMillonariosTextView nameGroup;
+    CustomTextView nameGroup;
 
     @BindView(R.id.cant_members_group_h)
-    FCMillonariosTextView cantMembersGroup;
+    CustomTextView cantMembersGroup;
 
     private Context context;
 
@@ -57,12 +57,28 @@ public class GroupsActivityViewHolder extends RecyclerView.ViewHolder{
                     .load(R.drawable.no_group_perfil)
                     .into(imgGroup);
         }
-        if (item.getNameGroup().length()>0)
+        if (item.getNameGroup().length()>0) {
+            if(howManyAreUpperCase(item.getNameGroup())>=6){
+                nameGroup.setTextSize(12);
+            }
             nameGroup.setText(item.getNameGroup());
-        else
+        }else {
             nameGroup.setText(context.getText(R.string.group_no_name));
+        }
         cantMembersGroup.setText(""+item.getQuantityGroup()+" "+context.getText(R.string.group_members));
     }
+
+    private int howManyAreUpperCase(String name){
+        int countUpperCase = 0;
+        for(int i=0;i<name.length();i++){
+            int val = (int)name.charAt(i);
+            if(val >64 && val < 91){
+                countUpperCase++;
+            }
+        }
+        return countUpperCase;
+    }
+
 
 }
 

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "498718885624-v99j4382ne746j0totis2ehe1k5rb01n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.BarcelonaSC.BarcelonaApp",
+            "certificate_hash": "28360ccfe2a91656fb277c267459257ac512d64d"
+          }
+        },
+        {
           "client_id": "498718885624-ed9trhh1b9jh3b4d9kkrk64akopcsmrk.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,20 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498718885624-ed9trhh1b9jh3b4d9kkrk64akopcsmrk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "498718885624-ibra1o5am8h9ca24qjvj2r49cg844ls2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.BarcelonaSC.BarcelonaApp"
+              }
+            }
+          ]
         },
         "ads_service": {
           "status": 2

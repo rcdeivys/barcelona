@@ -84,6 +84,15 @@
             android:name=".ui.playerdetails.PlayerActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".ui.chat.newconversation.NewConversationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.chat.chatview.ChatActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.chat.creategroup.CreateGroupActivity"
+            android:screenOrientation="portrait" />
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d60aa40ca7ad4de0869e76c5d5e5fdd357574aa6" />
@@ -170,7 +179,8 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDzUT_NGgortH2fzpD3jFxp1JyMRcomXVE" />
+            android:value="AIzaSyDYLRWkwKwE73xpVtlqBDH7mY0UVLF69mI" />
+
 
         <!--
              Set color used with incoming notification messages. This is used when no color is set for the incoming
@@ -184,26 +194,6 @@
             android:resource="@color/colorAccent" />
         -->
 
-        <activity
-            android:name=".ui.chat.friendselection.FriendSelectionActivity"
-            android:label="@string/group_create"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.chat.creationgroup.CreationGroupActivity"
-            android:label="@string/group_create"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.chat.friends.FriendsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.chat.chatview.ChatActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.chat.groupdetail.GroupDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.chat.groups.GroupsActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.monumentals.fragments.monumental.profile.MonumentalProfileActivity"
             android:screenOrientation="portrait" />

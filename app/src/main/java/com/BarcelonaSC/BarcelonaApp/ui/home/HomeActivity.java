@@ -5,6 +5,7 @@ import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -24,6 +25,7 @@ import com.BarcelonaSC.BarcelonaApp.commons.BaseSideMenuActivity;
 import com.BarcelonaSC.BarcelonaApp.permissions.MillosMultiplePermissionListener;
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.ChatActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.futbolbase.FutbolBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.di.DaggerHomeComponent;
@@ -47,6 +49,7 @@ import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.bumptech.glide.Glide;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.multi.CompositeMultiplePermissionsListener;
@@ -114,8 +117,26 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
                 }
             }
         });
+
+        if (FirebaseInstanceId.getInstance().getToken() != null)
+            presenter.sentFirebaseInstanceIdTokenToServer(FirebaseInstanceId.getInstance().getToken());
+
         if (getIntent().getExtras() != null) {
-            presenter.setFragmentFromSeccion(getIntent().getExtras().getString(Constant.Key.SECCION, ""));
+            if (getIntent().getStringExtra(ChatActivity.TAG_GROUP) != null) {
+                getActivity().startActivity(ChatActivity.intent(getIntent().getStringExtra(ChatActivity.TAG_GROUP), this));
+            } else if (getIntent().getStringExtra(ChatActivity.TAG_PRIVATE) != null) {
+                getActivity().startActivity(ChatActivity.intent(Long.parseLong(getIntent().getStringExtra(ChatActivity.TAG_PRIVATE)), this));
+            } else {
+                if (getIntent().getStringExtra(Constant.Key.SECCION) != null) {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            presenter.setFragmentFromSeccion(getIntent().getStringExtra(Constant.Key.SECCION));
+                        }
+                    }, 500);
+                }
+            }
         }
 
         presenter.getActivity(HomeActivity.this);
@@ -221,6 +242,17 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         if (intent.getExtras() != null) {
+            if (intent.getStringExtra(Constant.Key.SECCION) != null) {
+                if (intent.getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.CHAT)) {
+                    if (intent.getStringExtra(ChatActivity.TAG_GROUP) != null) {
+                        getActivity().startActivity(ChatActivity.intent(intent.getStringExtra(ChatActivity.TAG_GROUP), this));
+                    } else if (intent.getStringExtra(ChatActivity.TAG_PRIVATE) != null) {
+                        getActivity().startActivity(ChatActivity.intent(Long.parseLong(intent.getStringExtra(ChatActivity.TAG_PRIVATE)), this));
+                    }
+                }
+            }
+            if (!intent.getExtras().getString(Constant.Key.SECCION_SELECTED, "").equals(""))
+                presenter.onItemMenuSelected(intent.getExtras().getString(Constant.Key.SECCION_SELECTED));
             presenter.setFragmentFromSeccion(intent.getExtras().getString(Constant.Key.SECCION, ""));
         }
         Log.i(TAG, "--->onNewIntent");
@@ -231,8 +263,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         super.setSubTitle(title);
         if (ConfigurationManager.getInstance().getConfiguration().getTit4().equals(title) ||
                 ConfigurationManager.getInstance().getConfiguration().getTit5().equals(title) ||
-                ConfigurationManager.getInstance().getConfiguration().getTit7().equals(title) ||
-                ConfigurationManager.getInstance().getConfiguration().getTit12().equals(title)) {
+                ConfigurationManager.getInstance().getConfiguration().getTit7().equals(title)) {
             share.setVisibility(View.VISIBLE);
         } else {
             share.setVisibility(View.GONE);
@@ -320,17 +351,6 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
     @Override
     protected void onDestroy() {
-        FirebaseManager.getInstance().changeUserState(-1, new FirebaseManager.FireResultListener() {
-            @Override
-            public void onComplete() {
-
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
         super.onDestroy();
 
     }

@@ -3,10 +3,12 @@ package com.BarcelonaSC.BarcelonaApp.app.di;
 import com.BarcelonaSC.BarcelonaApp.app.api.ApiModule;
 import com.BarcelonaSC.BarcelonaApp.app.api.AuthApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.BannerApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.ChatApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.ConfigurationApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.FriendsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.GalleryApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.GroupsApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.HomeApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.LineUpApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.MapApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.MonumentalApi;
@@ -60,6 +62,8 @@ public interface AppComponent {
 
     UserPhotoApi userPhotoApi();
 
+    ChatApi chatApi();
+
     VRApi virtualRealityApi();
 
     AuthApi loginApi();
@@ -89,5 +93,7 @@ public interface AppComponent {
     MapApi mapApi();
 
     WallSearchApi wallSearchApi();
+
+    HomeApi homeApi();
 
 }

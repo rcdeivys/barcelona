@@ -16,6 +16,7 @@ public class Mensajes implements Parcelable {
     String tipo_mensaje;
     String url_imagen;
     String imagen_emisor;
+    String video_thumbnail;
 
     public Mensajes() {
     }
@@ -63,6 +64,7 @@ public class Mensajes implements Parcelable {
         dest.writeValue(texto_mensaje);
         dest.writeValue(tipo_mensaje);
         dest.writeValue(url_imagen);
+        dest.writeValue(video_thumbnail);
     }
 
     @Override
@@ -80,6 +82,7 @@ public class Mensajes implements Parcelable {
             mensajes.texto_mensaje = ((String) in.readValue((String.class.getClassLoader())));
             mensajes.tipo_mensaje = ((String) in.readValue((String.class.getClassLoader())));
             mensajes.url_imagen = ((String) in.readValue((String.class.getClassLoader())));
+            mensajes.video_thumbnail = ((String) in.readValue((String.class.getClassLoader())));
             return mensajes;
         }
 
@@ -136,5 +139,13 @@ public class Mensajes implements Parcelable {
 
     public void setUrl_imagen(String url_imagen) {
         this.url_imagen = url_imagen;
+    }
+
+    public String getVideo_thumbnail() {
+        return video_thumbnail;
+    }
+
+    public void setVideo_thumbnail(String video_thumbnail) {
+        this.video_thumbnail = video_thumbnail;
     }
 }
