@@ -62,7 +62,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
         this.news = item;
         imgHeader.setVisibility(View.VISIBLE);
         videoView.setVisibility(View.GONE);
-        ivShare.setVisibility(View.VISIBLE);
+        ivShare.setVisibility(View.GONE);
         if (item.getFoto() != null) {
             imgHeader.setAlpha((float) 1.0);
             Glide.with(context)
@@ -87,6 +87,7 @@ public class NewsViewHolder extends RecyclerView.ViewHolder {
     public void setNewsVideo(News news, View.OnClickListener onClickListener) {
         imgHeader.setVisibility(View.GONE);
         videoView.setVisibility(View.VISIBLE);
+        ivShare.setVisibility(View.VISIBLE);
         videoView.setImage(context, news.getFoto());
 
         videoView.setVideoUrl(news.getLink(), 0, false);

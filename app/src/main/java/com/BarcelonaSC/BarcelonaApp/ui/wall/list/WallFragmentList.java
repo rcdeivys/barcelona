@@ -20,7 +20,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
@@ -78,6 +77,7 @@ public class WallFragmentList extends BaseFragment implements WallContract.View,
     private List<Object> itemList;
 
     private int postPosition = 0;
+    private int videoPosition = 0;
 
     @Inject
     public WallPresenter presenter;
@@ -385,6 +385,11 @@ public class WallFragmentList extends BaseFragment implements WallContract.View,
         startActivity(intent);
     }
 
+    @Override
+    public void playVideo(int position) {
+        videoPosition = position;
+    }
+
     private void showDialogFragment(DialogFragment dialogFragment) {
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.add(dialogFragment, dialogFragment.getTag());
@@ -429,4 +434,9 @@ public class WallFragmentList extends BaseFragment implements WallContract.View,
         presenter.onDetach();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        wallAdapter.pauseVideo(videoPosition);
+    }
 }

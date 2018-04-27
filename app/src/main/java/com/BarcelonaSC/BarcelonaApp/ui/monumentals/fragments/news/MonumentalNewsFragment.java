@@ -1,9 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,8 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
@@ -60,6 +56,8 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     ProgressBar progressBar;
     Dialog dialog;
     Unbinder unbinder;
+
+    int videoPosition = 0;
 
     NewsAdapter newsAdapter;
 
@@ -144,6 +142,11 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     @Override
     public void onVideoClick(News news, int currentVideo) {
 
+    }
+
+    @Override
+    public void playVideo(int position) {
+        videoPosition = videoPosition;
     }
 
     @Override
@@ -238,4 +241,9 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
         unbinder.unbind();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        newsAdapter.pauseVideo(videoPosition);
+    }
 }
