@@ -287,7 +287,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
 
             case Constant.Menu.VIDEOS:
                 view.setTitle(configurationManager.getConfiguration().getTit9());
-                multimedia(Constant.Menu.VIDEOS);
+                multimedia(Constant.Menu.IN_LIVE);
                 view.trackFragment(configurationManager.getConfiguration().getTit9());
                 break;
 

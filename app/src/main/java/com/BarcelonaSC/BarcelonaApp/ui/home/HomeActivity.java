@@ -20,7 +20,6 @@ import android.widget.RelativeLayout;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
-import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseSideMenuActivity;
 import com.BarcelonaSC.BarcelonaApp.permissions.MillosMultiplePermissionListener;
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
@@ -30,6 +29,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.futbolbase.FutbolBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.di.DaggerHomeComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.home.di.HomeModule;
+import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.MultimediaFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.WallAndChat.WallAndChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.configuration.NotificationFragment;
@@ -42,8 +42,6 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.TeamFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomeContract;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomePresenter;
-import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
@@ -236,6 +234,8 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             initBanner(BannerView.Seccion.YOU_CHOOSE);
         } else if (tag.equals(MapActivity.TAG)) {
             initBanner(BannerView.Seccion.MAP);
+        } else if (tag.equals(MultimediaFragment.TAG)) {
+            initBanner(BannerView.Seccion.LIVE);
         } else {
             initBanner(BannerView.Seccion.SETINGS);
         }
