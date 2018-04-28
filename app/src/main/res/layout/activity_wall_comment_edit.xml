@@ -203,7 +203,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/stickers_icn"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/btn_cam"
@@ -211,8 +211,8 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="16dp"
-                android:visibility="visible"
-                android:background="@drawable/camera_icn" />
+                android:background="@drawable/camera_icn"
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/btn_gallery"
@@ -220,8 +220,8 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="16dp"
-                android:visibility="visible"
-                android:background="@drawable/gallery_icn" />
+                android:background="@drawable/gallery_icn"
+                android:visibility="visible" />
         </LinearLayout>
 
     </LinearLayout>

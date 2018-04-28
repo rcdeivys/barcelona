@@ -561,7 +561,7 @@ public class WallCommentFragment extends BaseFragment implements WallCommentCont
     }
 
     private void showDialogDeletedComment(final String idpost, final WallCommentItem wallCommentItem, final WallCommentAdapter.CommentDeleteListener commentDeleteListener) {
-        WallCommentAdapter.canDeleted=false;
+        WallCommentAdapter.canDeleted = false;
         LayoutInflater inflater = getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_ideal_eleven_share, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -588,7 +588,7 @@ public class WallCommentFragment extends BaseFragment implements WallCommentCont
         alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
             public void onDismiss(DialogInterface dialog) {
-                WallCommentAdapter.canDeleted=true;
+                WallCommentAdapter.canDeleted = true;
             }
         });
     }
