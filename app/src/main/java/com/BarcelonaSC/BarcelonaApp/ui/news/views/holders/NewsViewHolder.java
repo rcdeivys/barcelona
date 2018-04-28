@@ -1,6 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.news.views.holders;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ import butterknife.ButterKnife;
 public class NewsViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.img_header)
-    ImageView imgHeader;
+    AppCompatImageView imgHeader;
 
     @BindView(R.id.tv_date)
     TextView textDate;
