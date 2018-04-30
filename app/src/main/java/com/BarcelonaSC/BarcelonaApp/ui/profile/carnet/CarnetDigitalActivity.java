@@ -64,6 +64,7 @@ public class CarnetDigitalActivity extends BaseActivity {
 
     @BindView(R.id.rl_carnet_container)
     RelativeLayout rlCarnetContainer;
+
     @BindView(R.id.cedula)
     FCMillonariosTextView cedula;
 

@@ -216,4 +216,27 @@
     <string name="not_block_user">¿Deseas Desbloquear a <b>%1$s</b>?</string>
     <string name="group_missing_participant">Selecciona algun participante</string>
 
+    <string name="complete_all_fields">Completa todos los campos de registro para ver el carné en la pestaña "Info Cuenta"</string>
+    <!--web views-->
+
+    <string name="with_google_play">Pay with Google Play</string>
+    <string name="with_pay_u">Pay with PayU</string>
+    <string name="suscribirme">SUSCRIBIRME</string>
+
+    <!--hincha dorado register-->
+    <string name="error_field_required">Campo requerido</string>
+    <string name="payu_process">Recuerda que a partir de este momento, iniciarás el proceso de pago. Por favor, verifica la información antes de continuar:</string>
+    <string name="payu_process_verify">Verifica la información antes de continuar</string>
+
+    <string name="error_spinner_required">Selecciona el tipo de suscripción</string>
+    <string name="spinner_default_option">Selecciona el tipo de suscripción</string>
+
+    <string name="error_accept_required">Acepte los términos y condiciones</string>
+
+    <string name="continuar">CONTINUAR</string>
+    <string name="cancelation_title">¡GRACIAS POR TU APORTE AL EQUIPO!\nESPERAMOS VOLVER A VERTE</string>
+    <string name="cancelar_subtitle">¿Cuéntanos porqué decidiste\ncancelar tu suscripción?</string>
+    <string name="email">E-mail</string>
+    <string name="email_asterisco">E-mail *</string>
+
 </resources>

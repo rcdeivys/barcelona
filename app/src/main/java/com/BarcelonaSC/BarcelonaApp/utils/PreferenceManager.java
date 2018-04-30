@@ -41,6 +41,13 @@ public class PreferenceManager {
                 .getDefaultSharedPreferences(context);
     }
 
+    public PreferenceManager() {
+        this.context = App.getAppContext();
+        TAG = PreferenceManager.class.getSimpleName();
+        mPref = android.preference.PreferenceManager
+                .getDefaultSharedPreferences(context);
+    }
+
     /**
      * @param act
      * @param context

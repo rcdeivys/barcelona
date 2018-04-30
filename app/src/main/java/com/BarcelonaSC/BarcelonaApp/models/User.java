@@ -7,7 +7,7 @@ import java.io.Serializable;
  * Created by root on 7/18/17.
  */
 
-public class User implements Serializable {
+public class User implements Serializable{
 
     private String nombre;
     private String apellido;
@@ -27,6 +27,11 @@ public class User implements Serializable {
     private String userID_google;
     private String foto_redes;
     private String registrado;
+    private String socio;
+    private String abonado;
+    private String direccion;
+    private String ciudad;
+
 
     public User() {
     }
@@ -45,10 +50,9 @@ public class User implements Serializable {
         this.foto = foto;
     }
 
-    public User(String name, String apellido, String ci, String email, String clave, String apodo, String descripcion, String cedular, String pais, String fecha_nacimiento, String genero, String foto) {
+    public User(String name, String apellido, String email, String clave, String apodo, String descripcion, String cedular, String pais, String fecha_nacimiento, String genero, String foto) {
         this.nombre = name;
         this.apellido = apellido;
-        this.ci = ci;
         this.email = email;
         this.clave = clave;
         this.apodo = apodo;
@@ -58,6 +62,39 @@ public class User implements Serializable {
         this.fecha_nacimiento = fecha_nacimiento;
         this.genero = genero;
         this.foto = foto;
+    }
+
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getSocio() {
+        return socio;
+    }
+
+    public void setSocio(String socio) {
+        this.socio = socio;
+    }
+
+    public String getAbonado() {
+        return abonado;
+    }
+
+    public void setAbonado(String abonado) {
+        this.abonado = abonado;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getNombre() {

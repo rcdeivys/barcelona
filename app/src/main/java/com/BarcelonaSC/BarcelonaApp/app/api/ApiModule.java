@@ -182,4 +182,16 @@ public class ApiModule {
         return retrofit.create(HomeApi.class);
     }
 
+    @Provides
+    @AppScope
+    public static HinchaDoradoApi providehinchaDoradoApi(Retrofit retrofit) {
+        return retrofit.create(HinchaDoradoApi.class);
+    }
+
+    @Provides
+    @AppScope
+    public static BeneficiosApi providebeneficiosApi(Retrofit retrofit) {
+        return retrofit.create(BeneficiosApi.class);
+    }
+
 }

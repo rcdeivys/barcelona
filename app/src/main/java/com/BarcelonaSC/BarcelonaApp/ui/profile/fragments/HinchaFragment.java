@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.NotificationManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;

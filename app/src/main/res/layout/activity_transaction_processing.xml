@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondodorado">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <FrameLayout
+                    android:id="@+id/fl_container_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/arrow_left_dorado"/>
+
+                </FrameLayout>
+
+                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoLigth.Caption.White"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:maxLength="15"
+                    android:textSize="15sp"
+                    android:text="Conviértete en"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/escudo"
+                    android:layout_gravity="center"
+                    />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            style="@style/StyleRobotoLigth.Caption.White"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:layout_marginTop="100dp"
+            android:textColor="@color/white"
+            android:text="Tus datos ya se encuentran registrados, recibirás un e-mail de PayU para finalizar tu compra; Si ya ingresaste tus datos y finalizaste tu compra, la transacción ya está siendo procesada"/>
+
+        <ImageView
+            android:layout_margin="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/jf"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btn_continuar_processs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:textColor="@color/black"
+                android:text="CONTINUAR"
+                android:background="@drawable/btn_1"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/color_hincha_dorado"
+            android:alpha="0.5"
+            android:textSize="11sp"
+            android:layout_margin="5dp"
+            android:text="Podrás cancelar tu membresía en cualquier momento" />
+
+    </LinearLayout>
+
+</RelativeLayout>

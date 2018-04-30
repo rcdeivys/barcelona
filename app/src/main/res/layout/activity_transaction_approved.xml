@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondodorado"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+
+                <FrameLayout
+                    android:id="@+id/fl_container_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/arrow_left_dorado" />
+
+                </FrameLayout>
+
+                <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                    style="@style/StyleRobotoBold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Bienvenido"
+                    android:textColor="@color/color_hincha_dorado"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/escudo" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                android:id="@+id/FCMillonariosTextView"
+                style="@style/StyleRobotoLigth.Caption.White"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="A partir de este momento viviremos juntos esta experiencia llamada"
+                android:textAlignment="center"
+                android:textColor="@color/color_hincha_dorado"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/textMillonario"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                android:id="@+id/textMillonario"
+                style="@style/StyleRobotoBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="MILLONARIOS FC"
+                android:textAlignment="center"
+                android:textColor="@color/color_hincha_dorado"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@+id/videoview_bienvenida"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/FCMillonariosTextView" />
+
+
+            <com.millonarios.MillonariosFC.utils.CustomVideoView
+                android:id="@+id/videoview_bienvenida"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/inf"
+                app:layout_constraintTop_toBottomOf="@+id/textMillonario"
+                app:layout_constraintHorizontal_bias="0.467"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+            <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+                style="@style/StyleRobotoLigth.Caption.White"
+                android:id="@+id/inf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Empieza a disfrutar de los beneficios"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/videoview_bienvenida" />
+
+            <Button
+                android:id="@+id/btn_continuar_aproved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/btn_1"
+                android:text="CONTINUAR"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inf" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
