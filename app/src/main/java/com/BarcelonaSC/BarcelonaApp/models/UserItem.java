@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 public class UserItem implements Serializable {
 
-
     @SerializedName("idusuario")
     @Expose
     private String id_usuario;
@@ -19,10 +18,13 @@ public class UserItem implements Serializable {
     private String apellido;
     @SerializedName("ci")
     @Expose
-    private String cedula;
+    private String ci;
     @SerializedName("email")
     @Expose
     private String email;
+    @SerializedName("dorado")
+    @Expose
+    private int dorado;
     @SerializedName("apodo")
     @Expose
     private String apodo;
@@ -77,12 +79,12 @@ public class UserItem implements Serializable {
         this.apellido = apellido;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getCi() {
+        return ci;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setCi(String ci) {
+        this.ci = ci;
     }
 
     public String getEmail() {
@@ -175,6 +177,14 @@ public class UserItem implements Serializable {
 
     public void setFechaVencimiento(String fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public boolean isDorado() {
+        return dorado == 1;
+    }
+
+    public void setDorado(boolean dorado) {
+        this.dorado = (dorado ? 1 : 0);
     }
 
     public String getId_usuario() {

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
@@ -36,22 +37,35 @@ public class CarnetDigitalActivity extends BaseActivity {
 
     @BindView(R.id.btn_back)
     AppCompatImageButton btnBack;
+
+    @BindView(R.id.text_header)
+    FCMillonariosTextView txtHeader;
+
     @BindView(R.id.img_profile)
     CircleImageView imgProfile;
+
     @BindView(R.id.id_hincha)
     FCMillonariosTextView idHincha;
-    @BindView(R.id.cedula)
-    FCMillonariosTextView ciHincha;
+
     @BindView(R.id.carnet_name)
     FCMillonariosTextView carnetName;
+
     @BindView(R.id.type_hincha)
     FCMillonariosTextView typeHincha;
+
     @BindView(R.id.text_registrado)
     FCMillonariosTextView registrado;
+
     @BindView(R.id.code_img)
     ImageView codeImg;
+
     @BindView(R.id.text_date_venc)
     FCMillonariosTextView textDateVenc;
+
+    @BindView(R.id.rl_carnet_container)
+    RelativeLayout rlCarnetContainer;
+    @BindView(R.id.cedula)
+    FCMillonariosTextView cedula;
 
     public final static int CodeWith = 1000;
     public final static int CodeHeight = 175;
@@ -63,14 +77,30 @@ public class CarnetDigitalActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carnet_digital);
+        rlCarnetContainer = findViewById(R.id.rl_carnet_container);
+        if (SessionManager.getInstance().getUser().isDorado()) {
+            //if (true) {
+            //      setContentView(R.layout.activity_carnet_dorado_digital);
+
+            rlCarnetContainer.removeAllViews();
+            View child = getLayoutInflater().inflate(R.layout.view_carnet_doradas, null);
+            rlCarnetContainer.addView(child);
+            rlCarnetContainer.invalidate();
+        }
+
         ButterKnife.bind(this);
+
+        if (SessionManager.getInstance().getUser().isDorado())
+            txtHeader.setText("Carné Dorado");
+
         carnetName.setText(sessionManager.getUser().getNombre() + " " + sessionManager.getUser().getApellido());
-        Glide.with(getBaseContext())
-                .load(sessionManager.getUser().getFoto())
-                .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta).override(Commons.dpToPx(120)))
-                .into(imgProfile);
+
+        if (sessionManager.getUser().getFoto() != null && sessionManager.getUser().getFoto().isEmpty()) {
+            Glide.with(getBaseContext()).load("").apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta).centerCrop().override(Commons.dpToPx(120))).into(imgProfile);
+        } else {
+            Glide.with(getBaseContext()).load(sessionManager.getUser().getFoto()).apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta).centerCrop().override(Commons.dpToPx(120))).into(imgProfile);
+        }
         idHincha.setText("Hincha # " + sessionManager.getSession().getIdUser());
-        ciHincha.setText(sessionManager.getUser().getCedula());
         registrado.setText("Desde el " + Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(0, 2) + "/" +
                 getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(sessionManager.getUser().getFechaRegistro()).substring(3, 5))).substring(0, 3).toUpperCase() + "/" +
                 sessionManager.getUser().getFechaRegistro().substring(0, 4));
@@ -85,6 +115,8 @@ public class CarnetDigitalActivity extends BaseActivity {
                 finish();
             }
         });
+
+        cedula.setText(SessionManager.getInstance().getUser().getCi());
 
         generateBarCode(mString);
 

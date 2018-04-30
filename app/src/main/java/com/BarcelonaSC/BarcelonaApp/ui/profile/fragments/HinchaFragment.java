@@ -33,6 +33,7 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.NotificationManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
+import com.BarcelonaSC.BarcelonaApp.eventbus.ChooseOpenEvent;
 import com.BarcelonaSC.BarcelonaApp.models.User;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.login.AuthActivity;
@@ -49,6 +50,8 @@ import com.bumptech.glide.request.RequestOptions;
 import com.facebook.login.LoginManager;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -71,31 +74,53 @@ public class HinchaFragment extends Fragment {
 
     @BindView(R.id.text_name)
     public FCMillonariosTextView textName;
+
     @BindView(R.id.input_nickname)
     EditText inputNickname;
+
     @BindView(R.id.btn_logout)
     LinearLayout btnLogout;
+
     @BindView(R.id.img_profile)
     public CircleImageView imgProfile;
+
     @BindView(R.id.icon_edit_img_profile)
     ImageView iconEditImgProfile;
+
     @BindView(R.id.text_registrado)
     TextView registrado;
+
     @BindView(R.id.id_hincha)
     FCMillonariosTextView id_hincha;
+
     SessionManager sessionManager;
+
     @BindView(R.id.view_btn_confirmit)
     LinearLayout viewBtnDiscardSave;
+
     @BindView(R.id.btn_save_change)
     Button btnSaveChange;
+
     @BindView(R.id.btn_discard_change)
     Button btnDiscardChange;
+
     @BindView(R.id.btn_carnet)
     LinearLayout btnCarnet;
+
     @BindView(R.id.btn_share)
     LinearLayout btnShare;
+
     @BindView(R.id.acerca_de)
     FCMillonariosTextView acercaDe;
+
+    @BindView(R.id.cancelar_subs)
+    LinearLayout cancelarSubs;
+
+    @BindView(R.id.cancelar_subs_texto)
+    FCMillonariosTextView cancelarSubsTexto;
+
+    @BindView(R.id.cerrar_sesion_texto)
+    FCMillonariosTextView cerrarSesionTexto;
 
     public Uri mCropImageUri;
 
@@ -104,7 +129,12 @@ public class HinchaFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_hincha_oficial, container, false);
+        View view;
+        if (SessionManager.getInstance().getUser().isDorado())
+            //if(true)
+            view = inflater.inflate(R.layout.fragment_hincha_oficial_dorado, container, false);
+        else
+            view = inflater.inflate(R.layout.fragment_hincha_oficial, container, false);
         return view;
     }
 
@@ -133,10 +163,15 @@ public class HinchaFragment extends Fragment {
         btnSaveChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!inputNickname.getText().toString().trim().isEmpty()) {
-                    updateUser();
+                user = new User();
+                user.setNombre(sessionManager.getUser().getNombre());
+                if (!inputNickname.getText().toString().trim().equals("")) {
+                    user.setApodo(inputNickname.getText().toString().trim());
+                    ((ProfileFragment) getParentFragment()).presenter.updateUser(user, new SessionManager(getActivity()).getSession().getToken());
+                    showActionButtonDiscarSave(false);
                 } else {
-                    Toast.makeText(getActivity(), "¡Tu Apodo no puede estar vacío!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "El apodo no puede estar vacío", Toast.LENGTH_SHORT).show();
+                    return;
                 }
             }
         });
@@ -162,14 +197,44 @@ public class HinchaFragment extends Fragment {
             }
         });
 
+        cancelarSubsTexto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater inflater = getLayoutInflater();
+                View dialoglayout = inflater.inflate(R.layout.dialog_ideal_eleven_share, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setView(dialoglayout);
+                final AlertDialog alertDialog = builder.show();
+                FCMillonariosTextView fcMillonariosTextView = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_tittle);
+                fcMillonariosTextView.setText("¿Seguro deseas cancelar tu suscripción?");
+                Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_not);
+                btnNot.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                Button btnYes = (Button) dialoglayout.findViewById(R.id.btn_yes);
+                btnYes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(getActivity(), HinchaDoradoCancelationActivity.class);
+                        startActivity(intent);
+                        alertDialog.dismiss();
+                    }
+                });
+
+            }
+        });
+
         btnCarnet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sessionManager.getUser().getCedula() != null && !sessionManager.getUser().getCedula().equals("")) {
+                if (SessionManager.getInstance().getUser().getCi() != null && !SessionManager.getInstance().getUser().getCi().equals("")) {
                     Intent intent = new Intent(getActivity(), CarnetDigitalActivity.class);
                     getActivity().startActivity(intent);
                 } else {
-                    Toast.makeText(getActivity(), "Completa todos los campos de registro para ver el carné en la pestaña \"Info Cuenta\"", Toast.LENGTH_LONG).show();
+                    showDialog(App.get().getString(R.string.complete_all_fields));
                 }
             }
         });
@@ -177,9 +242,7 @@ public class HinchaFragment extends Fragment {
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //moveToReferredFragment();
-                showDialog("Próximamente podrás invitar a más Toreros");
-
+                moveToReferredFragment();
             }
         });
 
@@ -190,7 +253,6 @@ public class HinchaFragment extends Fragment {
                 sessionManager.setUrlLineUpShare("");
                 sessionManager.setUser(null);
                 FirebaseManager.getInstance().clearFirebaseManager();
-                PreferenceManager.getInstance().setBoolean(Constant.Key.MONUMETAL_ID, false);
                 NotificationManager.getInstance().setConfiguration(null);
                 LoginManager.getInstance().logOut();
                 startActivity(new Intent(getActivity(), AuthActivity.class));
@@ -202,6 +264,22 @@ public class HinchaFragment extends Fragment {
         } else {
             ((ProfileFragment) getParentFragment()).presenter.loadUser(sessionManager.getSession().getToken());
         }
+
+    }
+
+    @OnClick(R.id.btn_hincha_gold)
+    public void clickBtnHinchaGold() {
+        startActivity(new Intent(getContext(), HinchaDoradoActivity.class));
+    }
+
+    @OnClick(R.id.btn_beneficios)
+    public void clickBtnBeneficios() {
+        startActivity(new Intent(getContext(), BeneficiosActivity.class));
+    }
+
+    @OnClick(R.id.cancelar_subs)
+    void cancelarSubs() {
+        //TODO: aqui cancelamos la subscripcion
     }
 
     private void setDataView(UserItem user) {
@@ -209,16 +287,17 @@ public class HinchaFragment extends Fragment {
         if (user.getApodo() != null) {
             inputNickname.setText(user.getApodo());
         }
-        registrado.setText("DESDE "
-                + Commons.simpleDateFormat(user.getFechaRegistro()).substring(0, 2)
-                + "/" + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(user.getFechaRegistro()).substring(3, 5))).substring(0, 3)
-                + "/" + user.getFechaRegistro().substring(0, 4));
+        registrado.setText("Desde el \n" + Commons.simpleDateFormat(user.getFechaRegistro()).substring(0, 2) + "/" + getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(user.getFechaRegistro()).substring(3, 5))).substring(0, 3).toUpperCase() + "/" + user.getFechaRegistro().substring(0, 4));
         id_hincha.setText("N°" + sessionManager.getSession().getIdUser());
         Glide.with(getActivity()).load(user.getFoto()).apply(new RequestOptions().error(R.drawable.silueta)).into(imgProfile);
     }
 
     public void updateDataView(UserItem user) {
-        textName.setText(user.getNombre() + " " + user.getApellido());
+        try {
+            textName.setText(user.getNombre() + " " + user.getApellido());
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -290,9 +369,7 @@ public class HinchaFragment extends Fragment {
 
     private void updateUser() {
         user = new User();
-        user.setApodo(inputNickname.getText().toString().trim());
         user.setNombre(sessionManager.getUser().getNombre());
-
         if (mCropImageUri != null) {
             InputStream imageStream = null;
             try {
@@ -303,10 +380,14 @@ public class HinchaFragment extends Fragment {
             final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
             String encodedImage = encodeImage(selectedImage);
             user.setFoto("data:image/png;base64," + encodedImage);
-        }
 
-        ((ProfileFragment) getParentFragment()).presenter.updateUser(user, new SessionManager(getActivity()).getSession().getToken());
-        showActionButtonDiscarSave(false);
+            if (getParentFragment() != null) {
+                ((ProfileFragment) getParentFragment()).presenter.updateUser(user, new SessionManager(getActivity()).getSession().getToken());
+            } else {
+                Toast.makeText(getActivity(), "Ups, algo ha ido mal, por favor intenta de nuevo", Toast.LENGTH_SHORT).show();
+            }
+            showActionButtonDiscarSave(false);
+        }
     }
 
     private void showActionButtonDiscarSave(boolean isShow) {
@@ -348,12 +429,14 @@ public class HinchaFragment extends Fragment {
             ResolveInfo ri = resInfo.get(i);
             String packageName = ri.activityInfo.packageName;
 
+
             Intent intent = new Intent();
             intent.setComponent(new ComponentName(packageName, ri.activityInfo.name));
             intent.setAction(Intent.ACTION_SEND);
             intent.putExtra(Intent.EXTRA_TEXT, Commons.getString(R.string.url_api) + "compartir/usr/" + SessionManager.getInstance().getSession().getCodigo());
             intent.setType("text/plain");
             intentList.add(new LabeledIntent(intent, packageName, ri.loadLabel(pm), ri.icon));
+
         }
 
         // convert intentList to array
@@ -366,22 +449,25 @@ public class HinchaFragment extends Fragment {
     private void moveToReferredFragment() {
         Intent intent = new Intent(getActivity(), ReferredToActivity.class);
         getActivity().startActivity(intent);
-        //Toast.makeText(getActivity(), "Esta opción estará activa para la próxima actualización", Toast.LENGTH_SHORT).show();
     }
 
     public void showDialog(String message) {
+
         LayoutInflater inflater = getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_ok, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(dialoglayout);
         final AlertDialog alertDialog = builder.show();
-        FCMillonariosTextView fcMillonariosTextView = dialoglayout.findViewById(R.id.fcm_tv_tittle);
+        alertDialog.setCancelable(false);
+        FCMillonariosTextView fcMillonariosTextView = (FCMillonariosTextView) dialoglayout.findViewById(R.id.fcm_tv_tittle);
         fcMillonariosTextView.setText(message);
         Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_ok);
         btnNot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EventBus.getDefault().post(new ChooseOpenEvent("1"));
                 alertDialog.dismiss();
+
             }
         });
     }
