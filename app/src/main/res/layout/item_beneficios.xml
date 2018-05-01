@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content_news_item"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    android:padding="5dp"
+    android:background="@drawable/rounder_item_new"
+    android:orientation="vertical">
+
+    <!-- Imagen de la noticia -->
+    <ImageView
+        android:id="@+id/iv_beneficio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:padding="5dp"/>
+
+    <!-- Título de la noticia -->
+    <com.millonarios.MillonariosFC.utils.FCMillonariosTextView
+        android:id="@+id/tv_title_beneficio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/white"
+        android:visibility="gone"
+        android:textSize="@dimen/font_body_m_size" />
+
+</LinearLayout>

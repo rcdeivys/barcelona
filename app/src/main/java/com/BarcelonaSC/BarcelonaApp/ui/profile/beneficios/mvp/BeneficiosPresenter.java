@@ -1,6 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.profile.beneficios.mvp;
 
-import com.millonarios.MillonariosFC.models.BeneficioData;
+import com.BarcelonaSC.BarcelonaApp.models.BeneficioData;
 
 import java.util.List;
 

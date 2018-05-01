@@ -1,5 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.app.api;
 
+import com.BarcelonaSC.BarcelonaApp.models.response.BeneficiosResponse;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 

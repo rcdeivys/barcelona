@@ -1,7 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.profile.beneficios.di;
 
-import com.millonarios.MillonariosFC.app.di.AppComponent;
-import com.millonarios.MillonariosFC.ui.profile.beneficios.BeneficiosActivity;
+import com.BarcelonaSC.BarcelonaApp.app.di.AppComponent;
+import com.BarcelonaSC.BarcelonaApp.ui.profile.beneficios.BeneficiosActivity;
 
 import dagger.Component;
 

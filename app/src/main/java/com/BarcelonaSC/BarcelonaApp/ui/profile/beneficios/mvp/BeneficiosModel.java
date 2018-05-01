@@ -1,8 +1,8 @@
 package com.BarcelonaSC.BarcelonaApp.ui.profile.beneficios.mvp;
 
-import com.millonarios.MillonariosFC.app.api.BeneficiosApi;
-import com.millonarios.MillonariosFC.app.network.NetworkCallBack;
-import com.millonarios.MillonariosFC.models.response.BeneficiosResponse;
+import com.BarcelonaSC.BarcelonaApp.app.api.BeneficiosApi;
+import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
+import com.BarcelonaSC.BarcelonaApp.models.response.BeneficiosResponse;
 
 /**
  * Created by Pedro Gomez on 20/02/2018.

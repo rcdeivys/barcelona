@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.millonarios.MillonariosFC.R;
-import com.millonarios.MillonariosFC.models.BeneficioData;
+import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.models.BeneficioData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
