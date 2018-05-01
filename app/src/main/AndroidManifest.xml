@@ -207,6 +207,27 @@
         <activity
             android:name=".ui.geolocation.MapActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.hinchadorado.HinchaDoradoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.hinchadorado.HinchaDoradoRegister"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.hinchadorado.paymentwebviews.GooglePlayPaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.hinchadorado.HinchaDoradoStatusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.profile.beneficios.BeneficiosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.profile.beneficios.ShowBeneficioActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
