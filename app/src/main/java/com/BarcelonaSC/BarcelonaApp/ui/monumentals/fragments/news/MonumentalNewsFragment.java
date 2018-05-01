@@ -57,7 +57,7 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     Dialog dialog;
     Unbinder unbinder;
 
-    int videoPosition = 0;
+    List<Integer> videoPosition;
 
     NewsAdapter newsAdapter;
 
@@ -73,6 +73,7 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        videoPosition = new ArrayList<>();
         initComponent();
     }
 
@@ -146,7 +147,7 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
 
     @Override
     public void playVideo(int position) {
-        videoPosition = videoPosition;
+        videoPosition.add(position);
     }
 
     @Override

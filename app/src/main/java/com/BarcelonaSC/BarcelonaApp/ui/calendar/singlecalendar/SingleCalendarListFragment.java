@@ -101,7 +101,7 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
     String type;
     String news;
 
-    int videoPosition = 0;
+    List<Integer> videoPosition;
 
     @Inject
     SCalendarPresenter presenter;
@@ -127,6 +127,7 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        videoPosition = new ArrayList<>();
         initComponent();
     }
 
@@ -318,7 +319,7 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
 
     @Override
     public void playVideo(int position) {
-        videoPosition = position;
+        videoPosition.add(position);
     }
 
     @Override

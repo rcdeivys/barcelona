@@ -278,8 +278,9 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         }
     }
 
-    public void pauseVideo(int position) {
-        notifyItemChanged(position);
+    public void pauseVideo(List<Integer> position) {
+        for (Integer positions : position)
+            notifyItemChanged(positions);
     }
 
     public interface OnItemClickListener {

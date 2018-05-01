@@ -59,7 +59,7 @@ public class NewsFragment extends BaseFragment implements NewsContract.View, New
 
     News news;
 
-    int videoPosition = 0;
+    List<Integer> videoPosition;
 
     @Inject
     public NewsPresenter presenter;
@@ -77,6 +77,7 @@ public class NewsFragment extends BaseFragment implements NewsContract.View, New
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        videoPosition = new ArrayList<>();
         initComponent();
     }
 
@@ -149,7 +150,7 @@ public class NewsFragment extends BaseFragment implements NewsContract.View, New
 
     @Override
     public void playVideo(int position) {
-        videoPosition = position;
+        videoPosition.add(position);
     }
 
     @Override
