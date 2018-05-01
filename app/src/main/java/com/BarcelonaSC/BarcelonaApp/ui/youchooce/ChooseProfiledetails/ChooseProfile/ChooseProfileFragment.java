@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
@@ -48,6 +47,8 @@ public class ChooseProfileFragment extends BaseFragment
     Unbinder unbinder;
     @Inject
     ChooseProfilePresenter presenter;
+
+    int videoPosition = 0;
 
     private ChooseProfileAdapter playerProfileAdapter;
     private LinearLayoutManager linearLayoutManager;
@@ -190,8 +191,14 @@ public class ChooseProfileFragment extends BaseFragment
 
     @Override
     public void onVideoIsDorado() {
-      //  showDialogDorado();
+        //  showDialogDorado();
     }
+
+    @Override
+    public void playVideo(int position) {
+        this.videoPosition = position;
+    }
+
 
     @Override
     public void navigateToVideoNewsActivity(News news, int currentPosition) {
@@ -211,5 +218,11 @@ public class ChooseProfileFragment extends BaseFragment
     @Override
     public void navigateToGalleryActivity(News news) {
         navigator.navigateToGalleryActivity(news);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        playerProfileAdapter.pauseVideo(videoPosition);
     }
 }

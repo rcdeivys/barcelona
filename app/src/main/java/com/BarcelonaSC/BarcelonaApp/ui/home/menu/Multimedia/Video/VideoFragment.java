@@ -23,6 +23,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Video.mvp.VideoPrese
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -47,6 +48,8 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
 
     Unbinder unbinder;
 
+    List<Integer> videoPosition;
+
     private LinearLayoutManager linearLayoutManager;
     private VideoAdapter videoAdapter;
 
@@ -70,6 +73,7 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
         super.onCreate(savedInstanceState);
         type = getArguments().getString(Constant.Key.TYPE);
         linearLayoutManager = new LinearLayoutManager(getContext());
+        videoPosition = new ArrayList<>();
         initComponent();
     }
 
@@ -184,4 +188,17 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
         ShareSection.shareIndividual("video", id);
     }
 
+
+    @Override
+    public void playVideo(int position) {
+        if (!videoPosition.contains(position))
+            videoPosition.add(position);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        videoAdapter.pauseVideo(videoPosition);
+        videoPosition.clear();
+    }
 }

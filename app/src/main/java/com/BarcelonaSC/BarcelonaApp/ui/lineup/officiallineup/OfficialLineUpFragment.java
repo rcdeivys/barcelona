@@ -24,15 +24,15 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.Services.ShareBaseFragment;
+import com.BarcelonaSC.BarcelonaApp.models.PlayByPlay;
+import com.BarcelonaSC.BarcelonaApp.ui.lineup.officiallineup.di.DaggerOLineUpComponent;
+import com.BarcelonaSC.BarcelonaApp.ui.lineup.officiallineup.di.OLineUpModule;
 import com.BarcelonaSC.BarcelonaApp.ui.lineup.officiallineup.mvp.OLineUpContract;
 import com.BarcelonaSC.BarcelonaApp.ui.lineup.officiallineup.mvp.OLineUpPresenter;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
-import com.BarcelonaSC.BarcelonaApp.utils.SoccesFieldView;
-import com.BarcelonaSC.BarcelonaApp.models.PlayByPlay;
-import com.BarcelonaSC.BarcelonaApp.ui.lineup.officiallineup.di.DaggerOLineUpComponent;
-import com.BarcelonaSC.BarcelonaApp.ui.lineup.officiallineup.di.OLineUpModule;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
+import com.BarcelonaSC.BarcelonaApp.utils.SoccesFieldView;
 import com.bumptech.glide.Glide;
 
 import javax.inject.Inject;
@@ -315,7 +315,6 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
                     imgPlay.setVisibility(View.VISIBLE);
                     vvGameLineup.pause();
                 }
-
             }
         });
         mp.seekTo(vvGameLineup.getCurrentPosition() + 1);
@@ -330,5 +329,12 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
     public void share() {
         new ShareSection(App.getAppContext()).share(App.getAppContext(), ConfigurationManager.getInstance().getConfiguration().getTit7());
         Log.i(TAG, "--->OFICIAL LINE UP");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        vvGameLineup.canPause();
+        imgPlay.setVisibility(View.VISIBLE);
     }
 }

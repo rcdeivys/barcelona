@@ -1,9 +1,9 @@
 package com.BarcelonaSC.BarcelonaApp.commons;
 
 import android.content.res.Configuration;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class VideoActivity extends AppCompatActivity implements CustomVideoView.CustomVideoViewOnListener{
+public class VideoActivity extends AppCompatActivity implements CustomVideoView.CustomVideoViewOnListener {
 
     @BindView(R.id.custom_video_view)
     CustomVideoView customVideoView;
@@ -78,7 +78,13 @@ public class VideoActivity extends AppCompatActivity implements CustomVideoView.
         }
     }
 
-    private void scaleVideo () {
+    private void scaleVideo() {
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        customVideoView.pause();
     }
 }

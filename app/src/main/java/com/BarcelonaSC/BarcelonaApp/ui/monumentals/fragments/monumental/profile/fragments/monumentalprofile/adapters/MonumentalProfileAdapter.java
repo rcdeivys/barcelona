@@ -25,6 +25,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -124,6 +125,12 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
                 holder.ivShare.setVisibility(View.VISIBLE);
             }*/
             holder.videoView.setCustomVideoViewOnListener(this);
+            holder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
+                @Override
+                public void play() {
+                    onItemClickListener.playVideo(position);
+                }
+            });
             holder.setNewsVideo(recentItem, new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -185,6 +192,15 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
         void onClickHeader();
 
         void onClickVote();
+
+        void playVideo(int position);
+    }
+
+    public void pauseVideo(List<Integer> position) {
+        for (Integer positions : position) {
+            notifyItemChanged(positions);
+        }
+
     }
 
     class VHItem extends RecyclerView.ViewHolder {

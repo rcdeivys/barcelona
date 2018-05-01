@@ -115,6 +115,12 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
                 holder.ivShare.setVisibility(View.VISIBLE);
             }*/
             holder.videoView.setCustomVideoViewOnListener(this);
+            holder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
+                @Override
+                public void play() {
+                    onItemClickListener.playVideo(position);
+                }
+            });
             holder.setNewsVideo(getNewsList(position), new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -136,6 +142,8 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
                 }
             });
         }
+
+
         holder.ivShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,6 +151,11 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
             }
         });
     }
+
+    public void pauseVideo(int position) {
+        notifyItemChanged(position);
+    }
+
 
     private News getNewsList(int position) {
         if (haveHeader)
@@ -177,6 +190,8 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         void onClickVideoItem(News news, int currentPosition);
 
         void onVideoIsDorado();
+
+        void playVideo(int position);
 
     }
 
