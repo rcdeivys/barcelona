@@ -397,6 +397,11 @@ public class ChatActivity extends BaseSideMenuActivity implements Dialog_add_gro
         FirebaseManager.getInstance()
                 .updateBloqueo(FirebaseManager.getInstance().getUsuario().getId()
                         , amigos.getId(), amigos.isBloqueado());
+        if(amigos.isBloqueado()){
+            Toast.makeText(App.get(),"Usuario Desbloqueado",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(App.get(),"Usuario Bloqueado",Toast.LENGTH_SHORT).show();
+        }
         finish();
     }
 

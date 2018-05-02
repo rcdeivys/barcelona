@@ -122,7 +122,7 @@
     <string name="toast_error_reject_user">Error al rechazar el usuario</string>
 
     <!-- chat -->
-    <string name="write_msg">Write a message</string>
+    <string name="write_msg">Escribe un mensaje</string>
     <string name="name_example">Watatubi Watanabe</string>
     <string name="chat_text_example">Lorem ipsum dolor sit amet, consectetur adipiscing elit, set dolore magna aliqua algo vaa qui por defecto texto sin sentido hay mucho como estos textos. . </string>
     <string name="chat_hour_example">12:00</string>

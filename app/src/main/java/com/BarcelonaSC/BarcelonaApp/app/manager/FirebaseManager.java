@@ -1063,7 +1063,8 @@ public class FirebaseManager {
                                                     List<FriendsModelView> filterSeach = new ArrayList<>();
                                                     for (FriendsModelView friends : result) {
                                                         if (friends.getNombre_uppercase().toUpperCase().trim().startsWith(seach.toUpperCase().trim())) {
-                                                            filterSeach.add(friends);
+                                                            if (!friends.getId().equals(SessionManager.getInstance().getUser().getId_usuario()))
+                                                                filterSeach.add(friends);
                                                         }
                                                     }
                                                     miembros.onDataChanged(filterSeach);

@@ -32,10 +32,12 @@
                 app:civ_border_overlay="true"
                 app:civ_border_width="1dp" />
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/iv_edit_group"
                 android:layout_width="25dp"
                 android:layout_height="22dp"
+                app:civ_border_width="1dp"
+                app:civ_border_color="@color/gray_300"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:visibility="visible"

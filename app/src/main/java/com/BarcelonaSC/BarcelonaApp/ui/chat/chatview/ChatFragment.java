@@ -784,13 +784,13 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     @Override
     public void multimediaSuccess() {
         hideDialogProgress();
-        Toast.makeText(getContext(), "Carga Exitosa", Toast.LENGTH_SHORT).show();
+        Toast.makeText(App.get(), "Carga Exitosa", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void multimediaFailed() {
         hideDialogProgress();
-        Toast.makeText(getContext(), "Algo salió mal, por favor intenta de nuevo", Toast.LENGTH_SHORT).show();
+        Toast.makeText(App.get(), "Algo salió mal, por favor intenta de nuevo", Toast.LENGTH_SHORT).show();
     }
 
     @Override
