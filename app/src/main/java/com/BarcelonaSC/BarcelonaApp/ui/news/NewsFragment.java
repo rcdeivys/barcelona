@@ -11,17 +11,12 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 
-
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.SingleCalendarListFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.news.di.DaggerNewsComponent;
-import com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryListActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsDetailsActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.news.di.NewsModule;
 import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsContract;
 import com.BarcelonaSC.BarcelonaApp.ui.news.mvp.NewsPresenter;
@@ -62,6 +57,10 @@ public class NewsFragment extends BaseFragment implements NewsContract.View, New
 
     LinearLayoutManager mLayoutManager;
 
+    News news;
+
+    List<Integer> videoPosition;
+
     @Inject
     public NewsPresenter presenter;
 
@@ -78,6 +77,7 @@ public class NewsFragment extends BaseFragment implements NewsContract.View, New
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        videoPosition = new ArrayList<>();
         initComponent();
     }
 
@@ -149,6 +149,11 @@ public class NewsFragment extends BaseFragment implements NewsContract.View, New
     }
 
     @Override
+    public void playVideo(int position) {
+        videoPosition.add(position);
+    }
+
+    @Override
     public void onCalendarClick(String id) {
         SingleCalendarListFragment singleCalendarListFragment = new SingleCalendarListFragment();
         Bundle bundle = new Bundle();
@@ -164,7 +169,7 @@ public class NewsFragment extends BaseFragment implements NewsContract.View, New
 
     @Override
     public void onVideoIsDorado() {
-      //  showDialogDorado();
+        //  showDialogDorado();
     }
 
     private void refresh() {
@@ -247,4 +252,14 @@ public class NewsFragment extends BaseFragment implements NewsContract.View, New
         super.onDestroy();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        newsAdapter.pauseVideo(videoPosition);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
 }

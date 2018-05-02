@@ -9,6 +9,7 @@ import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.MainCalendarFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.futbolbase.FutbolBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.MultimediaFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
@@ -40,6 +41,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
 
     private MainNewsFragment newsFragment;
     private MainNewsFragment newsProfessionalFragment;
+    private FutbolBaseFragment futbolBaseFragment;
     private YouChooseFragment mYouChooseFragment;
     private ProfileFragment profileFragment;
     private NotificationFragment settingFragment;
@@ -108,6 +110,16 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         }
         view.setTitle(configurationManager.getConfiguration().getTit2());
         view.showFragment(newsProfessionalFragment, MainNewsFragment.TAG + Constant.Menu.NEWS);
+    }
+
+    private void newsFootballBase() {
+        futbolBaseFragment = (FutbolBaseFragment)
+                view.getFragmentByTag(FutbolBaseFragment.TAG + Constant.Menu.NEWS + Constant.Menu.FOOTBALL_BASE);
+        if (futbolBaseFragment == null) {
+            futbolBaseFragment = new FutbolBaseFragment();
+            view.addFragment(futbolBaseFragment, FutbolBaseFragment.TAG + Constant.Menu.FOOTBALL_BASE);
+        }
+        view.showFragment(futbolBaseFragment, FutbolBaseFragment.TAG + Constant.Menu.FOOTBALL_BASE);
     }
 
     private void mountYouChoose() {
@@ -218,13 +230,15 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(liveFragment, LiveFragment.TAG);
     }
 
-    private void wallAndChat() {
+    public void wallAndChat(String Selected) {
         wallAndChatFragment = (WallAndChatFragment) view.getFragmentByTag(WallAndChatFragment.TAG);
         if (wallAndChatFragment == null) {
             wallAndChatFragment = new WallAndChatFragment();
             view.addFragment(wallAndChatFragment, WallAndChatFragment.TAG);
         }
+        wallAndChatFragment.setSelection(Selected);
         view.showFragment(wallAndChatFragment, WallAndChatFragment.TAG);
+
     }
 
     private void multimedia(String selected) {
@@ -270,17 +284,23 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
                 multimedia(Constant.Menu.IN_LIVE);
                 view.trackFragment(configurationManager.getConfiguration().getTit9());
                 break;
-//
-//            case Constant.Menu.VIDEOS:
-//                view.setTitle(configurationManager.getConfiguration().getTit9());
-//                multimedia(Constant.Menu.VIDEOS);
-//                view.trackFragment(configurationManager.getConfiguration().getTit9());
-//                break;
+
+            case Constant.Menu.VIDEOS:
+                view.setTitle(configurationManager.getConfiguration().getTit9());
+                multimedia(Constant.Menu.IN_LIVE);
+                view.trackFragment(configurationManager.getConfiguration().getTit9());
+                break;
 
             case Constant.Menu.TABLE:
                 view.setTitle(configurationManager.getConfiguration().getTit4());
                 table();
                 view.trackFragment(configurationManager.getConfiguration().getTit4());
+                break;
+
+            case Constant.Menu.STATISTICS:
+                view.setTitle(configurationManager.getConfiguration().getTit5());
+                statistics();
+                view.trackFragment(configurationManager.getConfiguration().getTit5());
                 break;
 
             case Constant.Menu.TEAM:
@@ -295,21 +315,27 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
                 view.trackFragment(configurationManager.getConfiguration().getTit12());
                 break;
 
-//            case Constant.Menu.IN_LIVE:
-//                view.setTitle(configurationManager.getConfiguration().getTit9());
-//                view.trackFragment(configurationManager.getConfiguration().getTit9());
-//                live();
-//                break;
+            case Constant.Menu.MILLIONARE_ACADEMY:
+                view.setTitle(configurationManager.getConfiguration().getTit12());
+                mountAcademy();
+                view.trackFragment(configurationManager.getConfiguration().getTit12());
+                break;
 
             case Constant.Menu.WALL_AND_CHAT:
                 view.setTitle(configurationManager.getConfiguration().getTit161());
-                wallAndChat();
+                wallAndChat(Constant.Menu.WALL_AND_CHAT);
+                view.trackFragment(configurationManager.getConfiguration().getTit16());
+                break;
+
+            case Constant.Menu.CHAT:
+                view.setTitle(configurationManager.getConfiguration().getTit161());
+                wallAndChat(Constant.Menu.CHAT);
                 view.trackFragment(configurationManager.getConfiguration().getTit16());
                 break;
 
             case Constant.Menu.GAME:
                 view.setTitle(configurationManager.getConfiguration().getTit11());
-                //mountProfile();
+                mountProfile();
                 view.trackFragment(configurationManager.getConfiguration().getTit11());
                 break;
 
@@ -325,26 +351,26 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
                 view.trackFragment(configurationManager.getConfiguration().getTit8());
                 break;
 
-            case Constant.Menu.MAP:
-                mountMap();
-                break;
-
             case Constant.Menu.ONLINE_SHOP:
                 view.setTitle(configurationManager.getConfiguration().getTit13());
                 virtualShop();
                 view.trackFragment(configurationManager.getConfiguration().getTit13());
                 break;
 
-            case Constant.Menu.STATISTICS:
-                view.setTitle(configurationManager.getConfiguration().getTit5());
-                statistics();
-                view.trackFragment(configurationManager.getConfiguration().getTit5());
+            case Constant.Menu.FOOTBALL_BASE:
+                view.setTitle(configurationManager.getConfiguration().getTit14());
+                newsFootballBase();
+                view.trackFragment(configurationManager.getConfiguration().getTit14());
                 break;
 
             case Constant.Menu.YOUR_CHOOSE:
                 view.setTitle(configurationManager.getConfiguration().getTit10());
                 mountYouChoose();
                 view.trackFragment(configurationManager.getConfiguration().getTit10());
+                break;
+
+            case Constant.Menu.MAP:
+                mountMap();
                 break;
         }
     }
@@ -368,20 +394,26 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
             onItemMenuSelected(Constant.Menu.TEAM);//
         } else if (BannerView.Seccion.LINE_UP.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.ALIGMENT);//
-        } else if (BannerView.Seccion.WALL_AND_CHAT.getValue().equals(seccion)) {
+        } else if (BannerView.Seccion.WALL.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.WALL_AND_CHAT);//
+        } else if (BannerView.Seccion.CHAT.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.CHAT);//
         } else if (BannerView.Seccion.LIVE.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.IN_LIVE);//
+        } else if (BannerView.Seccion.FOOTBALL_BASE.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.FOOTBALL_BASE);//
         } else if (BannerView.Seccion.STATISTICS.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.STATISTICS);//
         } else if (BannerView.Seccion.YOU_CHOOSE.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.YOUR_CHOOSE);//
+        } else if (BannerView.Seccion.ACADEMY.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.MILLIONARE_ACADEMY);//
         } else if (BannerView.Seccion.GAMES.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.GAME);
         } else if (BannerView.Seccion.STORE.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.ONLINE_SHOP);
-        } else if (BannerView.Seccion.MONUMENTAL.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.MONUMENTAL);
+        } else if (BannerView.Seccion.WALL.equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.WALL_AND_CHAT);
         } else if (BannerView.Seccion.MAP.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.MAP);
         }

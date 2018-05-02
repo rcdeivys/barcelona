@@ -17,7 +17,6 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
-import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.sprylab.android.widget.TextureVideoView;
@@ -59,6 +58,13 @@ public class CustomVideoView extends RelativeLayout implements MediaPlayer.OnCom
     LinearLayout contentController;
     @BindView(R.id.content_video_view)
     RelativeLayout contentVideoView;
+
+    CustomVideoViewPlayListener customVideoViewPlayListener;
+
+    public void setCustomVideoViewPlayListener(CustomVideoViewPlayListener customVideoViewPlayListener) {
+        this.customVideoViewPlayListener = customVideoViewPlayListener;
+    }
+
     int height;
     int width;
 
@@ -151,6 +157,8 @@ public class CustomVideoView extends RelativeLayout implements MediaPlayer.OnCom
                     imgNews.setVisibility(INVISIBLE);
                     videoView.setVisibility(View.VISIBLE);
                     play.setVisibility(View.GONE);
+                    if (customVideoViewPlayListener != null)
+                        customVideoViewPlayListener.play();
                 } else {
                     play.setVisibility(View.VISIBLE);
                     videoView.pause();
@@ -287,6 +295,10 @@ public class CustomVideoView extends RelativeLayout implements MediaPlayer.OnCom
         void onPrepared();
 
         void videoIsDorado();
+    }
+
+    public interface CustomVideoViewPlayListener {
+        void play();
     }
 
     public void setCustomVideoViewOnListener(CustomVideoViewOnListener customVideoView) {

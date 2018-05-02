@@ -20,7 +20,6 @@ import android.widget.RelativeLayout;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
-import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseSideMenuActivity;
 import com.BarcelonaSC.BarcelonaApp.permissions.MillosMultiplePermissionListener;
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
@@ -30,6 +29,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.futbolbase.FutbolBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.geolocation.MapActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.home.di.DaggerHomeComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.home.di.HomeModule;
+import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.MultimediaFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Table.TableFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.WallAndChat.WallAndChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.configuration.NotificationFragment;
@@ -42,8 +42,6 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.TeamFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomeContract;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomePresenter;
-import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
@@ -187,7 +185,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
                     .setCustomAnimations(R.anim.top_in, R.anim.top_out)
                     .show(fragment)
                     .commit();
-            getSeccion(tag);
+            getSeccion(tag, fragment);
 
         }
     }
@@ -200,23 +198,28 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         share.setVisibility(View.GONE);
     }
 
-    public void getSeccion(String tag) {
+    public void getSeccion(String tag, Fragment fragment) {
         if (tag.equals(ProfileFragment.TAG)) {
             initBanner(BannerView.Seccion.PROFILE);
         } else if (tag.equals(NotificationFragment.TAG)) {
             initBanner(BannerView.Seccion.SETINGS);
         } else if (tag.equals(CalendarFragment.TAG)) {
             initBanner(BannerView.Seccion.CALENDAR);
-        } else if (tag.equals(NewsFragment.TAG + Constant.Menu.NEWS)) {
+        } else if (tag.equals(MainNewsFragment.TAG + Constant.Menu.NEWS)) {
             initBanner(BannerView.Seccion.NEWS);
-        } else if (tag.equals(FutbolBaseFragment.TAG /*+ Constant.Menu.FOOTBALL_BASE*/)) {
+        } else if (tag.equals(FutbolBaseFragment.TAG + Constant.Menu.FOOTBALL_BASE)) {
             initBanner(BannerView.Seccion.FOOTBALL_BASE);
         } else if (tag.equals(AcademyFragment.TAG)) {
             initBanner(BannerView.Seccion.ACADEMY);
         } else if (tag.equals(LineUpFragment.TAG)) {
             initBanner(BannerView.Seccion.LINE_UP);
         } else if (tag.equals(WallAndChatFragment.TAG)) {
-            initBanner(BannerView.Seccion.WALL_AND_CHAT);
+            if (Constant.Menu.CHAT.equals(((WallAndChatFragment) fragment).getSelected())) {
+                initBanner(BannerView.Seccion.CHAT);
+            } else {
+                initBanner(BannerView.Seccion.WALL);
+            }
+            Log.d(TAG, "getSeccion " + tag);
         } else if (tag.equals(VRFragment.TAG)) {
             initBanner(BannerView.Seccion.VIRTUAL_REALITY);
         } else if (tag.equals(VirtualShopFragment.TAG)) {
@@ -229,10 +232,10 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             initBanner(BannerView.Seccion.STATISTICS);
         } else if (tag.equals(YouChooseFragment.TAG)) {
             initBanner(BannerView.Seccion.YOU_CHOOSE);
-        } else if (tag.equals(MonumentalMainFragment.TAG)) {
-            initBanner(BannerView.Seccion.MONUMENTAL);
         } else if (tag.equals(MapActivity.TAG)) {
             initBanner(BannerView.Seccion.MAP);
+        } else if (tag.equals(MultimediaFragment.TAG)) {
+            initBanner(BannerView.Seccion.LIVE);
         } else {
             initBanner(BannerView.Seccion.SETINGS);
         }

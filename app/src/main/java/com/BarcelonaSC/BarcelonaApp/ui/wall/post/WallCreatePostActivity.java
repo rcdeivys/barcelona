@@ -368,7 +368,7 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
         }
     }
 
-    // @OnClick(R.id.btn_gallery)
+    @OnClick(R.id.btn_gallery)
     public void openGallery() {
         if (camPermission && storePermission) {
             Intent intent = new Intent();
@@ -396,7 +396,7 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
         return false;
     }
 
-    @OnClick(R.id.btn_cam)
+    //@OnClick(R.id.btn_cam)
     public void showCameraDialog() {
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -430,7 +430,7 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
         dialog.show();
     }
 
-    // @OnClick(R.id.btn_cam)
+    @OnClick(R.id.btn_cam)
     public void openCamera() {
         if (camPermission && storePermission) {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -469,7 +469,7 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
         iconClose.setVisibility(View.GONE);
     }
 
-    @OnClick(R.id.btn_gallery)
+    //@OnClick(R.id.btn_gallery)
     public void showDialog() {
         dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -657,7 +657,8 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
 
                 switch (item.getItemId()) {
                     case R.id.menu_galerry: {
-                        showDialog();
+                        //showDialog();
+                        openGallery();
                     /*    Intent intent = new Intent();
                         intent.setType("image*//**//*");
                         intent.setAction(Intent.ACTION_GET_CONTENT);//
@@ -665,8 +666,8 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
                         break;
                     }
                     case R.id.menu_camera: {
-
-                        showCameraDialog();
+                        openCamera();
+                        //showCameraDialog();
                       /*  Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         cameraIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                         imageUri = Uri.fromFile(Commons.getOutputMediaFile());

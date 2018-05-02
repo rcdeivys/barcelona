@@ -101,6 +101,8 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
     String type;
     String news;
 
+    List<Integer> videoPosition;
+
     @Inject
     SCalendarPresenter presenter;
 
@@ -125,6 +127,7 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        videoPosition = new ArrayList<>();
         initComponent();
     }
 
@@ -315,6 +318,11 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
     }
 
     @Override
+    public void playVideo(int position) {
+        videoPosition.add(position);
+    }
+
+    @Override
     public void onCalendarClick(String id) {
 
     }
@@ -322,5 +330,11 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
     @Override
     public void onVideoIsDorado() {
 //        showDialogDorado();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        newsAdapter.pauseVideo(videoPosition);
     }
 }

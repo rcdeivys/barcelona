@@ -93,6 +93,7 @@
         <activity
             android:name=".ui.chat.creategroup.CreateGroupActivity"
             android:screenOrientation="portrait" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d60aa40ca7ad4de0869e76c5d5e5fdd357574aa6" />
@@ -198,7 +199,10 @@
             android:name=".ui.monumentals.fragments.monumental.profile.MonumentalProfileActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".commons.VideoActivity"></activity>
+        <activity
+            android:name=".commons.VideoActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="sensor" />
 
         <activity
             android:name=".ui.geolocation.MapActivity"

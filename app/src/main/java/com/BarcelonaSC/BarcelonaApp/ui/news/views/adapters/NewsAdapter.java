@@ -42,6 +42,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
     private OnItemClickListener onItemClickListener;
     SimpleDateFormat formatOut;
     SimpleDateFormat formatIn;
+    NewsViewHolder newsViewHolder;
 
     public NewsAdapter(Context context, List<Object> newsList) {
         this.context = context;
@@ -97,6 +98,12 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
                 holder.ivShare.setVisibility(View.VISIBLE);
             }*/
             holder.videoView.setCustomVideoViewOnListener(this);
+            holder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
+                @Override
+                public void play() {
+                    onItemClickListener.playVideo(position);
+                }
+            });
             holder.setNewsVideo(((News) newsList.get(position)), new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -271,10 +278,17 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
         }
     }
 
+    public void pauseVideo(List<Integer> position) {
+        for (Integer positions : position)
+            notifyItemChanged(positions);
+    }
+
     public interface OnItemClickListener {
         void onClickItem(News news);
 
         void onVideoClick(News news, int currentVideo);
+
+        void playVideo(int position);
 
         void onCalendarClick(String id);
 

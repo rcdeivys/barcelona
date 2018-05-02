@@ -19,6 +19,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.wall.list.views.holders.WallHeaderViewHol
 import com.BarcelonaSC.BarcelonaApp.ui.wall.list.views.holders.WallPostProfileVIewHolder;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.list.views.holders.WallPostViewHolder;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomRecyclerView;
+import com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView;
 
 import java.util.List;
 
@@ -247,6 +248,13 @@ public class WallAdapter extends CustomRecyclerView<RecyclerView.ViewHolder> {
             }
         });
 
+        holder.videoPost.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
+            @Override
+            public void play() {
+                wallClickListener.playVideo(position);
+            }
+        });
+
       /*  holder.videoPost.setButtonFullScreen(R.drawable.ic_media_fullscreen, Commons.getColor(R.color.white), new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -256,6 +264,10 @@ public class WallAdapter extends CustomRecyclerView<RecyclerView.ViewHolder> {
         });*/
 
 
+    }
+
+    public void pauseVideo(int position) {
+        notifyItemChanged(position);
     }
 
     public void setWallClickListener(WallClickListener wallClickListener) {
@@ -294,6 +306,8 @@ public class WallAdapter extends CustomRecyclerView<RecyclerView.ViewHolder> {
         void onClickReportarPost(String id);
 
         void onFullScreenVideo(String url, int position);
+
+        void playVideo(int position);
 
     }
 }

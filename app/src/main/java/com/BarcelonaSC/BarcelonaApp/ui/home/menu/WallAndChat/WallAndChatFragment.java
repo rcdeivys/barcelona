@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
 
@@ -29,6 +30,7 @@ public class WallAndChatFragment extends Fragment {
     @BindView(R.id.tabs)
     CustomTabLayout tabs;
     Unbinder unbinder;
+    String selected = "";
 
     private WallAndChatViewPagerAdapter viewPagerAdapter;
 
@@ -59,7 +61,16 @@ public class WallAndChatFragment extends Fragment {
         pager.setPagingEnabled(true);
         pager.setAdapter(viewPagerAdapter);
         tabs.setupWithViewPager(pager);
-        tabs.setVisibility(View.VISIBLE);
+        //tabs.setVisibility(View.GONE);
+    }
+
+    public void setCurrentPage() {
+        if (pager != null)
+            if (selected.equals(Constant.Menu.CHAT)) {
+                pager.setCurrentItem(1);
+            } else {
+                pager.setCurrentItem(0);
+            }
     }
 
     @Override
@@ -80,5 +91,16 @@ public class WallAndChatFragment extends Fragment {
         for (Fragment fragment : getChildFragmentManager().getFragments()) {
             fragment.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void setSelection(String selected) {
+        this.selected = selected;
+        setCurrentPage();
+    }
+
+    public String getSelected() {
+        if (selected == null)
+            return Constant.Menu.CHAT;
+        return selected;
     }
 }

@@ -59,6 +59,12 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         final VideoHolder videoHolder = (VideoHolder) holder;
         final MultimediaDataResponse item = listVideos.get(position);
 
+        videoHolder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
+            @Override
+            public void play() {
+                onItemClickListener.playVideo(position);
+            }
+        });
         videoHolder.setNewsVideo(item, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +82,14 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         });
 
     }
+
+    public void pauseVideo(List<Integer> position) {
+        for (Integer positions : position) {
+            notifyItemChanged(positions);
+        }
+
+    }
+
 
     @Override
     public int getItemCount() {
@@ -99,6 +113,8 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         void onVideoClick(MultimediaDataResponse multimediaDataResponse, int currentVideo);
 
         void onVideoShare(String id);
+
+        void playVideo(int position);
 
     }
 

@@ -45,7 +45,7 @@ public class SCalendarData {
     private String estadio;
     @SerializedName("noticias")
     @Expose
-    private List<SCalendarNoticia> noticias = null;
+    private List<News> noticias = null;
 
     public Integer getIdpartido() {
         return idpartido;
@@ -135,11 +135,11 @@ public class SCalendarData {
         this.estadio = estadio;
     }
 
-    public List<SCalendarNoticia> getNoticias() {
+    public List<News> getNoticias() {
         return noticias;
     }
 
-    public void setNoticias(List<SCalendarNoticia> noticias) {
+    public void setNoticias(List<News> noticias) {
         this.noticias = noticias;
     }
 

@@ -29,6 +29,9 @@ import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp.PlayerPro
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -62,10 +65,13 @@ public class PlayerProfileFragment extends BaseFragment
     private LinearLayoutManager linearLayoutManager;
     String type;
 
+    List<Integer> videoPositions;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initComponent();
+        videoPositions = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(getContext());
     }
 
@@ -188,7 +194,7 @@ public class PlayerProfileFragment extends BaseFragment
     }
 
     private void notifyDataSetChanged() {
-        if(playerProfileAdapter!=null) {
+        if (playerProfileAdapter != null) {
             playerProfileAdapter.notifyDataSetChanged();
             setRefreshing(false);
             hideProgress();
@@ -213,6 +219,11 @@ public class PlayerProfileFragment extends BaseFragment
     @Override
     public void onVideoIsDorado() {
         // showDialogDorado();
+    }
+
+    @Override
+    public void playVideo(int position) {
+        videoPositions.add(position);
     }
 
     @Override
@@ -264,5 +275,11 @@ public class PlayerProfileFragment extends BaseFragment
                 alertDialog.dismiss();
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        playerProfileAdapter.pauseVideo(videoPositions);
     }
 }

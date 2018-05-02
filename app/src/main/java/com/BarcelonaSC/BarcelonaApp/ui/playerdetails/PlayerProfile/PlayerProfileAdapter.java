@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
-import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.PlayerData;
 import com.BarcelonaSC.BarcelonaApp.ui.news.views.holders.NewsViewHolder;
@@ -22,6 +21,8 @@ import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -103,6 +104,13 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
                 holder.ivShare.setVisibility(View.VISIBLE);
             }*/
             holder.videoView.setCustomVideoViewOnListener(this);
+            holder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
+                                                                @Override
+                                                                public void play() {
+                                                                    onItemClickListener.playVideo(position);
+                                                                }
+                                                            }
+            );
             holder.setNewsVideo(getNewsList(position), new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -150,6 +158,11 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     }
 
+    public void pauseVideo(List<Integer> position) {
+        for (Integer positions : position)
+            notifyItemChanged(positions);
+    }
+
     @Override
     public void videoIsDorado() {
         onItemClickListener.onVideoIsDorado();
@@ -163,6 +176,8 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         void onClickVideoItem(News news, int currentPosition);
 
         void onVideoIsDorado();
+
+        void playVideo(int position);
 
     }
 

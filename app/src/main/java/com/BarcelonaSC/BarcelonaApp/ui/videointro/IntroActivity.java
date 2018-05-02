@@ -101,7 +101,8 @@ public class IntroActivity extends BaseActivity {
                             sessionManager.setUser(response.getData());
                             if (getIntent() != null) {
                                 if (getIntent().hasExtra(Constant.Key.SECCION) && getIntent().hasExtra(Constant.Seccion.Id_Post)) {
-                                    Log.d(TAG + "erick: ", getIntent().getStringExtra(Constant.Key.SECCION));
+                                    Log.d(TAG + "erick: ", getIntent().getStringExtra(Constant.Key.SECCION) + " \n"
+                                            + getIntent().getStringExtra(Constant.Seccion.Id_Post));
                                     if (getIntent().hasExtra(Constant.Key.SECCION)
                                             && getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.MURO)) {
                                         if (getIntent().getStringExtra(Constant.Seccion.Id_Post) != null) {
@@ -185,7 +186,7 @@ public class IntroActivity extends BaseActivity {
             public void run() {
                 navigateNext(notification);
             }
-        }, 3000);
+        }, 2000);
 
     }
 
@@ -202,7 +203,9 @@ public class IntroActivity extends BaseActivity {
                 Log.i(TAG, "PRUEBAAA FUNCIONA: 2");
                 if (notification) {
                     Log.i(TAG, "PRUEBAAA FUNCIONA: 3");
-                    if (getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.MURO)) {
+                    if (getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.MURO)
+                            && getIntent().hasExtra(Constant.Seccion.Id_Post)
+                            && !getIntent().getStringExtra(Constant.Seccion.Id_Post).equals("noAplica")) {
                         Log.i(TAG, "PRUEBAAA FUNCIONA: 4");
                         Intent intent = new Intent(IntroActivity.this, SinglePostActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

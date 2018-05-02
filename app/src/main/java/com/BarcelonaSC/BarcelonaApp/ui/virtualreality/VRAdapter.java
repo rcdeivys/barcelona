@@ -2,6 +2,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.virtualreality;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,7 +103,7 @@ public class VRAdapter extends RecyclerView.Adapter<VRAdapter.VRHolder> {
         AdjustableImageView playBtn;
 
         @BindView(R.id.iv_share)
-        ImageView ivShare;
+        AppCompatImageView ivShare;
 
         @BindView(R.id.tv_title)
         FCMillonariosTextView tvTitle;
