@@ -185,7 +185,7 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
 
     @Override
     public void onVideoShare(String id) {
-        ShareSection.shareIndividual("video", id);
+        ShareSection.shareIndividual("video_share", id);
     }
 
 

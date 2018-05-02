@@ -35,6 +35,9 @@ public class FriendSelectedViewHolder extends RecyclerView.ViewHolder {
     ImageView deleteFriend;
     @BindView(R.id.friend_name)
     TextView nameFriend;
+    @BindView(R.id.friend_last_name)
+    TextView lastNameFriend;
+
 
     private Context context;
 
@@ -86,7 +89,20 @@ public class FriendSelectedViewHolder extends RecyclerView.ViewHolder {
             }
         }
 
-        nameFriend.setText(item.getNombre()+" "+item.getApellido());
+        if (item.getNombre() != null) {
+            String[] result = item.getNombre().split(" ", 2);
+            nameFriend.setText(result[0]);
+        }
+
+
+        if (item.getApellido() != null) {
+            String[] result = item.getApellido().split(" ", 2);
+            if (result[0] != null) {
+                lastNameFriend.setText(result[0]);
+                lastNameFriend.setVisibility(View.VISIBLE);
+            }
+        } else
+            lastNameFriend.setVisibility(View.INVISIBLE);
        /* if (item.getApodo() != null && item.getApodo().length() > 0)
             if (item.getId().equals(FirebaseManager.getInstance().getUsuario().getId())) {
                 nameFriend.setText(FirebaseManager.getInstance().getUsuario().getApodo());

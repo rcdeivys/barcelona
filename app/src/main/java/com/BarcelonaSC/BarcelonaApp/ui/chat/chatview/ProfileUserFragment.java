@@ -316,7 +316,7 @@ public class ProfileUserFragment extends Fragment {
 
     private void initRecyclerMultimedia() {
 
-        rv_photos_videos.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        rv_photos_videos.setLayoutManager(new GridLayoutManager(getContext(), 3));
         multimediaAdapter = new MultimediaAdapter(getContext(), new ArrayList<Media>());
         rv_photos_videos.setAdapter(multimediaAdapter);
     }
