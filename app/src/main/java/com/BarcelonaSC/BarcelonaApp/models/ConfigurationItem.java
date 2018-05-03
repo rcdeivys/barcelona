@@ -20,6 +20,9 @@ public class ConfigurationItem {
     @SerializedName("url_tienda")
     @Expose
     private String urlTienda;
+    @SerializedName("url_av_villas")
+    @Expose
+    private String urlAvVillas;
     @SerializedName("url_estadisticas")
     @Expose
     private String urlEstadisticas;
@@ -35,9 +38,67 @@ public class ConfigurationItem {
     @SerializedName("video_referidos")
     @Expose
     private String videoReferidos;
+    @SerializedName("url_imagen_beneficios_dorados")
+    @Expose
+    private String urlImagenBeneficiosDorados;
+    @SerializedName("url_popup_dorado")
+    @Expose
+    private String urlPopupEmbajadorDorado;
+    @SerializedName("footer_formulario_dorados")
+    @Expose
+    private String footerFormularioDorados;
+    @SerializedName("texto_bienvenida_dorados")
+    @Expose
+    private String textoBienvenidaDorados;
+    @SerializedName("video_de_bienvenida_dorados")
+    @Expose
+    private String videoDeBienvenidaDorados;
+    @SerializedName("url_tyc_dorados")
+    @Expose
+    private String urlTycDorados;
+    @SerializedName("url_vistas")
+    @Expose
+    private String urlVistas;
     @SerializedName("total_hinchas")
     @Expose
     private int totalHinchas;
+
+    @SerializedName("link_pop_inicial")
+    @Expose
+    private String linkPopup;
+
+    @SerializedName("act_pop_inicial")
+    @Expose
+    private String showPopup;
+
+    @SerializedName("pop_inicial")
+    @Expose
+    private String bannerPopup;
+
+    @SerializedName("target_popup")
+    @Expose
+    private String targetPopup;
+
+    @SerializedName("boton_1_activo")
+    @Expose
+    private String isBoton1Activo;
+
+    @SerializedName("boton_1_texto")
+    @Expose
+    private String textoBoton1;
+
+    @SerializedName("seccion_destino_popup")
+    @Expose
+    private String destinoPopup;
+
+    @SerializedName("tipo_popup")
+    @Expose
+    private String typePopup;
+
+    @SerializedName("version_android")
+    @Expose
+    private String verApp;
+
     @SerializedName("tit_1")
     @Expose
     private String tit1;
@@ -183,6 +244,54 @@ public class ConfigurationItem {
     @Expose
     private String tit1634;
 
+    @SerializedName("titulo_0_1")
+    @Expose
+    private String nameGroup1;
+
+    @SerializedName("sub_titulo_1_1")
+    @Expose
+    private String subTitle11;
+
+    @SerializedName("sub_titulo_1_2")
+    @Expose
+    private String subTitle12;
+
+    @SerializedName("sub_titulo_1_3")
+    @Expose
+    private String subTitle13;
+
+    @SerializedName("sub_titulo_1_4")
+    @Expose
+    private String subTitle14;
+
+    @SerializedName("sub_titulo_1_5")
+    @Expose
+    private String subTitle15;
+
+    @SerializedName("sub_titulo_2_5")
+    @Expose
+    private String subTitle25;
+
+    @SerializedName("titulo_0_2")
+    @Expose
+    private String nameGroup2;
+
+    @SerializedName("sub_titulo_2_1")
+    @Expose
+    private String subTitle21;
+
+    @SerializedName("sub_titulo_2_2")
+    @Expose
+    private String subTitle22;
+
+    @SerializedName("sub_titulo_2_3")
+    @Expose
+    private String subTitle23;
+
+    @SerializedName("sub_titulo_2_4")
+    @Expose
+    private String subTitle24;
+
 
     public String getTermReferidos() {
         return termReferidos;
@@ -248,20 +357,20 @@ public class ConfigurationItem {
         this.urlEstadisticas = urlEstadisticas;
     }
 
-    public String getUrlAcademia() {
-        return urlAcademia;
-    }
-
-    public void setUrlAcademia(String urlAcademia) {
-        this.urlAcademia = urlAcademia;
-    }
-
     public int getTotalHinchas() {
         return totalHinchas;
     }
 
     public void setTotalHinchas(int totalHinchas) {
         this.totalHinchas = totalHinchas;
+    }
+
+    public String getUrlAcademia() {
+        return urlAcademia;
+    }
+
+    public void setUrlAcademia(String urlAcademia) {
+        this.urlAcademia = urlAcademia;
     }
 
     public String getTit1() {
@@ -654,5 +763,322 @@ public class ConfigurationItem {
 
     public void setTit1634(String tit1634) {
         this.tit1634 = tit1634;
+
+    }
+
+    public String getUrlImagenBeneficiosDorados() {
+        return urlImagenBeneficiosDorados;
+    }
+
+    public void setUrlImagenBeneficiosDorados(String urlImagenBeneficiosDorados) {
+        this.urlImagenBeneficiosDorados = urlImagenBeneficiosDorados;
+    }
+
+    public String getUrlPopupEmbajadorDorado() {
+        return urlPopupEmbajadorDorado;
+    }
+
+    public void setUrlPopupEmbajadorDorado(String urlPopupEmbajadorDorado) {
+        this.urlPopupEmbajadorDorado = urlPopupEmbajadorDorado;
+    }
+
+
+    public String getFooterFormularioDorados() {
+        return footerFormularioDorados;
+    }
+
+    public void setFooterFormularioDorados(String footerFormularioDorados) {
+        this.footerFormularioDorados = footerFormularioDorados;
+    }
+
+    public String getTextoBienvenidaDorados() {
+        return textoBienvenidaDorados;
+    }
+
+    public void setTextoBienvenidaDorados(String textoBienvenidaDorados) {
+        this.textoBienvenidaDorados = textoBienvenidaDorados;
+    }
+
+    public String getVideoDeBienvenidaDorados() {
+        return videoDeBienvenidaDorados;
+    }
+
+    public void setVideoDeBienvenidaDorados(String videoDeBienvenidaDorados) {
+        this.videoDeBienvenidaDorados = videoDeBienvenidaDorados;
+    }
+
+    public String getUrlTycDorados() {
+        return urlTycDorados;
+    }
+
+    public void setUrlTycDorados(String urlTycDorados) {
+        this.urlTycDorados = urlTycDorados;
+    }
+
+    public String getUrlVistas() {
+        return urlVistas;
+    }
+
+    public void setUrlVistas(String urlVistas) {
+        this.urlVistas = urlVistas;
+    }
+
+    public void setTotalHinchas(Integer totalHinchas) {
+        this.totalHinchas = totalHinchas;
+    }
+
+    public String getLinkPopup() {
+        return linkPopup;
+    }
+
+    public void setLinkPopup(String linkPopup) {
+        this.linkPopup = linkPopup;
+    }
+
+    public String getShowPopup() {
+        return showPopup;
+    }
+
+    public void setShowPopup(String showPopup) {
+        this.showPopup = showPopup;
+    }
+
+    public String getBannerPopup() {
+        return bannerPopup;
+    }
+
+    public void setBannerPopup(String bannerPopup) {
+        this.bannerPopup = bannerPopup;
+    }
+
+    public String getTargetPopup() {
+        return targetPopup;
+    }
+
+    public void setTargetPopup(String targetPopup) {
+        this.targetPopup = targetPopup;
+    }
+
+    public String getDestinoPopup() {
+        return destinoPopup;
+    }
+
+    public void setDestinoPopup(String destinoPopup) {
+        this.destinoPopup = destinoPopup;
+    }
+
+    public boolean isBoton1Activo() {
+        if(isBoton1Activo.equals("1")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public String getTypePopup() {
+        return typePopup;
+    }
+
+    public String getVerApp() {
+        return verApp;
+    }
+
+    public String getTextoBoton1() {
+        return textoBoton1;
+    }
+
+
+    public String getNameGroup1() {
+        return nameGroup1;
+    }
+
+    public void setNameGroup1(String nameGroup1) {
+        this.nameGroup1 = nameGroup1;
+    }
+
+    public String getNameGroup2() {
+        return nameGroup2;
+    }
+
+    public void setNameGroup2(String nameGroup2) {
+        this.nameGroup2 = nameGroup2;
+    }
+
+    public String getSubTitle11() {
+        return subTitle11;
+    }
+
+    public void setSubTitle11(String subTitle11) {
+        this.subTitle11 = subTitle11;
+    }
+
+    public String getSubTitle12() {
+        return subTitle12;
+    }
+
+    public void setSubTitle12(String subTitle12) {
+        this.subTitle12 = subTitle12;
+    }
+
+    public String getSubTitle13() {
+        return subTitle13;
+    }
+
+    public void setSubTitle13(String subTitle13) {
+        this.subTitle13 = subTitle13;
+    }
+
+    public String getSubTitle14() {
+        return subTitle14;
+    }
+
+    public void setSubTitle14(String subTitle14) {
+        this.subTitle14 = subTitle14;
+    }
+
+    public String getSubTitle15() {
+        return subTitle15;
+    }
+
+    public void setSubTitle15(String subTitle15) {
+        this.subTitle15 = subTitle15;
+    }
+
+    public String getSubTitle21() {
+        return subTitle21;
+    }
+
+    public void setSubTitle21(String subTitle21) {
+        this.subTitle21 = subTitle21;
+    }
+
+    public String getSubTitle22() {
+        return subTitle22;
+    }
+
+    public void setSubTitle22(String subTitle22) {
+        this.subTitle22 = subTitle22;
+    }
+
+    public String getSubTitle23() {
+        return subTitle23;
+    }
+
+    public void setSubTitle23(String subTitle23) {
+        this.subTitle23 = subTitle23;
+    }
+
+    public String getSubTitle24() {
+        return subTitle24;
+    }
+
+    public void setSubTitle24(String subTitle24) {
+        this.subTitle24 = subTitle24;
+    }
+
+    public String getSubTitle25() {
+        return subTitle25;
+    }
+
+    public void setSubTitle25(String subTitle25) {
+        this.subTitle25 = subTitle25;
+    }
+
+    public String getUrlAvVillas() {
+        return urlAvVillas;
+    }
+
+    public void setUrlAvVillas(String urlAvVillas) {
+        this.urlAvVillas = urlAvVillas;
+    }
+
+    public String toStringDIalogo() {
+        return "ConfigurationItem{" +
+                ", linkPopup=" + linkPopup +
+                ", showPopup=" + showPopup +
+                ", targetPopup=" + targetPopup +
+                ", destinoPopup=" + destinoPopup +
+                ", bannerPopup=" + bannerPopup +
+                ", btn1=" + isBoton1Activo +
+                ", btn1txt=" + textoBoton1 +
+                ", androidVer=" + verApp +
+                ", typePopup=" + typePopup +
+                '}';
+    }
+
+    @Override
+    public String toString() {
+        return "ConfigurationItem{" +
+                "urlTabla='" + urlTabla + '\'' +
+                ", urlSimulador='" + urlSimulador + '\'' +
+                ", urlJuramento='" + urlJuramento + '\'' +
+                ", urlLivestream='" + urlLivestream + '\'' +
+                ", urlTienda='" + urlTienda + '\'' +
+                ", urlEstadisticas='" + urlEstadisticas + '\'' +
+                ", urlAcademia='" + urlAcademia + '\'' +
+                ", patrocinante='" + patrocinante + '\'' +
+                ", termReferidos='" + termReferidos + '\'' +
+                ", videoReferidos='" + videoReferidos + '\'' +
+                ", urlImagenBeneficiosDorados='" + urlImagenBeneficiosDorados + '\'' +
+                ", footerFormularioDorados='" + footerFormularioDorados + '\'' +
+                ", textoBienvenidaDorados='" + textoBienvenidaDorados + '\'' +
+                ", videoDeBienvenidaDorados='" + videoDeBienvenidaDorados + '\'' +
+                ", urlTycDorados='" + urlTycDorados + '\'' +
+                ", urlVistas='" + urlVistas + '\'' +
+                ", totalHinchas=" + totalHinchas +
+                ", linkPopup=" + linkPopup +
+                ", showPopup=" + showPopup +
+                ", targetPopup=" + targetPopup +
+                ", destinoPopup=" + destinoPopup +
+                ", bannerPopup=" + bannerPopup +
+                ", tit1='" + tit1 + '\'' +
+                ", tit1_1='" + tit1_1 + '\'' +
+                ", tit1_2='" + tit1_2 + '\'' +
+                ", tit2='" + tit2 + '\'' +
+                ", tit3='" + tit3 + '\'' +
+                ", tit4='" + tit4 + '\'' +
+                ", tit41='" + tit41 + '\'' +
+                ", tit42='" + tit42 + '\'' +
+                ", tit5='" + tit5 + '\'' +
+                ", tit6='" + tit6 + '\'' +
+                ", tit61='" + tit61 + '\'' +
+                ", tit611='" + tit611 + '\'' +
+                ", tit612='" + tit612 + '\'' +
+                ", tit62='" + tit62 + '\'' +
+                ", tit63='" + tit63 + '\'' +
+                ", tit631='" + tit631 + '\'' +
+                ", tit632='" + tit632 + '\'' +
+                ", tit7='" + tit7 + '\'' +
+                ", tit71='" + tit71 + '\'' +
+                ", tit72='" + tit72 + '\'' +
+                ", tit8='" + tit8 + '\'' +
+                ", tit9='" + tit9 + '\'' +
+                ", tit10='" + tit10 + '\'' +
+                ", tit101='" + tit101 + '\'' +
+                ", tit102='" + tit102 + '\'' +
+                ", tit11='" + tit11 + '\'' +
+                ", tit111='" + tit111 + '\'' +
+                ", tit1111='" + tit1111 + '\'' +
+                ", tit1112='" + tit1112 + '\'' +
+                ", tit1113='" + tit1113 + '\'' +
+                ", tit1114='" + tit1114 + '\'' +
+                ", tit12='" + tit12 + '\'' +
+                ", tit13='" + tit13 + '\'' +
+                ", tit14='" + tit14 + '\'' +
+                ", tit141='" + tit141 + '\'' +
+                ", tit142='" + tit142 + '\'' +
+                ", tit1421='" + tit1421 + '\'' +
+                ", tit1422='" + tit1422 + '\'' +
+                ", tit143='" + tit143 + '\'' +
+                ", tit15='" + tit15 + '\'' +
+                ", tit16='" + tit16 + '\'' +
+                ", tit161='" + tit161 + '\'' +
+                ", tit162='" + tit162 + '\'' +
+                ", tit163='" + tit163 + '\'' +
+                ", tit1631='" + tit1631 + '\'' +
+                ", tit1632='" + tit1632 + '\'' +
+                ", tit1633='" + tit1633 + '\'' +
+                ", tit1634='" + tit1634 + '\'' +
+                '}';
     }
 }

@@ -3,11 +3,14 @@ package com.BarcelonaSC.BarcelonaApp.ui.home;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -17,10 +20,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.BarcelonaSC.BarcelonaApp.BuildConfig;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
+import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseSideMenuActivity;
+import com.BarcelonaSC.BarcelonaApp.models.response.ConfigurationResponse;
 import com.BarcelonaSC.BarcelonaApp.permissions.MillosMultiplePermissionListener;
 import com.BarcelonaSC.BarcelonaApp.ui.academy.AcademyFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.CalendarFragment;
@@ -42,6 +48,8 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.TeamFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomeContract;
 import com.BarcelonaSC.BarcelonaApp.ui.home.mvp.HomePresenter;
+import com.BarcelonaSC.BarcelonaApp.ui.home.updatepopup.UpdateDialog;
+import com.BarcelonaSC.BarcelonaApp.ui.home.updatepopup.WebUpdateActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
@@ -63,7 +71,7 @@ import butterknife.ButterKnife;
  * Created by root on 10/31/17.
  */
 
-public class HomeActivity extends BaseSideMenuActivity implements HomeContract.View {
+public class HomeActivity extends BaseSideMenuActivity implements HomeContract.View, UpdateDialog.OnItemClickListener {
 
     public static final String TAG = HomeActivity.class.getSimpleName();
     private String mActiveFragmentTag;
@@ -116,6 +124,71 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             }
         });
 
+        try {
+            App.get().component().configurationApi().getConfiguration().enqueue(new NetworkCallBack<ConfigurationResponse>() {
+                @Override
+                public void onRequestSuccess(ConfigurationResponse response) {
+                    Log.i("CONFIGURATION", " ---> DATA : " + response.getData().toStringDIalogo());
+                    String versionName = BuildConfig.VERSION_NAME;
+                    Log.i("CONFIGURATION", " ---> DATA versionName: " + versionName);
+                    if (response.getData().getShowPopup()!=null && response.getData().getShowPopup().equals("1")) {
+
+                        //if (true) {
+                        UpdateDialog updateDialog = new UpdateDialog();
+                        updateDialog.setCancelable(false);
+                        String type = response.getData().getTypePopup();
+                        switch (type) {
+                            case "update":
+                                //verificar version de app
+                                if (!response.getData().getVerApp().equals(versionName)) {
+                                    updateDialog.setParams(
+                                            response.getData().getBannerPopup(),
+                                            response.getData().getLinkPopup(),
+                                            response.getData().getDestinoPopup(),
+                                            "update",
+                                            response.getData().isBoton1Activo(),
+                                            response.getData().getTextoBoton1(),
+                                            HomeActivity.this);
+                                    showDialogFragment(updateDialog);
+                                }
+                                break;
+                            case "informativo":
+                                updateDialog.setParams(
+                                        response.getData().getBannerPopup(),
+                                        response.getData().getLinkPopup(),
+                                        response.getData().getDestinoPopup(),
+                                        "informativo",
+                                        response.getData().isBoton1Activo(),
+                                        response.getData().getTextoBoton1(),
+                                        HomeActivity.this);
+                                showDialogFragment(updateDialog);
+                                break;
+                            default:
+                                updateDialog.setParams(
+                                        response.getData().getBannerPopup(),
+                                        response.getData().getLinkPopup(),
+                                        response.getData().getDestinoPopup(),
+                                        response.getData().getTargetPopup(),
+                                        response.getData().isBoton1Activo(),
+                                        response.getData().getTextoBoton1(),
+                                        HomeActivity.this);
+                                showDialogFragment(updateDialog);
+                                break;
+                        }
+
+                    }
+
+                }
+
+                @Override
+                public void onRequestFail(String errorMessage, int errorCode) {
+
+                }
+            });
+        } catch (Exception e) {
+            Log.i("CONFIGURATION", " ---> Hubo un error : " + e.getMessage());
+        }
+
         if (FirebaseInstanceId.getInstance().getToken() != null)
             presenter.sentFirebaseInstanceIdTokenToServer(FirebaseInstanceId.getInstance().getToken());
 
@@ -139,6 +212,12 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
         presenter.getActivity(HomeActivity.this);
 
+    }
+
+    private void showDialogFragment(DialogFragment dialogFragment) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(dialogFragment, dialogFragment.getTag());
+        ft.commitAllowingStateLoss();
     }
 
     @Override
@@ -357,4 +436,27 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         super.onDestroy();
 
     }
+
+
+    @Override
+    public void onGoWebView(String url) {
+        WebUpdateActivity payUPaymentActivity = new WebUpdateActivity();
+        payUPaymentActivity.setParams(url);
+        showDialogFragment(payUPaymentActivity);
+    }
+
+    @Override
+    public void onGoSection(String section) {
+        presenter.setFragmentFromSeccion(section);
+    }
+
+    @Override
+    public void onGoExternalBrowser(String url) {
+        Uri webpage = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
 }
