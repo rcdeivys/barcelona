@@ -51,7 +51,7 @@ public class BannerView extends AppCompatImageView {
                     @Override
                     public void onClick(View v) {
                         if (bannerData.getSeccionDestino() != null) {
-                            bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino());
+                            bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino(), bannerData.getPartido());
                         } else {
                             switch (bannerData.getTarget()) {
                                 case "Externo":
@@ -61,7 +61,7 @@ public class BannerView extends AppCompatImageView {
                                     bannerListener.onClickBannerInternoListener(bannerData.getUrl(), bannerData.getTitulo());
                                     break;
                                 case "Seccion":
-                                    bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino());
+                                    bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino(), bannerData.getPartido());
                                     break;
                                 default:
                                     break;
@@ -81,7 +81,7 @@ public class BannerView extends AppCompatImageView {
 
         void onClickBannerExternoListener(String url);
 
-        void onClickBannerSeccionListener(String seccionDestino);
+        void onClickBannerSeccionListener(String seccionDestino, String bannerData);
     }
 
     public enum Seccion {

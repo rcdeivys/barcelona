@@ -83,6 +83,7 @@ public interface Constant {
         String IS_SOCIAL = "isSocial";
 
         String SECCION = "seccion";
+        String SECCION_PARTIDO = "seccion_calendar_partido" ;
         String ID_RESPUESTA = "id_respuesta";
         String SHOW_VOTES = "show_votes";
 
