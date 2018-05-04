@@ -97,24 +97,24 @@
     <string name="hello_blank_fragment">Hello blank friendSelectionActivity</string>
 
     <!-- group chat-->
-    <string name="group_no_name">NO NAME</string>
-    <string name="group_members">members</string>
-    <string name="group_name">Group\'s Name</string>
-    <string name="group_create">Create Group</string>
-    <string name="group_search">No Results</string>
+    <string name="group_no_name">SIN NOMBRE</string>
+    <string name="group_members">participantes</string>
+    <string name="group_name">Nombre del Grupo</string>
+    <string name="group_create">Crear Grupo</string>
+    <string name="group_search">Sin Resultados</string>
     <string name="group_missing_params">Debes colocar una imagen</string>
-    <string name="group_profile">Group\'s Profile</string>
-    <string name="group_exit">LEAVE GROUP</string>
-    <string name="group_delete">DELETE GROUP</string>
-    <string name="group_no_members">no members</string>
-    <string name="group_list">Group\'s List</string>
+    <string name="group_profile">Perfil del Grupo</string>
+    <string name="group_exit">SALIR DEL GRUPO</string>
+    <string name="group_delete">ELIMINAR GRUPO</string>
+    <string name="group_no_members">sin participantes</string>
+    <string name="group_list">Lista de Grupos</string>
     <string name="group_created">Grupo creado</string>
-    <string name="add_friends_firts_create_group">Add some friends before create a Group</string>
-    <string name="add_friends_firts_send_msg">Add some friends before to send Messages</string>
+    <string name="add_friends_firts_create_group">Agregue algunos amigos antes de crear un grupo</string>
+    <string name="add_friends_firts_send_msg">Agregue algunos amigos antes de mandar Mensajes</string>
 
     <!-- amigos -->
-    <string name="friend_list">Friend\'s List</string>
-    <string name="unexpected_error">Sorry, there was an unexpected error</string>
+    <string name="friend_list">Lista de Amigos</string>
+    <string name="unexpected_error">Lo sentimos, hubo un error inesperado</string>
 
     <!-- solicitudes -->
     <string name="toast_error_invited">Error al invitar el usuario</string>

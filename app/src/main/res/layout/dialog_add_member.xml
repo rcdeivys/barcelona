@@ -200,7 +200,7 @@
             android:layout_alignParentEnd="true"
             android:scaleType="centerCrop"
             android:tint="@color/black"
-            android:src="@drawable/x" />
+            android:src="@drawable/x_2" />
 
     </RelativeLayout>
 
