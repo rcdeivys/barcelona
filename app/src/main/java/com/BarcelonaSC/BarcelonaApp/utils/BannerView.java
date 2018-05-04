@@ -61,8 +61,11 @@ public class BannerView extends AppCompatImageView {
                                     bannerListener.onClickBannerInternoListener(bannerData.getUrl(), bannerData.getTitulo());
                                     break;
                                 case "Seccion":
-                                    bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino(), bannerData.getPartido());
-                                    break;
+                                    if(bannerData.getType().equals("Partido")) {
+                                        bannerListener.onClickBannerSeccionListener("calendar", bannerData.getPartido());
+                                    }else{
+                                        bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino(), bannerData.getPartido());
+                                    }                                    break;
                                 default:
                                     break;
                             }
