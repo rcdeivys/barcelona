@@ -4,6 +4,7 @@ package com.BarcelonaSC.BarcelonaApp.utils;
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.BarcelonaSC.BarcelonaApp.R;
@@ -47,6 +48,7 @@ public class BannerView extends AppCompatImageView {
 
         for (final BannerData bannerData : bannersData) {
             if (bannerData.getSeccion().equals(seccion.getValue())) {
+                Log.e("DEIVYS : " , bannerData.toString());
                 this.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -61,8 +63,11 @@ public class BannerView extends AppCompatImageView {
                                     bannerListener.onClickBannerInternoListener(bannerData.getUrl(), bannerData.getTitulo());
                                     break;
                                 case "Seccion":
-                                    bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino(), bannerData.getPartido());
-                                    break;
+                                    if(bannerData.getType().equals("Partido")) {
+                                        bannerListener.onClickBannerSeccionListener("calendar", bannerData.getPartido());
+                                    }else{
+                                        bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino(), bannerData.getPartido());
+                                    }                                    break;
                                 default:
                                     break;
                             }
