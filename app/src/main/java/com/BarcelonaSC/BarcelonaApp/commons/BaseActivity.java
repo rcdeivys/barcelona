@@ -218,7 +218,6 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
 
     @Override
     public void navigateToActivity(Intent intent) {
-
         startActivity(intent);
     }
 
@@ -262,10 +261,12 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
     }
 
     @Override
-    public void onClickBannerSeccionListener(String seccionDestino) {
+    public void onClickBannerSeccionListener(String seccionDestino, String bannerData) {
         if (seccionDestino != null) {
             Intent intent = new Intent(this, HomeActivity.class);
             intent.putExtra(Constant.Key.SECCION, seccionDestino);
+            if (bannerData != null && !bannerData.equals(""))
+                intent.putExtra(Constant.Key.SECCION_PARTIDO, bannerData);
             navigateToActivity(intent);
             if (!(this instanceof HomeActivity))
                 finish();

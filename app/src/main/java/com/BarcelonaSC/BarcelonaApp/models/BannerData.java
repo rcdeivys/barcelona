@@ -9,9 +9,21 @@ import com.google.gson.annotations.SerializedName;
 
 public class BannerData {
 
+    @SerializedName("type")
+    @Expose
+    private String type;
+    @SerializedName("partido")
+    @Expose
+    private String partido;
+    @SerializedName("partidofb")
+    @Expose
+    private String partidofb;
     @SerializedName("seccion")
     @Expose
     private String seccion;
+    @SerializedName("titulo")
+    @Expose
+    private String titulo;
     @SerializedName("target")
     @Expose
     private String target;
@@ -24,16 +36,29 @@ public class BannerData {
     @SerializedName("foto")
     @Expose
     private String foto;
-    @SerializedName("titulo")
-    @Expose
-    private String titulo;
 
-    public String getTitulo() {
-        return titulo;
+    public String getType() {
+        return type;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getPartido() {
+        return partido;
+    }
+
+    public void setPartido(String partido) {
+        this.partido = partido;
+    }
+
+    public String getPartidofb() {
+        return partidofb;
+    }
+
+    public void setPartidofb(String partidofb) {
+        this.partidofb = partidofb;
     }
 
     public String getSeccion() {
@@ -42,6 +67,14 @@ public class BannerData {
 
     public void setSeccion(String seccion) {
         this.seccion = seccion;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getTarget() {
@@ -60,6 +93,14 @@ public class BannerData {
         this.url = url;
     }
 
+    public String getSeccionDestino() {
+        return seccionDestino;
+    }
+
+    public void setSeccionDestino(String seccionDestino) {
+        this.seccionDestino = seccionDestino;
+    }
+
     public String getFoto() {
         return foto;
     }
@@ -68,11 +109,18 @@ public class BannerData {
         this.foto = foto;
     }
 
-    public String getSeccionDestino() {
-        return seccionDestino;
-    }
-
-    public void setSeccionDestino(String seccionDestino) {
-        this.seccionDestino = seccionDestino;
+    @Override
+    public String toString() {
+        return "BannerData{" +
+                "type='" + type + '\'' +
+                ", partido='" + partido + '\'' +
+                ", partidofb='" + partidofb + '\'' +
+                ", seccion='" + seccion + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", target='" + target + '\'' +
+                ", url='" + url + '\'' +
+                ", seccionDestino='" + seccionDestino + '\'' +
+                ", foto='" + foto + '\'' +
+                '}';
     }
 }

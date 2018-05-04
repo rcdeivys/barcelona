@@ -93,6 +93,8 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
     ShareSection section;
 
+    public int idPartido = 0;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,6 +214,9 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
         presenter.getActivity(HomeActivity.this);
 
+        if ((getIntent().getStringExtra(Constant.Key.SECCION_PARTIDO) != null)) {
+            idPartido = Integer.parseInt(getIntent().getStringExtra(Constant.Key.SECCION_PARTIDO));
+        }
     }
 
     private void showDialogFragment(DialogFragment dialogFragment) {
@@ -332,6 +337,9 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
                         getActivity().startActivity(ChatActivity.intent(Long.parseLong(intent.getStringExtra(ChatActivity.TAG_PRIVATE)), this));
                     }
                 }
+            }
+            if ((intent.getStringExtra(Constant.Key.SECCION_PARTIDO) != null)) {
+                idPartido = Integer.parseInt(intent.getStringExtra(Constant.Key.SECCION_PARTIDO));
             }
             if (!intent.getExtras().getString(Constant.Key.SECCION_SELECTED, "").equals(""))
                 presenter.onItemMenuSelected(intent.getExtras().getString(Constant.Key.SECCION_SELECTED));

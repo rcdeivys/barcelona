@@ -23,6 +23,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.calendar.mvp.CalendarContract;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.mvp.CalendarPresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.SingleCalendarListFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.viewholder.LeagueGroup;
+import com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import java.util.ArrayList;
@@ -166,6 +167,11 @@ public class CalendarFragment extends BaseFragment implements CalendarContract.V
         rvCalendar.setAdapter(matchAdapter);
         rvCalendar.setLayoutManager(linearLayoutManager);
         notifyDataSetChanged();
+        if (getActivity() != null)
+            if (((HomeActivity) getActivity()).idPartido != 0) {
+                onMatchClicked(((HomeActivity) getActivity()).idPartido);
+                ((HomeActivity) getActivity()).idPartido = 0;
+            }
     }
 
     private List<LeagueGroup> generateLeagueGroup(List<Tournament> tournaments) {
