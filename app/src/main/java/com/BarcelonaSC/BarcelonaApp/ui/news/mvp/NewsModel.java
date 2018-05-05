@@ -29,8 +29,8 @@ public class NewsModel {
             @Override
             public void onRequestSuccess(NewsResponse response) {
                 List<Object> objects = new ArrayList<>();
-                //if (page == 1 && response.getMatch() != null)
-                //    objects.add(response.getMatch());
+                if (page == 1 && response.getMatch() != null)
+                    objects.add(response.getMatch());
 
                 objects.addAll(response.getData());
                 result.onGetNewsSuccess(objects, NewsFragment.NEWS_PROFESSIONAL);

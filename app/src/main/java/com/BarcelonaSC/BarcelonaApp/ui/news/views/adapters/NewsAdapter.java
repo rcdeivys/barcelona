@@ -208,7 +208,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             super(itemView);
             this.context = itemView.getContext();
             ButterKnife.bind(this, itemView);
-            ivShare.setVisibility(View.VISIBLE);
+            ivShare.setVisibility(View.GONE);
             viewSaparador.setVisibility(View.GONE);
         }
 
@@ -253,12 +253,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
         public void initDataGame(Match match) {
             if (match.getEstadio() != null) {
-                String state = App.get()
-                        .getString(R.string.stadium
-                                , match.getEstadio().replace("Estadio:", " "));
-
-                if (state != null)
-                    tvMatchState1.setText(state);
+                tvMatchState1.setText(match.getEstadio());
             }
 
             if (match.getFecha() != null) {
