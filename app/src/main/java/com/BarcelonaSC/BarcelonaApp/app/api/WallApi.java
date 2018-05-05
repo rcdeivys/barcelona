@@ -61,8 +61,9 @@ public interface WallApi {
     Call<GenericResponse> reportarPost(
             @Body WallReportarPost post);
 
-    @GET("perfil/{token}")
+    @GET("perfil/{idperfil}/{idpropio}")
     Call<WallProfileResponse> profileWall(
-            @Path("token") String token,
+            @Path("idperfil") String idperfil,
+            @Path("idpropio") String idpropio,
             @Query("page") int page);
 }

@@ -105,7 +105,7 @@ public class WallModel {
     }
 
     public void profileWal(final int page, String id, final WallContract.ModelResultListener resultListener) {
-        api.profileWall(id, page).enqueue(new NetworkCallBack<WallProfileResponse>() {
+        api.profileWall(id, SessionManager.getInstance().getSession().getIdUser(), page).enqueue(new NetworkCallBack<WallProfileResponse>() {
             @Override
             public void onRequestSuccess(WallProfileResponse response) {
                 pagination = page > 1 ? true : false;

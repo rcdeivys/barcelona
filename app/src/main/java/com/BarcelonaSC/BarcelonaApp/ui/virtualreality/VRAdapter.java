@@ -79,6 +79,7 @@ public class VRAdapter extends RecyclerView.Adapter<VRAdapter.VRHolder> {
                 onItemClickListener.onClickItem(position);
             }
         });
+        holder.ivShare.setVisibility(View.GONE);
         holder.ivShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
