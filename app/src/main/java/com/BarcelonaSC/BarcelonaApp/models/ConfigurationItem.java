@@ -292,6 +292,72 @@ public class ConfigurationItem {
     @Expose
     private String subTitle24;
 
+    @SerializedName("tit_17")
+    @Expose
+    private String tit_17;
+    @SerializedName("tit_17_1")
+    @Expose
+    private String tit_17_1;
+    @SerializedName("tit_17_2")
+    @Expose
+    private String tit_17_2;
+    @SerializedName("tit_18")
+    @Expose
+    private String tit_18;
+    @SerializedName("url_tyc")
+    @Expose
+    private String url_tyc;
+    @SerializedName("url_acercade")
+    @Expose
+    private String url_acercade;
+
+    public String getTit_17() {
+        return tit_17;
+    }
+
+    public void setTit_17(String tit_17) {
+        this.tit_17 = tit_17;
+    }
+
+    public String getTit_17_1() {
+        return tit_17_1;
+    }
+
+    public void setTit_17_1(String tit_17_1) {
+        this.tit_17_1 = tit_17_1;
+    }
+
+    public String getTit_17_2() {
+        return tit_17_2;
+    }
+
+    public void setTit_17_2(String tit_17_2) {
+        this.tit_17_2 = tit_17_2;
+    }
+
+    public String getTit_18() {
+        return tit_18;
+    }
+
+    public void setTit_18(String tit_18) {
+        this.tit_18 = tit_18;
+    }
+
+    public String getUrl_tyc() {
+        return url_tyc;
+    }
+
+    public void setUrl_tyc(String url_tyc) {
+        this.url_tyc = url_tyc;
+    }
+
+    public String getUrl_acercade() {
+        return url_acercade;
+    }
+
+    public void setUrl_acercade(String url_acercade) {
+        this.url_acercade = url_acercade;
+    }
 
     public String getTermReferidos() {
         return termReferidos;

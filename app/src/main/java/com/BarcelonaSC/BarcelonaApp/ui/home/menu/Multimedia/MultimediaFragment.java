@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.Services.ShareBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
@@ -59,8 +60,8 @@ public class MultimediaFragment extends ShareBaseFragment {
         int Numboftabs = 2;
 
         /** CAMBIAR POR EL CODIGO DEL TITULO**/
-        String[] titles = {"VIDEOS"
-                , "EN VIVO"};
+        String[] titles = {ConfigurationManager.getInstance().getConfiguration().getTit_17_1()
+                , ConfigurationManager.getInstance().getConfiguration().getTit_17_2()};
 
         viewPagerAdapter = new MultimediaViewPagerAdapter(getChildFragmentManager(), titles, Numboftabs);
 
