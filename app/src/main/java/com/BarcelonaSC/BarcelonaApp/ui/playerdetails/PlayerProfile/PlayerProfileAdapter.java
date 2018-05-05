@@ -123,6 +123,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
                 }
             });
         } else {
+            holder.ivShare.setVisibility(View.GONE);
             holder.onClickContentNewsItem(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
