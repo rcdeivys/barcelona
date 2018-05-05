@@ -42,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
+                    android:background="@color/colorPrimary"
                     android:visibility="visible" />
 
                 <hani.momanii.supernova_emoji_library.Helper.EmojiconTextView

@@ -36,7 +36,7 @@ public class WallCommentAdapter extends CustomRecyclerView<RecyclerView.ViewHold
     private Context context;
     public CommentLikeListener commentLikeListener;
     private String idPost;
-    public static boolean canDeleted=true;
+    public static boolean canDeleted = true;
 
     public WallCommentAdapter(Context context, List<Object> commentList, String idpost) {
         super(context);
@@ -98,7 +98,8 @@ public class WallCommentAdapter extends CustomRecyclerView<RecyclerView.ViewHold
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
 
-                        wallCommentClickListener.onClickReportarPost(((WallCommentItem) commentList.get(position)).getIdcomentario());
+                        wallCommentClickListener.onClickReportarComment(
+                                ((WallCommentItem) commentList.get(position)).getIdcomentario());
                         return false;
                     }
                 });

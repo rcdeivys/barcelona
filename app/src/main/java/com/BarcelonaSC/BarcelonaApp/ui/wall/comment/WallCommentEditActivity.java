@@ -503,6 +503,11 @@ public class WallCommentEditActivity extends BaseActivity implements WallComment
 
     }
 
+    @Override
+    public void reportarComment() {
+
+    }
+
     private void setPermissions() {
         MultiplePermissionsListener feedbackViewMultiplePermissionListener =
                 new EditCommentPermissionListener(this);

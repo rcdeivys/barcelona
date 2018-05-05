@@ -334,7 +334,7 @@ public class OfficialLineUpFragment extends ShareBaseFragment implements OLineUp
     @Override
     public void onPause() {
         super.onPause();
-        vvGameLineup.canPause();
+        vvGameLineup.pause();
         imgPlay.setVisibility(View.VISIBLE);
     }
 }

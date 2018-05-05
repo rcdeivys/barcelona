@@ -186,4 +186,21 @@ public class WallCommentModel extends NetworkCallBack<WallCommentResponse> {
         });
     }
 
+    public void reportarComment(WallReportarPost wallReportarPost, final WallCommentContract.ModelResultListener result) {
+        wallApi.reportarPost(wallReportarPost).enqueue(new NetworkCallBack<GenericResponse>() {
+            @Override
+            public void onRequestSuccess(GenericResponse response) {
+                if (!response.getStatus().equals("exito")) {
+                    result.onWallFailed(response.getError().get(0));
+                } else {
+                    result.onWallReportarComment();
+                }
+            }
+
+            @Override
+            public void onRequestFail(String errorMessage, int errorCode) {
+                result.onWallFailed(errorMessage);
+            }
+        });
+    }
 }

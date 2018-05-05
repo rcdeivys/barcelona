@@ -492,7 +492,12 @@ public class WallCommentFragment extends BaseFragment implements WallCommentCont
 
     @Override
     public void reportarPost() {
-        showDialogSuccessPost();
+        showDialogSuccessPost("publicación");
+    }
+
+    @Override
+    public void reportarComment() {
+        showDialogSuccessPost("comentario");
     }
 
     @Override
@@ -595,7 +600,12 @@ public class WallCommentFragment extends BaseFragment implements WallCommentCont
 
     private void showDialogReportarPost(final String id_post, final String id_comment) {
         LayoutInflater inflater = getLayoutInflater();
-        View dialoglayout = inflater.inflate(R.layout.dialog_reportar_comentario, null);
+        View dialoglayout;
+        if (id_comment != null)
+            dialoglayout = inflater.inflate(R.layout.dialog_reportar_comentario, null);
+        else
+            dialoglayout = inflater.inflate(R.layout.dialog_reportar_muro, null);
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(dialoglayout);
         final AlertDialog alertDialog = builder.show();
@@ -632,7 +642,10 @@ public class WallCommentFragment extends BaseFragment implements WallCommentCont
                 }
 
                 if (!text.equals("")) {
-                    presenter.sendReportarPost(new WallReportarPost(SessionManager.getInstance().getSession().getToken(), text, id_post, id_comment));
+                    if (id_comment != null)
+                        presenter.sendReportarComment(new WallReportarPost(SessionManager.getInstance().getSession().getToken(), text, id_post, id_comment));
+                    else
+                        presenter.sendReportarPost(new WallReportarPost(SessionManager.getInstance().getSession().getToken(), text, id_post, id_comment));
                     alertDialog.dismiss();
                 } else {
                     Toast.makeText(getContext(), "Seleccione una opcioón", Toast.LENGTH_SHORT).show();
@@ -641,14 +654,14 @@ public class WallCommentFragment extends BaseFragment implements WallCommentCont
         });
     }
 
-    private void showDialogSuccessPost() {
+    private void showDialogSuccessPost(String from) {
         LayoutInflater inflater = getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_thanks_report, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(dialoglayout);
         final AlertDialog alertDialog = builder.show();
         FCMillonariosTextView fcMillonariosTextView = dialoglayout.findViewById(R.id.fcm_tv_tittle);
-        fcMillonariosTextView.setText("Gracias \n por reportar esta publicación. \n\n Tus comentarios son de vital importancia para hacer de la App Oficial un lugar seguro.");
+        fcMillonariosTextView.setText("Gracias \n por reportar esta " + from + ". \n\n Tus comentarios son de vital importancia para hacer de la App Oficial un lugar seguro.");
         Button btnYes = (Button) dialoglayout.findViewById(R.id.btn_ok);
         btnYes.setText("VOLVER");
         btnYes.setOnClickListener(new View.OnClickListener() {

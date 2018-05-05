@@ -33,6 +33,8 @@ public class WallCommentContract {
         void onWallLikePost(String msg);
 
         void onWallReportarPost();
+
+        void onWallReportarComment();
     }
 
     public interface Presenter extends MVPContract.Presenter<WallCommentContract.View> {
@@ -56,6 +58,8 @@ public class WallCommentContract {
         void editComment(String id_post, String idcomentario, String comment, String photo);
 
         void sendReportarPost(WallReportarPost wallReportarPost);
+
+        void sendReportarComment(WallReportarPost wallReportarPost);
 
     }
 
@@ -82,6 +86,8 @@ public class WallCommentContract {
         void editComment();
 
         void reportarPost();
+
+        void reportarComment();
 
     }
 }

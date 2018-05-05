@@ -95,6 +95,11 @@ public class WallCommentPresenter implements WallCommentContract.Presenter, Wall
     }
 
     @Override
+    public void onWallReportarComment() {
+        view.reportarComment();
+    }
+
+    @Override
     public void load(String id_post, boolean refreshing) {
         model.loadComment(id_post, 1, this);
     }
@@ -149,6 +154,11 @@ public class WallCommentPresenter implements WallCommentContract.Presenter, Wall
     @Override
     public void sendReportarPost(WallReportarPost wallReportarPost) {
         model.reportarPost(wallReportarPost, this);
+    }
+
+    @Override
+    public void sendReportarComment(WallReportarPost wallReportarPost) {
+        model.reportarComment(wallReportarPost, this);
     }
 
     private boolean isViewNull() {
