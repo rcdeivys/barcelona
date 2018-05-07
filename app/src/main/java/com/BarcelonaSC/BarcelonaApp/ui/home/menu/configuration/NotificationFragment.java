@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
@@ -21,6 +21,8 @@ import com.BarcelonaSC.BarcelonaApp.commons.Services.NotificationSettingControll
 import com.BarcelonaSC.BarcelonaApp.db.NotificationSetting;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 
+import java.io.File;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.BindView;
@@ -57,6 +59,10 @@ public class NotificationFragment extends Fragment {
     public SwitchCompat aSwitchGoals;
     @BindView(R.id.switch_outstanding)
     public SwitchCompat aSwitchDestacados;
+    @BindView(R.id.memori_cache)
+    FCMillonariosTextView memoriaCcache;
+    @BindView(R.id.delete_cache)
+    Button deleteCache;
 
     List<NotificationSetting> itemList;
 
@@ -79,10 +85,59 @@ public class NotificationFragment extends Fragment {
         aSwitchStartGame.setChecked(itemList.get(2).getStatus());
         aSwitchGoals.setChecked(itemList.get(3).getStatus());
         aSwitchDestacados.setChecked(itemList.get(4).getStatus());
-
+        initializeCache();
         for (NotificationSetting notificationSetting : itemList) {
             Log.d(TAG, "topic " + notificationSetting.getTopic() + " suscribe " + notificationSetting.getStatus());
         }
+    }
+
+    @OnClick(R.id.delete_cache)
+    public void deleteCache() {
+        deleteDir(getActivity().getCacheDir());
+        deleteDir(getActivity().getExternalCacheDir());
+       initializeCache();
+    }
+    public  boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+            return dir.delete();
+        } else if (dir != null && dir.isFile()) {
+            return dir.delete();
+        } else {
+            return false;
+        }
+    }
+
+    private void initializeCache() {
+        long size = 0;
+        size += getDirSize(getActivity().getCacheDir());
+        size += getDirSize(getActivity().getExternalCacheDir());
+       memoriaCcache.setText(readableFileSize(size));
+    }
+
+    public long getDirSize(File dir){
+        long size = 0;
+        for (File file : dir.listFiles()) {
+            if (file != null && file.isDirectory()) {
+                size += getDirSize(file);
+            } else if (file != null && file.isFile()) {
+                size += file.length();
+            }
+        }
+        return size;
+    }
+
+    public static String readableFileSize(long size) {
+        if (size <= 0) return "0 Bytes";
+        final String[] units = new String[]{"Bytes", "kB", "MB", "GB", "TB"};
+        int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+        return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
     }
 
     @OnCheckedChanged({R.id.switch_reminder, R.id.switch_aligment, R.id.switch_start_game, R.id.switch_goals, R.id.switch_outstanding})

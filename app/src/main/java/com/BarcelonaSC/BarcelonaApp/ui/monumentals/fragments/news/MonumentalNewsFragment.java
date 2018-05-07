@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -200,7 +201,9 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     @Override
     public void navigateToNewsDetailsActivity(News news) {
         Intent intent = new Intent(getActivity(), NewsDetailsActivity.class);
+        Log.d(TAG, "navigateToNewsDetailsActivity: id " + news.getId());
         intent.putExtra(Constant.Key.TITLE, news.getTitulo());
+        intent.putExtra(Constant.Key.ID, "" + news.getId());
         intent.putExtra(Constant.Key.DESC_NEW, news.getDescripcion());
         intent.putExtra(Constant.Key.IMG, news.getFoto());
         getActivity().startActivity(intent);
