@@ -137,8 +137,6 @@ public class App extends Application {
 
             if (size + sizeExt / (1024) > sizeMaxMb * 1024 * 1024)
                 deleteDir(dir);
-            else
-                Toast.makeText(getAppContext(), "No va a eliminar cache", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
         }
     }
