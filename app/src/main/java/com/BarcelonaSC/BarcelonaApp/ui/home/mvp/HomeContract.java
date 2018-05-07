@@ -11,11 +11,12 @@ import com.BarcelonaSC.BarcelonaApp.commons.mvp.MVPContract;
 public class HomeContract {
 
     public interface Presenter extends MVPContract.Presenter<View> {
-
+        void sentFirebaseInstanceIdTokenToServer(String token);
     }
 
     public interface ModelResultListener {
-
+        void onSuccessSetFirebaseToken();
+        void onFailedSetFirebaseToken();
     }
 
     public interface View {

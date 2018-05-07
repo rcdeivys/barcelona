@@ -1,6 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.calendar;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.calendar.viewholder.MatchChildViewHolder;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.viewholder.MatchParentViewHolder;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.thoughtbot.expandablerecyclerview.ExpandableRecyclerViewAdapter;
@@ -67,6 +69,7 @@ public class MatchAdapter extends ExpandableRecyclerViewAdapter<MatchParentViewH
             matchChildViewHolder.tvSubTitle.setText("");
         } */
 
+       Log.e("DEIVYS" , match.getFechaEtapa());
         matchChildViewHolder.tvMatchDate.setText(Commons.getStringDate(match.getFechaEtapa()));
 
         if (i1 == 0) {
@@ -99,6 +102,13 @@ public class MatchAdapter extends ExpandableRecyclerViewAdapter<MatchParentViewH
             matchChildViewHolder.tvMatchScore.setText(App.getAppContext().getString(R.string.vs));
         }
 
+        matchChildViewHolder.ivShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareSection.shareIndividual(Constant.Key.SHARE_GAME, String.valueOf(match.getIdpartido()));
+            }
+        });
+
         matchChildViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,16 +139,16 @@ public class MatchAdapter extends ExpandableRecyclerViewAdapter<MatchParentViewH
                 .setText(state);
 
         if (match.getInfo() != null) {
-            state2 = Commons.getStringDate2(match.getFecha())
-                    + "  |  " + Commons.getStringHour(match.getFecha())
+            state2 = Commons.getStringDate2(match.getFecha()).replace(".", "")
+                    + "  |  " + Commons.getStringHour(match.getFecha()).replace(".", "")
                     + match.getInfo();
         } else {
-            state2 = Commons.getStringDate2(match.getFecha())
-                    + "  |  " + Commons.getStringHour(match.getFecha());
+            state2 = Commons.getStringDate2(match.getFecha()).replace(".", "")
+                    + "  |  " + Commons.getStringHour(match.getFecha()).replace(".", "");
         }
 
         matchChildViewHolder.tvMatchState2
-                .setText(state2);
+                .setText(state2.toUpperCase());
 
     }
 

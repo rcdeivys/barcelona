@@ -26,6 +26,12 @@ public class ApiModule {
 
     @Provides
     @AppScope
+    public static MultimediaApi provideMultimediaApi(Retrofit retrofit) {
+        return retrofit.create(MultimediaApi.class);
+    }
+
+    @Provides
+    @AppScope
     public static TeamApi provideTeamApi(Retrofit retrofit) {
         return retrofit.create(TeamApi.class);
     }
@@ -41,6 +47,13 @@ public class ApiModule {
     public static GalleryApi provideGalleryApi(Retrofit retrofit) {
         return retrofit.create(GalleryApi.class);
     }
+
+    @Provides
+    @AppScope
+    public static ChatApi provideChatApi(Retrofit retrofit) {
+        return retrofit.create(ChatApi.class);
+    }
+
 
     @Provides
     @AppScope
@@ -149,6 +162,24 @@ public class ApiModule {
     @AppScope
     public static MonumentalApi provideMonumentalApi(Retrofit retrofit) {
         return retrofit.create(MonumentalApi.class);
+    }
+
+    @Provides
+    @AppScope
+    public static MapApi provideMapApi(Retrofit retrofit) {
+        return retrofit.create(MapApi.class);
+    }
+
+    @Provides
+    @AppScope
+    public static WallSearchApi provideWallSearchApi(Retrofit retrofit) {
+        return retrofit.create(WallSearchApi.class);
+    }
+
+    @Provides
+    @AppScope
+    public static HomeApi provideHomeApi(Retrofit retrofit) {
+        return retrofit.create(HomeApi.class);
     }
 
 }

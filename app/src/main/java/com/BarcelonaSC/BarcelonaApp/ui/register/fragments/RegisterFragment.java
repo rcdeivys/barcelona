@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -205,7 +206,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
                                         if (!regCpass.getText().toString().isEmpty()) {
                                             if (regCpass.getText().toString().equals(regPass.getText().toString())) {
                                                 if (regCbTerms.isChecked()) {
-                                                    registerUser();
+                                                    showDialogConfirmRegister();
                                                 } else {
                                                     Toast.makeText(getActivity(), "Debes aceptar los términos y condiciones", Toast.LENGTH_SHORT).show();
                                                 }
@@ -241,6 +242,67 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         }
     }
 
+    @SuppressLint("SetTextI18n")
+    public void showDialogConfirmRegister() {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialoglayout = inflater.inflate(R.layout.dialog_confirm_register, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialoglayout);
+        final AlertDialog alertDialog = builder.show();
+
+        FCMillonariosTextView first_name = dialoglayout.findViewById(R.id.fcm_tv_dialog_name);
+        FCMillonariosTextView last_name = dialoglayout.findViewById(R.id.fcm_tv_dialog_apellido);
+        FCMillonariosTextView identification = dialoglayout.findViewById(R.id.fcm_tv_dialog_cedula);
+        FCMillonariosTextView email = dialoglayout.findViewById(R.id.fcm_tv_dialog_email);
+        FCMillonariosTextView numbre_phone = dialoglayout.findViewById(R.id.fcm_tv_dialog_celular);
+        FCMillonariosTextView gender = dialoglayout.findViewById(R.id.fcm_tv_dialog_genero);
+        FCMillonariosTextView birthdate = dialoglayout.findViewById(R.id.fcm_tv_dialog_nacimiento);
+
+        first_name.setText(regName.getText().toString());
+        last_name.setText(regLastName.getText().toString());
+        identification.setText(regCI.getText().toString() + "\n");
+        email.setText(regEmail.getText().toString());
+        String number = regPhoneCode.getText().toString() + regPhoneNum.getText().toString();
+        if (number.length() > 1) {
+            numbre_phone.setText(number);
+        } else {
+            numbre_phone.setText("NA");
+        }
+
+
+        gender.setText(getGenderSelected());
+        if (regDay.getText().length() > 0) {
+            birthdate.setText(regDay.getText().toString() + "/" + regMonth.getText().toString() + "/" + regYear.getText().toString());
+        } else {
+            birthdate.setText("NA");
+        }
+        Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_return);
+        btnNot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        Button btnYes = (Button) dialoglayout.findViewById(R.id.btn_submit);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                registerUser();
+            }
+        });
+    }
+
+    public String getGenderSelected() {
+        if (regRbMale.isChecked())
+            return "Masculino";
+        else if (regRbFemale.isChecked())
+            return "Femenino";
+        else
+            return "NA";
+    }
+
     private void registerUser() {
         user = new User();
         user.setNombre(regName.getText().toString());
@@ -270,6 +332,7 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
         showProgress();
         presenter.loadRegister(user);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

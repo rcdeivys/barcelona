@@ -1,5 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.request;
 
+import android.util.Log;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -13,9 +15,12 @@ import com.BarcelonaSC.BarcelonaApp.models.firebase.Count;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.FirebaseEvent;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Miembro;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Solicitud;
+import com.BarcelonaSC.BarcelonaApp.models.firebase.Usuario;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.lang.reflect.Member;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -137,11 +142,6 @@ public class SolicitudesControllers {
                 if (count.verificateLimit()) {
                     sendEvent();
                 }
-            }
-
-            @Override
-            public void onRemoveMember(String id) {
-
             }
 
             @Override

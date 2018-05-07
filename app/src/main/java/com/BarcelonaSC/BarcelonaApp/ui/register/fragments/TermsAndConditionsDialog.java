@@ -10,6 +10,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 
 import butterknife.BindView;
@@ -57,7 +58,7 @@ public class TermsAndConditionsDialog extends DialogFragment {
         settings.setUseWideViewPort(true);
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
-        myWebView.loadUrl(Commons.getString(R.string.url_api).replace("api/", "") + "webviews/tyc/index.php");
+        myWebView.loadUrl(ConfigurationManager.getInstance().getConfiguration().getUrl_tyc());
 
         return dialogo;
     }

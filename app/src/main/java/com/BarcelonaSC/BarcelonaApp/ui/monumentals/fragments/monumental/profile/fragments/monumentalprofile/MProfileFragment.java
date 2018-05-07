@@ -16,7 +16,6 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.eventbus.MonumentalRankingEvent;
-import com.BarcelonaSC.BarcelonaApp.eventbus.WallCreatePostEvent;
 import com.BarcelonaSC.BarcelonaApp.models.MonumentalItem;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.ui.gallery.GalleryListActivity;
@@ -31,6 +30,9 @@ import com.BarcelonaSC.BarcelonaApp.ui.news.NewsVideoActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -52,6 +54,8 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
     Unbinder unbinder;
+
+    List<Integer> videoPositions;
 
     @Inject
     MProfilePresenter presenter;
@@ -78,6 +82,7 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initComponent();
+        videoPositions = new ArrayList<>();
         linearLayoutManager = new LinearLayoutManager(getContext());
     }
 
@@ -196,6 +201,11 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
         presenter.voteMonumental(idMonumental, idEncuesta, Settings.Secure.getString(getContext().getContentResolver(), Settings.Secure.ANDROID_ID));
     }
 
+    @Override
+    public void playVideo(int position) {
+        videoPositions.add(position);
+    }
+
     private void notifyDataSetChanged() {
         swipeContainer.setRefreshing(false);
     }
@@ -204,5 +214,12 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     public void onDestroyView() {
         super.onDestroyView();
         presenter.cancel();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        adapter.pauseVideo(videoPositions);
+        videoPositions.clear();
     }
 }

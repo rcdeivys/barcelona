@@ -28,8 +28,8 @@ public interface TeamApi {
     @GET("nominafb")
     Call<PlayoffResponse> getPlayoffFB();
 
-    @GET("single_jugador/{id}")
-    Call<PlayerResponse> getPlayerData(@Path("id") String idjugador);
+    @GET("single_jugador/{id}/{token}")
+    Call<PlayerResponse> getPlayerData(@Path("id") String idjugador, @Path("token") String token);
 
     @GET("single_jugadorfb/{id}")
     Call<PlayerResponse> getPlayerDataFB(@Path("id") String idjugador);

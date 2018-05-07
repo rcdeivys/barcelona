@@ -35,16 +35,22 @@ public class NewsVideoViewHolder extends RecyclerView.ViewHolder implements Surf
 
     @BindView(R.id.img_header)
     public ImageView imgHeader;
+
     @BindView(R.id.img_play)
     public ImageView imgPlay;
+
     @BindView(R.id.text_date)
     FCMillonariosTextView textDate;
+
     @BindView(R.id.text_title)
     FCMillonariosTextView textTitle;
+
     @BindView(R.id.videoSurface)
     public SurfaceView videoSurface;
+
     @BindView(R.id.content_view)
     RelativeLayout contentView;
+
     @BindView(R.id.videoSurfaceContainer)
     FrameLayout frameLayout;
 

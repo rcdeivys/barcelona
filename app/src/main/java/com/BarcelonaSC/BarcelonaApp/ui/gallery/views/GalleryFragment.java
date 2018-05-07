@@ -63,7 +63,7 @@ public class GalleryFragment extends Fragment {
         Glide.with(this)
                 .asBitmap()
                 .load(url)
-                .apply(new RequestOptions().placeholder(R.drawable.logo_transparencia).error(R.drawable.logo_transparencia))
+                .apply(new RequestOptions().placeholder(R.drawable.bsc_logo).error(R.drawable.bsc_logo))
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {

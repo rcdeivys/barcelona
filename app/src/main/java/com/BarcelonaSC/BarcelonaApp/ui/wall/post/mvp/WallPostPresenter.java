@@ -26,13 +26,46 @@ public class WallPostPresenter implements WallPostContract.Presenter, WallPostCo
     }
 
     @Override
-    public void sendPost(String message, String photo) {
+    public void sendPost(String message, String tipo_post, String photo, String thumbnail) {
         if (isViewNull()) return;
         view.showProgress();
         if (!message.equals("") || photo != null) {
-            model.sendPost(message, photo, this);
+            model.sendPost(message, tipo_post, photo, thumbnail, this);
         } else {
-            onWallPostFailed("Para crear una publicacion necesita introducir un texto o una imagen");
+            onWallPostFailed("Para crear una publicación necesitas introducir un texto, imagen o vídeo");
+        }
+    }
+
+    @Override
+    public void sendVideoPost(String message, String post_type, String video, String thumbnail) {
+        if (isViewNull()) return;
+        view.showProgress();
+        if (!message.equals("") || !post_type.equals("video") || video != null) {
+            model.sendVideoPost(message, video, post_type, thumbnail,this);
+        } else {
+            onWallPostFailed("Para crear una publicación necesitas introducir un texto, imagen o vídeo");
+        }
+    }
+
+    @Override
+    public void editVideoPost(String message, String post_type, String video, String thumbnail) {
+        if (isViewNull()) return;
+        view.showProgress();
+        if (!message.equals("") || !post_type.equals("video") || video != null) {
+            model.sendVideoPost(message, video, post_type, thumbnail, this);
+        } else {
+            onWallPostFailed("Para crear una publicación necesitas introducir un texto, imagen o vídeo");
+        }
+    }
+
+    @Override
+    public void editPost(String idpost, String message, String tipo_post, String photo, String thumbnail) {
+        if (isViewNull()) return;
+        view.showProgress();
+        if (!message.equals("") || photo != null) {
+            model.sendEdit(idpost, message, tipo_post, photo, thumbnail,this);
+        } else {
+            onWallPostFailed("Para editar una publicación necesitas introducir un texto, imagen o vídeo");
         }
     }
 
@@ -44,13 +77,25 @@ public class WallPostPresenter implements WallPostContract.Presenter, WallPostCo
     }
 
     @Override
+    public void onWallPostEdit() {
+
+    }
+
+    @Override
     public void onWallPostFailed(String error) {
         if (isViewNull()) return;
-        view.showToastError(error);
         view.hideProgress();
+        view.showToastError(error);
     }
 
     private boolean isViewNull() {
         return view == null;
     }
+
+    @Override
+    public void noDoradoErrorListener() {
+        view.hideProgress();
+        view.showDialogDorado();
+    }
+
 }

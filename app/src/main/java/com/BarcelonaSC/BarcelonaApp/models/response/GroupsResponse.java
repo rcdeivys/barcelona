@@ -1,7 +1,8 @@
 package com.BarcelonaSC.BarcelonaApp.models.response;
 
-import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupModelView;
 
+
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.GroupModelView;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

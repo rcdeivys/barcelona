@@ -1,5 +1,8 @@
 package com.BarcelonaSC.BarcelonaApp.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Carlos on 12/10/2017.
  */
@@ -8,6 +11,9 @@ public class PlayerApplause {
     private String idjugador;
     private int idpartido;
     private String imei;
+    @SerializedName("token")
+    @Expose
+    private String token;
 
     public PlayerApplause(String idjugador, int idpartido, String imei) {
         this.idjugador = idjugador;
@@ -37,5 +43,23 @@ public class PlayerApplause {
 
     public void setImei(String imei) {
         this.imei = imei;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerApplause{" +
+                "idjugador='" + idjugador + '\'' +
+                ", idpartido=" + idpartido +
+                ", imei='" + imei + '\'' +
+                ", token='" + token + '\'' +
+                '}';
     }
 }

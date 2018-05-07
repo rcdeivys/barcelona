@@ -3,12 +3,16 @@ package com.BarcelonaSC.BarcelonaApp.app.di;
 import com.BarcelonaSC.BarcelonaApp.app.api.ApiModule;
 import com.BarcelonaSC.BarcelonaApp.app.api.AuthApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.BannerApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.ChatApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.ConfigurationApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.FriendsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.GalleryApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.GroupsApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.HomeApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.LineUpApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.MapApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.MonumentalApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.MultimediaApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.NewsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.ProfileApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.RecoveryPasswordApi;
@@ -21,6 +25,7 @@ import com.BarcelonaSC.BarcelonaApp.app.api.UserPhotoApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.VRApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.WallApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.WallCommentApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.WallSearchApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.YouChooseApi;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
@@ -39,6 +44,8 @@ public interface AppComponent {
 
     TeamApi teamApi();
 
+    MultimediaApi multimediaApi();
+
     NewsApi newsApi();
 
     BannerApi bannerApi();
@@ -54,6 +61,8 @@ public interface AppComponent {
     YouChooseApi youChooseApi();
 
     UserPhotoApi userPhotoApi();
+
+    ChatApi chatApi();
 
     VRApi virtualRealityApi();
 
@@ -80,5 +89,11 @@ public interface AppComponent {
     WallCommentApi wallCommentApi();
 
     MonumentalApi monumentalApi();
+
+    MapApi mapApi();
+
+    WallSearchApi wallSearchApi();
+
+    HomeApi homeApi();
 
 }

@@ -45,6 +45,9 @@ public class News {
     @SerializedName("created_at")
     @Expose
     private Object createdAt;
+    @SerializedName("dorado")
+    @Expose
+    private int dorado;
     @SerializedName("updated_at")
     @Expose
     private Object updatedAt;
@@ -135,6 +138,10 @@ public class News {
 
     public void setAparevetimelinemonumentales(Integer aparevetimelinemonumentales) {
         this.aparevetimelinemonumentales = aparevetimelinemonumentales;
+    }
+
+    public boolean isDorado() {
+        return dorado == 1;
     }
 
     public Object getCreatedAt() {

@@ -15,15 +15,13 @@ public class ChooseProfileContract {
     public interface ModelResultListener {
         void onGetChooseProfileSuccess(ChooseProfileData chooseProfileData);
 
-
         void onError(String error);
     }
 
     public interface Presenter extends MVPContract.Presenter<View> {
         void getChooseProfileData(String playerId);
 
-        void clickItem(int position);
-
+        void clickItem(News news);
 
         boolean isViewNull();
     }
@@ -34,17 +32,16 @@ public class ChooseProfileContract {
 
         void hideProgress();
 
-
         void setRefreshing(boolean state);
 
         void showToast(String error);
 
         void setChooseProfileData(ChooseProfileData chooseProfileData);
 
-        void navigateToVideoNewsActivity(News news);
+        void navigateToVideoNewsActivity(News news, int currentPosition);
         void navigateToInfografiaActivity(News news);
         void navigateToNewsDetailsActivity(News news);
-        void navigateToGalleryActivity(int id);
+        void navigateToGalleryActivity(News news);
 
     }
 

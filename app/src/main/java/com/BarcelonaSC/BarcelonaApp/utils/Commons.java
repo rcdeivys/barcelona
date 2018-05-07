@@ -2,9 +2,11 @@ package com.BarcelonaSC.BarcelonaApp.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.ActivityNotFoundException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -12,11 +14,13 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Base64;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
@@ -25,10 +29,22 @@ import android.widget.ImageView;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.BarcelonaSC.BarcelonaApp.utils.FontCache;
+import com.amazonaws.auth.CognitoCachingCredentialsProvider;
+import com.amazonaws.mobile.client.AWSMobileClient;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferObserver;
+import com.amazonaws.mobileconnectors.s3.transferutility.TransferUtility;
+import com.amazonaws.regions.Regions;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.net.URLConnection;
 import java.text.DateFormat;
+import java.text.DateFormatSymbols;
 import java.text.Normalizer;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -180,6 +196,41 @@ public class Commons {
         }
     }
 
+
+    public static String dateToWallDate(String date) {
+        Log.i("TAG", "////" + date);
+
+        DateFormat inputFormatter1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+        Date date1 = null;
+        try {
+            date1 = inputFormatter1.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        DateFormat outputFormatter1 = new SimpleDateFormat("HH:mm", Locale.US);
+        String output1 = outputFormatter1.format(date1); //
+
+        return (Commons.simpleDateFormat(date).substring(0, 2) + "-" +
+                getMonthForInt(Integer.parseInt(Commons.simpleDateFormat(date).substring(3, 5))).substring(0, 3).toUpperCase() + "-" +
+                date.substring(0, 4) + " / " + output1);
+    }
+
+    public static String dateToWallHour(String date) {
+
+        return getStringHour(date);
+    }
+
+    public static String getMonthForInt(int num) {
+        String month = "wrong";
+        DateFormatSymbols dfs = new DateFormatSymbols(new Locale("es", "ES"));
+        String[] months = dfs.getMonths();
+        if (num >= 0 && num <= 12) {
+            month = months[num - 1];
+        }
+        return month;
+    }
+
     @SuppressLint("SimpleDateFormat")
     public static String dateToString(Date d) {
         if (d != null) {
@@ -255,16 +306,14 @@ public class Commons {
         try {
             DateFormat format = new SimpleDateFormat("dd-MMM-yyyy", new Locale("es", "ES"));
             DateFormat format2 = new SimpleDateFormat("yyyy-MM-dd", new Locale("es", "ES"));
-
             Date date = format2.parse(string);
             System.out.println(date);
-            String dateString = format.format(date).replace(".", "");
 
-            return dateString.toUpperCase();
+            return format.format(date);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
 
 
@@ -334,9 +383,9 @@ public class Commons {
     }
 
     public static String encodeImage(Bitmap bm) {
-        Bitmap resize = Commons.scaleDown(bm, 400, true);
+        Bitmap resize = Commons.scaleDown(bm, 500, true);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        resize.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        resize.compress(Bitmap.CompressFormat.PNG, 75, baos);
         byte[] b = baos.toByteArray();
         String encImage = Base64.encodeToString(b, Base64.DEFAULT);
 
@@ -368,14 +417,100 @@ public class Commons {
                 "IMG_" + timeStamp + ".jpg");
     }
 
+    public static File getOutputMediaFileVideo() {
+        File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_MOVIES), "Millonarios FC");
+
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                return null;
+            }
+        }
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        return new File(mediaStorageDir.getPath() + File.separator +
+                "VIDEO_" + timeStamp + ".mp4");
+    }
+
     public static void seTypeFaceTextView(FCMillonariosTextView view, int path) {
         if (Build.VERSION.SDK_INT < 23) {
             view.setTypeface(FontCache.getTypeface(App.getAppContext(), Commons.getString(path)));
-
         } else {
             view.setTypeface(FontCache.getTypeface(App.getAppContext(), Commons.getString(path)));
-
         }
+    }
+
+    public static void preLoadImage(String url) {
+        Glide.with(App.getAppContext())
+                .load(url)
+                .preload();
+    }
+
+    public static boolean isAppIsInBackground(Context context) {
+        boolean isInBackground = true;
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT_WATCH) {
+            List<ActivityManager.RunningAppProcessInfo> runningProcesses = am.getRunningAppProcesses();
+            for (ActivityManager.RunningAppProcessInfo processInfo : runningProcesses) {
+                if (processInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                    for (String activeProcess : processInfo.pkgList) {
+                        if (activeProcess.equals(context.getPackageName())) {
+                            isInBackground = false;
+                        }
+                    }
+                }
+            }
+        } else {
+            List<ActivityManager.RunningTaskInfo> taskInfo = am.getRunningTasks(1);
+            ComponentName componentInfo = taskInfo.get(0).topActivity;
+            if (componentInfo.getPackageName().equals(context.getPackageName())) {
+                isInBackground = false;
+            }
+        }
+        return isInBackground;
+    }
+
+    public static TransferObserver initUploadWithTransferUtility(final File file) {
+
+        CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
+                App.get().getApplicationContext(),
+                "us-east-1:ca848cb3-7490-4084-a479-61cad6a03420", // Identity Pool ID
+                Regions.US_EAST_1 // Region
+        );
+        AmazonS3 s3 = new AmazonS3Client(credentialsProvider);
+
+        TransferUtility transferUtility =
+                TransferUtility.builder()
+                        .context(App.get().getApplicationContext())
+                        .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
+                        .s3Client(s3)
+                        .build();
+
+        final TransferObserver uploadObserver =
+                transferUtility.upload("millos-videos",
+                        file.getName(),
+                        file);
+
+        return uploadObserver;
+
+    }
+
+    public interface UploadVideoS3 {
+        void success();
+
+        void failed();
+    }
+
+    public static boolean isVideoFile(String path) {
+        String mimeType = URLConnection.guessContentTypeFromName(path);
+        return mimeType != null && mimeType.startsWith("video");
+    }
+
+    public static Bitmap createThumbnailAtTime(String filePath, long timeInSeconds) {
+        MediaMetadataRetriever mMMR = new MediaMetadataRetriever();
+        mMMR.setDataSource(filePath);
+        //api time unit is microseconds
+        return mMMR.getFrameAtTime(timeInSeconds * 1000000, MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
     }
 
 }

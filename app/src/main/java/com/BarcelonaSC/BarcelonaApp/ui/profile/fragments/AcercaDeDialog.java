@@ -11,6 +11,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,7 +57,7 @@ public class AcercaDeDialog extends DialogFragment {
         settings.setDisplayZoomControls(false);
 
         myWebView.setWebViewClient(new WebViewClient());
-        myWebView.loadUrl("http://millos-dev.2waysports.com/webviews/acercade");
+        myWebView.loadUrl(ConfigurationManager.getInstance().getConfiguration().getUrl_acercade());
 
         return dialogo;
     }

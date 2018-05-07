@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_vr_container"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginStart="10dp"
-    android:background="@drawable/rounder_item_new"
+    android:id="@+id/ll_vr_container"
+    android:background="@color/colorPrimary"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:background="@drawable/bsc_news_wm" />
+            android:padding="8dp"/>
 
         <!-- Play image -->
         <com.inthecheesefactory.thecheeselibrary.widget.AdjustableImageView
@@ -28,30 +28,73 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/play" />
+            android:src="@drawable/play360" />
+
     </RelativeLayout>
 
-    <!-- Fecha de la noticia -->
-    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/tv_date"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/white"
-        android:textSize="@dimen/font_caption_size" />
+        android:orientation="horizontal">
 
-    <!-- Video's title -->
-    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-        android:id="@+id/tv_title"
-        style="@style/StyleRobotoBold.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/white" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+            <!-- Fecha de la noticia -->
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/tv_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_caption_size" />
+
+
+            <!-- Video's title -->
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                style="@style/StyleRobotoBold.Title"
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:text=""
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_share"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/share"
+                android:layout_gravity="right"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:tint="@color/white"
+                android:visibility="visible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
 
 </LinearLayout>

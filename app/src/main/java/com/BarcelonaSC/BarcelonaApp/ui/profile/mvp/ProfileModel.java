@@ -48,8 +48,10 @@ public class ProfileModel {
             public void onRequestSuccess(GenericResponse response) {
                 if (!response.getStatus().equals("fallo"))
                     result.onPutUserSuccess();
+                else if (response.getError() != null && response.getError().get(0) != null)
+                    result.onFailed(response.getError().get(0));
                 else
-                    result.onFailed("Ocurrió un error, vuelta a intentarlo.");
+                    result.onFailed(response.getError().get(0));
             }
 
             @Override

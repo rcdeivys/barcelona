@@ -2,42 +2,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/llSeach"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    android:orientation="vertical">
+    android:layout_height="60dp"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+    <com.BarcelonaSC.BarcelonaApp.utils.CustomProfileRelativeView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/border_seach_background">
 
         <ImageView
             android:id="@+id/iv_msg_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
             android:padding="5dp"
-            android:src="@drawable/lupa" />
+            android:src="@drawable/search_icn" />
 
         <EditText
             android:id="@+id/et_msg_search"
             android:layout_width="match_parent"
             android:layout_height="35dp"
+            android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
-            android:layout_marginEnd="20dp"
-            android:background="@drawable/border_seach_background"
-            android:hint="Buscar Mensaje"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@id/iv_msg_search"
+            android:layout_toStartOf="@+id/iv_more_conv"
+            android:background="@color/transparent"
+            android:hint="Buscar..."
             android:imeOptions="actionSearch"
             android:maxLines="1"
-            android:paddingStart="15dp"
+            android:paddingStart="5dp"
             android:textColor="@color/black" />
 
-    </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorAccent" />
+        <ImageView
+            android:id="@+id/iv_more_conv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:src="@drawable/new_icn"
+            android:visibility="visible" />
+    </RelativeLayout>
 
 </LinearLayout>

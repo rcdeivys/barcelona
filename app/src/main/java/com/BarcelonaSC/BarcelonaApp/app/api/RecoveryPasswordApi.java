@@ -14,7 +14,7 @@ import retrofit2.http.POST;
  */
 
 public interface RecoveryPasswordApi {
-       @POST("recuperar_clave")
+       @POST("recuperar_clave_link")
         Call<SendEmailResponse> sendEmail(@Body SendEmail recoverBody);
 
         @POST("ingresar_con_pin")

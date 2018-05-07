@@ -18,6 +18,14 @@ public class Amigos implements Parcelable {
     public Amigos() {
     }
 
+    public Amigos(Long id,Long fecha_amistad, String id_conversacion, Conversacion conversacion) {
+        this.id = id;
+        this.bloqueado = bloqueado;
+        this.fecha_amistad = fecha_amistad;
+        this.id_conversacion = id_conversacion;
+        this.conversacion = conversacion;
+    }
+
     public Amigos(boolean bloqueado, Long fecha_amistad, String id_conversacion) {
         this.bloqueado = bloqueado;
         this.fecha_amistad = fecha_amistad;
@@ -103,5 +111,16 @@ public class Amigos implements Parcelable {
         fecha_amistad = dataAmigo.getFecha_amistad();
         id_conversacion = dataAmigo.getId_conversacion();
 
+    }
+
+    @Override
+    public String toString() {
+        return "Amigos{" +
+                "id=" + id +
+                ", bloqueado=" + bloqueado +
+                ", fecha_amistad=" + fecha_amistad +
+                ", id_conversacion='" + id_conversacion + '\'' +
+                ", conversacion=" + conversacion +
+                '}';
     }
 }

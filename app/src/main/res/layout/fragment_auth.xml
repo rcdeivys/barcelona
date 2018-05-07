@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:gravity="center"
-                android:text="Si no tienes cuenta.." />
+                android:text="Si no tienes cuenta:" />
 
             <Button
                 android:id="@+id/btn_signup"

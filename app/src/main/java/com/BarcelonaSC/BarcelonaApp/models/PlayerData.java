@@ -76,12 +76,26 @@ public class PlayerData {
     @SerializedName("noticias")
     @Expose
     private List<News> newsList;
+    @SerializedName("ultimo_aplauso")
+    @Expose
+    private int ultimoAplauso;
     @SerializedName("peso")
     @Expose
     private String peso;
     @SerializedName("estatura")
     @Expose
     private String estatura;
+    @SerializedName("estado")
+    @Expose
+    private String estado;
+
+    public int getUltimoAplauso() {
+        return ultimoAplauso;
+    }
+
+    public void setUltimoAplauso(int ultimoAplauso) {
+        this.ultimoAplauso = ultimoAplauso;
+    }
 
     public Integer getIdJugador() {
         return idJugador;
@@ -273,5 +287,13 @@ public class PlayerData {
 
     public void setInstagram(String instagram) {
         this.instagram = instagram;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

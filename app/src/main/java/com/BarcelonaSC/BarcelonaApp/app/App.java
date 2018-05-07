@@ -10,10 +10,14 @@ import android.support.multidex.MultiDex;
 import android.util.Base64;
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.app.di.DaggerAppComponent;
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -21,7 +25,7 @@ import com.BarcelonaSC.BarcelonaApp.BuildConfig;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.di.AppComponent;
 import com.BarcelonaSC.BarcelonaApp.app.di.AppModule;
-import com.BarcelonaSC.BarcelonaApp.app.di.DaggerAppComponent;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -65,15 +69,18 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         INSTANCE = this;
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
+        Fresco.initialize(this);
         CrashlyticsCore crashlyticsCore = new CrashlyticsCore.Builder()
                 .disabled(BuildConfig.DEBUG)
                 .build();
         Fabric.with(this, new Crashlytics.Builder().core(crashlyticsCore).build(), new Crashlytics());
 
         FacebookSdk.sdkInitialize(getApplicationContext());
-        //FirebaseManager.getInstance().initFirebase();
+        if (SessionManager.getInstance().getSession() != null)
+            FirebaseManager.getInstance().initFirebase();
         AppEventsLogger.activateApp(this);
         status = StatusApp.FOREGROUND;
         try {

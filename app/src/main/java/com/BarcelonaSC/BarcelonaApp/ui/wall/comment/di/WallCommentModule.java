@@ -1,7 +1,9 @@
 package com.BarcelonaSC.BarcelonaApp.ui.wall.comment.di;
 
+import com.BarcelonaSC.BarcelonaApp.app.api.WallApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.WallCommentApi;
-import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentEditActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.mvp.WallCommentModel;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.mvp.WallCommentPresenter;
 
@@ -15,22 +17,27 @@ import dagger.Provides;
 @Module
 public class WallCommentModule {
 
-    private WallCommentActivity activity;
+    private WallCommentFragment activity;
+    private WallCommentEditActivity activityEdit;
 
-    public WallCommentModule(WallCommentActivity activity) {
+    public WallCommentModule(WallCommentFragment activity) {
         this.activity = activity;
+    }
+
+    public WallCommentModule(WallCommentEditActivity activity) {
+        this.activityEdit = activity;
     }
 
     @Provides
     @WallCommentScope
-    public WallCommentActivity provideFragment() {
+    public WallCommentFragment provideFragment() {
         return activity;
     }
 
     @Provides
     @WallCommentScope
-    public WallCommentModel provideModel(WallCommentApi api) {
-        return new WallCommentModel(api);
+    public WallCommentModel provideModel(WallApi wallApi, WallCommentApi api) {
+        return new WallCommentModel(wallApi, api);
     }
 
 

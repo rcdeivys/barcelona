@@ -4,15 +4,16 @@ package com.BarcelonaSC.BarcelonaApp.utils;
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.BannerData;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -47,11 +48,12 @@ public class BannerView extends AppCompatImageView {
 
         for (final BannerData bannerData : bannersData) {
             if (bannerData.getSeccion().equals(seccion.getValue())) {
+                Log.e("DEIVYS : " , bannerData.toString());
                 this.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if (bannerData.getSeccionDestino() != null) {
-                            bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino());
+                            bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino(), bannerData.getPartido());
                         } else {
                             switch (bannerData.getTarget()) {
                                 case "Externo":
@@ -61,8 +63,11 @@ public class BannerView extends AppCompatImageView {
                                     bannerListener.onClickBannerInternoListener(bannerData.getUrl(), bannerData.getTitulo());
                                     break;
                                 case "Seccion":
-                                    bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino());
-                                    break;
+                                    if(bannerData.getType().equals("Partido")) {
+                                        bannerListener.onClickBannerSeccionListener("calendar", bannerData.getPartido());
+                                    }else{
+                                        bannerListener.onClickBannerSeccionListener(bannerData.getSeccionDestino(), bannerData.getPartido());
+                                    }                                    break;
                                 default:
                                     break;
                             }
@@ -81,17 +86,17 @@ public class BannerView extends AppCompatImageView {
 
         void onClickBannerExternoListener(String url);
 
-        void onClickBannerSeccionListener(String seccionDestino);
+        void onClickBannerSeccionListener(String seccionDestino, String bannerData);
     }
 
     public enum Seccion {
-        TOP("top"), BOTTOM("bottom"), SETINGS("setting"), PROFILE("profile"), REFERRED("referred"),
+        TOP("top"), BOTTOM("bottom"), SETINGS("setting"), PROFILE("profile"),
         NEWS("news"), CALENDAR("calendar"),
         TABLE("table"), STATISTICS("statistics"),
         TEAM("team"), LINE_UP("line_up"), VIRTUAL_REALITY("virtual_reality"),
         FOOTBALL_BASE("football_base"), STORE("store"), ACADEMY("academy"),
-        LIVE("live"), WALL_AND_CHAT("wall_and_chat"), GAMES("games"), YOU_CHOOSE("you_choose"),
-        MONUMENTAL("monumental"), MAP("map");
+        LIVE("live"), WALL_AND_CHAT("wall_and_chat"), WALL("muro"), CHAT("chat"), GAMES("games"), YOU_CHOOSE("you_choose"),
+        MONUMENTAL("monumental"), MAP("geolocalizacion");
 
         private final String id;
 

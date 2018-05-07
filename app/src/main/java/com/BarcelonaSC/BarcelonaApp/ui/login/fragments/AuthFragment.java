@@ -118,10 +118,10 @@ public class AuthFragment extends Fragment implements LoginContract.View {
             if (etEmail.getText().toString().contains("@")) {
                 signIn();
             } else {
-                Toast.makeText(getActivity(), "La dirección de correo no es válida", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "La dirección de e-mail no es válida", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(getActivity(), "El correo y la contraseña no pueden estar vacíos", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "El e-mail y la contraseña no pueden estar vacíos", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -150,9 +150,10 @@ public class AuthFragment extends Fragment implements LoginContract.View {
 
     @Override
     public void setLogin(AuthItem data) {
-        ((AuthActivity) getActivity()).navigateToHomeActivity();
-        getActivity().finish();
-
+        if (getActivity() != null) {
+            ((AuthActivity) getActivity()).navigateToHomeActivity();
+            getActivity().finish();
+        }
     }
 
     @Override

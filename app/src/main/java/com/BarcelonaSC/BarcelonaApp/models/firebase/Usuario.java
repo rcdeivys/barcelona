@@ -2,6 +2,8 @@ package com.BarcelonaSC.BarcelonaApp.models.firebase;
 
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.models.UserItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +80,8 @@ public class Usuario {
     }
 
     public String getApodo() {
+        if (apodo == null)
+            return nombre;
         return apodo;
     }
 
@@ -320,5 +324,12 @@ public class Usuario {
             if (this.solicitesEnviadas.get(i).getKey().equals(id)) {
                 this.solicitesEnviadas.remove(i);
             }
+    }
+
+    public void setUser(UserItem user) {
+        if (user.getNombre() == null)
+            return;
+        this.nombre = user.getNombre();
+        this.apodo = user.getApodo();
     }
 }

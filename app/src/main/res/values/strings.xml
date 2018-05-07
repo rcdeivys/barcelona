@@ -36,6 +36,9 @@
     <string name="gallery">Galería</string>
     <string name="applause_already_added">Lo sentimos. Este aplauso ya había sido añadido.</string>
     <string name="applause_successful">Se añadió exitosamente tu aplauso.</string>
+    <string name="applause_remove">Se ha borrado tu aplauso.</string>
+    <string name="label_dialog_share_aplause">Aplauso registrado \n¿Deseas compartir tu aplauso?</string>
+    <string name="label_dialog_share_vote">Voto registrado \n¿Deseas compartir tu voto?</string>
     <string name="place_of_birth">Nacionalidad</string>
     <string name="clap_later">El tiempo para aplaudir por este jugador ha finalizado, regresa en el próximo encuentro y aplaude a tu jugador favorito</string>
     <string name="nacionalidad">NACIONALIDAD</string>
@@ -63,8 +66,7 @@
     <string name="technical_director">DIRECTOR TÉCNICO</string>
     <string name="next_date">Próxima Fecha</string>
     <string name="accept">Aceptar</string>
-    <string name="enjoy_whole_vr_experience">Asegúrate que tu dispositivo tiene giroscopio para poder disfrutar de toda la experiencia VR</string>
-    <string name="skip">Saltar</string>
+    <string name="enjoy_whole_vr_experience">Asegúrate que tu dispositivo sea compatible para poder disfrutar de toda la experiencia en Realidad Virtual</string><string name="skip">Saltar</string>
     <string name="choose_ideal_alignment">Escoge la Alineación ideal para ti</string>
     <string name="match_alignment">Alineación del partido</string>
     <string name="armar_alineacion">ARMAR ALINEACIÓN</string>
@@ -95,24 +97,24 @@
     <string name="hello_blank_fragment">Hello blank friendSelectionActivity</string>
 
     <!-- group chat-->
-    <string name="group_no_name">NO NAME</string>
-    <string name="group_members">members</string>
-    <string name="group_name">Group\'s Name</string>
-    <string name="group_create">Create Group</string>
-    <string name="group_search">No Results</string>
+    <string name="group_no_name">SIN NOMBRE</string>
+    <string name="group_members">participantes</string>
+    <string name="group_name">Nombre del Grupo</string>
+    <string name="group_create">Crear Grupo</string>
+    <string name="group_search">Sin Resultados</string>
     <string name="group_missing_params">Debes colocar una imagen</string>
-    <string name="group_profile">Group\'s Profile</string>
-    <string name="group_exit">LEAVE GROUP</string>
-    <string name="group_delete">DELETE GROUP</string>
-    <string name="group_no_members">no members</string>
-    <string name="group_list">Group\'s List</string>
+    <string name="group_profile">Perfil del Grupo</string>
+    <string name="group_exit">SALIR DEL GRUPO</string>
+    <string name="group_delete">ELIMINAR GRUPO</string>
+    <string name="group_no_members">sin participantes</string>
+    <string name="group_list">Lista de Grupos</string>
     <string name="group_created">Grupo creado</string>
-    <string name="add_friends_firts_create_group">Add some friends before create a Group</string>
-    <string name="add_friends_firts_send_msg">Add some friends before to send Messages</string>
+    <string name="add_friends_firts_create_group">Agregue algunos amigos antes de crear un grupo</string>
+    <string name="add_friends_firts_send_msg">Agregue algunos amigos antes de mandar Mensajes</string>
 
     <!-- amigos -->
-    <string name="friend_list">Friend\'s List</string>
-    <string name="unexpected_error">Sorry, there was an unexpected error</string>
+    <string name="friend_list">Lista de Amigos</string>
+    <string name="unexpected_error">Lo sentimos, hubo un error inesperado</string>
 
     <!-- solicitudes -->
     <string name="toast_error_invited">Error al invitar el usuario</string>
@@ -120,7 +122,7 @@
     <string name="toast_error_reject_user">Error al rechazar el usuario</string>
 
     <!-- chat -->
-    <string name="write_msg">Write a message</string>
+    <string name="write_msg">Escribe un mensaje</string>
     <string name="name_example">Watatubi Watanabe</string>
     <string name="chat_text_example">Lorem ipsum dolor sit amet, consectetur adipiscing elit, set dolore magna aliqua algo vaa qui por defecto texto sin sentido hay mucho como estos textos. . </string>
     <string name="chat_hour_example">12:00</string>
@@ -137,7 +139,7 @@
     <string name="clap_your_hands">Aplaude</string>
     <string name="block_friend">Bloquear</string>
     <string name="add_friend">Agregar Amigos</string>
-    <string name="write_comment">Escribe un comenario</string>
+    <string name="write_comment">Escribe un comentario</string>
 
     <string name="lipsun" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
 
@@ -202,5 +204,29 @@
     <string name="ranking_no_show">\"Para ver el ranking debes votar o esperar a que finalice la encuesta\"</string>
 
     <string name="request_friends_send">Solicitud enviada</string>
+    <string name="txt_buscar">Buscar…</string>
+    <string name="txt_go">IR</string>
+    <string name="txt_friends">Amigos</string>
+    <string name="txt_points">Puntos</string>
+    <string name="action_volver">VOLVER</string>
+    <string name="action_envian">ENVIAR</string>
+    <string name="photo_group">Foto De Grupo</string>
+    <string name="image_viewer">Visor de Imagenes</string>
+    <string name="group_missing_image">Debes colocar una Imagen antes de crear el Grupo</string>
+    <string name="group_missing_name">Debes colocar un Nombre antes de crear el Grupo</string>
+    <string name="group_name_wrong_length">El Nombre del Grupo debe tener una longitud máxima de 15 caracteres</string>
+    <string name="group_missing_both">Debes colocar un Nombre e Imagen antes de crear el Grupo</string>
+    <string name="group_added_member">Amigo agregado exitosamente a este grupo</string>
+    <string name="group_leaved">Retirado del Grupo</string>
+    <string name="group_add">Añadir hincha a un grupo</string>
+    <string name="anadir">Añadir</string>
+    <string name="users_blocks">Usuarios bloqueados</string>
+
+
+    <string name="name_init_popup">Actualiza</string>
+    <string name="clear_chat">¿Deseas vaciar este chat?</string>
+    <string name="block_user">¿Deseas bloquear a <b>%1$s</b>?</string>
+    <string name="not_block_user">¿Deseas Desbloquear a <b>%1$s</b>?</string>
+    <string name="group_missing_participant">Selecciona algun participante</string>
 
 </resources>

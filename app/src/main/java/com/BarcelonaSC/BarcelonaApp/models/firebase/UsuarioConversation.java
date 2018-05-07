@@ -51,6 +51,7 @@ public class UsuarioConversation {
         this.status = status;
     }
 
+
     public Long getFecha() {
         return fecha;
     }
@@ -73,5 +74,14 @@ public class UsuarioConversation {
 
     public void setUltimo_mensaje(String ultimo_mensaje) {
         this.ultimo_mensaje = ultimo_mensaje;
+    }
+
+    public void copy(UsuarioConversation usuarioConversation) {
+        id = usuarioConversation.id;
+        fecha = usuarioConversation.fecha;
+        status = usuarioConversation.status;
+        ultimo_mensaje = usuarioConversation.ultimo_mensaje;
+        id_participante = usuarioConversation.id_participante;
+        id_primer_mensaje = usuarioConversation.id_primer_mensaje;
     }
 }

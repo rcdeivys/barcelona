@@ -58,8 +58,7 @@
     <string name="technical_director">DIRECTOR TÉCNICO</string>
     <string name="next_date">Próxima Fecha</string>
     <string name="accept">Aceptar</string>
-    <string name="enjoy_whole_vr_experience">Asegúrate que tu dispositivo tiene giroscopio para poder disfrutar de toda la experiencia VR</string>
-    <string name="skip">Saltar</string>
+    <string name="enjoy_whole_vr_experience">Asegúrate que tu dispositivo sea compatible para poder disfrutar de toda la experiencia en Realidad Virtual</string><string name="skip">Saltar</string>
     <string name="choose_ideal_alignment">Escoge la Alineación ideal para ti</string>
     <string name="match_alignment">Alineación del partido</string>
     <string name="armar_alineacion">ARMAR ALINEACIÓN</string>
@@ -126,7 +125,7 @@
     <string name="clap_your_hands">Aplaude</string>
     <string name="block_friend">Bloquear</string>
     <string name="add_friend">Agregar Amigos</string>
-    <string name="write_comment">Escribe un comenario</string>
+    <string name="write_comment">Escribe un comentario</string>
 
     <string name="lipsun" translatable="false">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
 
@@ -188,5 +187,33 @@
     <!-- item_ranking_votes -->
     <string name="ok">OK</string>
     <string name="ranking_no_show">\"Para ver el ranking debes votar o esperar a que finalice la encuesta\"</string>
+    <string name="txt_buscar">Buscar…</string>
+    <string name="txt_go">IR</string>
+    <string name="txt_friends">Amigos</string>
+    <string name="txt_points">Puntos</string>
+
+    <string name="label_dialog_share_aplause">Aplauso registrado \n¿Deseas compartir tu aplauso?</string>
+    <string name="label_dialog_share_vote">Voto registrado \n¿Deseas compartir tu voto?</string>
+
+    <string name="applause_remove">Se ha borrado tu aplauso</string>
+    <string name="photo_group">Foto De Grupo</string>
+    <string name="image_viewer">Visor de Imagenes</string>
+    <string name="group_missing_image">Debes colocar una Imagen antes de crear el Grupo</string>
+    <string name="group_missing_name">Debes colocar un Nombre antes de crear el Grupo</string>
+    <string name="group_name_wrong_length">El Nombre del Grupo debe tener una longitud máxima de 15 caracteres</string>
+    <string name="group_missing_both">Debes colocar un Nombre e Imagen antes de crear el Grupo</string>
+    <string name="group_added_member">Amigo agregado exitosamente a este grupo</string>
+    <string name="group_leaved">Retirado del Grupo</string>
+    <string name="group_add">Añadir hincha a un grupo</string>
+    <string name="anadir">Añadir</string>
+    <string name="users_blocks">Usuarios bloqueados</string>
+    <string name="action_volver">volver</string>
+
+
+    <string name="name_init_popup">Actualiza</string>
+    <string name="clear_chat">¿Deseas vaciar este chat?</string>
+    <string name="block_user">¿Deseas bloquear a <b>%1$s</b>?</string>
+    <string name="not_block_user">¿Deseas Desbloquear a <b>%1$s</b>?</string>
+    <string name="group_missing_participant">Selecciona algun participante</string>
 
 </resources>

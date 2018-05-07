@@ -10,12 +10,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <include layout="@layout/item_seach" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="wrap_content">
+            <include layout="@layout/item_seach" />
+        </FrameLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/textColorSecondary" />
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/message_swipe"
@@ -38,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"
+        android:visibility="gone"
         android:background="@android:color/transparent"
         android:src="@drawable/nuevo_chat"
         android:layout_alignParentBottom="true"
