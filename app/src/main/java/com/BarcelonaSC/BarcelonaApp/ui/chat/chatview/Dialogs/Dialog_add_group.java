@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
@@ -84,6 +85,9 @@ public class Dialog_add_group extends DialogFragment implements CreateGroupContr
     ImageView ivCloset;
     Unbinder unbinder;
 
+    @BindView(R.id.tv_find_friend)
+    TextView tvFindFind;
+
     private LinearLayoutManager mLayoutManager;
     private GridLayoutManager mGLayoutManager;
     private static final String TAG = Dialog_add_group.class.getSimpleName();
@@ -130,12 +134,15 @@ public class Dialog_add_group extends DialogFragment implements CreateGroupContr
             initRecyclerViewSelected();
             presenter.onAttach(this);
             presenter.loadFriends(0);
+            swipeRefreshLayout.setEnabled(true);
         } else if (TAG_KEY.equals(TAG_GROUP)) {
             iv_go_creation.setVisibility(View.GONE);
             groupsPresenter = new GroupsPresenter(this, new GroupsModel());
             initRecyclerViewGroups();
             groupsPresenter.onAttach(this);
             groupsPresenter.loadGroups();
+            tvFindFind.setVisibility(View.GONE);
+            swipeRefreshLayout.setEnabled(false);
         } else {
             FirebaseManager.getInstance().getBlockUsers(new com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.friend.FriendControllers.BlockMemberListener() {
                 @Override
@@ -242,9 +249,9 @@ public class Dialog_add_group extends DialogFragment implements CreateGroupContr
         return new EndlessScrollListener(mLayoutManager) {
             @Override
             public void onLoadMore(int current_page) {
-                if (et_msg_search.getText().toString().equals("")) {
+                /* if (et_msg_search.getText().toString().equals("")) {
                     presenter.loadFriends(current_page);
-                }
+                }*/
             }
         };
     }
@@ -368,6 +375,13 @@ public class Dialog_add_group extends DialogFragment implements CreateGroupContr
     public void lunchChatActivity(Grupo newGroup) {
 
     }
+
+    @Override
+    public void showFindFriend(boolean visibility) {
+        friend_selection_recycler_view.setVisibility(View.INVISIBLE);
+        tvFindFind.setVisibility(visibility ? View.VISIBLE : View.GONE);
+    }
+
 
     @Override
     public void onClickItem(GroupModelView group) {

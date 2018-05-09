@@ -64,6 +64,8 @@ public class CreateGroupContract {
 
         void lunchChatActivity(Grupo newGroup);
 
+        void showFindFriend(boolean visibility);
+
     }
 
 }

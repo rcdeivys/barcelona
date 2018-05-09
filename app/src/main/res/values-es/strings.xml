@@ -215,5 +215,6 @@
     <string name="block_user">¿Deseas bloquear a <b>%1$s</b>?</string>
     <string name="not_block_user">¿Deseas Desbloquear a <b>%1$s</b>?</string>
     <string name="group_missing_participant">Selecciona algun participante</string>
+    <string name="find_new_friends">¡Busca nuevos amigos que compartan el amor por el “Ídolo del Ecuador”!</string>
 
 </resources>

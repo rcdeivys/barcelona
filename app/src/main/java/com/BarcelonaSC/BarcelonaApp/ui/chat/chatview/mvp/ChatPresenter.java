@@ -101,12 +101,18 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
         chatModel.loadPrivateMessages(idConversacion, this);
     }
 
+
+    public void loadMessagesPaginate(Conversacion idConversacion) {
+        if (this.newMessages != null && this.newMessages.size() > 0)
+            chatModel.loadPaginateMessages(this.newMessages.get(0).getId(), idConversacion, this);
+    }
+
     @Override
     public void loadMessagesGroup(String id_chat) {
         chatModel.loadGroupMessages(this);
     }
 
-    public void getAllMessage(){
+    public void getAllMessage() {
         if (view == null)
             return;
 
@@ -150,6 +156,7 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
         view.multimediaFailed();
     }
 
+
     @Override
     public void onLoadMessageSuccess(ArrayList<MessageModelView> messages) {
         this.newMessages = messages;
@@ -163,6 +170,16 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
     @Override
     public void onLoadMessageFailed() {
 
+    }
+
+    @Override
+    public void onLoadPaginateMessage(ArrayList<MessageModelView> mensajes) {
+        this.newMessages = mensajes;
+        if (view == null)
+            return;
+        if (block)
+            return;
+        view.updateMesage(mensajes);
     }
 
     public void clearMessage() {

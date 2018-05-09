@@ -101,6 +101,9 @@ public class CreateGroupActivity extends BaseSideMenuActivity implements CreateG
     @BindView(R.id.iv_more_conv)
     ImageView ivMoreConv;
 
+    @BindView(R.id.tv_find_friend)
+    TextView tvFindFind;
+
     private FriendSelectionAdapter friendSelectionAdapter;
     private FriendSelectedAdapter friendSelectedAdapter;
 
@@ -327,6 +330,7 @@ public class CreateGroupActivity extends BaseSideMenuActivity implements CreateG
     @Override
     public void updateFriends(List<FriendsModelView> friends) {
         hideProgress();
+        listaAmigos.setVisibility(View.VISIBLE);
         if (friendSelectionAdapter != null) {
             if (friends.size() == 0) {
                 Toast.makeText(getBaseContext(), getText(R.string.group_search), Toast.LENGTH_SHORT).show();
@@ -375,6 +379,13 @@ public class CreateGroupActivity extends BaseSideMenuActivity implements CreateG
             startActivity(intent);
             this.finish();
         }
+    }
+
+    @Override
+    public void showFindFriend(boolean visibility) {
+        hideProgress();
+        listaAmigos.setVisibility(View.INVISIBLE);
+        tvFindFind.setVisibility(visibility?View.VISIBLE:View.GONE);
     }
 
     @Override
