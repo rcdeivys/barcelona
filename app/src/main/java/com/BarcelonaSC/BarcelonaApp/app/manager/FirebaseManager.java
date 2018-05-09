@@ -872,44 +872,84 @@ public class FirebaseManager {
 
 
     //////////////////////////////////////////////////////////////////////////
+    public void getAllMensajePaginateListener(final String idConv, String last, final FireListener<List<Mensajes>> mensajesFireListener) {
+
+        secondaryDatabase.getReference().child(ModelKeys.CONVERSATION + "/" + idConv + "/mensajes")
+                .orderByKey().endAt(last).limitToLast(11)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        List<Mensajes> mensajes = new ArrayList<>();
+
+                        String idPrimerMensaje = null;
+
+                        for (UsuarioConversation usuCon : usuario.getUsuarioConversations()) {
+                            if (usuCon.getId().equals(idConv)) {
+                                idPrimerMensaje = usuCon.getId_primer_mensaje();
+                            }
+                        }
+
+                        for (DataSnapshot da : dataSnapshot.getChildren()) {
+                            Mensajes mensaje = (Mensajes) parseObject(da.getValue(), Mensajes.class);
+                            mensaje.setId(da.getKey());
+                            if (mensaje != null) {
+                                mensajes.add(mensaje);
+                                if (idPrimerMensaje != null && idPrimerMensaje.equals(mensaje.getId())) {
+                                    mensajes.clear();
+                                }
+                            }
+                        }
+                        if (mensajes.size() > 0)
+                            mensajes.remove(mensajes.size() - 1);
+                        Collections.reverse(mensajes);
+                        mensajesFireListener.onDataChanged(mensajes);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        mensajesFireListener.onCancelled();
+                    }
+                });
+    }
+
 
     public void getAllMensajesListener(final String userId, final String idConv, final FireListener<List<Mensajes>> mensajesFireListener) {
 
-        Query myRef = secondaryDatabase.getReference().child(ModelKeys.CONVERSATION + "/" + idConv + "/mensajes");
+        secondaryDatabase.getReference().child(ModelKeys.CONVERSATION + "/" + idConv + "/mensajes")
+                .orderByKey().limitToLast(15)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        List<Mensajes> mensajes = new ArrayList<>();
 
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Mensajes> mensajes = new ArrayList<>();
+                        String idPrimerMensaje = null;
 
-                String idPrimerMensaje = null;
-
-                for (UsuarioConversation usuCon : usuario.getUsuarioConversations()) {
-                    if (usuCon.getId().equals(idConv)) {
-                        idPrimerMensaje = usuCon.getId_primer_mensaje();
-                    }
-                }
-
-                for (DataSnapshot da : dataSnapshot.getChildren()) {
-                    Mensajes mensaje = (Mensajes) parseObject(da.getValue(), Mensajes.class);
-                    mensaje.setId(da.getKey());
-                    if (mensaje != null) {
-                        mensajes.add(mensaje);
-                        if (idPrimerMensaje != null && idPrimerMensaje.equals(mensaje.getId())) {
-                            mensajes.clear();
+                        for (UsuarioConversation usuCon : usuario.getUsuarioConversations()) {
+                            if (usuCon.getId().equals(idConv)) {
+                                idPrimerMensaje = usuCon.getId_primer_mensaje();
+                            }
                         }
-                    }
-                }
-                if (mensajes.size() > 0)
-                    mensajes.remove(mensajes.size() - 1);
-                mensajesFireListener.onDataChanged(mensajes);
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                mensajesFireListener.onCancelled();
-            }
-        });
+                        for (DataSnapshot da : dataSnapshot.getChildren()) {
+                            Mensajes mensaje = (Mensajes) parseObject(da.getValue(), Mensajes.class);
+                            mensaje.setId(da.getKey());
+                            if (mensaje != null) {
+                                mensajes.add(mensaje);
+                                if (idPrimerMensaje != null && idPrimerMensaje.equals(mensaje.getId())) {
+                                    mensajes.clear();
+                                }
+                            }
+                        }
+                        if (mensajes.size() > 0)
+                            mensajes.remove(mensajes.size() - 1);
+                        mensajesFireListener.onDataChanged(mensajes);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        mensajesFireListener.onCancelled();
+                    }
+                });
     }
 
     public void buscarUsuarioEnGrupo(Long id_amigo, String id_grupo, final FireValuesListener fireValuesListener) {

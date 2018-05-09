@@ -286,18 +286,33 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
         });
     }
 
-    private EndlessScrollListener initRecyclerViewScroll() {
-        return new EndlessScrollListener(mLayoutManager) {
+    int pastVisiblesItems;
+    boolean loading = true;
+
+    private RecyclerView.OnScrollListener initRecyclerViewScroll() {
+        return new RecyclerView.OnScrollListener() {
             @Override
-            public void onLoadMore(int current_page) {
-                if (!swipeRefreshLayout.isRefreshing()) {
-                    //refresh(current_page);
-                    //progressBar.setVisibility(View.VISIBLE);
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+                pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+
+                if (loading) {
+                    if (pastVisiblesItems == 0) {
+                        loading = false;
+                        fetchData();
+                    }
                 }
+
             }
         };
     }
 
+
+    private void fetchData() {
+        presenter.loadMessagesPaginate(conversacion);
+
+
+    }
 
     private void setImageSelect(Uri uri) {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -743,6 +758,9 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
             initRecyclerView();
             chatAdapter.updateAll(messageModelViews);
             swipeRefreshLayout.setRefreshing(false);
+            if (!loading && messageModelViews.size() >= 16)
+                listMessagesView.scrollToPosition(16);
+            loading = true;
             //progressBar.setVisibility(View.GONE);
         }
     }

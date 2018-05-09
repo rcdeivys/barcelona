@@ -54,12 +54,13 @@ public class NewConversationPresenter extends NewConversationContract.ModelResul
 
     @Override
     public void loadFriends(int current_page) {
-
-        if (friendList.size() == 0) {
+        if (isViewNull()) return;
+        view.showFindFriend(true);
+       /* if (friendList.size() == 0) {
             friendList = new ArrayList<>();
             newConversationModel.loadFriends((long) 0, this);
         } else
-            newConversationModel.loadFriends(friendList.get(friendList.size() - 1).getId_amigo(), this);
+            newConversationModel.loadFriends(friendList.get(friendList.size() - 1).getId_amigo(), this);*/
     }
 
     private boolean suiche = false;
@@ -76,6 +77,7 @@ public class NewConversationPresenter extends NewConversationContract.ModelResul
 
         if (!seach.isEmpty()) {
             if (!suiche) {
+                view.showFindFriend(false);
                 view.showProgress();
                 suiche = true;
             }

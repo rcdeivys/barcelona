@@ -109,12 +109,17 @@ public class CreateGroupPresenter implements CreateGroupContract.Presenter, Crea
 
     @Override
     public void loadFriends(int i) {
-        view.showProgress();
+
+        if (isViewNull()) return;
+        view.showFindFriend(true);
+
+
+      /*  view.showProgress();
         if (friendList.size() == 0) {
             friendList = new ArrayList<>();
             createGroupModel.loadFriends((long) 0, this);
         } else
-            createGroupModel.loadFriends(friendList.get(friendList.size() - 1).getId_amigo(), this);
+            createGroupModel.loadFriends(friendList.get(friendList.size() - 1).getId_amigo(), this);*/
 
     }
 
@@ -139,8 +144,10 @@ public class CreateGroupPresenter implements CreateGroupContract.Presenter, Crea
         seach = name;
 
         if (!seach.isEmpty()) {
-            view.showProgress();
+
             if (!suiche) {
+                view.showFindFriend(false);
+                view.showProgress();
                 suiche = true;
             }
             FirebaseManager.getInstance().buscarUsuario(seach.toUpperCase(), new FirebaseManager.FireListener<List<FriendsModelView>>() {

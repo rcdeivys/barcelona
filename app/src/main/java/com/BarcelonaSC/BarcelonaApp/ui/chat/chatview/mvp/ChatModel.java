@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import com.BarcelonaSC.BarcelonaApp.app.api.ChatApi;
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.member.MemberControllers;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
@@ -32,6 +33,7 @@ public class ChatModel {
 
     private ChatApi chatApi;
     ArrayList<MessageModelView> mensajes = new ArrayList<MessageModelView>();
+    String lastId = "";
 
     public ChatModel(ChatApi chatApi) {
         this.chatApi = chatApi;
@@ -176,7 +178,7 @@ public class ChatModel {
 
         mensajes.add(messageModelView);
 
-        (new com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.member.MemberControllers()).addValueMemberListener(id, new com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.member.MemberControllers.MemberListener() {
+        (new MemberControllers()).addValueMemberListener(id, new MemberControllers.MemberListener() {
             @Override
             public void onMemberDataChange(Miembro member) {
                 messageModelView.setMember(member);
@@ -190,6 +192,94 @@ public class ChatModel {
 
             }
         });
+    }
+
+    public void memberNullPaginate(String id, Mensajes mensajesData, final Count count, final ChatContract.ModelResultListener.OnLoadMessages result) {
+
+        final MessageModelView messageModelView = new MessageModelView(
+                mensajesData.getEmisor_mensaje(),
+                ChatModel.getTypeMsg(mensajesData.getTipo_mensaje()) == FirebaseManager.MsgTypes.TEXTO ? mensajesData.getTexto_mensaje() : mensajesData.getUrl_imagen(),
+                ChatModel.getTypeMsg(mensajesData.getTipo_mensaje()),
+                mensajesData.getEmisor_mensaje().equals(SessionManager.getInstance().getUser().getId_usuario()));
+
+        mensajes.add(0, messageModelView);
+
+        (new MemberControllers()).addValueMemberListener(id, new MemberControllers.MemberListener() {
+            @Override
+            public void onMemberDataChange(Miembro member) {
+                messageModelView.setMember(member);
+                if (count.verificateLimit())
+                    result.onLoadPaginateMessage(mensajes);
+            }
+
+
+            @Override
+            public void onError() {
+
+            }
+        });
+    }
+
+
+    public void loadPaginateMessages(final String last, final Conversacion conversacion, final ChatContract.ModelResultListener.OnLoadMessages result) {
+
+        if (lastId.equals(last))
+            return;
+        lastId = last;
+        final Usuario user = FirebaseManager.getInstance().getUsuario();
+
+        FirebaseManager.getInstance().getAllMensajePaginateListener(conversacion.getId(), last, new FirebaseManager.FireListener<List<Mensajes>>() {
+            @Override
+            public void onDataChanged(List<Mensajes> data) {
+                Miembro miembro;
+                final Count count = new Count(data.size());
+                for (Mensajes mensaje : data) {
+                    if (!user.getId().equals(mensaje.getEmisor_mensaje()))
+                        miembro = conversacion.getMiembro(mensaje.getEmisor_mensaje());
+                    else
+                        miembro = new Miembro(
+                                user.getNombre(),
+                                user.getApellido(),
+                                user.getApodo(),
+                                user.getFoto(),
+                                user.getChat_status()
+                                , user.getCreated_at());
+
+                    if (miembro != null) {
+                        Log.i("MIEMBRO", " //////---> " + miembro.toString());
+                        Log.i("MIEMBRO", " //// --->//// " + mensaje.getTipo_mensaje());
+                        mensajes.add(0, new MessageModelView(
+                                mensaje.getId(),
+                                mensaje.getEmisor_mensaje(),
+                                miembro.getApodo(),
+                                ChatModel.getTypeMsg(mensaje.getTipo_mensaje()) == FirebaseManager.MsgTypes.TEXTO ? mensaje.getTexto_mensaje() : mensaje.getUrl_imagen(),
+                                miembro.getFoto(),
+                                ChatModel.getTypeMsg(mensaje.getTipo_mensaje()),
+                                mensaje.getEmisor_mensaje().equals(user.getId())
+                                , miembro.getCreated_at()
+                                , mensaje.getFecha_mensaje()
+                                , mensaje.getVideo_thumbnail()));
+
+                        if (count.verificateLimit())
+                            result.onLoadPaginateMessage(mensajes);
+                    } else {
+                        memberNullPaginate(String.valueOf(mensaje.getEmisor_mensaje()), mensaje, count, result);
+                    }
+                }
+            }
+
+            @Override
+            public void onDataDelete(String id) {
+
+            }
+
+            @Override
+            public void onCancelled() {
+
+            }
+        });
+
+        Log.i("MESSAGE", " ---> LOAD FROM PRIVATE ");
     }
 
     public void loadPrivateMessages(final Conversacion conversacion, final ChatContract.ModelResultListener.OnLoadMessages result) {

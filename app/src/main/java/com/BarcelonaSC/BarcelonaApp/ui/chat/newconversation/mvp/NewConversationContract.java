@@ -50,9 +50,13 @@ public class NewConversationContract {
     public interface View {
 
         void updateFriends(List<FriendsModelView> friends);
+
         void onCompleteFriends(Amigos amigos);
+
         void showProgress();
+
         void showNoResultText(boolean show);
+
         void hideProgress();
 
         void showToastError(String errror);
@@ -62,5 +66,7 @@ public class NewConversationContract {
         void addFriendSuccess();
 
         void addFriendFailed();
+
+        void showFindFriend(boolean visibility);
     }
 }
