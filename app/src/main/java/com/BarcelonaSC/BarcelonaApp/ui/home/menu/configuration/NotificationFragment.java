@@ -95,7 +95,7 @@ public class NotificationFragment extends Fragment {
     public void deleteCache() {
         deleteDir(getActivity().getCacheDir());
         deleteDir(getActivity().getExternalCacheDir());
-       initializeCache();
+        initializeCache();
     }
     public  boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {

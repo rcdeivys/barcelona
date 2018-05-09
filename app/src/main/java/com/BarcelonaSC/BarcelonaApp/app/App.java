@@ -117,6 +117,8 @@ public class App extends Application {
 
     public static void deleteCache(Context context) {
         try {
+
+
             File dirExt = context.getExternalCacheDir();
             File dir = context.getCacheDir();
             long sizeMaxMb = 200;
@@ -133,8 +135,6 @@ public class App extends Application {
             for (File f : filesExt) {
                 sizeExt = size + f.length();
             }
-
-
             if (size + sizeExt / (1024) > sizeMaxMb * 1024 * 1024)
                 deleteDir(dir);
         } catch (Exception e) {
