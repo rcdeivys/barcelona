@@ -184,7 +184,7 @@
                         android:gravity="center"
                         android:textColor="@color/black"
                         android:layout_margin="10dp"
-                        android:text="¡Busca nuevos amigos que compartan la pasión Embajadora!"
+                        android:text="@string/find_new_friends"
                         android:layout_height="wrap_content" />
                 </RelativeLayout>
 
