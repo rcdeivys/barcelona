@@ -108,7 +108,8 @@ public class GiphyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         giphyHolder.qivGif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onGifClickListener.onClickGif(gifUrl);
+                if (onGifClickListener != null)
+                    onGifClickListener.onClickGif(gifUrl);
             }
         });
 
