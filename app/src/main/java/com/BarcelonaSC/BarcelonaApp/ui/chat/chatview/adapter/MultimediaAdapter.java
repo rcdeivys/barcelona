@@ -111,7 +111,7 @@ public class MultimediaAdapter extends RecyclerView.Adapter<MultimediaAdapter.Vi
                     @Override
                     public void onClick(View view) {
                         ImageExpandDialog imageExpandDialog = new ImageExpandDialog();
-                        imageExpandDialog.setImageToExpand(sqr_image_view.getDrawable());
+                        imageExpandDialog.setImageToExpand(sqr_image_view.getDrawable().mutate());
                         showDialogFragment(imageExpandDialog);
                     }
                 });

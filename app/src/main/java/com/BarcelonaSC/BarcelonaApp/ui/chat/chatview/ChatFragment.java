@@ -761,6 +761,8 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
             swipeRefreshLayout.setRefreshing(false);
             if (!loading) {
                 mLayoutManager.scrollToPositionWithOffset((messageModelViews.size() - previusSize), 0);
+            } else {
+                listMessagesView.scrollToPosition(messageModelViews.size() - 1);
             }
             loading = true;
             //progressBar.setVisibility(View.GONE);
