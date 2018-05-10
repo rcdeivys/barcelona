@@ -294,7 +294,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
 
-                pastVisiblesItems = mLayoutManager.findFirstVisibleItemPosition();
+                pastVisiblesItems = mLayoutManager.findFirstCompletelyVisibleItemPosition();
 
                 if (loading) {
                     if (pastVisiblesItems == 0) {
@@ -755,11 +755,13 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     @Override
     public void updateMesage(List<MessageModelView> messageModelViews) {
         if (chatAdapter != null) {
-            initRecyclerView();
+
+            int previusSize = chatAdapter.getItemCount();
             chatAdapter.updateAll(messageModelViews);
             swipeRefreshLayout.setRefreshing(false);
-            if (!loading && messageModelViews.size() >= 16)
-                listMessagesView.scrollToPosition(16);
+            if (!loading) {
+                mLayoutManager.scrollToPositionWithOffset((messageModelViews.size() - previusSize), 0);
+            }
             loading = true;
             //progressBar.setVisibility(View.GONE);
         }
