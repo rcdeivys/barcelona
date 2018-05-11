@@ -134,7 +134,7 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
 
     public void onClickMemberToDelete(Long id, Grupo grupo, boolean isAdmin) {
 
-        chatModel.deleteMember(id, grupo, true, this);
+        chatModel.deleteMember(id, grupo, isAdmin, this);
     }
 
     @Override

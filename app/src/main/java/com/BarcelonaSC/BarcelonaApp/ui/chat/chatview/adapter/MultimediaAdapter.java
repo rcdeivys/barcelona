@@ -120,7 +120,6 @@ public class MultimediaAdapter extends RecyclerView.Adapter<MultimediaAdapter.Vi
                 Glide.with(App.get())
                         .load(media.getUrlMedia())
                         .thumbnail(0.1f)
-                        .apply(new RequestOptions().centerCrop())
                         .into(sqr_image_view);
             }
 

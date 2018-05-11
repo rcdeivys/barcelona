@@ -44,13 +44,18 @@
         <com.BarcelonaSC.BarcelonaApp.utils.CustomTextView
             android:id="@+id/tv_apodo"
             android:layout_width="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@+id/tv_time"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:maxLines="1"
             android:layout_alignParentTop="true"
             android:layout_marginTop="15dp"
             android:text="APODO HINCHA"
             android:textColor="@color/black"
             android:textStyle="bold" />
+
 
         <com.BarcelonaSC.BarcelonaApp.utils.CustomTextView
             android:id="@+id/tv_time"

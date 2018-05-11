@@ -31,44 +31,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <include
-                    android:id="@+id/include"
-                    layout="@layout/toolbar_chat" />
+
 
                 <com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager
                     android:id="@+id/content_viewpager"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@id/include" />
+                    android:layout_marginTop="50dp" />
 
-                <RelativeLayout
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_alignTop="@+id/include"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="60dp"
-                    android:layout_marginTop="5dp">
+                <include
+                    android:id="@+id/include"
+                    layout="@layout/toolbar_chat" />
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/chat_avatar_receiver"
-                        android:layout_width="55dp"
-                        android:layout_height="55dp"
-                        app:civ_border_color="@color/colorAccent"
-                        app:civ_border_width="1dp"
-                        app:civ_border_overlay="true"
-                        android:src="@drawable/silueta" />
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circle_state"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:src="@color/holo_green_dark"
-                        android:visibility="gone" />
-                </RelativeLayout>
 
             </RelativeLayout>
 
