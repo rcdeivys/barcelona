@@ -58,7 +58,7 @@
                 android:layout_alignBottom="@+id/ll_container_background"
                 android:layout_marginBottom="5dp"
                 android:text="12:15pm"
-                android:textColor="@color/white"
+                android:textColor="@color/gray"
                 android:textSize="10sp" />
 
             <LinearLayout
