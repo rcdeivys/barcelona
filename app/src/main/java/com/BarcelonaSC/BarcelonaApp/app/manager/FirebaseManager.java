@@ -606,7 +606,7 @@ public class FirebaseManager {
     }
 
     public void uploadImageThumbnail(Bitmap foto, final FireGroupResultListener fireResultListener) {
-        FirebaseStorage storage = FirebaseStorage.getInstance("gs://barcelona-sc-1e17d.appspot.com/");
+        FirebaseStorage storage = FirebaseStorage.getInstance("gs://barcelona-sc-oficial.appspot.com");
         StorageReference storageRef = storage.getReference();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         foto.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -630,7 +630,7 @@ public class FirebaseManager {
     }
 
     public void uploadImage(Uri foto, final FireGroupResultListener fireResultListener) {
-        FirebaseStorage storage = FirebaseStorage.getInstance("gs://barcelona-sc-1e17d.appspot.com/");
+        FirebaseStorage storage = FirebaseStorage.getInstance("gs://barcelona-sc-oficial.appspot.com");
         StorageReference storageRef = storage.getReference();
 
         StorageReference riversRef = storageRef.child("images/" + foto.getLastPathSegment());
