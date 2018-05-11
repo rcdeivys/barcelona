@@ -6,10 +6,13 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.friend.FriendControllers;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.group.GroupControllers;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.media.MediaController;
+import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
+import com.BarcelonaSC.BarcelonaApp.models.WallSearchItem;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Amigos;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Conversacion;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.FirebaseEvent;
@@ -21,6 +24,7 @@ import com.BarcelonaSC.BarcelonaApp.models.firebase.Miembro;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Usuario;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.UsuarioConversation;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.UsuarioGrupo;
+import com.BarcelonaSC.BarcelonaApp.models.response.WallSearchResponse;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.FriendsModelView;
 import com.arasthel.asyncjob.AsyncJob;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -1040,8 +1044,40 @@ public class FirebaseManager {
     public void buscarUsuario(final String busqueda, final FireListener<List<FriendsModelView>> miembros) {
         Log.i("TAG", "--->buscador 1: " + busqueda);
         seach = busqueda;
-
         if (runnable != null)
+            handler.removeCallbacks(runnable);
+
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                App.get().component().wallSearchApi().searchProfile(busqueda, "1").enqueue(new NetworkCallBack<WallSearchResponse>() {
+                    @Override
+                    public void onRequestSuccess(WallSearchResponse response) {
+                        List<FriendsModelView> miembros1 = new ArrayList<>();
+                        for (WallSearchItem data : response.getData()) {
+                            miembros1.add(new FriendsModelView((long) data.getId()
+                                    , data.getApodo()
+                                    , data.getFoto()
+                                    , data.getNombre()
+                                    , data.getNombre().toUpperCase()
+                                    , data.getApellido()));
+                        }
+
+
+                        miembros.onDataChanged(miembros1);
+                    }
+
+                    @Override
+                    public void onRequestFail(String errorMessage, int errorCode) {
+                        miembros.onCancelled();
+                    }
+                });
+
+            }
+        };
+        handler.postDelayed(runnable, 1000);
+
+      /*  if (runnable != null)
             handler.removeCallbacks(runnable);
 
         runnable = new Runnable() {
@@ -1074,13 +1110,13 @@ public class FirebaseManager {
                                                     miembro.setId(Long.valueOf(data.getKey()));
 
                                                     boolean isFriend = false;
-                                         /*   for (Amigos amigo : usuario.getAmigos()) {
+                                         *//*   for (Amigos amigo : usuario.getAmigos()) {
                                                 if (amigo.getId().equals(miembro.getId())) {
                                                     isFriend = true;
                                                     break;
                                                 }
                                             }
-                                            if (!isFriend)*/
+                                            if (!isFriend)*//*
                                                     miembros1.add(new FriendsModelView(miembro.getId()
                                                             , miembro.getApodo()
                                                             , miembro.getFoto()
@@ -1124,7 +1160,7 @@ public class FirebaseManager {
                         });
             }
         };
-        handler.postDelayed(runnable, 1000);
+        handler.postDelayed(runnable, 1000);*/
 
     }
 
