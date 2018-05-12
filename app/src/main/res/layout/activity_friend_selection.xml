@@ -143,8 +143,8 @@
                                         android:id="@+id/et_group_name"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        android:maxLength="15"
                                         android:hint="@string/group_name"
+                                        android:maxLength="15"
                                         android:textColor="@color/black"
                                         android:textColorHint="@color/gray" />
                                 </LinearLayout>
@@ -245,11 +245,22 @@
                                     android:id="@+id/tv_find_friend"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
                                     android:layout_margin="10dp"
                                     android:gravity="center"
                                     android:text="@string/find_new_friends"
                                     android:textColor="@color/black"
                                     android:visibility="visible" />
+
+                                <ImageView
+                                    android:id="@+id/iv_logo_friend"
+                                    android:layout_width="100dp"
+                                    android:layout_height="100dp"
+                                    android:layout_below="@+id/tv_find_friend"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="10dp"
+                                    android:alpha="0.5"
+                                    android:src="@drawable/logo_bsc" />
                             </RelativeLayout>
 
                         </LinearLayout>

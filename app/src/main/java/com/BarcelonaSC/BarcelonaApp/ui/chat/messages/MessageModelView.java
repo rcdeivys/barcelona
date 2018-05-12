@@ -79,7 +79,8 @@ public class MessageModelView {
         this.create_date = miembro.getCreated_at();
     }
 
-    public MessageModelView(Long idSender, String content, FirebaseManager.MsgTypes typeMsg, boolean isMine) {
+    public MessageModelView(String id,Long idSender, String content, FirebaseManager.MsgTypes typeMsg, boolean isMine) {
+        this.id = id;
         this.idSender = idSender;
         this.content = content;
         this.isMine = isMine;

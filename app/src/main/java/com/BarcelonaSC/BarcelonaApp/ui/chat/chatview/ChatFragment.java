@@ -167,6 +167,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
 
     @Override
     public void deleteMember() {
+        sendInfo();
         if (getActivity() != null)
             getActivity().finish();
     }
@@ -178,7 +179,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     }
 
     public void onClickMemberToDelete() {
-        sendInfo();
+
         presenter.onClickMemberToDelete(Long.valueOf(SessionManager.getInstance().getUser().getId_usuario()), grupo, isAdminGroup(grupo.getAdmin()));
     }
 

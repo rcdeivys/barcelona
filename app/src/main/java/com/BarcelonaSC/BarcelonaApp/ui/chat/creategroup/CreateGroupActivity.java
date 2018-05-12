@@ -103,6 +103,8 @@ public class CreateGroupActivity extends BaseSideMenuActivity implements CreateG
 
     @BindView(R.id.tv_find_friend)
     TextView tvFindFind;
+    @BindView(R.id.iv_logo_friend)
+    ImageView ivLogoFriend;
 
     private FriendSelectionAdapter friendSelectionAdapter;
     private FriendSelectedAdapter friendSelectedAdapter;
@@ -386,6 +388,7 @@ public class CreateGroupActivity extends BaseSideMenuActivity implements CreateG
         hideProgress();
         listaAmigos.setVisibility(View.INVISIBLE);
         tvFindFind.setVisibility(visibility?View.VISIBLE:View.GONE);
+        ivLogoFriend.setVisibility(visibility?View.VISIBLE:View.GONE);
     }
 
     @Override

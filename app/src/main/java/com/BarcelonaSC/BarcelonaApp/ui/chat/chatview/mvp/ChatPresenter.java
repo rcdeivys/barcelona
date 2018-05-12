@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.ChatReportData;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Conversacion;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Grupo;
@@ -72,14 +73,19 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
 
     public void toInfoMessage(String idConv, Long idSender, List<Miembro> idReceiver, String msgContent, Uri uri, String idGrupo) {
         Log.i("DAD", "55555---444>" + idConv + "   " + idSender);
-
+        List<Miembro> auxList = new ArrayList<>();
+        for (Miembro miembro : idReceiver) {
+            if (String.valueOf(miembro.getId()).equals(SessionManager.getInstance().getUser().getId_usuario()))
+                auxList.add(miembro);
+        }
 
         if (msgContent != null && msgContent.length() > 0) {
-            chatModel.sendInfoMessage(idConv, idSender, idReceiver, msgContent, idGrupo, this);
+            chatModel.sendInfoMessage(idConv, idSender, auxList, msgContent, idGrupo, this);
         } else {
             view.onMissingParams();
         }
     }
+
 
 
     public void toSendGif(String idConv, Long idSender, List<Miembro> idReceiver, String msgContent, String uri, String idGrupo) {

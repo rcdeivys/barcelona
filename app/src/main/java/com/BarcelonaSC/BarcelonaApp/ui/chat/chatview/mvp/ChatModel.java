@@ -171,6 +171,7 @@ public class ChatModel {
     public void memberNull(String id, Mensajes mensajesData, final Count count, final ChatContract.ModelResultListener.OnLoadMessages result) {
 
         final MessageModelView messageModelView = new MessageModelView(
+                mensajesData.getId(),
                 mensajesData.getEmisor_mensaje(),
                 ChatModel.getTypeMsg(mensajesData.getTipo_mensaje()) == FirebaseManager.MsgTypes.TEXTO ? mensajesData.getTexto_mensaje() : mensajesData.getUrl_imagen(),
                 ChatModel.getTypeMsg(mensajesData.getTipo_mensaje()),
@@ -197,6 +198,7 @@ public class ChatModel {
     public void memberNullPaginate(String id, Mensajes mensajesData, final Count count, final ChatContract.ModelResultListener.OnLoadMessages result) {
 
         final MessageModelView messageModelView = new MessageModelView(
+                mensajesData.getId(),
                 mensajesData.getEmisor_mensaje(),
                 ChatModel.getTypeMsg(mensajesData.getTipo_mensaje()) == FirebaseManager.MsgTypes.TEXTO ? mensajesData.getTexto_mensaje() : mensajesData.getUrl_imagen(),
                 ChatModel.getTypeMsg(mensajesData.getTipo_mensaje()),
@@ -223,7 +225,7 @@ public class ChatModel {
 
     public void loadPaginateMessages(final String last, final Conversacion conversacion, final ChatContract.ModelResultListener.OnLoadMessages result) {
 
-        if (lastId.equals(last))
+        if (lastId.equals(last)|| last == null)
             return;
         lastId = last;
         final Usuario user = FirebaseManager.getInstance().getUsuario();

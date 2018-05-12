@@ -87,6 +87,8 @@ public class Dialog_add_group extends DialogFragment implements CreateGroupContr
 
     @BindView(R.id.tv_find_friend)
     TextView tvFindFind;
+    @BindView(R.id.iv_logo_friend)
+    ImageView ivLogoFriend;
 
     private LinearLayoutManager mLayoutManager;
     private GridLayoutManager mGLayoutManager;
@@ -142,6 +144,7 @@ public class Dialog_add_group extends DialogFragment implements CreateGroupContr
             groupsPresenter.onAttach(this);
             groupsPresenter.loadGroups();
             tvFindFind.setVisibility(View.GONE);
+            ivLogoFriend.setVisibility(View.GONE);
             swipeRefreshLayout.setEnabled(false);
         } else {
             FirebaseManager.getInstance().getBlockUsers(new com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.friend.FriendControllers.BlockMemberListener() {
@@ -380,6 +383,7 @@ public class Dialog_add_group extends DialogFragment implements CreateGroupContr
     public void showFindFriend(boolean visibility) {
         friend_selection_recycler_view.setVisibility(View.INVISIBLE);
         tvFindFind.setVisibility(visibility ? View.VISIBLE : View.GONE);
+        ivLogoFriend.setVisibility(visibility ? View.VISIBLE : View.GONE);
     }
 
 

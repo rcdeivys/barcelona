@@ -16,6 +16,7 @@ import com.BarcelonaSC.BarcelonaApp.models.WallSearchItem;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Amigos;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Conversacion;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.FirebaseEvent;
+import com.BarcelonaSC.BarcelonaApp.models.firebase.GroupValueListenerModel;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Grupo;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.GrupoUsuarios;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Media;
@@ -62,6 +63,7 @@ public class FirebaseManager {
     public FirebaseDatabase secondaryDatabase;
     public List<ValueEventListener> valueEventListeners = new ArrayList<>();
     public List<ChildEventListener> valueChildremEventListeners = new ArrayList<>();
+    public List<GroupValueListenerModel> groupValueListenerModels = new ArrayList<>();
 
     public void clearFirebaseManager() {
         fistTime = true;
@@ -73,6 +75,7 @@ public class FirebaseManager {
         for (ChildEventListener value : valueChildremEventListeners) {
             query.removeEventListener(value);
         }
+        groupValueListenerModels.clear();
         ourInstance = null;
     }
 
@@ -381,8 +384,8 @@ public class FirebaseManager {
     public void salirUsuarioGrupo(final Long userId, final String idGrupo, final boolean isAdmin, final FireResultListener fireResultListener) {
 
         final DatabaseReference databaseReference = secondaryDatabase.getReference();
-        Query myRef = secondaryDatabase.getReference()
-                .child(ModelKeys.GROUP_X_USER + "/" + idGrupo);
+        Query myRef = secondaryDatabase.getReference(ModelKeys.GROUP_X_USER)
+                .child(idGrupo);
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -399,6 +402,14 @@ public class FirebaseManager {
                 }
                 solic.put(ModelKeys.GROUP_X_USER + "/" + idGrupo + "/" + userId, null);
                 solic.put(ModelKeys.USER_X_GROUP + "/" + userId + "/" + idGrupo, null);
+
+                for (GroupValueListenerModel group : groupValueListenerModels) {
+                    if (idGrupo.equals(group.getId())) {
+                        group.setListener(false);
+                        break;
+                    }
+                }
+
                 databaseReference.updateChildren(solic, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
@@ -878,7 +889,7 @@ public class FirebaseManager {
     //////////////////////////////////////////////////////////////////////////
     public void getAllMensajePaginateListener(final String idConv, String last, final FireListener<List<Mensajes>> mensajesFireListener) {
 
-        secondaryDatabase.getReference().child(ModelKeys.CONVERSATION + "/" + idConv + "/mensajes")
+        secondaryDatabase.getReference(ModelKeys.CONVERSATION).child(idConv + "/mensajes")
                 .orderByKey().endAt(last).limitToLast(11)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -919,7 +930,7 @@ public class FirebaseManager {
 
     public void getAllMensajesListener(final String userId, final String idConv, final FireListener<List<Mensajes>> mensajesFireListener) {
 
-        secondaryDatabase.getReference().child(ModelKeys.CONVERSATION + "/" + idConv + "/mensajes")
+        secondaryDatabase.getReference(ModelKeys.CONVERSATION).child(idConv + "/mensajes")
                 .orderByKey().limitToLast(15)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

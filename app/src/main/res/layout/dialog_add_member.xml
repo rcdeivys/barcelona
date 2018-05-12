@@ -183,9 +183,21 @@
                         android:layout_width="wrap_content"
                         android:gravity="center"
                         android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
                         android:layout_margin="10dp"
                         android:text="@string/find_new_friends"
                         android:layout_height="wrap_content" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_logo_friend"
+                        android:layout_width="100dp"
+                        android:src="@drawable/logo_bsc"
+                        android:alpha="0.5"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/tv_find_friend"
+                        android:layout_centerHorizontal="true"
+                        android:layout_height="100dp" />
                 </RelativeLayout>
 
             </android.support.v4.widget.SwipeRefreshLayout>

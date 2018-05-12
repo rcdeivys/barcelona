@@ -63,6 +63,8 @@ public class NewConversationActivity extends BaseSideMenuActivity implements New
     ImageView ivMoreConv;
     @BindView(R.id.tv_find_friend)
     TextView tvFindFind;
+    @BindView(R.id.iv_logo_friend)
+    ImageView ivLogoFriend;
 
 
     private LinearLayoutManager mLayoutManager;
@@ -251,6 +253,7 @@ public class NewConversationActivity extends BaseSideMenuActivity implements New
         listaAmigos.setVisibility(View.INVISIBLE);
         ivMoreConv.setVisibility(View.INVISIBLE);
         tvFindFind.setVisibility(visibility?View.VISIBLE:View.GONE);
+        ivLogoFriend.setVisibility(visibility?View.VISIBLE:View.GONE);
     }
 
     @Override
