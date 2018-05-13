@@ -60,6 +60,17 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
 
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            if (videoAdapter != null && videoPosition != null) {
+                videoAdapter.pauseVideo(videoPosition);
+                videoPosition.clear();
+            }
+        }
+    }
+
     public static VideoFragment newInstance(String type) {
         Bundle args = new Bundle();
         args.putString(Constant.Key.TYPE, type);
