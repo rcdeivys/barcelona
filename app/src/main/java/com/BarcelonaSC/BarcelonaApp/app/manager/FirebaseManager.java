@@ -889,8 +889,7 @@ public class FirebaseManager {
     //////////////////////////////////////////////////////////////////////////
     public void getAllMensajePaginateListener(final String idConv, String last, final FireListener<List<Mensajes>> mensajesFireListener) {
 
-        secondaryDatabase.getReference(ModelKeys.CONVERSATION).child(idConv + "/mensajes")
-                .orderByKey().endAt(last).limitToLast(6)
+        secondaryDatabase.getReference(ModelKeys.CONVERSATION).child(idConv + "/mensajes").orderByKey().endAt(last).limitToLast(6)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -930,8 +929,7 @@ public class FirebaseManager {
 
     public void getAllMensajesListener(final String userId, final String idConv, final FireListener<List<Mensajes>> mensajesFireListener) {
 
-        secondaryDatabase.getReference(ModelKeys.CONVERSATION).child(idConv + "/mensajes")
-                .orderByKey().limitToLast(6)
+        secondaryDatabase.getReference(ModelKeys.CONVERSATION).child(idConv + "/mensajes").limitToLast(6)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

@@ -288,7 +288,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     }
 
     int pastVisiblesItems;
-    boolean loading = true;
+    boolean loading = false;
     boolean endPagi = false;
 
     private RecyclerView.OnScrollListener initRecyclerViewScroll() {
