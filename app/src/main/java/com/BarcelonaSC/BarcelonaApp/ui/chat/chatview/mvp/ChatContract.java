@@ -87,6 +87,8 @@ public class ChatContract {
         void multimediaSuccess();
 
         void multimediaFailed();
+
+        void cancelPagination();
     }
 
 }

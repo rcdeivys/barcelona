@@ -188,7 +188,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat_view, container, false);
-
+        presenter.onAttach(this);
         rootView = view.findViewById(R.id.root_view);
         unbinder = ButterKnife.bind(this, view);
 
@@ -289,6 +289,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
 
     int pastVisiblesItems;
     boolean loading = true;
+    boolean endPagi = false;
 
     private RecyclerView.OnScrollListener initRecyclerViewScroll() {
         return new RecyclerView.OnScrollListener() {
@@ -297,7 +298,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
 
                 pastVisiblesItems = mLayoutManager.findFirstCompletelyVisibleItemPosition();
 
-                if (loading) {
+                if (loading && !endPagi) {
                     if (pastVisiblesItems == 0) {
                         loading = false;
                         fetchData();
@@ -817,6 +818,12 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     }
 
     @Override
+    public void cancelPagination() {
+        endPagi = true;
+        loading = false;
+    }
+
+    @Override
     public void onClickItem(MessageModelView friend) {
 
     }
@@ -851,6 +858,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
 
     @Override
     public void onDestroyView() {
+        presenter.onDetach();
         super.onDestroyView();
 
     }

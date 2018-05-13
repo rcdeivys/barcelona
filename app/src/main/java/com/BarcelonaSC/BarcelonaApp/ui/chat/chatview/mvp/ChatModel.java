@@ -33,7 +33,6 @@ public class ChatModel {
 
     private ChatApi chatApi;
     ArrayList<MessageModelView> mensajes = new ArrayList<MessageModelView>();
-    String lastId = "";
 
     public ChatModel(ChatApi chatApi) {
         this.chatApi = chatApi;
@@ -225,9 +224,7 @@ public class ChatModel {
 
     public void loadPaginateMessages(final String last, final Conversacion conversacion, final ChatContract.ModelResultListener.OnLoadMessages result) {
 
-        if (lastId.equals(last)|| last == null)
-            return;
-        lastId = last;
+
         final Usuario user = FirebaseManager.getInstance().getUsuario();
 
         FirebaseManager.getInstance().getAllMensajePaginateListener(conversacion.getId(), last, new FirebaseManager.FireListener<List<Mensajes>>() {

@@ -25,6 +25,7 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
     private ChatModel chatModel;
     private boolean block = false;
     private ArrayList<MessageModelView> newMessages = new ArrayList<MessageModelView>();
+    String lastId = "";
 
     public ChatPresenter(ChatContract.View view, ChatModel chatModel) {
         this.view = view;
@@ -109,8 +110,16 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
 
 
     public void loadMessagesPaginate(Conversacion idConversacion) {
-        if (this.newMessages != null && this.newMessages.size() > 0)
+        if (this.newMessages != null && this.newMessages.size() > 0) {
+            if (lastId.equals(this.newMessages.get(0).getId()) || this.newMessages.get(0).getId() == null) {
+                if (view == null)
+                    return;
+                view.cancelPagination();
+                return;
+            }
+            lastId = this.newMessages.get(0).getId();
             chatModel.loadPaginateMessages(this.newMessages.get(0).getId(), idConversacion, this);
+        }
     }
 
     @Override
