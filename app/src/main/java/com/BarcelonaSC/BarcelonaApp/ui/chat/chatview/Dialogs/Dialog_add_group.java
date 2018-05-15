@@ -321,6 +321,7 @@ public class Dialog_add_group extends DialogFragment implements CreateGroupContr
     @Override
     public void updateFriends(List<FriendsModelView> friends) {
         hideProgress();
+        friend_selection_recycler_view.setVisibility(View.VISIBLE);
         if (friendSelectionAdapter != null) {
             if (friends.size() == 0) {
                 Toast.makeText(getContext(), getText(R.string.group_search), Toast.LENGTH_SHORT).show();
