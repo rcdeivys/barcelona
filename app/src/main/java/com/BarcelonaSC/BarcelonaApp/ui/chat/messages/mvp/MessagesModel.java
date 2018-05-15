@@ -33,13 +33,14 @@ public class MessagesModel {
             Log.i("tag", "/*/*/*--->22");
             if (usuarioConversation.getId() != null && usuarioConversation.isStatus())
                 for (Amigos amigos : FirebaseManager.getInstance().getUsuario().getAmigos()) {
-                    if (amigos.getId_conversacion().equals(usuarioConversation.getId())) {
+                    if (amigos.getId_conversacion().equals(usuarioConversation.getId()) && !amigos.isBloqueado()) {
                         if (usuarioConversation.getId_participante() != null) {
 
                             Miembro miembro = amigos.getConversacion().getMiembro(usuarioConversation.getId_participante());
                             if (miembro != null) {
                                 //TODO: aqui el tipo de mensaje esta harcodeado. Modificar. por ahora todos los msjs son de tipo texto
                                 MessageModelView messageModelView = new MessageModelView(
+                                        usuarioConversation.getId(),
                                         usuarioConversation.getId_participante(),
                                         miembro.getApodo(),
                                         usuarioConversation.getUltimo_mensaje(),

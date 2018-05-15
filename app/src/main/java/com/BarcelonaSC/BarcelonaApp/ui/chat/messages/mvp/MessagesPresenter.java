@@ -43,6 +43,27 @@ public class MessagesPresenter implements MessagesContract.Presenter, MessagesCo
     public void onGetMessagesSuccess(List<MessageModelView> messagesData) {
         if (messagesList == null)
             messagesList = new ArrayList<>();
+        int contador = 0;
+        if (messagesList.size() == messagesData.size() && messagesList.size() > 0) {
+            for (MessageModelView newData : messagesData) {
+                boolean suiche = false;
+                for (MessageModelView oldData : messagesList) {
+
+                    if (oldData.getId().equals(newData.getId())
+                            && oldData.getContent().equals(newData.getContent())
+                            && oldData.getTime().equals(newData.getTime())) {
+                        contador++;
+                        suiche = true;
+                        break;
+                    } else
+                        suiche = false;
+                }
+                if (!suiche)
+                    break;
+            }
+            if (contador == messagesList.size())
+                return;
+        }
         messagesList.clear();
         if (view == null) return;
         for (MessageModelView message : messagesData) {
