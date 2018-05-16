@@ -39,7 +39,8 @@ public class MessageModelView {
         this.amigos = amigos;
     }
 
-    public MessageModelView(Long idSender, String apodo, String content, String foto, Long fecha, FriendsModelView.STATUS status, FirebaseManager.MsgTypes typeMsg, boolean isMine, Amigos amigos, String create_date) {
+    public MessageModelView(String id, Long idSender, String apodo, String content, String foto, Long fecha, FriendsModelView.STATUS status, FirebaseManager.MsgTypes typeMsg, boolean isMine, Amigos amigos, String create_date) {
+        this.id = id;
         this.idSender = idSender;
         this.apodo = apodo;
         this.content = content;
@@ -79,7 +80,8 @@ public class MessageModelView {
         this.create_date = miembro.getCreated_at();
     }
 
-    public MessageModelView(Long idSender, String content, FirebaseManager.MsgTypes typeMsg, boolean isMine) {
+    public MessageModelView(String id, Long idSender, String content, FirebaseManager.MsgTypes typeMsg, boolean isMine) {
+        this.id = id;
         this.idSender = idSender;
         this.content = content;
         this.isMine = isMine;
@@ -186,7 +188,6 @@ public class MessageModelView {
     public void setThunbmailVideoUrl(String thunbmailVideoUrl) {
         this.thunbmailVideoUrl = thunbmailVideoUrl;
     }
-
 
 
     @Override

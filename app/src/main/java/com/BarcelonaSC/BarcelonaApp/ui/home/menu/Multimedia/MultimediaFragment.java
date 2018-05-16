@@ -34,6 +34,8 @@ public class MultimediaFragment extends ShareBaseFragment {
     Unbinder unbinder;
     int tabCount;
 
+    ChangeFragment changeFragment;
+
     String selected;
 
     private MultimediaViewPagerAdapter viewPagerAdapter;
@@ -84,9 +86,12 @@ public class MultimediaFragment extends ShareBaseFragment {
                     InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                     ((HomeActivity) getActivity()).shareSection();
+
                 } else {
                     ((HomeActivity) getActivity()).notShareSection();
                 }
+
+                changeFragment.onChangeFragment();
             }
 
             @Override
@@ -138,5 +143,13 @@ public class MultimediaFragment extends ShareBaseFragment {
     @Override
     public void share() {
         ((ShareBaseFragment) viewPagerAdapter.getItem(tabs.getSelectedTabPosition())).share();
+    }
+
+    public void setChangeFragment(ChangeFragment changeFragment) {
+        this.changeFragment = changeFragment;
+    }
+
+    public interface ChangeFragment {
+        void onChangeFragment();
     }
 }

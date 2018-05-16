@@ -16,6 +16,7 @@ import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaDataResponse;
 import com.BarcelonaSC.BarcelonaApp.models.response.MultimediaStreamingData;
+import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.MultimediaFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Video.di.DaggerVideoComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Video.di.VideoModule;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Video.mvp.VideoContract;
@@ -60,6 +61,17 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
 
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            if (videoAdapter != null && videoPosition != null) {
+                videoAdapter.pauseVideo(videoPosition);
+                videoPosition.clear();
+            }
+        }
+    }
+
     public static VideoFragment newInstance(String type) {
         Bundle args = new Bundle();
         args.putString(Constant.Key.TYPE, type);
@@ -101,6 +113,20 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
         }
 
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (getParentFragment() != null)
+            ((MultimediaFragment) getParentFragment()).setChangeFragment(new MultimediaFragment.ChangeFragment() {
+                @Override
+                public void onChangeFragment() {
+                    videoAdapter.pauseVideo(videoPosition);
+                    videoPosition.clear();
+                }
+            });
     }
 
     @Override
@@ -201,4 +227,6 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
         videoAdapter.pauseVideo(videoPosition);
         videoPosition.clear();
     }
+
+
 }

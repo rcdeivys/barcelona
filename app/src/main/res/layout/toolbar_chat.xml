@@ -1,31 +1,22 @@
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/toolbar_chat"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    android:background="@color/colorPrimary"
-    android:gravity="center_vertical"
-    android:minHeight="40dp"
-    app:contentInsetLeft="0dp"
-    app:contentInsetStart="0dp"
-    app:contentInsetStartWithNavigation="0dp"
-    tools:showIn="@layout/activity_chat">
+    android:id="@+id/toolbar_chat"
+    android:layout_height="wrap_content">
+
 
     <LinearLayout
         android:id="@+id/chat_avatar_image_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:contentDescription="@string/app_name"
-        android:orientation="horizontal"
-        android:src="@drawable/silueta">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/back_button"
             android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="10dp"
+            android:layout_height="50dp"
 
             android:orientation="horizontal">
 
@@ -42,37 +33,68 @@
         <RelativeLayout
             android:id="@+id/ly_go_detail_profile"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/colorPrimary" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/chat_avatar_receiver"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/silueta"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_overlay="true"
+                app:civ_border_width="1dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circle_state"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginEnd="5dp"
+                android:src="@color/holo_green_dark"
+                android:visibility="gone" />
+
 
             <TextView
                 android:id="@+id/chat_name_receiver"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/sqhiv_options"
+                android:layout_height="50dp"
+                android:layout_toEndOf="@+id/chat_avatar_receiver"
                 android:gravity="center"
                 android:maxLength="30"
                 android:maxLines="1"
                 android:padding="5dp"
                 android:singleLine="true"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:text=""
+                android:layout_toStartOf="@+id/sqhiv_options"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
+
             <com.BarcelonaSC.BarcelonaApp.utils.SquareHeightImageView
                 android:id="@+id/sqhiv_options"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
                 android:padding="10dp"
                 android:tint="@color/white"
                 android:src="@drawable/options_icn" />
         </RelativeLayout>
 
+
     </LinearLayout>
 
-</android.support.v7.widget.Toolbar>
+</RelativeLayout>

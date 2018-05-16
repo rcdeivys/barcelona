@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,7 +83,7 @@ public class ChatActivity extends BaseSideMenuActivity implements Dialog_add_gro
     @BindView(R.id.circle_state)
     CircleImageView circleState;
     @BindView(R.id.include)
-    Toolbar toolbar;
+    RelativeLayout toolbar;
     @BindView(R.id.sqhiv_options)
     SquareHeightImageView sqhivOptions;
     Dialog_add_group.OnItemClickListenerDialog onItemClickListenerDialog;

@@ -61,6 +61,11 @@ public class NewConversationActivity extends BaseSideMenuActivity implements New
     ProgressBar progressbar;
     @BindView(R.id.iv_more_conv)
     ImageView ivMoreConv;
+    @BindView(R.id.tv_find_friend)
+    TextView tvFindFind;
+    @BindView(R.id.iv_logo_friend)
+    ImageView ivLogoFriend;
+
 
     private LinearLayoutManager mLayoutManager;
 
@@ -103,7 +108,6 @@ public class NewConversationActivity extends BaseSideMenuActivity implements New
 
         presenter.onAttach(this);
         initRecyclerView();
-        showProgress();
     }
 
     public void initComponent() {
@@ -160,6 +164,7 @@ public class NewConversationActivity extends BaseSideMenuActivity implements New
     @Override
     public void updateFriends(List<FriendsModelView> friends) {
         hideProgress();
+        listaAmigos.setVisibility(View.VISIBLE);
         if (friendsAdapter != null) {
             if (friends.size() == 0) {
                 searchNoResult.setVisibility(View.VISIBLE);
@@ -181,6 +186,7 @@ public class NewConversationActivity extends BaseSideMenuActivity implements New
 
     @Override
     public void showProgress() {
+        searchNoResult.setVisibility(View.GONE);
         progressbar.setVisibility(View.VISIBLE);
     }
 
@@ -239,6 +245,15 @@ public class NewConversationActivity extends BaseSideMenuActivity implements New
     public void addFriendFailed() {
         suiche = false;
         Toast.makeText(getBaseContext(), getText(R.string.unexpected_error), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showFindFriend(boolean visibility) {
+        hideProgress();
+        listaAmigos.setVisibility(View.INVISIBLE);
+        ivMoreConv.setVisibility(View.INVISIBLE);
+        tvFindFind.setVisibility(visibility?View.VISIBLE:View.GONE);
+        ivLogoFriend.setVisibility(visibility?View.VISIBLE:View.GONE);
     }
 
     @Override

@@ -117,8 +117,8 @@
 
     <string name="what_is_he_thinking_about">¿Qué estás pensando?</string>
 
-    <string name="no_more_data">No hay mas datos</string>
-    <string name="no_more_data_to_display">No hay mas datos para mostrar</string>
+    <string name="no_more_data">No hay más datos</string>
+    <string name="no_more_data_to_display">No hay más datos para mostrar</string>
 
     <string name="create_post">Crear publicación</string>
     <string name="send_post">Enviar</string>
@@ -215,5 +215,6 @@
     <string name="block_user">¿Deseas bloquear a <b>%1$s</b>?</string>
     <string name="not_block_user">¿Deseas Desbloquear a <b>%1$s</b>?</string>
     <string name="group_missing_participant">Selecciona algun participante</string>
+    <string name="find_new_friends">¡Busca nuevos amigos que compartan el amor por el “Ídolo del Ecuador”!</string>
 
 </resources>

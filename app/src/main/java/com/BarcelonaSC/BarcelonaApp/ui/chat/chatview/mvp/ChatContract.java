@@ -42,6 +42,8 @@ public class ChatContract {
             void onLoadMessageSuccess(ArrayList<MessageModelView> messages);
 
             void onLoadMessageFailed();
+
+            void onLoadPaginateMessage(ArrayList<MessageModelView> mensajes);
         }
 
         public interface OnDeleteMember {
@@ -85,6 +87,8 @@ public class ChatContract {
         void multimediaSuccess();
 
         void multimediaFailed();
+
+        void cancelPagination();
     }
 
 }

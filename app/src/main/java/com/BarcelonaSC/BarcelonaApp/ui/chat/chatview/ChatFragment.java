@@ -167,6 +167,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
 
     @Override
     public void deleteMember() {
+        sendInfo();
         if (getActivity() != null)
             getActivity().finish();
     }
@@ -178,7 +179,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     }
 
     public void onClickMemberToDelete() {
-        sendInfo();
+
         presenter.onClickMemberToDelete(Long.valueOf(SessionManager.getInstance().getUser().getId_usuario()), grupo, isAdminGroup(grupo.getAdmin()));
     }
 
@@ -187,7 +188,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat_view, container, false);
-
+        presenter.onAttach(this);
         rootView = view.findViewById(R.id.root_view);
         unbinder = ButterKnife.bind(this, view);
 
@@ -286,18 +287,34 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
         });
     }
 
-    private EndlessScrollListener initRecyclerViewScroll() {
-        return new EndlessScrollListener(mLayoutManager) {
+    int pastVisiblesItems;
+    boolean loading = false;
+    boolean endPagi = false;
+
+    private RecyclerView.OnScrollListener initRecyclerViewScroll() {
+        return new RecyclerView.OnScrollListener() {
             @Override
-            public void onLoadMore(int current_page) {
-                if (!swipeRefreshLayout.isRefreshing()) {
-                    //refresh(current_page);
-                    //progressBar.setVisibility(View.VISIBLE);
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+                pastVisiblesItems = mLayoutManager.findFirstCompletelyVisibleItemPosition();
+
+                if (loading && !endPagi) {
+                    if (pastVisiblesItems == 0) {
+                        loading = false;
+                        fetchData();
+                    }
                 }
+
             }
         };
     }
 
+
+    private void fetchData() {
+        presenter.loadMessagesPaginate(conversacion);
+
+
+    }
 
     private void setImageSelect(Uri uri) {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -740,9 +757,16 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     @Override
     public void updateMesage(List<MessageModelView> messageModelViews) {
         if (chatAdapter != null) {
-            initRecyclerView();
+
+            int previusSize = chatAdapter.getItemCount();
             chatAdapter.updateAll(messageModelViews);
             swipeRefreshLayout.setRefreshing(false);
+            if (!loading) {
+                mLayoutManager.scrollToPositionWithOffset((messageModelViews.size() - previusSize), 0);
+            } else {
+                listMessagesView.scrollToPosition(messageModelViews.size() - 1);
+            }
+            loading = true;
             //progressBar.setVisibility(View.GONE);
         }
     }
@@ -794,6 +818,12 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
     }
 
     @Override
+    public void cancelPagination() {
+        endPagi = true;
+        loading = false;
+    }
+
+    @Override
     public void onClickItem(MessageModelView friend) {
 
     }
@@ -828,6 +858,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
 
     @Override
     public void onDestroyView() {
+        presenter.onDetach();
         super.onDestroyView();
 
     }

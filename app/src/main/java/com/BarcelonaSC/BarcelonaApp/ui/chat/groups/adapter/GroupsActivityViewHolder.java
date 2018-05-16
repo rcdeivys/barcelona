@@ -11,6 +11,7 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.GroupModelView;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTextView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.crashlytics.android.Crashlytics;
 
 import butterknife.BindView;
@@ -50,11 +51,13 @@ public class GroupsActivityViewHolder extends RecyclerView.ViewHolder{
             Crashlytics.log(Log.DEBUG,"IMAGEN"," ---> desde url");
             Glide.with(context)
                     .load(item.getImageGroup())
+                    .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta))
                     .into(imgGroup);
         }else{
             Crashlytics.log(Log.DEBUG,"IMAGEN"," ---> desde drawable");
             Glide.with(context)
                     .load(R.drawable.no_group_perfil)
+                    .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta))
                     .into(imgGroup);
         }
         if (item.getNameGroup().length()>0) {

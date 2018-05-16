@@ -378,7 +378,10 @@ public class ProfileUserFragment extends Fragment {
 
     public void updateGroup(String photoUrl) {
         if (photoUrl != null && civ_photo != null) {
-            Glide.with(App.get()).load(photoUrl).into(civ_photo);
+            Glide.with(App.get())
+                    .load(photoUrl)
+                    .apply(new RequestOptions().placeholder(R.drawable.silueta).error(R.drawable.silueta))
+                    .into(civ_photo);
             grupo.setFoto(photoUrl);
             if (getActivity() != null)
                 ((ChatActivity) getActivity()).changedGroupImage(photoUrl);

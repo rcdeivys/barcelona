@@ -97,6 +97,7 @@
                             <!-- Recycler of friends's -->
                             <android.support.v7.widget.RecyclerView
                                 android:id="@+id/rv_friends"
+                                android:layout_below="@+id/tv_find_friend"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content" />
 
@@ -124,6 +125,25 @@
                                 android:indeterminateDrawable="@drawable/progress"
                                 android:visibility="gone" />
 
+                            <TextView
+                                android:id="@+id/tv_find_friend"
+                                android:layout_width="wrap_content"
+                                android:layout_centerHorizontal="true"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:gravity="center"
+                                android:text="@string/find_new_friends"
+                                android:textColor="@color/black" />
+
+                            <ImageView
+                                android:id="@+id/iv_logo_friend"
+                                android:layout_width="100dp"
+                                android:src="@drawable/logo_bsc"
+                                android:alpha="0.5"
+                                android:layout_marginTop="10dp"
+                                android:layout_below="@+id/tv_find_friend"
+                                android:layout_centerHorizontal="true"
+                                android:layout_height="100dp" />
                         </RelativeLayout>
 
                     </android.support.v4.widget.SwipeRefreshLayout>

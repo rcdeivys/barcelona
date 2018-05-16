@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.ChatReportData;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Conversacion;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Grupo;
@@ -24,6 +25,7 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
     private ChatModel chatModel;
     private boolean block = false;
     private ArrayList<MessageModelView> newMessages = new ArrayList<MessageModelView>();
+    String lastId = "";
 
     public ChatPresenter(ChatContract.View view, ChatModel chatModel) {
         this.view = view;
@@ -72,14 +74,19 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
 
     public void toInfoMessage(String idConv, Long idSender, List<Miembro> idReceiver, String msgContent, Uri uri, String idGrupo) {
         Log.i("DAD", "55555---444>" + idConv + "   " + idSender);
-
+        List<Miembro> auxList = new ArrayList<>();
+        for (Miembro miembro : idReceiver) {
+            if (String.valueOf(miembro.getId()).equals(SessionManager.getInstance().getUser().getId_usuario()))
+                auxList.add(miembro);
+        }
 
         if (msgContent != null && msgContent.length() > 0) {
-            chatModel.sendInfoMessage(idConv, idSender, idReceiver, msgContent, idGrupo, this);
+            chatModel.sendInfoMessage(idConv, idSender, auxList, msgContent, idGrupo, this);
         } else {
             view.onMissingParams();
         }
     }
+
 
 
     public void toSendGif(String idConv, Long idSender, List<Miembro> idReceiver, String msgContent, String uri, String idGrupo) {
@@ -101,12 +108,26 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
         chatModel.loadPrivateMessages(idConversacion, this);
     }
 
+
+    public void loadMessagesPaginate(Conversacion idConversacion) {
+        if (this.newMessages != null && this.newMessages.size() > 0) {
+            if (lastId.equals(this.newMessages.get(0).getId()) || this.newMessages.get(0).getId() == null) {
+                if (view == null)
+                    return;
+                view.cancelPagination();
+                return;
+            }
+            lastId = this.newMessages.get(0).getId();
+            chatModel.loadPaginateMessages(this.newMessages.get(0).getId(), idConversacion, this);
+        }
+    }
+
     @Override
     public void loadMessagesGroup(String id_chat) {
         chatModel.loadGroupMessages(this);
     }
 
-    public void getAllMessage(){
+    public void getAllMessage() {
         if (view == null)
             return;
 
@@ -128,7 +149,7 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
 
     public void onClickMemberToDelete(Long id, Grupo grupo, boolean isAdmin) {
 
-        chatModel.deleteMember(id, grupo, true, this);
+        chatModel.deleteMember(id, grupo, isAdmin, this);
     }
 
     @Override
@@ -150,6 +171,7 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
         view.multimediaFailed();
     }
 
+
     @Override
     public void onLoadMessageSuccess(ArrayList<MessageModelView> messages) {
         this.newMessages = messages;
@@ -163,6 +185,16 @@ public class ChatPresenter implements ChatContract.Presenter, ChatContract.Model
     @Override
     public void onLoadMessageFailed() {
 
+    }
+
+    @Override
+    public void onLoadPaginateMessage(ArrayList<MessageModelView> mensajes) {
+        this.newMessages = mensajes;
+        if (view == null)
+            return;
+        if (block)
+            return;
+        view.updateMesage(mensajes);
     }
 
     public void clearMessage() {

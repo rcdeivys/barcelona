@@ -3,6 +3,7 @@ package com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.group;
 import android.nfc.Tag;
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.models.firebase.GroupValueListenerModel;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -149,12 +150,16 @@ public class GroupControllers {
 
     private void addGroupListener(final String groupKey, final FirebaseManager.FireListener<Grupo> fireListener) {
         Query myRef = databaseReference.getReference(GROUP).child(groupKey);
+        final GroupValueListenerModel groupValueListenerModels = new GroupValueListenerModel();
         FirebaseManager.getInstance().valueEventListeners.add(myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
+                if (!groupValueListenerModels.isListener())
+                    return;
                 Grupo grupo = (Grupo) parseObject(dataSnapshot.getValue(), Grupo.class);
                 if (grupo != null) {
+                    groupValueListenerModels.setId(dataSnapshot.getKey());
+                    FirebaseManager.getInstance().groupValueListenerModels.add(groupValueListenerModels);
                     grupo.setKey(dataSnapshot.getKey());
                     fireListener.onDataChanged(grupo);
                 } else {
@@ -169,8 +174,8 @@ public class GroupControllers {
 
             }
         }));
-    }
 
+    }
 
     private void addConversationListener(String idConversation, final FirebaseManager.FireListener<Conversacion> fireListener) {
 

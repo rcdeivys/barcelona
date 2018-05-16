@@ -75,7 +75,7 @@ public class GiphyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         final GiphyHolder giphyHolder = (GiphyHolder) holder;
 
         //  final String gifUrl = "https://giphy.com/gifs/" + gifs.get(position).getId() + "/html5";
-        final String gifUrl = "http://media2.giphy.com/media/" + gifs.get(position).getId() + "/giphy.gif";
+        final String gifUrl = "http://media1.giphy.com/media/" + gifs.get(position).getId() + "/100.gif";
         Log.i(TAG, "/////--->curren gif url: " + gifUrl);
 
          /*   Glide.with(context)
@@ -108,7 +108,8 @@ public class GiphyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         giphyHolder.qivGif.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onGifClickListener.onClickGif(gifUrl);
+                if (onGifClickListener != null)
+                    onGifClickListener.onClickGif(gifUrl);
             }
         });
 

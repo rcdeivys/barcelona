@@ -44,6 +44,7 @@ public class Miembro implements Parcelable {
         this.chat_status = chat_status;
         this.created_at = created_at;
     }
+
     public FriendsModelView.STATUS getStatusChatAsSTATUS() {
         if (chat_status != null) {
             switch (chat_status) {
@@ -60,6 +61,7 @@ public class Miembro implements Parcelable {
             return FriendsModelView.STATUS.OFFLINE;
         }
     }
+
     public static final Creator<Miembro> CREATOR = new Creator<Miembro>() {
         @Override
         public Miembro createFromParcel(Parcel in) {
@@ -146,7 +148,7 @@ public class Miembro implements Parcelable {
     }
 
     public String getApodo() {
-        if (apodo == null)
+        if (apodo == null || apodo.isEmpty())
             apodo = nombre;
         return apodo;
     }

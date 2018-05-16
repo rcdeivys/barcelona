@@ -6,13 +6,17 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.friend.FriendControllers;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.group.GroupControllers;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseControllers.media.MediaController;
+import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
+import com.BarcelonaSC.BarcelonaApp.models.WallSearchItem;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Amigos;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Conversacion;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.FirebaseEvent;
+import com.BarcelonaSC.BarcelonaApp.models.firebase.GroupValueListenerModel;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Grupo;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.GrupoUsuarios;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Media;
@@ -21,6 +25,7 @@ import com.BarcelonaSC.BarcelonaApp.models.firebase.Miembro;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Usuario;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.UsuarioConversation;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.UsuarioGrupo;
+import com.BarcelonaSC.BarcelonaApp.models.response.WallSearchResponse;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.FriendsModelView;
 import com.arasthel.asyncjob.AsyncJob;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -58,6 +63,7 @@ public class FirebaseManager {
     public FirebaseDatabase secondaryDatabase;
     public List<ValueEventListener> valueEventListeners = new ArrayList<>();
     public List<ChildEventListener> valueChildremEventListeners = new ArrayList<>();
+    public List<GroupValueListenerModel> groupValueListenerModels = new ArrayList<>();
 
     public void clearFirebaseManager() {
         fistTime = true;
@@ -69,6 +75,7 @@ public class FirebaseManager {
         for (ChildEventListener value : valueChildremEventListeners) {
             query.removeEventListener(value);
         }
+        groupValueListenerModels.clear();
         ourInstance = null;
     }
 
@@ -377,8 +384,8 @@ public class FirebaseManager {
     public void salirUsuarioGrupo(final Long userId, final String idGrupo, final boolean isAdmin, final FireResultListener fireResultListener) {
 
         final DatabaseReference databaseReference = secondaryDatabase.getReference();
-        Query myRef = secondaryDatabase.getReference()
-                .child(ModelKeys.GROUP_X_USER + "/" + idGrupo);
+        Query myRef = secondaryDatabase.getReference(ModelKeys.GROUP_X_USER)
+                .child(idGrupo);
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -395,6 +402,14 @@ public class FirebaseManager {
                 }
                 solic.put(ModelKeys.GROUP_X_USER + "/" + idGrupo + "/" + userId, null);
                 solic.put(ModelKeys.USER_X_GROUP + "/" + userId + "/" + idGrupo, null);
+
+                for (GroupValueListenerModel group : groupValueListenerModels) {
+                    if (idGrupo.equals(group.getId())) {
+                        group.setListener(false);
+                        break;
+                    }
+                }
+
                 databaseReference.updateChildren(solic, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
@@ -602,7 +617,7 @@ public class FirebaseManager {
     }
 
     public void uploadImageThumbnail(Bitmap foto, final FireGroupResultListener fireResultListener) {
-        FirebaseStorage storage = FirebaseStorage.getInstance("gs://barcelona-sc-1e17d.appspot.com/");
+        FirebaseStorage storage = FirebaseStorage.getInstance("gs://barcelona-sc-oficial.appspot.com");
         StorageReference storageRef = storage.getReference();
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         foto.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -626,7 +641,7 @@ public class FirebaseManager {
     }
 
     public void uploadImage(Uri foto, final FireGroupResultListener fireResultListener) {
-        FirebaseStorage storage = FirebaseStorage.getInstance("gs://barcelona-sc-1e17d.appspot.com/");
+        FirebaseStorage storage = FirebaseStorage.getInstance("gs://barcelona-sc-oficial.appspot.com");
         StorageReference storageRef = storage.getReference();
 
         StorageReference riversRef = storageRef.child("images/" + foto.getLastPathSegment());
@@ -872,44 +887,82 @@ public class FirebaseManager {
 
 
     //////////////////////////////////////////////////////////////////////////
+    public void getAllMensajePaginateListener(final String idConv, String last, final FireListener<List<Mensajes>> mensajesFireListener) {
+
+        secondaryDatabase.getReference(ModelKeys.CONVERSATION).child(idConv + "/mensajes").orderByKey().endAt(last).limitToLast(6)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        List<Mensajes> mensajes = new ArrayList<>();
+
+                        String idPrimerMensaje = null;
+
+                        for (UsuarioConversation usuCon : usuario.getUsuarioConversations()) {
+                            if (usuCon.getId().equals(idConv)) {
+                                idPrimerMensaje = usuCon.getId_primer_mensaje();
+                            }
+                        }
+
+                        for (DataSnapshot da : dataSnapshot.getChildren()) {
+                            Mensajes mensaje = (Mensajes) parseObject(da.getValue(), Mensajes.class);
+                            mensaje.setId(da.getKey());
+                            if (mensaje != null) {
+                                mensajes.add(mensaje);
+                                if (idPrimerMensaje != null && idPrimerMensaje.equals(mensaje.getId())) {
+                                    mensajes.clear();
+                                }
+                            }
+                        }
+                        if (mensajes.size() > 0)
+                            mensajes.remove(mensajes.size() - 1);
+                        Collections.reverse(mensajes);
+                        mensajesFireListener.onDataChanged(mensajes);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        mensajesFireListener.onCancelled();
+                    }
+                });
+    }
+
 
     public void getAllMensajesListener(final String userId, final String idConv, final FireListener<List<Mensajes>> mensajesFireListener) {
 
-        Query myRef = secondaryDatabase.getReference().child(ModelKeys.CONVERSATION + "/" + idConv + "/mensajes");
+        secondaryDatabase.getReference(ModelKeys.CONVERSATION).child(idConv + "/mensajes").limitToLast(6)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        List<Mensajes> mensajes = new ArrayList<>();
 
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<Mensajes> mensajes = new ArrayList<>();
+                        String idPrimerMensaje = null;
 
-                String idPrimerMensaje = null;
-
-                for (UsuarioConversation usuCon : usuario.getUsuarioConversations()) {
-                    if (usuCon.getId().equals(idConv)) {
-                        idPrimerMensaje = usuCon.getId_primer_mensaje();
-                    }
-                }
-
-                for (DataSnapshot da : dataSnapshot.getChildren()) {
-                    Mensajes mensaje = (Mensajes) parseObject(da.getValue(), Mensajes.class);
-                    mensaje.setId(da.getKey());
-                    if (mensaje != null) {
-                        mensajes.add(mensaje);
-                        if (idPrimerMensaje != null && idPrimerMensaje.equals(mensaje.getId())) {
-                            mensajes.clear();
+                        for (UsuarioConversation usuCon : usuario.getUsuarioConversations()) {
+                            if (usuCon.getId().equals(idConv)) {
+                                idPrimerMensaje = usuCon.getId_primer_mensaje();
+                            }
                         }
-                    }
-                }
-                if (mensajes.size() > 0)
-                    mensajes.remove(mensajes.size() - 1);
-                mensajesFireListener.onDataChanged(mensajes);
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                mensajesFireListener.onCancelled();
-            }
-        });
+                        for (DataSnapshot da : dataSnapshot.getChildren()) {
+                            Mensajes mensaje = (Mensajes) parseObject(da.getValue(), Mensajes.class);
+                            mensaje.setId(da.getKey());
+                            if (mensaje != null) {
+                                mensajes.add(mensaje);
+                                if (idPrimerMensaje != null && idPrimerMensaje.equals(mensaje.getId())) {
+                                    mensajes.clear();
+                                }
+                            }
+                        }
+                        if (mensajes.size() > 0)
+                            mensajes.remove(mensajes.size() - 1);
+                        mensajesFireListener.onDataChanged(mensajes);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        mensajesFireListener.onCancelled();
+                    }
+                });
     }
 
     public void buscarUsuarioEnGrupo(Long id_amigo, String id_grupo, final FireValuesListener fireValuesListener) {
@@ -993,15 +1046,34 @@ public class FirebaseManager {
     String seach = "";
 
 
-    Runnable runnable = null;
-
-    Handler handler = new Handler();
-
     public void buscarUsuario(final String busqueda, final FireListener<List<FriendsModelView>> miembros) {
         Log.i("TAG", "--->buscador 1: " + busqueda);
         seach = busqueda;
 
-        if (runnable != null)
+                App.get().component().wallSearchApi().searchProfile(busqueda, "1").enqueue(new NetworkCallBack<WallSearchResponse>() {
+                    @Override
+                    public void onRequestSuccess(WallSearchResponse response) {
+                        List<FriendsModelView> miembros1 = new ArrayList<>();
+                        for (WallSearchItem data : response.getData()) {
+                            miembros1.add(new FriendsModelView((long) data.getId()
+                                    , data.getApodo()
+                                    , data.getFoto()
+                                    , data.getNombre()
+                                    , data.getNombre().toUpperCase()
+                                    , data.getApellido()));
+                        }
+
+
+                        miembros.onDataChanged(miembros1);
+                    }
+
+                    @Override
+                    public void onRequestFail(String errorMessage, int errorCode) {
+                        miembros.onCancelled();
+                    }
+                });
+
+      /*  if (runnable != null)
             handler.removeCallbacks(runnable);
 
         runnable = new Runnable() {
@@ -1034,13 +1106,13 @@ public class FirebaseManager {
                                                     miembro.setId(Long.valueOf(data.getKey()));
 
                                                     boolean isFriend = false;
-                                         /*   for (Amigos amigo : usuario.getAmigos()) {
+                                         *//*   for (Amigos amigo : usuario.getAmigos()) {
                                                 if (amigo.getId().equals(miembro.getId())) {
                                                     isFriend = true;
                                                     break;
                                                 }
                                             }
-                                            if (!isFriend)*/
+                                            if (!isFriend)*//*
                                                     miembros1.add(new FriendsModelView(miembro.getId()
                                                             , miembro.getApodo()
                                                             , miembro.getFoto()
@@ -1084,7 +1156,7 @@ public class FirebaseManager {
                         });
             }
         };
-        handler.postDelayed(runnable, 1000);
+        handler.postDelayed(runnable, 1000);*/
 
     }
 

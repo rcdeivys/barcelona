@@ -89,20 +89,25 @@ public class FriendSelectedViewHolder extends RecyclerView.ViewHolder {
             }
         }
 
-        if (item.getNombre() != null) {
-            String[] result = item.getNombre().split(" ", 2);
-            nameFriend.setText(result[0]);
-        }
-
-
-        if (item.getApellido() != null) {
-            String[] result = item.getApellido().split(" ", 2);
-            if (result[0] != null) {
-                lastNameFriend.setText(result[0]);
-                lastNameFriend.setVisibility(View.VISIBLE);
+        /*if (item.getApodo().equals(item.getNombre())) {
+            if (item.getNombre() != null) {
+                String[] result = item.getNombre().split(" ", 2);
+                nameFriend.setText(result[0]);
             }
-        } else
-            lastNameFriend.setVisibility(View.INVISIBLE);
+
+
+            if (item.getApellido() != null) {
+                String[] result = item.getApellido().split(" ", 2);
+                if (result[0] != null) {
+                    lastNameFriend.setText(result[0]);
+                    lastNameFriend.setVisibility(View.VISIBLE);
+                }
+            } else
+                lastNameFriend.setVisibility(View.INVISIBLE);
+        }else{*/
+            nameFriend.setText(item.getApodo().trim());
+            lastNameFriend.setVisibility(View.GONE);
+      /*  }*/
        /* if (item.getApodo() != null && item.getApodo().length() > 0)
             if (item.getId().equals(FirebaseManager.getInstance().getUsuario().getId())) {
                 nameFriend.setText(FirebaseManager.getInstance().getUsuario().getApodo());
