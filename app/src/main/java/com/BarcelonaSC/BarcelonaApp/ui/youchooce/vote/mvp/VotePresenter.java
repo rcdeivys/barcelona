@@ -96,6 +96,7 @@ public class VotePresenter implements VoteContract.Presenter, VoteContract.Model
         }
     }
 
+
     @Override
     public void onError(String error) {
         if (isViewNull()) return;

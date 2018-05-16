@@ -10,11 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.models.RespuestaData;
 import com.BarcelonaSC.BarcelonaApp.utils.SquareImageView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -30,6 +30,7 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
     private static final String TAG = VoteAdapter.class.getSimpleName();
     private Context context;
     private List<RespuestaData> mRespuestasData;
+    private boolean canVote = true;
 
     private OnItemClickListener onItemClickListener;
 
