@@ -1046,19 +1046,10 @@ public class FirebaseManager {
     String seach = "";
 
 
-    Runnable runnable = null;
-
-    Handler handler = new Handler();
-
     public void buscarUsuario(final String busqueda, final FireListener<List<FriendsModelView>> miembros) {
         Log.i("TAG", "--->buscador 1: " + busqueda);
         seach = busqueda;
-        if (runnable != null)
-            handler.removeCallbacks(runnable);
 
-        runnable = new Runnable() {
-            @Override
-            public void run() {
                 App.get().component().wallSearchApi().searchProfile(busqueda, "1").enqueue(new NetworkCallBack<WallSearchResponse>() {
                     @Override
                     public void onRequestSuccess(WallSearchResponse response) {
@@ -1081,10 +1072,6 @@ public class FirebaseManager {
                         miembros.onCancelled();
                     }
                 });
-
-            }
-        };
-        handler.postDelayed(runnable, 1000);
 
       /*  if (runnable != null)
             handler.removeCallbacks(runnable);
