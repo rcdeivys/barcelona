@@ -1,7 +1,8 @@
 package com.BarcelonaSC.BarcelonaApp.ui.wall.comment.di;
 
 import com.BarcelonaSC.BarcelonaApp.app.di.AppComponent;
-import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentEditActivity;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentFragment;
 
 import dagger.Component;
 
@@ -12,5 +13,7 @@ import dagger.Component;
 @WallCommentScope
 @Component(dependencies = {AppComponent.class}, modules = {WallCommentModule.class})
 public interface WallCommentComponent {
-    void inject(WallCommentActivity activity);
+    void inject(WallCommentFragment activity);
+
+    void inject(WallCommentEditActivity activity);
 }

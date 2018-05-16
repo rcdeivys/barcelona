@@ -1,6 +1,5 @@
 package com.BarcelonaSC.BarcelonaApp.ui.chat.messages.di;
 
-import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.MessagesFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.mvp.MessagesModel;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.mvp.MessagesPresenter;
@@ -28,8 +27,8 @@ public class MessagesModule {
 
     @Provides
     @MessagesScope
-    public MessagesModel provideMessagesModel(FirebaseManager firebaseManager) {
-        return new MessagesModel(firebaseManager);
+    public MessagesModel provideMessagesModel() {
+        return new MessagesModel();
     }
 
 

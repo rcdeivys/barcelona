@@ -1,11 +1,16 @@
 package com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.adapter;
 
 import android.content.Context;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.ChatActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.MessageModelView;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.ImageExpandDialog;
 
 import java.util.List;
 
@@ -55,7 +60,15 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     private void configureChatViewHolder(final ChatViewHolder holder, final int position) {
-        holder.setData(messageModelViews.get(position), isgroup);
+        boolean isNewUser;
+        if (position == 0 || !(messageModelViews.get(position).getIdSender()
+                .equals(messageModelViews.get(position - 1).getIdSender())))
+            isNewUser = true;
+        else
+            isNewUser = false;
+        holder.setData(messageModelViews.get(position), isgroup, isNewUser);
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,10 +78,27 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.imagenMsj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onItemClickListener.onClickViewImage(messageModelViews.get(position).getContent());
+                if (messageModelViews.get(position).getTypeMsg() == FirebaseManager.MsgTypes.VIDEO)
+                    onItemClickListener.onClickVideo(messageModelViews.get(position).getContent());
+                else{
+                    ImageExpandDialog imageExpandDialog = new ImageExpandDialog();
+                    imageExpandDialog.setImageToExpand(holder.imagenMsj.getDrawable());
+                    showDialogFragment(imageExpandDialog);/*
+                    onItemClickListener.onClickViewImage(messageModelViews.get(position).getContent());*/
+                }
+
             }
         });
     }
+
+
+    private void showDialogFragment(DialogFragment dialogFragment) {
+        FragmentTransaction ft = ((ChatActivity)mContext).getSupportFragmentManager().beginTransaction();
+        ft.add(dialogFragment, dialogFragment.getTag());
+        ft.commitAllowingStateLoss();
+    }
+
+
 
     @Override
     public int getItemCount() {
@@ -90,5 +120,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         void onClickItem(MessageModelView friend);
 
         void onClickViewImage(String url);
+
+        void onClickVideo(String url);
     }
 }

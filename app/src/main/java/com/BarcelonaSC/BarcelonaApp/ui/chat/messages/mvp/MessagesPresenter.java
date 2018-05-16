@@ -2,10 +2,10 @@ package com.BarcelonaSC.BarcelonaApp.ui.chat.messages.mvp;
 
 import android.util.Log;
 
-import com.crashlytics.android.Crashlytics;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.models.firebase.Conversacion;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.MessageModelView;
+import com.crashlytics.android.Crashlytics;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,12 +41,36 @@ public class MessagesPresenter implements MessagesContract.Presenter, MessagesCo
 
     @Override
     public void onGetMessagesSuccess(List<MessageModelView> messagesData) {
-        if (messagesList != null) messagesList.clear();
+        if (messagesList == null)
+            messagesList = new ArrayList<>();
+        int contador = 0;
+        if (messagesList.size() == messagesData.size() && messagesList.size() > 0) {
+            for (MessageModelView newData : messagesData) {
+                boolean suiche = false;
+                for (MessageModelView oldData : messagesList) {
+
+                    if (oldData.getId().equals(newData.getId())
+                            && oldData.getContent().equals(newData.getContent())
+                            && oldData.getTime().equals(newData.getTime())) {
+                        contador++;
+                        suiche = true;
+                        break;
+                    } else
+                        suiche = false;
+                }
+                if (!suiche)
+                    break;
+            }
+            if (contador == messagesList.size())
+                return;
+        }
+        messagesList.clear();
         if (view == null) return;
         for (MessageModelView message : messagesData) {
             Crashlytics.log(Log.DEBUG, "LISTA_MENSAJES", " ---> " + message.getApodo());
             messagesList.add(message);
         }
+
         Collections.sort(messagesList, new TimeComparator());
 
         view.updateMessages(messagesList);
@@ -87,6 +111,7 @@ public class MessagesPresenter implements MessagesContract.Presenter, MessagesCo
 
     @Override
     public void loadMessages() {
+        Log.i("tag", "/*/*/*--->1");
         messagesModel.loadRecieveMessages(1, this);
     }
 
@@ -98,6 +123,6 @@ public class MessagesPresenter implements MessagesContract.Presenter, MessagesCo
     public void removeConversation(Conversacion conversacion) {
         FirebaseManager.getInstance().borrarConversacion(
                 FirebaseManager.getInstance().getUsuario().getId(),
-                conversacion.getId());
+                conversacion.getId(), false);
     }
 }

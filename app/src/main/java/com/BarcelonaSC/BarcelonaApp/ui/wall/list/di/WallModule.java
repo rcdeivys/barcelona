@@ -1,7 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.wall.list.di;
 
 import com.BarcelonaSC.BarcelonaApp.app.api.WallApi;
-import com.BarcelonaSC.BarcelonaApp.ui.wall.list.WallFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.wall.list.WallFragmentList;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.list.mvp.WallModel;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.list.mvp.WallPresenter;
 
@@ -15,15 +15,15 @@ import dagger.Provides;
 @Module
 public class WallModule {
 
-    private WallFragment fragment;
+    private WallFragmentList fragment;
 
-    public WallModule(WallFragment fragment) {
+    public WallModule(WallFragmentList fragment) {
         this.fragment = fragment;
     }
 
     @Provides
     @WallScope
-    public WallFragment provideFragment() {
+    public WallFragmentList provideFragment() {
         return fragment;
     }
 

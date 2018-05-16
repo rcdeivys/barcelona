@@ -13,16 +13,21 @@ import android.widget.Toast;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.PlayerData;
+import com.BarcelonaSC.BarcelonaApp.ui.news.views.holders.NewsViewHolder;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements CustomVideoView.CustomVideoViewOnListener {
 
 
     private static final String TAG = PlayerProfileAdapter.class.getSimpleName();
@@ -76,7 +81,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         if (viewType == TYPE_HEADER) {
             return new VHHeader(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_player_header, parent, false));
         } else {
-            return new VHItem(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false));
+            return NewsViewHolder.getInstance(parent);
         }
     }
 
@@ -85,43 +90,56 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         if (holder instanceof VHHeader) {
             ((VHHeader) holder).initHeader(playerData);
         } else {
-            VHItem vhItem = (VHItem) holder;
-            initItem(vhItem, position);
+            configurNewsViewHolder((NewsViewHolder) holder, position);
         }
     }
 
-    private void initItem(VHItem vhItem, final int position) {
-        News recentItem = getItem(position);
-        Glide.with(context)
-                .load(recentItem.getFoto())
-                .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
-                .into(vhItem.ivNews);
-    /*    // Set play image
-        if (recentItem.getTipo().matches(Constant.NewsType.VIDEO)) {
-            vhItem.ivPlay.setImageResource(R.drawable.ic_play_circle_60dp);
+    private void configurNewsViewHolder(final NewsViewHolder holder, final int position) {
+        holder.setNews(getNewsList(position));
+        holder.ivShare.setVisibility(View.VISIBLE);
+        if (getNewsList(position).getTipo().equals(Constant.NewsType.VIDEO)) {
+           /* if (getNewsList(position).isDorado() && !SessionManager.getInstance().getUser().isDorado()) {
+                holder.ivShare.setVisibility(View.GONE);
+            } else {
+                holder.ivShare.setVisibility(View.VISIBLE);
+            }*/
+            holder.videoView.setCustomVideoViewOnListener(this);
+            holder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
+                                                                @Override
+                                                                public void play() {
+                                                                    onItemClickListener.playVideo(position);
+                                                                }
+                                                            }
+            );
+            holder.setNewsVideo(getNewsList(position), new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                 /*   if (!SessionManager.getInstance().getUser().isDorado() && getNewsList(position).isDorado()) {
+                        holder.videoView.customVideoViewOnListener.videoIsDorado();
+                    } else {
+                        holder.videoView.pause();
+                        onItemClickListener.onClickVideoItem(getNewsList(position), holder.getVideoCurrentPosition());
+                    }*/
+                }
+            });
         } else {
-            vhItem.ivPlay.setImageDrawable(null);
+            holder.ivShare.setVisibility(View.GONE);
+            holder.onClickContentNewsItem(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onItemClickListener.onClickItem(getNewsList(position));
+                }
+            });
         }
-*/
-
-        vhItem.tvData.setText(Commons.getStringDate2(recentItem.getFecha()));
-        //     vhItem.tvData.setTypeface(FontsUtil.getOpenSansReularFonts(context));
-        vhItem.tvTitle.setText(recentItem.getTitulo());
-        //  vhItem.tvTitle.setTypeface(FontsUtil.getHelveticaCondesed2Fonts(context));
-
-        vhItem.llNewsItem.setOnClickListener(new View.OnClickListener() {
+        holder.ivShare.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (haveHeader)
-                    onItemClickListener.onClickItem(position - 1);
-                else
-                    onItemClickListener.onClickItem(position);
+            public void onClick(View v) {
+                ShareSection.shareIndividual(Constant.Key.SHARE_NEWS, String.valueOf(getNewsList(position).getId()));
             }
         });
-
     }
 
-    private News getItem(int position) {
+    private News getNewsList(int position) {
         if (haveHeader)
             return playerData.getNewsList().get(position - 1);
         else
@@ -136,32 +154,32 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
             return playerData.getNewsList().size();
     }
 
-    public interface OnItemClickListener {
-
-        void onClickItem(int position);
-
-        void onClickHeader();
+    @Override
+    public void onPrepared() {
 
     }
 
-    class VHItem extends RecyclerView.ViewHolder {
+    public void pauseVideo(List<Integer> position) {
+        for (Integer positions : position)
+            notifyItemChanged(positions);
+    }
 
-        @BindView(R.id.content_news_item)
-        LinearLayout llNewsItem;
-        @BindView(R.id.iv_news)
-        ImageView ivNews;
-        /*    @BindView(R.id.iv_play)
-            ImageView ivPlay;*/
-        @BindView(R.id.tv_date)
-        TextView tvData;
-        @BindView(R.id.tv_title)
-        TextView tvTitle;
+    @Override
+    public void videoIsDorado() {
+        onItemClickListener.onVideoIsDorado();
+    }
 
+    public interface OnItemClickListener {
+        void onClickItem(News news);
 
-        VHItem(View view) {
-            super(view);
-            ButterKnife.bind(this, view);
-        }
+        void onClickHeader();
+
+        void onClickVideoItem(News news, int currentPosition);
+
+        void onVideoIsDorado();
+
+        void playVideo(int position);
+
     }
 
     class VHHeader extends RecyclerView.ViewHolder {
@@ -215,22 +233,27 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
                     .into(playerImg);
 
             if (!type.equals(Constant.Key.GAME_FB)) {
-                if (playerData.getGoles1() != null)
+                if (!"Pendiente".equals(playerData.getEstado()))
                     ctvResultGame.setText(playerData.getGoles1() + "-" + playerData.getGoles2());
+                else
+                    ctvResultGame.setText("VS");
 
-                ctvWeight.setText(playerData.getnCamiseta());
-
+                ctvWeight.setText(playerData.getPeso());
+                ctvWeight.setText(playerData.getPeso());
                 ctvPlayerNationality.setText(playerData.getNacionalidad());
 
                 ctvPlayerHeight.setText(playerData.getEstatura());
 
-                ctvPlayerBirthdate.setText(Commons.getStringDate2(playerData.getFechaNacimiento()));
+                ctvPlayerBirthdate.setText(Commons.getStringDate(playerData.getFechaNacimiento()));
 
                 ctvTeamOneName.setText(playerData.getEquipo1());
 
                 ctvTeamTwoName.setText(playerData.getEquipo2());
 
-                ctvGameData.setText(Commons.getStringDate2(playerData.getFecha()));
+                if (playerData.getFecha() != null) {
+                    String d = Commons.getStringDate2(playerData.getFecha()).replace(".", "");
+                    ctvGameData.setText(d.toUpperCase());
+                }
 
                 ctvGameFechaFifa.setText(playerData.getFechaEtapa());
                 ctvGameLeague.setText("");
@@ -249,6 +272,7 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
                     tvTotalApplause.setText(String.valueOf(playerData.getAplausosAcumulado()));
 
                 setImgAplauso(playerData.getUltimoAplauso());
+
                 btnApplaused.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -273,5 +297,4 @@ public class PlayerProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
             }
         }
     }
-
 }

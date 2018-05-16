@@ -1,13 +1,16 @@
 package com.BarcelonaSC.BarcelonaApp.models;
 
+import com.BarcelonaSC.BarcelonaApp.models.UserItem;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 
 /**
  * Created by Leonardojpr on 1/23/18.
  */
 
-public class WallCommentItem {
+public class WallCommentItem implements Serializable{
 
     @SerializedName("idcomentario")
     @Expose

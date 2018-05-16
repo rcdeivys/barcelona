@@ -1,0 +1,247 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="40dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/escudo_mask" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminateDrawable="@drawable/progress"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/all_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/iv_go_creation"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/ly_group_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp">
+
+                <TextView
+                    android:id="@+id/et_group_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/group_add"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_group_photo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:paddingEnd="20dp"
+                android:paddingStart="20dp"
+                android:visibility="gone"
+                android:weightSum="1"
+                app:layout_constraintTop_toBottomOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_medium"
+                    android:layout_weight="0.7"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_group_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/group_name"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/sizeTextTab" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:id="@+id/tv_photo_group_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/edit"
+                            android:text="@string/photo_group"
+                            android:textColor="@color/gray"
+                            android:textColorHint="@color/gray"
+                            android:textSize="@dimen/sizeTextTab" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_group_photo"
+                    android:layout_width="@dimen/icon_medium"
+                    android:layout_height="@dimen/icon_medium"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.3"
+                    android:src="@drawable/cam2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ly_friends_finder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/border_seach_dialog_background">
+
+                    <ImageView
+                        android:id="@+id/iv_msg_search"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:padding="5dp"
+                        android:src="@drawable/search_icn" />
+
+                    <EditText
+                        android:id="@+id/et_msg_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="5dp"
+                        android:layout_toEndOf="@id/iv_msg_search"
+                        android:layout_toStartOf="@+id/iv_more_conv"
+                        android:background="@color/transparent"
+                        android:hint="Buscar..."
+                        android:imeOptions="actionSearch"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:textColor="@color/black" />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/friend_selected_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginStart="25dp"
+                android:background="@color/gray_300" />
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/friend_selection_swipe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/friend_selection_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_below="@+id/tv_find_friend"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/tv_find_friend"
+                        android:layout_width="wrap_content"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:layout_margin="10dp"
+                        android:text="@string/find_new_friends"
+                        android:layout_height="wrap_content" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_logo_friend"
+                        android:layout_width="100dp"
+                        android:src="@drawable/logo_bsc"
+                        android:alpha="0.5"
+                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/tv_find_friend"
+                        android:layout_centerHorizontal="true"
+                        android:layout_height="100dp" />
+                </RelativeLayout>
+
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/iv_go_creation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/background_button_corners_blue"
+            android:text="@string/anadir" />
+
+
+        <ImageView
+            android:id="@+id/iv_closet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_alignParentEnd="true"
+            android:scaleType="centerCrop"
+            android:tint="@color/black"
+            android:src="@drawable/x_2" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+

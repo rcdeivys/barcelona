@@ -34,14 +34,17 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
 
     private OnItemClickListener onItemClickListener;
 
+    private boolean canVote = true;
+
     public VoteAdapter(VoteFragment voteFragment) {
         this.context = voteFragment.getContext();
 
         onItemClickListener = voteFragment;
     }
 
-    public void setData(List<RespuestaData> mRespuestasData) {
+    public void setData(List<RespuestaData> mRespuestasData,boolean canVote) {
         this.mRespuestasData = mRespuestasData;
+        this.canVote = canVote;
     }
 
     @Override
@@ -97,15 +100,16 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
         holder.ibVote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (canVote) {
-                    if (item.getYaVoto() != null && !"1".equals(item.getYaVoto())) {
-                        onItemClickListener.onClickPlayerVote(position, 1);
-                    } else {
-                        onItemClickListener.onClickPlayerVote(position, 0);
+                if(canVote) {
+                    if(item.getYaVoto() != null && !"1".equals(item.getYaVoto())){
+                        onItemClickListener.onClickPlayerVote(position,1);
+                    }else{
+                        onItemClickListener.onClickPlayerVote(position,0);
                     }
-                } else if (!canVote && (item.getYaVoto() != null && "1".equals(item.getYaVoto()))) {
+                }
+                else if(!canVote && (item.getYaVoto() != null && "1".equals(item.getYaVoto()))) {
                     onItemClickListener.onClickPlayerVote(position, 0);
-                } else {
+                }else{
                     Toast.makeText(context, "Solo puedes votar una vez", Toast.LENGTH_SHORT).show();
                 }
             }

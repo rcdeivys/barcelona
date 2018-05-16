@@ -41,15 +41,16 @@ public class VoteModel {
 
     }
 
-    public void setPlayersVotes(final SendChooseVote sendChooseVote, final VoteContract.ModelResultListener listener, final int msj) {
+    public void setPlayersVotes(final SendChooseVote sendChooseVote, final VoteContract.ModelResultListener listener,final int msj) {
+
         sendChooseVote.setToken(SessionManager.getInstance().getSession().getToken());
         Log.i(TAG, "/--->" + sendChooseVote.toString());
         youChooseApi.sendVote(sendChooseVote).enqueue(new NetworkCallBack<SendChooseVoteResponse>() {
             @Override
             public void onRequestSuccess(SendChooseVoteResponse response) {
                 if (response.getData() != null)
-                    listener.onSetVotesSuccess(sendChooseVote.getIdRespuesta(), msj);
-                else {
+                    listener.onsetVotesSuccess(sendChooseVote.getIdRespuesta(),msj);
+ else {
                     listener.onError("");
                 }
             }

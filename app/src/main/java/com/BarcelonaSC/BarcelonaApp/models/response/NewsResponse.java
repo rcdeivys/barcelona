@@ -1,6 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.models.response;
 
 
+import com.BarcelonaSC.BarcelonaApp.models.Match;
 import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -17,6 +18,9 @@ public class NewsResponse {
     @SerializedName("status")
     @Expose
     private String status;
+    @SerializedName("partido")
+    @Expose
+    public Match match;
     @SerializedName("data")
     @Expose
     private List<News> data = null;
@@ -37,4 +41,11 @@ public class NewsResponse {
         this.data = data;
     }
 
+    public Match getMatch() {
+        return match;
+    }
+
+    public void setMatch(Match match) {
+        this.match = match;
+    }
 }

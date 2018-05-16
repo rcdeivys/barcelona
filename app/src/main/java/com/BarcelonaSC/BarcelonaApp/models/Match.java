@@ -224,4 +224,24 @@ public class Match implements Parcelable {
     }
 
 
+    @Override
+    public String toString() {
+        return "Match{" +
+                "idpartido=" + idpartido +
+                ", estado='" + estado + '\'' +
+                ", equipo1='" + equipo1 + '\'' +
+                ", bandera1='" + bandera1 + '\'' +
+                ", goles1=" + goles1 +
+                ", equipo2='" + equipo2 + '\'' +
+                ", bandera2='" + bandera2 + '\'' +
+                ", goles2=" + goles2 +
+                ", fecha='" + fecha + '\'' +
+                ", fechaEtapa='" + fechaEtapa + '\'' +
+                ", estadio='" + estadio + '\'' +
+                ", info='" + info + '\'' +
+                ", newDate=" + newDate +
+                ", newDateHeader=" + newDateHeader +
+                ", newDateHeaderTitle='" + newDateHeaderTitle + '\'' +
+                '}';
+    }
 }

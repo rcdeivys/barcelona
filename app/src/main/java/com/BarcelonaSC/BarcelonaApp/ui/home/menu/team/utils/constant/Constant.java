@@ -1,13 +1,10 @@
 package com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.utils.constant;
 
-/**
- * Created by Leonardojpr on 9/21/17.
- */
-
 public interface Constant {
 
     interface Key {
-
+        String TYPE = "type";
+        String SECCION_SELECTED = "seccion_Selected";
     }
 
     interface Preferences {

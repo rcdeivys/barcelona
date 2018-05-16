@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.NotificationManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.User;
@@ -168,7 +169,7 @@ public class HinchaFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), CarnetDigitalActivity.class);
                     getActivity().startActivity(intent);
                 } else {
-                    Toast.makeText(getActivity(), "Completa todos los campos de registro en Info. Cuenta", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Completa todos los campos de registro para ver el carné en la pestaña \"Info Cuenta\"", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -188,6 +189,7 @@ public class HinchaFragment extends Fragment {
                 sessionManager.setSession(null);
                 sessionManager.setUrlLineUpShare("");
                 sessionManager.setUser(null);
+                FirebaseManager.getInstance().clearFirebaseManager();
                 PreferenceManager.getInstance().setBoolean(Constant.Key.MONUMETAL_ID, false);
                 NotificationManager.getInstance().setConfiguration(null);
                 LoginManager.getInstance().logOut();

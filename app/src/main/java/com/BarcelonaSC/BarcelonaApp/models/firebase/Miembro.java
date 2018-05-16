@@ -3,7 +3,8 @@ package com.BarcelonaSC.BarcelonaApp.models.firebase;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.BarcelonaSC.BarcelonaApp.ui.chat.friends.FriendsModelView;
+import com.BarcelonaSC.BarcelonaApp.ui.chat.chatmodels.FriendsModelView;
+
 
 /**
  * Created by Carlos on 25/01/2018.
@@ -19,6 +20,19 @@ public class Miembro implements Parcelable {
     String chat_status;
     String created_at;
     String fotos_redes;
+    String nombre_uppercase;
+
+
+    public void copy(Miembro miembro) {
+        nombre = miembro.getNombre();
+        apellido = miembro.getApellido();
+        apodo = miembro.getApodo();
+        foto = miembro.getFoto();
+        chat_status = miembro.getChat_status();
+        created_at = miembro.getCreated_at();
+        fotos_redes = miembro.getFotos_redes();
+        nombre_uppercase = miembro.getNombre_uppercase();
+    }
 
 
     public Miembro(String nombre, String apellido, String apodo, String foto, String chat_status, String created_at) {
@@ -29,6 +43,23 @@ public class Miembro implements Parcelable {
         this.foto = foto;
         this.chat_status = chat_status;
         this.created_at = created_at;
+    }
+
+    public FriendsModelView.STATUS getStatusChatAsSTATUS() {
+        if (chat_status != null) {
+            switch (chat_status) {
+                case "1":
+                    return FriendsModelView.STATUS.ONLINE;
+                case "-1":
+                    return FriendsModelView.STATUS.OFFLINE;
+                case "0":
+                    return FriendsModelView.STATUS.BUSY;
+                default:
+                    return FriendsModelView.STATUS.OFFLINE;
+            }
+        } else {
+            return FriendsModelView.STATUS.OFFLINE;
+        }
     }
 
     public static final Creator<Miembro> CREATOR = new Creator<Miembro>() {
@@ -43,6 +74,7 @@ public class Miembro implements Parcelable {
             miembro.chat_status = ((String) in.readValue((String.class.getClassLoader())));
             miembro.created_at = ((String) in.readValue((String.class.getClassLoader())));
             miembro.fotos_redes = ((String) in.readValue((String.class.getClassLoader())));
+            miembro.nombre_uppercase = ((String) in.readValue((String.class.getClassLoader())));
             return miembro;
         }
 
@@ -68,7 +100,35 @@ public class Miembro implements Parcelable {
     }
 
 
+    public String getNombre_uppercase() {
+        if (nombre_uppercase == null)
+            return nombre + apellido;
+        return nombre_uppercase;
+    }
+
+    public void setNombre_uppercase(String nombre_uppercase) {
+        this.nombre_uppercase = nombre_uppercase;
+    }
+
+    public String getChat_status() {
+        return chat_status;
+    }
+
+    public void setChat_status(String chat_status) {
+        this.chat_status = chat_status;
+    }
+
+    public String getFotos_redes() {
+        return fotos_redes;
+    }
+
+    public void setFotos_redes(String fotos_redes) {
+        this.fotos_redes = fotos_redes;
+    }
+
     public String getNombre() {
+        if (nombre == null)
+            nombre = "";
         return nombre;
     }
 
@@ -77,15 +137,18 @@ public class Miembro implements Parcelable {
     }
 
     public String getApellido() {
+        if (apellido == null)
+            apellido = "";
         return apellido;
     }
 
     public void setApellido(String apellido) {
+
         this.apellido = apellido;
     }
 
     public String getApodo() {
-        if (apodo == null)
+        if (apodo == null || apodo.isEmpty())
             apodo = nombre;
         return apodo;
     }
@@ -117,6 +180,7 @@ public class Miembro implements Parcelable {
     }
 
     public void setStatusChat(String statusChat) {
+
         this.chat_status = statusChat;
     }
 
@@ -133,18 +197,6 @@ public class Miembro implements Parcelable {
         return 0;
     }
 
-    public FriendsModelView.STATUS getStatusChatAsSTATUS() {
-        switch (chat_status) {
-            case "1":
-                return FriendsModelView.STATUS.ONLINE;
-            case "-1":
-                return FriendsModelView.STATUS.OFFLINE;
-            case "0":
-                return FriendsModelView.STATUS.BUSY;
-            default:
-                return FriendsModelView.STATUS.OFFLINE;
-        }
-    }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -156,5 +208,6 @@ public class Miembro implements Parcelable {
         dest.writeValue(chat_status);
         dest.writeValue(created_at);
         dest.writeValue(fotos_redes);
+        dest.writeValue(nombre_uppercase);
     }
 }

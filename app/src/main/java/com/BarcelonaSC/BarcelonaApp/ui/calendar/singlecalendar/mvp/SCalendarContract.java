@@ -1,6 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.mvp;
 
 import com.BarcelonaSC.BarcelonaApp.commons.mvp.MVPContract;
+import com.BarcelonaSC.BarcelonaApp.models.News;
 import com.BarcelonaSC.BarcelonaApp.models.SCalendarData;
 
 /**
@@ -21,6 +22,8 @@ public class SCalendarContract {
         void clickItem(int position);
 
         boolean isViewNull();
+
+        void onclickNewsItem(News news);
     }
 
     public interface View {
@@ -34,6 +37,12 @@ public class SCalendarContract {
         void showToast(String message);
 
         void setNoticias(SCalendarData noticias);
+
+        void navigateToInfografiaActivity(News news);
+
+        void navigateToNewsDetailsActivity(News news);
+
+        void navigateToGalleryActivity(News news);
 
     }
 

@@ -1,6 +1,8 @@
 package com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.mvp;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.api.TeamApi;
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.models.PlayerApplause;
 import com.BarcelonaSC.BarcelonaApp.models.response.ApplauseResponse;
@@ -24,7 +26,7 @@ public class PlayerProfileModel {
 
     public void getPlayerData(String playerId, final PlayerProfileContract.ModelResultListener listener) {
 
-        teamApi.getPlayerData(playerId).enqueue(new NetworkCallBack<PlayerResponse>() {
+        teamApi.getPlayerData(playerId, new SessionManager(App.getAppContext()).getSession().getToken()).enqueue(new NetworkCallBack<PlayerResponse>() {
             @Override
             public void onRequestSuccess(PlayerResponse response) {
                 if (response.getData() != null) {
@@ -36,7 +38,8 @@ public class PlayerProfileModel {
 
             @Override
             public void onRequestFail(String errorMessage, int errorCode) {
-                listener.onError(errorMessage);
+                if(listener!=null)
+                    listener.onError(errorMessage);
             }
         });
     }
@@ -60,12 +63,16 @@ public class PlayerProfileModel {
     }
 
     public void setPlayerApplause(final PlayerApplause playerApplause, final PlayerProfileContract.ModelResultListener listener) {
+        playerApplause.setToken(new SessionManager(App.getAppContext()).getSession().getToken());
         teamApi.setApplause(playerApplause).enqueue(new NetworkCallBack<SetApplauseResponse>() {
             @Override
             public void onRequestSuccess(SetApplauseResponse response) {
                 List<String> error = response.getError();
                 if ("exito".equals(response.getStatus())) {
                     listener.onSetPlayerApplauseSuccess(playerApplause.getIdjugador(), response.getAplauso());
+
+                } else if ("no_dorado".equals(response.getStatus())) {
+                    listener.noDoradoErrorListener();
                 } else if (error != null) {
                     listener.onError(error.get(0));
                 }

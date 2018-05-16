@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/backgroun_button_corners_yellow"
+    android:background="@drawable/rounder_button_primary"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -9,12 +9,12 @@
         style="@style/StyleRobotoBold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:gravity="center_horizontal"
         android:padding="8dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="16sp"
+        android:gravity="center_horizontal"
         android:text="@string/label_dialog_share_vote"
         android:textColor="@color/black"
-        android:textSize="16sp"
         android:textStyle="bold" />
 
     <!--CONTENT_ACTION-->
@@ -34,9 +34,9 @@
                 android:layout_width="130dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/rounder_button_primary"
+                android:textColor="@color/black"
+                android:background="@drawable/rounder_button"
                 android:text="@string/not"
-                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
 
         </FrameLayout>
@@ -51,14 +51,11 @@
                 android:layout_width="130dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/rounder_button"
+                android:textColor="@color/black"
+                android:background="@drawable/rounder_button_blue"
                 android:text="@string/yes"
-                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />
 
         </FrameLayout>
-
-
     </LinearLayout>
-
 </LinearLayout>

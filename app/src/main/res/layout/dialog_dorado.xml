@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark">
+
+    <ImageView
+        android:id="@+id/iv_popup_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:id="@+id/iv_closet"
+        android:layout_width="30dp"
+        android:src="@drawable/x"
+        android:scaleType="fitXY"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:layout_height="30dp" />
+
+    <Button
+        android:id="@+id/btn_suscribirme"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/black"
+        android:text="SUSCRIBIRME"
+        android:textStyle="bold" />
+
+</RelativeLayout>

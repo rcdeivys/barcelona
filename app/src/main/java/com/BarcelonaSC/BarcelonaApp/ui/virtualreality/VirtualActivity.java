@@ -4,6 +4,7 @@ import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,6 +23,7 @@ import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 import com.google.vr.sdk.widgets.video.VrVideoEventListener;
 import com.google.vr.sdk.widgets.video.VrVideoView;
 
@@ -30,6 +32,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Leonardojpr on 07-08-2017.
@@ -49,16 +52,25 @@ public class VirtualActivity extends BaseActivity {
 
     private boolean isPaused = false;
 
+
     @BindView(R.id.ib_return)
     ImageButton ibReturn;
+
     @BindView(R.id.ib_sub_header_share)
     ImageButton ibShare;
+
+
     @BindView(R.id.content_footer)
     RelativeLayout contentFooter;
+
+
     @BindView(R.id.tv_sub_header_title)
     FCMillonariosTextView subHeaderTitle;
 
+
     private VideoReality virtualRealityItem;
+
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,21 +90,17 @@ public class VirtualActivity extends BaseActivity {
                 onBackPressed();
             }
         });
-
-        ibShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-        if (getIntent().getSerializableExtra(Constant.Key.VIRTUAL_REALITY_SECTION) != null) {
-            virtualRealityItem = (VideoReality) getIntent().getSerializableExtra(Constant.Key.VIRTUAL_REALITY_SECTION);
-
-
-        }
-
-
         Uri uri = Uri.parse((getIntent().getStringExtra("url")));
+        try{
+            if (getIntent().getSerializableExtra(Constant.Key.VIRTUAL_REALITY_SECTION) != null) {
+                virtualRealityItem = (VideoReality) getIntent().getSerializableExtra(Constant.Key.VIRTUAL_REALITY_SECTION);
+                //Log.i("ITEMVR"," ---> "+virtualRealityItem.getId());
+            }
+            id = getIntent().getStringExtra(Constant.Key.ID);
+            //Log.i("URL"," ---> "+uri.toString());
+        }catch (Exception e){
+            //Log.i("URL"," ---> ERROR");
+        }
         seekBar = (SeekBar) findViewById(R.id.seek_bar);
         statusText = (TextView) findViewById(R.id.status_text);
         videoWidgetView = (VrVideoView) findViewById(R.id.video_view);
@@ -194,9 +202,15 @@ public class VirtualActivity extends BaseActivity {
         super.initBanner(BannerView.Seccion.VIRTUAL_REALITY);
     }
 
+    @OnClick(R.id.ib_sub_header_share)
+    void onClickShareButton(){
+        ShareSection.shareIndividual(Constant.Key.SHARE_VR, virtualRealityItem.getId());
+    }
+
+
     public void initSubToolBar(String name) {
         subHeaderTitle.setText(name);
-        ibShare.setVisibility(View.INVISIBLE);
+        ibShare.setVisibility(View.VISIBLE);
     }
 
 

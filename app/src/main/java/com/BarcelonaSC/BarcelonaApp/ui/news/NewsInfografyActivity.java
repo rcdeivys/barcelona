@@ -11,10 +11,13 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class NewsInfografyActivity extends BaseActivity {
 
@@ -27,6 +30,7 @@ public class NewsInfografyActivity extends BaseActivity {
 
     @BindView(R.id.text_header)
     FCMillonariosTextView textHeader;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +43,7 @@ public class NewsInfografyActivity extends BaseActivity {
         if (extras.getBoolean("view")) {
             textHeader.setVisibility(View.GONE);
         }
-
+        id = extras.getString(Constant.Key.ID);
         textHeader.setText(ConfigurationManager.getInstance().getConfiguration().getTit2());
         WebSettings settings = webView.getSettings();
 
@@ -59,6 +63,11 @@ public class NewsInfografyActivity extends BaseActivity {
         });
 
         super.initBanner(BannerView.Seccion.NEWS);
+    }
+
+    @OnClick(R.id.ib_sub_header_share)
+    void onShareNews() {
+        ShareSection.shareIndividual(Constant.Key.SHARE_NEWS, id);
     }
 
     @Override

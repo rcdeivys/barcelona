@@ -1,5 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.commons;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -99,6 +101,10 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
             @Override
             public void onClick(View view) {
                 dl_menu.openDrawer(Gravity.START);
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                }
             }
         });
 
@@ -143,12 +149,12 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
         ivSideMenuList.add(new DrawerItem(Constant.Menu.TABLE, R.drawable.tabla_icon, configurationManager.getConfiguration().getTit4()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.YOUR_CHOOSE, R.drawable.tu_escoges_icon, configurationManager.getConfiguration().getTit10()));
         ivSideMenuList.add(new DrawerItem(Constant.Menu.TEAM, R.drawable.plantilla_icon, configurationManager.getConfiguration().getTit6()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.VIRTUAL_REALITY, R.drawable.realidad_virtual_icon, configurationManager.getConfiguration().getTit8()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.IN_LIVE, R.drawable.bsc_en_vivo_icon, configurationManager.getConfiguration().getTit9()));
-        ivSideMenuList.add(new DrawerItem(Constant.Menu.MONUMENTAL, R.drawable.monumentales_icon, configurationManager.getConfiguration().getTit12()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.VIRTUAL_REALITY, R.drawable.realidad_virtual_icon, configurationManager.getConfiguration().getTit8()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.IN_LIVE, R.drawable.bsc_en_vivo_icon, configurationManager.getConfiguration().getTit_17()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.MONUMENTAL, R.drawable.glorias_bsc_icon, configurationManager.getConfiguration().getTit12()));
         //ivSideMenuList.add(new DrawerItem(Constant.Menu.GAME, R.drawable.juegos_icon, configurationManager.getConfiguration().getTit11()));
         //ivSideMenuList.add(new DrawerItem(Constant.Menu.ONLINE_SHOP, R.drawable.tienda_icon, configurationManager.getConfiguration().getTit13()));
-        //ivSideMenuList.add(new DrawerItem(Constant.Menu.MAP, R.drawable.mapa_icon, configurationManager.getConfiguration().getTit14()));
+        ivSideMenuList.add(new DrawerItem(Constant.Menu.MAP, R.drawable.mapa_icon, configurationManager.getConfiguration().getTit_18()));
         //ivSideMenuList.add(new DrawerItem(Constant.Menu.STATISTICS, R.drawable.estadisticas_icon, configurationManager.getConfiguration().getTit5()));
 
         return ivSideMenuList;

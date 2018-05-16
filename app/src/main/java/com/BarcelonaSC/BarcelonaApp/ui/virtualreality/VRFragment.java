@@ -1,6 +1,5 @@
 package com.BarcelonaSC.BarcelonaApp.ui.virtualreality;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -20,7 +19,6 @@ import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.di.VRModule;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.mvp.VRContract;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.mvp.VRPresenter;
-import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.di.DaggerVRComponent;
 
 import java.util.ArrayList;
@@ -41,12 +39,16 @@ public class VRFragment extends BaseFragment implements VRContract.View, VRAdapt
 
     @BindView(R.id.rv_virtual_reality)
     RecyclerView rvVirtualReality;
+
     @BindView(R.id.swipe_container)
     SwipeRefreshLayout swipeContainer;
+
     @BindView(R.id.progressbar)
     ProgressBar progressbar;
+
     @BindView(R.id.btn_top)
     ImageButton btnTop;
+
     Unbinder unbinder;
 
     private LinearLayoutManager linearLayoutManager;
@@ -56,9 +58,7 @@ public class VRFragment extends BaseFragment implements VRContract.View, VRAdapt
     VRPresenter presenter;
 
     public static VRFragment newInstance() {
-
         return new VRFragment();
-
     }
 
     @Override
@@ -101,7 +101,6 @@ public class VRFragment extends BaseFragment implements VRContract.View, VRAdapt
         return view;
     }
 
-
     public void initComponent() {
         DaggerVRComponent.builder()
                 .appComponent(App.get().component())
@@ -115,7 +114,6 @@ public class VRFragment extends BaseFragment implements VRContract.View, VRAdapt
         presenter.onDetach();
         unbinder.unbind();
     }
-
 
     private void initRvAndAdapter() {
         if (vrAdapter == null) {
@@ -163,11 +161,7 @@ public class VRFragment extends BaseFragment implements VRContract.View, VRAdapt
 
     @Override
     public void navigateVirtualActivity(VideoReality videoReality) {
-        Intent intent = new Intent(getActivity(), VirtualActivity.class);
-        intent.putExtra(Constant.Key.VIRTUAL_REALITY_SECTION, videoReality);
-        String url = videoReality.getUrl().replace("\\", "");
-        intent.putExtra("url", url);
-        navigator.navigateToActivity(intent);
+        navigator.navigateVirtualActivity(videoReality);
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.wall.comment.WallCommentCreate;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -28,4 +29,15 @@ public interface WallCommentApi {
 
     @POST("muro_comentario_aplaudir")
     Call<GenericResponse> clapComment(@Body() WallCommentClap comment);
+
+    @DELETE("muro_comentar/{idpost}/{idcomment}/{token}")
+    Call<GenericResponse> deleteComment(@Path("idpost") String idpost,
+                                        @Path("idcomment") String idcomment,
+                                        @Path("token") String token);
+
+    @POST("muro_edit_coment/{idpost}/{idcomment}/{token}")
+    Call<GenericResponse> editComment(@Path("idpost") String idpost,
+                                      @Path("idcomment") String idcomment,
+                                      @Path("token") String token,
+                                      @Body() WallCommentCreate comment);
 }

@@ -27,11 +27,15 @@ public class TeamFragment extends BaseFragment {
 
 
     public static final String TAG = TeamFragment.class.getSimpleName();
+
     @BindView(R.id.pager)
     CustomViewPager pager;
+
     @BindView(R.id.tabs)
     CustomTabLayout tabs;
+
     Unbinder unbinder;
+
     int tabCount;
 
     private TeamViewPagerAdapter viewPagerAdapter;

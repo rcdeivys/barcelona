@@ -3,6 +3,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.recovery.send.mail;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.mail.di.DaggerSendEmailComp
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.mail.di.SendEmailModule;
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.mail.mvp.SendEmailContract;
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.mail.mvp.SendEmailPresenter;
+import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 
 import javax.inject.Inject;
 
@@ -72,8 +74,28 @@ public class SendEmailFragment extends Fragment implements SendEmailContract.Vie
 
     @Override
     public void success(SendEmailResponse data) {
-        ((RecoveryPasswordActivity) getActivity()).pager.setCurrentItem(1, true);
-        ((RecoveryPasswordActivity) getActivity()).sendEmail.setEmail(inputEmail.getText().toString().trim());
+//        ((RecoveryPasswordActivity) getActivity()).pager.setCurrentItem(1, true);
+//        ((RecoveryPasswordActivity) getActivity()).sendEmail.setEmail(inputEmail.getText().toString().trim());
+        showDialog(data.getData());
+    }
+
+    public void showDialog(String message) {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialoglayout = inflater.inflate(R.layout.dialog_ok, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialoglayout);
+        final AlertDialog alertDialog = builder.show();
+        alertDialog.setCancelable(false);
+        FCMillonariosTextView fcMillonariosTextView = dialoglayout.findViewById(R.id.fcm_tv_tittle);
+        fcMillonariosTextView.setText(message);
+        Button btnNot = dialoglayout.findViewById(R.id.btn_ok);
+        btnNot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                getActivity().finish();
+            }
+        });
     }
 
     @Override

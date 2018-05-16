@@ -18,9 +18,8 @@ import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.models.ChooseProfileData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
-import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.di.DaggerPlayerProfileComponent;
-import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.di.DaggerChooseProfileComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.di.ChooseProfileModule;
+import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.di.DaggerChooseProfileComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.mvp.ChooseProfileContract;
 import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.mvp.ChooseProfilePresenter;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
@@ -48,6 +47,8 @@ public class ChooseProfileFragment extends BaseFragment
     Unbinder unbinder;
     @Inject
     ChooseProfilePresenter presenter;
+
+    int videoPosition = 0;
 
     private ChooseProfileAdapter playerProfileAdapter;
     private LinearLayoutManager linearLayoutManager;
@@ -174,8 +175,8 @@ public class ChooseProfileFragment extends BaseFragment
     }
 
     @Override
-    public void onClickItem(int position) {
-        presenter.clickItem(position);
+    public void onClickItem(News news) {
+        presenter.clickItem(news);
     }
 
     @Override
@@ -184,8 +185,24 @@ public class ChooseProfileFragment extends BaseFragment
     }
 
     @Override
-    public void navigateToVideoNewsActivity(News news) {
-        navigator.navigateToVideoNewsActivity(news);
+    public void onClickVideoItem(News news, int currentPosition) {
+        navigator.navigateToVideoNewsActivity(news, currentPosition);
+    }
+
+    @Override
+    public void onVideoIsDorado() {
+        //  showDialogDorado();
+    }
+
+    @Override
+    public void playVideo(int position) {
+        this.videoPosition = position;
+    }
+
+
+    @Override
+    public void navigateToVideoNewsActivity(News news, int currentPosition) {
+        navigator.navigateToVideoNewsActivity(news, currentPosition);
     }
 
     @Override
@@ -199,7 +216,13 @@ public class ChooseProfileFragment extends BaseFragment
     }
 
     @Override
-    public void navigateToGalleryActivity(int id) {
-        navigator.navigateToGalleryActivity(id);
+    public void navigateToGalleryActivity(News news) {
+        navigator.navigateToGalleryActivity(news);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        playerProfileAdapter.pauseVideo(videoPosition);
     }
 }

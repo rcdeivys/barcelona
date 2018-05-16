@@ -2,7 +2,6 @@ package com.BarcelonaSC.BarcelonaApp.ui.chat.groups.di;
 
 
 import com.BarcelonaSC.BarcelonaApp.app.di.AppComponent;
-import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsActivity;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsFragment;
 
 import dagger.Component;
@@ -14,5 +13,4 @@ import dagger.Component;
 @Component(dependencies = {AppComponent.class}, modules = {GroupsModule.class})
 public interface GroupsComponent {
     void inject(GroupsFragment fragment);
-    void inject(GroupsActivity activity);
 }

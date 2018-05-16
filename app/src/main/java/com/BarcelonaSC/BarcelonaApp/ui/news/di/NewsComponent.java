@@ -2,7 +2,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.news.di;
 
 
 import com.BarcelonaSC.BarcelonaApp.app.di.AppComponent;
-import com.BarcelonaSC.BarcelonaApp.ui.home.menu.news.NewsFragment;
+import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
 
 import dagger.Component;
 

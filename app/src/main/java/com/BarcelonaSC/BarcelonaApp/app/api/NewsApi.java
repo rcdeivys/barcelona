@@ -1,6 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.app.api;
 
 import com.BarcelonaSC.BarcelonaApp.models.response.NewsResponse;
+import com.BarcelonaSC.BarcelonaApp.models.response.NewsSingleResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -20,5 +21,12 @@ public interface NewsApi {
 
     @GET("noticias_futbolbase")
     Call<NewsResponse> getNewsFootballBase(@Query("page") int page);
+
+
+    @GET("noticias_monumentales")
+    Call<NewsResponse> getMonumentalNews(@Query("page") int page);
+
+    @GET("noticia/{idNoticia}")
+    Call<NewsSingleResponse> getNewsSingle(@Path("idNoticia") String idNoticia);
 
 }

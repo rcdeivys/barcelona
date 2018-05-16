@@ -76,7 +76,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@string/font_helvetica_condensed_bold"
-                    android:text="En la próxima pantalla se te pedirá un PIN enviado a este e-mail, revisa tu bandeja de entrada o correo no deseado"
+                    android:text="Se te enviará un correo a tu e-mail, con instrucciones para recuperar tu contraseña."
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="14dp" />

@@ -9,17 +9,20 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.models.ChooseProfileData;
 import com.BarcelonaSC.BarcelonaApp.models.News;
-import com.BarcelonaSC.BarcelonaApp.utils.Commons;
+import com.BarcelonaSC.BarcelonaApp.ui.news.views.holders.NewsViewHolder;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements CustomVideoView.CustomVideoViewOnListener {
 
 
     private static final String TAG = ChooseProfileAdapter.class.getSimpleName();
@@ -73,7 +76,7 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         if (viewType == TYPE_HEADER) {
             return new VHHeader(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_choose_profile_header, parent, false));
         } else {
-            return new VHItem(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_news, parent, false));
+            return NewsViewHolder.getInstance(parent);
         }
 
     }
@@ -81,16 +84,13 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof VHHeader) {
-            VHHeader vhHeader = (VHHeader) holder;
-            initHeader(vhHeader);
+            initHeader((VHHeader) holder);
         } else {
-            VHItem vhItem = (VHItem) holder;
-            initItem(vhItem, position);
+            configurNewsViewHolder((NewsViewHolder) holder, position);
         }
     }
 
     private void initHeader(VHHeader vhHeader) {
-
         Glide.with(context)
                 .load(playerData.getBanner())
                 .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
@@ -103,41 +103,61 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
         } else {
             vhHeader.llVotes.setVisibility(View.INVISIBLE);
         }
-
     }
 
-    private void initItem(VHItem vhItem, final int position) {
-        News recentItem = getItem(position);
-        Glide.with(context)
-                .load(recentItem.getFoto())
-                .apply(new RequestOptions().placeholder(R.drawable.bsc_news_wm).error(R.drawable.bsc_news_wm))
-                .into(vhItem.ivNews);
-    /*    // Set play image
-        if (recentItem.getTipo().matches(Constant.NewsType.VIDEO)) {
-            vhItem.ivPlay.setImageResource(R.drawable.ic_play_circle_60dp);
+    private void configurNewsViewHolder(final NewsViewHolder holder, final int position) {
+        holder.setNews(getNewsList(position));
+        holder.ivShare.setVisibility(View.GONE);
+        if (getNewsList(position).getTipo().equals(Constant.NewsType.VIDEO)) {
+        /*    if (getNewsList(position).isDorado() && !SessionManager.getInstance().getUser().isDorado()) {
+                holder.ivShare.setVisibility(View.GONE);
+            } else {
+                holder.ivShare.setVisibility(View.VISIBLE);
+            }*/
+            holder.videoView.setCustomVideoViewOnListener(this);
+            holder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
+                @Override
+                public void play() {
+                    onItemClickListener.playVideo(position);
+                }
+            });
+            holder.setNewsVideo(getNewsList(position), new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                  /*  if (!SessionManager.getInstance().getUser().isDorado() && getNewsList(position).isDorado()) {
+                        holder.videoView.customVideoViewOnListener.videoIsDorado();
+                    } else {
+                        holder.videoView.pause();
+                        onItemClickListener.onClickVideoItem(getNewsList(position), holder.getVideoCurrentPosition());
+                    }*/
+                    holder.videoView.pause();
+                    onItemClickListener.onClickVideoItem(getNewsList(position), holder.getVideoCurrentPosition());
+                }
+            });
         } else {
-            vhItem.ivPlay.setImageDrawable(null);
+            holder.onClickContentNewsItem(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onItemClickListener.onClickItem(getNewsList(position));
+                }
+            });
         }
-*/
 
-        vhItem.tvData.setText(Commons.getStringDate(recentItem.getFecha()));
-        //     vhItem.tvData.setTypeface(FontsUtil.getOpenSansReularFonts(context));
-        vhItem.tvTitle.setText(recentItem.getTitulo());
-        //  vhItem.tvTitle.setTypeface(FontsUtil.getHelveticaCondesed2Fonts(context));
 
-        vhItem.llNewsItem.setOnClickListener(new View.OnClickListener() {
+        holder.ivShare.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                if (haveHeader)
-                    onItemClickListener.onClickItem(position - 1);
-                else
-                    onItemClickListener.onClickItem(position);
+            public void onClick(View v) {
+                ShareSection.shareIndividual(Constant.Key.SHARE_NEWS, String.valueOf(getNewsList(position).getId()));
             }
         });
-
     }
 
-    private News getItem(int position) {
+    public void pauseVideo(int position) {
+        notifyItemChanged(position);
+    }
+
+
+    private News getNewsList(int position) {
         if (haveHeader)
             return playerData.getNoticias().get(position - 1);
         else
@@ -152,31 +172,27 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
             return playerData.getNoticias().size();
     }
 
-    public interface OnItemClickListener {
-        void onClickItem(int position);
-
-        void onClickHeader();
+    @Override
+    public void onPrepared() {
 
     }
 
-    class VHItem extends RecyclerView.ViewHolder {
+    @Override
+    public void videoIsDorado() {
+        onItemClickListener.onVideoIsDorado();
+    }
 
-        @BindView(R.id.content_news_item)
-        LinearLayout llNewsItem;
-        @BindView(R.id.iv_news)
-        ImageView ivNews;
-        /*    @BindView(R.id.iv_play)
-            ImageView ivPlay;*/
-        @BindView(R.id.tv_date)
-        TextView tvData;
-        @BindView(R.id.tv_title)
-        TextView tvTitle;
+    public interface OnItemClickListener {
+        void onClickItem(News news);
 
+        void onClickHeader();
 
-        VHItem(View view) {
-            super(view);
-            ButterKnife.bind(this, view);
-        }
+        void onClickVideoItem(News news, int currentPosition);
+
+        void onVideoIsDorado();
+
+        void playVideo(int position);
+
     }
 
     class VHHeader extends RecyclerView.ViewHolder {

@@ -16,8 +16,8 @@ public class VoteContract {
         void onGetChooseSuccess(EncuestaData mEncuestaData);
 
         void onGetChooseFailed();
-
-        void onSetVotesSuccess(int id, int msj);
+      
+        void onsetVotesSuccess(int id, int msj);
 
         void onError(String error);
     }
@@ -26,7 +26,7 @@ public class VoteContract {
 
         void getChoose();
 
-        void setChooseVote(SendChooseVote sendChooseVote, int msj);
+        void setChooseVote(SendChooseVote sendChooseVote,int msj);
 
         boolean isViewNull();
     }

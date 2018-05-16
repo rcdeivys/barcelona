@@ -59,15 +59,11 @@ public class PlayerProfilePresenter implements PlayerProfileContract.Presenter, 
     }
 
     @Override
-    public void clickItem(int position) {
-
-        News news = playerData.getNewsList().get(position);
+    public void clickItem(News news) {
         if (isViewNull()) return;
 
         if (news.getTipo().matches(Constant.NewsType.GALERY)) {
-            view.navigateToGalleryActivity(news.getId());
-        } else if (news.getTipo().matches(Constant.NewsType.VIDEO)) {
-            view.navigateToVideoNewsActivity(news);
+            view.navigateToGalleryActivity(news);
         } else if (news.getTipo().matches(Constant.NewsType.INFOGRAFY) || news.getTipo().matches(Constant.NewsType.STAT)) {
             view.navigateToInfografiaActivity(news);
         } else {
@@ -81,6 +77,14 @@ public class PlayerProfilePresenter implements PlayerProfileContract.Presenter, 
     }
 
     @Override
+    public void noDoradoErrorListener() {
+        if (isViewNull()) return;
+        view.hideProgress();
+        view.setRefreshing(false);
+        view.showDialogDorado();
+    }
+
+    @Override
     public void setPlayerApplause() {
         if (isViewNull()) return;
         playerProfileModel.setPlayerApplause(new PlayerApplause(playerId, playerData.getIdpartido(), view.getImei()), this);
@@ -88,9 +92,7 @@ public class PlayerProfilePresenter implements PlayerProfileContract.Presenter, 
 
     @Override
     public void onGetPlayerSuccess(PlayerData player) {
-
         playerData = player;
-
         if (isViewNull()) return;
         view.setPlayerData(this.playerData);
     }
@@ -102,20 +104,25 @@ public class PlayerProfilePresenter implements PlayerProfileContract.Presenter, 
 
     @Override
     public void onSetPlayerApplauseSuccess(String id, int aplaudio) {
+
         if (playerData != null) {
             if (aplaudio == 1) {
                 playerData.setApalusosUltimoPartido(playerData.getApalusosUltimoPartido() + 1);
                 playerData.setAplausosAcumulado(playerData.getAplausosAcumulado() + 1);
                 playerData.setUltimoAplauso(1);
-                view.setPlayerData(playerData);
-                EventBus.getDefault().post(new PlayerEvent(true));
+
+                if (isViewNull()) return;
                 view.showToast(App.getAppContext().getString(R.string.applause_successful));
+                view.setPlayerData(playerData);
                 view.showShareApplause(id);
+                EventBus.getDefault().post(new PlayerEvent(true));
             } else {
-                view.showToast(App.getAppContext().getString(R.string.applause_remove));
                 playerData.setApalusosUltimoPartido(playerData.getApalusosUltimoPartido() - 1);
                 playerData.setAplausosAcumulado(playerData.getAplausosAcumulado() - 1);
                 playerData.setUltimoAplauso(0);
+
+                if (isViewNull()) return;
+                view.showToast(App.getAppContext().getString(R.string.applause_remove));
                 view.setPlayerData(playerData);
                 EventBus.getDefault().post(new PlayerEvent(true));
             }
@@ -125,7 +132,8 @@ public class PlayerProfilePresenter implements PlayerProfileContract.Presenter, 
     @Override
     public void onError(String error) {
         if (isViewNull()) return;
-        view.showToast(error);
+        if(view!=null)
+            view.showToast(error);
     }
 
     @Override

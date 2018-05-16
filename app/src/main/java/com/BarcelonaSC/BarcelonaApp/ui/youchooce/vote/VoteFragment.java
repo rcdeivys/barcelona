@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.eventbus.ChooseOpenEvent;
 import com.BarcelonaSC.BarcelonaApp.models.EncuestaData;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.mossapplauded.ApplaudedFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfileActivity;
@@ -64,6 +65,7 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
     private VoteAdapter mVoteAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private boolean finisher = false;
+    private AlertDialog alertDialog;
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -127,9 +129,9 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
     }
 
     @Override
-    public void onClickPlayerVote(int position, int msj) {
-        Log.i(TAG, "/--->onClickPlayerVote");
-        presenter.onClickPlayerVote(position, msj);
+    public void onClickPlayerVote(int posicion, int msj) {
+        //Log.i(TAG, "/--->onClickPlayerVote");
+        presenter.onClickPlayerVote(posicion,msj);
     }
 
 
@@ -167,7 +169,7 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
         finisher = true;
         initRvAndAdapter();
         tvTitle.setText(mEncuestaData.getTitulo());
-        mVoteAdapter.setData(mEncuestaData.getRespuestas());
+        mVoteAdapter.setData(mEncuestaData.getRespuestas(), mEncuestaData.getPuedevotar() == 1);
         notifyDataSetChanged();
         progressClock.initclock(mEncuestaData.getFechaInicio(),
                 mEncuestaData.getFechaFin(), this);
@@ -233,6 +235,9 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
         super.onDestroyView();
         unbinder.unbind();
         presenter.onDetach();
+        if (alertDialog != null) {
+            alertDialog.dismiss();
+        }
     }
 
     @Override
@@ -257,7 +262,7 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
         View dialoglayout = inflater.inflate(R.layout.dialog_ok, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(dialoglayout);
-        final AlertDialog alertDialog = builder.show();
+        alertDialog = builder.show();
         FCMillonariosTextView fcMillonariosTextView = dialoglayout.findViewById(R.id.fcm_tv_tittle);
         fcMillonariosTextView.setText(message);
         Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_ok);
@@ -269,4 +274,33 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
             }
         });
     }
+
+    @Override
+    public void showShareVote(final int id) {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialoglayout = inflater.inflate(R.layout.dialog_share_vote, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialoglayout);
+        alertDialog = builder.show();
+
+        Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_return);
+        btnNot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+                EventBus.getDefault().post(new ChooseOpenEvent("2", true));
+            }
+        });
+
+        Button btnYes = (Button) dialoglayout.findViewById(R.id.btn_submit);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareSection.shareIndividual("tueliges", String.valueOf(id));
+                alertDialog.dismiss();
+                EventBus.getDefault().post(new ChooseOpenEvent("2", true));
+            }
+        });
+    }
+
 }

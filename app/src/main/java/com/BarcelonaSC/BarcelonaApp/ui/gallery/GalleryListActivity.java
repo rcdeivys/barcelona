@@ -22,6 +22,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.gallery.di.GalleryModule;
 import com.BarcelonaSC.BarcelonaApp.ui.gallery.mvp.GalleryContract;
 import com.BarcelonaSC.BarcelonaApp.ui.gallery.views.adapters.GalleryListAdapter;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Leonardojpr on 10/12/17.
@@ -87,6 +89,11 @@ public class GalleryListActivity extends BaseActivity implements GalleryListAdap
                 .appComponent(App.get().component())
                 .galleryModule(new GalleryModule(this))
                 .build().inject(GalleryListActivity.this);
+    }
+
+    @OnClick(R.id.ib_sub_header_share)
+    void onShareNews() {
+        ShareSection.shareIndividual(Constant.Key.SHARE_NEWS, String.valueOf(id));
     }
 
     public void initRecyclerView() {

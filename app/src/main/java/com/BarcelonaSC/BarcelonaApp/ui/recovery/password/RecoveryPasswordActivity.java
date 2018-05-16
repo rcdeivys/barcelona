@@ -56,7 +56,7 @@ public class RecoveryPasswordActivity extends BaseActivity {
         sendEmailFragment = new SendEmailFragment();
         sendCodeFragment = new SendCodeFragment();
         sendPasswordFragment = new SendPasswordFragment();
-
+        pager.setPagingEnabled(false);
         tabs.setVisibility(View.GONE);
         pager.setAdapter(new RecoveryPasswordAdapter(getSupportFragmentManager(), getActivity(), sendEmailFragment, sendCodeFragment, sendPasswordFragment));
         tabs.setupWithViewPager(pager);
