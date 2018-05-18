@@ -48,6 +48,9 @@ public class Match implements Parcelable {
     @SerializedName("info")
     @Expose
     private String info;
+    @SerializedName("destacado")
+    @Expose
+    private int destacado;
 
     private boolean newDate;
     private boolean newDateHeader;
@@ -223,6 +226,13 @@ public class Match implements Parcelable {
         return 0;
     }
 
+    public int getDestacado() {
+        return destacado;
+    }
+
+    public void setDestacado(int destacado) {
+        this.destacado = destacado;
+    }
 
     @Override
     public String toString() {

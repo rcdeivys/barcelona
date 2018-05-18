@@ -18,6 +18,9 @@ import butterknife.ButterKnife;
 
 public class MatchChildViewHolder extends ChildViewHolder {
 
+    @BindView(R.id.content_game_calendar)
+    public LinearLayout contentGameCalendar;
+
     @BindView(R.id.iv_team_1_flag)
     public ImageView ivTeamFlag1;
 
