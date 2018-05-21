@@ -76,6 +76,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:backgroundTint="@color/white"
+            android:maxLines="1"
             android:layout_toEndOf="@id/iv_msg_search"
             android:textColor="@color/black" />
 

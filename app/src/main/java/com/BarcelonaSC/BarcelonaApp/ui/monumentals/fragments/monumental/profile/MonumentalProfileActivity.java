@@ -44,7 +44,7 @@ public class MonumentalProfileActivity extends BaseActivity {
         setContentView(R.layout.activity_profile_monumental);
         unbinder = ButterKnife.bind(this);
 
-        tvSubHeaderTitle.setText("Detalle Monumental");
+        tvSubHeaderTitle.setText("Glorias BSC");
         ibReturn.setVisibility(View.VISIBLE);
         ibReturn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +64,7 @@ public class MonumentalProfileActivity extends BaseActivity {
         int Numboftabs = 2;
         String monumental = getIntent().getExtras().getString(Constant.Key.MONUMETAL_ID);
         String survey = getIntent().getExtras().getString(Constant.Key.SURVEY_ID);
-        String[] titles = {"Perfil Monumental", "Redes Sociales"};
+        String[] titles = {"Perfil Glorias BSC", "Redes Sociales"};
 
         viewPagerAdapter = new MonumentalProfilePagerAdapter(getSupportFragmentManager(), titles, Numboftabs, monumental, survey);
         pager.setPagingEnabled(true);

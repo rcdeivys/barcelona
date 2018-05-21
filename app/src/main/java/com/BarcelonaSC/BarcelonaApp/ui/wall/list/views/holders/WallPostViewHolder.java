@@ -26,6 +26,7 @@ import com.BarcelonaSC.BarcelonaApp.utils.Commons;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomVideoView;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -221,7 +222,7 @@ public class WallPostViewHolder extends RecyclerView.ViewHolder implements Custo
 
     private void setPhoto(String photo) {
         imgPost.setVisibility(View.VISIBLE);
-        Glide.with(context).load(photo).apply(new RequestOptions().error(Commons.getDrawable(R.drawable.bsc_news_wm)).placeholder(Commons.getDrawable(R.drawable.bsc_news_wm)).override(Commons.getWidthDisplay())).into(imgPost);
+        Glide.with(context).load(photo).apply(new RequestOptions().error(Commons.getDrawable(R.drawable.bsc_news_wm)).placeholder(Commons.getDrawable(R.drawable.bsc_news_wm)).override(Commons.getWidthDisplay()).diskCacheStrategy(DiskCacheStrategy.ALL)).into(imgPost);
 
     }
 
