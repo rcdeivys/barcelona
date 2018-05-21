@@ -43,6 +43,7 @@
         <activity
             android:name=".ui.home.HomeActivity"
             android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.virtualreality.VirtualActivity"
