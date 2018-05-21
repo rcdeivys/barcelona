@@ -554,6 +554,8 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
             getChildFragmentManager().beginTransaction().add(R.id.fl_container_gif
                     , giphyFragment, GiphyFragment.TAG).commit();
             giphyFragment.setGifListener(ChatFragment.this);
+        } else {
+            giphyFragment.setGifListener(ChatFragment.this);
         }
 
     }

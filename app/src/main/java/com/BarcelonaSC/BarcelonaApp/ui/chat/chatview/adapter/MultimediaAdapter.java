@@ -107,20 +107,39 @@ public class MultimediaAdapter extends RecyclerView.Adapter<MultimediaAdapter.Vi
                     }
                 });
             } else {
-                sqr_image_view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        ImageExpandDialog imageExpandDialog = new ImageExpandDialog();
-                        imageExpandDialog.setImageToExpand(sqr_image_view.getDrawable().mutate());
-                        showDialogFragment(imageExpandDialog);
-                    }
-                });
+
                 ivPlay.setVisibility(View.GONE);
 
-                Glide.with(App.get())
-                        .load(media.getUrlMedia())
-                        .thumbnail(0.1f)
-                        .into(sqr_image_view);
+                if (getTypeMsg(media.getTipoMedia()) == FirebaseManager.MsgTypes.GIF) {
+                    Glide.with(App.get())
+                            .asGif()
+                            .load(media.getUrlMedia())
+                            .thumbnail(0.1f)
+                            .into(sqr_image_view);
+
+                    sqr_image_view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ImageExpandDialog imageExpandDialog = new ImageExpandDialog();
+                            imageExpandDialog.setImageToExpand(media.getUrlMedia());
+                            showDialogFragment(imageExpandDialog);
+                        }
+                    });
+                }else{
+                    Glide.with(App.get())
+                            .load(media.getUrlMedia())
+                            .thumbnail(0.1f)
+                            .into(sqr_image_view);
+
+                    sqr_image_view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            ImageExpandDialog imageExpandDialog = new ImageExpandDialog();
+                            imageExpandDialog.setImageToExpand(sqr_image_view.getDrawable().mutate());
+                            showDialogFragment(imageExpandDialog);
+                        }
+                    });
+                }
             }
 
 
