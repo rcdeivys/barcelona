@@ -80,11 +80,15 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             public void onClick(View view) {
                 if (messageModelViews.get(position).getTypeMsg() == FirebaseManager.MsgTypes.VIDEO)
                     onItemClickListener.onClickVideo(messageModelViews.get(position).getContent());
-                else{
+                else if (messageModelViews.get(position).getTypeMsg() == FirebaseManager.MsgTypes.GIF) {
                     ImageExpandDialog imageExpandDialog = new ImageExpandDialog();
-                    imageExpandDialog.setImageToExpand(holder.imagenMsj.getDrawable());
+                    imageExpandDialog.setImageToExpand(messageModelViews.get(position).getContent());
                     showDialogFragment(imageExpandDialog);/*
                     onItemClickListener.onClickViewImage(messageModelViews.get(position).getContent());*/
+                } else {
+                    ImageExpandDialog imageExpandDialog = new ImageExpandDialog();
+                    imageExpandDialog.setImageToExpand(holder.imagenMsj.getDrawable());
+                    showDialogFragment(imageExpandDialog);
                 }
 
             }
@@ -93,11 +97,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     private void showDialogFragment(DialogFragment dialogFragment) {
-        FragmentTransaction ft = ((ChatActivity)mContext).getSupportFragmentManager().beginTransaction();
+        FragmentTransaction ft = ((ChatActivity) mContext).getSupportFragmentManager().beginTransaction();
         ft.add(dialogFragment, dialogFragment.getTag());
         ft.commitAllowingStateLoss();
     }
-
 
 
     @Override
