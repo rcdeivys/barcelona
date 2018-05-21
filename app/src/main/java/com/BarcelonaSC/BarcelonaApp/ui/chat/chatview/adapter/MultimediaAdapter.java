@@ -2,8 +2,10 @@ package com.BarcelonaSC.BarcelonaApp.ui.chat.chatview.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -115,6 +117,9 @@ public class MultimediaAdapter extends RecyclerView.Adapter<MultimediaAdapter.Vi
                             .asGif()
                             .load(media.getUrlMedia())
                             .thumbnail(0.1f)
+                            .apply(new RequestOptions()
+                                    .placeholder(new ColorDrawable(ContextCompat.getColor(context, R.color.gray_300)))
+                                    .error(new ColorDrawable(ContextCompat.getColor(context, R.color.gray_300))))
                             .into(sqr_image_view);
 
                     sqr_image_view.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +134,9 @@ public class MultimediaAdapter extends RecyclerView.Adapter<MultimediaAdapter.Vi
                     Glide.with(App.get())
                             .load(media.getUrlMedia())
                             .thumbnail(0.1f)
+                            .apply(new RequestOptions()
+                                    .placeholder(new ColorDrawable(ContextCompat.getColor(context, R.color.gray_300)))
+                                    .error(new ColorDrawable(ContextCompat.getColor(context, R.color.gray_300))))
                             .into(sqr_image_view);
 
                     sqr_image_view.setOnClickListener(new View.OnClickListener() {
