@@ -1,1 +1,1 @@
-include ':app', ':db-generator'
+include ':app', ':db-generator', ':whitebrand'

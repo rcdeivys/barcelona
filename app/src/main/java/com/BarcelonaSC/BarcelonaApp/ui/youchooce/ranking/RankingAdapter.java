@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
-import com.BarcelonaSC.BarcelonaApp.models.RespuestaData;
+import com.losingtimeapps.whitebrand.models.RespuestaData;
 
 import java.util.List;
 

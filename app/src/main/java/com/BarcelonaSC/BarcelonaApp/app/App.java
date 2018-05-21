@@ -27,6 +27,8 @@ import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.google.firebase.database.FirebaseDatabase;
+import com.losingtimeapps.whitebrand.app.ConfiWhiteBrand;
+import com.losingtimeapps.whitebrand.app.WhiteBrand;
 
 import java.io.File;
 import java.security.MessageDigest;
@@ -71,6 +73,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         INSTANCE = this;
+        WhiteBrand.inittt(INSTANCE, new ConfiWhiteBrand(getString(R.string.url_api)));
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());

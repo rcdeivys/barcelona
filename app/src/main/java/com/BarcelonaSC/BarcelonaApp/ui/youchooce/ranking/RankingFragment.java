@@ -20,22 +20,20 @@ import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
 import com.BarcelonaSC.BarcelonaApp.eventbus.ChooseOpenEvent;
 import com.BarcelonaSC.BarcelonaApp.eventbus.ChooseUpdateRanEvent;
-import com.BarcelonaSC.BarcelonaApp.models.RespuestaData;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.mossapplauded.ApplaudedFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfileActivity;
-import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ranking.di.DaggerRankingComponent;
-import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ranking.di.RankingModule;
-import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ranking.mvp.RankingContract;
-import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ranking.mvp.RankingPresenter;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
+import com.losingtimeapps.whitebrand.app.WhiteBrand;
+import com.losingtimeapps.whitebrand.models.RespuestaData;
+import com.losingtimeapps.whitebrand.ui.youchoose.YouChoose;
+import com.losingtimeapps.whitebrand.ui.youchoose.ranking.mvp.RankingContract;
+import com.losingtimeapps.whitebrand.ui.youchoose.ranking.mvp.RankingPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -55,7 +53,6 @@ public class RankingFragment extends BaseFragment implements RankingContract.Vie
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
     Unbinder unbinder;
-    @Inject
     RankingPresenter presenter;
     private RankingAdapter mRankingAdapter;
     private LinearLayoutManager mLinearLayoutManager;
@@ -89,10 +86,9 @@ public class RankingFragment extends BaseFragment implements RankingContract.Vie
     }
 
     public void initComponent() {
-        DaggerRankingComponent.builder()
-                .appComponent(App.get().component())
-                .rankingModule(new RankingModule(this))
-                .build().inject(RankingFragment.this);
+        presenter = WhiteBrand.youChoose().initRanking(this);
+
+
     }
 
     @Override

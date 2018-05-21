@@ -14,15 +14,13 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
-import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
-import com.BarcelonaSC.BarcelonaApp.models.ChooseProfileData;
-import com.BarcelonaSC.BarcelonaApp.models.News;
-import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.di.ChooseProfileModule;
-import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.di.DaggerChooseProfileComponent;
-import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.mvp.ChooseProfileContract;
-import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ChooseProfiledetails.ChooseProfile.mvp.ChooseProfilePresenter;
-import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.losingtimeapps.whitebrand.app.WhiteBrand;
+import com.losingtimeapps.whitebrand.models.News;
+import com.losingtimeapps.whitebrand.models.ChooseProfileData;
+import com.losingtimeapps.whitebrand.ui.youchoose.ChooseProfile.mvp.ChooseProfileContract;
+import com.losingtimeapps.whitebrand.ui.youchoose.ChooseProfile.mvp.ChooseProfilePresenter;
+import com.losingtimeapps.whitebrand.utils.Constants.Constant;
 
 import javax.inject.Inject;
 
@@ -110,10 +108,7 @@ public class ChooseProfileFragment extends BaseFragment
     }
 
     public void initComponent() {
-        DaggerChooseProfileComponent.builder()
-                .appComponent(App.get().component())
-                .chooseProfileModule(new ChooseProfileModule(this))
-                .build().inject(ChooseProfileFragment.this);
+        presenter = WhiteBrand.youChoose().initProfile(this);
     }
 
 
@@ -153,9 +148,34 @@ public class ChooseProfileFragment extends BaseFragment
 
     @Override
     public void setChooseProfileData(ChooseProfileData chooseProfileData) {
+
+    }
+/*
+    @Override
+    public void setChooseProfileData(ChooseProfileData chooseProfileData) {
         initRvAndAdapter();
         playerProfileAdapter.setData(chooseProfileData, showVotes);
         notifyDataSetChanged();
+    }*/
+
+    @Override
+    public void navigateToVideoNewsActivity(News news, int i) {
+
+    }
+
+    @Override
+    public void navigateToInfografiaActivity(News news) {
+
+    }
+
+    @Override
+    public void navigateToNewsDetailsActivity(News news) {
+
+    }
+
+    @Override
+    public void navigateToGalleryActivity(News news) {
+
     }
 
 
@@ -172,11 +192,18 @@ public class ChooseProfileFragment extends BaseFragment
         playerProfileAdapter.notifyDataSetChanged();
         setRefreshing(false);
         hideProgress();
-    }
+/*
 
     @Override
     public void onClickItem(News news) {
-        presenter.clickItem(news);
+       // presenter.clickItem(news);
+    }
+*/
+    }
+
+    @Override
+    public void onClickItem(com.BarcelonaSC.BarcelonaApp.models.News news) {
+
     }
 
     @Override
@@ -185,9 +212,16 @@ public class ChooseProfileFragment extends BaseFragment
     }
 
     @Override
+    public void onClickVideoItem(com.BarcelonaSC.BarcelonaApp.models.News news, int currentPosition) {
+
+    }
+/*
+
+    @Override
     public void onClickVideoItem(News news, int currentPosition) {
         navigator.navigateToVideoNewsActivity(news, currentPosition);
     }
+*/
 
     @Override
     public void onVideoIsDorado() {
@@ -200,7 +234,7 @@ public class ChooseProfileFragment extends BaseFragment
     }
 
 
-    @Override
+  /*  @Override
     public void navigateToVideoNewsActivity(News news, int currentPosition) {
         navigator.navigateToVideoNewsActivity(news, currentPosition);
     }
@@ -213,13 +247,13 @@ public class ChooseProfileFragment extends BaseFragment
     @Override
     public void navigateToNewsDetailsActivity(News news) {
         navigator.navigateToNewsDetailsActivity(news);
-    }
+    }*/
 
-    @Override
+ /*   @Override
     public void navigateToGalleryActivity(News news) {
         navigator.navigateToGalleryActivity(news);
     }
-
+*/
     @Override
     public void onPause() {
         super.onPause();

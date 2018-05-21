@@ -1,0 +1,90 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.1.1"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+
+            }
+        }
+
+    }
+
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://maven.google.com'
+        }
+
+    }
+}
+ext {
+    // Google
+    supportLibraryVersion = '27.1.1'
+    lifecycleLibraryVersion = '1.1.1'
+    roomLibraryVersion = '1.0.0'
+    pagingRuntimeLibraryVersion = '1.0.0-alpha7'
+    constraintLibraryVersion = '1.1.0'
+    lifecycleRuntimeLibraryVersion = '1.0.3'
+    playServicesLibraryVersion = '12.0.0'
+    daggerLibraryVersion = '2.13'
+    googleApiLibraryVersion = '12.0.0'
+    firebaseLibraryVersion = '12.0.0'
+    //Third-Party
+    retrofit2LibraryVersion = '2.3.0'
+    okioLibraryVersion = '1.13.0'
+    moshiLibraryVersion = '1.5.0'
+    okhttp3LibraryVersion = '3.8.0'
+    alerterLibraryVersion = '2.0.2'
+    facebookLibraryVersion = '4.29.0'
+    rx2JavaLibraryVersion = '1.0.0'
+    glideLibraryVersion = '4.4.0'
+    rxandroidLibraryVersion = '2.0.1'
+    rxjavaLibraryVersion = '2.1.7'
+    spinnerLibraryVersion = '1.1.0'
+    circleimageviewVersion = '2.2.0'
+
+    //Test
+    junitLibraryVersion = '4.12'
+    androidRunnerLibraryVersion = '1.0.1'
+    espressoLibraryVersion = '3.0.1'
+    coreTestingLibraryVersion = '1.0.0'
+    roomTestingLibraryVersion = '1.0.0'
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //Dagger Core
+    annotationProcessor "com.google.dagger:dagger-compiler:${daggerLibraryVersion}"
+    implementation "com.google.dagger:dagger:${daggerLibraryVersion}"
+    // Dagger Android
+    annotationProcessor "com.google.dagger:dagger-android-processor:${daggerLibraryVersion}"
+    implementation "com.google.dagger:dagger-android-support:${daggerLibraryVersion}"
+    implementation "com.google.dagger:dagger-android:${daggerLibraryVersion}"
+
+    //Third-Party
+    implementation "com.squareup.retrofit2:retrofit:${retrofit2LibraryVersion}"
+    implementation "com.squareup.okhttp3:okhttp:${okhttp3LibraryVersion}"
+    implementation "com.squareup.retrofit2:retrofit:${retrofit2LibraryVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}"
+
+    implementation "com.squareup.retrofit2:converter-gson:2.3.0"
+}
