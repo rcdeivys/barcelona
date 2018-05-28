@@ -2,28 +2,23 @@ package com.BarcelonaSC.BarcelonaApp.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
-import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.commons.WebViewActivity;
 import com.BarcelonaSC.BarcelonaApp.models.DrawerItem;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
-import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.response.ConfigurationResponse;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsInfografyActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -223,7 +218,7 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 public void onRequestFail(String errorMessage, int errorCode) {
                                 }
                             });
-                            Log.i("HINCHACOUNTER"," ---> ACTUALIZANDO DATA COUNTER");
+                            Log.i("HINCHACOUNTER", " ---> ACTUALIZANDO DATA COUNTER");
                         }
                     },
                     300000);
@@ -243,8 +238,7 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void hinchaCounter(String number) {
-            if(((LinearLayout) layoutTagView).getChildCount() > 0)
-                ((LinearLayout) layoutTagView).removeAllViews();
+            layoutTagView.removeAllViews();
             for (int i = 0; i <= number.toCharArray().length; i++) {
                 View tagView = LayoutInflater.from(context).inflate(R.layout.item_hincha_counter, null, false);
                 FCMillonariosTextView tagTextView = tagView.findViewById(R.id.tagTextView);
