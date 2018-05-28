@@ -5,6 +5,7 @@ import com.losingtimeapps.whitebrand.ui.youchoose.ChooseProfile.di.ChooseProfile
 import com.losingtimeapps.whitebrand.ui.youchoose.ChooseProfile.di.DaggerChooseProfileComponent;
 import com.losingtimeapps.whitebrand.ui.youchoose.ChooseProfile.mvp.ChooseProfileContract;
 import com.losingtimeapps.whitebrand.ui.youchoose.ChooseProfile.mvp.ChooseProfilePresenter;
+
 import javax.inject.Inject;
 
 /**
@@ -27,5 +28,9 @@ public class ChooseProfile {
         }
         return chooseProfilePresenter;
 
+    }
+
+    public int sumar() {
+        return 8;
     }
 }
