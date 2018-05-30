@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
+import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.app.network.NetworkCallBack;
 import com.BarcelonaSC.BarcelonaApp.commons.WebViewActivity;
@@ -197,7 +198,7 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             new android.os.Handler().postDelayed(
                     new Runnable() {
                         public void run() {
-                            /*FirebaseManager.getInstance().getNumberHinchas(new FirebaseManager.FireValuesListener() {
+                            FirebaseManager.getInstance().getNumberHinchas(new FirebaseManager.FireValuesListener() {
                                 @Override
                                 public void onComplete(String value) {
                                     hinchaCounter(value);
@@ -207,8 +208,8 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 public void onCanceled() {
                                     hinchaCounter("1");
                                 }
-                            });*/
-                            App.get().component().configurationApi().getConfiguration().enqueue(new NetworkCallBack<ConfigurationResponse>() {
+                            });
+                          /*  App.get().component().configurationApi().getConfiguration().enqueue(new NetworkCallBack<ConfigurationResponse>() {
                                 @Override
                                 public void onRequestSuccess(ConfigurationResponse response) {
                                     hinchaCounter(String.valueOf(response.getData().getTotalHinchas()));
@@ -217,7 +218,7 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 @Override
                                 public void onRequestFail(String errorMessage, int errorCode) {
                                 }
-                            });
+                            });*/
                             Log.i("HINCHACOUNTER", " ---> ACTUALIZANDO DATA COUNTER");
                         }
                     },
