@@ -473,7 +473,8 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
 
 
     public void sendVideo(final File video, final Bitmap thumbnail) {
-        Commons.initUploadWithTransferUtility(video).setTransferListener(new TransferListener() {
+        final String name = "bsc-mesg-and-" + System.currentTimeMillis()+".mp4";
+        Commons.initUploadWithTransferUtility(video, name).setTransferListener(new TransferListener() {
             @Override
             public void onStateChanged(int id, TransferState state) {
 
@@ -483,7 +484,7 @@ public class ChatFragment extends Fragment implements ChatContract.View, ChatAda
                             , FirebaseManager.getInstance().getUsuario().getId()
                             , conversacion.getMiembros()
                             , chatMessage.getText().toString()
-                            , "https://s3.amazonaws.com/millos-videos/" + video.getName()
+                            , "https://s3.amazonaws.com/appvideos-output/" + name
                             , idGrupo
                             , thumbnail);
                 }
