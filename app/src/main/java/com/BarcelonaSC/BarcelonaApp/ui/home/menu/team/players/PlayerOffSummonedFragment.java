@@ -103,7 +103,8 @@ public class PlayerOffSummonedFragment extends BaseFragment implements PlayerCon
             @Override
             public void onRefresh() {
                 swipeContainer.setRefreshing(true);
-                initRvAndAdapter();
+                playerAdapter.removeAll();
+                etNomina.setText("");
                 getData();
             }
         });

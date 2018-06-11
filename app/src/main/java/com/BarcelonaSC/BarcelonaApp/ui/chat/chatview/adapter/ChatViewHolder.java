@@ -225,6 +225,23 @@ public class ChatViewHolder extends RecyclerView.ViewHolder {
                 }
             } else if (item.getTypeMsg().equals(FirebaseManager.MsgTypes.GIF)) {
 
+                if (!item.getContent().isEmpty()) {
+
+                    ivPlay.setVisibility(View.GONE);
+                    chatGifMsg.setVisibility(View.GONE);
+                    imagenMsj.setVisibility(View.VISIBLE);
+                    contentMsj.setVisibility(View.GONE);
+
+                    Glide.with(App.get())
+                            .asGif()
+                            .load(item.getContent())
+                            .thumbnail(0.1f)
+                            .apply(new RequestOptions().centerCrop())
+                            .into(imagenMsj);
+
+                    //timeMsj.setText(item.getTime());
+                }
+/*
                 ivPlay.setVisibility(View.GONE);
                 chatGifMsg.setVisibility(View.VISIBLE);
                 imagenMsj.setVisibility(View.GONE);
@@ -244,7 +261,7 @@ public class ChatViewHolder extends RecyclerView.ViewHolder {
                         .setImageRequest(request)
                         .setAutoPlayAnimations(true)
                         .build();
-                chatGifMsg.setController(controller);
+                chatGifMsg.setController(controller);*/
             } else if (item.getTypeMsg().equals(FirebaseManager.MsgTypes.TEXTO)) {
 
                 if (!item.getContent().isEmpty()) {

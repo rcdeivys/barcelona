@@ -281,11 +281,12 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
                 } else if (post_type.equals("video")) {
                     if (video != null) {
                         message.clearFocus();
-                        Commons.initUploadWithTransferUtility(video).setTransferListener(new TransferListener() {
+                        final String name = "bsc-post-and-" + System.currentTimeMillis()+".mp4";
+                        Commons.initUploadWithTransferUtility(video, "bsc-post-" + name).setTransferListener(new TransferListener() {
                             @Override
                             public void onStateChanged(int id, TransferState state) {
                                 if (TransferState.COMPLETED == state) {
-                                    presenter.editPost(wallItem.getIdpost(), message.getText().toString(), post_type, "https://s3.amazonaws.com/millos-videos/" + video.getName(), thumbnail);
+                                    presenter.editPost(wallItem.getIdpost(), message.getText().toString(), post_type, "https://s3.amazonaws.com/appvideos-output/bsc/post/" + name, thumbnail);
                                 }
                             }
 
@@ -328,11 +329,12 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
         } else if (post_type.equals("video")) {
             if (video != null) {
                 message.clearFocus();
-                Commons.initUploadWithTransferUtility(video).setTransferListener(new TransferListener() {
+                final String name = "bsc-post-and-" + System.currentTimeMillis()+".mp4";
+                Commons.initUploadWithTransferUtility(video, name).setTransferListener(new TransferListener() {
                     @Override
                     public void onStateChanged(int id, TransferState state) {
                         if (TransferState.COMPLETED == state) {
-                            presenter.sendPost(message.getText().toString(), post_type, "https://s3.amazonaws.com/millos-videos/" + video.getName(), thumbnail);
+                            presenter.sendPost(message.getText().toString(), post_type, "https://s3.amazonaws.com/appvideos-output/bsc/post/" + name, thumbnail);
                         }
                     }
 

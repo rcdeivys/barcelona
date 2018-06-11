@@ -145,7 +145,7 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
             @Override
             public void onRefresh() {
                 swipeContainer.setRefreshing(true);
-                getData();
+               initRecyclerView();
             }
         });
 
@@ -156,7 +156,7 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
             news = bundle.getString(Constant.Menu.NEWS);
             initRecyclerView();
             showProgress();
-            getData();
+
         }
 
         btnTop.setOnClickListener(new View.OnClickListener() {
@@ -204,6 +204,7 @@ public class SingleCalendarListFragment extends BaseFragment implements SCalenda
         newsAdapter = new NewsAdapter(getActivity(), itemList);
         newsAdapter.setOnItemClickListener(this);
         rvNoticias.setAdapter(newsAdapter);
+        getData();
     }
 
     public void getData() {
