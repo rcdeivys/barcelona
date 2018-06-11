@@ -55,21 +55,12 @@ public class MatchAdapter extends ExpandableRecyclerViewAdapter<MatchParentViewH
     public void onBindChildViewHolder(MatchChildViewHolder matchChildViewHolder, int i, ExpandableGroup expandableGroup, int i1) {
         final Match match = (Match) expandableGroup.getItems().get(i1);
 
-       /* if (match.isNewDate()) {
-            matchChildViewHolder.llheader.setVisibility(View.VISIBLE);
-        } else {
-            matchChildViewHolder.llheader.setVisibility(View.GONE);
-        }
+        if (match.getDestacado() == 0)
+            matchChildViewHolder.contentGameCalendar.setBackgroundColor(Commons.getColor(R.color.colorHeader));
+        else
+            matchChildViewHolder.contentGameCalendar.setBackgroundColor(Commons.getColor(R.color.colorAccent));
 
-        if (match.isNewDateHeader()) {
-            matchChildViewHolder.llSubHeader.setVisibility(View.VISIBLE);
-            matchChildViewHolder.tvSubTitle.setText(match.getNewDateHeaderTitle());
-        } else {
-            matchChildViewHolder.llSubHeader.setVisibility(View.GONE);
-            matchChildViewHolder.tvSubTitle.setText("");
-        } */
-
-       Log.e("DEIVYS" , match.getFechaEtapa());
+        Log.e("DEIVYS", match.getFechaEtapa());
         matchChildViewHolder.tvMatchDate.setText(Commons.getStringDate(match.getFechaEtapa()));
 
         if (i1 == 0) {

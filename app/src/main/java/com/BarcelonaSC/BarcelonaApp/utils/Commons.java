@@ -470,7 +470,7 @@ public class Commons {
         return isInBackground;
     }
 
-    public static TransferObserver initUploadWithTransferUtility(final File file) {
+    public static TransferObserver initUploadWithTransferUtility(final File file, String nameFile) {
 
         CognitoCachingCredentialsProvider credentialsProvider = new CognitoCachingCredentialsProvider(
                 App.get().getApplicationContext(),
@@ -487,8 +487,8 @@ public class Commons {
                         .build();
 
         final TransferObserver uploadObserver =
-                transferUtility.upload("millos-videos",
-                        file.getName(),
+                transferUtility.upload("appvideos-output/bsc/post",
+                        nameFile,
                         file);
 
         return uploadObserver;

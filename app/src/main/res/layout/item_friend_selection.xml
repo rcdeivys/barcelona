@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:orientation="vertical"
+        android:padding="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -44,26 +45,29 @@
         <!-- Nombre del Grupo -->
         <com.BarcelonaSC.BarcelonaApp.utils.CustomTextView
             android:id="@+id/friend_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
             android:maxLines="1"
-
             android:text="@string/group_no_name"
             android:textColor="@color/black"
             android:textSize="@dimen/font_body_r_size"
             android:textStyle="bold" />
+
         <com.BarcelonaSC.BarcelonaApp.utils.CustomTextView
             android:id="@+id/friend_last_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:maxLines="1"
-            android:visibility="gone"
             android:text="@string/group_no_name"
             android:textColor="@color/black"
             android:textSize="@dimen/font_body_r_size"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
 
     </LinearLayout>
 

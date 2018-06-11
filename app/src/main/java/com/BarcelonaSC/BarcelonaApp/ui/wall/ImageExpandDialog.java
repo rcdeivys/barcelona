@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
+import com.bumptech.glide.Glide;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import butterknife.BindView;
@@ -32,6 +34,7 @@ public class ImageExpandDialog extends DialogFragment {
     PhotoView img1;
 
     public Drawable imageToExpand = null;
+    private String url;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,7 +70,15 @@ public class ImageExpandDialog extends DialogFragment {
     }
 
     private void expandImage() {
-        img1.setImageDrawable(getImageToExpand() != null ? getImageToExpand() : Commons.getDrawable(R.drawable.silueta));
+        if (url == null)
+            img1.setImageDrawable(getImageToExpand() != null ? getImageToExpand() : Commons.getDrawable(R.drawable.silueta));
+        else {
+            Glide.with(App.get())
+                    .asGif()
+                    .load(url)
+                    .thumbnail(0.1f)
+                    .into(img1);
+        }
     }
 
     public Drawable getImageToExpand() {
@@ -76,5 +87,9 @@ public class ImageExpandDialog extends DialogFragment {
 
     public void setImageToExpand(Drawable imageToExpand) {
         this.imageToExpand = imageToExpand;
+    }
+
+    public void setImageToExpand(String url) {
+        this.url = url;
     }
 }

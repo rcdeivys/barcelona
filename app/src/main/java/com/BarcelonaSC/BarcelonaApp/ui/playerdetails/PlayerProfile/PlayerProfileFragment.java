@@ -280,6 +280,7 @@ public class PlayerProfileFragment extends BaseFragment
     @Override
     public void onPause() {
         super.onPause();
-        playerProfileAdapter.pauseVideo(videoPositions);
+        if (getContext() != null)
+            playerProfileAdapter.pauseVideo(videoPositions);
     }
 }

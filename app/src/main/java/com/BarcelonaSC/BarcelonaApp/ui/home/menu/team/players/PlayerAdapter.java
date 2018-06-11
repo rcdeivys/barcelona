@@ -275,4 +275,11 @@ public class PlayerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
     }
 
+    public void removeAll() {
+        data.clear();
+        dataFiltered.clear();
+        oldData.clear();
+        notifyDataSetChanged();
+    }
+
 }
