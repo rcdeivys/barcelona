@@ -4,8 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.ui.youchooce.ranking.RankingFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.youchooce.vote.VoteFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 
 /**
@@ -34,10 +36,16 @@ public class YouChooseViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         if (position == 0) {
+            // Google analytics for Polls vote
+            App.get().registerTrackScreen(Constant.Analytics.POLLS + "." + Constant.PollTags.Vote);
+
             mVoteFragment = VoteFragment.newInstance();
             return mVoteFragment;
 
         } else {
+            // Google analytics for Polls ranking
+            App.get().registerTrackScreen(Constant.Analytics.POLLS + "." + Constant.PollTags.Ranking);
+
             mRakingFragment = RankingFragment.newInstance();
             return mRakingFragment;
 
