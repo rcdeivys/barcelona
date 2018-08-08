@@ -4,8 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.groups.GroupsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.messages.MessagesFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 /**
  * Created by Gianni on 25/07/17.
@@ -40,7 +42,7 @@ public class ChatViewPagerAdapter extends FragmentStatePagerAdapter {
 
             case 1:
                 // Google Analytics Groups page in Chat
-                App.get().registerTrackScreen(Constant.Analytics.CHAT + "." + Constant.ChatTags.Messages);
+                App.get().registerTrackScreen(Constant.Analytics.CHAT + "." + Constant.ChatTags.Groups);
                 return groupsFragment = GroupsFragment.getInstance();
 
             default:

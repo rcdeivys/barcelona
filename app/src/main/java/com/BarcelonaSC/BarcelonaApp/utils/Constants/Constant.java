@@ -222,6 +222,11 @@ public interface Constant {
         String RightSwipe = "Right Swipe";
     }
 
+    interface ChatTags {
+        String Groups = "Groups";
+        String Messages = "Messages";
+    }
+
     interface FutbolBaseTags {
         String News = "News";
         String Team = "Team";
