@@ -26,6 +26,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.login.mvp.LoginContract;
 import com.BarcelonaSC.BarcelonaApp.ui.login.mvp.LoginPresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.password.RecoveryPasswordActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 
 import javax.inject.Inject;
@@ -64,6 +65,10 @@ public class AuthFragment extends Fragment implements LoginContract.View {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        // Google Analytics for Login
+        App.get().registerTrackScreen(Constant.Analytics.LOGIN);
+
         return inflater.inflate(R.layout.fragment_auth, container, false);
     }
 
@@ -99,6 +104,10 @@ public class AuthFragment extends Fragment implements LoginContract.View {
         btnFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Google Analytics Tags for Google Register
+                App.get().registerTrackScreen(Constant.Analytics.REGISTER + "." + Constant.RegisterTags.Facebook);
+
                 source = ConstantsAuth.SOURCE_FACEBOOK;
                 initLoginActivity();
             }
@@ -107,6 +116,9 @@ public class AuthFragment extends Fragment implements LoginContract.View {
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Google Analytics Tags for Google Register
+                App.get().registerTrackScreen(Constant.Analytics.REGISTER + "." + Constant.RegisterTags.Google);
+
                 source = ConstantsAuth.SOURCE_GOOGLE_PLUS;
                 initLoginActivity();
             }

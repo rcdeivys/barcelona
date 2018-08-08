@@ -9,9 +9,11 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -40,6 +42,9 @@ public class TermsAndConditionsDialog extends DialogFragment {
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        // Google Analytics Tags for Terms from Register Page
+        App.get().registerTrackScreen(Constant.Analytics.REGISTER + "." + Constant.RegisterTags.Terms);
+
         final Dialog dialogo = super.onCreateDialog(savedInstanceState);
         dialogo.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         dialogo.setContentView(R.layout.dialog_terms_conditions);
