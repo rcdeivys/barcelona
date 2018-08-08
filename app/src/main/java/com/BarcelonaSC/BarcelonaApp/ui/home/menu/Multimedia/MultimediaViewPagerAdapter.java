@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Streaming.StreamingFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.Multimedia.Video.VideoFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
@@ -32,6 +33,9 @@ public class MultimediaViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         // Open "video" fragment
         if (position == 0) {
+            // Google Analytics Screen for Video
+            App.get().registerTrackScreen(Constant.Analytics.MULTIMEDIA + "." + Constant.MultimediaTags.VideoFeed);
+
             videoFragment = VideoFragment.newInstance(Constant.Key.MULTIMEDIA_VIDEO);
             return videoFragment;
         }

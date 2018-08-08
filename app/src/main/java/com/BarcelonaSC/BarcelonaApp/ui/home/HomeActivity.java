@@ -286,7 +286,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
     public void getSeccion(String tag, Fragment fragment) {
         if (tag.equals(ProfileFragment.TAG)) {
-            trackFragment(Constant.Analytics.PROFILE)
+            trackFragment(Constant.Analytics.PROFILE);
             initBanner(BannerView.Seccion.PROFILE);
         } else if (tag.equals(NotificationFragment.TAG)) {
             trackFragment(Constant.Analytics.NOTIFICATION);
@@ -332,7 +332,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         } else if (tag.equals(MultimediaFragment.TAG)) {
             initBanner(BannerView.Seccion.LIVE);
         } else {
-            trackFragment(Constant.Analytics.NOTIFICATION)
+            trackFragment(Constant.Analytics.NOTIFICATION);
             initBanner(BannerView.Seccion.SETINGS);
         }
     }
