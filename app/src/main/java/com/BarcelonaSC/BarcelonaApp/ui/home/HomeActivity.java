@@ -286,16 +286,21 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
     public void getSeccion(String tag, Fragment fragment) {
         if (tag.equals(ProfileFragment.TAG)) {
+            trackFragment(Constant.Analytics.PROFILE)
             initBanner(BannerView.Seccion.PROFILE);
         } else if (tag.equals(NotificationFragment.TAG)) {
+            trackFragment(Constant.Analytics.NOTIFICATION);
             initBanner(BannerView.Seccion.SETINGS);
         } else if (tag.equals(CalendarFragment.TAG)) {
+            trackFragment(Constant.Analytics.CALENDAR);
             initBanner(BannerView.Seccion.CALENDAR);
         } else if (tag.equals(MainNewsFragment.TAG + Constant.Menu.NEWS)) {
+            trackFragment(Constant.Analytics.NEWS);
             initBanner(BannerView.Seccion.NEWS);
         } else if (tag.equals(FutbolBaseFragment.TAG + Constant.Menu.FOOTBALL_BASE)) {
             initBanner(BannerView.Seccion.FOOTBALL_BASE);
         } else if (tag.equals(AcademyFragment.TAG)) {
+            trackFragment(Constant.Analytics.ACADEMY);
             initBanner(BannerView.Seccion.ACADEMY);
         } else if (tag.equals(LineUpFragment.TAG)) {
             initBanner(BannerView.Seccion.LINE_UP);
@@ -307,22 +312,27 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             }
             Log.d(TAG, "getSeccion " + tag);
         } else if (tag.equals(VRFragment.TAG)) {
+            trackFragment(Constant.Analytics.VIRTUAL_REALITY);
             initBanner(BannerView.Seccion.VIRTUAL_REALITY);
         } else if (tag.equals(VirtualShopFragment.TAG)) {
+            trackFragment(Constant.Analytics.STORE);
             initBanner(BannerView.Seccion.STORE);
         } else if (tag.equals(TableFragment.TAG)) {
             initBanner(BannerView.Seccion.TABLE);
         } else if (tag.equals(TeamFragment.TAG)) {
             initBanner(BannerView.Seccion.TEAM);
         } else if (tag.equals(StatisticsFragment.TAG)) {
+            trackFragment(Constant.Analytics.STATISTICS);
             initBanner(BannerView.Seccion.STATISTICS);
         } else if (tag.equals(YouChooseFragment.TAG)) {
             initBanner(BannerView.Seccion.YOU_CHOOSE);
         } else if (tag.equals(MapActivity.TAG)) {
+            trackFragment(Constant.Analytics.MAP);
             initBanner(BannerView.Seccion.MAP);
         } else if (tag.equals(MultimediaFragment.TAG)) {
             initBanner(BannerView.Seccion.LIVE);
         } else {
+            trackFragment(Constant.Analytics.NOTIFICATION)
             initBanner(BannerView.Seccion.SETINGS);
         }
     }
