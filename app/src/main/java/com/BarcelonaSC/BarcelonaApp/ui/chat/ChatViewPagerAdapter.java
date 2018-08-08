@@ -34,12 +34,19 @@ public class ChatViewPagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
+                // Google Analytics Messages page in Chat
+                App.get().registerTrackScreen(Constant.Analytics.CHAT + "." + Constant.ChatTags.Messages);
                 return messagesFragment = MessagesFragment.newInstance();
 
             case 1:
+                // Google Analytics Groups page in Chat
+                App.get().registerTrackScreen(Constant.Analytics.CHAT + "." + Constant.ChatTags.Messages);
                 return groupsFragment = GroupsFragment.getInstance();
 
             default:
+                // Google Analytics Messages page in Chat
+                App.get().registerTrackScreen(Constant.Analytics.CHAT + "." + Constant.ChatTags.Messages);
+           
                 return messagesFragment = MessagesFragment.newInstance();
 
         }

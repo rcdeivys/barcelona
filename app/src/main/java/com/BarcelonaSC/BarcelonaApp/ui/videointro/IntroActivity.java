@@ -159,6 +159,9 @@ public class IntroActivity extends BaseActivity {
         splash.setVideoURI(Uri.parse(splashUrlPath));
         splash.start();
 
+        // Google analytics intro video screen tag
+        App.get().registerTrackScreen(Constant.Analytics.INTRO_VIDEO);
+
         splash.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
