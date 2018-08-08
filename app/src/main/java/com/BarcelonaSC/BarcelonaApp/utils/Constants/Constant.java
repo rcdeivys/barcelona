@@ -295,7 +295,7 @@ public interface Constant {
         String Card = "Card";
         String CardFail = "CardFail";
         String Photo = "Photo";
-        String Terms = "Terms&Conditions";
+        String Terms = "Terms";
         String Logout = "Logout";
     }
 

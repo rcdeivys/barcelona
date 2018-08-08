@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.FirebaseManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.NotificationManager;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
@@ -125,6 +126,10 @@ public class HinchaFragment extends Fragment {
         acercaDe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Send Google Analytics Screen Tag
+                App.get().registerTrackScreen(Constant.Analytics.PROFILE + "." + Constant.ProfileTags.Terms);
+
                 AcercaDeDialog acercaDeDialog = new AcercaDeDialog();
                 acercaDeDialog.show(getActivity().getSupportFragmentManager(), "acercade");
             }
@@ -166,9 +171,14 @@ public class HinchaFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (sessionManager.getUser().getCedula() != null && !sessionManager.getUser().getCedula().equals("")) {
+                    // Send Google Analytics card Tag
+                    App.get().registerTrackScreen(Constant.Analytics.PROFILE + "." + Constant.ProfileTags.Card);
+
                     Intent intent = new Intent(getActivity(), CarnetDigitalActivity.class);
                     getActivity().startActivity(intent);
                 } else {
+                    // Send Google Analytics event card fail
+                    App.get().registerTrackEvent(Constant.Analytics.PROFILE, Constant.ActionTags.Clicked, Constant.ProfileTags.CardFail, 0);
                     Toast.makeText(getActivity(), "Completa todos los campos de registro para ver el carné en la pestaña \"Info Cuenta\"", Toast.LENGTH_LONG).show();
                 }
             }
@@ -186,6 +196,9 @@ public class HinchaFragment extends Fragment {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Send Google Analytics event log out
+                App.get().registerTrackEvent(Constant.Analytics.PROFILE, Constant.ActionTags.Clicked, Constant.ProfileTags.Logout, 0);
+
                 sessionManager.setSession(null);
                 sessionManager.setUrlLineUpShare("");
                 sessionManager.setUser(null);
