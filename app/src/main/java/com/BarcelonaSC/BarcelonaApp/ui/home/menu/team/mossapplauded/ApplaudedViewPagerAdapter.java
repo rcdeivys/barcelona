@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 /**
@@ -33,11 +34,16 @@ public class ApplaudedViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         // Open "Playoff summoned" fragment
         if(position == 0) {
+            // Google analytics Highlights screen per team
+            App.get().registerTrackScreen(Constant.Analytics.TEAM + "." + Constant.TeamTags.HighlightsLatest);
             applaudedFragment = ApplaudedFragment.newInstance(Constant.Key.LAST_GAME);
             return applaudedFragment;
         }
         // Open "Game summoned" fragment
         else{
+            // Google analytics Highlights All Time screen per team
+            App.get().registerTrackScreen(Constant.Analytics.TEAM + "." + Constant.TeamTags.HighlightsAllTime);
+
             applaudedFragment2 = ApplaudedFragment.newInstance(Constant.Key.ACUMULATED);
             return applaudedFragment2;
         }

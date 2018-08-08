@@ -117,6 +117,9 @@ public class GalleryListActivity extends BaseActivity implements GalleryListAdap
 
     @Override
     public void onImgClickListener(String url, int position) {
+        // Google Analytics screen click photo
+        App.get().registerTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.GalleryPhoto);
+
         Intent intent = new Intent(this, GalleryActivity.class);
         intent.putParcelableArrayListExtra(GalleryActivity.GALLERY, (ArrayList<? extends Parcelable>) itemList);
         intent.putExtra(GalleryActivity.POSITION, position);
