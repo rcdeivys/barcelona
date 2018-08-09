@@ -189,6 +189,7 @@ public interface Constant {
         String CHAT = "CHAT";
         String ERROR = "ERROR";
         String GAME = "GAME";
+        String GLORIAS = "GLORIAS";
         String INTRO_VIDEO = "INTRO VIDEO";
         String LINEUP = "LINEUP";
         String LOGIN = "LOGIN";
@@ -219,6 +220,14 @@ public interface Constant {
     interface ChatTags {
         String Groups = "Groups";
         String Messages = "Messages";
+    }
+
+    interface GloriasTags {
+        String VideoFeed = "VideoFeed";
+        String Vote = "Vote";
+        String Ranking = "Ranking";
+        String Profile = "Profile";
+        String SocialMedia = "SocialMedia";
     }
 
     interface LineupTags {
