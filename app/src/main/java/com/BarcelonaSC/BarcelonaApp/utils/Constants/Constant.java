@@ -240,7 +240,6 @@ public interface Constant {
     }
 
     interface NewsTags {
-        String Feed = "";
         String Infografy = "Infografy";
         String Normal = "Normal";
         String Video = "Video";
