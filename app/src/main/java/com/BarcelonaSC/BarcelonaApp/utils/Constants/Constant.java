@@ -184,29 +184,23 @@ public interface Constant {
     }
 
     interface Analytics {
-        String ACADEMY = "ACADEMY";
-        String AV_VILLAS = "AV VILLAS";
         String BANNER = "BANNER";
-        String BASE = "BASE";
         String CALENDAR = "CALENDAR";
         String CHAT = "CHAT";
+        String ERROR = "ERROR";
         String GAME = "GAME";
-        String GOLD_FAN = "GOLD";
         String INTRO_VIDEO = "INTRO VIDEO";
         String LINEUP = "LINEUP";
         String LOGIN = "LOGIN";
-        String MAIN = "MAIN";
         String MAP = "MAP";
         String MENU = "MENU";
         String MULTIMEDIA = "MULTIMEDIA";
         String NEWS = "NEWS";
         String NOTIFICATION = "NOTIFICATION";    
-        String PICK_TEAM = "PICK TEAM";
         String PLAYER = "PLAYER";
         String POLLS = "POLLS";
         String PROFILE = "PROFILE";
         String REGISTER = "REGISTER";    
-        String SOCIAL_MEDIA_TEAM = "TEAM";
         String STATISTICS = "STATS";
         String STORE = "STORE";
         String TABLE = "TABLE";
@@ -227,29 +221,12 @@ public interface Constant {
         String Messages = "Messages";
     }
 
-    interface FutbolBaseTags {
-        String News = "News";
-        String Team = "Team";
-        String TeamProfile = "TeamProfile";
-        String TeamInstagram = "TeamInstagram";
-    }
-
-    interface GoldFanTags {
-        String Details = "Details";
-        String Register = "Register";
-        String GooglePay = "GooglePay";
-        String Pay = "Pay";
-        String Confirm = "Confirm";
-    }
-
     interface LineupTags {
-        String Main = "";
         String Ideal = "Ideal";
         String Armar = "Armar";
     }
 
     interface LoginTags {
-        String Main = "";
         String Reset = "Reset";
     }
 
@@ -300,7 +277,6 @@ public interface Constant {
     }
 
     interface RegisterTags {
-        String Main = "";
         String Facebook = "Facebook";
         String Google = "Google";
         String Terms = "Terms";
@@ -323,14 +299,11 @@ public interface Constant {
         String Facebook = "Facebook";
         String Instagram = "Instagram";
         String Twitter = "Twitter";
-        String Website = "Website";
         String YouTube = "YouTube";
     }
 
     interface TableTags {
-        String Table = "";
         String Simulator = "Simulator";
-        String Simulation = "Simulation";
     }
 
     interface TeamTags {
@@ -342,7 +315,6 @@ public interface Constant {
     }
 
     interface WallTags {
-        String Feed = "";
         String Post = "Post";
         String Profile = "Profile";
         String Comments = "Comments";
