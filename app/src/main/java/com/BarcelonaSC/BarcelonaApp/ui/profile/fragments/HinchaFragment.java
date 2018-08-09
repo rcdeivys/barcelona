@@ -238,6 +238,10 @@ public class HinchaFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Uri imageUri;
+
+        // Google analytics send profile tag
+        App.get().registerTrackScreen(Constant.Analytics.PROFILE + "." + Constant.ProfileTags.Photo);
+
         if (requestCode == CropImage.PICK_IMAGE_CHOOSER_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             imageUri = CropImage.getPickImageResultUri(getActivity(), data);
             if (CropImage.isReadExternalStoragePermissionsRequired(getActivity(), imageUri)) {

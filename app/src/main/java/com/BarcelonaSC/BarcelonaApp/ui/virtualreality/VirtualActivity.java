@@ -249,7 +249,7 @@ public class VirtualActivity extends BaseActivity {
         } catch (Exception e) {
             App.get().registerTrackEvent(Constant.Analytics.ERROR, Constant.ActionTags.Clicked, Constant.Analytics.NEWS + "." + Constant.NewsTags.VR, 0);
         }
-        
+
 
         super.onResume();
         // Resume the 3D rendering.
