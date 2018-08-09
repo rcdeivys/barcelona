@@ -255,12 +255,10 @@ public interface Constant {
     }
 
     interface PlayerTags {
-        String Profile = "";
         String SocialMedia = "SocialMedia";
     }
 
     interface PollTags {
-        String Main = "";
         String Vote = "Vote";
         String Ranking = "Ranking";
     }
