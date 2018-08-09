@@ -80,6 +80,20 @@ public class NewsSingleActivity extends BaseActivity implements NewsSingleContra
 
         if (getIntent() != null && getIntent().hasExtra(Constant.Seccion.Id_Post)) {
             id = getIntent().getStringExtra(Constant.Seccion.Id_Post);
+
+            // Send notification to google analytics
+            try {
+                if (getIntent().hasExtra(Constant.Key.NOTIFICATION)) {
+                    App.get().registerTrackEvent(
+                            Constant.Analytics.NOTIFICATION,
+                            Constant.NotificationTags.Clicked,
+                            TAG,
+                            Integer.parseInt(id)
+                    );
+                }
+            } catch (Exception e) {
+
+            }
         }
 
         btnBack.setOnClickListener(new View.OnClickListener() {

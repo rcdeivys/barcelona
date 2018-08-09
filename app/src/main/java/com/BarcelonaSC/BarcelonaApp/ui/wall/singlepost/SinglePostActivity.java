@@ -32,6 +32,21 @@ public class SinglePostActivity extends BaseActivity implements SinglePostContra
         initComponent();
         if (getIntent().getStringExtra(Constant.Seccion.Id_Post) != null) {
             presenter.load(getIntent().getStringExtra(Constant.Seccion.Id_Post));
+
+            // Send Google Analytics data for notifications
+            try {
+                if (getIntent().hasExtra(Constant.Key.NOTIFICATION)) {
+                    App.get().registerTrackEvent(
+                            Constant.Analytics.NOTIFICATION,
+                            Constant.NotificationTags.Clicked,
+                            TAG,
+                            0
+                    );
+                }
+            } catch (Exception e){
+
+            }
+
         } else {
             finish();
         }

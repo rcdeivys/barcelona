@@ -55,6 +55,19 @@ public class IntroActivity extends BaseActivity {
         setContentView(R.layout.activity_video_intro);
         ButterKnife.bind(this);
 
+        try {
+            if (getIntent().hasExtra(Constant.Key.NOTIFICATION)) {
+                App.get().registerTrackEvent(
+                        Constant.Analytics.NOTIFICATION,
+                        Constant.NotificationTags.Clicked,
+                        getIntent().getStringExtra(Constant.Key.SECCION),
+                        0
+                );
+            }
+        } catch (Exception e){
+
+        }
+
         preferenceManager = new PreferenceManager(this);
         App.get().component().bannerApi().getBanners().enqueue(new NetworkCallBack<BannerResponse>() {
             @Override

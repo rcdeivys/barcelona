@@ -212,6 +212,20 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
                     }, 500);
                 }
             }
+
+            // Send Google Analytics for Notifications
+            try {
+                if (getIntent().hasExtra(Constant.Key.NOTIFICATION)) {
+                    App.get().registerTrackEvent(
+                            Constant.Analytics.NOTIFICATION,
+                            Constant.NotificationTags.Clicked,
+                            getIntent().getStringExtra(Constant.Key.SECCION),
+                            0
+                    );
+                }
+            }catch (Exception e){
+
+            }
         }
 
         presenter.getActivity(HomeActivity.this);
