@@ -156,7 +156,7 @@ public class IntroActivity extends BaseActivity {
     public void initSplash(final boolean notification) {
         // Google analytics intro video screen tag
         App.get().registerTrackScreen(Constant.Analytics.INTRO_VIDEO);
-        
+
         /*btnSkip.setVisibility(View.GONE);
         introVideoView.setVisibility(View.GONE);
         splash.setVideoURI(Uri.parse(splashUrlPath));
