@@ -288,19 +288,6 @@ public interface Constant {
         String Terms = "Terms";
     }
 
-    interface StatsTags {
-        String Results = "Results";
-        String Positions = "Positions";
-        String Ranking = "Ranking";
-        String Goals = "Goals";
-        String Planteles = "Planteles";
-        String Teams = "Teams";
-        String Players = "Players";
-        String CompareTeams = "CompareTeams";
-        String ComparePlayers = "ComparePlayers";
-        String Gamecast = "Gamecast";
-    }
-
     interface SocialMediaTags {
         String Facebook = "Facebook";
         String Instagram = "Instagram";

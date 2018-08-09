@@ -235,6 +235,7 @@ public class MapActivity extends BaseSideMenuActivity implements OnMapReadyCallb
 
     @OnClick(R.id.btn_search)
     public void search() {
+
         // Send search event google analytics
         App.get().registerTrackEvent(Constant.Analytics.MAP, Constant.ActionTags.Clicked, Constant.MapTags.Search, 0);
 
