@@ -47,11 +47,6 @@ public class NewsVideoActivity extends BaseActivity {
         ButterKnife.bind(this);
         Bundle extras = getIntent().getExtras();
 
-        if (extras != null) {
-            String id = extras.getString(Constant.Key.ID);
-            App.get().registerCustomTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.Video, id,1);
-        }
-
         String url = extras.getString(Constant.Key.URL);
 
         btnBack.setOnClickListener(new View.OnClickListener() {

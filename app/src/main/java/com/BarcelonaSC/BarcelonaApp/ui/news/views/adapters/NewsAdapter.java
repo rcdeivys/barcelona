@@ -101,7 +101,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
             holder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
                 @Override
                 public void play() {
-                    onItemClickListener.playVideo(position);
+                    onItemClickListener.playVideo(position, ((News) newsList.get(position)).getId());
                 }
             });
             holder.setNewsVideo(((News) newsList.get(position)), new View.OnClickListener() {
@@ -283,7 +283,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
         void onVideoClick(News news, int currentVideo);
 
-        void playVideo(int position);
+        void playVideo(int position, int id);
 
         void onCalendarClick(String id);
 

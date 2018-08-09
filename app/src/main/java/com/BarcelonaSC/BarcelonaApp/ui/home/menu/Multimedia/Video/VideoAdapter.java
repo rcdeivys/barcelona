@@ -62,7 +62,7 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         videoHolder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
             @Override
             public void play() {
-                onItemClickListener.playVideo(position);
+                onItemClickListener.playVideo(position, item.getId());
             }
         });
         videoHolder.setNewsVideo(item, new View.OnClickListener() {
@@ -114,7 +114,7 @@ public class VideoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         void onVideoShare(String id);
 
-        void playVideo(int position);
+        void playVideo(int position, int id);
 
     }
 

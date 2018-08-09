@@ -147,7 +147,7 @@ public class MonumentalNewsFragment extends BaseFragment implements MonumentalNe
     }
 
     @Override
-    public void playVideo(int position) {
+    public void playVideo(int position, int id) {
         videoPosition.add(position);
     }
 

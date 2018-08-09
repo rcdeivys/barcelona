@@ -202,7 +202,7 @@ public class MProfileFragment extends BaseFragment implements MProfileContract.V
     }
 
     @Override
-    public void playVideo(int position) {
+    public void playVideo(int position,int id) {
         videoPositions.add(position);
     }
 
