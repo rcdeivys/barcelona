@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseActivity;
 import com.BarcelonaSC.BarcelonaApp.models.VideoReality;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
@@ -243,6 +244,13 @@ public class VirtualActivity extends BaseActivity {
 
     @Override
     public void onResume() {
+        try {
+            App.get().registerCustomTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.VR, id, 1);
+        } catch (Exception e) {
+            App.get().registerTrackEvent(Constant.Analytics.ERROR, Constant.ActionTags.Clicked, Constant.Analytics.NEWS + "." + Constant.NewsTags.VR, 0);
+        }
+        
+
         super.onResume();
         // Resume the 3D rendering.
         videoWidgetView.resumeRendering();
