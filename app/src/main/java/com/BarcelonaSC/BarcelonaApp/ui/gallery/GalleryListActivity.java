@@ -58,11 +58,15 @@ public class GalleryListActivity extends BaseActivity implements GalleryListAdap
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery_list);
         ButterKnife.bind(this);
         initComponent();
         id = getIntent().getIntExtra(Constant.Key.ID, 0);
+
+        // Send data to Google Analytics for gallery
+        App.get().registerCustomTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.Gallery, Integer.toString(id), 1);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
