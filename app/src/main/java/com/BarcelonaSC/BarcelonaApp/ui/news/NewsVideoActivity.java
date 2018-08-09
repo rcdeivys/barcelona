@@ -16,6 +16,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
@@ -45,6 +46,11 @@ public class NewsVideoActivity extends BaseActivity {
         setContentView(R.layout.activity_news_video);
         ButterKnife.bind(this);
         Bundle extras = getIntent().getExtras();
+
+        if (extras != null) {
+            String id = extras.getString(Constant.Key.ID);
+            App.get().registerCustomTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.Video, id,1);
+        }
 
         String url = extras.getString(Constant.Key.URL);
 

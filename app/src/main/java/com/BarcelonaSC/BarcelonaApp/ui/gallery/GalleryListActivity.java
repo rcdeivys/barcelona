@@ -121,7 +121,7 @@ public class GalleryListActivity extends BaseActivity implements GalleryListAdap
 
     @Override
     public void onImgClickListener(String url, int position) {
-        
+
         // Google Analytics screen click photo
         try {
             App.get().registerCustomTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.GalleryPhoto, id + "." + Integer.toString(position), 1);
