@@ -296,7 +296,7 @@ public interface Constant {
         String CardFail = "CardFail";
         String Photo = "Photo";
         String Terms = "Terms";
-        String Logout = "Logout";
+        String Logout = "Log Out";
     }
 
     interface RegisterTags {

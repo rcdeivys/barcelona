@@ -300,7 +300,6 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         } else if (tag.equals(FutbolBaseFragment.TAG + Constant.Menu.FOOTBALL_BASE)) {
             initBanner(BannerView.Seccion.FOOTBALL_BASE);
         } else if (tag.equals(AcademyFragment.TAG)) {
-            trackFragment(Constant.Analytics.ACADEMY);
             initBanner(BannerView.Seccion.ACADEMY);
         } else if (tag.equals(LineUpFragment.TAG)) {
             initBanner(BannerView.Seccion.LINE_UP);

@@ -270,7 +270,7 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
     public void onClickBannerSeccionListener(String seccionDestino, String bannerData, String section, String title) {
         // Send banner data to Google Analytics
         App.get().registerCustomTrackScreen(Constant.Analytics.BANNER, section + "." + title, 6);
-        
+
         if (seccionDestino != null) {
             Intent intent = new Intent(this, HomeActivity.class);
             intent.putExtra(Constant.Key.SECCION, seccionDestino);
