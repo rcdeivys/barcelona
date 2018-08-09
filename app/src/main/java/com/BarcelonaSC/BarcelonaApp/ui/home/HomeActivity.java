@@ -340,7 +340,6 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         } else if (tag.equals(YouChooseFragment.TAG)) {
             initBanner(BannerView.Seccion.YOU_CHOOSE);
         } else if (tag.equals(MapActivity.TAG)) {
-            trackFragment(Constant.Analytics.MAP);
             initBanner(BannerView.Seccion.MAP);
         } else if (tag.equals(MultimediaFragment.TAG)) {
             initBanner(BannerView.Seccion.LIVE);
