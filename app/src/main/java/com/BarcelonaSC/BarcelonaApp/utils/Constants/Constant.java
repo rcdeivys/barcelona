@@ -240,7 +240,7 @@ public interface Constant {
     }
 
     interface MapTags {
-        String Search = "Map Search";
+        String Search = "Search";
     }
 
     interface MultimediaTags {
