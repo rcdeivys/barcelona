@@ -241,7 +241,10 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
     }
 
     @Override
-    public void onClickBannerInternoListener(String url, String title) {
+    public void onClickBannerInternoListener(String url, String section, String title) {
+        // Send banner data to Google Analytics
+        App.get().registerCustomTrackScreen(Constant.Analytics.BANNER, section + "." + title, 6);
+
         if (url != null) {
             Intent intent = new Intent(this, WebViewActivity.class);
             intent.putExtra(Constant.Key.URL, url);
@@ -252,7 +255,10 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
     }
 
     @Override
-    public void onClickBannerExternoListener(String url) {
+    public void onClickBannerExternoListener(String url, String section, String title) {
+        // Send banner data to Google Analytics
+        App.get().registerCustomTrackScreen(Constant.Analytics.BANNER, section + "." + title, 6);
+
         if (url != null) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(browserIntent);
@@ -261,7 +267,10 @@ public class BaseActivity extends AppCompatActivity implements Navigator, Banner
     }
 
     @Override
-    public void onClickBannerSeccionListener(String seccionDestino, String bannerData) {
+    public void onClickBannerSeccionListener(String seccionDestino, String bannerData, String section, String title) {
+        // Send banner data to Google Analytics
+        App.get().registerCustomTrackScreen(Constant.Analytics.BANNER, section + "." + title, 6);
+        
         if (seccionDestino != null) {
             Intent intent = new Intent(this, HomeActivity.class);
             intent.putExtra(Constant.Key.SECCION, seccionDestino);
