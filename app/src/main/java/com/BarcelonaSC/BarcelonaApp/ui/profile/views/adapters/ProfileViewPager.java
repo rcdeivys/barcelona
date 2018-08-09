@@ -5,8 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.ui.profile.fragments.HinchaFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.profile.fragments.InfoAccountFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 /**
  * Created by leonardojpr on 11/10/17.
@@ -35,8 +37,14 @@ public class ProfileViewPager   extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
+                // Google Analytics tag for Profile screen
+                App.get().registerTrackScreen(Constant.Analytics.PROFILE);
+
                 return hinchaFragment;
             default:
+                // Google Analytics tag for changing profile info screen
+                App.get().registerTrackScreen(Constant.Analytics.PROFILE + "." + Constant.ProfileTags.Info);
+
                 return infoAccountFragment;
         }
     }

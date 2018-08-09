@@ -149,7 +149,8 @@ public class NewsFragment extends BaseFragment implements NewsContract.View, New
     }
 
     @Override
-    public void playVideo(int position) {
+    public void playVideo(int position, int id) {
+        App.get().registerCustomTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.Video, Integer.toString(id), 1);
         videoPosition.add(position);
     }
 

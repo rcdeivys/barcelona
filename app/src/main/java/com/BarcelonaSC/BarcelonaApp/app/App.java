@@ -197,11 +197,37 @@ public class App extends Application {
         MultiDex.install(this);
     }
 
+    public void registerCustomTrackScreen(String trackScreen, String dim, int index) {
+        mTracker = getDefaultTracker();
+        mTracker.setScreenName(trackScreen);
+        mTracker.send(new HitBuilders
+                .ScreenViewBuilder()
+                .setCustomDimension(index, dim)
+                .build());
+    }
 
     public void registerTrackScreen(String trackScreen) {
         mTracker = getDefaultTracker();
         mTracker.setScreenName(trackScreen);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+    }
+
+    public void registerTrackEvent(String category,String action,String label,int value){
+        mTracker = getDefaultTracker();
+        if (value != 0) {
+            mTracker.send(new HitBuilders.EventBuilder()
+                    .setCategory(category)
+                    .setAction(action)
+                    .setLabel(label)
+                    .setValue(value)
+                    .build());
+        } else {
+            mTracker.send(new HitBuilders.EventBuilder()
+                    .setCategory(category)
+                    .setAction(action)
+                    .setLabel(label)
+                    .build()); 
+        } 
     }
 
     public void changeState(String state) {

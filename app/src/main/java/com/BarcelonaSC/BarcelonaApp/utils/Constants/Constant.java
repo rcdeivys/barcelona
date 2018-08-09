@@ -183,5 +183,133 @@ public interface Constant {
         String CHAT= "chat";
     }
 
+    interface Analytics {
+        String BANNER = "BANNER";
+        String CALENDAR = "CALENDAR";
+        String CHAT = "CHAT";
+        String ERROR = "ERROR";
+        String GAME = "GAME";
+        String GLORIAS = "GLORIAS";
+        String INTRO_VIDEO = "INTRO VIDEO";
+        String LINEUP = "LINEUP";
+        String LOGIN = "LOGIN";
+        String MAP = "MAP";
+        String MENU = "MENU";
+        String MULTIMEDIA = "MULTIMEDIA";
+        String NEWS = "NEWS";
+        String NOTIFICATION = "NOTIFICATION";    
+        String PLAYER = "PLAYER";
+        String POLLS = "POLLS";
+        String PROFILE = "PROFILE";
+        String REGISTER = "REGISTER";    
+        String STATISTICS = "STATS";
+        String STORE = "STORE";
+        String TABLE = "TABLE";
+        String TEAM = "TEAM";
+        String VIRTUAL_REALITY = "VIRTUAL REALITY";
+        String WALL = "WALL";
+    }
+    
+    interface ActionTags {
+        String Clicked = "Clicked";
+        String Scrolled = "Scrolled";
+        String LeftSwipe = "Left Swipe";
+        String RightSwipe = "Right Swipe";
+    }
 
+    interface ChatTags {
+        String Groups = "Groups";
+        String Messages = "Messages";
+    }
+
+    interface GloriasTags {
+        String VideoFeed = "VideoFeed";
+        String Vote = "Vote";
+        String Ranking = "Ranking";
+        String Profile = "Profile";
+        String SocialMedia = "SocialMedia";
+    }
+
+    interface LineupTags {
+        String Ideal = "Ideal";
+        String Armar = "Armar";
+    }
+
+    interface LoginTags {
+        String Reset = "Reset";
+    }
+
+    interface MapTags {
+        String Search = "Search";
+    }
+
+    interface MultimediaTags {
+        String VideoFeed = "VideoFeed";
+        String Live = "Live";
+    }
+
+    interface NewsTags {
+        String Infografy = "Infografy";
+        String Normal = "Normal";
+        String Video = "Video";
+        String VR = "VR";
+        String Gallery = "Gallery";
+        String GalleryPhoto = "GalleryPhoto";
+    }
+
+    interface NotificationTags {
+        String Received = "Received";
+        String Clicked = "Clicked";
+        String Dismissed = "Dismissed";
+    }
+
+    interface PlayerTags {
+        String SocialMedia = "SocialMedia";
+    }
+
+    interface PollTags {
+        String Vote = "Vote";
+        String Ranking = "Ranking";
+    }
+
+    interface ProfileTags {
+        String User = "";
+        String Info = "Info";
+        String Card = "Card";
+        String CardFail = "CardFail";
+        String Photo = "Photo";
+        String Terms = "Terms";
+        String Logout = "Log Out";
+    }
+
+    interface RegisterTags {
+        String Facebook = "Facebook";
+        String Google = "Google";
+        String Terms = "Terms";
+    }
+
+    interface SocialMediaTags {
+        String Facebook = "Facebook";
+        String Instagram = "Instagram";
+        String Twitter = "Twitter";
+        String YouTube = "YouTube";
+    }
+
+    interface TableTags {
+        String Simulator = "Simulator";
+    }
+
+    interface TeamTags {
+        String Roster = "Roster";
+        String Search = "Search";
+        String Convocados = "Convocados";
+        String HighlightsLatest = "HighlightsLatest";
+        String HighlightsAllTime = "HighlightsAllTime";
+    }
+
+    interface WallTags {
+        String Post = "Post";
+        String Profile = "Profile";
+        String Comments = "Comments";
+    }
 }

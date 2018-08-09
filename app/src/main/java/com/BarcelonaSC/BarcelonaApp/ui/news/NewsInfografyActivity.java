@@ -8,6 +8,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
@@ -78,6 +79,12 @@ public class NewsInfografyActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
+        try {
+            App.get().registerCustomTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.Infografy, id, 1);
+        } catch (Exception e) {
+            App.get().registerTrackEvent(Constant.Analytics.ERROR, Constant.ActionTags.Clicked, Constant.Analytics.NEWS + "." + Constant.NewsTags.Infografy,0);
+        }
+
         super.onResume();
     }
 

@@ -114,6 +114,9 @@ public class RegisterFragment extends Fragment implements RegisterContract.View 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // Google Analytics for Register screen
+        App.get().registerTrackScreen(Constant.Analytics.REGISTER);
+
         return inflater.inflate(R.layout.fragment_register, container, false);
     }
 

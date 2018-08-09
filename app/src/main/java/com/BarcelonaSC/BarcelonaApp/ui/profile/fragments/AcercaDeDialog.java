@@ -11,7 +11,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

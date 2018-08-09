@@ -117,7 +117,7 @@ public abstract class BaseSideMenuActivity extends BaseActivity implements SideM
                 ActivityCompat.invalidateOptionsMenu(BaseSideMenuActivity.this);
                 Log.d(TAG, "Drawer opended");
                 // Send Menu status to analytics
-                registerTrackScreen(getResources().getString(R.string.drawer_opened));
+                registerTrackScreen(Constant.Analytics.MENU);
             }
 
             @Override

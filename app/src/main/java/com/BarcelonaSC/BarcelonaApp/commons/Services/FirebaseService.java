@@ -6,6 +6,8 @@ package com.BarcelonaSC.BarcelonaApp.commons.Services;
 
 import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
@@ -41,6 +43,19 @@ public class FirebaseService extends FirebaseMessagingService {
         }
 
         if (SessionManager.getInstance().getSession() != null) {
+            // Send Received to Google analytics
+            try {
+                App.get().registerTrackEvent(
+                        Constant.Analytics.NOTIFICATION,
+                        Constant.NotificationTags.Received,
+                        remoteMessage.getData().get("section"),
+                        Integer.parseInt(remoteMessage.getData().get("id_post")!=null?remoteMessage.getData().get("id_post"):remoteMessage.getData().get("match_id")!=null?remoteMessage.getData().get("match_id"):"0")
+                );
+            } catch (Exception e) {
+                Log.e("NOTIFICATION","  error --->: "+e.getMessage());
+            }
+
+
             if (remoteMessage.getData() != null && remoteMessage.getData().size() > 0
                     && remoteMessage.getData().get("seccion") != null
                     && remoteMessage.getData().get("idConversacion") != null

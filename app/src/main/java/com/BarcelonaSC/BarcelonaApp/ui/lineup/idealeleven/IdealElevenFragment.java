@@ -282,6 +282,9 @@ public class IdealElevenFragment extends ShareBaseFragment implements IdealEleve
 
     @OnClick(R.id.btn_ok)
     public void onViewClicked() {
+        // Send set ideal lineup to google analytics
+        App.get().registerTrackScreen(Constant.Analytics.LINEUP + "." + Constant.LineupTags.Armar);
+
         FragmentTransaction ft = (getActivity()).getSupportFragmentManager().beginTransaction();
         DragDropPlayerDialogFragment dialog = DragDropPlayerDialogFragment.newInstance();
         if (idealElevenData.size() == 0)

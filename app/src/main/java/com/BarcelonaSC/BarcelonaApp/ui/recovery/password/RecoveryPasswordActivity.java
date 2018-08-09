@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.code.SendCodeFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.recovery.send.mail.SendEmailFragment;
@@ -14,6 +15,7 @@ import com.BarcelonaSC.BarcelonaApp.commons.BaseActivity;
 import com.BarcelonaSC.BarcelonaApp.models.SendEmail;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +39,10 @@ public class RecoveryPasswordActivity extends BaseActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
+        // Google Analytics Recover Password Reset
+        App.get().registerTrackScreen(Constant.Analytics.LOGIN + "." + Constant.LoginTags.Reset);
+    
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recovery_password);
         ButterKnife.bind(this);

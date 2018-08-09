@@ -5,9 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.ui.table.fragments.TableChildFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.table.fragments.TableSimulatorFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 /**
  * Created by Leonardojpr on 11/5/17.
@@ -34,10 +36,19 @@ public class TableViewPagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
+                // Fire Google Analytics Screen Tag for main table
+                App.get().registerTrackScreen(Constant.Analytics.TABLE);
+
                 return tableChildFragment;
             case 1:
+                // Fire Google Analytics Screen Tag for simulator
+                App.get().registerTrackScreen(Constant.Analytics.TABLE + "." + Constant.TableTags.Simulator);
+
                 return simulatorFragment;
             default:
+                // Fire Google Analytics Screen Tag for main table
+                App.get().registerTrackScreen(Constant.Analytics.TABLE);
+
                 return tableChildFragment;
         }
     }

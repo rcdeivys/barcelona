@@ -118,7 +118,7 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
             holder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
                 @Override
                 public void play() {
-                    onItemClickListener.playVideo(position);
+                    onItemClickListener.playVideo(position, getNewsList(position).getId());
                 }
             });
             holder.setNewsVideo(getNewsList(position), new View.OnClickListener() {
@@ -191,7 +191,7 @@ public class ChooseProfileAdapter extends RecyclerView.Adapter<RecyclerView.View
 
         void onVideoIsDorado();
 
-        void playVideo(int position);
+        void playVideo(int position, int id);
 
     }
 

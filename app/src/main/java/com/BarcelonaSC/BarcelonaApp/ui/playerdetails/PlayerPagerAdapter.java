@@ -4,8 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.PlayerProfile.PlayerProfileFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.playerdetails.playersocial.PlayerSocialMediaFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 
 /**
@@ -38,9 +40,15 @@ public class PlayerPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         if (position == 0) {
+            // Google analytics for Player Profile
+            App.get().registerCustomTrackScreen(Constant.Analytics.PLAYER, Integer.toString(playerId), 4);
+
             playerProfileFragment = PlayerProfileFragment.newInstance(playerId, type);
             return playerProfileFragment;
         } else
+            // Google analytics for Player Instagram
+            App.get().registerCustomTrackScreen(Constant.Analytics.PLAYER + "." + Constant.PlayerTags.SocialMedia, Integer.toString(playerId), 4);
+
             playerSocialMediaFragment = PlayerSocialMediaFragment.newInstance(playerId, type);
         return playerSocialMediaFragment;
     }

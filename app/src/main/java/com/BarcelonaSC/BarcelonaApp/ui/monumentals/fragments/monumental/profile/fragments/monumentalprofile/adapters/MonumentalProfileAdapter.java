@@ -128,7 +128,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
             holder.videoView.setCustomVideoViewPlayListener(new CustomVideoView.CustomVideoViewPlayListener() {
                 @Override
                 public void play() {
-                    onItemClickListener.playVideo(position);
+                    onItemClickListener.playVideo(position, recentItem.getId());
                 }
             });
             holder.setNewsVideo(recentItem, new View.OnClickListener() {
@@ -193,7 +193,7 @@ public class MonumentalProfileAdapter extends RecyclerView.Adapter<RecyclerView.
 
         void onClickVote();
 
-        void playVideo(int position);
+        void playVideo(int position, int id);
     }
 
     public void pauseVideo(List<Integer> position) {
