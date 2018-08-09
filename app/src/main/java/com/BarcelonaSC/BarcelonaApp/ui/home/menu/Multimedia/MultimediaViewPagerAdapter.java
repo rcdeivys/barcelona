@@ -41,6 +41,9 @@ public class MultimediaViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         // Open "on line" fragment
         else {
+            // Google Analytics Screen for live
+            App.get().registerTrackScreen(Constant.Analytics.MULTIMEDIA + "." + Constant.MultimediaTags.Live);
+
             //streamingFragment = new StreamingFragment();
             streamingFragment = StreamingFragment.newInstance(Constant.Key.MULTIMEDIA_ONLINE);
             return streamingFragment;
