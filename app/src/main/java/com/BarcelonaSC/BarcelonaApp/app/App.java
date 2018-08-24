@@ -72,8 +72,8 @@ public class App extends Application {
         super.onCreate();
         INSTANCE = this;
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-        StrictMode.setVmPolicy(builder.build());
+        //StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        //StrictMode.setVmPolicy(builder.build());
         Fresco.initialize(this);
         CrashlyticsCore crashlyticsCore = new CrashlyticsCore.Builder()
                 .disabled(BuildConfig.DEBUG)
