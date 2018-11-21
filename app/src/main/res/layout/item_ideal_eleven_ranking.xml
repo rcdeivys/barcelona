@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+            android:id="@+id/titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Alineacion"
+            android:textColor="@color/white"/>
+
+        <RelativeLayout
+            android:id="@+id/content_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:visibility="visible"
+            android:gravity="center_vertical">
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/position"
+                style="@style/StyleRobotoBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="1."
+                android:textColor="@color/white"
+
+                />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/total"
+                style="@style/StyleRobotoRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/position"
+                android:text="0%"
+                android:textColor="@color/white"
+                />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                style="@style/StyleRobotoRegular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toEndOf="@id/total"
+                android:text="Hincha"
+                android:textColor="@color/white"
+
+                />
+
+            <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                android:id="@+id/percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="0%"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                />
+
+            <android.support.percent.PercentRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/position">
+
+                <!-- Statistics bar -->
+                <View
+                    android:id="@+id/progressbar"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@color/white"
+                    app:layout_heightPercent="56%"
+                    app:layout_widthPercent="0%" />
+            </android.support.percent.PercentRelativeLayout>
+        </RelativeLayout>
+
+        <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+            style="@style/StyleRobotoBold.Title.White"
+            android:id="@+id/message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_margin="20dp"
+            android:visibility="gone"
+            android:text="No tiene once ideal Cargado"/>
+
+        <GridLayout
+            android:id="@+id/tag_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:columnCount="3"
+            android:layout_gravity="center"
+            android:orientation="horizontal" />
+
+    </LinearLayout>
+</LinearLayout>

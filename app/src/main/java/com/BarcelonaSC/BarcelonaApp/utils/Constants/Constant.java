@@ -233,6 +233,7 @@ public interface Constant {
     interface LineupTags {
         String Ideal = "Ideal";
         String Armar = "Armar";
+        String Ranking = "Ranking";
     }
 
     interface LoginTags {

@@ -47,7 +47,7 @@ public class LineUpFragment extends ShareBaseFragment {
     }
 
     private void initializeViewPager() {
-        int Numboftabs = 2;
+        int Numboftabs = 3;
 
         String[] titles = {ConfigurationManager.getInstance().getConfiguration().getTit71()
                 , ConfigurationManager.getInstance().getConfiguration().getTit72()};
