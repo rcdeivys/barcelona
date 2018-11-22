@@ -20,6 +20,14 @@ public interface Constant {
         String URL = "url";
     }
 
+    interface FutbolBaseTags {
+        String News = "News";
+        String Team = "Team";
+        String TeamProfile = "TeamProfile";
+        String TeamInstagram = "TeamInstagram";
+    }
+
+
     interface CanchaSize {
 
         int CANCHA_ALTO = 310;
@@ -185,6 +193,7 @@ public interface Constant {
 
     interface Analytics {
         String BANNER = "BANNER";
+        String BASE = "BASE";
         String CALENDAR = "CALENDAR";
         String CHAT = "CHAT";
         String ERROR = "ERROR";
@@ -208,6 +217,10 @@ public interface Constant {
         String TEAM = "TEAM";
         String VIRTUAL_REALITY = "VIRTUAL REALITY";
         String WALL = "WALL";
+        String FOOTBALL_BASE = "FOOTBALL BASE";
+        String ACADEMY = "ACADEMIA";
+        String YOU_CHOOSE = "TU ELIGES";
+        String LIVE = "LIVE";
     }
     
     interface ActionTags {

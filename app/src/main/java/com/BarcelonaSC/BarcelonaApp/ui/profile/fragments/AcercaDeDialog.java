@@ -58,6 +58,8 @@ public class AcercaDeDialog extends DialogFragment {
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
 
+        App.get().registerTrackScreen(Constant.Analytics.PROFILE+"."+Constant.ProfileTags.Terms);
+
         myWebView.setWebViewClient(new WebViewClient());
         myWebView.loadUrl(ConfigurationManager.getInstance().getConfiguration().getUrl_acercade());
 

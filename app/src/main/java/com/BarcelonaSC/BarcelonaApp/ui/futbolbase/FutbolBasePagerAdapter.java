@@ -4,6 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.players.PlayerOffSummonedFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.MainCalendarFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
@@ -31,12 +32,15 @@ public class FutbolBasePagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
+            App.get().registerTrackScreen(Constant.Analytics.BASE + "." + Constant.FutbolBaseTags.News);
             newsFragment = NewsFragment.getInstance(NewsFragment.NEWS_FOOTBALL_BASE);
             return newsFragment;
         } else if (position == 1) {
+            App.get().registerTrackScreen(Constant.Analytics.BASE + "." + Constant.FutbolBaseTags.Team);
             teamFragment = PlayerOffSummonedFragment.newInstance(Constant.Key.GAME_FB);
             return teamFragment;
         } else {
+            App.get().registerTrackScreen(Constant.Analytics.BASE + "." + Constant.FutbolBaseTags.Team);
             calendarFragment = MainCalendarFragment.newInstance(Constant.Key.CUP_FB);
             return calendarFragment;
         }
