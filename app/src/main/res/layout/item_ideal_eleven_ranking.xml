@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/position"
                 android:text="0%"
-                android:textColor="@color/white"
+                android:textColor="@color/next_game_background"
                 />
 
             <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
