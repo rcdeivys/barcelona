@@ -9,6 +9,7 @@ import com.BarcelonaSC.BarcelonaApp.app.api.FriendsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.GalleryApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.GroupsApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.HomeApi;
+import com.BarcelonaSC.BarcelonaApp.app.api.IdealElevenRankingEnableApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.LineUpApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.MapApi;
 import com.BarcelonaSC.BarcelonaApp.app.api.MonumentalApi;
@@ -95,5 +96,7 @@ public interface AppComponent {
     WallSearchApi wallSearchApi();
 
     HomeApi homeApi();
+
+    IdealElevenRankingEnableApi idealElevenRankingEnableApi();
 
 }

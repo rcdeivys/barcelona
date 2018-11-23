@@ -182,4 +182,10 @@ public class ApiModule {
         return retrofit.create(HomeApi.class);
     }
 
+    @Provides
+    @AppScope
+    public static IdealElevenRankingEnableApi provideIdealElevenRankingEnableApi(Retrofit retrofit) {
+        return retrofit.create(IdealElevenRankingEnableApi.class);
+    }
+
 }
