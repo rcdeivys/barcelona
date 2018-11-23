@@ -37,12 +37,13 @@ public class AcercaDeDialog extends DialogFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStyle(DialogFragment.STYLE_NORMAL,
+                R.style.FullScreenDialogStyle1);
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Dialog dialogo = super.onCreateDialog(savedInstanceState);
-        dialogo.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         dialogo.setContentView(R.layout.dialog_acerca_de);
         ButterKnife.bind(this, dialogo);
         Bundle b = getArguments();
@@ -68,7 +69,7 @@ public class AcercaDeDialog extends DialogFragment {
         }
         else{
             tv_header.setText("Contáctenos");
-            url = "about:blank";
+            url = ConfigurationManager.getInstance().getConfiguration().getUrl_contacto();
         }
 
         myWebView.setWebViewClient(new WebViewClient());
