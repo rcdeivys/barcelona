@@ -74,14 +74,18 @@ public class LineUpFragment extends ShareBaseFragment {
             App.get().component().idealElevenRankingEnableApi().getEnable().enqueue(new Callback<IdealElevenRankingEnableResponse>() {
                 @Override
                 public void onResponse(Call<IdealElevenRankingEnableResponse> call, Response<IdealElevenRankingEnableResponse> response) {
-                    if (response.body().status.equals("exito")) {
-                        if (!isNull) {
-                            if (!response.body().idealElevenRankingEnableData.ranking_activo) {
-                                tabs.hideTab(2);
-                                pager.setCurrentItem(1);
-                            } else
-                                tabs.showTab(2);
+                    try {
+                        if (response.body().status.equals("exito")) {
+                            if (!isNull) {
+                                if (!response.body().idealElevenRankingEnableData.ranking_activo) {
+                                    tabs.hideTab(2);
+                                    pager.setCurrentItem(1);
+                                } else
+                                    tabs.showTab(2);
+                            }
                         }
+                    }catch (Exception e){
+                        e.printStackTrace();
                     }
 
                 }
