@@ -65,6 +65,7 @@ public class LineUpFragment extends ShareBaseFragment {
         pager.setPagingEnabled(true);
         pager.setAdapter(viewPagerAdapter);
         tabs.setupWithViewPager(pager);
+        eternity();
     }
 
     public void eternity() {
