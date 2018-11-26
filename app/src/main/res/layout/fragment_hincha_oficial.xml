@@ -365,6 +365,21 @@
 
                 </LinearLayout>
 
+                <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+                    android:id="@+id/contactenos_text"
+                    style="@style/StyleRobotoRegular.BodyR"
+                    android:layout_width="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Contáctenos"
+                    android:textAlignment="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white" />
+
                 <!-- Cerrar sesion -->
                 <RelativeLayout
                     android:id="@+id/layout_btns_cerrar_sesion"
@@ -374,7 +389,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="12dp"
                     android:orientation="horizontal"
                     android:visibility="visible">
 
@@ -383,10 +398,11 @@
                         style="@style/StyleRobotoRegular.BodyR"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_centerInParent="true"
                         android:layout_marginStart="20dp"
                         android:text="Acerca de ..."
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
                         android:visibility="visible" />
 
                     <LinearLayout
@@ -404,21 +420,25 @@
                             android:background="@drawable/logout" />
 
                         <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
-                            style="@style/StyleRobotoRegular.Caption"
+                            style="@style/StyleRobotoRegular.BodyR"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:text="Cerrar Sesión"
+                            android:textStyle="bold"
                             android:textColor="@color/white" />
 
                     </LinearLayout>
-
-
                 </RelativeLayout>
-
             </LinearLayout>
-
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/logo_twoway" />
         </RelativeLayout>
 
     </ScrollView>
+
 </RelativeLayout>
