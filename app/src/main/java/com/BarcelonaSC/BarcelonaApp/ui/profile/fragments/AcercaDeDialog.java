@@ -14,6 +14,7 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,19 +31,23 @@ public class AcercaDeDialog extends DialogFragment {
     AppCompatImageView btnBack;
     @BindView(R.id.webView)
     WebView myWebView;
-
+    @BindView(R.id.TV_Header)
+    FCMillonariosTextView tv_header;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStyle(DialogFragment.STYLE_NORMAL,
+                R.style.FullScreenDialogStyle1);
     }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         final Dialog dialogo = super.onCreateDialog(savedInstanceState);
-        dialogo.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         dialogo.setContentView(R.layout.dialog_acerca_de);
         ButterKnife.bind(this, dialogo);
+        Bundle b = getArguments();
+        boolean isAbout = b.getBoolean("isAbout");
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,11 +62,20 @@ public class AcercaDeDialog extends DialogFragment {
         settings.setUseWideViewPort(true);
         settings.setBuiltInZoomControls(true);
         settings.setDisplayZoomControls(false);
+        String url;
+        if(isAbout){
+            tv_header.setText("Acerca de");
+            url = ConfigurationManager.getInstance().getConfiguration().getUrl_acercade();
+        }
+        else{
+            tv_header.setText("Contáctenos");
+            url = ConfigurationManager.getInstance().getConfiguration().getUrl_contacto();
+        }
 
         App.get().registerTrackScreen(Constant.Analytics.PROFILE+"."+Constant.ProfileTags.Terms);
 
         myWebView.setWebViewClient(new WebViewClient());
-        myWebView.loadUrl(ConfigurationManager.getInstance().getConfiguration().getUrl_acercade());
+        myWebView.loadUrl(url);
 
         return dialogo;
     }

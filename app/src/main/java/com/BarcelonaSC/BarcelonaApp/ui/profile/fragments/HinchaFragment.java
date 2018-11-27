@@ -97,6 +97,8 @@ public class HinchaFragment extends Fragment {
     LinearLayout btnShare;
     @BindView(R.id.acerca_de)
     FCMillonariosTextView acercaDe;
+    @BindView(R.id.contactenos_text)
+    FCMillonariosTextView contact_tv;
 
     public Uri mCropImageUri;
 
@@ -125,14 +127,29 @@ public class HinchaFragment extends Fragment {
             }
         });
 
+        contact_tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                App.get().registerTrackScreen(Constant.Analytics.PROFILE + "." + Constant.ProfileTags.Terms);
+                Bundle b = new Bundle();
+                b.putBoolean("isAbout",false);
+                AcercaDeDialog acercaDeDialog = new AcercaDeDialog();
+                acercaDeDialog.setArguments(b);
+                acercaDeDialog.show(getActivity().getSupportFragmentManager(), "acercade");
+            }
+        });
+
         acercaDe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 // Send Google Analytics Screen Tag
                 App.get().registerTrackScreen(Constant.Analytics.PROFILE + "." + Constant.ProfileTags.Terms);
-
+                Bundle b = new Bundle();
+                b.putBoolean("isAbout",true);
                 AcercaDeDialog acercaDeDialog = new AcercaDeDialog();
+                acercaDeDialog.setArguments(b);
                 acercaDeDialog.show(getActivity().getSupportFragmentManager(), "acercade");
             }
         });
