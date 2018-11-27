@@ -5,17 +5,22 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
+import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.commons.Services.ShareBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.lineup.ranking.di.DaggerIdealElevenRankingComponent;
 import com.BarcelonaSC.BarcelonaApp.ui.lineup.ranking.di.IdealElevenRankingModule;
 import com.BarcelonaSC.BarcelonaApp.ui.lineup.ranking.mvp.IdealElevenRankingContract;
 import com.BarcelonaSC.BarcelonaApp.ui.lineup.ranking.mvp.IdealElevenRankingPresenter;
+import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +30,9 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class IdealElevenRankingFragment extends BaseFragment implements IdealElevenRankingContract.View {
+public class IdealElevenRankingFragment extends ShareBaseFragment implements IdealElevenRankingContract.View {
+
+    private String TAG = IdealElevenRankingFragment.class.getSimpleName();
 
     @BindView(R.id.rv_ranking)
     RecyclerView recyclerView;
@@ -106,5 +113,15 @@ public class IdealElevenRankingFragment extends BaseFragment implements IdealEle
     public void showIdealElevenRankingData(List<Object> ranking) {
         adapter.updateAll(ranking);
         swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void share() {
+        Log.i(TAG, "---> ideal eleven");
+        if (!new SessionManager(App.getAppContext()).getUrlLineUpShare().equals("")) {
+            new ShareSection(App.getAppContext()).shareIdealEleven(new SessionManager(App.getAppContext()).getUrlLineUpShare());
+        } else {
+            showToast(App.getAppContext().getString(R.string.ideal_eleven), Toast.LENGTH_LONG);
+        }
     }
 }
