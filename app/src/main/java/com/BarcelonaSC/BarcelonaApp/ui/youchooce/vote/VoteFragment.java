@@ -275,7 +275,7 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
         });
     }
 
-    @Override
+    /*@Override
     public void showShareVote(final int id) {
         LayoutInflater inflater = getLayoutInflater();
         View dialoglayout = inflater.inflate(R.layout.dialog_share_vote, null);
@@ -301,6 +301,6 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
                 EventBus.getDefault().post(new ChooseOpenEvent("2", true));
             }
         });
-    }
+    }*/
 
 }
