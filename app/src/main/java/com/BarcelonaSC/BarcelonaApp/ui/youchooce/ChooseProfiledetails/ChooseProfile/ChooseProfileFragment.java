@@ -195,7 +195,7 @@ public class ChooseProfileFragment extends BaseFragment
     }
 
     @Override
-    public void playVideo(int position) {
+    public void playVideo(int position, int id) {
         this.videoPosition = position;
     }
 

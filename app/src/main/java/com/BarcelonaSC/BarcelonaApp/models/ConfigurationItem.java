@@ -310,6 +310,9 @@ public class ConfigurationItem {
     @SerializedName("url_acercade")
     @Expose
     private String url_acercade;
+    @SerializedName("url_contacto")
+    @Expose
+    private String url_contacto;
 
     public String getTit_17() {
         return tit_17;
@@ -357,6 +360,14 @@ public class ConfigurationItem {
 
     public void setUrl_acercade(String url_acercade) {
         this.url_acercade = url_acercade;
+    }
+
+    public String getUrl_contacto() {
+        return url_contacto;
+    }
+
+    public void setUrl_contacto(String url_contacto) {
+        this.url_contacto = url_contacto;
     }
 
     public String getTermReferidos() {

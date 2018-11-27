@@ -216,7 +216,7 @@ public class VideoFragment extends BaseFragment implements VideoContract.View, V
 
 
     @Override
-    public void playVideo(int position) {
+    public void playVideo(int position, int id) {
         if (!videoPosition.contains(position))
             videoPosition.add(position);
     }

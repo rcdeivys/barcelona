@@ -4,8 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.mossapplauded.MossApplaudedFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.players.PlayerOffSummonedFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 /**
  * Created by Gianni on 25/07/17.
@@ -34,11 +36,17 @@ public class TeamViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         // Open "Playoff summoned" fragment
         if(position == 0) {
+            // Google Analytics team tabs
+            App.get().registerTrackScreen(Constant.Analytics.TEAM + "." + Constant.TeamTags.Roster);
+
             playoffSummonedFragment = PlayerOffSummonedFragment.newInstance("playerOff");
             return playoffSummonedFragment;
         }
         // Open "Game summoned" fragment
         else if (position == 1){
+            // Google Analytics team tabs
+            App.get().registerTrackScreen(Constant.Analytics.TEAM + "." + Constant.TeamTags.Convocados);
+
             gameSummonedFragment = PlayerOffSummonedFragment.newInstance("gameSupponned");
             return gameSummonedFragment;
         }

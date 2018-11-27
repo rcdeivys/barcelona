@@ -222,7 +222,7 @@ public class PlayerProfileFragment extends BaseFragment
     }
 
     @Override
-    public void playVideo(int position) {
+    public void playVideo(int position, int id) {
         videoPositions.add(position);
     }
 

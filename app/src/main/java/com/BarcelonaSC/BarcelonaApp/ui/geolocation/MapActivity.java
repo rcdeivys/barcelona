@@ -44,6 +44,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.geolocation.mvp.MapContract;
 import com.BarcelonaSC.BarcelonaApp.ui.geolocation.mvp.MapPresenter;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Commons;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -128,6 +129,9 @@ public class MapActivity extends BaseSideMenuActivity implements OnMapReadyCallb
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         ButterKnife.bind(this);
+
+        //Google analytics send map
+        App.get().registerTrackScreen(Constant.Analytics.MAP);
 
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
@@ -231,6 +235,10 @@ public class MapActivity extends BaseSideMenuActivity implements OnMapReadyCallb
 
     @OnClick(R.id.btn_search)
     public void search() {
+
+        // Send search event google analytics
+        App.get().registerTrackEvent(Constant.Analytics.MAP, Constant.ActionTags.Clicked, Constant.MapTags.Search, 0);
+
         if (lista != null) {
             if (!search.getText().toString().isEmpty()) {
                 for (int i = 0; i < lista.size(); i++) {

@@ -212,6 +212,9 @@ public class WallFragmentList extends BaseFragment implements WallContract.View,
 
     @Override
     public void onCreatePostListener() {
+        // google Analytics Post tag
+        App.get().registerTrackScreen(Constant.Analytics.WALL + "." + Constant.WallTags.Post);
+
         Intent intent = new Intent(getActivity(), WallCreatePostActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getActivity().startActivityForResult(intent, 2000);
@@ -219,6 +222,9 @@ public class WallFragmentList extends BaseFragment implements WallContract.View,
 
     @Override
     public void onEditPostListener(WallItem wallItem) {
+        // google Analytics post Tag 
+        App.get().registerTrackScreen(Constant.Analytics.WALL + "." + Constant.WallTags.Post);
+
         Intent intent = new Intent(getActivity(), WallCreatePostActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("wallitem", wallItem);
@@ -227,6 +233,9 @@ public class WallFragmentList extends BaseFragment implements WallContract.View,
 
     @Override
     public void onProfileListener() {
+        // Google Analytics Profile Tag
+        App.get().registerTrackScreen(Constant.Analytics.WALL + "." + Constant.WallTags.Profile);
+
         getFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                 .add(R.id.cal_container, WallFragmentList.newInstance("profile", SessionManager.getInstance().getUser().getId_usuario()), WallCommentFragment.TAG)
@@ -349,6 +358,9 @@ public class WallFragmentList extends BaseFragment implements WallContract.View,
 
     @Override
     public void onClickCommentListener(WallItem wallItem, int position) {
+        // Google Analytics Comment Listener
+        App.get().registerTrackScreen(Constant.Analytics.WALL + "." + Constant.WallTags.Comments);
+
         postPosition = position;
 
         getFragmentManager().beginTransaction()

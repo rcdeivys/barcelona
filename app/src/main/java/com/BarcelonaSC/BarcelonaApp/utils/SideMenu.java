@@ -190,10 +190,10 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         public void setData() {
-            clickSocialButton(btnInstagram, "https://www.instagram.com/barcelonasc/");
-            clickSocialButton(btnFacebook, "https://www.facebook.com/BarcelonaSCweb");
-            clickSocialButton(btnTwitter, "https://twitter.com/BarcelonaSCweb");
-            clickSocialButton(btnYoutube, "https://www.youtube.com/channel/UCgs5c9UJtczqmG7yOuvu5QA");
+            clickSocialButton(btnInstagram, "https://www.instagram.com/barcelonasc/", Constant.SocialMediaTags.Instagram);
+            clickSocialButton(btnFacebook, "https://www.facebook.com/BarcelonaSCweb",Constant.SocialMediaTags.Facebook);
+            clickSocialButton(btnTwitter, "https://twitter.com/BarcelonaSCweb", Constant.SocialMediaTags.Twitter);
+            clickSocialButton(btnYoutube, "https://www.youtube.com/channel/UCgs5c9UJtczqmG7yOuvu5QA",Constant.SocialMediaTags.YouTube);
             hinchaCounter(String.valueOf(ConfigurationManager.getInstance().getConfiguration().getTotalHinchas()));
             new android.os.Handler().postDelayed(
                     new Runnable() {
@@ -225,10 +225,13 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     300000);
         }
 
-        public void clickSocialButton(ImageView imageView, final String url) {
+        public void clickSocialButton(ImageView imageView, final String url, final String analyticsTag) {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // Analytics Tags for Social Media
+                    App.get().registerTrackScreen(Constant.Analytics.TEAM + "." + analyticsTag);
+
                     Intent intent = new Intent(context, WebViewActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra(Constant.Key.URL, url);

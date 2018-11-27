@@ -190,6 +190,7 @@ public class CalendarFragment extends BaseFragment implements CalendarContract.V
 
     @Override
     public void onMatchClicked(int idPartido) {
+        App.get().registerCustomTrackScreen(Constant.Analytics.GAME, Integer.toString(idPartido), 3);
         SingleCalendarListFragment singleCalendarListFragment = new SingleCalendarListFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("idPartido", idPartido);

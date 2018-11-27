@@ -4,9 +4,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.ui.chat.ChatFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.wall.WallFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 /**
  * Created by Leonardojpr on 1/10/18.
@@ -25,6 +27,8 @@ public class WallAndChatViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         if (position == 0) {
+            // Google Analytics Wall page
+            App.get().registerTrackScreen(Constant.Analytics.WALL);
             return WallFragment.newInstance();
 
         } else {

@@ -58,11 +58,15 @@ public class GalleryListActivity extends BaseActivity implements GalleryListAdap
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery_list);
         ButterKnife.bind(this);
         initComponent();
         id = getIntent().getIntExtra(Constant.Key.ID, 0);
+
+        // Send data to Google Analytics for gallery
+        App.get().registerCustomTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.Gallery, Integer.toString(id), 1);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -117,6 +121,14 @@ public class GalleryListActivity extends BaseActivity implements GalleryListAdap
 
     @Override
     public void onImgClickListener(String url, int position) {
+
+        // Google Analytics screen click photo
+        try {
+            App.get().registerCustomTrackScreen(Constant.Analytics.NEWS + "." + Constant.NewsTags.GalleryPhoto, id + "." + Integer.toString(position), 1);
+        } catch (Exception e) {
+            App.get().registerTrackEvent(Constant.Analytics.ERROR, Constant.ActionTags.Clicked, Constant.Analytics.NEWS + "." + Constant.NewsTags.GalleryPhoto, 0);
+        }
+
         Intent intent = new Intent(this, GalleryActivity.class);
         intent.putParcelableArrayListExtra(GalleryActivity.GALLERY, (ArrayList<? extends Parcelable>) itemList);
         intent.putExtra(GalleryActivity.POSITION, position);

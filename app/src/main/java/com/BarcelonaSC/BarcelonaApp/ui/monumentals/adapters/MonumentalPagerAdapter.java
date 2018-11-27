@@ -6,9 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.monumental.MonumentalFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.news.MonumentalNewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.fragments.ranking.MonumentalRankingFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 
 /**
  * Created by RYA-Laptop on 16/02/2018.
@@ -35,12 +37,24 @@ public class MonumentalPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
+                // Google Analytics for GLORIAS Screen
+                App.get().registerTrackScreen(Constant.Analytics.GLORIAS + "." + Constant.GloriasTags.VideoFeed);
+
                 return monumentalNewsFragment;
             case 1:
+                // Google Analytics for GLORIAS Screen
+                App.get().registerTrackScreen(Constant.Analytics.GLORIAS + "." + Constant.GloriasTags.Vote);
+
                 return monumentalFragment;
             case 2:
+                // Google Analytics for GLORIAS Screen
+                App.get().registerTrackScreen(Constant.Analytics.GLORIAS + "." + Constant.GloriasTags.Ranking);
+
                 return monumentalRankingFragment;
             default:
+                // Google Analytics for GLORIAS Screen
+                App.get().registerTrackScreen(Constant.Analytics.GLORIAS + "." + Constant.GloriasTags.VideoFeed);
+
                 return monumentalNewsFragment;
         }
     }
