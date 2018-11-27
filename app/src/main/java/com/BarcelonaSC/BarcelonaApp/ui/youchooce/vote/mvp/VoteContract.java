@@ -16,7 +16,7 @@ public class VoteContract {
         void onGetChooseSuccess(EncuestaData mEncuestaData);
 
         void onGetChooseFailed();
-
+      
         void onsetVotesSuccess(int id, int msj);
 
         void onError(String error);

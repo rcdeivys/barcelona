@@ -33,8 +33,6 @@ import com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView;
 import com.BarcelonaSC.BarcelonaApp.utils.ProgressClock;
 import com.BarcelonaSC.BarcelonaApp.utils.ShareSection;
 
-import org.greenrobot.eventbus.EventBus;
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -136,6 +134,7 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
         presenter.onClickPlayerVote(posicion,msj);
     }
 
+
     @Override
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
@@ -188,6 +187,32 @@ public class VoteFragment extends BaseFragment implements VoteContract.View, Vot
         showToast("En estos momentos no hay votación activa", Toast.LENGTH_SHORT);
         setRefreshing(false);
         hideProgress();
+    }
+
+    @Override
+    public void showShareVote(final int id) {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialoglayout = inflater.inflate(R.layout.dialog_share_vote, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialoglayout);
+        final AlertDialog alertDialog = builder.show();
+
+        Button btnNot = (Button) dialoglayout.findViewById(R.id.btn_return);
+        btnNot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        Button btnYes = (Button) dialoglayout.findViewById(R.id.btn_submit);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareSection.shareIndividual("tueliges", String.valueOf(id));
+                alertDialog.dismiss();
+            }
+        });
     }
 
     private void initRvAndAdapter() {

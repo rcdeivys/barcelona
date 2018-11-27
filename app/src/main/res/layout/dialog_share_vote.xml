@@ -57,7 +57,5 @@
                 android:textStyle="bold" />
 
         </FrameLayout>
-
     </LinearLayout>
-
 </LinearLayout>

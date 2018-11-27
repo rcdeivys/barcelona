@@ -39,8 +39,11 @@ public class ChooseProfileContract {
         void setChooseProfileData(ChooseProfileData chooseProfileData);
 
         void navigateToVideoNewsActivity(News news, int currentPosition);
+
         void navigateToInfografiaActivity(News news);
+
         void navigateToNewsDetailsActivity(News news);
+      
         void navigateToGalleryActivity(News news);
 
     }
