@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.BarcelonaSC.BarcelonaApp.utils.FCMillonariosTextView
+        style="@style/StyleRobotoRegular.Caption.Primary"
+        android:id="@+id/tagTextView"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_ranking_accent"
+        android:text="nombre"
+        android:layout_margin="5dp"
+        android:textAlignment="center"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/white" />
+
+</android.support.constraint.ConstraintLayout>

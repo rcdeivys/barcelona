@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 /**
@@ -27,15 +28,21 @@ public class CustomTabLayout extends TabLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-
         return super.onTouchEvent(ev);
     }
-
 
     public void setPagingEnabled(boolean b) {
         LinearLayout tabStrip = ((LinearLayout) getChildAt(0));
         for (int i = 0; i < tabStrip.getChildCount(); i++) {
             tabStrip.getChildAt(i).setClickable(b);
         }
+    }
+
+    public void hideTab(int i) {
+        ((ViewGroup) getChildAt(0)).getChildAt(i).setVisibility(GONE);
+    }
+
+    public void showTab(int i) {
+        ((ViewGroup) getChildAt(0)).getChildAt(i).setVisibility(VISIBLE);
     }
 }

@@ -117,6 +117,8 @@ public class HinchaFragment extends Fragment {
         ButterKnife.bind(this, getView());
         sessionManager = new SessionManager(getActivity());
 
+        App.get().registerTrackScreen(Constant.Analytics.PROFILE);
+
         btnDiscardChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -25,6 +25,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.BarcelonaSC.BarcelonaApp.R;
+import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.app.manager.SessionManager;
 import com.BarcelonaSC.BarcelonaApp.models.User;
 import com.BarcelonaSC.BarcelonaApp.models.UserItem;
@@ -108,6 +109,9 @@ public class InfoAccountFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ButterKnife.bind(this, getView());
+
+        App.get().registerTrackScreen(Constant.Analytics.PROFILE + "." + Constant.ProfileTags.Info);
+
         sessionManager = new SessionManager(getActivity());
         preferenceManager = new PreferenceManager(getContext());
         isSocial = preferenceManager.getBoolean(Constant.Key.IS_SOCIAL, false);

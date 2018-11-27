@@ -1,6 +1,7 @@
 package com.BarcelonaSC.BarcelonaApp.app.api;
 
 import com.BarcelonaSC.BarcelonaApp.models.response.GameSummonedResponse;
+import com.BarcelonaSC.BarcelonaApp.models.response.IdealElevenRankingResponse;
 import com.BarcelonaSC.BarcelonaApp.models.response.MyIdealElevenResponse;
 import com.BarcelonaSC.BarcelonaApp.models.response.PlaybyplayResponse;
 import com.BarcelonaSC.BarcelonaApp.models.response.SendMyIdealElevenData;
@@ -29,5 +30,8 @@ public interface LineUpApi {
 
     @POST("onceideal")
     Call<JsonObject> setOnceIdeal(@Body SendMyIdealElevenData sendMyIdealElevenData);
+
+    @GET("onceideal/ranking/{token}")
+    Call<IdealElevenRankingResponse> getOnceIdealRanking(@Path("token") String token);
 
 }
