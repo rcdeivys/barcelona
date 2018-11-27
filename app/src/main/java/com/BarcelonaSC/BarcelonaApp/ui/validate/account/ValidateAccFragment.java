@@ -114,6 +114,9 @@ public class ValidateAccFragment extends Fragment implements ValidateAccContract
     @Override
     public void showToastError(String error) {
         if (getActivity() != null) {
+            if(error.contains("PIN") && !error.contains(",")){
+                error = "Disculpa, PIN incorrecto."
+            }
             Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
         }
     }
