@@ -13,10 +13,12 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -91,6 +93,11 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
     private static int SELECT_IMAGE = 1001;
     private static int CAMERA_REQUEST = 1002;
     private static final int REQUEST_VIDEO_CAPTURE = 1003;
+
+    private String path = "";
+    private final String CARPETA_RAIZ = "Barcelona SC Oficial/";
+    private final String RUTA_IMAGEN = CARPETA_RAIZ;
+    private File fileImagen;
 
     @BindView(android.R.id.content)
     View rootView;
@@ -399,47 +406,72 @@ public class WallCreatePostActivity extends BaseActivity implements WallPostCont
     }
 
     //@OnClick(R.id.btn_cam)
-    public void showCameraDialog() {
-        dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        final View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_camera, null);
-        AppCompatImageView foto = v.findViewById(R.id.btn_foto);
-        foto.setImageDrawable(getResources().getDrawable(R.drawable.camera_icn));
-        foto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openCamera();
-                dialog.dismiss();
-            }
-        });
-        ImageView video = v.findViewById(R.id.btn_video);
-        video.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                post_type = "video";
-                openVideoCamera();
-                dialog.dismiss();
-            }
-        });
-        ImageView close = v.findViewById(R.id.btn_close);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setContentView(v);
-        dialog.show();
-    }
+//    public void showCameraDialog() {
+//        dialog = new Dialog(this);
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        final View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_camera, null);
+//        AppCompatImageView foto = v.findViewById(R.id.btn_foto);
+//        foto.setImageDrawable(getResources().getDrawable(R.drawable.camera_icn));
+//        foto.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                openCamera();
+//                dialog.dismiss();
+//            }
+//        });
+//        ImageView video = v.findViewById(R.id.btn_video);
+//        video.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                post_type = "video";
+//                openVideoCamera();
+//                dialog.dismiss();
+//            }
+//        });
+//        ImageView close = v.findViewById(R.id.btn_close);
+//        close.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dialog.dismiss();
+//            }
+//        });
+//        dialog.setContentView(v);
+//        dialog.show();
+//    }
 
     @OnClick(R.id.btn_cam)
     public void openCamera() {
         if (camPermission && storePermission) {
-            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            cameraIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            imageUri = Uri.fromFile(Commons.getOutputMediaFile());
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-            startActivityForResult(cameraIntent, CAMERA_REQUEST);
+
+            fileImagen = new File(Environment.getExternalStorageDirectory(), RUTA_IMAGEN);
+            Log.e(TAG, "---> " + fileImagen);
+            boolean isCreada = fileImagen.exists();
+            String nombreImagen = "";
+            if (!isCreada) {
+                isCreada = fileImagen.mkdirs();
+            } else {
+                nombreImagen = (System.currentTimeMillis() / 10000) + ".jpg";
+            }
+
+            Log.e(TAG, "---> " + nombreImagen);
+
+            path = Environment.getExternalStorageDirectory() +
+                    File.separator + RUTA_IMAGEN + File.separator + nombreImagen;
+
+            Log.e(TAG, "---> " + path);
+
+            File imagen = new File(path);
+
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                String authorities = getApplicationContext().getPackageName() + ".provider";
+                imageUri = FileProvider.getUriForFile(this, authorities, imagen);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+            } else {
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(imagen));
+            }
+            startActivityForResult(intent, CAMERA_REQUEST);
+
         } else {
             setPermissions();
         }
