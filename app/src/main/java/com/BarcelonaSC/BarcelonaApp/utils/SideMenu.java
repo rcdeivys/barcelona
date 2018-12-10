@@ -176,6 +176,8 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ImageView btnYoutube;
         @BindView(R.id.tag_hincha_counter)
         LinearLayout layoutTagView;
+        @BindView(R.id.content_hincha_counter)
+        LinearLayout layoutHinchaCounter;
 
         Context context;
 
@@ -194,21 +196,25 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             clickSocialButton(btnFacebook, "https://www.facebook.com/BarcelonaSCweb",Constant.SocialMediaTags.Facebook);
             clickSocialButton(btnTwitter, "https://twitter.com/BarcelonaSCweb", Constant.SocialMediaTags.Twitter);
             clickSocialButton(btnYoutube, "https://www.youtube.com/channel/UCgs5c9UJtczqmG7yOuvu5QA",Constant.SocialMediaTags.YouTube);
-            hinchaCounter(String.valueOf(ConfigurationManager.getInstance().getConfiguration().getTotalHinchas()));
-            new android.os.Handler().postDelayed(
-                    new Runnable() {
-                        public void run() {
-                            FirebaseManager.getInstance().getNumberHinchas(new FirebaseManager.FireValuesListener() {
-                                @Override
-                                public void onComplete(String value) {
-                                    hinchaCounter(value);
-                                }
+            if(ConfigurationManager.getInstance().getConfiguration().getContador_hinchas() == 0){
+                layoutHinchaCounter.setVisibility(View.GONE);
+            }
+            else{
+                hinchaCounter(String.valueOf(ConfigurationManager.getInstance().getConfiguration().getTotalHinchas()));
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                FirebaseManager.getInstance().getNumberHinchas(new FirebaseManager.FireValuesListener() {
+                                    @Override
+                                    public void onComplete(String value) {
+                                        hinchaCounter(value);
+                                    }
 
-                                @Override
-                                public void onCanceled() {
-                                    hinchaCounter("1");
-                                }
-                            });
+                                    @Override
+                                    public void onCanceled() {
+                                        hinchaCounter("1");
+                                    }
+                                });
                           /*  App.get().component().configurationApi().getConfiguration().enqueue(new NetworkCallBack<ConfigurationResponse>() {
                                 @Override
                                 public void onRequestSuccess(ConfigurationResponse response) {
@@ -219,10 +225,11 @@ public class SideMenu extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                 public void onRequestFail(String errorMessage, int errorCode) {
                                 }
                             });*/
-                            Log.i("HINCHACOUNTER", " ---> ACTUALIZANDO DATA COUNTER");
-                        }
-                    },
-                    300000);
+                                Log.i("HINCHACOUNTER", " ---> ACTUALIZANDO DATA COUNTER");
+                            }
+                        },
+                        300000);
+            }
         }
 
         public void clickSocialButton(ImageView imageView, final String url, final String analyticsTag) {
