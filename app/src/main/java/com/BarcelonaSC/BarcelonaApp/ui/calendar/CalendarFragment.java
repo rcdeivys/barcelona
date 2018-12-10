@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.models.Match;
 import com.BarcelonaSC.BarcelonaApp.models.Tournament;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.di.CalendarModule;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.di.DaggerCalendarComponent;
@@ -23,8 +25,11 @@ import com.BarcelonaSC.BarcelonaApp.ui.calendar.mvp.CalendarContract;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.mvp.CalendarPresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.singlecalendar.SingleCalendarListFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.calendar.viewholder.LeagueGroup;
-import com.BarcelonaSC.BarcelonaApp.ui.home.HomeActivity;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
+import com.thoughtbot.expandablerecyclerview.listeners.GroupExpandCollapseListener;
+import com.thoughtbot.expandablerecyclerview.listeners.OnGroupClickListener;
+import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +44,11 @@ import butterknife.Unbinder;
  * Created by Erick on 01/11/2017.
  */
 
-public class CalendarFragment extends BaseFragment implements CalendarContract.View, MatchAdapter.MatchClickListener {
+public class CalendarFragment extends BaseFragment implements
+        CalendarContract.View,
+        MatchAdapter.MatchClickListener,
+        GroupExpandCollapseListener,
+        OnGroupClickListener {
 
     public static final String TAG = CalendarFragment.class.getSimpleName();
 
@@ -56,6 +65,9 @@ public class CalendarFragment extends BaseFragment implements CalendarContract.V
     private MatchAdapter matchAdapter;
     private LinearLayoutManager linearLayoutManager;
     Unbinder unbinder;
+
+    protected String subseccion;
+    private int posGroup = 0;
 
     @Inject
     CalendarPresenter presenter;
@@ -164,18 +176,51 @@ public class CalendarFragment extends BaseFragment implements CalendarContract.V
 
     @Override
     public void setCup(List<Tournament> tournaments) {
-        matchAdapter = new MatchAdapter(getContext(), generateLeagueGroup(tournaments));
+//        matchAdapter = new MatchAdapter(getContext(), generateLeagueGroup(tournaments));
+//        matchAdapter.setMatchClickListener(this);
+////        if (matchAdapter.getGroups() != null && matchAdapter.getGroups().size() > 0)
+////            matchAdapter.toggleGroup(0);
+//        rvCalendar.setAdapter(matchAdapter);
+//        rvCalendar.setLayoutManager(linearLayoutManager);
+//        notifyDataSetChanged();
+//        if (getActivity() != null)
+//            if (((HomeActivity) getActivity()).idPartido != 0) {
+//                onMatchClicked(((HomeActivity) getActivity()).idPartido);
+//                ((HomeActivity) getActivity()).idPartido = 0;
+//            }
+
+        int i = 0;
+        int pos = 0;
+        for (Tournament tournament : tournaments) {
+            Log.e(TAG, "---> " + "setCup: === " + tournament.getCupName());
+            try {
+                if (subseccion.equals(tournament.getCupName().toLowerCase())) {
+                    pos = i;
+                    Log.e(TAG, "---> " + "setCup: === pos: " + pos);
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "---> " + "initializeViewPager: ---> error: " + e.getLocalizedMessage() + " msg: " + e.getMessage());
+            }
+            Log.e(TAG, "---> " + "setCup: === pos: " + pos + " i: " + i);
+            i++;
+        }
+        matchAdapter = new MatchAdapter(getContext(), generateLeagueGroup(tournaments), subseccion);
         matchAdapter.setMatchClickListener(this);
+        matchAdapter.setOnGroupExpandCollapseListener(this);
+        matchAdapter.setOnGroupClickListener(this);
 //        if (matchAdapter.getGroups() != null && matchAdapter.getGroups().size() > 0)
 //            matchAdapter.toggleGroup(0);
         rvCalendar.setAdapter(matchAdapter);
         rvCalendar.setLayoutManager(linearLayoutManager);
         notifyDataSetChanged();
-        if (getActivity() != null)
-            if (((HomeActivity) getActivity()).idPartido != 0) {
-                onMatchClicked(((HomeActivity) getActivity()).idPartido);
-                ((HomeActivity) getActivity()).idPartido = 0;
-            }
+        int fromPreference = PreferenceManager.getInstance().getInt(Constant.Key.CUR_GROUP_POS, 0);
+        if (subseccion != null) {
+            Log.e(TAG, "---> " + "setCup: === expandiendo ");
+            matchAdapter.toggleGroup(pos);
+        } else if (fromPreference != 0) {
+            Log.e(TAG, "---> " + "setCup: === expandiendo ");
+            matchAdapter.toggleGroup(fromPreference);
+        }
     }
 
     private List<LeagueGroup> generateLeagueGroup(List<Tournament> tournaments) {
@@ -214,5 +259,38 @@ public class CalendarFragment extends BaseFragment implements CalendarContract.V
                 rvCalendar.smoothScrollToPosition(position);
             }
         }, 5000);
+    }
+
+    @Override
+    public void onGroupExpanded(ExpandableGroup group) {
+        int pos = 0;
+        for (int i = 0; i < group.getItemCount(); i++) {
+            Match match = (Match) group.getItems().get(i);
+            Log.e(TAG, "---> " + "onGroupExpanded: === partido: " + match.toString());
+            if (match.getDestacado() != 0) {
+                pos = i;
+            }
+        }
+        Log.e(TAG, "---> " + "onGroupExpanded: tam group === " + group.getItemCount());
+        Log.e(TAG, "---> " + "onGroupExpanded: tam rv === " + rvCalendar.getChildCount());
+        Log.e(TAG, "---> " + "onGroupExpanded: tam adapter === " + matchAdapter.getItemCount());
+        int fromPreference = PreferenceManager.getInstance().getInt(Constant.Key.CUR_ITEM_POS, 0);
+        if (pos != 0) {
+            rvCalendar.smoothScrollToPosition(pos + posGroup);
+        } else if (fromPreference != 0) {
+            rvCalendar.smoothScrollToPosition(fromPreference);
+        }
+    }
+
+    @Override
+    public void onGroupCollapsed(ExpandableGroup group) {
+
+    }
+
+    @Override
+    public boolean onGroupClick(int flatPos) {
+        posGroup = flatPos + 1;
+        Log.e(TAG, "---> " + "onGroupExpanded: pos group === " + flatPos);
+        return false;
     }
 }

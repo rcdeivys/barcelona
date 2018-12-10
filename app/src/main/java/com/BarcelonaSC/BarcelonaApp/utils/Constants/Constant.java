@@ -104,6 +104,9 @@ public interface Constant {
         String POPUP_SECCION = "SECCION";
         String POPUP_UPDATE = "UPDATE";
         String SECCION_SELECTED = "seccion_Selected";
+
+        String CUR_GROUP_POS = "cur_group_pos";
+        String CUR_ITEM_POS = "cur_item_pos";
     }
 
     interface Preferences {

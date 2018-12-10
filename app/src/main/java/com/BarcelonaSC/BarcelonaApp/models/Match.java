@@ -249,6 +249,7 @@ public class Match implements Parcelable {
                 ", fechaEtapa='" + fechaEtapa + '\'' +
                 ", estadio='" + estadio + '\'' +
                 ", info='" + info + '\'' +
+                ", destacado=" + destacado +
                 ", newDate=" + newDate +
                 ", newDateHeader=" + newDateHeader +
                 ", newDateHeaderTitle='" + newDateHeaderTitle + '\'' +
