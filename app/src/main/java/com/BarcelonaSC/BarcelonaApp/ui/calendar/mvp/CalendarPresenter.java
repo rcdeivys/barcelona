@@ -8,7 +8,6 @@ import com.BarcelonaSC.BarcelonaApp.models.Tournament;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -57,39 +56,28 @@ public class CalendarPresenter implements CalendarContract.Presenter, CalendarCo
 
         Log.e(TAG, "---> Llega: " + tournaments.size());
         int gruopNumber = 0;
-//        try {
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String curDate = simpleDateFormat.format(new Date());
-        Date today = null;
         try {
+            simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String curDate = simpleDateFormat.format(new Date());
+            Date today = null;
             today = simpleDateFormat.parse(curDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
+            aux.setTodayDate(today.getTime());
+
+            for (Tournament tournament : tournaments) {
+                tournament.setMatches(processMatchData(tournament.getMatches(), gruopNumber));
+                gruopNumber++;
+            }
+
+            this.tournaments = tournaments;
+            if (isViewNull()) return;
+            view.setCup(this.tournaments);
+
+            PreferenceManager.getInstance().putInt(Constant.Key.CUR_GROUP_POS, aux.getPosGroup());
+            PreferenceManager.getInstance().putInt(Constant.Key.CUR_ITEM_POS, aux.getPosItem());
+
+        } catch (Exception e) {
+            Log.e(TAG, "---> CATCH: " + e.toString());
         }
-        aux.setTodayDate(today.getTime());
-
-        Log.e(TAG, "---> NO LLEGA AQUI");
-
-        for (Tournament tournament : tournaments) {
-            Log.e(TAG, "---> AQUI 1 tournament.getMatches():  " + tournament.getMatches());
-            tournament.setMatches(processMatchData(tournament.getMatches(), gruopNumber));
-            gruopNumber++;
-            Log.e(TAG, "---> AQUI tournament: " + tournament.toString());
-        }
-        Log.e(TAG, "---> NO LLEGA AQUI");
-        this.tournaments = tournaments;
-        Log.e(TAG, "---> NO LLEGA AQUI this.tournaments.size(): " + this.tournaments.size());
-
-
-        if (isViewNull()) return;
-        view.setCup(this.tournaments);
-
-        PreferenceManager.getInstance().putInt(Constant.Key.CUR_GROUP_POS, aux.getPosGroup());
-        PreferenceManager.getInstance().putInt(Constant.Key.CUR_ITEM_POS, aux.getPosItem());
-
-//        } catch (Exception e) {
-//            Log.e(TAG, "---> CATCH: " + e.toString());
-//        }
 
     }
 
@@ -177,12 +165,8 @@ public class CalendarPresenter implements CalendarContract.Presenter, CalendarCo
                     aux.setDateDistanceFuture(Math.abs(aux.getTodayDate() - mills));
                 }
 
-
                 while (i < matches.size()) {
-                    Log.e(TAG, "---> matches.size() " + matches.size() + " i: " + i);
-
                     match = matches.get(i);
-//                Log.e(TAG, "---> " + "foundMostRecent: match.toString(): (" + i + "): " + match.toString());
                     try {
                         partido = (Match) match;
                         parts = partido.getFecha().split(" ");

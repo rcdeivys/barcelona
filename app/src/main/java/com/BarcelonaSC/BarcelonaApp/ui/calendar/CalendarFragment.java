@@ -176,44 +176,30 @@ public class CalendarFragment extends BaseFragment implements
 
     @Override
     public void setCup(List<Tournament> tournaments) {
-//        matchAdapter = new MatchAdapter(getContext(), generateLeagueGroup(tournaments));
-//        matchAdapter.setMatchClickListener(this);
-////        if (matchAdapter.getGroups() != null && matchAdapter.getGroups().size() > 0)
-////            matchAdapter.toggleGroup(0);
-//        rvCalendar.setAdapter(matchAdapter);
-//        rvCalendar.setLayoutManager(linearLayoutManager);
-//        notifyDataSetChanged();
-//        if (getActivity() != null)
-//            if (((HomeActivity) getActivity()).idPartido != 0) {
-//                onMatchClicked(((HomeActivity) getActivity()).idPartido);
-//                ((HomeActivity) getActivity()).idPartido = 0;
-//            }
+        Log.e(TAG, "---> " + "setCup: === " + tournaments.toString());
 
         int i = 0;
         int pos = 0;
         for (Tournament tournament : tournaments) {
-            Log.e(TAG, "---> " + "setCup: === " + tournament.getCupName());
+
             try {
                 if (subseccion.equals(tournament.getCupName().toLowerCase())) {
                     pos = i;
-                    Log.e(TAG, "---> " + "setCup: === pos: " + pos);
                 }
             } catch (Exception e) {
                 Log.e(TAG, "---> " + "initializeViewPager: ---> error: " + e.getLocalizedMessage() + " msg: " + e.getMessage());
             }
-            Log.e(TAG, "---> " + "setCup: === pos: " + pos + " i: " + i);
             i++;
         }
         matchAdapter = new MatchAdapter(getContext(), generateLeagueGroup(tournaments), subseccion);
         matchAdapter.setMatchClickListener(this);
         matchAdapter.setOnGroupExpandCollapseListener(this);
         matchAdapter.setOnGroupClickListener(this);
-//        if (matchAdapter.getGroups() != null && matchAdapter.getGroups().size() > 0)
-//            matchAdapter.toggleGroup(0);
         rvCalendar.setAdapter(matchAdapter);
         rvCalendar.setLayoutManager(linearLayoutManager);
         notifyDataSetChanged();
         int fromPreference = PreferenceManager.getInstance().getInt(Constant.Key.CUR_GROUP_POS, 0);
+
         if (subseccion != null) {
             Log.e(TAG, "---> " + "setCup: === expandiendo ");
             matchAdapter.toggleGroup(pos);
@@ -221,6 +207,7 @@ public class CalendarFragment extends BaseFragment implements
             Log.e(TAG, "---> " + "setCup: === expandiendo ");
             matchAdapter.toggleGroup(fromPreference);
         }
+
     }
 
     private List<LeagueGroup> generateLeagueGroup(List<Tournament> tournaments) {
@@ -266,9 +253,9 @@ public class CalendarFragment extends BaseFragment implements
         int pos = 0;
         for (int i = 0; i < group.getItemCount(); i++) {
             Match match = (Match) group.getItems().get(i);
-            Log.e(TAG, "---> " + "onGroupExpanded: === partido: " + match.toString());
             if (match.getDestacado() != 0) {
                 pos = i;
+                Log.e(TAG, "---> " + "onGroupExpanded: === DESTACADO: " + match.toString());
             }
         }
         Log.e(TAG, "---> " + "onGroupExpanded: tam group === " + group.getItemCount());
