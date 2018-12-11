@@ -95,6 +95,9 @@ public interface Constant {
         String ID_RESPUESTA = "id_respuesta";
         String SHOW_VOTES = "show_votes";
 
+        String SUB_SECCION = "subseccion";
+        String PUNTO_REFERENCIA = "punto_referencia";
+
         String DORADO_CONFIGURATION = "dorado_configuration";
         String DORADO_STATUS_VIEW = "dorado_status_view";
         String DORADO_STATUS_SUSCRIPCION = "dorado_id_suscripcion";
@@ -184,11 +187,48 @@ public interface Constant {
         String NAME = "cup_name";
     }
 
+    interface SubSeccion {
+        String TABLE = "tabla";
+        String SIMULATOR = "simulador";
+        String NOMINA = "nómina";
+        String CONVOCADOS = "convocados partidos";
+        String JUGADOR = "jugador más aplaudido";
+        String OFFICIAL = "alineación oficial";
+        String ELEVEN_IDEAL = "mi once ideal";
+        String NEWS = "noticias";
+        String TEAM = "equipo";
+        String VOTACIONES = "votaciones";
+        String RANKING = "ranking";
+        String MILLOS_TODOS = "millonarios contra todos";
+        String CUARTOS_IDA = "cuartos de final ida";
+        String CUARTOS_VUELTA = "cuartos de final vuelta";
+        String SEMIFINALES_IDA = "semifinales ida";
+        String SEMIFINALES_VUELTA = "semifinales vuelta";
+        String OFFICIAL_FAN = "official_fan";
+        String INFO_ACCOUNT = "info_account";
+    }
+
     interface Seccion {
         String Id_Post = "id_post";
         String MURO = "muro";
         String NOTICIAS = "news";
+        String TIPO_NOTICIA = "tipo_noticia";
         String CHAT= "chat";
+        String TEAM = "team";
+        String TABLE = "table";
+        String CALENDAR = "calendar";
+        String LINE_UP = "line_up";
+        String FOOTBALL_BASE = "football_base";
+        String YOU_CHOOSE = "you_choose";
+        String STATISTICS = "statistics";
+        String ACADEMY = "academy";
+        String VIDEO = "video";
+        String LIVE = "live";
+        String GEOLOCALIZATION = "geolocalizacion";
+        String VIRTUAL_REALITY = "virtual_reality";
+        String STORE = "store";
+        String GAMES = "games";
+        String PROFILE = "profile";
     }
 
     interface Analytics {

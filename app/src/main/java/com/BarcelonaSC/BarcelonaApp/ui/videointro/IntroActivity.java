@@ -94,17 +94,6 @@ public class IntroActivity extends BaseActivity {
 
         NewRelic.withApplicationToken("AAa4eacc3d019a3dddb06ff07587dccb04bf122807").start(this.getApplication());
 
-        //introUrlPath = "android.resource://" + getPackageName() + "/" + R.raw.video_intro;
-        //splashUrlPath = "android.resource://" + getPackageName() + "/" + R.raw.splash_2;
-
-        /*btnSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                introVideoView.stopPlayback();
-                navigateNext();
-            }
-        });*/
-
         if (SessionManager.getInstance().getSession() != null && SessionManager.getInstance().getSession().getToken() != null) {
             App.get().component().profileApi()
                     .get(SessionManager.getInstance().getSession().getToken())
@@ -112,44 +101,7 @@ public class IntroActivity extends BaseActivity {
                         @Override
                         public void onRequestSuccess(UserResponse response) {
                             sessionManager.setUser(response.getData());
-                            if (getIntent() != null) {
-                                if (getIntent().hasExtra(Constant.Key.SECCION) && getIntent().hasExtra(Constant.Seccion.Id_Post)) {
-                                    Log.d(TAG + "erick: ", getIntent().getStringExtra(Constant.Key.SECCION) + " \n"
-                                            + getIntent().getStringExtra(Constant.Seccion.Id_Post));
-                                    if (getIntent().hasExtra(Constant.Key.SECCION)
-                                            && getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.MURO)) {
-                                        if (getIntent().getStringExtra(Constant.Seccion.Id_Post) != null) {
-                                            initSplash(true);
-                                        } else {
-                                            initSplash(false);
-                                        }
-                                    } else if (getIntent().hasExtra(Constant.Key.SECCION)
-                                            && getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.NOTICIAS)
-                                            && getIntent().getStringExtra(Constant.Seccion.Id_Post) != null
-                                            && !getIntent().getStringExtra(Constant.Seccion.Id_Post).equals("noAplica")) {
-                                        Intent news = new Intent(IntroActivity.this, NewsSingleActivity.class);
-                                        news.putExtra(Constant.Seccion.Id_Post, getIntent().getStringExtra(Constant.Seccion.Id_Post));
-                                        startActivity(news);
-                                    } else {
-                                        initSplash(false);
-                                    }
-                                } else if (getIntent().hasExtra(Constant.Key.SECCION)) {
-                                    if (getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.CHAT)) {
-                                        initSplash(true);
-                                    } else {
-                                        initSplash(false);
-                                    }
-                                } else {
-                                    initSplash(false);
-                                }
-                            } else {
-                                Log.d(TAG + "erick: ", getIntent().getStringExtra(Constant.Key.SECCION));
-                                if (getIntent().hasExtra(Constant.Key.SECCION)) {
-                                    Intent home = new Intent(IntroActivity.this, HomeActivity.class);
-                                    home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
-                                    startActivity(home);
-                                }
-                            }
+                            goToThisSection();
                         }
 
                         @Override
@@ -169,33 +121,6 @@ public class IntroActivity extends BaseActivity {
     public void initSplash(final boolean notification) {
         // Google analytics intro video screen tag
         App.get().registerTrackScreen(Constant.Analytics.INTRO_VIDEO);
-
-        /*btnSkip.setVisibility(View.GONE);
-        introVideoView.setVisibility(View.GONE);
-        splash.setVideoURI(Uri.parse(splashUrlPath));
-        splash.start();
-
-        splash.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                navigateNext();
-            }
-        });
-        runnable = new Runnable() {
-            @Override
-            public void run() {
-                handler.removeCallbacks(runnable);
-                if (getActivity() == null)
-                    return;
-                splash.stopPlayback();
-                navigateNext();
-
-            }
-
-        };
-        handler = new Handler();
-        handler.postDelayed(runnable, 2000);*/
-
         handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -203,96 +128,158 @@ public class IntroActivity extends BaseActivity {
                 navigateNext(notification);
             }
         }, 2000);
+    }
 
+    protected void goToThisSection(){
+        if (getIntent() != null) {
+            try {
+                String seccion = getIntent().getStringExtra(Constant.Key.SECCION);
+                String subseccion = getIntent().getStringExtra(Constant.Key.SUB_SECCION);
+                String puntoReferencia = getIntent().getStringExtra(Constant.Key.PUNTO_REFERENCIA);
+                String idPost = getIntent().getStringExtra(Constant.Seccion.Id_Post);
+                Log.i(TAG, "goToThisSection:  === idPost: "+idPost);
+                Log.i(TAG, "goToThisSection:  === seccion: "+seccion);
+                Log.i(TAG, "goToThisSection:  === puntoReferencia: "+puntoReferencia);
+                switch (seccion) {
+                    case Constant.Seccion.MURO:
+                        if (getIntent().getStringExtra(Constant.Seccion.Id_Post) != null) {
+                            initSplash(true);
+                        } else {
+                            initSplash(false);
+                        }
+                        break;
+                    case Constant.Seccion.NOTICIAS:
+                        try {
+                            if (idPost != null && !idPost.equals("noAplica")) {
+                                Intent news = new Intent(IntroActivity.this, NewsSingleActivity.class);
+                                news.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                news.putExtra(Constant.Seccion.Id_Post, idPost);
+                                startActivity(news);
+                            }
+                        } catch (Exception e) {
+                            Log.i(TAG, "goToThisSection:  === Exception!!! ");
+                            initSplash(false);
+                            e.printStackTrace();
+                        }
+                        break;
+                    case "noticias":
+                        try {
+                            if (idPost != null && !idPost.equals("noAplica")) {
+                                Intent news = new Intent(IntroActivity.this, NewsSingleActivity.class);
+                                news.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                news.putExtra(Constant.Seccion.Id_Post, idPost);
+                                startActivity(news);
+                            }
+                        } catch (Exception e) {
+                            Log.i(TAG, "goToThisSection:  === Exception!!! ");
+                            initSplash(false);
+                            e.printStackTrace();
+                        }
+                        break;
+                    case Constant.Seccion.CHAT:
+                        initSplash(true);
+                        break;
+                    default:
+                        Intent home = new Intent(IntroActivity.this, HomeActivity.class);
+                        home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        home.putExtra(Constant.Key.SECCION, seccion);
+                        home.putExtra(Constant.Key.SUB_SECCION, subseccion);
+                        home.putExtra(Constant.Key.PUNTO_REFERENCIA, puntoReferencia);
+                        startActivity(home);
+                        break;
+                }
+            } catch (Exception e) {
+                initSplash(false);
+            }
+        }
     }
 
     public void navigateNext(boolean notification) {
-        Log.i(TAG, "PRUEBAAA FUNCIONA: 1");
         if (preferenceManager.getBoolean(Constant.Key.FIRST_TIME_OATH, true)) {
-            startActivity(new Intent(IntroActivity.this, SplashActivity.class));
+            Intent intent = new Intent(IntroActivity.this, SplashActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             finish();
         } else {
             if (sessionManager.getSession() == null) {
-                startActivity(new Intent(IntroActivity.this, AuthActivity.class));
+                Intent intent = new Intent(IntroActivity.this, AuthActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
                 finish();
             } else {
-                Log.i(TAG, "PRUEBAAA FUNCIONA: 2");
                 if (notification) {
-                    Log.i(TAG, "PRUEBAAA FUNCIONA: 3");
-                    if (getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.MURO)
-                            && getIntent().hasExtra(Constant.Seccion.Id_Post)
-                            && !getIntent().getStringExtra(Constant.Seccion.Id_Post).equals("noAplica")) {
-                        Log.i(TAG, "PRUEBAAA FUNCIONA: 4");
-                        Intent intent = new Intent(IntroActivity.this, SinglePostActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.putExtra(Constant.Seccion.Id_Post, getIntent().getStringExtra(Constant.Seccion.Id_Post));
-                        startActivityForResult(intent, 2000);
-                    } else if (getIntent().getStringExtra(Constant.Key.SECCION).equals(Constant.Seccion.CHAT)) {
-                        Log.i(TAG, "PRUEBAAA FUNCIONA: 5");
-                        if (getIntent().getStringExtra(ChatActivity.TAG_PRIVATE) != null) {
-                            Log.i(TAG, "PRUEBAAA FUNCIONA: 6");
-                            Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
-                            intent.putExtra(ChatActivity.TAG_PRIVATE, getIntent().getStringExtra(ChatActivity.TAG_PRIVATE));
-                            startActivityForResult(intent, 2000);
-                        } else if (getIntent().getStringExtra(ChatActivity.TAG_GROUP) != null) {
-                            Log.i(TAG, "PRUEBAAA FUNCIONA: 7");
-                            Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
-                            intent.putExtra(ChatActivity.TAG_GROUP, getIntent().getStringExtra(ChatActivity.TAG_GROUP));
-                            startActivityForResult(intent, 2000);
-                        } else {
-                            Log.i(TAG, "PRUEBAAA FUNCIONA: 8");
-                            if (getIntent().hasExtra(Constant.Key.SECCION)) {
-                                Intent home = new Intent(IntroActivity.this, HomeActivity.class);
-                                home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
-                                startActivity(home);
-                            } else {
-                                startActivity(new Intent(IntroActivity.this, HomeActivity.class));
-                            }
+                    try{
+                        String goToThisSection = getIntent().getStringExtra(Constant.Key.SECCION);
+                        switch (goToThisSection){
+                            case Constant.Seccion.MURO:
+                                if (
+                                        getIntent().hasExtra(Constant.Seccion.Id_Post) &&
+                                                !getIntent().getStringExtra(Constant.Seccion.Id_Post).equals("noAplica")
+                                        ) {
+                                    Intent intent = new Intent(IntroActivity.this, SinglePostActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra(Constant.Seccion.Id_Post, getIntent().getStringExtra(Constant.Seccion.Id_Post));
+                                    startActivityForResult(intent, 2000);
+                                }
+                                break;
+                            case Constant.Seccion.CHAT:
+                                if (getIntent().getStringExtra(ChatActivity.TAG_PRIVATE) != null) {
+                                    Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                                    intent.putExtra(ChatActivity.TAG_PRIVATE, getIntent().getStringExtra(ChatActivity.TAG_PRIVATE));
+                                    startActivityForResult(intent, 2000);
+                                } else if (getIntent().getStringExtra(ChatActivity.TAG_GROUP) != null) {
+                                    Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                                    intent.putExtra(ChatActivity.TAG_GROUP, getIntent().getStringExtra(ChatActivity.TAG_GROUP));
+                                    startActivityForResult(intent, 2000);
+                                } else {
+                                    goDefault();
+                                }
+                                break;
+
+                            default:
+                                goDefault();
+                                break;
                         }
-                    } else {
-                        if (getIntent().hasExtra(Constant.Key.SECCION)) {
-                            Intent home = new Intent(IntroActivity.this, HomeActivity.class);
-                            home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
-                            startActivity(home);
-                        } else {
-                            startActivity(new Intent(IntroActivity.this, HomeActivity.class));
-                        }
+                    }catch (Exception e){
+
                     }
                 } else {
-                    if (getIntent().hasExtra(Constant.Key.SECCION)) {
-                        Intent home = new Intent(IntroActivity.this, HomeActivity.class);
-                        home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
-                        startActivity(home);
-                    } else {
-                        startActivity(new Intent(IntroActivity.this, HomeActivity.class));
-                    }
+                    goDefault();
                 }
                 finish();
             }
         }
     }
 
-    /*public void initVideoIntro() {
-        btnSkip.setVisibility(View.VISIBLE);
-        introVideoView.setVideoURI(Uri.parse(introUrlPath));
-        introVideoView.start();
-
-        introVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                initSplash();
+    private void goDefault(){
+        if (getIntent().hasExtra(Constant.Key.SECCION)) {
+            if(getIntent().hasExtra(Constant.Key.SUB_SECCION)){
+                Intent home = new Intent(IntroActivity.this, HomeActivity.class);
+                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                home.putExtra(Constant.Key.SUB_SECCION, getIntent().getStringExtra(Constant.Key.SUB_SECCION));
+                startActivity(home);
+            }else{
+                Intent home = new Intent(IntroActivity.this, HomeActivity.class);
+                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                home.putExtra(Constant.Key.SECCION, getIntent().getStringExtra(Constant.Key.SECCION));
+                home.putExtra(Constant.Key.PUNTO_REFERENCIA, getIntent().getStringExtra(Constant.Key.PUNTO_REFERENCIA));
+                startActivity(home);
             }
-        });
-    }*/
+        } else {
+            Intent intent = new Intent(IntroActivity.this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+    }
 
     @Override
     protected void onResume() {
         super.onResume();
-
     }
 
 }
