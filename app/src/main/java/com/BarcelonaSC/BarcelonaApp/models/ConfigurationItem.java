@@ -313,6 +313,9 @@ public class ConfigurationItem {
     @SerializedName("url_contacto")
     @Expose
     private String url_contacto;
+    @SerializedName("contador_hinchas")
+    @Expose
+    private int contador_hinchas;
 
     public String getTit_17() {
         return tit_17;
@@ -1068,6 +1071,8 @@ public class ConfigurationItem {
     public void setUrlAvVillas(String urlAvVillas) {
         this.urlAvVillas = urlAvVillas;
     }
+
+    public int getContador_hinchas(){ return contador_hinchas; }
 
     public String toStringDIalogo() {
         return "ConfigurationItem{" +

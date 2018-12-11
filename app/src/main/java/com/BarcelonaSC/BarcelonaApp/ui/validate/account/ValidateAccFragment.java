@@ -89,7 +89,7 @@ public class ValidateAccFragment extends Fragment implements ValidateAccContract
 
     @Override
     public void success(AuthResponse data) {
-        check.setColorFilter(Commons.getColor( R.color.holo_green_dark));
+        check.setColorFilter(Commons.getColor(R.color.holo_green_dark));
         esperarYCerrar(1000);
     }
 
@@ -114,10 +114,12 @@ public class ValidateAccFragment extends Fragment implements ValidateAccContract
     @Override
     public void showToastError(String error) {
         if (getActivity() != null) {
-            if(error.contains("PIN") && !error.contains(",")){
+            if (error.contains("PIN") && !error.contains(",")) {
                 error = "Disculpa, PIN incorrecto.";
+                Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
             }
-            Toast.makeText(getActivity(), error, Toast.LENGTH_LONG).show();
         }
     }
 
