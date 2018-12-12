@@ -45,4 +45,12 @@ public class Tournament {
         this.matches = partidos;
     }
 
+    @Override
+    public String toString() {
+        return "Tournament{" +
+                "cupName='" + cupName + '\'' +
+                ", idCup=" + idCup +
+                ", matches=" + matches +
+                '}';
+    }
 }
