@@ -197,20 +197,31 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
             presenter.sentFirebaseInstanceIdTokenToServer(FirebaseInstanceId.getInstance().getToken());
 
         if (getIntent().getExtras() != null) {
+
             if (getIntent().getStringExtra(ChatActivity.TAG_GROUP) != null) {
                 getActivity().startActivity(ChatActivity.intent(getIntent().getStringExtra(ChatActivity.TAG_GROUP), this));
             } else if (getIntent().getStringExtra(ChatActivity.TAG_PRIVATE) != null) {
                 getActivity().startActivity(ChatActivity.intent(Long.parseLong(getIntent().getStringExtra(ChatActivity.TAG_PRIVATE)), this));
             } else {
+
                 if (getIntent().getStringExtra(Constant.Key.SECCION) != null) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            presenter.setFragmentFromSeccion(getIntent().getStringExtra(Constant.Key.SECCION));
+                            try {
+                                presenter.setFragmentFromSeccion(
+                                        getIntent().getStringExtra(Constant.Key.SECCION),
+                                        getIntent().getStringExtra(Constant.Key.SUB_SECCION),
+                                        getIntent().getStringExtra(Constant.Key.PUNTO_REFERENCIA)
+                                );
+                            } catch (Exception e) {
+                                Log.i(TAG, "run: ---> execpcion: " + e.getLocalizedMessage() + " msg: " + e.getMessage());
+                            }
                         }
                     }, 500);
                 }
+
             }
 
             // Send Google Analytics for Notifications
@@ -375,8 +386,13 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
                 idPartido = Integer.parseInt(intent.getStringExtra(Constant.Key.SECCION_PARTIDO));
             }
             if (!intent.getExtras().getString(Constant.Key.SECCION_SELECTED, "").equals(""))
-                presenter.onItemMenuSelected(intent.getExtras().getString(Constant.Key.SECCION_SELECTED));
-            presenter.setFragmentFromSeccion(intent.getExtras().getString(Constant.Key.SECCION, ""));
+                presenter.onItemMenuSelected(intent.getExtras().getString(Constant.Key.SECCION_SELECTED),
+                        null, null);
+            presenter.setFragmentFromSeccion(
+                    intent.getExtras().getString(Constant.Key.SECCION, ""),
+                    intent.getExtras().getString(Constant.Key.SUB_SECCION, ""),
+                    intent.getExtras().getString(Constant.Key.PUNTO_REFERENCIA, "")
+            );
         }
         Log.i(TAG, "--->onNewIntent");
     }
@@ -403,8 +419,10 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
     @Override
     public void onClickMenuItem(String fragment) {
-        dl_menu.closeDrawers();
-        presenter.onItemMenuSelected(fragment);
+        if (!fragment.equals("")) {
+            dl_menu.closeDrawers();
+            presenter.onItemMenuSelected(fragment, null, null);
+        }
     }
 
     @Override
@@ -435,7 +453,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MapActivity.MAP_REQUEST_CODE) {
             if ((resultCode == RESULT_OK)) {
-                presenter.onItemMenuSelected(data.getExtras().getString(MapActivity.SECCION_SELECTED));
+                presenter.onItemMenuSelected(data.getExtras().getString(MapActivity.SECCION_SELECTED), null, null);
             }
         }
         for (Fragment fragment : getSupportFragmentManager().getFragments()) {
@@ -488,7 +506,7 @@ public class HomeActivity extends BaseSideMenuActivity implements HomeContract.V
 
     @Override
     public void onGoSection(String section) {
-        presenter.setFragmentFromSeccion(section);
+        presenter.setFragmentFromSeccion(section, null, null);
     }
 
     @Override

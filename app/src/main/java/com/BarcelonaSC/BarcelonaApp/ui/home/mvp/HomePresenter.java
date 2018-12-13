@@ -24,7 +24,6 @@ import com.BarcelonaSC.BarcelonaApp.ui.home.menu.statistics.StatisticsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.team.TeamFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.home.menu.youchooce.YouChooseFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.monumentals.MonumentalMainFragment;
-import com.BarcelonaSC.BarcelonaApp.ui.news.NewsFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.virtualreality.VRFragment;
 import com.BarcelonaSC.BarcelonaApp.utils.BannerView;
 import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
@@ -71,7 +70,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         newsProfessional();
     }
 
-    private void mountProfile() {
+    private void mountProfile(String subsection) {
         profileFragment = (ProfileFragment)
                 view.getFragmentByTag(ProfileFragment.TAG);
         if (profileFragment == null) {
@@ -91,7 +90,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(vrFragment, VRFragment.TAG);
     }
 
-    private void mountTeam() {
+    private void mountTeam(String subsection) {
         teamFragment = (TeamFragment)
                 view.getFragmentByTag(TeamFragment.TAG);
         if (teamFragment == null) {
@@ -112,7 +111,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(newsProfessionalFragment, MainNewsFragment.TAG + Constant.Menu.NEWS);
     }
 
-    private void newsFootballBase() {
+    private void newsFootballBase(String subsection) {
         futbolBaseFragment = (FutbolBaseFragment)
                 view.getFragmentByTag(FutbolBaseFragment.TAG + Constant.Menu.NEWS + Constant.Menu.FOOTBALL_BASE);
         if (futbolBaseFragment == null) {
@@ -122,7 +121,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(futbolBaseFragment, FutbolBaseFragment.TAG + Constant.Menu.FOOTBALL_BASE);
     }
 
-    private void mountYouChoose() {
+    private void mountYouChoose(String subsection) {
         mYouChooseFragment = (YouChooseFragment)
                 view.getFragmentByTag(YouChooseFragment.TAG);
         if (mYouChooseFragment == null) {
@@ -132,7 +131,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(mYouChooseFragment, YouChooseFragment.TAG);
     }
 
-    private void table() {
+    private void table(String subsection) {
         tableFragment = (TableFragment)
                 view.getFragmentByTag(TableFragment.TAG);
         if (tableFragment == null) {
@@ -172,7 +171,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(settingFragment, NotificationFragment.TAG);
     }
 
-    private void lineUp() {
+    private void lineUp(String subsection) {
         lineUpFragment = (LineUpFragment)
                 view.getFragmentByTag(LineUpFragment.TAG);
         if (lineUpFragment == null) {
@@ -182,7 +181,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(lineUpFragment, LineUpFragment.TAG);
     }
 
-    private void mountCalendar() {
+    private void mountCalendar(String subsection) {
         calendarFragment = (MainCalendarFragment) view.getFragmentByTag(CalendarFragment.TAG);
         if (calendarFragment == null) {
             calendarFragment = MainCalendarFragment.newInstance(Constant.Key.CUP);
@@ -209,7 +208,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(monumentalFragment, MonumentalMainFragment.TAG);
     }
 
-    private void mountMap() {
+    private void mountMap(String puntoReferencia) {
         Intent intent = new Intent(App.get().getBaseContext(), MapActivity.class);
         //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         if (activity != null) {
@@ -252,13 +251,82 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(multimediaFragment, MultimediaFragment.TAG);
     }
 
-    public void onItemMenuSelected(String fragment) {
+    public void setFragmentFromSeccion(String seccion, String subsection, String puntoReferencia) {
+        changeSeccionToTag(seccion, subsection, puntoReferencia);
+    }
+
+    private void changeSeccionToTag(String seccion, String subsection, String puntoReferencia) {
+        if (BannerView.Seccion.PROFILE.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.PROFILE, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.NEWS.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.NEWS, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.CALENDAR.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.CALENDAR, subsection, puntoReferencia); //
+        } else if (BannerView.Seccion.TABLE.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.TABLE, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.VIRTUAL_REALITY.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.VIRTUAL_REALITY, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.TEAM.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.TEAM, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.LINE_UP.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.ALIGMENT, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.WALL.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.WALL_AND_CHAT, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.CHAT.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.CHAT, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.LIVE.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.IN_LIVE, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.FOOTBALL_BASE.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.FOOTBALL_BASE, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.STATISTICS.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.STATISTICS, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.YOU_CHOOSE.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.YOUR_CHOOSE, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.ACADEMY.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.MILLIONARE_ACADEMY, subsection, puntoReferencia);//
+        } else if (BannerView.Seccion.GAMES.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.GAME, subsection, puntoReferencia);
+        } else if (BannerView.Seccion.STORE.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.ONLINE_SHOP, subsection, puntoReferencia);
+        } else if (BannerView.Seccion.WALL.equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.WALL_AND_CHAT, subsection, puntoReferencia);
+        } else if (BannerView.Seccion.MAP.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.MAP, subsection, puntoReferencia);
+        }
+//        else if (BannerView.Seccion.AVVILLAS.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.AV_VILLAS, subsection, puntoReferencia);
+//        } else if (BannerView.Seccion.VIDEOS.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.VIDEOS, subsection, puntoReferencia);
+//        }
+       /* o nItemMenuSelected(Constant.Menu.PROFILE);
+
+        onItemMenuSelected(Constant.Menu.Setting);*/
+    }
+
+    public void onItemMenuSelected(String fragment, String subsection, String puntoReferencia) {
         Log.d(TAG, "Clicked : " + fragment);
+        Log.d(TAG, "subsection : " + subsection);
+
+//        if (!SessionManager.getInstance().getUser().isDorado() && !HinchaDorado.haveAccess(fragment)) {
+//            view.showMakeDorado();
+//            Log.d(TAG, "Clicked : " + fragment);
+//            return;
+//        } else {
+//            Log.d(TAG, "Clicked : " + fragment);
+//        }
+
         switch (fragment) {
+
             case Constant.Menu.PROFILE:
                 view.setTitle(configurationManager.getConfiguration().getTit1());
-                mountProfile();
+                mountProfile(subsection);
                 view.trackFragment(configurationManager.getConfiguration().getTit1());
+                break;
+
+            case Constant.Menu.MONUMENTAL:
+                view.setTitle(configurationManager.getConfiguration().getTit12());
+                mountMonumental();
+                view.trackFragment(configurationManager.getConfiguration().getTit12());
                 break;
 
             case Constant.Menu.Setting:
@@ -275,25 +343,13 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
 
             case Constant.Menu.CALENDAR:
                 view.setTitle(configurationManager.getConfiguration().getTit3());
-                mountCalendar();
+                mountCalendar(subsection);
                 view.trackFragment(configurationManager.getConfiguration().getTit3());
-                break;
-
-            case Constant.Menu.IN_LIVE:
-                view.setTitle(configurationManager.getConfiguration().getTit9());
-                multimedia(Constant.Menu.IN_LIVE);
-                view.trackFragment(configurationManager.getConfiguration().getTit9());
-                break;
-
-            case Constant.Menu.VIDEOS:
-                view.setTitle(configurationManager.getConfiguration().getTit9());
-                multimedia(Constant.Menu.IN_LIVE);
-                view.trackFragment(configurationManager.getConfiguration().getTit9());
                 break;
 
             case Constant.Menu.TABLE:
                 view.setTitle(configurationManager.getConfiguration().getTit4());
-                table();
+                table(subsection);
                 view.trackFragment(configurationManager.getConfiguration().getTit4());
                 break;
 
@@ -305,43 +361,13 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
 
             case Constant.Menu.TEAM:
                 view.setTitle(configurationManager.getConfiguration().getTit6());
-                mountTeam();
+                mountTeam(subsection);
                 view.trackFragment(configurationManager.getConfiguration().getTit6());
-                break;
-
-            case Constant.Menu.MONUMENTAL:
-                view.setTitle(configurationManager.getConfiguration().getTit12());
-                mountMonumental();
-                view.trackFragment(configurationManager.getConfiguration().getTit12());
-                break;
-
-            case Constant.Menu.MILLIONARE_ACADEMY:
-                view.setTitle(configurationManager.getConfiguration().getTit12());
-                mountAcademy();
-                view.trackFragment(configurationManager.getConfiguration().getTit12());
-                break;
-
-            case Constant.Menu.WALL_AND_CHAT:
-                view.setTitle(configurationManager.getConfiguration().getTit161());
-                wallAndChat(Constant.Menu.WALL_AND_CHAT);
-                view.trackFragment(configurationManager.getConfiguration().getTit16());
-                break;
-
-            case Constant.Menu.CHAT:
-                view.setTitle(configurationManager.getConfiguration().getTit161());
-                wallAndChat(Constant.Menu.CHAT);
-                view.trackFragment(configurationManager.getConfiguration().getTit16());
-                break;
-
-            case Constant.Menu.GAME:
-                view.setTitle(configurationManager.getConfiguration().getTit11());
-                mountProfile();
-                view.trackFragment(configurationManager.getConfiguration().getTit11());
                 break;
 
             case Constant.Menu.ALIGMENT:
                 view.setTitle(configurationManager.getConfiguration().getTit7());
-                lineUp();
+                lineUp(subsection);
                 view.trackFragment(configurationManager.getConfiguration().getTit7());
                 break;
 
@@ -349,6 +375,36 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
                 view.setTitle(configurationManager.getConfiguration().getTit8());
                 mountVirtualReality();
                 view.trackFragment(configurationManager.getConfiguration().getTit8());
+                break;
+
+            case Constant.Menu.IN_LIVE:
+                view.setTitle(configurationManager.getConfiguration().getTit9());
+                multimedia(Constant.Menu.IN_LIVE);
+                view.trackFragment(configurationManager.getConfiguration().getTit9());
+                break;
+
+            case Constant.Menu.VIDEOS:
+                view.setTitle(configurationManager.getConfiguration().getTit9());
+                multimedia(Constant.Menu.VIDEOS);
+                view.trackFragment(configurationManager.getConfiguration().getTit9());
+                break;
+
+            case Constant.Menu.YOUR_CHOOSE:
+                view.setTitle(configurationManager.getConfiguration().getTit10());
+                mountYouChoose(subsection);
+                view.trackFragment(configurationManager.getConfiguration().getTit10());
+                break;
+
+            case Constant.Menu.GAME:
+                view.setTitle(configurationManager.getConfiguration().getTit11());
+                mountProfile(null);
+                view.trackFragment(configurationManager.getConfiguration().getTit11());
+                break;
+
+            case Constant.Menu.MILLIONARE_ACADEMY:
+                view.setTitle(configurationManager.getConfiguration().getTit12());
+                mountAcademy();
+                view.trackFragment(configurationManager.getConfiguration().getTit12());
                 break;
 
             case Constant.Menu.ONLINE_SHOP:
@@ -359,65 +415,203 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
 
             case Constant.Menu.FOOTBALL_BASE:
                 view.setTitle(configurationManager.getConfiguration().getTit14());
-                newsFootballBase();
+                newsFootballBase(subsection);
                 view.trackFragment(configurationManager.getConfiguration().getTit14());
                 break;
 
-            case Constant.Menu.YOUR_CHOOSE:
-                view.setTitle(configurationManager.getConfiguration().getTit10());
-                mountYouChoose();
-                view.trackFragment(configurationManager.getConfiguration().getTit10());
+            case Constant.Menu.WALL_AND_CHAT:
+                view.setTitle(configurationManager.getConfiguration().getTit161());
+                wallAndChat(Constant.Menu.WALL_AND_CHAT);
+                view.trackFragment(configurationManager.getConfiguration().getTit16());
+                break;
+            case Constant.Menu.CHAT:
+                view.setTitle(configurationManager.getConfiguration().getTit161());
+                wallAndChat(Constant.Menu.CHAT);
+                view.trackFragment(configurationManager.getConfiguration().getTit16());
                 break;
 
+//            case Constant.Menu.AV_VILLAS:
+//                view.setTitle(configurationManager.getConfiguration().getSubTitle25());
+//                avVillas();
+//                view.trackFragment(configurationManager.getConfiguration().getSubTitle25());
+//                break;
+//
             case Constant.Menu.MAP:
-                mountMap();
+                mountMap(puntoReferencia);
                 break;
+//
+//            case Constant.Menu.SELFIE:
+//                mountSelfie();
+//                break;
         }
     }
 
-    public void setFragmentFromSeccion(String seccion) {
-        changeSeccionToTag(seccion);
-    }
+//    public void setFragmentFromSeccion(String seccion) {
+//        changeSeccionToTag(seccion);
+//    }
 
-    private void changeSeccionToTag(String seccion) {
-        if (BannerView.Seccion.PROFILE.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.PROFILE);//
-        } else if (BannerView.Seccion.NEWS.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.NEWS);//
-        } else if (BannerView.Seccion.CALENDAR.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.CALENDAR); //
-        } else if (BannerView.Seccion.TABLE.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.TABLE);//
-        } else if (BannerView.Seccion.VIRTUAL_REALITY.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.VIRTUAL_REALITY);//
-        } else if (BannerView.Seccion.TEAM.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.TEAM);//
-        } else if (BannerView.Seccion.LINE_UP.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.ALIGMENT);//
-        } else if (BannerView.Seccion.WALL.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.WALL_AND_CHAT);//
-        } else if (BannerView.Seccion.CHAT.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.CHAT);//
-        } else if (BannerView.Seccion.LIVE.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.IN_LIVE);//
-        } else if (BannerView.Seccion.FOOTBALL_BASE.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.FOOTBALL_BASE);//
-        } else if (BannerView.Seccion.STATISTICS.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.STATISTICS);//
-        } else if (BannerView.Seccion.YOU_CHOOSE.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.YOUR_CHOOSE);//
-        } else if (BannerView.Seccion.ACADEMY.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.MILLIONARE_ACADEMY);//
-        } else if (BannerView.Seccion.GAMES.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.GAME);
-        } else if (BannerView.Seccion.STORE.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.ONLINE_SHOP);
-        } else if (BannerView.Seccion.WALL.equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.WALL_AND_CHAT);
-        } else if (BannerView.Seccion.MAP.getValue().equals(seccion)) {
-            onItemMenuSelected(Constant.Menu.MAP);
-        }
-    }
+//    private void changeSeccionToTag(String seccion) {
+//        if (BannerView.Seccion.PROFILE.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.PROFILE);//
+//        } else if (BannerView.Seccion.NEWS.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.NEWS);//
+//        } else if (BannerView.Seccion.CALENDAR.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.CALENDAR); //
+//        } else if (BannerView.Seccion.TABLE.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.TABLE);//
+//        } else if (BannerView.Seccion.VIRTUAL_REALITY.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.VIRTUAL_REALITY);//
+//        } else if (BannerView.Seccion.TEAM.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.TEAM);//
+//        } else if (BannerView.Seccion.LINE_UP.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.ALIGMENT);//
+//        } else if (BannerView.Seccion.WALL.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.WALL_AND_CHAT);//
+//        } else if (BannerView.Seccion.CHAT.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.CHAT);//
+//        } else if (BannerView.Seccion.LIVE.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.IN_LIVE);//
+//        } else if (BannerView.Seccion.FOOTBALL_BASE.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.FOOTBALL_BASE);//
+//        } else if (BannerView.Seccion.STATISTICS.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.STATISTICS);//
+//        } else if (BannerView.Seccion.YOU_CHOOSE.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.YOUR_CHOOSE);//
+//        } else if (BannerView.Seccion.ACADEMY.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.MILLIONARE_ACADEMY);//
+//        } else if (BannerView.Seccion.GAMES.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.GAME);
+//        } else if (BannerView.Seccion.STORE.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.ONLINE_SHOP);
+//        } else if (BannerView.Seccion.WALL.equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.WALL_AND_CHAT);
+//        } else if (BannerView.Seccion.MAP.getValue().equals(seccion)) {
+//            onItemMenuSelected(Constant.Menu.MAP);
+//        }
+//    }
+//
+//    public void onItemMenuSelected(String fragment) {
+//        Log.d(TAG, "Clicked : " + fragment);
+//        switch (fragment) {
+//            case Constant.Menu.PROFILE:
+//                view.setTitle(configurationManager.getConfiguration().getTit1());
+//                mountProfile();
+//                view.trackFragment(configurationManager.getConfiguration().getTit1());
+//                break;
+//
+//            case Constant.Menu.Setting:
+//                view.setTitle(configurationManager.getConfiguration().getTit15());
+//                setting();
+//                view.trackFragment(configurationManager.getConfiguration().getTit5());
+//                break;
+//
+//            case Constant.Menu.NEWS:
+//                view.setTitle(configurationManager.getConfiguration().getTit2());
+//                newsProfessional();
+//                view.trackFragment(configurationManager.getConfiguration().getTit2());
+//                break;
+//
+//            case Constant.Menu.CALENDAR:
+//                view.setTitle(configurationManager.getConfiguration().getTit3());
+//                mountCalendar();
+//                view.trackFragment(configurationManager.getConfiguration().getTit3());
+//                break;
+//
+//            case Constant.Menu.IN_LIVE:
+//                view.setTitle(configurationManager.getConfiguration().getTit9());
+//                multimedia(Constant.Menu.IN_LIVE);
+//                view.trackFragment(configurationManager.getConfiguration().getTit9());
+//                break;
+//
+//            case Constant.Menu.VIDEOS:
+//                view.setTitle(configurationManager.getConfiguration().getTit9());
+//                multimedia(Constant.Menu.IN_LIVE);
+//                view.trackFragment(configurationManager.getConfiguration().getTit9());
+//                break;
+//
+//            case Constant.Menu.TABLE:
+//                view.setTitle(configurationManager.getConfiguration().getTit4());
+//                table();
+//                view.trackFragment(configurationManager.getConfiguration().getTit4());
+//                break;
+//
+//            case Constant.Menu.STATISTICS:
+//                view.setTitle(configurationManager.getConfiguration().getTit5());
+//                statistics();
+//                view.trackFragment(configurationManager.getConfiguration().getTit5());
+//                break;
+//
+//            case Constant.Menu.TEAM:
+//                view.setTitle(configurationManager.getConfiguration().getTit6());
+//                mountTeam();
+//                view.trackFragment(configurationManager.getConfiguration().getTit6());
+//                break;
+//
+//            case Constant.Menu.MONUMENTAL:
+//                view.setTitle(configurationManager.getConfiguration().getTit12());
+//                mountMonumental();
+//                view.trackFragment(configurationManager.getConfiguration().getTit12());
+//                break;
+//
+//            case Constant.Menu.MILLIONARE_ACADEMY:
+//                view.setTitle(configurationManager.getConfiguration().getTit12());
+//                mountAcademy();
+//                view.trackFragment(configurationManager.getConfiguration().getTit12());
+//                break;
+//
+//            case Constant.Menu.WALL_AND_CHAT:
+//                view.setTitle(configurationManager.getConfiguration().getTit161());
+//                wallAndChat(Constant.Menu.WALL_AND_CHAT);
+//                view.trackFragment(configurationManager.getConfiguration().getTit16());
+//                break;
+//
+//            case Constant.Menu.CHAT:
+//                view.setTitle(configurationManager.getConfiguration().getTit161());
+//                wallAndChat(Constant.Menu.CHAT);
+//                view.trackFragment(configurationManager.getConfiguration().getTit16());
+//                break;
+//
+//            case Constant.Menu.GAME:
+//                view.setTitle(configurationManager.getConfiguration().getTit11());
+//                mountProfile();
+//                view.trackFragment(configurationManager.getConfiguration().getTit11());
+//                break;
+//
+//            case Constant.Menu.ALIGMENT:
+//                view.setTitle(configurationManager.getConfiguration().getTit7());
+//                lineUp();
+//                view.trackFragment(configurationManager.getConfiguration().getTit7());
+//                break;
+//
+//            case Constant.Menu.VIRTUAL_REALITY:
+//                view.setTitle(configurationManager.getConfiguration().getTit8());
+//                mountVirtualReality();
+//                view.trackFragment(configurationManager.getConfiguration().getTit8());
+//                break;
+//
+//            case Constant.Menu.ONLINE_SHOP:
+//                view.setTitle(configurationManager.getConfiguration().getTit13());
+//                virtualShop();
+//                view.trackFragment(configurationManager.getConfiguration().getTit13());
+//                break;
+//
+//            case Constant.Menu.FOOTBALL_BASE:
+//                view.setTitle(configurationManager.getConfiguration().getTit14());
+//                newsFootballBase();
+//                view.trackFragment(configurationManager.getConfiguration().getTit14());
+//                break;
+//
+//            case Constant.Menu.YOUR_CHOOSE:
+//                view.setTitle(configurationManager.getConfiguration().getTit10());
+//                mountYouChoose();
+//                view.trackFragment(configurationManager.getConfiguration().getTit10());
+//                break;
+//
+//            case Constant.Menu.MAP:
+//                mountMap();
+//                break;
+//        }
+//    }
 
     @Override
     public void sentFirebaseInstanceIdTokenToServer(String token) {
