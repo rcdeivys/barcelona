@@ -132,7 +132,7 @@ public interface Constant {
 
         String PROFILE = "profile";
         String Setting = "Setting";
-        String NEWS = "noticias";
+        String NEWS = "news";
         String CALENDAR = "calendario";
         String TABLE = "tabla";
         String STATISTICS = "estadisticas";
