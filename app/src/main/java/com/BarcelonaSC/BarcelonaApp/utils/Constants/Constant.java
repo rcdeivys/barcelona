@@ -149,6 +149,8 @@ public interface Constant {
         String ONLINE_SHOP = "tienda_virtual";
         String WALL_AND_CHAT = "muro";
         String CHAT = "chat";
+        String MULTIMEDIA = "multimedia";
+        String GLORIAS = "glory_bsc";
 
 
         String TITLE = "titulo";
@@ -222,6 +224,7 @@ public interface Constant {
         String MURO = "muro";
         String NOTICIAS = "news";
         String TIPO_NOTICIA = "tipo_noticia";
+        String MULTIMEDIA = "multimedia";
         String CHAT= "chat";
         String TEAM = "team";
         String TABLE = "table";

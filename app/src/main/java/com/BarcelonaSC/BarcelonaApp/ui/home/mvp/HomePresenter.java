@@ -214,10 +214,13 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         view.showFragment(academyFragment, AcademyFragment.TAG);
     }
 
-    private void mountMonumental() {
+    private void mountMonumental(String subsection) {
         monumentalFragment = (MonumentalMainFragment) view.getFragmentByTag(MonumentalMainFragment.TAG);
         if (monumentalFragment == null) {
-            monumentalFragment = new MonumentalMainFragment();
+            monumentalFragment = MonumentalMainFragment.newInstance(subsection);
+            view.addFragment(monumentalFragment, MonumentalMainFragment.TAG);
+        }else if(subsection!=null){
+            monumentalFragment = MonumentalMainFragment.newInstance(subsection);
             view.addFragment(monumentalFragment, MonumentalMainFragment.TAG);
         }
         view.showFragment(monumentalFragment, MonumentalMainFragment.TAG);
@@ -248,10 +251,12 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
     public void wallAndChat(String Selected) {
         wallAndChatFragment = (WallAndChatFragment) view.getFragmentByTag(WallAndChatFragment.TAG);
         if (wallAndChatFragment == null) {
-            wallAndChatFragment = new WallAndChatFragment();
+            wallAndChatFragment = WallAndChatFragment.newInstance(Selected);
+            view.addFragment(wallAndChatFragment, WallAndChatFragment.TAG);
+        }else if(Selected!=null){
+            wallAndChatFragment = WallAndChatFragment.newInstance(Selected);
             view.addFragment(wallAndChatFragment, WallAndChatFragment.TAG);
         }
-        wallAndChatFragment.setSelection(Selected);
         view.showFragment(wallAndChatFragment, WallAndChatFragment.TAG);
 
     }
@@ -260,7 +265,10 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         multimediaFragment = (MultimediaFragment)
                 view.getFragmentByTag(MultimediaFragment.TAG);
         if (multimediaFragment == null) {
-            multimediaFragment = new MultimediaFragment();
+            multimediaFragment = MultimediaFragment.newInstance(selected);
+            view.addFragment(multimediaFragment, MultimediaFragment.TAG);
+        }else if(selected!=null){
+            multimediaFragment = MultimediaFragment.newInstance(selected);
             view.addFragment(multimediaFragment, MultimediaFragment.TAG);
         }
         multimediaFragment.setSelection(selected);
@@ -308,6 +316,10 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
             onItemMenuSelected(Constant.Menu.WALL_AND_CHAT, subsection, puntoReferencia);
         } else if (BannerView.Seccion.MAP.getValue().equals(seccion)) {
             onItemMenuSelected(Constant.Menu.MAP, subsection, puntoReferencia);
+        }else if (BannerView.Seccion.MULTIMEDIA.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.MULTIMEDIA, subsection, puntoReferencia);
+        } else if (BannerView.Seccion.GLORIAS.getValue().equals(seccion)) {
+            onItemMenuSelected(Constant.Menu.GLORIAS, subsection, puntoReferencia);
         }
 //        else if (BannerView.Seccion.AVVILLAS.getValue().equals(seccion)) {
 //            onItemMenuSelected(Constant.Menu.AV_VILLAS, subsection, puntoReferencia);
@@ -339,9 +351,9 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
                 view.trackFragment(configurationManager.getConfiguration().getTit1());
                 break;
 
-            case Constant.Menu.MONUMENTAL:
+            case Constant.Menu.GLORIAS:
                 view.setTitle(configurationManager.getConfiguration().getTit12());
-                mountMonumental();
+                mountMonumental(subsection);
                 view.trackFragment(configurationManager.getConfiguration().getTit12());
                 break;
 
@@ -405,6 +417,12 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
                 view.trackFragment(configurationManager.getConfiguration().getTit9());
                 break;
 
+            case Constant.Seccion.MULTIMEDIA:
+                view.setTitle(configurationManager.getConfiguration().getTit9());
+                multimedia(subsection);
+                view.trackFragment(configurationManager.getConfiguration().getTit9());
+                break;
+
             case Constant.Menu.YOUR_CHOOSE:
                 view.setTitle(configurationManager.getConfiguration().getTit10());
                 mountYouChoose(subsection);
@@ -437,12 +455,12 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
 
             case Constant.Menu.WALL_AND_CHAT:
                 view.setTitle(configurationManager.getConfiguration().getTit161());
-                wallAndChat(Constant.Menu.WALL_AND_CHAT);
+                wallAndChat(subsection);
                 view.trackFragment(configurationManager.getConfiguration().getTit16());
                 break;
             case Constant.Menu.CHAT:
                 view.setTitle(configurationManager.getConfiguration().getTit161());
-                wallAndChat(Constant.Menu.CHAT);
+                wallAndChat(subsection);
                 view.trackFragment(configurationManager.getConfiguration().getTit16());
                 break;
 
