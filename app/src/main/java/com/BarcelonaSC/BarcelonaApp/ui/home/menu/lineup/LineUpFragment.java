@@ -3,6 +3,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.home.menu.lineup;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.App;
 import com.BarcelonaSC.BarcelonaApp.models.response.IdealElevenRankingEnableResponse;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.Services.ShareBaseFragment;
@@ -38,6 +40,21 @@ public class LineUpFragment extends ShareBaseFragment {
 
     private LineupViewPagerAdapter viewPagerAdapter;
 
+    protected String subseccion;
+
+    private boolean isRankingEnable;
+
+    public static LineUpFragment newInstance(String subseccion){
+        LineUpFragment fragment = new LineUpFragment();
+        Log.i(TAG, "newInstance: subseccion: ---> "+subseccion);
+        try{
+            fragment.subseccion = subseccion.toLowerCase();
+        }catch (Exception e){
+            fragment.subseccion = null;
+        }
+        return fragment;
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +82,25 @@ public class LineUpFragment extends ShareBaseFragment {
         pager.setPagingEnabled(true);
         pager.setAdapter(viewPagerAdapter);
         tabs.setupWithViewPager(pager);
+
+        try {
+            switch(subseccion){
+                case Constant.SubSeccion.OFFICIAL:
+                    pager.setCurrentItem(0);
+                    break;
+                case Constant.SubSeccion.ELEVEN_IDEAL:
+                    pager.setCurrentItem(1);
+                    break;
+                case Constant.SubSeccion.RANKING:
+                    if(isRankingEnable)
+                        pager.setCurrentItem(2);
+                    break;
+            }
+        }catch (Exception e){
+            pager.setCurrentItem(0);
+            Log.i(TAG, "initializeViewPager: ---> error: "+e.getLocalizedMessage()+" msg: "+e.getMessage());
+        }
+
         eternity();
     }
 

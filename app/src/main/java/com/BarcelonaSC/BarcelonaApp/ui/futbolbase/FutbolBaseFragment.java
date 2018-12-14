@@ -2,6 +2,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.futbolbase;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
 
@@ -32,6 +34,19 @@ public class FutbolBaseFragment extends BaseFragment {
     Unbinder unbinder;
 
     private FutbolBasePagerAdapter viewPagerAdapter;
+
+    protected String subseccion;
+
+    public static FutbolBaseFragment getInstance(String subseccion){
+        FutbolBaseFragment fragment = new FutbolBaseFragment();
+        Log.i(TAG, "newInstance: subseccion: ---> "+subseccion);
+        try{
+            fragment.subseccion = subseccion.toLowerCase();
+        }catch (Exception e){
+            fragment.subseccion = null;
+        }
+        return fragment;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +81,20 @@ public class FutbolBaseFragment extends BaseFragment {
         //pager.setOffscreenPageLimit(3);
         pager.setOffscreenPageLimit(2);
         tabs.setupWithViewPager(pager);
+
+        try {
+            switch(subseccion){
+                case Constant.SubSeccion.NEWS:
+                    pager.setCurrentItem(0);
+                    break;
+                case Constant.SubSeccion.TEAM:
+                    pager.setCurrentItem(1);
+                    break;
+            }
+        }catch (Exception e){
+            Log.i(TAG, "initializeViewPager: ---> error: "+e.getLocalizedMessage()+" msg: "+e.getMessage());
+        }
+
     }
 
     @Override

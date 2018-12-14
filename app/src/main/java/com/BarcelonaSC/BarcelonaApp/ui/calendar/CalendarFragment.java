@@ -60,12 +60,16 @@ public class CalendarFragment extends BaseFragment implements CalendarContract.V
     @Inject
     CalendarPresenter presenter;
 
-    public static CalendarFragment newInstance(String type) {
+    protected String subseccion;
+
+    private int posGroup = 0;
+
+    public static CalendarFragment newInstance(String type,String subseccion) {
         Bundle args = new Bundle();
         args.putString(Constant.Key.TYPE, type);
         CalendarFragment calendarFragment = new CalendarFragment();
         calendarFragment.setArguments(args);
-
+        calendarFragment.subseccion = subseccion;
         return calendarFragment;
     }
 

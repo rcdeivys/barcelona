@@ -74,7 +74,11 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         profileFragment = (ProfileFragment)
                 view.getFragmentByTag(ProfileFragment.TAG);
         if (profileFragment == null) {
-            profileFragment = new ProfileFragment();
+            profileFragment = ProfileFragment.newInstance(subsection);
+            view.addFragment(profileFragment, ProfileFragment.TAG);
+        }
+        if (subsection != null) {
+            profileFragment = ProfileFragment.newInstance(subsection);
             view.addFragment(profileFragment, ProfileFragment.TAG);
         }
         view.showFragment(profileFragment, ProfileFragment.TAG);
@@ -94,7 +98,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         teamFragment = (TeamFragment)
                 view.getFragmentByTag(TeamFragment.TAG);
         if (teamFragment == null) {
-            teamFragment = new TeamFragment();
+            teamFragment = TeamFragment.newInstance(subsection);
             view.addFragment(teamFragment, TeamFragment.TAG);
         }
         view.showFragment(teamFragment, TeamFragment.TAG);
@@ -115,7 +119,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         futbolBaseFragment = (FutbolBaseFragment)
                 view.getFragmentByTag(FutbolBaseFragment.TAG + Constant.Menu.NEWS + Constant.Menu.FOOTBALL_BASE);
         if (futbolBaseFragment == null) {
-            futbolBaseFragment = new FutbolBaseFragment();
+            futbolBaseFragment = FutbolBaseFragment.getInstance(subsection);
             view.addFragment(futbolBaseFragment, FutbolBaseFragment.TAG + Constant.Menu.FOOTBALL_BASE);
         }
         view.showFragment(futbolBaseFragment, FutbolBaseFragment.TAG + Constant.Menu.FOOTBALL_BASE);
@@ -125,7 +129,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         mYouChooseFragment = (YouChooseFragment)
                 view.getFragmentByTag(YouChooseFragment.TAG);
         if (mYouChooseFragment == null) {
-            mYouChooseFragment = new YouChooseFragment();
+            mYouChooseFragment = YouChooseFragment.newInstance(subsection);
             view.addFragment(mYouChooseFragment, YouChooseFragment.TAG);
         }
         view.showFragment(mYouChooseFragment, YouChooseFragment.TAG);
@@ -135,7 +139,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         tableFragment = (TableFragment)
                 view.getFragmentByTag(TableFragment.TAG);
         if (tableFragment == null) {
-            tableFragment = new TableFragment();
+            tableFragment = TableFragment.newInstance(subsection);
             view.addFragment(tableFragment, TableFragment.TAG);
         }
         view.showFragment(tableFragment, TableFragment.TAG);
@@ -175,7 +179,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         lineUpFragment = (LineUpFragment)
                 view.getFragmentByTag(LineUpFragment.TAG);
         if (lineUpFragment == null) {
-            lineUpFragment = new LineUpFragment();
+            lineUpFragment = LineUpFragment.newInstance(subsection);
             view.addFragment(lineUpFragment, LineUpFragment.TAG);
         }
         view.showFragment(lineUpFragment, LineUpFragment.TAG);
@@ -184,7 +188,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
     private void mountCalendar(String subsection) {
         calendarFragment = (MainCalendarFragment) view.getFragmentByTag(CalendarFragment.TAG);
         if (calendarFragment == null) {
-            calendarFragment = MainCalendarFragment.newInstance(Constant.Key.CUP);
+            calendarFragment = MainCalendarFragment.newInstance(Constant.Key.CUP, subsection);
             view.addFragment(calendarFragment, CalendarFragment.TAG);
         }
         view.showFragment(calendarFragment, CalendarFragment.TAG);
@@ -210,6 +214,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
 
     private void mountMap(String puntoReferencia) {
         Intent intent = new Intent(App.get().getBaseContext(), MapActivity.class);
+        intent.putExtra(Constant.Key.PUNTO_REFERENCIA, puntoReferencia);
         //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         if (activity != null) {
             activity.startActivityForResult(intent, MapActivity.MAP_REQUEST_CODE);
