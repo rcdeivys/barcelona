@@ -86,7 +86,7 @@ public class Notifications {
                     Log.i(TAG, "sendNormalNotification: === seccion: "+seccion+" id_post: "+id_post);
                     if (Commons.isAppIsInBackground(context)) {
                         Log.i(TAG, "sendNormalNotification: === brackground");
-                        if(id_post!=null||id_post!="0"){
+                        if(!id_post.equals("0")){
                             intent = new Intent(context, NewsSingleActivity.class);
                             intent.putExtra(Constant.Key.SECCION, seccion);
                             intent.putExtra(Constant.Seccion.Id_Post, id_post);
@@ -100,7 +100,7 @@ public class Notifications {
                         }
                     } else {
                         Log.i(TAG, "sendNormalNotification: === no brackground");
-                        if(id_post!=null||id_post!="0"){
+                        if(!id_post.equals("0")){
                             intent = new Intent(context, NewsSingleActivity.class);
                             intent.putExtra(Constant.Key.SECCION, seccion);
                             intent.putExtra(Constant.Seccion.Id_Post, id_post);
@@ -120,7 +120,7 @@ public class Notifications {
                     Log.i(TAG, "sendNormalNotification: === seccion: "+seccion+" id_post: "+id_post);
                     if (Commons.isAppIsInBackground(context)) {
                         Log.i(TAG, "sendNormalNotification: === brackground");
-                        if(id_post!=null||id_post!="0"){
+                        if(!id_post.equals("0")){
                             intent = new Intent(context, NewsSingleActivity.class);
                             intent.putExtra(Constant.Key.SECCION, seccion);
                             intent.putExtra(Constant.Seccion.Id_Post, id_post);
@@ -134,7 +134,7 @@ public class Notifications {
                         }
                     } else {
                         Log.i(TAG, "sendNormalNotification: === no brackground");
-                        if(id_post!=null||id_post!="0"){
+                        if(!id_post.equals("0")){
                             intent = new Intent(context, NewsSingleActivity.class);
                             intent.putExtra(Constant.Key.SECCION, seccion);
                             intent.putExtra(Constant.Seccion.Id_Post, id_post);
@@ -171,7 +171,7 @@ public class Notifications {
                         Log.i(TAG, "sendNormalNotification: === seccion: "+seccion+" id_post: "+id_post);
                         if (Commons.isAppIsInBackground(context)) {
                             Log.i(TAG, "sendNormalNotification: === brackground");
-                            if(id_post!=null||id_post!="0"){
+                            if(id_post!=null&&!id_post.equals("0")){
                                 intent = new Intent(context, NewsSingleActivity.class);
                                 intent.putExtra(Constant.Key.SECCION, seccion);
                                 intent.putExtra(Constant.Seccion.Id_Post, id_post);
@@ -185,7 +185,7 @@ public class Notifications {
                             }
                         } else {
                             Log.i(TAG, "sendNormalNotification: === no brackground");
-                            if(id_post!=null||id_post!="0"){
+                            if(id_post!=null&&!id_post.equals("0")){
                                 intent = new Intent(context, NewsSingleActivity.class);
                                 intent.putExtra(Constant.Key.SECCION, seccion);
                                 intent.putExtra(Constant.Seccion.Id_Post, id_post);
@@ -215,7 +215,7 @@ public class Notifications {
                         Log.i(TAG, "sendNormalNotification: === seccion: "+seccion+" id_post: "+id_post);
                         if (Commons.isAppIsInBackground(context)) {
                             Log.i(TAG, "sendNormalNotification: === brackground");
-                            if(id_post!=null||id_post!="0"){
+                            if(id_post!=null&&!id_post.equals("0")){
                                 intent = new Intent(context, NewsSingleActivity.class);
                                 intent.putExtra(Constant.Key.SECCION, seccion);
                                 intent.putExtra(Constant.Seccion.Id_Post, id_post);
@@ -229,7 +229,7 @@ public class Notifications {
                             }
                         } else {
                             Log.i(TAG, "sendNormalNotification: === no brackground");
-                            if(id_post!=null||id_post!="0"){
+                            if(id_post!=null&&!id_post.equals("0")){
                                 intent = new Intent(context, NewsSingleActivity.class);
                                 intent.putExtra(Constant.Key.SECCION, seccion);
                                 intent.putExtra(Constant.Seccion.Id_Post, id_post);

@@ -76,8 +76,7 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         if (profileFragment == null) {
             profileFragment = ProfileFragment.newInstance(subsection);
             view.addFragment(profileFragment, ProfileFragment.TAG);
-        }
-        if (subsection != null) {
+        }else if (subsection != null) {
             profileFragment = ProfileFragment.newInstance(subsection);
             view.addFragment(profileFragment, ProfileFragment.TAG);
         }
@@ -98,6 +97,9 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         teamFragment = (TeamFragment)
                 view.getFragmentByTag(TeamFragment.TAG);
         if (teamFragment == null) {
+            teamFragment = TeamFragment.newInstance(subsection);
+            view.addFragment(teamFragment, TeamFragment.TAG);
+        }else if(subsection!=null){
             teamFragment = TeamFragment.newInstance(subsection);
             view.addFragment(teamFragment, TeamFragment.TAG);
         }
@@ -141,6 +143,9 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         if (tableFragment == null) {
             tableFragment = TableFragment.newInstance(subsection);
             view.addFragment(tableFragment, TableFragment.TAG);
+        }else if(subsection!=null){
+            tableFragment = TableFragment.newInstance(subsection);
+            view.addFragment(tableFragment, TableFragment.TAG);
         }
         view.showFragment(tableFragment, TableFragment.TAG);
     }
@@ -181,6 +186,9 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
         if (lineUpFragment == null) {
             lineUpFragment = LineUpFragment.newInstance(subsection);
             view.addFragment(lineUpFragment, LineUpFragment.TAG);
+        }else if(subsection!=null){
+            lineUpFragment = LineUpFragment.newInstance(subsection);
+            view.addFragment(lineUpFragment, LineUpFragment.TAG);
         }
         view.showFragment(lineUpFragment, LineUpFragment.TAG);
     }
@@ -188,6 +196,9 @@ public class HomePresenter implements HomeContract.Presenter, HomeContract.Model
     private void mountCalendar(String subsection) {
         calendarFragment = (MainCalendarFragment) view.getFragmentByTag(CalendarFragment.TAG);
         if (calendarFragment == null) {
+            calendarFragment = MainCalendarFragment.newInstance(Constant.Key.CUP, subsection);
+            view.addFragment(calendarFragment, CalendarFragment.TAG);
+        }else if(subsection!=null){
             calendarFragment = MainCalendarFragment.newInstance(Constant.Key.CUP, subsection);
             view.addFragment(calendarFragment, CalendarFragment.TAG);
         }

@@ -191,13 +191,13 @@ public interface Constant {
     }
 
     interface SubSeccion {
-        String TABLE = "tabla";
-        String SIMULATOR = "simulador";
-        String NOMINA = "nómina";
-        String CONVOCADOS = "convocados partidos";
-        String JUGADOR = "jugador más aplaudido";
-        String OFFICIAL = "alineación oficial";
-        String ELEVEN_IDEAL = "mi once ideal";
+        String TABLE = "table";
+        String SIMULATOR = "simulator";
+        String NOMINA = "nomina";
+        String CONVOCADOS = "convocados";
+        String JUGADOR = "jugador";
+        String OFFICIAL = "official";
+        String ELEVEN_IDEAL = "eleven_ideal";
         String NEWS = "noticias";
         String TEAM = "equipo";
         String VOTACIONES = "votaciones";
@@ -209,7 +209,13 @@ public interface Constant {
         String SEMIFINALES_VUELTA = "semifinales vuelta";
         String OFFICIAL_FAN = "official_fan";
         String INFO_ACCOUNT = "info_account";
-    }
+        String VIDEOS = "videos";
+        String LIVE = "live";
+        String MURO_AMARILLO = "muro_amarillo";
+        String CHAT = "chat";
+        String GALERY = "galery";
+        String VOTATION = "votation";
+}
 
     interface Seccion {
         String Id_Post = "id_post";
@@ -232,6 +238,7 @@ public interface Constant {
         String STORE = "store";
         String GAMES = "games";
         String PROFILE = "profile";
+        String GLORY = "glory_bsc";
     }
 
     interface Analytics {
