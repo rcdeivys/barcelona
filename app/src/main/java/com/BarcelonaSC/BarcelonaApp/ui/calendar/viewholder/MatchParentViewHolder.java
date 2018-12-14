@@ -1,5 +1,6 @@
 package com.BarcelonaSC.BarcelonaApp.ui.calendar.viewholder;
 
+import android.util.Log;
 import android.view.View;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
@@ -17,19 +18,29 @@ import static android.view.animation.Animation.RELATIVE_TO_SELF;
  */
 
 public class MatchParentViewHolder extends GroupViewHolder {
-
+    private String TAG = MatchParentViewHolder.class.getSimpleName();
+    String subseccion;
     public TextView tvTittle;
     public ImageView ivArrow;
 
-    public MatchParentViewHolder(View itemView) {
+    public MatchParentViewHolder(View itemView, String subseccion) {
         super(itemView);
-
         tvTittle = itemView.findViewById(R.id.parent_list_item_crime_title_text_view);
         ivArrow = itemView.findViewById(R.id.parent_list_item_expand_arrow);
     }
 
     public void setTvTittle(ExpandableGroup tvTittle) {
+//        this.tvTittle.setText(tvTittle.getTitle());
+
         this.tvTittle.setText(tvTittle.getTitle());
+        try{
+            if(subseccion!=null && subseccion.equals(tvTittle.getTitle().toLowerCase())){
+                Log.i(TAG, "setTvTittle: === subseccion: "+subseccion+" titulo: "+tvTittle.getTitle().toLowerCase());
+                expand();
+            }
+        }catch (Exception e){
+
+        }
     }
 
     @Override

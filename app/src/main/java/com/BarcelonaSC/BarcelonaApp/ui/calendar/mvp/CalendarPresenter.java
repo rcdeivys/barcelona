@@ -1,8 +1,15 @@
 package com.BarcelonaSC.BarcelonaApp.ui.calendar.mvp;
 
-import com.BarcelonaSC.BarcelonaApp.models.Tournament;
-import com.BarcelonaSC.BarcelonaApp.models.Match;
+import android.annotation.SuppressLint;
+import android.util.Log;
 
+import com.BarcelonaSC.BarcelonaApp.models.Match;
+import com.BarcelonaSC.BarcelonaApp.models.Tournament;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
+import com.BarcelonaSC.BarcelonaApp.utils.PreferenceManager;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,10 +18,16 @@ import java.util.List;
 
 public class CalendarPresenter implements CalendarContract.Presenter, CalendarContract.ModelResultListener {
 
+    private String TAG = CalendarPresenter.class.getSimpleName();
     private CalendarContract.View view;
     private CalendarModel model;
-    private List<Tournament> tournamentses;
+    private List<Tournament> tournaments;
     private String type;
+
+    //ORDENAMIENTO
+//    List<Match> allMatches = new ArrayList<>();
+    private AuxFinderMatch aux = new AuxFinderMatch();
+    SimpleDateFormat simpleDateFormat;
 
     public CalendarPresenter(CalendarContract.View view, CalendarModel model) {
         this.view = view;
@@ -31,45 +44,167 @@ public class CalendarPresenter implements CalendarContract.Presenter, CalendarCo
         view = null;
     }
 
+    @SuppressLint("SimpleDateFormat")
     @Override
-    public void onGetCupSuccess(List<Tournament> tournamentses) {
-        for (Tournament tournament : tournamentses) {
-            tournament.setMatches(processsMatchData(tournament.getMatches()));
+    public void onGetCupSuccess(List<Tournament> tournaments) {
+//        for (Tournament tournament : tournamentses) {
+//            tournament.setMatches(processMatchData(tournament.getMatches()));
+//        }
+//        this.tournamentses = tournamentses;
+//        if (isViewNull()) return;
+//        view.setCup(this.tournamentses);
+
+        Log.e(TAG, "---> Llega: " + tournaments.size());
+        int gruopNumber = 0;
+        try {
+            simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String curDate = simpleDateFormat.format(new Date());
+            Date today = null;
+            today = simpleDateFormat.parse(curDate);
+            aux.setTodayDate(today.getTime());
+
+            for (Tournament tournament : tournaments) {
+                tournament.setMatches(processMatchData(tournament.getMatches(), gruopNumber));
+                gruopNumber++;
+            }
+
+            this.tournaments = tournaments;
+            if (isViewNull()) return;
+            view.setCup(this.tournaments);
+
+            PreferenceManager.getInstance().putInt(Constant.Key.CUR_GROUP_POS, aux.getPosGroup());
+            PreferenceManager.getInstance().putInt(Constant.Key.CUR_ITEM_POS, aux.getPosItem());
+
+        } catch (Exception e) {
+            Log.e(TAG, "---> CATCH: " + e.toString());
         }
-        this.tournamentses = tournamentses;
 
-        if (isViewNull()) return;
-
-        view.setCup(this.tournamentses);
     }
 
-    public List<Match> processsMatchData(List<Match> matches) {
+//    public List<Match> processMatchData(List<Match> matches) {
+//
+//        int newDate = 0;
+//        String headerInfo;
+//        boolean initialDate = true;
+//
+//        for (int i = 0; i < matches.size(); i++) {
+//            matches.get(i).setNewDate(false);
+//            for (int j = i + 1; j < matches.size(); j++) {
+//                if (matches.get(i).getFechaEtapa().equals(matches.get(j).getFechaEtapa())) {
+//                    matches.get(j).setNewDate(false);
+//                    matches.get(j).setNewDateHeader(false);
+//                } else {
+//                    matches.get(j).setNewDate(false);
+//                    matches.get(j).setNewDateHeaderTitle(matches.get(j).getFecha());
+//                    if (initialDate) {
+//                        initialDate = false;
+//                        matches.get(j).setNewDate(true);
+//                    }
+//                    matches.get(j).setNewDateHeader(true);
+//                    i = j;
+//                    break;
+//                }
+//            }
+//        }
+//
+//        return matches;
+//    }
 
-        int newDate = 0;
-        String headerInfo;
+    public List<Match> processMatchData(List<Match> matches, int gruopNumber) {
+        Log.e(TAG, "---> processMatchData");
         boolean initialDate = true;
+        foundMostRecent(matches, gruopNumber);
 
         for (int i = 0; i < matches.size(); i++) {
             matches.get(i).setNewDate(false);
             for (int j = i + 1; j < matches.size(); j++) {
-                if (matches.get(i).getFechaEtapa().equals(matches.get(j).getFechaEtapa())) {
-                    matches.get(j).setNewDate(false);
-                    matches.get(j).setNewDateHeader(false);
-                } else {
-                    matches.get(j).setNewDate(false);
-                    matches.get(j).setNewDateHeaderTitle(matches.get(j).getFecha());
-                    if (initialDate) {
-                        initialDate = false;
-                        matches.get(j).setNewDate(true);
+                if (matches.get(i).getFechaEtapa() != null) {
+                    if (matches.get(i).getFechaEtapa().equals(matches.get(j).getFechaEtapa())) {
+                        matches.get(j).setNewDate(false);
+                        matches.get(j).setNewDateHeader(false);
+                    } else {
+                        matches.get(j).setNewDate(false);
+                        matches.get(j).setNewDateHeaderTitle(matches.get(j).getFecha());
+                        if (initialDate) {
+                            initialDate = false;
+                            matches.get(j).setNewDate(true);
+                        }
+                        matches.get(j).setNewDateHeader(true);
+                        i = j;
+                        break;
                     }
-                    matches.get(j).setNewDateHeader(true);
-                    i = j;
-                    break;
                 }
             }
         }
 
+        Log.e(TAG, "---> processMatchData return matches " + matches.toString());
         return matches;
+    }
+
+    private void foundMostRecent(List<Match> matches, int gruopNumber) {
+        Log.e(TAG, "---> foundMostRecent");
+
+        int i = 0;
+        if (matches != null && matches.size() > 0) {
+
+            while (matches.get(i).getFechaEtapa() == null) {
+                i++;
+            }
+
+            try {
+                Object match = matches.get(i);
+                Match partido = (Match) match;
+                String[] parts = partido.getFecha().split(" ");
+
+                Date date = simpleDateFormat.parse(parts[0]);
+                long mills = date.getTime();
+                if (aux.getDateDistancePast() == 0) {
+                    aux.setDateDistancePast(Math.abs(aux.getTodayDate() - mills));
+                }
+                if (aux.getDateDistanceFuture() == 0) {
+                    aux.setDateDistanceFuture(Math.abs(aux.getTodayDate() - mills));
+                }
+
+                while (i < matches.size()) {
+                    match = matches.get(i);
+                    try {
+                        partido = (Match) match;
+                        parts = partido.getFecha().split(" ");
+
+                        date = simpleDateFormat.parse(parts[0]);
+                        mills = date.getTime();
+                        long auxDistance = Math.abs(aux.getTodayDate() - mills);
+                        if (mills >= aux.getTodayDate()) {//si encontramos una fecha futura
+                            //este es el mas cercano por el futuro
+                            aux.setWasFound(true);
+                            if (aux.getDateDistanceFuture() >= auxDistance) {
+                                Log.e(TAG, "---> " + "foundMostRecent Encontro por el futuro i---> " + i);
+                                aux.setDateDistanceFuture(auxDistance);
+                                aux.setPosItem(i);
+                                aux.setPosGroup(gruopNumber);
+                                aux.setAllItemUntilNow(aux.getAllItemUntilNow() + i);
+                            }
+                        } else if (!aux.isWasFound()) {
+                            //si aun no hemos encontrado una fecha futura. Preferencia por las futuras
+                            //este es el mas cercano por el pasado
+                            if (aux.getDateDistancePast() > auxDistance) {
+                                Log.e(TAG, "---> " + "foundMostRecent Encontro por el pasado i---> " + i);
+                                aux.setDateDistancePast(auxDistance);
+                                aux.setPosItem(i);
+                                aux.setPosGroup(gruopNumber);
+                                aux.setAllItemUntilNow(aux.getAllItemUntilNow() + i);
+                            }
+                        }
+                    } catch (Exception e) {
+                        Log.e(TAG, "---> foundMostRecent catch: " + e.toString());
+                    }
+                    i++;
+                }
+                Log.e(TAG, "---> foundMostRecent fin while  aux.toString(): " + aux.toString());
+            } catch (Exception e) {
+                Log.e(TAG, "---> " + "foundMostRecent No se guardo la pos: " + e.getMessage());
+            }
+        }
     }
 
     @Override
