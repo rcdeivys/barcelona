@@ -42,8 +42,6 @@ public class LineUpFragment extends ShareBaseFragment {
 
     protected String subseccion;
 
-    private boolean isRankingEnable;
-
     public static LineUpFragment newInstance(String subseccion){
         LineUpFragment fragment = new LineUpFragment();
         Log.i(TAG, "newInstance: subseccion: ---> "+subseccion);
@@ -92,8 +90,11 @@ public class LineUpFragment extends ShareBaseFragment {
                     pager.setCurrentItem(1);
                     break;
                 case Constant.SubSeccion.RANKING:
-                    if(isRankingEnable)
+                    if(viewPagerAdapter.getCount()>2){
                         pager.setCurrentItem(2);
+                    }else{
+                        pager.setCurrentItem(0);
+                    }
                     break;
             }
         }catch (Exception e){
@@ -101,7 +102,7 @@ public class LineUpFragment extends ShareBaseFragment {
             Log.i(TAG, "initializeViewPager: ---> error: "+e.getLocalizedMessage()+" msg: "+e.getMessage());
         }
 
-        eternity();
+        //eternity();
     }
 
     public void eternity() {
