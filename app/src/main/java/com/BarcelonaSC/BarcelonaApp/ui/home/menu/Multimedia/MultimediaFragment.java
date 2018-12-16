@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -41,6 +42,21 @@ public class MultimediaFragment extends ShareBaseFragment {
     private MultimediaViewPagerAdapter viewPagerAdapter;
 
     public MultimediaFragment() {
+    }
+
+    protected String subseccion;
+
+    private boolean isRankingEnable;
+
+    public static MultimediaFragment newInstance(String subseccion){
+        MultimediaFragment fragment = new MultimediaFragment();
+        Log.i(TAG, "newInstance: subseccion: ---> "+subseccion);
+        try{
+            fragment.subseccion = subseccion.toLowerCase();
+        }catch (Exception e){
+            fragment.subseccion = null;
+        }
+        return fragment;
     }
 
     @Override
@@ -91,7 +107,11 @@ public class MultimediaFragment extends ShareBaseFragment {
                     ((HomeActivity) getActivity()).notShareSection();
                 }
 
-                changeFragment.onChangeFragment();
+                try{
+                    changeFragment.onChangeFragment();
+                }catch (Exception e){
+
+                }
             }
 
             @Override
@@ -113,6 +133,20 @@ public class MultimediaFragment extends ShareBaseFragment {
 
             tab.setCustomView(view);
         }
+
+        try {
+            switch(subseccion){
+                case Constant.SubSeccion.VIDEOS:
+                    pager.setCurrentItem(0);
+                    break;
+                case Constant.SubSeccion.LIVE:
+                    pager.setCurrentItem(1);
+                    break;
+            }
+        }catch (Exception e){
+            pager.setCurrentItem(0);
+            Log.i(TAG, "initializeViewPager: ---> error: "+e.getLocalizedMessage()+" msg: "+e.getMessage());
+        }
     }
 
     @Override
@@ -133,7 +167,7 @@ public class MultimediaFragment extends ShareBaseFragment {
 
     public void setCurrentPage() {
         if (pager != null)
-            if (selected.equals(Constant.Menu.IN_LIVE)) {
+            if (selected.equals(Constant.SubSeccion.LIVE)) {
                 pager.setCurrentItem(1);
             } else {
                 pager.setCurrentItem(0);

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import com.BarcelonaSC.BarcelonaApp.ui.profile.fragments.InfoAccountFragment;
 import com.BarcelonaSC.BarcelonaApp.ui.profile.mvp.ProfileContract;
 import com.BarcelonaSC.BarcelonaApp.ui.profile.mvp.ProfilePresenter;
 import com.BarcelonaSC.BarcelonaApp.ui.profile.views.adapters.ProfileViewPager;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
 
@@ -58,6 +60,19 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
 
     @Inject
     public ProfilePresenter presenter;
+
+    protected String subseccion;
+
+    public static ProfileFragment newInstance(String subseccion){
+        ProfileFragment fragment = new ProfileFragment();
+        Log.i(TAG, "newInstance: subseccion: ---> "+subseccion);
+        try{
+            fragment.subseccion = subseccion.toLowerCase();
+        }catch (Exception e){
+            fragment.subseccion = null;
+        }
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -130,6 +145,18 @@ public class ProfileFragment extends BaseFragment implements ProfileContract.Vie
 
         tabs.setVisibility(View.VISIBLE);
         tabs.setupWithViewPager(pager);
+
+        if(subseccion!=null){
+            switch (subseccion){
+                case Constant.SubSeccion.OFFICIAL_FAN:
+                    pager.setCurrentItem(0);
+                    break;
+                case Constant.SubSeccion.INFO_ACCOUNT:
+                    pager.setCurrentItem(1);
+                    break;
+            }
+        }
+
     }
 
     @Override

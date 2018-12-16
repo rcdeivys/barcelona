@@ -41,7 +41,7 @@ public class FutbolBasePagerAdapter extends FragmentStatePagerAdapter {
             return teamFragment;
         } else {
             App.get().registerTrackScreen(Constant.Analytics.BASE + "." + Constant.FutbolBaseTags.Team);
-            calendarFragment = MainCalendarFragment.newInstance(Constant.Key.CUP_FB);
+            calendarFragment = MainCalendarFragment.newInstance(Constant.Key.CUP_FB,null);
             return calendarFragment;
         }
     }

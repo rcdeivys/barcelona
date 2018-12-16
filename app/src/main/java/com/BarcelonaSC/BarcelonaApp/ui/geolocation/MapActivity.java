@@ -17,6 +17,7 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,11 +58,14 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.multi.CompositeMultiplePermissionsListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.karumi.dexter.listener.multi.SnackbarOnAnyDeniedMultiplePermissionsListener;
+
+import org.json.JSONObject;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
@@ -124,6 +128,8 @@ public class MapActivity extends BaseSideMenuActivity implements OnMapReadyCallb
     @Inject
     MapPresenter presenter;
 
+    private String puntoReferencia = null;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,6 +142,12 @@ public class MapActivity extends BaseSideMenuActivity implements OnMapReadyCallb
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        try {
+            puntoReferencia = getIntent().getStringExtra(Constant.Key.PUNTO_REFERENCIA);
+        } catch (Exception e) {
+            Log.i(TAG, "onCreate: exception: === " + e.getLocalizedMessage() + " msg: " + e.getMessage());
+        }
 
         //btnBack.setVisibility(View.VISIBLE);
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -223,7 +235,12 @@ public class MapActivity extends BaseSideMenuActivity implements OnMapReadyCallb
                     );
 
                     LatLng latLng = new LatLng(latitude, longitude);
-                    mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12.0f));
+                    if (puntoReferencia == null) {
+                        mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12.0f));
+                    } else {
+                        puntoReferencia = null;
+                    }
+                    //mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12.0f));
                     //mapa.animateCamera(CameraUpdateFactory.zoomTo(15));
 
                     requiredOnce = true;
@@ -314,6 +331,43 @@ public class MapActivity extends BaseSideMenuActivity implements OnMapReadyCallb
             mapa.setOnMarkerClickListener(this);
         }
         hideProgress();
+        if (puntoReferencia != null) {
+            setDataFromNotifications();
+        }
+    }
+
+    private void setDataFromNotifications() {
+        try {
+            JSONObject puntoJSON = new JSONObject(puntoReferencia);
+            Log.i(TAG, "onCreate: === longitude: " + puntoJSON.getDouble("longitud") + " latitude: " + puntoJSON.getDouble("latitud"));
+            LatLng latLng = null;
+            try {
+                latLng = new LatLng(
+                        puntoJSON.getDouble("latitud"),
+                        puntoJSON.getDouble("longitud")
+                );
+            } catch (Exception e) {
+                Log.i(TAG, "long lat: === excepcion: " + e.getMessage() + " msg: " + e.getMessage());
+                Log.i(TAG, "long lat: === cause: " + e.getCause());
+            }
+            try {
+                mapa.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 14.0f));
+            } catch (Exception e) {
+                Log.i(TAG, "moviendo camara: === excepcion: " + e.getMessage() + " msg: " + e.getMessage());
+                Log.i(TAG, "moviendo camara: === cause: " + e.getCause());
+            }
+            try {
+                Gson gson = new Gson();
+                MapData data = gson.fromJson(puntoReferencia, MapData.class);
+                openDetails(data);
+            } catch (Exception e) {
+                Log.i(TAG, "parseando json: === excepcion: " + e.getLocalizedMessage() + " msg: " + e.getMessage());
+                Log.i(TAG, "parseando json: === cause: " + e.getCause());
+            }
+        } catch (Exception e) {
+            Log.i(TAG, "onCreate: exception: === " + e.getLocalizedMessage() + " msg: " + e.getMessage());
+            Log.i(TAG, "onCreate: exception: === " + e.getCause());
+        }
     }
 
     protected Marker createMarker(MapData point) {

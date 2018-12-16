@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,12 +35,16 @@ public class WallAndChatFragment extends Fragment {
 
     private WallAndChatViewPagerAdapter viewPagerAdapter;
 
-    public static WallAndChatFragment newInstance() {
-        Bundle args = new Bundle();
+    protected String subseccion;
 
-        WallAndChatFragment fragment = new WallAndChatFragment();
-        fragment.setArguments(args);
-        return fragment;
+    public static WallAndChatFragment newInstance(String subseccion) {
+        WallAndChatFragment mainCalendarFragment = new WallAndChatFragment();
+        try{
+            mainCalendarFragment.subseccion = subseccion.toLowerCase();
+        }catch (Exception e){
+            mainCalendarFragment.subseccion = null;
+        }
+        return mainCalendarFragment;
     }
 
     @Override
@@ -62,11 +67,24 @@ public class WallAndChatFragment extends Fragment {
         pager.setAdapter(viewPagerAdapter);
         tabs.setupWithViewPager(pager);
         tabs.setVisibility(View.VISIBLE);
+        try {
+            switch(subseccion){
+                case Constant.SubSeccion.MURO_AMARILLO:
+                    pager.setCurrentItem(0);
+                    break;
+                case Constant.SubSeccion.CHAT:
+                    pager.setCurrentItem(1);
+                    break;
+            }
+        }catch (Exception e){
+            pager.setCurrentItem(0);
+            Log.i(TAG, "initializeViewPager: ---> error: "+e.getLocalizedMessage()+" msg: "+e.getMessage());
+        }
     }
 
     public void setCurrentPage() {
         if (pager != null)
-            if (selected.equals(Constant.Menu.CHAT)) {
+            if (selected.equals(Constant.SubSeccion.CHAT)) {
                 pager.setCurrentItem(1);
             } else {
                 pager.setCurrentItem(0);

@@ -11,6 +11,7 @@ import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.Services.ShareBaseFragment;
 import com.BarcelonaSC.BarcelonaApp.eventbus.ChooseOpenEvent;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
 
@@ -37,6 +38,19 @@ public class YouChooseFragment extends ShareBaseFragment {
     String moveRanking = "0";
 
     private YouChooseViewPagerAdapter viewPagerAdapter;
+
+    protected String subseccion;
+
+    public static YouChooseFragment newInstance(String subseccion){
+        YouChooseFragment fragment = new YouChooseFragment();
+        Log.i(TAG, "newInstance: subseccion: ---> "+subseccion);
+        try{
+            fragment.subseccion = subseccion.toLowerCase();
+        }catch (Exception e){
+            fragment.subseccion = null;
+        }
+        return fragment;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,7 +85,7 @@ public class YouChooseFragment extends ShareBaseFragment {
         pager.setAdapter(viewPagerAdapter);
 
         tabs.setupWithViewPager(pager);
-   /*     tabs.setDistributeEvenly(true);
+        /*tabs.setDistributeEvenly(true);
 
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
@@ -79,6 +93,19 @@ public class YouChooseFragment extends ShareBaseFragment {
                 return ContextCompat.getColor(getApplicationContext(), R.color.colorActiveTextTab);
             }
         });*/
+
+        try{
+            switch(subseccion){
+                case Constant.SubSeccion.VOTACIONES:
+                    pager.setCurrentItem(0);
+                    break;
+                case Constant.SubSeccion.RANKING:
+                    pager.setCurrentItem(1);
+                    break;
+            }
+        }catch (Exception e){
+            Log.i(TAG, "initializeViewPager: ---> error: "+e.getLocalizedMessage()+" msg: "+e.getMessage());
+        }
 
     }
 

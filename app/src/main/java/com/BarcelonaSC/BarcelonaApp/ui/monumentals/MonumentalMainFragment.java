@@ -3,6 +3,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.monumentals;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +54,19 @@ public class MonumentalMainFragment extends BaseFragment {
 
     boolean accepted;
 
+    protected String subseccion;
+
+    public static MonumentalMainFragment newInstance(String subseccion){
+        MonumentalMainFragment fragment = new MonumentalMainFragment();
+        Log.i(TAG, "newInstance: subseccion: ---> "+subseccion);
+        try{
+            fragment.subseccion = subseccion.toLowerCase();
+        }catch (Exception e){
+            fragment.subseccion = null;
+        }
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -81,6 +95,22 @@ public class MonumentalMainFragment extends BaseFragment {
 
         pager.setAdapter(new MonumentalPagerAdapter(getChildFragmentManager(), getActivity(), monumentalNewsFragment, monumentalFragment, monumentalRankingFragment));
         tabs.setupWithViewPager(pager);
+        try {
+            switch(subseccion){
+                case Constant.SubSeccion.GALERY:
+                    pager.setCurrentItem(0);
+                    break;
+                case Constant.SubSeccion.VOTATION:
+                    pager.setCurrentItem(1);
+                    break;
+                case Constant.SubSeccion.RANKING:
+                    pager.setCurrentItem(2);
+                    break;
+            }
+        }catch (Exception e){
+            pager.setCurrentItem(0);
+            Log.i(TAG, "initializeViewPager: ---> error: "+e.getLocalizedMessage()+" msg: "+e.getMessage());
+        }
     }
 
     private void initDialog() {
