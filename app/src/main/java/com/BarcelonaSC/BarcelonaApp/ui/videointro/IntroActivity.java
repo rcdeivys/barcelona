@@ -155,6 +155,12 @@ public class IntroActivity extends BaseActivity {
                                 news.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 news.putExtra(Constant.Seccion.Id_Post, idPost);
                                 startActivity(news);
+                            }else{
+                                Intent home = new Intent(IntroActivity.this, HomeActivity.class);
+                                home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                home.putExtra(Constant.Key.SECCION, seccion);
+                                home.putExtra(Constant.Key.SUB_SECCION, subseccion);
+                                startActivity(home);
                             }
                         } catch (Exception e) {
                             Log.i(TAG, "goToThisSection:  === Exception!!! ");
