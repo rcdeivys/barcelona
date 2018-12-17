@@ -118,6 +118,14 @@ public class MatchAdapter extends ExpandableRecyclerViewAdapter<MatchParentViewH
         final Match match = (Match) expandableGroup.getItems().get(i1);
         if (match.getDestacado() == 0) {
             matchChildViewHolder.contentGameCalendar.setBackgroundColor(Commons.getColor(R.color.colorPrimaryDark));
+            matchChildViewHolder.tvInfo.setTextColor(mContext.getResources().getColor(R.color.white));
+            matchChildViewHolder.tvTeamName1.setTextColor(mContext.getResources().getColor(R.color.white));
+            matchChildViewHolder.tvTeamName2.setTextColor(mContext.getResources().getColor(R.color.white));
+            matchChildViewHolder.tvMatchDate.setTextColor(mContext.getResources().getColor(R.color.white));
+            matchChildViewHolder.tvMatchState.setTextColor(mContext.getResources().getColor(R.color.white));
+            matchChildViewHolder.tvMatchScore.setTextColor(mContext.getResources().getColor(R.color.white));
+            matchChildViewHolder.tvMatchState2.setTextColor(mContext.getResources().getColor(R.color.white));
+            matchChildViewHolder.tvSubTitle.setTextColor(mContext.getResources().getColor(R.color.white));
         } else {
             matchChildViewHolder.contentGameCalendar.setBackgroundColor(Commons.getColor(R.color.side_menu_text_active));
             matchChildViewHolder.tvInfo.setTextColor(mContext.getResources().getColor(R.color.black));
