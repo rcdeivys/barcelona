@@ -26,7 +26,7 @@ android {
         targetSdkVersion 27
         multiDexEnabled true
         versionCode 152
-        versionName "5.11.38"
+        versionName "5.11.39"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexKeepProguard file("proguard.multidex.config")
         javaCompileOptions {
