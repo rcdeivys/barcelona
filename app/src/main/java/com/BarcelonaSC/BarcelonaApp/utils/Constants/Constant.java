@@ -138,7 +138,7 @@ public interface Constant {
         String STATISTICS = "estadisticas";
         String TEAM = "equipo";
         String ALIGMENT = "alineacion";
-        String MONUMENTAL = "monumental";
+        String MONUMENTAL = "glory_bsc";
         String VIRTUAL_REALITY = "realidad_virtual";
         String IN_LIVE = "In live";
         String VIDEOS = "videos";
