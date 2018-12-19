@@ -79,4 +79,6 @@
 
     <color name="gray_300">#E0E0E0</color>
 
+    <color name="opaque_yellow">#4d3d04</color>
+
 </resources>

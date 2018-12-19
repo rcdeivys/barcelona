@@ -34,8 +34,6 @@ public class VoteAdapter extends RecyclerView.Adapter<VoteAdapter.ViewHolder> {
 
     private OnItemClickListener onItemClickListener;
 
-    private boolean canVote = true;
-
     public VoteAdapter(VoteFragment voteFragment) {
         this.context = voteFragment.getContext();
 

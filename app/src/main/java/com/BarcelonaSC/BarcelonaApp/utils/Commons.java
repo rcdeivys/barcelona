@@ -513,4 +513,20 @@ public class Commons {
         return mMMR.getFrameAtTime(timeInSeconds * 1000000, MediaMetadataRetriever.OPTION_CLOSEST_SYNC);
     }
 
+    public static String getStringDateGame(String string) {
+        try {
+            DateFormat format = new SimpleDateFormat("dd-MMM-yyyy HH:mm", new Locale("es", "ES"));
+            DateFormat format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm", new Locale("es", "ES"));
+            Date date = format2.parse(string);
+            String dateString = format.format(date).replace(".", "");
+
+            System.out.println(date);
+
+            return dateString.toUpperCase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
 }

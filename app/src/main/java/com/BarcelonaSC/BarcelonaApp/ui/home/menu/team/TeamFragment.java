@@ -3,6 +3,7 @@ package com.BarcelonaSC.BarcelonaApp.ui.home.menu.team;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.BarcelonaSC.BarcelonaApp.R;
 import com.BarcelonaSC.BarcelonaApp.app.manager.ConfigurationManager;
 import com.BarcelonaSC.BarcelonaApp.commons.BaseFragment;
+import com.BarcelonaSC.BarcelonaApp.utils.Constants.Constant;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomTabLayout;
 import com.BarcelonaSC.BarcelonaApp.utils.CustomViewPager;
 
@@ -39,6 +41,19 @@ public class TeamFragment extends BaseFragment {
     int tabCount;
 
     private TeamViewPagerAdapter viewPagerAdapter;
+
+    protected String subseccion;
+
+    public static TeamFragment newInstance(String subseccion){
+        TeamFragment fragment = new TeamFragment();
+        Log.i(TAG, "newInstance: subseccion: ---> "+subseccion);
+        try{
+            fragment.subseccion = subseccion.toLowerCase();
+        }catch (Exception e){
+            fragment.subseccion = null;
+        }
+        return fragment;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,8 +101,7 @@ public class TeamFragment extends BaseFragment {
             tab.setCustomView(view);
         }
 
-   /*     tabs.setDistributeEvenly(true);
-
+        /*tabs.setDistributeEvenly(true);
 
         tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
@@ -96,6 +110,21 @@ public class TeamFragment extends BaseFragment {
             }
         });*/
 
+        try {
+            switch(subseccion){
+                case Constant.SubSeccion.NOMINA:
+                    pager.setCurrentItem(0);
+                    break;
+                case Constant.SubSeccion.CONVOCADOS:
+                    pager.setCurrentItem(1);
+                    break;
+                case Constant.SubSeccion.JUGADOR:
+                    pager.setCurrentItem(2);
+                    break;
+            }
+        }catch (Exception e){
+            Log.i(TAG, "initializeViewPager: ---> error: "+e.getLocalizedMessage()+" msg: "+e.getMessage());
+        }
 
     }
 

@@ -32,6 +32,7 @@ public class WallAndChatViewPagerAdapter extends FragmentStatePagerAdapter {
             return WallFragment.newInstance();
 
         } else {
+            App.get().registerTrackScreen(Constant.Analytics.CHAT);
             return ChatFragment.newInstance();
 
         }

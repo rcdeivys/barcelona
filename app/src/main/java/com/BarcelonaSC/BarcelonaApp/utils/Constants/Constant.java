@@ -20,6 +20,14 @@ public interface Constant {
         String URL = "url";
     }
 
+    interface FutbolBaseTags {
+        String News = "News";
+        String Team = "Team";
+        String TeamProfile = "TeamProfile";
+        String TeamInstagram = "TeamInstagram";
+    }
+
+
     interface CanchaSize {
 
         int CANCHA_ALTO = 310;
@@ -87,6 +95,9 @@ public interface Constant {
         String ID_RESPUESTA = "id_respuesta";
         String SHOW_VOTES = "show_votes";
 
+        String SUB_SECCION = "subseccion";
+        String PUNTO_REFERENCIA = "punto_referencia";
+
         String DORADO_CONFIGURATION = "dorado_configuration";
         String DORADO_STATUS_VIEW = "dorado_status_view";
         String DORADO_STATUS_SUSCRIPCION = "dorado_id_suscripcion";
@@ -96,6 +107,9 @@ public interface Constant {
         String POPUP_SECCION = "SECCION";
         String POPUP_UPDATE = "UPDATE";
         String SECCION_SELECTED = "seccion_Selected";
+
+        String CUR_GROUP_POS = "cur_group_pos";
+        String CUR_ITEM_POS = "cur_item_pos";
     }
 
     interface Preferences {
@@ -118,13 +132,13 @@ public interface Constant {
 
         String PROFILE = "profile";
         String Setting = "Setting";
-        String NEWS = "noticias";
+        String NEWS = "news";
         String CALENDAR = "calendario";
         String TABLE = "tabla";
         String STATISTICS = "estadisticas";
         String TEAM = "equipo";
         String ALIGMENT = "alineacion";
-        String MONUMENTAL = "monumental";
+        String MONUMENTAL = "glory_bsc";
         String VIRTUAL_REALITY = "realidad_virtual";
         String IN_LIVE = "In live";
         String VIDEOS = "videos";
@@ -135,6 +149,8 @@ public interface Constant {
         String ONLINE_SHOP = "tienda_virtual";
         String WALL_AND_CHAT = "muro";
         String CHAT = "chat";
+        String MULTIMEDIA = "multimedia";
+        String GLORIAS = "glory_bsc";
 
 
         String TITLE = "titulo";
@@ -176,15 +192,61 @@ public interface Constant {
         String NAME = "cup_name";
     }
 
+    interface SubSeccion {
+        String TABLE = "table";
+        String SIMULATOR = "simulator";
+        String NOMINA = "nomina";
+        String CONVOCADOS = "convocados";
+        String JUGADOR = "jugador";
+        String OFFICIAL = "official";
+        String ELEVEN_IDEAL = "eleven_ideal";
+        String NEWS = "noticias";
+        String TEAM = "equipo";
+        String VOTACIONES = "votaciones";
+        String RANKING = "ranking";
+        String MILLOS_TODOS = "millonarios contra todos";
+        String CUARTOS_IDA = "cuartos de final ida";
+        String CUARTOS_VUELTA = "cuartos de final vuelta";
+        String SEMIFINALES_IDA = "semifinales ida";
+        String SEMIFINALES_VUELTA = "semifinales vuelta";
+        String OFFICIAL_FAN = "official_fan";
+        String INFO_ACCOUNT = "info_account";
+        String VIDEOS = "videos";
+        String LIVE = "live";
+        String MURO_AMARILLO = "muro_amarillo";
+        String CHAT = "chat";
+        String GALERY = "galery";
+        String VOTATION = "votation";
+}
+
     interface Seccion {
         String Id_Post = "id_post";
         String MURO = "muro";
         String NOTICIAS = "news";
+        String TIPO_NOTICIA = "tipo_noticia";
+        String MULTIMEDIA = "multimedia";
         String CHAT= "chat";
+        String TEAM = "team";
+        String TABLE = "table";
+        String CALENDAR = "calendar";
+        String LINE_UP = "line_up";
+        String FOOTBALL_BASE = "football_base";
+        String YOU_CHOOSE = "you_choose";
+        String STATISTICS = "statistics";
+        String ACADEMY = "academy";
+        String VIDEO = "video";
+        String LIVE = "live";
+        String GEOLOCALIZATION = "geolocalizacion";
+        String VIRTUAL_REALITY = "virtual_reality";
+        String STORE = "store";
+        String GAMES = "games";
+        String PROFILE = "profile";
+        String GLORY = "glory_bsc";
     }
 
     interface Analytics {
         String BANNER = "BANNER";
+        String BASE = "BASE";
         String CALENDAR = "CALENDAR";
         String CHAT = "CHAT";
         String ERROR = "ERROR";
@@ -208,6 +270,10 @@ public interface Constant {
         String TEAM = "TEAM";
         String VIRTUAL_REALITY = "VIRTUAL REALITY";
         String WALL = "WALL";
+        String FOOTBALL_BASE = "FOOTBALL BASE";
+        String ACADEMY = "ACADEMIA";
+        String YOU_CHOOSE = "TU ELIGES";
+        String LIVE = "LIVE";
     }
     
     interface ActionTags {
@@ -233,6 +299,7 @@ public interface Constant {
     interface LineupTags {
         String Ideal = "Ideal";
         String Armar = "Armar";
+        String Ranking = "Ranking";
     }
 
     interface LoginTags {

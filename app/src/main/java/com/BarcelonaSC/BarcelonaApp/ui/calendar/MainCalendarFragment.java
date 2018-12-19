@@ -22,12 +22,18 @@ public class MainCalendarFragment extends BaseFragment {
     private String type;
     Unbinder unbinder;
 
-    public static MainCalendarFragment newInstance(String type) {
+    protected String subseccion;
+
+    public static MainCalendarFragment newInstance(String type,String subseccion) {
         Bundle args = new Bundle();
         args.putString(Constant.Key.TYPE, type);
         MainCalendarFragment mainCalendarFragment = new MainCalendarFragment();
         mainCalendarFragment.setArguments(args);
-
+        try{
+            mainCalendarFragment.subseccion = subseccion.toLowerCase();
+        }catch (Exception e){
+            mainCalendarFragment.subseccion = null;
+        }
         return mainCalendarFragment;
     }
 
@@ -38,7 +44,7 @@ public class MainCalendarFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
 
         type = getArguments().getString(Constant.Key.TYPE);
-        CalendarFragment calendarFragment = CalendarFragment.newInstance(type);
+        CalendarFragment calendarFragment = CalendarFragment.newInstance(type,subseccion);
         getFragmentManager().beginTransaction()
                 .replace(R.id.cal_container, calendarFragment)
                 .commitAllowingStateLoss();

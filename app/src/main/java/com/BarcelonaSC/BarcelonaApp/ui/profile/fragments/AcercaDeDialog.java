@@ -72,6 +72,8 @@ public class AcercaDeDialog extends DialogFragment {
             url = ConfigurationManager.getInstance().getConfiguration().getUrl_contacto();
         }
 
+        App.get().registerTrackScreen(Constant.Analytics.PROFILE+"."+Constant.ProfileTags.Terms);
+
         myWebView.setWebViewClient(new WebViewClient());
         myWebView.loadUrl(url);
 
